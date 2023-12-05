@@ -3,7 +3,8 @@ email:              tensor17s@gmail.com
 description:        텐서 스튜디오
 author:             ash tensor
 baseurl:            ""
-url:                "https://Ash-tensor.github.io"
+url:                ""
+remote_url:         "Ash-tensor.github.io"
 
 # Social Profiles
 twitter_username:   
