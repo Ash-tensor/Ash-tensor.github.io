@@ -1,25 +1,26 @@
-title:              TENSOR STUDIO
-email:              텐서 스튜디오
-description:        
-author:             Ash tenosr
+title:              Tensor Studio
+email:              tensor17s@gmail.com
+author:             ash tensor
+domain:             Ash-tensor.github.io
 baseurl:            ""
-url:                "https://ash-tensor.github.io/"
+url:                ""
+remote_url:         "Ash-tensor.github.io"
+description: >- # this means to ignore newlines until "baseurl:"
+  Yet another platform enginner, with a love for designing systems, writing tools, and hating third-party api integrations.
 
 # Social Profiles
-twitter_username:   SBootstrap
-github_username:    StartBootstrap
-facebook_username:  StartBootstrap
-instagram_username:  
-linkedin_username:
+github_username:    
+linkedin_username:  
+disable_tracking:   true
 
 # Add your google-analytics ID here to activate google analytics
-google_analytics:   UA-XXXXXXXXX-X # out your google-analytics code
+# google_analytics:   UA-XXXXXXXXX-X # out your google-analytics code
 
 # Build settings
 markdown:           kramdown
-paginate:           5
-paginate_path:      "/posts/page:num/"
+paginate:           10
+paginate_path:      "/posts/page/:num/"
 plugins:
   - jekyll-feed
   - jekyll-paginate
-  - jekyll-sitemap ## Uncomment this line to silently generate a sitemaps.org compliant sitemap for your Jekyll site
+  - jekyll-sitemap 
