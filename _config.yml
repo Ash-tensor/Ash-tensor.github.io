@@ -8,6 +8,10 @@ remote_url:         "Ash-tensor.github.io"
 description: >- # this means to ignore newlines until "baseurl:"
   Yet another platform enginner, with a love for designing systems, writing tools, and hating third-party api integrations.
 
+sass:
+  sass_dir: _sass
+  style: compressed
+
 # Social Profiles
 github_username:    
 linkedin_username:  
