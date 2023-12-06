@@ -6,7 +6,7 @@ baseurl:            ""
 url:                ""
 remote_url:         "Ash-tensor.github.io"
 description: >- # this means to ignore newlines until "baseurl:"
-  Yet another platform enginner, with a love for designing systems, writing tools, and hating third-party api integrations.
+  텐서 스튜디오
 
 sass:
   sass_dir: _sass
