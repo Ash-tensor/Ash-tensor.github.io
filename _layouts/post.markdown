@@ -3,6 +3,7 @@ layout: default
 ---
 
 <!-- Page Header -->
+
 {% if page.background %}
 <header class="masthead" style="background-image: url('{{ page.background | prepend: site.baseurl | replace: '//', '/' }}')">
 {% elsif page.background_color %}
@@ -24,6 +25,17 @@ layout: default
             on {{ page.date | date: '%B %d, %Y' }} &middot; {% include read_time.html
             content=page.content %}
           </span>
+
+<!-- 카테고리를 추가하는 코드 -->
+
+          <div>
+            {% for category in page.categories %}
+              <a href="{{ site.url }}/category/{{ category }}.html" style="color: white;">카테고리: {{ category }}</a>
+            {% endfor %}
+          </div>
+
+<!-- 카테고리를 추가하는 코드 -->
+
         </div>
       </div>
     </div>
@@ -33,6 +45,13 @@ layout: default
 <div class="container">
   <div class="row">
     <div class="col-lg-8 col-md-10 mx-auto">
+
+          <div>
+            {% for category in page.categories %}
+              <a href="{{ site.url }}/category/{{ category }}.html" style="color: black;">카테고리: {{ category }}</a>
+            {% endfor %}
+          </div>
+          
 
       {{ content }}
 
