@@ -46,12 +46,15 @@ layout: default
   <div class="row">
     <div class="col-lg-8 col-md-10 mx-auto">
 
+<!-- 카테고리를 추가하는 코드 -->
+
           <div>
             {% for category in page.categories %}
               <a href="{{ site.url }}/category/{{ category }}.html" style="color: black;">카테고리: {{ category }}</a>
             {% endfor %}
           </div>
           
+<!-- 카테고리를 추가하는 코드 -->
 
       {{ content }}
 
