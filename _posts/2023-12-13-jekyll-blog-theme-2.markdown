@@ -23,7 +23,7 @@ background: '/img/posts/06.jpg'
 
 저 깃허브 레포지토리의 readme.md의 방법대로 실행하는 법과, 깃허브 레포지토리를 클론해서 사용하는 방법 두 가지가 존재한다.
 
-<img src="/img/posts/clean-blog-setup/01.png">
+<img src="/img/posts/clean-blog-setup/01.png" style="width: 75%">
 
 위 방법이 readme.md 방법대로 실행하는 방법인데, 위 방법은 순수한 테마를 다운받는 방법으로, 기본적인 설정이나 최초 이미지 같은 설정이 아무것도 되어 있지 않은 테마를 다운받는 방법이다. 
 깔끔해서 나쁘지는 않지만, 결국 기초 뼈대가 되는 레이아웃 마크다운 파일을 직접 만들어 줘야 되고 커스터마이징 해줘야 되는건 똑같기 때문에 그냥 깃허브 레포지토리를 클론해서 사용하는 것을 추천한다. 그렇기에 여기서도 레포지토리를 클론해서 사용하는 방법으로 설명할 것이다.
@@ -32,7 +32,7 @@ background: '/img/posts/06.jpg'
 
 1. 깃허브 페이지를 이용해 지킬 블로그를 배포할 정도라면 적어도 최소한 컴퓨터에 친숙한 사람이라고 생각은 하지만 설명하자면
 
-    <img src="/img/posts/clean-blog-setup/02.png">
+    <img src="/img/posts/clean-blog-setup/02.png" style="width: 75%">
 
     여기서 New 버튼을 눌러서 새로운 깃허브 레포지토리를 만들고 위 사진처럼 자신의 깃허브 이름과 동일하도록 레포지토리를 만들면 된다.
 
@@ -51,12 +51,12 @@ background: '/img/posts/06.jpg'
 이런식으로 구성되게 된다. 이렇게 되면 문제가 생기는데 지킬 테마는 기본적으로 깃허브 이름과 레포지토리 이름이 동일할 것이라고 생각하고 제작된 경우가 있다. 그런 경우에는 당연하게도 오류가 생기게 되는데 pamalink와 baseurl등을 추가적으로 _config.yml에서 설정해 줘야 할 필요가 있다. 이런 경우에는 css 스타일이 다 날라가 버리거나, 테마의 기능이 제대로 기능하지 않는 경우가 있다. 그런 설정을 추가적으로 하고 싶지 않다면, 그냥 레포지토리의 이름과 깃허브 이름을 동일하게 만들어 주는 편이 낫다.
 
 
-<img src="/img/posts/clean-blog-setup/03.png">
+<img src="/img/posts/clean-blog-setup/03.png" style="width: 75%">
 
 2. 설정을 Public으로 구성해 주고, 터미널로 들어가서 로컬에서 설치하고 싶은 위치에 당신의 레포지토리를 git clone 해준 뒤,
 [여기서 Clean Blog를 git clone 하면 된다.](https://github.com/StartBootstrap/startbootstrap-clean-blog-jekyll) 혹시라도 처음인 사람을 위해 쓰자면
 
-<img src="/img/posts/clean-blog-setup/04.png">
+<img src="/img/posts/clean-blog-setup/04.png" style="width: 75%">
 
 여기에서 download.zip을 하거나, 원하는 위치에
 
@@ -77,7 +77,7 @@ clean-blog-setup에 있는 모든 파일을 복사한 뒤, 아까 만든 자신�
 
 1. _config.yml 수정
 
-<img src="/img/posts/clean-blog-setup/06.png">
+<img src="/img/posts/clean-blog-setup/06.png" style="width: 75%">
 
 _config.yml 파일을 자신에게 맞게 올바르게 수정하고(title, email, username 등) url을 자신 깃허브 주소에 맞게 수정한다. 예를들어서
 
@@ -108,7 +108,7 @@ _config.yml 파일을 자신에게 맞게 올바르게 수정하고(title, email
 bundle exec jekyll serve를 터미널에서 실행했을 때,
 webrick 관련 오류가  설치되지 않았다는 오류가 뜨는 경우가 있다. 이런 경우에는 자신의 .gemfile을 열어서
 
-<img src="/img/posts/clean-blog-setup/07.png">
+<img src="/img/posts/clean-blog-setup/07.png" style="width: 75%">
 
 이런식으로, 
 
@@ -139,7 +139,7 @@ webrick 관련 오류가  설치되지 않았다는 오류가 뜨는 경우가 �
 
 를 한 뒤에, vendor, vendor/bundle을 삭제하고, contrl + x를 누른 뒤 저장하거나, 숨긴파일을 모두 보도록 설정한 뒤, .gitignore 파일을 직접 수정해도 된다.
 
-<img src="/img/posts/clean-blog-setup/08.png">
+<img src="/img/posts/clean-blog-setup/08.png" style="width: 75%">
 
 이런식으로!
 
