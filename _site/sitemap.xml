@@ -3,6 +3,10 @@
 
     
     <url>
+        <loc>http://localhost:4000/2023/12/13/jekyll-blog-theme-2.html</loc>
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/2023/12/11/jekyll-blog-theme-1.html</loc>
     </url>
     
@@ -59,14 +63,6 @@
     </url>
     
     
-    
-    
-    
-    
-    
-    <url>
-        <loc>http://localhost:4000/resume/</loc>
-    </url>
     
     
     

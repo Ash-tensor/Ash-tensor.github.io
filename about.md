@@ -16,7 +16,7 @@ background: '/img/bg-about.jpg'
   - *Graduation Year:* 2024.2
 
 ### Work Experience
-#### [Construction Management Combining Technology Lab in Sahmyook Univ.]
+#### Construction Management Combining Technology Lab
 - *Duration:* 2022.12 - 2022.10
 - *Position:* Assistence Resercher
 - *Key Responsibilities and Achievements:*
