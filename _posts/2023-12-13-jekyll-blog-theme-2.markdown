@@ -1,7 +1,8 @@
 ---
 layout: post
+comments: true
 title: "[깃허브 블로그]지킬 블로그 테마 설치 및 오류 수정(clean blog theme)"
-subtitle: Your SCSS file assets/main.scss has an error on line 2 File to import not found or unreadable
+subtitle: Your SCSS file assets/main.scss has an error on line 2 File to import not found or unreadable 오류 해결
 description: troubleshooting
 date: 2023-12-13
 categories: 
