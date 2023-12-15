@@ -4,7 +4,7 @@ comments: true
 title: "[깃허브 블로그]지킬 블로그 코멘트 기능 추가(clean blog theme)"
 subtitle: disqus를 이용한 clean blog theme 댓글 코멘트 기능 추가
 description: troubleshooting
-date: 2023-12-15
+date: 2023-12-14
 categories: 
 background: '/img/posts/06.jpg'
 ---
@@ -61,27 +61,13 @@ background: '/img/posts/06.jpg'
 
 이 포스트의 프론트매터인데, 댓글을 달고싶은 포스트의 프론트매터에 위 사진처럼
 
-    comments: true
-
-속성을 넣어주면 된다. 그러면 지킬이 페이지를 구성할 때, disquss를 참조해서 포스트를 구성하게 된다. 그리고 난 뒤, 아까 수정했던 post.markdown에 들어가서 아까 작성했던 코드 스니펫의 앞 뒤에
-
-{% if page.comments %}, {% endif %} 를 작성해 주면 된다. 
-
-    {% if page.comments %}
+속성을 넣어주면 된다. 그러면 지킬이 페이지를 구성할 때, disquss를 참조해서 포스트를 구성하게 된다. 그리고 난 뒤, 아까 수정했던 post.markdown에 들어가서 아까 작성했던 코드 스니펫의 앞 뒤에 if page.comments 와 endif 블록을 작성해 넣으면 된다.
 
 
-    <div id="disqus_thread"></div>
-    <script>
-        /**
-         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-         *  LEARN WHY DEFINING THESE VARIABLES 
+<img src="/img/posts/clean-blog-setup/16.png" style="width: 75%">
+<img src="/img/posts/clean-blog-setup/17.png" style="width: 75%">
 
-        ...생략함...
-
-
-    {% endif %}
 
 이런식으로!
 
 충분히 이해 가능하겠지만, 이는 페이지의 yaml 프론트메터의 comments 부분이 참이면 아래의 코드 스니펫을 실행하라는 의미이다. 
-아, 그런데 주의해야 할 점은 이 리퀴드라는 언어는 띄어쓰기에 엄청 민감하다. 만약 {% if page.comments% } 이런 식으로 의미없는 띄어쓰기가 있어도 바로 오류를 뱉어내니까, 주의해야 한다.
