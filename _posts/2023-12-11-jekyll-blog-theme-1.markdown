@@ -2,6 +2,7 @@
 layout: post
 title: "[깃허브 블로그]지킬 블로그 테마 적용법(clean blog theme)-테마 추천 및 고르는 법"
 subtitle: 지킬 블로그 테마 고르는 법
+comments: true
 description: 
 date: 2023-12-11
 categories: 

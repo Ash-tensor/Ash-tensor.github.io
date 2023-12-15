@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>
+    [깃허브 블로그]지킬 블로그 코멘트 기능 추가(clean blog theme) - Tensor Studio
+    
+  </title>
+
+  <meta name="description" content="troubleshooting">
+  <meta property="og:description" content="troubleshooting">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="[깃허브 블로그]지킬 블로그 코멘트 기능 추가(clean blog theme)">
+  <meta property="og:url" content="https://ash-tensor.github.io/2023/12/15/jekyll-blog-theme-3.html">
+
+  
+    <meta property="og:image" content="https://ash-tensor.github.io/img/posts/06.jpg"/>
+  
+
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script> -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="http://localhost:4000/2023/12/15/jekyll-blog-theme-3.html">
+  <link rel="alternate" type="application/rss+xml" title="Tensor Studio" href="/feed.xml">
+
+  <meta name="google-site-verification" content="lWkg6gIxJgzEKX_5XnhcxCtPE9QknaimFWWos_dTvPM" />
+
+</head>
+
+
+<body>
+
+  <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="/">Tensor Studio</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/posts">Posts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Page Header -->
+
+
+<header class="masthead" style="background-image: url('/img/posts/06.jpg')">
+
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-heading">
+          <h1>[깃허브 블로그]지킬 블로그 코멘트 기능 추가(clean blog theme)</h1>
+          
+          <h2 class="subheading">disqus를 이용한 clean blog theme 댓글 코멘트 기능 추가</h2>
+          
+          <span class="meta">Posted by
+            <a href="#">ash tensor</a>
+            on December 15, 2023 &middot; <span class="reading-time" title="Estimated read time">
+  
+   2 mins  read </span>
+
+          </span>
+
+<!-- 카테고리를 추가하는 코드 -->
+
+          <div>
+            
+          </div>
+
+<!-- 카테고리를 추가하는 코드 -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+
+<!-- 카테고리를 추가하는 코드 -->
+
+          <div>
+            
+          </div>
+          
+<!-- 카테고리를 추가하는 코드 -->
+
+      <h1 id="깃허브-블로그-코멘트-기능-추가clean-blog-theme">깃허브 블로그 코멘트 기능 추가(clean blog theme)</h1>
+
+<p>블로그에는 기본적으로 댓글 란은 무조건 있어야 한다고 생각한다. 추가하는게 어렵지 않다. 터미널을 두드릴 필요도 없다. 오히려 카테고리 란을 추가하는게 조금 더 어려운 것 같다. 그러면 한번 추가해 보자고!</p>
+
+<h2 id="disqus">DISQUS</h2>
+
+<p>깃허브 페이지를 사용하는 데 있어서 가장 많이 사용하는 덧글/코멘트 기능이라고 하면 DISQUS다. STACK OVERFLOW나 다른 곳에서도 가장 먼저 추천하는 기능이다. 게다가 무료다! 사용하지 않을 이유가 없다.</p>
+
+<p><img src="/img/posts/clean-blog-setup/09.png" style="width: 75%" /></p>
+
+<p>지금 이 포스트 아래에도 붙어있는 댓글란인데, 많은 깃허브 페이지들을 보다 보면 대부분의 댓글이 이렇게 생긴 것을 확인할 수 있을 것이다.</p>
+
+<p><a href="https://disqus.com/profile/signup/intent/">일단 여기</a>서 회원가입을 해 주면 된다.</p>
+
+<p><img src="/img/posts/clean-blog-setup/10.png" style="width: 75%" /></p>
+
+<p>회원가입을 하고 나면 이런 창이 보일 텐데, I want to install Disqus on my site를 눌러 주면 된다. 그리고 사이트 이름을 정해주고 난 뒤, 요금이 들지 않는 BASIC 요금제를 선택해 주고 select platform에서 jekyll을 선택해 주면 된다.</p>
+
+<p><img src="/img/posts/clean-blog-setup/12.png" style="width: 75%" /></p>
+
+<p>그리고 나면</p>
+
+<p><img src="/img/posts/clean-blog-setup/13.png" style="width: 75%" /></p>
+
+<p>이런 창을 확인할 수 있는데, 이는 yaml 프론트매터를 바꿔줘야 한다는 말이다.</p>
+
+<p><img src="/img/posts/clean-blog-setup/14.png" style="width: 75%" /></p>
+
+<p>이 포스트의 프론트매터인데, 댓글을 달고싶은 포스트의 프론트매터에 위 사진처럼</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>comments: true
+</code></pre></div></div>
+
+<p>속성을 넣어주면 된다. 그러면 지킬이 페이지를 구성할 때, disquss를 참조해서 포스트를 구성하게 된다. 그리고 난 뒤, 위 사진에서 보면 Universial Embed code 링크를 클릭해서 들어간 뒤</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div id="disqus_thread"&gt;&lt;/div&gt;
+&lt;script&gt;
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM
+    *  ...
+    *  ...
+    *  생략함
+</code></pre></div></div>
+
+<p>Universial Embed code 링크로 들어간 페이지 상에 있는 위 꼴의 코드를 복사한다. 그리고 난 뒤 자신의 지킬 블로그가 설치되어 있는 로컬 폴더로 들어간다.</p>
+
+<p>그리고 난 뒤, _layout 디렉토리의 post.markdown 파일로 들어간 뒤</p>
+
+<p><img src="/img/posts/clean-blog-setup/15.png" style="width: 75%" /></p>
+
+<p>이 부분에 아까 복사한 자신의 코드를 붙여넣기 하면 된다!</p>
+
+
+      <hr>
+      <div class="row mb-5 mt-5">
+  <div class="col-md-6 d-flex align-items-end ">
+    <span>Thanks. <i>mind sharing?</i></span>
+  </div>
+
+  <!-- Right Column with Social Media Icons (on the right for larger screens, on bottom for smaller screens) -->
+  <div class="col-md-6 order-md-2 order-1 text-md-right text-center mt-3 mt-md-0">
+    <div>
+
+      <a
+          href="https://www.linkedin.com/sharing/share-offsite?url=https://ash-tensor.github.io/2023/12/15/jekyll-blog-theme-3.html"
+          onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+          class="d-inline-block mr-2"
+       >
+        <span class="fa-stack fa-lg" style="color: #0077b5;">
+          <i class="fas fa-square fa-stack-2x"></i>
+          <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+
+      <a
+          href="https://twitter.com/intent/tweet?text=[깃허브 블로그]지킬 블로그 코멘트 기능 추가(clean blog theme)&url=https://ash-tensor.github.io/2023/12/15/jekyll-blog-theme-3.html"
+          onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+          class="d-inline-block mr-2">
+        <span class="fa-stack fa-lg" style="color: #1DA1F2;">
+          <i class="fas fa-square fa-stack-2x"></i>
+          <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+
+      <a
+          href="http://www.reddit.com/submit?url=https://ash-tensor.github.io/2023/12/15/jekyll-blog-theme-3.html"
+          onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+          class="d-inline-block mr-2">
+        <span class="fa-stack fa-lg" style="color: #FF4500;">
+          <i class="fas fa-square fa-stack-2x"></i>
+          <i class="fab fa-reddit fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<hr/>
+
+
+      <div class="clearfix">
+
+
+<!-- 코멘트 란을 추가하는 코드 -->
+
+
+  <div id="disqus_thread"></div>
+  <script>
+      /**
+      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+      *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+      /*
+      var disqus_config = function () {
+      this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      };
+      */
+      (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://tensorstudio.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<!-- 코멘트 란을 추가하는 코드 -->
+
+        
+        <a class="btn btn-primary float-left" href="/2023/12/13/jekyll-blog-theme-2.html" data-toggle="tooltip" data-placement="top" title="[깃허브 블로그]지킬 블로그 테마 설치 및 오류 수정(clean blog theme)">&larr; Previous<span class="d-none d-md-inline">
+            Post</span></a>
+        
+        
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+  <!-- Footer -->
+
+<hr>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <ul class="list-inline text-center">
+          
+          <li class="list-inline-item">
+            <a href="mailto:tensor17s@gmail.com" class="text-gray">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          
+          
+          
+          
+        </ul>
+
+        <p class="copyright text-muted">
+          Build with: 
+          <a 
+            href="https://github.com/StartBootstrap/startbootstrap-clean-blog-jekyll"
+            class="text-gray"
+            target="_blank">startbootstrap-clean-blog-jekyll</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/blog/js/scripts.js"></script>
+
+<script src="/assets/scripts.js"></script>
+
+
+
+
+  
+
+</body>
+
+</html>

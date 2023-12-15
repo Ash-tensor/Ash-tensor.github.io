@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "51회차 SQLD 시험 후기"
+comments: true
 subtitle: "생각보다 생소했던 개념이 계속 나와서 아슬아슬했던 시험"
 description: "SQLD"
 date: 2023-12-07
