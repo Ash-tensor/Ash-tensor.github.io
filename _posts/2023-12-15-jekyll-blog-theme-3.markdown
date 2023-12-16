@@ -5,7 +5,7 @@ title: "[깃허브 블로그]지킬 블로그 코멘트 기능 추가(clean blog
 subtitle: disqus를 이용한 clean blog theme 댓글 코멘트 기능 추가
 description: troubleshooting
 date: 2023-12-14
-categories: 
+categories: 깃허브
 background: '/img/posts/06.jpg'
 ---
 

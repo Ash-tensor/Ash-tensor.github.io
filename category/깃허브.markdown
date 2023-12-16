@@ -1,0 +1,6 @@
+---
+layout: category
+title: 깃허브
+description: 깃허브 📁카테고리. CLEAN BLOG THEME을 커스터마이징 하는 과정입니다
+background: '/img/bg-category.jpg'
+---

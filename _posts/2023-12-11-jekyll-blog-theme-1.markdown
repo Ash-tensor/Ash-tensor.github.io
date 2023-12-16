@@ -5,7 +5,7 @@ subtitle: 지킬 블로그 테마 고르는 법
 comments: true
 description: 
 date: 2023-12-11
-categories: 
+categories: 깃허브
 background: '/img/posts/06.jpg'
 ---
 
