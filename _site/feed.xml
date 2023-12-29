@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-12-30T00:49:43+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[Android Studio]Bottom Navigation Bar 구현 - OnItemSelectedListener 이용</title><link href="http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/2023/12/29/bottomNavigationView.html" rel="alternate" type="text/html" title="[Android Studio]Bottom Navigation Bar 구현 - OnItemSelectedListener 이용" /><published>2023-12-29T00:00:00+09:00</published><updated>2023-12-29T00:00:00+09:00</updated><id>http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/2023/12/29/bottomNavigationView</id><content type="html" xml:base="http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/2023/12/29/bottomNavigationView.html"><![CDATA[<h1 id="bottom-navigation-bar">Bottom Navigation Bar</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-12-30T01:51:38+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[Android Studio]Bottom Navigation Bar 구현 - OnItemSelectedListener 이용</title><link href="http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/2023/12/29/bottomNavigationView.html" rel="alternate" type="text/html" title="[Android Studio]Bottom Navigation Bar 구현 - OnItemSelectedListener 이용" /><published>2023-12-29T00:00:00+09:00</published><updated>2023-12-29T00:00:00+09:00</updated><id>http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/2023/12/29/bottomNavigationView</id><content type="html" xml:base="http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/2023/12/29/bottomNavigationView.html"><![CDATA[<h1 id="bottom-navigation-bar">Bottom Navigation Bar</h1>
 
 <p>어떤 앱이든 Bottom Naviagation Bar가 없는 앱은 상상하기 힘들다. 토스, 에브리타임, 카카오톡은 아닌가? 아무튼, 과장 좀 보태서 거의 모든 앱의 하단 부분에는 이 Bottom Navigation Bar가 존재한다.</p>
 
@@ -134,7 +134,7 @@
   <li>처음 실행 화면</li>
 </ul>
 
-<p><img src="/img/posts/android_studio/1.png" style="width: 50%" /></p>
+<p><img src="/img/posts/android_studio/1.PNG" style="width: 50%" /></p>
 
 <ul>
   <li>menu1을 선택한 화면</li>
@@ -214,7 +214,7 @@
 <h3 id="환각">환각</h3>
 
 <ol>
-  <li><img src="/img/posts/ai_image/elephant.jpeg" style="width: 80%" /></li>
+  <li><img src="/img/posts/ai_image/elephant.png" style="width: 80%" /></li>
 </ol>
 
 <p>위 그림은 신경망에게 차 키를 들고 있지 않은 소년이라고 요청한 내용이다. 하지만 코끼리 효과가 일어난 모양인지 여지없이 차 키를 들고 있다.</p>

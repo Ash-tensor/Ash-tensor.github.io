@@ -69,7 +69,7 @@ bing ai는 DALLE 3를 사용하고, DALLE-3는 프롬프트를 해석할 때 GPT
 
 ### 환각
 
-7. <img src="/img/posts/ai_image/elephant.jpeg" style="width: 80%">
+7. <img src="/img/posts/ai_image/elephant.png" style="width: 80%">
 
 위 그림은 신경망에게 차 키를 들고 있지 않은 소년이라고 요청한 내용이다. 하지만 코끼리 효과가 일어난 모양인지 여지없이 차 키를 들고 있다.
 

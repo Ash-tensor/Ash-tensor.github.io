@@ -146,7 +146,7 @@ FrameLayout은 레이아웃을 겹쳐서 보여주기 때문에 testTextView와 
 
 * 처음 실행 화면
 
-<img src="/img/posts/android_studio/1.png" style="width: 50%">
+<img src="/img/posts/android_studio/1.PNG" style="width: 50%">
 
 * menu1을 선택한 화면
 
