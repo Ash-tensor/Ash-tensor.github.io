@@ -1,0 +1,6 @@
+---
+layout: category
+title: 안드로이드
+description: 안드로이드 📁카테고리. 안드로이드 스튜디오 및 안드로이드 관련 카테고리입니다.
+background: '/img/bg-category.jpg'
+---

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>
+    [Android Studio]Bottom Navigation Bar 구현 - OnItemSelectedListener 이용 - Tensor Studio
+    
+  </title>
+
+  <meta name="description" content="android studio">
+  <meta property="og:description" content="android studio">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="[Android Studio]Bottom Navigation Bar 구현 - OnIt...">
+  <meta property="og:url" content="https://ash-tensor.github.io/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/2023/12/29/bottomNavigationView.html">
+
+  
+    <meta property="og:image" content="https://ash-tensor.github.io/img/port.jpg"/>
+  
+
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script> -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/2023/12/29/bottomNavigationView.html">
+  <link rel="alternate" type="application/rss+xml" title="Tensor Studio" href="/feed.xml">
+
+  <meta name="google-site-verification" content="lWkg6gIxJgzEKX_5XnhcxCtPE9QknaimFWWos_dTvPM" />
+
+</head>
+
+
+<body>
+
+  <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="/">Tensor Studio</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/posts">Posts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/categol">Categories</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Page Header -->
+
+
+<header class="masthead" style="background-image: url('/img/port.jpg')">
+
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-heading">
+          <h1>[Android Studio]Bottom Navigation Bar 구현 - OnItemSelectedListener 이용</h1>
+          
+          <h2 class="subheading">setOnNavigationView Depricated 문제 해결</h2>
+          
+          <span class="meta">Posted by
+            <a href="#">ash tensor</a>
+            on December 29, 2023 &middot; <span class="reading-time" title="Estimated read time">
+  
+   3 mins  read </span>
+
+          </span>
+
+<!-- 카테고리를 추가하는 코드 -->
+
+          <div>
+            
+              <a href="http://localhost:4000/category/안드로이드.html" style="color: white;">카테고리📁: 안드로이드</a>
+            
+          </div>
+
+<!-- 카테고리를 추가하는 코드 -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+
+<!-- 본문 카테고리를 추가하는 코드 -->
+
+          <div>
+            
+              <a href="http://localhost:4000/category/안드로이드.html" style="color: black;">카테고리:📁 안드로이드</a>
+            
+          </div>
+          
+<!-- 본문 카테고리를 추가하는 코드 -->
+
+      <h1 id="bottom-navigation-bar">Bottom Navigation Bar</h1>
+
+<p>어떤 앱이든 Bottom Naviagation Bar가 없는 앱은 상상하기 힘들다. 토스, 에브리타임, 카카오톡은 아닌가? 아무튼, 과장 좀 보태서 거의 모든 앱의 하단 부분에는 이 Bottom Navigation Bar가 존재한다.</p>
+
+<p><img src="/img/posts/android_studio/3.jpeg" style="width: 80%" /></p>
+
+<p>이런거 말이다.</p>
+
+<p>그런데 흔히 온라인에서 돌아다니는 BottomNavigationBar 구현방법 대부분은 사용중지가 될 예정인 setOnNavigationItemSelectedListener와 onNavigationItemSelectedListener를 사용하고 있어서, 사용이 비권장된다. 안드로이드 호환성 때문에 나중에 사용하다가 에러가 뜰 가능성도 높고, Deprecate될 기능을 사용하는 건 당연히 좋지 못하다. 사용중지가 될 기능을 유지보수하고 있는건 웃기기도 하고.</p>
+
+<p>그래서 android 팀이 권장하는 OnItemSelectedListener를 이용해서 BottomNavigationBar룰 구현해보았다.</p>
+
+<h2 id="menuxml">menu.xml</h2>
+
+<p>일단 먼저 menu.xml을 추가해 주어야 한다. 그러기 위해서는 res 디렉토리에 menu라는 android resources directory를 추가해야 하는데</p>
+
+<p><img src="/img/posts/android_studio/menu1.png" style="width: 80%" /></p>
+
+<p>이렇게 추가한 뒤에, 똑같게 File &gt; New &gt; Menu Resources File을 추가하면 된다. 그 뒤에 item을 추가해 준다. item은 BottomNavigationBar의 각 메뉴로 구현된다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;item
+        android:id="@+id/menu_1"
+        android:title="MENU1"
+            ##android:title은 화면에 표시될 이름이다
+            ##나중에 bottomNavigationView와 연결할 때 android:id를 이용해서 연결한다.
+        #android:icon="" 에서 icon에 아이콘 파일을 연결해 주면 아이콘이 나오는데 에셋을 만드는 중이라 현재는 추가하지 않았다
+        /&gt;
+     &lt;item
+        android:id="@+id/menu_2"
+        android:title="MENU2"
+        /&gt;
+     &lt;item
+        android:id="@+id/menu_3"
+        android:title="MENU3"
+        /&gt;
+    
+    
+    &gt;
+</code></pre></div></div>
+
+<h2 id="activity_mainxml">activity_main.xml</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"&gt;
+
+    &lt;LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"&gt;
+
+        &lt;FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"  ## 레이아웃의 높이를 가중치를 이용하여 조정
+            android:layout_weight="1"    ## 부모 레이아웃의 남은 공간을 모두 차지
+            android:id="@+id/FragmentContainer" &gt;
+            &lt;TextView
+                android:id="@+id/testTextView"   ## 프래그먼트가 바뀌었는지 확인용
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="firstView"
+                android:gravity="center"
+            /&gt;
+        &lt;/FrameLayout&gt;
+
+        &lt;com.google.android.material.bottomnavigation.BottomNavigationView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:id="@+id/bottomNavigationView"
+            app:menu="@menu/menu" /&gt;    ## 아까 만든 메뉴를 적으면 됨
+    &lt;/LinearLayout&gt;
+
+&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;
+</code></pre></div></div>
+
+<p>기본적으로 리니어 레이아웃과 프레임 레이아웃을 사용해서 레이아웃을 설정했다. android:layout_height=”0dp”, android:layout_weight=”1”을 이용해서 바텀 네비게이션 뷰를 차지한 공간 이외의 공간을 모두 LinearLayout이 차지하기로 하고, 이 리니어 레이아웃에 이후에 바텀 네비게이션 뷰의 메뉴를 누른 경우에 Fragment가 표시될 예정이다. android:id=”@+id/FragmentContaner id를 이용해서 연결한다!</p>
+
+<h2 id="fragment1-추가">fragment1 추가</h2>
+
+<p><img src="/img/posts/android_studio/fragment2.png" style="width: 80%" /></p>
+
+<p>File &gt; New &gt; New Fragment를 추가해주고, Fragment를 작성한다. 이번에는 일단 BottomNavigationView를 작성하는게 목표기 때문에 따로 수정은 하지 않았다.</p>
+
+<h2 id="mainactivityjava">MainActivity.java</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class MainActivity extends AppCompatActivity  {
+
+    public FragmentManager fragmentManager = getSupportFragmentManager();
+    BottomNavigationView bottomNavigationView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setOnItemSelectedListener(navListener);
+
+    }
+
+    private NavigationBarView.OnItemSelectedListener navListener = new NavigationBarView.OnItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Fragment selectedFragment = null;
+
+            switch (item.getItemId()) {    ## 누른 해당 메뉴의 id가 menu_1인 경우에
+                case R.id.menu_1:
+                    selectedFragment = new fragment1();     ## fragment를 할당
+                    break;
+            }
+            TextView testTextView = findViewById(R.id.testTextView);
+            ##테스트용 TextView를 숨김
+            testTextView.setVisibility(View.GONE);
+            getSupportFragmentManager().beginTransaction().replace(R.id.FragmentContainer, selectedFragment).commit();
+
+            return true;
+        }
+    } ;
+}
+</code></pre></div></div>
+
+<p>FrameLayout은 레이아웃을 겹쳐서 보여주기 때문에 testTextView와 Fragment1의 TextView가 겹쳐서 보여지게 된다. 그렇기 때문에 항상 Visibility를 바꿔줘야 한다.</p>
+
+<h2 id="실행">실행</h2>
+
+<p><img src="/img/posts/android_studio/2.PNG" style="width: 50%" /></p>
+
+<ul>
+  <li>처음 실행 화면</li>
+</ul>
+
+<p><img src="/img/posts/android_studio/1.png" style="width: 50%" /></p>
+
+<ul>
+  <li>menu1을 선택한 화면</li>
+</ul>
+
+<p>예상한대로 BottomNavigationView가 제대로 작동하는 모습을 볼 수 있다!</p>
+
+
+      <hr>
+      <div class="row mb-5 mt-5">
+  <div class="col-md-6 d-flex align-items-end ">
+    <span>Thanks. <i>mind sharing?</i></span>
+  </div>
+
+  <!-- Right Column with Social Media Icons (on the right for larger screens, on bottom for smaller screens) -->
+  <div class="col-md-6 order-md-2 order-1 text-md-right text-center mt-3 mt-md-0">
+    <div>
+
+      <a
+          href="https://www.linkedin.com/sharing/share-offsite?url=https://ash-tensor.github.io/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/2023/12/29/bottomNavigationView.html"
+          onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+          class="d-inline-block mr-2"
+       >
+        <span class="fa-stack fa-lg" style="color: #0077b5;">
+          <i class="fas fa-square fa-stack-2x"></i>
+          <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+
+      <a
+          href="https://twitter.com/intent/tweet?text=[Android Studio]Bottom Navigation Bar 구현 - OnItemSelectedListener 이용&url=https://ash-tensor.github.io/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/2023/12/29/bottomNavigationView.html"
+          onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+          class="d-inline-block mr-2">
+        <span class="fa-stack fa-lg" style="color: #1DA1F2;">
+          <i class="fas fa-square fa-stack-2x"></i>
+          <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+
+      <a
+          href="http://www.reddit.com/submit?url=https://ash-tensor.github.io/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/2023/12/29/bottomNavigationView.html"
+          onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+          class="d-inline-block mr-2">
+        <span class="fa-stack fa-lg" style="color: #FF4500;">
+          <i class="fas fa-square fa-stack-2x"></i>
+          <i class="fab fa-reddit fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<hr/>
+
+
+      <div class="clearfix">
+
+
+<!-- 코멘트 란을 추가하는 코드 -->
+
+
+  <div id="disqus_thread"></div>
+  <script>
+      /**
+      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+      *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+      /*
+      var disqus_config = function () {
+      this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      };
+      */
+      (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://tensorstudio.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<!-- 코멘트 란을 추가하는 코드 -->
+
+        
+        <a class="btn btn-primary float-left" href="/ml/2023/12/28/stable-diffusion.html" data-toggle="tooltip" data-placement="top" title="[AI 그림]프롬프트의 한계점 - 올바른 프롬프트 작성하기">&larr; Previous<span class="d-none d-md-inline">
+            Post</span></a>
+        
+        
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+  <!-- Footer -->
+
+<hr>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <ul class="list-inline text-center">
+          
+          <li class="list-inline-item">
+            <a href="mailto:tensor17s@gmail.com" class="text-gray">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          
+          
+          
+          
+        </ul>
+
+        <p class="copyright text-muted">
+          Build with: 
+          <a 
+            href="https://github.com/StartBootstrap/startbootstrap-clean-blog-jekyll"
+            class="text-gray"
+            target="_blank">startbootstrap-clean-blog-jekyll</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/blog/js/scripts.js"></script>
+
+<script src="/assets/scripts.js"></script>
+
+
+
+
+  
+
+</body>
+
+</html>
