@@ -1,4 +1,65 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-12-30T01:51:38+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[Android Studio]Bottom Navigation Bar 구현 - OnItemSelectedListener 이용</title><link href="http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/2023/12/29/bottomNavigationView.html" rel="alternate" type="text/html" title="[Android Studio]Bottom Navigation Bar 구현 - OnItemSelectedListener 이용" /><published>2023-12-29T00:00:00+09:00</published><updated>2023-12-29T00:00:00+09:00</updated><id>http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/2023/12/29/bottomNavigationView</id><content type="html" xml:base="http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/2023/12/29/bottomNavigationView.html"><![CDATA[<h1 id="bottom-navigation-bar">Bottom Navigation Bar</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-01-02T22:01:24+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[CS] 2의 보수</title><link href="http://localhost:4000/cs/2024/01/02/binary.html" rel="alternate" type="text/html" title="[CS] 2의 보수" /><published>2024-01-02T00:00:00+09:00</published><updated>2024-01-02T00:00:00+09:00</updated><id>http://localhost:4000/cs/2024/01/02/binary</id><content type="html" xml:base="http://localhost:4000/cs/2024/01/02/binary.html"><![CDATA[<h1 id="2의-보수">2의 보수</h1>
+
+<p>논리회로나 컴퓨터 구조 과목에서 2의 보수를 다루지 않고 넘어가는 건 있을 수 없다. 보통 이진수의 음수를 다루는 데 있어서 언급이 되곤 하는데, 비트를 NOT 연산한 후에 + 1 을 하면 얻을 수 있다고 배운다. 2의 보수는 부호가 붙은 정수를 표현하는데 있어서 가장 널리 쓰이는 방법이다.</p>
+
+<h2 id="구하는-법">구하는 법</h2>
+
+<p>앞서 설명한 대로 비트를 NOT 연산한 후에 + 1 을 하면 2의 보수가 된다. 즉</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 1111(2) 의 보수는
+ 0001(2) 가 된다.
+</code></pre></div></div>
+
+<h1 id="보수">보수</h1>
+
+<p>1의 보수와 2의 보수가 대표적으로, 더해서 각 목표가 되는 수를 말하는데, 논리회로에서 음수를 표현하는 방법으로는 부호 절대값과 1의 보수, 2의 보수, 3가지 정도로 나뉜다. 하지만 선술했듯 부호가 붙은 정수를 표현하는데 가장 널리 쓰이는 방법이 바로 2의 보수인데</p>
+
+<ol>
+  <li>이는 2의 보수가 1의 보수보다 하나의 수를 더 표시할 수 있고</li>
+  <li>회로가 가장 간편해지기 때문이다.</li>
+</ol>
+
+<p>2의 보수가 1의 보수보다 하나의 수를 더 표시할 수 있는 이유는 같은 비트를 사용한다고 할 때, 0을 표시하는 방법이 1의 보수는 두 가지 경우이기 때문이다. 예를 들어 보겠다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>num0 =  0000 0000(2) ## 바이트 0
+num1 =  1111 1111(2) ## num0의 1의 보수
+num2 = 10000 0000(2) ## num1의 2의 보수
+</code></pre></div></div>
+
+<p>1의 보수에는 0을 두가지로 표현하게 된다. 그렇기 때문에 1바이트당 1의 보수인 경우에는 -127 ~ +127 까지 표현할 수 있지만, 2의 보수인 경우 -128 ~ 127까지 계산할 수 있다. 1111 1111, 즉 -128이 포함되는 것이다.</p>
+
+<p>하지만 처음 들었을때 고작 한가지 숫자를 더 표현하겠다고(물론 과거의 컴퓨터는 그 하나의 숫자를 더 표현하는 것이 엄청 중요할 정도로 성능이 빡빡했지만) 2의 보수를 사용한다기 보다는 추가적인 이유가 더 중요하다는 생각이 들었다.</p>
+
+<h1 id="회로의-작성-용이성">회로의 작성 용이성</h1>
+
+<p>부호 절댓값 방법은 절댓값이 작은 수에서 큰 수를 뺄 경우에는 순서를 바꿔서 빼야된다는 추가적인 방법이 필요할 뿐만 아니라, 가산기로는 연산할 수 없기 때문에 <strong>뺄셈기</strong>가 추가되어야 한다. 그리고 비트의 낭비가 너무 심하다. 그래서 논리 연산(&gt;, &lt;…)을 할 때 모순이 생기곤 한다.</p>
+
+<p>1의 보수는 그러한 연산을 매우 간편하게 만들어 주는데, 부호와 절댓값을 따로 계산할 필요도 없고 뺄셈기를 사용할 필요 없이 가산기 그대로 사용할 수 있다.</p>
+
+<p>하지만 0000과 1111을 둘 다 0으로 처리해야 하는 회로와, 계산 과정에서 캐리, 즉 올림이 발생했는지를 확인하고 만약 발생했다면 마지막 비트에 1을 추가하는 회로를 구성해야 한다.</p>
+
+<p>예를 들어서</p>
+
+<p>7 - 3 을 하는 간단한 계산을 할 때.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>7(0111)과 -3(1100)의 덧셈에서는 1011이 나오게 되고, 
+이는 보수를 취하게 되면 4이므로 맞다. 
+이는 캐리가 이루어지지 않았기 때문이다.
+하지만 7(0111)과 -1(1110)의 덧셈을 수행하면 
+결과값은 **10101(21)이고 
+오버플로우가 발생했으므로 1을 더해주는 연산을 해주면 0110(6)이다.
+</code></pre></div></div>
+
+<p>하지만 2의 보수에서는 이러한 귀찮은 방법이 필요 없다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>7(0111)과 -3(1101)의 덧셈에서는 10100이 나오게 되고, 
+2의 보수에서는 오버플로우가 발생한 부분을 버림으로 4가 되서 정답이다. 
+또한 7(0111)과 -1(1111)의 덧셈을 수행하면 
+결과값은 10110이고 
+최상위 비트 1을 버리면 0110(6)으로 정답이다.
+</code></pre></div></div>
+
+<p>이런 간결성 덕분에 2의 보수는 대부분의 컴퓨터 구조에서 음수를 표현하는 방법으로 표현된다.</p>]]></content><author><name>ash tensor</name></author><category term="CS" /><summary type="html"><![CDATA[2의 보수]]></summary></entry><entry><title type="html">[Android Studio]Bottom Navigation Bar 구현 - OnItemSelectedListener 이용</title><link href="http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/2023/12/29/bottomNavigationView.html" rel="alternate" type="text/html" title="[Android Studio]Bottom Navigation Bar 구현 - OnItemSelectedListener 이용" /><published>2023-12-29T00:00:00+09:00</published><updated>2023-12-29T00:00:00+09:00</updated><id>http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/2023/12/29/bottomNavigationView</id><content type="html" xml:base="http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/2023/12/29/bottomNavigationView.html"><![CDATA[<h1 id="bottom-navigation-bar">Bottom Navigation Bar</h1>
 
 <p>어떤 앱이든 Bottom Naviagation Bar가 없는 앱은 상상하기 힘들다. 토스, 에브리타임, 카카오톡은 아닌가? 아무튼, 과장 좀 보태서 거의 모든 앱의 하단 부분에는 이 Bottom Navigation Bar가 존재한다.</p>
 
@@ -213,9 +274,7 @@
 
 <h3 id="환각">환각</h3>
 
-<ol>
-  <li><img src="/img/posts/ai_image/elephant.png" style="width: 80%" /></li>
-</ol>
+<p><img src="/img/posts/ai_image/elephant.PNG" style="width: 80%" /></p>
 
 <p>위 그림은 신경망에게 차 키를 들고 있지 않은 소년이라고 요청한 내용이다. 하지만 코끼리 효과가 일어난 모양인지 여지없이 차 키를 들고 있다.</p>
 

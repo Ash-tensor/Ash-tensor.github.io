@@ -17,10 +17,10 @@ background: '/img/bg-about.jpg'
 
 ### Work Experience
 #### Construction Management Combining Technology Lab
-- *Duration:* 2022.12 - 2022.10
+- *Duration:* 2022.12 - 2023.10
 - *Position:* Assistence Resercher
 - *Key Responsibilities and Achievements:*
-  - Analysis of the Influencing Factors of Social Value of Public Buildings Using Latent Dirichlet Allocation
+  - Analysis of the Influencing Factors of Social Value of Public Buildings Using Latent Dirichlet Allocation(Won & Park, 2023)
 
 ### Language Proficiency and Certifications
 - **Languages:** Advansed Business English

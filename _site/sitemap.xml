@@ -3,6 +3,10 @@
 
     
     <url>
+        <loc>http://localhost:4000/cs/2024/01/02/binary.html</loc>
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/2023/12/29/bottomNavigationView.html</loc>
     </url>
     
@@ -35,6 +39,14 @@
     </url>
     
 
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/category/CS.html</loc>
+    </url>
+    
+    
     
     
     
