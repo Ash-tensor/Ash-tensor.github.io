@@ -3,6 +3,10 @@
 
     
     <url>
+        <loc>http://localhost:4000/java/2024/01/04/psvm.html</loc>
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/cs/2024/01/02/binary.html</loc>
     </url>
     
@@ -51,6 +55,14 @@
     
     
     <url>
+        <loc>http://localhost:4000/category/JAVA.html</loc>
+    </url>
+    
+    
+    
+    
+    
+    <url>
         <loc>http://localhost:4000/category/ML.html</loc>
     </url>
     
@@ -91,7 +103,7 @@
     
     
     <url>
-        <loc>http://localhost:4000/posts/</loc>
+        <loc>http://localhost:4000/</loc>
     </url>
     
     
@@ -99,7 +111,7 @@
     
     
     <url>
-        <loc>http://localhost:4000/</loc>
+        <loc>http://localhost:4000/posts/</loc>
     </url>
     
     
