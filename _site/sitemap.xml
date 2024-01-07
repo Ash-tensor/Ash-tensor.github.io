@@ -3,6 +3,10 @@
 
     
     <url>
+        <loc>http://localhost:4000/java/2024/01/07/interface.html</loc>
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/java/2024/01/04/psvm.html</loc>
     </url>
     
@@ -143,6 +147,14 @@
     </url>
     
     
+    
+    
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/posts/page/2/</loc>
+    </url>
     
     
     
