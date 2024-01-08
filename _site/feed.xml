@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-01-08T00:20:27+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[JAVA] 인터페이스와 추상클래스의 차이</title><link href="http://localhost:4000/java/2024/01/07/interface.html" rel="alternate" type="text/html" title="[JAVA] 인터페이스와 추상클래스의 차이" /><published>2024-01-07T00:00:00+09:00</published><updated>2024-01-07T00:00:00+09:00</updated><id>http://localhost:4000/java/2024/01/07/interface</id><content type="html" xml:base="http://localhost:4000/java/2024/01/07/interface.html"><![CDATA[<p>추상 클래스와 인터페이스는 모두 자바에서 객체지향의 원칙 중 추상화를 구현하기 위해 사용되는 개념이지만 몇가지 중요한 차이가 존재한다. 솔직히 내 생각에는, 자바라는 언어가 어쩌면 극단적으로 객체지향을 중시한다는 것을 보여주는 예시라고 생각한다. 파이썬에서는 굳이 인터페이스를 사용하지 않는 경우가 많은 것 같다. “<strong>call</strong>” 처럼 간단한 인터페이스라면 객체를 그냥 파이썬 함수처럼 호출해서 사용하는 경우도 있고.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-01-08T17:01:37+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[JAVA] 인터페이스와 추상클래스의 차이</title><link href="http://localhost:4000/java/2024/01/07/interface.html" rel="alternate" type="text/html" title="[JAVA] 인터페이스와 추상클래스의 차이" /><published>2024-01-07T00:00:00+09:00</published><updated>2024-01-07T00:00:00+09:00</updated><id>http://localhost:4000/java/2024/01/07/interface</id><content type="html" xml:base="http://localhost:4000/java/2024/01/07/interface.html"><![CDATA[<p>추상 클래스와 인터페이스는 모두 자바에서 객체지향의 원칙 중 추상화를 구현하기 위해 사용되는 개념이지만 몇가지 중요한 차이가 존재한다. 솔직히 내 생각에는, 자바라는 언어가 어쩌면 극단적으로 객체지향을 중시한다는 것을 보여주는 예시라고 생각한다. 파이썬에서는 굳이 인터페이스를 사용하지 않는 경우가 많은 것 같다. “<strong>call</strong>” 처럼 간단한 인터페이스라면 객체를 그냥 파이썬 함수처럼 호출해서 사용하는 경우도 있고.</p>
 
 <p>인터페이스를 배울 때 (적어도 나는) 추상 클래스와는 다르게 다중 상속이 가능하다는 것이 기억나는데 이는 객체지향에 익숙하지 않으면 추상 클래스와 인터페이스가 어떤 일을 하는지 정확히 이해하기 힘들기 때문이라고 생각한다.</p>
 
@@ -41,153 +41,176 @@ class TVRemote extends RemoteControl implements Volume {
 
 <p>이렇게 동작의 메서드를 각각 인터페이스마다 분리하여 설계함으로서 조금 더 구조적이고 더욱 추상적인 객체를 설계할 수 있다.</p>
 
-<h2 id="예제">예제</h2>
+<h2 id="구현-예제">구현 예제</h2>
 
-<h3 id="텔레비전-객체">텔레비전 객체</h3>
+<h3 id="iremotecontrolable-인터페이스">IRemoteControlable 인터페이스</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public interface IRemoteControlable {
+void turnOn();
+void turnOff();
+void channelUp();
+void channelDown();
+void volumnUp();
+void volumnDown();
+void putChannel(int value);
+}
+</code></pre></div></div>
+
+<h3 id="controller-클래스">Controller 클래스</h3>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>package jan5th;
+import java.util.Scanner;
 
-public class Television implements RemoteControl{
-    boolean on = false;
-    int channel = 1;
-    int volume = 1;
+public class Controller implements IRemoteControlable {
+    Television model;
 
-    @Override
+    public Controller(Television model){
+        this.model = model;
+    }
+
+    public boolean analyzer(int value, Scanner hand){
+
+//"1. TV 켜기, 2. TV 끄기, 3. 채널 올리기, 4. 채널 내리기, " +
+//"5. 볼륨 올리기, 6. 볼륨 내리기, 7. 특정 채널로 이동, 0. 종료";
+        
+        switch (value){
+
+            case 1:{
+                this.turnOn();
+                break;
+            }
+            case 2: {
+                this.turnOff();
+                break;
+            }
+            case 3 : {
+                this.channelUp();
+                break;
+            }
+            case 4 : {
+                this.channelDown();
+                break;
+            }
+            case 5 : {
+                this.volumnUp();
+                break;
+            }
+            case 6 : {
+                this.volumnDown();
+                break;
+            }
+            case 7 : {
+                System.out.println("입력할 채널을 선택해주세요");
+                int inputedChannel = hand.nextInt();
+                this.putChannel(inputedChannel);
+                break;
+            }
+            case 0 : {
+                System.out.println("TV를 그만 봅니다.");
+                return false;
+            }
+        }
+        return true;
+    }
+
     public void turnOn() {
-        this.on = true;
+        model.on = true;
         System.out.println("TV 전원 : ON");
     }
 
     @Override
     public void turnOff() {
-        this.on = false;
+        model.on = false;
         System.out.println("TV 전원 : OFF");
     }
 
     @Override
     public void channelUp() {
-        if(this.on == false) {
+        if(model.on == false) {
             System.out.println("TV STATE : OFF");
         }
         else {
-            this.channel += 1;
-            System.out.printf("현재 채널 : %d\n", this.channel);
+            model.channel += 1;
+            System.out.printf("현재 채널 : %d\n", model.channel);
         }
     }
 
     @Override
     public void channelDown() {
-        if(this.on == false) {
+        if(model.on == false) {
             System.out.println("TV STATE : OFF");
         }
         else {
-            if (this.channel == 1) {
+            if (model.channel == 1) {
                 System.out.println("0번 채널은 없습니다.");
             } else {
-                System.out.printf("현재 채널 : %d\n", this.channel);
+                model.channel -= 1;
+                System.out.printf("현재 채널 : %d\n", model.channel);
             }
         }
     }
     @Override
     public void volumnUp() {
-        if(this.on == false) {
+        if(model.on == false) {
             System.out.println("TV STATE : OFF");
         }
         else {
-            this.volume += 1;
-            System.out.printf("현재 볼륨 : %d\n", this.volume);
+            model.volume += 1;
+            System.out.printf("현재 볼륨 : %d\n", model.volume);
         }
     }
 
     @Override
     public void volumnDown() {
-        if(this.on == false) {
+        if(model.on == false) {
             System.out.println("TV STATE : OFF");
         }
         else {
-            if (this.volume == 0) {
+            if (model.volume == 0) {
                 System.out.println("볼륨을 0 아래로 내릴 수 없습니다.");
             } else {
-                this.volume -= 1;
-                System.out.printf("현재 볼륨 : %d\n", this.volume);
+                model.volume -= 1;
+                System.out.printf("현재 볼륨 : %d\n", model.volume);
             }
         }
     }
     @Override
     public void putChannel(int value) {
-        if(this.on == false) {
+        if(model.on == false) {
             System.out.println("TV STATE : OFF");
         }
         else {
-            if (value &lt; 0) {
+            if (value &lt;= 0) {
                 System.out.println("그런 채널은 없습니다.");
             } else {
-                this.channel = value;
-                System.out.printf("현재 채널 : %d", this.channel);
+                model.channel = value;
+                System.out.printf("현재 채널 : %d\n", model.channel);
             }
         }
     }
 }
 </code></pre></div></div>
 
-<h3 id="리모트-컨트롤-인터페이스">리모트 컨트롤 인터페이스</h3>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>package jan5th;
-
-public interface RemoteControl {
-    void turnOn();
-    void turnOff();
-    void channelUp();
-    void channelDown();
-    void volumnUp();
-    void volumnDown();
-    void putChannel(int value);
-}
-</code></pre></div></div>
-
-<h3 id="인간-객체">인간 객체</h3>
+<h3 id="human-클래스">Human 클래스</h3>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>package jan5th;
 
 import java.util.Scanner;
 
 public class Human {
-    Television model;
+    Controller model;
 
-    public Human(Television television){
-        this.model = television;
+    public Human(Controller controller){
+        this.model = controller;
     }
-
-    void input(){
-        Scanner scanner = new Scanner(System.in);
-        while(true){
-            System.out.println("1. TV 켜기, 2. TV 끄기, 3. 채널 올리기, 4. 채널 내리기, 5. 볼륨 올리기, 6. 볼륨 내리기, 7. 특정 채널로 이동, 0. 종료");
-            int input = scanner.nextInt();
-
-            if(input == 1){
-                model.turnOn();
-            } else if(input == 2){
-                model.turnOff();
-            } else if(input == 3){
-                model.channelUp();
-            } else if(input == 4){
-                model.channelDown();
-            } else if(input == 5){
-                model.volumnUp();
-            } else if(input == 6){
-                model.volumnDown();
-            } else if(input == 7){
-                System.out.println("이동할 채널을 입력하세요.");
-                int channel = scanner.nextInt();
-                model.putChannel(channel);
-            } else if(input == 0){
-                System.out.println("시스템을 종료합니다.");
-                break;
-            } else {
-                System.out.println("잘못된 입력입니다. 다시 시도해주세요.");
-            }
+    void input(Scanner Hand){
+        boolean condition = true;
+        while(condition){
+            System.out.println("1. TV 켜기, 2. TV 끄기, 3. 채널 올리기, 4. 채널 내리기, " +
+                    "5. 볼륨 올리기, 6. 볼륨 내리기, 7. 특정 채널로 이동, 0. 종료");
+            int value = Hand.nextInt();
+            condition = this.model.analyzer(value, Hand);
         }
-        scanner.close();
     }
 }
 </code></pre></div></div>
@@ -201,9 +224,9 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Television appleTV = new Television();
-        Human me = new Human(appleTV);
-        Scanner order = new Scanner(System.in);
-        me.input();
+        Controller appleTVController = new Controller(appleTV);
+        Human me = new Human(appleTVController);
+        me.input(Hand);
     }
 }
 </code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="JAVA" /><summary type="html"><![CDATA[추상 클래스와 인터페이스는 모두 자바에서 객체지향의 원칙 중 추상화를 구현하기 위해 사용되는 개념이지만 몇가지 중요한 차이가 존재한다. 솔직히 내 생각에는, 자바라는 언어가 어쩌면 극단적으로 객체지향을 중시한다는 것을 보여주는 예시라고 생각한다. 파이썬에서는 굳이 인터페이스를 사용하지 않는 경우가 많은 것 같다. “call” 처럼 간단한 인터페이스라면 객체를 그냥 파이썬 함수처럼 호출해서 사용하는 경우도 있고.]]></summary></entry><entry><title type="html">[JAVA] PSVM - public static void main(string[] args)</title><link href="http://localhost:4000/java/2024/01/04/psvm.html" rel="alternate" type="text/html" title="[JAVA] PSVM - public static void main(string[] args)" /><published>2024-01-04T00:00:00+09:00</published><updated>2024-01-04T00:00:00+09:00</updated><id>http://localhost:4000/java/2024/01/04/psvm</id><content type="html" xml:base="http://localhost:4000/java/2024/01/04/psvm.html"><![CDATA[<h1 id="psvm">PSVM</h1>
@@ -481,7 +504,7 @@ num2 = 10000 0000(2) ## num1의 2의 보수
   <li>menu1을 선택한 화면</li>
 </ul>
 
-<p>예상한대로 BottomNavigationView가 제대로 작동하는 모습을 볼 수 있다!</p>]]></content><author><name>ash tensor</name></author><category term="안드로이드" /><summary type="html"><![CDATA[android studio]]></summary></entry><entry><title type="html">[AI 그림]프롬프트의 한계점 - 올바른 프롬프트 작성하기</title><link href="http://localhost:4000/ml/2023/12/28/stable-diffusion.html" rel="alternate" type="text/html" title="[AI 그림]프롬프트의 한계점 - 올바른 프롬프트 작성하기" /><published>2023-12-28T00:00:00+09:00</published><updated>2023-12-28T00:00:00+09:00</updated><id>http://localhost:4000/ml/2023/12/28/stable-diffusion</id><content type="html" xml:base="http://localhost:4000/ml/2023/12/28/stable-diffusion.html"><![CDATA[<h1 id="ai-그림">AI 그림</h1>
+<p>예상한대로 BottomNavigationView가 제대로 작동하는 모습을 볼 수 있다!</p>]]></content><author><name>ash tensor</name></author><category term="안드로이드" /><summary type="html"><![CDATA[android studio]]></summary></entry><entry><title type="html">[AI 그림]프롬프트의 한계점 - 올바른 프롬프트 작성하기</title><link href="http://localhost:4000/ml,/ai%EA%B7%B8%EB%A6%BC/2023/12/28/stable-diffusion.html" rel="alternate" type="text/html" title="[AI 그림]프롬프트의 한계점 - 올바른 프롬프트 작성하기" /><published>2023-12-28T00:00:00+09:00</published><updated>2023-12-28T00:00:00+09:00</updated><id>http://localhost:4000/ml,/ai%EA%B7%B8%EB%A6%BC/2023/12/28/stable-diffusion</id><content type="html" xml:base="http://localhost:4000/ml,/ai%EA%B7%B8%EB%A6%BC/2023/12/28/stable-diffusion.html"><![CDATA[<h1 id="ai-그림">AI 그림</h1>
 
 <p>솔직히 말해서, 이제 인공지능 그림은 놀라움을 넘어서서 조금은 지루한 소재인 것 같다. 인공지능이 사람의 그림을 뛰어넘는 그림을 그려 내는 것을 이제는 모두가 당연하게 느낀다.</p>
 
@@ -562,7 +585,7 @@ num2 = 10000 0000(2) ## num1의 2의 보수
 
 <p>누가 빔샤벨을 든 세종대왕의 맥북 에어 사태를 그림으로 그릴 수 있겠는가? 안드로이드는 전기 양의 꿈을 꾸는가? 적어도 GPT는 그 꿈을 그릴 수 있는 것 같다.</p>
 
-<p>사실 이 모든 과정이 어쩌면 창의성의 근본일지도 모른다. 고흐도 별이 빛나는 밤에를 그릴 때, 사실은 환각을 보고 있었다고 하니까.</p>]]></content><author><name>ash tensor</name></author><category term="ML" /><summary type="html"><![CDATA[ml, ai]]></summary></entry><entry><title type="html">[데이터 분석]조합에 따른 승률은 얼마나 차이가 날까?</title><link href="http://localhost:4000/ml/2023/12/19/esports-ml-1.html" rel="alternate" type="text/html" title="[데이터 분석]조합에 따른 승률은 얼마나 차이가 날까?" /><published>2023-12-19T00:00:00+09:00</published><updated>2023-12-19T00:00:00+09:00</updated><id>http://localhost:4000/ml/2023/12/19/esports-ml-1</id><content type="html" xml:base="http://localhost:4000/ml/2023/12/19/esports-ml-1.html"><![CDATA[<h1 id="조합에-따른-승률은-얼마나-차이가-날까">조합에 따른 승률은 얼마나 차이가 날까?</h1>
+<p>사실 이 모든 과정이 어쩌면 창의성의 근본일지도 모른다. 고흐도 별이 빛나는 밤에를 그릴 때, 사실은 환각을 보고 있었다고 하니까.</p>]]></content><author><name>ash tensor</name></author><category term="ML," /><category term="AI그림" /><summary type="html"><![CDATA[ml, ai]]></summary></entry><entry><title type="html">[데이터 분석]조합에 따른 승률은 얼마나 차이가 날까?</title><link href="http://localhost:4000/ml/2023/12/19/esports-ml-1.html" rel="alternate" type="text/html" title="[데이터 분석]조합에 따른 승률은 얼마나 차이가 날까?" /><published>2023-12-19T00:00:00+09:00</published><updated>2023-12-19T00:00:00+09:00</updated><id>http://localhost:4000/ml/2023/12/19/esports-ml-1</id><content type="html" xml:base="http://localhost:4000/ml/2023/12/19/esports-ml-1.html"><![CDATA[<h1 id="조합에-따른-승률은-얼마나-차이가-날까">조합에 따른 승률은 얼마나 차이가 날까?</h1>
 
 <p>나는 개인적으로 세이버 메트릭스를 매우 좋아한다.</p>
 

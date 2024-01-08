@@ -19,7 +19,7 @@
     </url>
     
     <url>
-        <loc>http://localhost:4000/ml/2023/12/28/stable-diffusion.html</loc>
+        <loc>http://localhost:4000/ml,/ai%EA%B7%B8%EB%A6%BC/2023/12/28/stable-diffusion.html</loc>
     </url>
     
     <url>
@@ -47,6 +47,14 @@
     </url>
     
 
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/category/AI%EA%B7%B8%EB%A6%BC.html</loc>
+    </url>
+    
+    
     
     
     
@@ -107,7 +115,7 @@
     
     
     <url>
-        <loc>http://localhost:4000/</loc>
+        <loc>http://localhost:4000/posts/</loc>
     </url>
     
     
@@ -115,7 +123,7 @@
     
     
     <url>
-        <loc>http://localhost:4000/posts/</loc>
+        <loc>http://localhost:4000/</loc>
     </url>
     
     

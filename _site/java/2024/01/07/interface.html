@@ -83,7 +83,7 @@
             <a href="#">ash tensor</a>
             on January 07, 2024 &middot; <span class="reading-time" title="Estimated read time">
   
-   4 mins  read </span>
+   5 mins  read </span>
 
           </span>
 
@@ -160,153 +160,176 @@ class TVRemote extends RemoteControl implements Volume {
 
 <p>이렇게 동작의 메서드를 각각 인터페이스마다 분리하여 설계함으로서 조금 더 구조적이고 더욱 추상적인 객체를 설계할 수 있다.</p>
 
-<h2 id="예제">예제</h2>
+<h2 id="구현-예제">구현 예제</h2>
 
-<h3 id="텔레비전-객체">텔레비전 객체</h3>
+<h3 id="iremotecontrolable-인터페이스">IRemoteControlable 인터페이스</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public interface IRemoteControlable {
+void turnOn();
+void turnOff();
+void channelUp();
+void channelDown();
+void volumnUp();
+void volumnDown();
+void putChannel(int value);
+}
+</code></pre></div></div>
+
+<h3 id="controller-클래스">Controller 클래스</h3>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>package jan5th;
+import java.util.Scanner;
 
-public class Television implements RemoteControl{
-    boolean on = false;
-    int channel = 1;
-    int volume = 1;
+public class Controller implements IRemoteControlable {
+    Television model;
 
-    @Override
+    public Controller(Television model){
+        this.model = model;
+    }
+
+    public boolean analyzer(int value, Scanner hand){
+
+//"1. TV 켜기, 2. TV 끄기, 3. 채널 올리기, 4. 채널 내리기, " +
+//"5. 볼륨 올리기, 6. 볼륨 내리기, 7. 특정 채널로 이동, 0. 종료";
+        
+        switch (value){
+
+            case 1:{
+                this.turnOn();
+                break;
+            }
+            case 2: {
+                this.turnOff();
+                break;
+            }
+            case 3 : {
+                this.channelUp();
+                break;
+            }
+            case 4 : {
+                this.channelDown();
+                break;
+            }
+            case 5 : {
+                this.volumnUp();
+                break;
+            }
+            case 6 : {
+                this.volumnDown();
+                break;
+            }
+            case 7 : {
+                System.out.println("입력할 채널을 선택해주세요");
+                int inputedChannel = hand.nextInt();
+                this.putChannel(inputedChannel);
+                break;
+            }
+            case 0 : {
+                System.out.println("TV를 그만 봅니다.");
+                return false;
+            }
+        }
+        return true;
+    }
+
     public void turnOn() {
-        this.on = true;
+        model.on = true;
         System.out.println("TV 전원 : ON");
     }
 
     @Override
     public void turnOff() {
-        this.on = false;
+        model.on = false;
         System.out.println("TV 전원 : OFF");
     }
 
     @Override
     public void channelUp() {
-        if(this.on == false) {
+        if(model.on == false) {
             System.out.println("TV STATE : OFF");
         }
         else {
-            this.channel += 1;
-            System.out.printf("현재 채널 : %d\n", this.channel);
+            model.channel += 1;
+            System.out.printf("현재 채널 : %d\n", model.channel);
         }
     }
 
     @Override
     public void channelDown() {
-        if(this.on == false) {
+        if(model.on == false) {
             System.out.println("TV STATE : OFF");
         }
         else {
-            if (this.channel == 1) {
+            if (model.channel == 1) {
                 System.out.println("0번 채널은 없습니다.");
             } else {
-                System.out.printf("현재 채널 : %d\n", this.channel);
+                model.channel -= 1;
+                System.out.printf("현재 채널 : %d\n", model.channel);
             }
         }
     }
     @Override
     public void volumnUp() {
-        if(this.on == false) {
+        if(model.on == false) {
             System.out.println("TV STATE : OFF");
         }
         else {
-            this.volume += 1;
-            System.out.printf("현재 볼륨 : %d\n", this.volume);
+            model.volume += 1;
+            System.out.printf("현재 볼륨 : %d\n", model.volume);
         }
     }
 
     @Override
     public void volumnDown() {
-        if(this.on == false) {
+        if(model.on == false) {
             System.out.println("TV STATE : OFF");
         }
         else {
-            if (this.volume == 0) {
+            if (model.volume == 0) {
                 System.out.println("볼륨을 0 아래로 내릴 수 없습니다.");
             } else {
-                this.volume -= 1;
-                System.out.printf("현재 볼륨 : %d\n", this.volume);
+                model.volume -= 1;
+                System.out.printf("현재 볼륨 : %d\n", model.volume);
             }
         }
     }
     @Override
     public void putChannel(int value) {
-        if(this.on == false) {
+        if(model.on == false) {
             System.out.println("TV STATE : OFF");
         }
         else {
-            if (value &lt; 0) {
+            if (value &lt;= 0) {
                 System.out.println("그런 채널은 없습니다.");
             } else {
-                this.channel = value;
-                System.out.printf("현재 채널 : %d", this.channel);
+                model.channel = value;
+                System.out.printf("현재 채널 : %d\n", model.channel);
             }
         }
     }
 }
 </code></pre></div></div>
 
-<h3 id="리모트-컨트롤-인터페이스">리모트 컨트롤 인터페이스</h3>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>package jan5th;
-
-public interface RemoteControl {
-    void turnOn();
-    void turnOff();
-    void channelUp();
-    void channelDown();
-    void volumnUp();
-    void volumnDown();
-    void putChannel(int value);
-}
-</code></pre></div></div>
-
-<h3 id="인간-객체">인간 객체</h3>
+<h3 id="human-클래스">Human 클래스</h3>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>package jan5th;
 
 import java.util.Scanner;
 
 public class Human {
-    Television model;
+    Controller model;
 
-    public Human(Television television){
-        this.model = television;
+    public Human(Controller controller){
+        this.model = controller;
     }
-
-    void input(){
-        Scanner scanner = new Scanner(System.in);
-        while(true){
-            System.out.println("1. TV 켜기, 2. TV 끄기, 3. 채널 올리기, 4. 채널 내리기, 5. 볼륨 올리기, 6. 볼륨 내리기, 7. 특정 채널로 이동, 0. 종료");
-            int input = scanner.nextInt();
-
-            if(input == 1){
-                model.turnOn();
-            } else if(input == 2){
-                model.turnOff();
-            } else if(input == 3){
-                model.channelUp();
-            } else if(input == 4){
-                model.channelDown();
-            } else if(input == 5){
-                model.volumnUp();
-            } else if(input == 6){
-                model.volumnDown();
-            } else if(input == 7){
-                System.out.println("이동할 채널을 입력하세요.");
-                int channel = scanner.nextInt();
-                model.putChannel(channel);
-            } else if(input == 0){
-                System.out.println("시스템을 종료합니다.");
-                break;
-            } else {
-                System.out.println("잘못된 입력입니다. 다시 시도해주세요.");
-            }
+    void input(Scanner Hand){
+        boolean condition = true;
+        while(condition){
+            System.out.println("1. TV 켜기, 2. TV 끄기, 3. 채널 올리기, 4. 채널 내리기, " +
+                    "5. 볼륨 올리기, 6. 볼륨 내리기, 7. 특정 채널로 이동, 0. 종료");
+            int value = Hand.nextInt();
+            condition = this.model.analyzer(value, Hand);
         }
-        scanner.close();
     }
 }
 </code></pre></div></div>
@@ -320,12 +343,13 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Television appleTV = new Television();
-        Human me = new Human(appleTV);
-        Scanner order = new Scanner(System.in);
-        me.input();
+        Controller appleTVController = new Controller(appleTV);
+        Human me = new Human(appleTVController);
+        me.input(Hand);
     }
 }
 </code></pre></div></div>
+
 
 
       <hr>
