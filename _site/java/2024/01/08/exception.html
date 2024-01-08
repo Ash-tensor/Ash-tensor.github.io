@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>
+    [JAVA] 예외처리 - throw, throws, throwable - Tensor Studio
+    
+  </title>
+
+  <meta name="description" content="예외처리">
+  <meta property="og:description" content="예외처리">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="[JAVA] 예외처리 - throw, throws, throwable">
+  <meta property="og:url" content="https://ash-tensor.github.io/java/2024/01/08/exception.html">
+
+  
+    <meta property="og:image" content="https://ash-tensor.github.io/img/port.jpg"/>
+  
+
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script> -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="http://localhost:4000/java/2024/01/08/exception.html">
+  <link rel="alternate" type="application/rss+xml" title="Tensor Studio" href="/feed.xml">
+
+  <meta name="google-site-verification" content="lWkg6gIxJgzEKX_5XnhcxCtPE9QknaimFWWos_dTvPM" />
+
+</head>
+
+
+<body>
+
+  <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="/">Tensor Studio</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/posts">Posts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/categol">Categories</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Page Header -->
+
+
+<header class="masthead" style="background-image: url('/img/port.jpg')">
+
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-heading">
+          <h1>[JAVA] 예외처리 - throw, throws, throwable</h1>
+          
+          <h2 class="subheading">Checked Error - Unchecked Error</h2>
+          
+          <span class="meta">Posted by
+            <a href="#">ash tensor</a>
+            on January 08, 2024 &middot; <span class="reading-time" title="Estimated read time">
+  
+   4 mins  read </span>
+
+          </span>
+
+<!-- 카테고리를 추가하는 코드 -->
+
+          <div>
+            
+              <a href="http://localhost:4000/category/JAVA.html" style="color: white;">카테고리📁: JAVA</a>
+            
+          </div>
+
+<!-- 카테고리를 추가하는 코드 -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+
+<!-- 본문 카테고리를 추가하는 코드 -->
+
+          <div>
+            
+              <a href="http://localhost:4000/category/JAVA.html" style="color: black;">카테고리:📁 JAVA</a>
+            
+          </div>
+          
+<!-- 본문 카테고리를 추가하는 코드 -->
+
+      <h1 id="예외처리">예외처리</h1>
+
+<p>자바는 솔직히 예외처리를 아주 빡빡하게 처리하는 언어다. 다른 언어들이 특정 예외가 일어났을 때를 열거해서 (divideByZero error, Stack overflow error 등) 제외하는 것에 비해서 조금은 특이하다.</p>
+
+<p>물론 C 처럼 예외 처리를 아예 강제하지 않는 언어와 비교하려는 것은 아니다. Python이나 C++, C# 모두 try - catch - finally와 같은 예외 처리를 지원하고, 자바와 사용되는 예약어만 다들 뿐 그 궤는 비슷하다.</p>
+
+<p>하지만 널리 사용되는 언어인 Javascript와 Python에 비교해 봐도, 자바처럼 Checked 에러와 Unchecked 에러를 나눠서 구현을 강제해서 구분하는 언어는 충분히 드물다고 할 수 있다.</p>
+
+<h2 id="checked-error---unchecked-error">Checked Error - Unchecked Error</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class ExceptionExample {
+    // 예외를 던질 수 있는 메서드
+    public void methodWithThrows() throws CustomException { &lt;&lt; 에러 열거
+        System.out.println("메서드에서 예외를 던집니다.");
+        throw new CustomException("Custom 예외 발생");
+    }
+
+    // 호출하는 코드
+    public static void main(String[] args) {
+        ExceptionExample example = new ExceptionExample();
+
+        try {
+            example.methodWithThrows();
+        } catch (CustomException e) {   &lt;&lt; 열거한 에러 처리
+            System.out.println("예외를 처리합니다: " + e.getMessage());
+        }
+    }
+}
+
+// CustomException 정의
+class CustomException extends Exception {
+    public CustomException(String message) {
+        super(message);
+    }
+}
+</code></pre></div></div>
+
+<p>여기서 세번째 라인의 throws가 바로 Checked Error를 열거하는 예약어다. 보통 throws 키워드를 설명할 때</p>
+
+<blockquote>
+  <blockquote>
+    <p>[Throws 키워드는 메소드 선언부 끝에 작성되어 메소드에서 처리하지 않은 예외를 호출한 곳으로 떠넘기는 역할을 합니다.]</p>
+  </blockquote>
+</blockquote>
+
+<p>라고 설명하는데, 이 말을 처음 들을 때 이해가 쉽지는 않다(고 생각한다).</p>
+
+<p>throws 키워드는 Checked Error를 열거하는 예약어로, 만약 이 메소드를 호출하는 메소드가 있다면 무조건 예외처리를 해야 컴파일이 가능하다는 뜻이다.</p>
+
+<p>즉 위 예시 코드로 설명해 보자면, 예외를 던질 수 있는 메서드에서 customException을 throws 예약어로 열거했으므로 //호출하는 코드 부분에서 무조건적으로</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>catch(CustomException e)
+</code></pre></div></div>
+
+<p>부분이 없으면 실행을 아예 거부해버린다.</p>
+
+<p><img src="/img/posts/JAVA/throws.PNG" style="width: 80%" /></p>
+
+<p>이런식으로.</p>
+
+<h2 id="throws가-없는-프로그램">throws가 없는 프로그램</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class ExceptionExample {
+    public void methodWithoutThrows() {
+        System.out.println("예외 테스트");
+        ExceptionExample example = new ExceptionExample();
+        example.methodWithoutThrows();
+    }
+
+    // 호출하는 코드
+    public static void main(String[] args) {
+        ExceptionExample example = new ExceptionExample();
+        example.methodWithoutThrows();
+        }
+    }
+</code></pre></div></div>
+
+<p>throws를 제거한 코드다. try - catch 문이 없어도 문제 없이 컴파일 가능한 모습을 볼 수 있다. methodWithoutThrows는 예외를 던지지 않으므로 호출하는 코드에서는 예외 처리를 할 필요가 없다.</p>
+
+<p>이렇게 throws를 사용하면 메서드를 사용하는 측에게 어떤 예외가 발생할 수 있는지 명시함으로써 명확한 예외 처리를 유도할 수 있다… 곤 하지만, 솔직히 아무리 문법적으로 강제해도 제대로 하지 않을 사람은 안 한다. 아예 JVM으로 에러를 던져버리는 것이다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// main 메소드 throws
+
+public class Example {
+    public static void main(String[] args) throws Exception {
+        // 예외가 발생할 수 있는 코드
+    }
+}
+</code></pre></div></div>
+
+<p>이런 식으로, main 메소드에서 throws를 사용하는 것은 에러를 JVM에게 전가한다는 뜻이다. Main 메소드보다 더 상위의 메소드는 JVM밖에는 없기에, 에러를 던져도 JVM은 에러 메시지만 출력하고 프로그램을 종료한다.</p>
+
+<p>main 메서드에서 throws를 사용할 때는 주로 런타임 예외인 RuntimeException 또는 Exception과 같은 일반적인 예외를 사용하며, 이를 통해 예외 처리를 뒷단으로 미루는 경우가 있다.</p>
+
+<blockquote>
+  <blockquote>
+    <p>[throws &lt;unchecked exception(runtime exception)&gt; 키워드가 붙어있는 메서드는 꼭 try 블록 내부에서 호출되지 않더라도 컴파일이 됩니다. 하지만 매우 문제가 있는 코드입니다.]</p>
+  </blockquote>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// RuntimeException throws
+
+public class Example {
+    // 예외를 던질 수 있는 메서드
+    public static void methodWithThrows() throws RuntimeException {
+        System.out.println("메서드에서 예외를 던집니다.");
+        throw new RuntimeException("런타임 예외 발생");
+    }
+
+    // 호출하는 코드
+    public static void main(String[] args) {
+        // 메서드 호출 시 try-catch 블록 없음
+        methodWithThrows();
+        
+        // 아래 코드는 실행되지 않음 (Unreachable code 에러 발생)
+        System.out.println("메서드 호출 후의 코드");
+    }
+}
+</code></pre></div></div>
+
+<p>위의 코드에서 methodWithThrows는 RuntimeException을 던질 수 있는데, 호출하는 main 메서드에서는 해당 예외를 처리하는 try-catch 블록이 없다. 그러나 컴파일은 문제없이 진행된다.</p>
+
+<p>하지만 실행 시에는 methodWithThrows에서 발생한 예외가 main 메서드로 전파되어, “Unreachable code” 에러가 발생하면서 프로그램이 비정상적으로 종료된다.</p>
+
+
+
+      <hr>
+      <div class="row mb-5 mt-5">
+  <div class="col-md-6 d-flex align-items-end ">
+    <span>Thanks. <i>mind sharing?</i></span>
+  </div>
+
+  <!-- Right Column with Social Media Icons (on the right for larger screens, on bottom for smaller screens) -->
+  <div class="col-md-6 order-md-2 order-1 text-md-right text-center mt-3 mt-md-0">
+    <div>
+
+      <a
+          href="https://www.linkedin.com/sharing/share-offsite?url=https://ash-tensor.github.io/java/2024/01/08/exception.html"
+          onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+          class="d-inline-block mr-2"
+       >
+        <span class="fa-stack fa-lg" style="color: #0077b5;">
+          <i class="fas fa-square fa-stack-2x"></i>
+          <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+
+      <a
+          href="https://twitter.com/intent/tweet?text=[JAVA] 예외처리 - throw, throws, throwable&url=https://ash-tensor.github.io/java/2024/01/08/exception.html"
+          onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+          class="d-inline-block mr-2">
+        <span class="fa-stack fa-lg" style="color: #1DA1F2;">
+          <i class="fas fa-square fa-stack-2x"></i>
+          <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+
+      <a
+          href="http://www.reddit.com/submit?url=https://ash-tensor.github.io/java/2024/01/08/exception.html"
+          onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+          class="d-inline-block mr-2">
+        <span class="fa-stack fa-lg" style="color: #FF4500;">
+          <i class="fas fa-square fa-stack-2x"></i>
+          <i class="fab fa-reddit fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<hr/>
+
+
+      <div class="clearfix">
+
+
+<!-- 코멘트 란을 추가하는 코드 -->
+
+
+  <div id="disqus_thread"></div>
+  <script>
+      /**
+      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+      *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+      /*
+      var disqus_config = function () {
+      this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      };
+      */
+      (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://tensorstudio.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<!-- 코멘트 란을 추가하는 코드 -->
+
+        
+        <a class="btn btn-primary float-left" href="/java/2024/01/07/interface.html" data-toggle="tooltip" data-placement="top" title="[JAVA] 인터페이스와 추상클래스의 차이">&larr; Previous<span class="d-none d-md-inline">
+            Post</span></a>
+        
+        
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+  <!-- Footer -->
+
+<hr>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <ul class="list-inline text-center">
+          
+          <li class="list-inline-item">
+            <a href="mailto:tensor17s@gmail.com" class="text-gray">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          
+          
+          
+          
+        </ul>
+
+        <p class="copyright text-muted">
+          Build with: 
+          <a 
+            href="https://github.com/StartBootstrap/startbootstrap-clean-blog-jekyll"
+            class="text-gray"
+            target="_blank">startbootstrap-clean-blog-jekyll</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/blog/js/scripts.js"></script>
+
+<script src="/assets/scripts.js"></script>
+
+
+
+
+  
+
+</body>
+
+</html>

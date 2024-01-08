@@ -1,4 +1,126 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-01-08T17:01:37+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[JAVA] 인터페이스와 추상클래스의 차이</title><link href="http://localhost:4000/java/2024/01/07/interface.html" rel="alternate" type="text/html" title="[JAVA] 인터페이스와 추상클래스의 차이" /><published>2024-01-07T00:00:00+09:00</published><updated>2024-01-07T00:00:00+09:00</updated><id>http://localhost:4000/java/2024/01/07/interface</id><content type="html" xml:base="http://localhost:4000/java/2024/01/07/interface.html"><![CDATA[<p>추상 클래스와 인터페이스는 모두 자바에서 객체지향의 원칙 중 추상화를 구현하기 위해 사용되는 개념이지만 몇가지 중요한 차이가 존재한다. 솔직히 내 생각에는, 자바라는 언어가 어쩌면 극단적으로 객체지향을 중시한다는 것을 보여주는 예시라고 생각한다. 파이썬에서는 굳이 인터페이스를 사용하지 않는 경우가 많은 것 같다. “<strong>call</strong>” 처럼 간단한 인터페이스라면 객체를 그냥 파이썬 함수처럼 호출해서 사용하는 경우도 있고.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-01-08T22:28:23+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[JAVA] 예외처리 - throw, throws, throwable</title><link href="http://localhost:4000/java/2024/01/08/exception.html" rel="alternate" type="text/html" title="[JAVA] 예외처리 - throw, throws, throwable" /><published>2024-01-08T00:00:00+09:00</published><updated>2024-01-08T00:00:00+09:00</updated><id>http://localhost:4000/java/2024/01/08/exception</id><content type="html" xml:base="http://localhost:4000/java/2024/01/08/exception.html"><![CDATA[<h1 id="예외처리">예외처리</h1>
+
+<p>자바는 솔직히 예외처리를 아주 빡빡하게 처리하는 언어다. 다른 언어들이 특정 예외가 일어났을 때를 열거해서 (divideByZero error, Stack overflow error 등) 제외하는 것에 비해서 조금은 특이하다.</p>
+
+<p>물론 C 처럼 예외 처리를 아예 강제하지 않는 언어와 비교하려는 것은 아니다. Python이나 C++, C# 모두 try - catch - finally와 같은 예외 처리를 지원하고, 자바와 사용되는 예약어만 다들 뿐 그 궤는 비슷하다.</p>
+
+<p>하지만 널리 사용되는 언어인 Javascript와 Python에 비교해 봐도, 자바처럼 Checked 에러와 Unchecked 에러를 나눠서 구현을 강제해서 구분하는 언어는 충분히 드물다고 할 수 있다.</p>
+
+<h2 id="checked-error---unchecked-error">Checked Error - Unchecked Error</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class ExceptionExample {
+    // 예외를 던질 수 있는 메서드
+    public void methodWithThrows() throws CustomException { &lt;&lt; 에러 열거
+        System.out.println("메서드에서 예외를 던집니다.");
+        throw new CustomException("Custom 예외 발생");
+    }
+
+    // 호출하는 코드
+    public static void main(String[] args) {
+        ExceptionExample example = new ExceptionExample();
+
+        try {
+            example.methodWithThrows();
+        } catch (CustomException e) {   &lt;&lt; 열거한 에러 처리
+            System.out.println("예외를 처리합니다: " + e.getMessage());
+        }
+    }
+}
+
+// CustomException 정의
+class CustomException extends Exception {
+    public CustomException(String message) {
+        super(message);
+    }
+}
+</code></pre></div></div>
+
+<p>여기서 세번째 라인의 throws가 바로 Checked Error를 열거하는 예약어다. 보통 throws 키워드를 설명할 때</p>
+
+<blockquote>
+  <blockquote>
+    <p>[Throws 키워드는 메소드 선언부 끝에 작성되어 메소드에서 처리하지 않은 예외를 호출한 곳으로 떠넘기는 역할을 합니다.]</p>
+  </blockquote>
+</blockquote>
+
+<p>라고 설명하는데, 이 말을 처음 들을 때 이해가 쉽지는 않다(고 생각한다).</p>
+
+<p>throws 키워드는 Checked Error를 열거하는 예약어로, 만약 이 메소드를 호출하는 메소드가 있다면 무조건 예외처리를 해야 컴파일이 가능하다는 뜻이다.</p>
+
+<p>즉 위 예시 코드로 설명해 보자면, 예외를 던질 수 있는 메서드에서 customException을 throws 예약어로 열거했으므로 //호출하는 코드 부분에서 무조건적으로</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>catch(CustomException e)
+</code></pre></div></div>
+
+<p>부분이 없으면 실행을 아예 거부해버린다.</p>
+
+<p><img src="/img/posts/JAVA/throws.PNG" style="width: 80%" /></p>
+
+<p>이런식으로.</p>
+
+<h2 id="throws가-없는-프로그램">throws가 없는 프로그램</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class ExceptionExample {
+    public void methodWithoutThrows() {
+        System.out.println("예외 테스트");
+        ExceptionExample example = new ExceptionExample();
+        example.methodWithoutThrows();
+    }
+
+    // 호출하는 코드
+    public static void main(String[] args) {
+        ExceptionExample example = new ExceptionExample();
+        example.methodWithoutThrows();
+        }
+    }
+</code></pre></div></div>
+
+<p>throws를 제거한 코드다. try - catch 문이 없어도 문제 없이 컴파일 가능한 모습을 볼 수 있다. methodWithoutThrows는 예외를 던지지 않으므로 호출하는 코드에서는 예외 처리를 할 필요가 없다.</p>
+
+<p>이렇게 throws를 사용하면 메서드를 사용하는 측에게 어떤 예외가 발생할 수 있는지 명시함으로써 명확한 예외 처리를 유도할 수 있다… 곤 하지만, 솔직히 아무리 문법적으로 강제해도 제대로 하지 않을 사람은 안 한다. 아예 JVM으로 에러를 던져버리는 것이다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// main 메소드 throws
+
+public class Example {
+    public static void main(String[] args) throws Exception {
+        // 예외가 발생할 수 있는 코드
+    }
+}
+</code></pre></div></div>
+
+<p>이런 식으로, main 메소드에서 throws를 사용하는 것은 에러를 JVM에게 전가한다는 뜻이다. Main 메소드보다 더 상위의 메소드는 JVM밖에는 없기에, 에러를 던져도 JVM은 에러 메시지만 출력하고 프로그램을 종료한다.</p>
+
+<p>main 메서드에서 throws를 사용할 때는 주로 런타임 예외인 RuntimeException 또는 Exception과 같은 일반적인 예외를 사용하며, 이를 통해 예외 처리를 뒷단으로 미루는 경우가 있다.</p>
+
+<blockquote>
+  <blockquote>
+    <p>[throws &lt;unchecked exception(runtime exception)&gt; 키워드가 붙어있는 메서드는 꼭 try 블록 내부에서 호출되지 않더라도 컴파일이 됩니다. 하지만 매우 문제가 있는 코드입니다.]</p>
+  </blockquote>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// RuntimeException throws
+
+public class Example {
+    // 예외를 던질 수 있는 메서드
+    public static void methodWithThrows() throws RuntimeException {
+        System.out.println("메서드에서 예외를 던집니다.");
+        throw new RuntimeException("런타임 예외 발생");
+    }
+
+    // 호출하는 코드
+    public static void main(String[] args) {
+        // 메서드 호출 시 try-catch 블록 없음
+        methodWithThrows();
+        
+        // 아래 코드는 실행되지 않음 (Unreachable code 에러 발생)
+        System.out.println("메서드 호출 후의 코드");
+    }
+}
+</code></pre></div></div>
+
+<p>위의 코드에서 methodWithThrows는 RuntimeException을 던질 수 있는데, 호출하는 main 메서드에서는 해당 예외를 처리하는 try-catch 블록이 없다. 그러나 컴파일은 문제없이 진행된다.</p>
+
+<p>하지만 실행 시에는 methodWithThrows에서 발생한 예외가 main 메서드로 전파되어, “Unreachable code” 에러가 발생하면서 프로그램이 비정상적으로 종료된다.</p>]]></content><author><name>ash tensor</name></author><category term="JAVA" /><summary type="html"><![CDATA[예외처리]]></summary></entry><entry><title type="html">[JAVA] 인터페이스와 추상클래스의 차이</title><link href="http://localhost:4000/java/2024/01/07/interface.html" rel="alternate" type="text/html" title="[JAVA] 인터페이스와 추상클래스의 차이" /><published>2024-01-07T00:00:00+09:00</published><updated>2024-01-07T00:00:00+09:00</updated><id>http://localhost:4000/java/2024/01/07/interface</id><content type="html" xml:base="http://localhost:4000/java/2024/01/07/interface.html"><![CDATA[<p>추상 클래스와 인터페이스는 모두 자바에서 객체지향의 원칙 중 추상화를 구현하기 위해 사용되는 개념이지만 몇가지 중요한 차이가 존재한다. 솔직히 내 생각에는, 자바라는 언어가 어쩌면 극단적으로 객체지향을 중시한다는 것을 보여주는 예시라고 생각한다. 파이썬에서는 굳이 인터페이스를 사용하지 않는 경우가 많은 것 같다. “<strong>call</strong>” 처럼 간단한 인터페이스라면 객체를 그냥 파이썬 함수처럼 호출해서 사용하는 경우도 있고.</p>
 
 <p>인터페이스를 배울 때 (적어도 나는) 추상 클래스와는 다르게 다중 상속이 가능하다는 것이 기억나는데 이는 객체지향에 익숙하지 않으면 추상 클래스와 인터페이스가 어떤 일을 하는지 정확히 이해하기 힘들기 때문이라고 생각한다.</p>
 
@@ -1014,73 +1136,4 @@ style: compressed
 
 <p>Your SCSS file assets/main.scss has an error on line 2: File to import not found or unreadable 문제가 가장 귀찮았는데 혹시라도 문제가 있다면 위 방법으로 해결할 수 있었으면 한다.</p>
 
-<p>끝!</p>]]></content><author><name>ash tensor</name></author><category term="깃허브" /><summary type="html"><![CDATA[troubleshooting]]></summary></entry><entry><title type="html">[깃허브 블로그]지킬 블로그 테마 적용법(clean blog theme)-테마 추천 및 고르는 법</title><link href="http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2023/12/11/jekyll-blog-theme-1.html" rel="alternate" type="text/html" title="[깃허브 블로그]지킬 블로그 테마 적용법(clean blog theme)-테마 추천 및 고르는 법" /><published>2023-12-11T00:00:00+09:00</published><updated>2023-12-11T00:00:00+09:00</updated><id>http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2023/12/11/jekyll-blog-theme-1</id><content type="html" xml:base="http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2023/12/11/jekyll-blog-theme-1.html"><![CDATA[<h1 id="깃허브-블로그-지킬-테마-적용법clean-blog-theme">깃허브 블로그 지킬 테마 적용법(clean blog theme)</h1>
-
-<p>깃허브 블로그를 만드는 다양한 방법이 있고, 구글에 한국어로 검색해 봐도 지킬 블로그를 구성하는 기본적인 방법들이 넘쳐난다.
-하지만 그렇다고 하더라도, 지킬 블로그는 처음 시도하는 사람에게는 불친절하기 짝이 없다. 아무래도 한국어로는 대표적인 테마 몇 개 정도의 구성 방법만이 존재할 뿐이고, 설명도 조금 이상한 경우가 많았기 때문에…</p>
-
-<p>이 clean blog theme 같은 경우에도 포스트를 깃허브 상에 올릴 때 있어서 계속 오류가 발생하기도 했다. 
-그리고 테마별로 지정해야 하는 설정도 다르기 때문에 처음 시도하는 사람이라면 꽤나 많은 시행착오를 거쳐야 할 것이다. 내 경험이지만, 이 지킬을 구성하는 liquid 라는 언어는 띄어쓰기 단 하나 가지고도 빌드를 포기해버리기 때문에 눈쌀을 찌푸렸던 기억이 난다. 어셈블리어도 이 정도는 아니었는데ㅋㅋ</p>
-
-<p>아무튼 이 지킬 블로그를 구성하고, 트러블 슈팅을 하면서 겪었던 에러등을 해결했던 방법을 공유하고자 이 포스트를 쓴다!</p>
-
-<h2 id="테마-고르는-법">테마 고르는 법</h2>
-
-<p>깃허브 페이지를 이용해 지킬 블로그를 배포할 정도라면 적어도 최소한 컴퓨터에 친숙한 사람이라고 생각은 하지만… 지킬 블로그를 만들며 가장 중요한 것은 테마 선정이라고 생각한다…! 이건 몇 번을 강조해도 중요함이 지나치지 않다! 내가 몇 번의 시도를 하면서 깨달았던 몇가지 사항을 먼저 정리하지면…</p>
-
-<ol>
-  <li><strong>테마는 무조건 유명한 걸로!</strong></li>
-  <li><strong>최대한 최근 제작된 테마일수록 좋다.</strong></li>
-  <li><strong>자신이 블로그에 필요한 기능이 뭐가 있을지 생각해 볼 것</strong></li>
-</ol>
-
-<p>이렇게 정리해 볼 수 있을 것 같다! 이유로는 몇가지가 있는데</p>
-
-<p>오래된 테마일수록 현재 지킬 표준과 맞지 않는 경우가 많다. 그냥 많은 게 아니라 아주 많았다… 기본적으로 상위권의 테마를 사용한다고 하더라도 수정해야 하는 경우가 많은데 업데이트가 멈춘지 수 년된 테마라면 제대로 작동하기는 어려울 것이다.</p>
-
-<p><a href="https://jekyllthemes.io/jekyll-blog-themes">지킬 테마 사이트</a></p>
-
-<p>보통, 기본적으로 이 페이지에서 지킬 테마를 검색해 보고, 어떤 테마를 사용할지 정하는 경우가 많을 텐데(적어도 내 경우에는 그랬다!) 테마가 오래되거나, 테마가 인기가 없는 경우에는 단지 테마를 적용하는 것만 신경쓰면 되는 것이 아니라,</p>
-
-<ol>
-  <li><strong>로컬에서 아예 빌드가 되지 않거나,</strong></li>
-  <li><strong>어찌저찌 에러를 다 정리하고 로컬에서 빌드를 성공했다고 하더라도 github page 상에서 빌드가 되지 않거나(!!)</strong></li>
-  <li><strong>어찌저찌 github page 상에서 빌드가 되었다고 하더라도 적용되어 있는 css 스타일이 제대로 적용되지 않아 css가 전부 날라간</strong></li>
-</ol>
-
-<p>&lt;!DOCTYPE html&gt;
-    &lt;html&gt;
-      &lt;head&gt;
-          <meta charset="utf-8" />
-      &lt;/head&gt;
-      &lt;body&gt;
-          Hello, world!
-    &lt;/body&gt;
-  &lt;/html&gt;</p>
-
-<p>이런 식의 페이지만 확인할 수 있거나(!!) 하는 경우가 많았기 때문이다.</p>
-
-<p>단순히 오류만 수정해야 하는 것이 아니라 완전히 구닥다리 원시 코드라서 처음부터 다 수정해야 되는 경우라면 골치가 아플 것이다. 이런 경우에는 GPT도 정신을 못차리니 열심히 구글링 하면서 오류를 수정해야 한다. 아니면 테마를 바꾸거나.</p>
-
-<p>내 경우가 딱 이랬는데, 물론 선술했듯 깃허브 페이지에 관심을 가질 정도라면 최소한 컴퓨터와 거리가 멀지는 않을 테니까, 코드를 고쳐보면서 이것 저것 시도하면서 에러를 고치는 경우도 많겠지만, 이런 경우에 테마가 유명하지 않으면 영어로 검색한다고 하더라도 제대로 결과가 나오지 않아서, 결국 테마를 변경했던 경험이 있다.</p>
-
-<p>그리고 만약 커스터마이징을 할 때도, 유명한 테마일수록 해당 기능을 작성하는데 훨신 수월하다. 이미 빌드되서 배포되고 있는 페이지들을 깃허브 레포지토리에서 참고하면서 빌드하기도 간편하다(보통 MIT 라이센스로 배포되기 때문에 사용해도 문제 없다)</p>
-
-<p>대표적으로 한국에서 많이 사용하는 테마로는
-<a href="https://github.com/mmistakes/minimal-mistakes" title="미니멀 미스테이크 깃허브 주소">minimal-mistake</a> 와 <a href="https://github.com/poole/lanyon" title="lanyon 깃허브 주소">lanyon</a>, <a href="https://github.com/bencentra/centrarium">centarium</a>을 사용하는 걸 많이 확인했다.</p>
-
-<p><img src="/img/minimal.png" style="width: 50%" /></p>
-
-<p>개인적으로는 minimal mistake를 추천하는데 그 이유는 참고할만한 한국 깃허브 레포지토리가 많기 때문에 추가적인 기능을 제작하기 매우 수월할 것으로 보이기 때문이다. 게다가 기본적인 기능은 이미 다 들어가 있다! 네비게이션 바 부터, 드롭다운 메뉴, 사이드바까지. 기능이 많은건 언제나 좋다.</p>
-
-<p>왜냐하면 생각보다 기능 추가하는 건 귀찮다… 티스토리나 네이버 블로그가 기본적으로 제공하는 카테고리 기능 같은 것도 하나 추가하려면 몇시간은 기본이다.</p>
-
-<h2 id="clean-blog-theme">Clean Blog theme</h2>
-
-<p><a href="https://github.com/StartBootstrap/startbootstrap-clean-blog-jekyll">Clean Blog 깃허브 주소</a></p>
-
-<p>그럼에도 불구하고 이 블로그가 적용된 테마는 clean blog theme인데, 이유는 없고, 뭔가 그냥 마음에 들었기 때문이다.</p>
-
-<p>이상하게도 한국어로 된 블로그 테마로 clean blog theme을 적용한 블로그는 많이 찾아보지 못했다. 외국에서는 꽤나 많이 사용하는 것 같은데…</p>
-
-<p>아무튼 이 clean blog 테마를 혹시라도 사용하려는 사람들을 위해서- 이 테마를 커스터마이징 하면서(아직 다 완성되지는 않았지만)내 나름대로 오류 해결 및 설치 방법을 공유하고자 한다.</p>]]></content><author><name>ash tensor</name></author><category term="깃허브" /><summary type="html"><![CDATA[깃허브 블로그 지킬 테마 적용법(clean blog theme)]]></summary></entry></feed>
+<p>끝!</p>]]></content><author><name>ash tensor</name></author><category term="깃허브" /><summary type="html"><![CDATA[troubleshooting]]></summary></entry></feed>
