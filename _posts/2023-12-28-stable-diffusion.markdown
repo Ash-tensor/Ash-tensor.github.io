@@ -5,7 +5,7 @@ title: "[AI 그림]프롬프트의 한계점 - 올바른 프롬프트 작성하�
 subtitle: bing ai 및 stable diffusion이 프롬프트를 어떻게 해석하는가
 description: ml, ai
 date: 2023-12-28
-categories: ML, AI그림
+categories: ML AI그림
 background: '/img/posts/06.jpg'
 ---
 

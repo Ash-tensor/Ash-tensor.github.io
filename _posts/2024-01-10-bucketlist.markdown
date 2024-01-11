@@ -1,7 +1,7 @@
 ---
 layout: post
 comments: true
-title: "[HTML/JAVASCRIPT] 간단한 버켓리스트 페이지 제작"
+title: "[HTML/JAVASCRIPT] 아주 간단한 버켓리스트 페이지 제작"
 subtitle: 
 description: 
 date: 2024-01-10
@@ -15,11 +15,13 @@ background: '/img/port.jpg'
 
 # 완성된 버켓리스트
 
+
 <iframe src="https://ash-tensor.github.io/bucketlist/" width="100%" height="800"></iframe>
 
 기능이라고 할 것도 없이 간단한데, 클릭을 하면 완료 도장이 찍히는 것이다. 
 
 ## 코드
+
 
     <!DOCTYPE html>
     <html>
