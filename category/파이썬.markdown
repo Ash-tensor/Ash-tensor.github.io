@@ -1,0 +1,6 @@
+---
+layout: category
+title: 파이썬
+description: 파이썬 📁카테고리. 파이썬으로 문제를 풀이하고 정리한 카테고리입니다.
+background: '/img/bg-category.jpg'
+---

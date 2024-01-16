@@ -27,10 +27,14 @@ layout: default
           </span>
 
 <!-- 카테고리를 추가하는 코드 -->
+            <a>
+            
+              카테고리
+            <a>
 
           <div>
             {% for category in page.categories %}
-              <a href="{{ site.url }}/category/{{ category }}.html" style="color: white;">카테고리📁: {{ category }}</a>
+              <a href="{{ site.url }}/category/{{ category }}.html" style="color: white;">📁{{ category }}</a>
             {% endfor %}
           </div>
 
@@ -47,10 +51,13 @@ layout: default
     <div class="col-lg-8 col-md-10 mx-auto">
 
 <!-- 본문 카테고리를 추가하는 코드 -->
+            <a>
+              카테고리 링크
+            <a>
 
           <div>
             {% for category in page.categories %}
-              <a href="{{ site.url }}/category/{{ category }}.html" style="color: black;">카테고리:📁 {{ category }}</a>
+              <a href="{{ site.url }}/category/{{ category }}.html" style="color: black;">📁 {{ category }}</a>
             {% endfor %}
           </div>
           
