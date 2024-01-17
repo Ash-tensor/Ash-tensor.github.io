@@ -11,7 +11,7 @@ background: '/img/port.jpg'
 
 ## 동일 카테고리의 최근 글 기능
 
-<img src="/img/posts/clean-blog-setup/18.PNG" style="width: 80%">
+<img src="/img/posts/clean-blog-setup/18.png" style="width: 80%">
 
 사진을 보면 이해가 아주 쉬울텐데
 티스토리 블로그나 네이버 블로그 모두, 블로그 하단부에는 최근 동일 카테고리의 글 몇개를 보여주는 기능이 존재한다(정확히 무슨 이름인지는 모르겠다). 상황에 따라 전부 보여주기도 하고, 최근 글 몇개만 보여주기도 한다. 아마 잘은 모르겠지만 blogger나 wordpress 모두 동일할 것이다. 나도 그런 블로그에 익숙해서인지 모르겠지만 NavBar에 카테고리를 추가하기도 하고, 헤더 부분과 본문에 카테고리 링크를 표시하는 기능을 추가하기도 했는데 아무리 그래도 이 기능이 없으면 허전하다고 느껴서 리퀴드 / html에 익숙해지기도 했고 해서, 이렇게 추가하게 되었다.
@@ -56,7 +56,7 @@ post.markdown 파일을 수정하면 된다. 나는 댓글창 위에 있는게 �
 
 지킬에서 사용하는 리퀴드 언어에서는 assign을 이용해서 변수를 할당한다. 이건 자바스크립트와 조금 비슷한 것 같다. 그래서 코드를 살펴보면  firstCategory라는 변수에 page의 categories의 첫번째 카테고리를 할당한다. 여기서 page.categories라는 리스트는 프론트매터의 categoris: xxx에 해당하는 부분이다. 
 
-<img src="/img/posts/clean-blog-setup/19.PNG" style="width: 80%">
+<img src="/img/posts/clean-blog-setup/19.png" style="width: 80%">
 
 바로 이 부분.
 
