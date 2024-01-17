@@ -8,15 +8,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>
-    [JAVA] 예외처리 - throw, throws, throwable - Tensor Studio
+    [자바][자료구조] T 메모리구조 - Tensor Studio
     
   </title>
 
-  <meta name="description" content="예외처리">
-  <meta property="og:description" content="예외처리">
+  <meta name="description" content="[자바][자료구조] T 메모리구조">
+  <meta property="og:description" content="[자바][자료구조] T 메모리구조">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="[JAVA] 예외처리 - throw, throws, throwable">
-  <meta property="og:url" content="https://ash-tensor.github.io/java/2024/01/08/exception.html">
+  <meta property="og:title" content="[자바][자료구조] T 메모리구조">
+  <meta property="og:url" content="https://ash-tensor.github.io/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/tMemoryJava.html">
 
   
     <meta property="og:image" content="https://ash-tensor.github.io/img/port.jpg"/>
@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/java/2024/01/08/exception.html">
+  <link rel="canonical" href="http://localhost:4000/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/tMemoryJava.html">
   <link rel="alternate" type="application/rss+xml" title="Tensor Studio" href="/feed.xml">
 
 </head>
@@ -75,15 +75,13 @@
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="post-heading">
-          <h1>[JAVA] 예외처리 - throw, throws, throwable</h1>
-          
-          <h2 class="subheading">Checked Error - Unchecked Error</h2>
+          <h1>[자바][자료구조] T 메모리구조</h1>
           
           <span class="meta">Posted by
             <a href="#">ash tensor</a>
-            on January 08, 2024 &middot; <span class="reading-time" title="Estimated read time">
+            on January 17, 2024 &middot; <span class="reading-time" title="Estimated read time">
   
-   4 mins  read </span>
+   3 mins  read </span>
 
           </span>
 
@@ -96,6 +94,8 @@
           <div>
             
               <a href="http://localhost:4000/category/JAVA.html" style="color: white;">📁JAVA</a>
+            
+              <a href="http://localhost:4000/category/자료구조.html" style="color: white;">📁자료구조</a>
             
           </div>
 
@@ -120,134 +120,79 @@
             
               <a href="http://localhost:4000/category/JAVA.html" style="color: black;">📁 JAVA</a>
             
+              <a href="http://localhost:4000/category/자료구조.html" style="color: black;">📁 자료구조</a>
+            
           </div>
           
 <!-- 본문 카테고리를 추가하는 코드 -->
 
-      <h1 id="예외처리">예외처리</h1>
+      <h1 id="자바자료구조-t-메모리구조">[자바][자료구조] T 메모리구조</h1>
 
-<p>자바는 솔직히 예외처리를 아주 빡빡하게 처리하는 언어다. 다른 언어들이 특정 예외가 일어났을 때를 열거해서 (divideByZero error, Stack overflow error 등) 제외하는 것에 비해서 조금은 특이하다.</p>
+<p><img src="/img/posts/JAVA/TMemorySample.png" style="display: block; margin-left: auto; margin-right: auto; width: 100%" /></p>
 
-<p>물론 C 처럼 예외 처리를 아예 강제하지 않는 언어와 비교하려는 것은 아니다. Python이나 C++, C# 모두 try - catch - finally와 같은 예외 처리를 지원하고, 자바와 사용되는 예약어만 다들 뿐 그 궤는 비슷하다.</p>
+<h2 id="mainjava">Main.java</h2>
 
-<p>하지만 널리 사용되는 언어인 Javascript와 Python에 비교해 봐도, 자바처럼 Checked 에러와 Unchecked 에러를 나눠서 구현을 강제해서 구분하는 언어는 충분히 드물다고 할 수 있다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">tmemorysample</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
 
-<h2 id="checked-error---unchecked-error">Checked Error - Unchecked Error</h2>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">SAMPLE_INTEGER_A</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
+    <span class="kd">static</span> <span class="kt">int</span> <span class="no">SAMPLE_INTEGER_B</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class ExceptionExample {
-    // 예외를 던질 수 있는 메서드
-    public void methodWithThrows() throws CustomException { &lt;&lt; 에러 열거
-        System.out.println("메서드에서 예외를 던집니다.");
-        throw new CustomException("Custom 예외 발생");
-    }
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">fact</span><span class="o">(</span><span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">target</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">target</span> <span class="o">*</span> <span class="n">fact</span><span class="o">(</span><span class="n">target</span><span class="o">-</span><span class="mi">1</span><span class="o">);</span>
+            <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
 
-    // 호출하는 코드
-    public static void main(String[] args) {
-        ExceptionExample example = new ExceptionExample();
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">sample</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">sample</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="no">SAMPLE_INTEGER_A</span><span class="o">);</span>
+        <span class="n">sample</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="no">SAMPLE_INTEGER_B</span><span class="o">);</span>
 
-        try {
-            example.methodWithThrows();
-        } catch (CustomException e) {   &lt;&lt; 열거한 에러 처리
-            System.out.println("예외를 처리합니다: " + e.getMessage());
-        }
-    }
-}
+        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="nc">SolveA</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">sample</span><span class="o">);</span>
 
-// CustomException 정의
-class CustomException extends Exception {
-    public CustomException(String message) {
-        super(message);
-    }
-}
+        <span class="nc">SolveB</span> <span class="n">solveB</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SolveB</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="n">solveB</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">sample</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">&gt;=</span> <span class="no">SAMPLE_INTEGER_A</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">fact</span><span class="o">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">));</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="kd">class</span> <span class="nc">SolveA</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">add</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">a</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">a</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">answer</span> <span class="o">+=</span> <span class="n">a</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 </code></pre></div></div>
 
-<p>여기서 세번째 라인의 throws가 바로 Checked Error를 열거하는 예약어다. 보통 throws 키워드를 설명할 때</p>
+<h2 id="solvebjava">SolveB.java</h2>
 
-<blockquote>
-  <blockquote>
-    <p>[Throws 키워드는 메소드 선언부 끝에 작성되어 메소드에서 처리하지 않은 예외를 호출한 곳으로 떠넘기는 역할을 합니다.]</p>
-  </blockquote>
-</blockquote>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">package</span> <span class="nn">tmemorysample</span><span class="o">;</span>
 
-<p>라고 설명하는데, 이 말을 처음 들을 때 이해가 쉽지는 않다(고 생각한다).</p>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
 
-<p>throws 키워드는 Checked Error를 열거하는 예약어로, 만약 이 메소드를 호출하는 메소드가 있다면 무조건 예외처리를 해야 컴파일이 가능하다는 뜻이다.</p>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SolveB</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">add</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">a</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">a</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">answer</span> <span class="o">+=</span> <span class="n">a</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
 
-<p>즉 위 예시 코드로 설명해 보자면, 예외를 던질 수 있는 메서드에서 customException을 throws 예약어로 열거했으므로 //호출하는 코드 부분에서 무조건적으로</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>catch(CustomException e)
 </code></pre></div></div>
-
-<p>부분이 없으면 실행을 아예 거부해버린다.</p>
-
-<p><img src="/img/posts/JAVA/throws.PNG" style="width: 80%" /></p>
-
-<p>이런식으로.</p>
-
-<h2 id="throws가-없는-프로그램">throws가 없는 프로그램</h2>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class ExceptionExample {
-    public void methodWithoutThrows() {
-        System.out.println("예외 테스트");
-        ExceptionExample example = new ExceptionExample();
-        example.methodWithoutThrows();
-    }
-
-    // 호출하는 코드
-    public static void main(String[] args) {
-        ExceptionExample example = new ExceptionExample();
-        example.methodWithoutThrows();
-        }
-    }
-</code></pre></div></div>
-
-<p>throws를 제거한 코드다. try - catch 문이 없어도 문제 없이 컴파일 가능한 모습을 볼 수 있다. methodWithoutThrows는 예외를 던지지 않으므로 호출하는 코드에서는 예외 처리를 할 필요가 없다.</p>
-
-<p>이렇게 throws를 사용하면 메서드를 사용하는 측에게 어떤 예외가 발생할 수 있는지 명시함으로써 명확한 예외 처리를 유도할 수 있다… 곤 하지만, 솔직히 아무리 문법적으로 강제해도 제대로 하지 않을 사람은 안 한다. 아예 JVM으로 에러를 던져버리는 것이다.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// main 메소드 throws
-
-public class Example {
-    public static void main(String[] args) throws Exception {
-        // 예외가 발생할 수 있는 코드
-    }
-}
-</code></pre></div></div>
-
-<p>이런 식으로, main 메소드에서 throws를 사용하는 것은 에러를 JVM에게 전가한다는 뜻이다. Main 메소드보다 더 상위의 메소드는 JVM밖에는 없기에, 에러를 던져도 JVM은 에러 메시지만 출력하고 프로그램을 종료한다.</p>
-
-<p>main 메서드에서 throws를 사용할 때는 주로 런타임 예외인 RuntimeException 또는 Exception과 같은 일반적인 예외를 사용하며, 이를 통해 예외 처리를 뒷단으로 미루는 경우가 있다.</p>
-
-<blockquote>
-  <blockquote>
-    <p>[throws &lt;unchecked exception(runtime exception)&gt; 키워드가 붙어있는 메서드는 꼭 try 블록 내부에서 호출되지 않더라도 컴파일이 됩니다. 하지만 매우 문제가 있는 코드입니다.]</p>
-  </blockquote>
-</blockquote>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// RuntimeException throws
-
-public class Example {
-    // 예외를 던질 수 있는 메서드
-    public static void methodWithThrows() throws RuntimeException {
-        System.out.println("메서드에서 예외를 던집니다.");
-        throw new RuntimeException("런타임 예외 발생");
-    }
-
-    // 호출하는 코드
-    public static void main(String[] args) {
-        // 메서드 호출 시 try-catch 블록 없음
-        methodWithThrows();
-        
-        // 아래 코드는 실행되지 않음 (Unreachable code 에러 발생)
-        System.out.println("메서드 호출 후의 코드");
-    }
-}
-</code></pre></div></div>
-
-<p>위의 코드에서 methodWithThrows는 RuntimeException을 던질 수 있는데, 호출하는 main 메서드에서는 해당 예외를 처리하는 try-catch 블록이 없다. 그러나 컴파일은 문제없이 진행된다.</p>
-
-<p>하지만 실행 시에는 methodWithThrows에서 발생한 예외가 main 메서드로 전파되어, “Unreachable code” 에러가 발생하면서 프로그램이 비정상적으로 종료된다.</p>
-
 
 
       <hr>
@@ -261,7 +206,7 @@ public class Example {
     <div>
 
       <a
-          href="https://www.linkedin.com/sharing/share-offsite?url=https://ash-tensor.github.io/java/2024/01/08/exception.html"
+          href="https://www.linkedin.com/sharing/share-offsite?url=https://ash-tensor.github.io/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/tMemoryJava.html"
           onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
           class="d-inline-block mr-2"
        >
@@ -272,7 +217,7 @@ public class Example {
       </a>
 
       <a
-          href="https://twitter.com/intent/tweet?text=[JAVA] 예외처리 - throw, throws, throwable&url=https://ash-tensor.github.io/java/2024/01/08/exception.html"
+          href="https://twitter.com/intent/tweet?text=[자바][자료구조] T 메모리구조&url=https://ash-tensor.github.io/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/tMemoryJava.html"
           onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
           class="d-inline-block mr-2">
         <span class="fa-stack fa-lg" style="color: #1DA1F2;">
@@ -282,7 +227,7 @@ public class Example {
       </a>
 
       <a
-          href="http://www.reddit.com/submit?url=https://ash-tensor.github.io/java/2024/01/08/exception.html"
+          href="http://www.reddit.com/submit?url=https://ash-tensor.github.io/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/tMemoryJava.html"
           onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
           class="d-inline-block mr-2">
         <span class="fa-stack fa-lg" style="color: #FF4500;">
@@ -416,12 +361,9 @@ public class Example {
 <!-- 코멘트 란을 추가하는 코드 -->
 
         
-        <a class="btn btn-primary float-left" href="/java/2024/01/07/interface.html" data-toggle="tooltip" data-placement="top" title="[JAVA] 인터페이스와 추상클래스의 차이">&larr; Previous<span class="d-none d-md-inline">
+        <a class="btn btn-primary float-left" href="/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany.html" data-toggle="tooltip" data-placement="top" title="[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)">&larr; Previous<span class="d-none d-md-inline">
             Post</span></a>
         
-        
-        <a class="btn btn-primary float-right" href="/web/2024/01/10/bucketlist.html" data-toggle="tooltip" data-placement="top" title="[HTML/JAVASCRIPT] 아주 간단한 버켓리스트 페이지 제작">Next<span class="d-none d-md-inline">
-            Post</span> &rarr;</a>
         
 
       </div>

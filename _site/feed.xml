@@ -1,4 +1,140 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-01-17T17:22:50+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)</title><link href="http://localhost:4000/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany.html" rel="alternate" type="text/html" title="[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)" /><published>2024-01-17T00:00:00+09:00</published><updated>2024-01-17T00:00:00+09:00</updated><id>http://localhost:4000/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany</id><content type="html" xml:base="http://localhost:4000/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany.html"><![CDATA[<h1 id="백준ps-회사에-있는-사람--실버-5자료구조">[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-01-17T17:46:42+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[자바][자료구조] T 메모리구조</title><link href="http://localhost:4000/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/tMemoryJava.html" rel="alternate" type="text/html" title="[자바][자료구조] T 메모리구조" /><published>2024-01-17T00:00:00+09:00</published><updated>2024-01-17T00:00:00+09:00</updated><id>http://localhost:4000/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/tMemoryJava</id><content type="html" xml:base="http://localhost:4000/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/tMemoryJava.html"><![CDATA[<h1 id="자바자료구조-t-메모리구조">[자바][자료구조] T 메모리구조</h1>
+
+<p><img src="/img/posts/JAVA/TMemorySample.png" style="display: block; margin-left: auto; margin-right: auto; width: 100%" /></p>
+
+<h2 id="mainjava">Main.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">tmemorysample</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">SAMPLE_INTEGER_A</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
+    <span class="kd">static</span> <span class="kt">int</span> <span class="no">SAMPLE_INTEGER_B</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">fact</span><span class="o">(</span><span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">target</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">target</span> <span class="o">*</span> <span class="n">fact</span><span class="o">(</span><span class="n">target</span><span class="o">-</span><span class="mi">1</span><span class="o">);</span>
+            <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">sample</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">sample</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="no">SAMPLE_INTEGER_A</span><span class="o">);</span>
+        <span class="n">sample</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="no">SAMPLE_INTEGER_B</span><span class="o">);</span>
+
+        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="nc">SolveA</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">sample</span><span class="o">);</span>
+
+        <span class="nc">SolveB</span> <span class="n">solveB</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SolveB</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="n">solveB</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">sample</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">&gt;=</span> <span class="no">SAMPLE_INTEGER_A</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">fact</span><span class="o">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">));</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="kd">class</span> <span class="nc">SolveA</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">add</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">a</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">a</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">answer</span> <span class="o">+=</span> <span class="n">a</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="solvebjava">SolveB.java</h2>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">package</span> <span class="nn">tmemorysample</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SolveB</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">add</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">a</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">a</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">answer</span> <span class="o">+=</span> <span class="n">a</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="JAVA" /><category term="자료구조" /><summary type="html"><![CDATA[[자바][자료구조] T 메모리구조]]></summary></entry><entry><title type="html">[깃허브 블로그] 동일 카테고리의 최근 글 기능 개발(clean blog theme)</title><link href="http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2024/01/17/bottom-category-build.html" rel="alternate" type="text/html" title="[깃허브 블로그] 동일 카테고리의 최근 글 기능 개발(clean blog theme)" /><published>2024-01-17T00:00:00+09:00</published><updated>2024-01-17T00:00:00+09:00</updated><id>http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2024/01/17/bottom-category-build</id><content type="html" xml:base="http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2024/01/17/bottom-category-build.html"><![CDATA[<h2 id="동일-카테고리의-최근-글-기능">동일 카테고리의 최근 글 기능</h2>
+
+<p><img src="/img/posts/clean-blog-setup/18.png" style="display: block; margin-left: auto; margin-right: auto; width: 80%" /></p>
+
+<p>사진을 보면 이해가 아주 쉬울텐데
+티스토리 블로그나 네이버 블로그 모두, 블로그 하단부에는 최근 동일 카테고리의 글 몇개를 보여주는 기능이 존재한다(정확히 무슨 이름인지는 모르겠다). 상황에 따라 전부 보여주기도 하고, 최근 글 몇개만 보여주기도 한다. 아마 잘은 모르겠지만 blogger나 wordpress 모두 동일할 것이다. 나도 그런 블로그에 익숙해서인지 모르겠지만 NavBar에 카테고리를 추가하기도 하고, 헤더 부분과 본문에 카테고리 링크를 표시하는 기능을 추가하기도 했는데 아무리 그래도 블로그에 이 기능이 없으면 허전하다고 느꼈고, 리퀴드 / html에 익숙해지기도 했고 해서, 이렇게 추가하게 되었다.</p>
+
+<h3 id="코드">코드</h3>
+
+<p>post.markdown 파일을 수정하면 된다. 나는 댓글창 위에 있는게 편해서 if page.comments 부분 위에 추가했는데 본인이 불편하지 않은 곳 어디든 추가하면 된다. 당연히 기존 코드 구조를 해치지 않는 선에서.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+&lt;ul class="row mb-5 "&gt;
+{% assign firstCategory = page.categories | first %}
+&lt;p&gt;
+    &lt;a style= "font-size: 20px; font-weight: bold;" href= "{{ site.url }}/category/{{ firstCategory }}.html"&gt;
+    {{ firstCategory }} 카테고리의 다른 글
+    &lt;/a&gt;
+&lt;/p&gt;
+{% assign posts = site.categories[firstCategory] | sort: 'date' | reverse | limit: 5 %}
+{% assign counter = 0 %}
+{% for post in posts %}
+    {% if counter &lt; 5 %}
+    
+    &lt;li&gt;
+        &lt;h3&gt;
+        &lt;a href="{{ site.baseurl }}{{ post.url }}" style= "font-size: 20px;"&gt;
+            {{ post.title }}
+        &lt;/a&gt;
+        &lt;small style= "font-size: 20px;"&gt;{{ post.date | date_to_string }}&lt;/small&gt;
+        &lt;/h3&gt;
+    &lt;/li&gt;
+    {% assign counter = counter | plus: 1 %}
+    {% endif %}
+{% endfor %}
+&lt;/ul&gt;
+
+
+</code></pre></div></div>
+
+<h3 id="설명">설명</h3>
+
+<p>지킬에서 사용하는 리퀴드 언어에서는 assign을 이용해서 변수를 할당한다. 이건 자바스크립트와 조금 비슷한 것 같다. 그래서 코드를 살펴보면  firstCategory라는 변수에 page의 categories의 첫번째 카테고리를 할당한다. 여기서 page.categories라는 리스트는 프론트매터의 categoris: xxx에 해당하는 부분이다.</p>
+
+<p><img src="/img/posts/clean-blog-setup/19.png" style="display: block; margin-left: auto; margin-right: auto; width: 80%" /></p>
+
+<p>바로 이 부분.</p>
+
+<p>당연하겠지만 이 기능은 첫번째 카테고리의 내용만을 표시한다. 카테고리에는 여러개의 카테고리를 할당할 수는 있지만 보여주는건 하나뿐이다. 아무래도 여러개를 보여주면 너무 헷갈리지 않을까 싶어서 이렇게 설정했다. 리퀴드에서는 파이썬의 for문과 똑같이 for x in xlist 구조의 향상된 순회가 가능하다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign posts = site.categories[firstCategory] | sort: 'date' | reverse | limit: 5 %}
+{% assign counter = 0 %}
+{% for post in posts %}
+    {% if counter &lt; 5 %}
+    
+    &lt;li&gt;
+        &lt;h3&gt;
+        &lt;a href="{{ site.baseurl }}{{ post.url }}" style= "font-size: 20px;"&gt;
+            {{ post.title }}
+        &lt;/a&gt;
+        &lt;small style= "font-size: 20px;"&gt;{{ post.date | date_to_string }}&lt;/small&gt;
+        &lt;/h3&gt;
+    &lt;/li&gt;
+    {% assign counter = counter | plus: 1 %}
+    {% endif %}
+{% endfor %}
+</code></pre></div></div>
+
+<p>그리고 위 부분에서는 예전에 카테고리를 만들때 사용했던 코드를 응용했는데, 이해가 가지 않았던 점은 분명 <strong>limit: 5</strong>를 설정했는데 어떻게 해도 5개 이상으로 표시가 되어서 GPT에게도 물어봤지만 “코드는 정확해, 아무런 문제도 없어.” 라는 대답만 들을 수 있었다. 왜 그런지 잘 모르겠는데, 정렬 문제인가 싶어서 여러번 설정을 바꿔봤지만 그 문제는 아닌 것 같다. 어쩔 수 없이 그냥 for 문에 카운터를 설정해서 5개만 표시되도록 코드를 수정했다. « 이유 아는 사람 있으면 알려주시길</p>
+
+<p>아무튼 수정한 결과 이 문단의 바로 아랫부분에 나오는 페이지를 완성할 수 있었다! CSS 스타일을 내가 처음부터 직접 만든 게 아니라 상당히 투박하기도 하고 모바일에서 어떻게 나올지는 잘 모르겠지만 일단 작동은 하긴 하니까, 여기에서 마무리 지어야겠다.</p>]]></content><author><name>ash tensor</name></author><category term="깃허브" /><summary type="html"><![CDATA[동일 카테고리의 최근 글 기능]]></summary></entry><entry><title type="html">[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)</title><link href="http://localhost:4000/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany.html" rel="alternate" type="text/html" title="[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)" /><published>2024-01-17T00:00:00+09:00</published><updated>2024-01-17T00:00:00+09:00</updated><id>http://localhost:4000/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany</id><content type="html" xml:base="http://localhost:4000/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany.html"><![CDATA[<h1 id="백준ps-회사에-있는-사람--실버-5자료구조">[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)</h1>
 
 <h2 id="문제-설명">문제 설명</h2>
 
@@ -95,77 +231,7 @@
         <span class="o">}</span>
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="PS" /><category term="백준" /><category term="JAVA" /><category term="자료구조" /><summary type="html"><![CDATA[[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)]]></summary></entry><entry><title type="html">[깃허브 블로그] 동일 카테고리의 최근 글 기능 개발(clean blog theme)</title><link href="http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2024/01/17/bottom-category-build.html" rel="alternate" type="text/html" title="[깃허브 블로그] 동일 카테고리의 최근 글 기능 개발(clean blog theme)" /><published>2024-01-17T00:00:00+09:00</published><updated>2024-01-17T00:00:00+09:00</updated><id>http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2024/01/17/bottom-category-build</id><content type="html" xml:base="http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2024/01/17/bottom-category-build.html"><![CDATA[<h2 id="동일-카테고리의-최근-글-기능">동일 카테고리의 최근 글 기능</h2>
-
-<p><img src="/img/posts/clean-blog-setup/18.PNG" style="width: 80%" /></p>
-
-<p>사진을 보면 이해가 아주 쉬울텐데
-티스토리 블로그나 네이버 블로그 모두, 블로그 하단부에는 최근 동일 카테고리의 글 몇개를 보여주는 기능이 존재한다(정확히 무슨 이름인지는 모르겠다). 상황에 따라 전부 보여주기도 하고, 최근 글 몇개만 보여주기도 한다. 아마 잘은 모르겠지만 blogger나 wordpress 모두 동일할 것이다. 나도 그런 블로그에 익숙해서인지 모르겠지만 NavBar에 카테고리를 추가하기도 하고, 헤더 부분과 본문에 카테고리 링크를 표시하는 기능을 추가하기도 했는데 아무리 그래도 이 기능이 없으면 허전하다고 느껴서 리퀴드 / html에 익숙해지기도 했고 해서, 이렇게 추가하게 되었다.</p>
-
-<h3 id="코드">코드</h3>
-
-<p>post.markdown 파일을 수정하면 된다. 나는 댓글창 위에 있는게 편해서 if page.comments 부분 위에 추가했는데 본인이 불편하지 않은 곳 어디든 추가하면 된다. 당연히 기존 코드 구조를 해치지 않는 선에서.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-&lt;ul class="row mb-5 "&gt;
-{% assign firstCategory = page.categories | first %}
-&lt;p&gt;
-    &lt;a style= "font-size: 20px; font-weight: bold;" href= "{{ site.url }}/category/{{ firstCategory }}.html"&gt;
-    {{ firstCategory }} 카테고리의 다른 글
-    &lt;/a&gt;
-&lt;/p&gt;
-{% assign posts = site.categories[firstCategory] | sort: 'date' | reverse | limit: 5 %}
-{% assign counter = 0 %}
-{% for post in posts %}
-    {% if counter &lt; 5 %}
-    
-    &lt;li&gt;
-        &lt;h3&gt;
-        &lt;a href="{{ site.baseurl }}{{ post.url }}" style= "font-size: 20px;"&gt;
-            {{ post.title }}
-        &lt;/a&gt;
-        &lt;small style= "font-size: 20px;"&gt;{{ post.date | date_to_string }}&lt;/small&gt;
-        &lt;/h3&gt;
-    &lt;/li&gt;
-    {% assign counter = counter | plus: 1 %}
-    {% endif %}
-{% endfor %}
-&lt;/ul&gt;
-
-
-</code></pre></div></div>
-
-<h3 id="설명">설명</h3>
-
-<p>지킬에서 사용하는 리퀴드 언어에서는 assign을 이용해서 변수를 할당한다. 이건 자바스크립트와 조금 비슷한 것 같다. 그래서 코드를 살펴보면  firstCategory라는 변수에 page의 categories의 첫번째 카테고리를 할당한다. 여기서 page.categories라는 리스트는 프론트매터의 categoris: xxx에 해당하는 부분이다.</p>
-
-<p><img src="/img/posts/clean-blog-setup/19.PNG" style="width: 80%" /></p>
-
-<p>바로 이 부분.</p>
-
-<p>당연하겠지만 이 기능은 첫번째 카테고리의 내용만을 표시한다. 카테고리에는 여러개의 카테고리를 할당할 수는 있지만 보여주는건 하나뿐이다. 아무래도 여러개를 보여주면 너무 헷갈리지 않을까 싶어서 이렇게 설정했다. 리퀴드에서는 파이썬의 for문과 똑같이 for x in xlist 구조의 향상된 순회가 가능하다.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign posts = site.categories[firstCategory] | sort: 'date' | reverse | limit: 5 %}
-{% assign counter = 0 %}
-{% for post in posts %}
-    {% if counter &lt; 5 %}
-    
-    &lt;li&gt;
-        &lt;h3&gt;
-        &lt;a href="{{ site.baseurl }}{{ post.url }}" style= "font-size: 20px;"&gt;
-            {{ post.title }}
-        &lt;/a&gt;
-        &lt;small style= "font-size: 20px;"&gt;{{ post.date | date_to_string }}&lt;/small&gt;
-        &lt;/h3&gt;
-    &lt;/li&gt;
-    {% assign counter = counter | plus: 1 %}
-    {% endif %}
-{% endfor %}
-</code></pre></div></div>
-
-<p>그리고 위 부분에서는 예전에 카테고리를 만들때 사용했던 코드를 응용했는데, 이해가 가지 않았던 점은 분명 <strong>limit: 5</strong>를 설정했는데 어떻게 해도 5개 이상으로 표시가 되어서 GPT에게도 물어봤지만 “코드는 정확해, 아무런 문제도 없어.” 라는 대답만 들을 수 있었다. 왜 그런지 잘 모르겠는데, 정렬 문제인가 싶어서 여러번 설정을 바꿔봤지만 그 문제는 아닌 것 같다. 어쩔 수 없이 그냥 for 문에 카운터를 설정해서 5개만 표시되도록 코드를 수정했다. « 이유 아는 사람 있으면 알려주시길</p>
-
-<p>아무튼 수정한 결과 이 문단의 바로 아랫부분에 나오는 페이지를 완성할 수 있었다! CSS 스타일을 내가 처음부터 직접 만든 게 아니라 상당히 투박하기도 하고 모바일에서 어떻게 나올지는 잘 모르겠지만 일단 작동은 하긴 하니까, 여기에서 마무리 지어야겠다.</p>]]></content><author><name>ash tensor</name></author><category term="깃허브" /><summary type="html"><![CDATA[동일 카테고리의 최근 글 기능]]></summary></entry><entry><title type="html">[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)</title><link href="http://localhost:4000/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber.html" rel="alternate" type="text/html" title="[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)" /><published>2024-01-16T00:00:00+09:00</published><updated>2024-01-16T00:00:00+09:00</updated><id>http://localhost:4000/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber</id><content type="html" xml:base="http://localhost:4000/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber.html"><![CDATA[<h1 id="프로그래머스ps-타겟-넘버--level-2-dp-풀이">[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)</h1>
+</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="PS" /><category term="백준" /><category term="JAVA" /><category term="자료구조" /><summary type="html"><![CDATA[[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)]]></summary></entry><entry><title type="html">[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)</title><link href="http://localhost:4000/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber.html" rel="alternate" type="text/html" title="[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)" /><published>2024-01-16T00:00:00+09:00</published><updated>2024-01-16T00:00:00+09:00</updated><id>http://localhost:4000/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber</id><content type="html" xml:base="http://localhost:4000/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber.html"><![CDATA[<h1 id="프로그래머스ps-타겟-넘버--level-2-dp-풀이">[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)</h1>
 
 <h2 id="문제-설명">문제 설명</h2>
 
@@ -1648,65 +1714,4 @@ public class Engineer {
 
 <p>이런 문제였다. 여기서는 7번 라인, <strong>return name</strong> 부분에서 에러가 나는데, 이는 get()이라는 메서드가 static 메서드이기 때문에, 2번 라인에서 선언된 private String name 이라는 인스턴스 변수를 참조할 수 없기 때문에 에러가 나는 것이다.</p>
 
-<p>어디서 에러가 날 지 찾으라는 문제가 나올 거라고는 생각을 하지 못해서 시험장에서 꽤 당황했었던 기억이 난다.</p>]]></content><author><name>ash tensor</name></author><category term="JAVA" /><summary type="html"><![CDATA[PSVM]]></summary></entry><entry><title type="html">[CS] 2의 보수</title><link href="http://localhost:4000/cs/2024/01/02/binary.html" rel="alternate" type="text/html" title="[CS] 2의 보수" /><published>2024-01-02T00:00:00+09:00</published><updated>2024-01-02T00:00:00+09:00</updated><id>http://localhost:4000/cs/2024/01/02/binary</id><content type="html" xml:base="http://localhost:4000/cs/2024/01/02/binary.html"><![CDATA[<h1 id="2의-보수">2의 보수</h1>
-
-<p>논리회로나 컴퓨터 구조 과목에서 2의 보수를 다루지 않고 넘어가는 건 있을 수 없다. 보통 이진수의 음수를 다루는 데 있어서 언급이 되곤 하는데, 비트를 NOT 연산한 후에 + 1 을 하면 얻을 수 있다고 배운다. 2의 보수는 부호가 붙은 정수를 표현하는데 있어서 가장 널리 쓰이는 방법이다.</p>
-
-<h2 id="구하는-법">구하는 법</h2>
-
-<p>앞서 설명한 대로 비트를 NOT 연산한 후에 + 1 을 하면 2의 보수가 된다. 즉</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 1111(2) 의 보수는
- 0001(2) 가 된다.
-</code></pre></div></div>
-
-<h2 id="보수">보수</h2>
-
-<p>1의 보수와 2의 보수가 대표적으로, 더해서 각 목표가 되는 수를 말하는데, 논리회로에서 음수를 표현하는 방법으로는 부호 절대값과 1의 보수, 2의 보수, 3가지 정도로 나뉜다. 하지만 선술했듯 부호가 붙은 정수를 표현하는데 가장 널리 쓰이는 방법이 바로 2의 보수인데</p>
-
-<ol>
-  <li>이는 2의 보수가 1의 보수보다 하나의 수를 더 표시할 수 있고</li>
-  <li>회로가 가장 간편해지기 때문이다.</li>
-</ol>
-
-<p>2의 보수가 1의 보수보다 하나의 수를 더 표시할 수 있는 이유는 같은 비트를 사용한다고 할 때, 0을 표시하는 방법이 1의 보수는 두 가지 경우이기 때문이다. 예를 들어 보겠다.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>num0 =  0000 0000(2) ## 바이트 0
-num1 =  1111 1111(2) ## num0의 1의 보수
-num2 = 10000 0000(2) ## num1의 2의 보수
-</code></pre></div></div>
-
-<p>1의 보수에는 0을 두가지로 표현하게 된다. 그렇기 때문에 1바이트당 1의 보수인 경우에는 -127 ~ +127 까지 표현할 수 있지만, 2의 보수인 경우 -128 ~ 127까지 계산할 수 있다. 1111 1111, 즉 -128이 포함되는 것이다.</p>
-
-<p>하지만 처음 들었을때 고작 한가지 숫자를 더 표현하겠다고(물론 과거의 컴퓨터는 그 하나의 숫자를 더 표현하는 것이 엄청 중요할 정도로 성능이 빡빡했지만) 2의 보수를 사용한다기 보다는 추가적인 이유가 더 중요하다는 생각이 들었다.</p>
-
-<h2 id="회로의-작성-용이성">회로의 작성 용이성</h2>
-
-<p>부호 절댓값 방법은 절댓값이 작은 수에서 큰 수를 뺄 경우에는 순서를 바꿔서 빼야된다는 추가적인 방법이 필요할 뿐만 아니라, 가산기로는 연산할 수 없기 때문에 <strong>뺄셈기</strong>가 추가되어야 한다. 그리고 비트의 낭비가 너무 심하다. 그래서 논리 연산(&gt;, &lt;…)을 할 때 모순이 생기곤 한다.</p>
-
-<p>1의 보수는 그러한 연산을 매우 간편하게 만들어 주는데, 부호와 절댓값을 따로 계산할 필요도 없고 뺄셈기를 사용할 필요 없이 가산기 그대로 사용할 수 있다.</p>
-
-<p>하지만 0000과 1111을 둘 다 0으로 처리해야 하는 회로와, 계산 과정에서 캐리, 즉 올림이 발생했는지를 확인하고 만약 발생했다면 마지막 비트에 1을 추가하는 회로를 구성해야 한다.</p>
-
-<p>예를 들어서</p>
-
-<p>7 - 3 을 하는 간단한 계산을 할 때.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>7(0111)과 -3(1100)의 덧셈에서는 1011이 나오게 되고, 
-이는 보수를 취하게 되면 4이므로 맞다. 
-이는 캐리가 이루어지지 않았기 때문이다.
-하지만 7(0111)과 -1(1110)의 덧셈을 수행하면 
-결과값은 **10101(21)이고 
-오버플로우가 발생했으므로 1을 더해주는 연산을 해주면 0110(6)이다.
-</code></pre></div></div>
-
-<p>하지만 2의 보수에서는 이러한 귀찮은 방법이 필요 없다.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>7(0111)과 -3(1101)의 덧셈에서는 10100이 나오게 되고, 
-2의 보수에서는 오버플로우가 발생한 부분을 버림으로 4가 되서 정답이다. 
-또한 7(0111)과 -1(1111)의 덧셈을 수행하면 
-결과값은 10110이고 
-최상위 비트 1을 버리면 0110(6)으로 정답이다.
-</code></pre></div></div>
-
-<p>이런 간결성 덕분에 2의 보수는 대부분의 컴퓨터 구조에서 음수를 표현하는 방법으로 표현된다.</p>]]></content><author><name>ash tensor</name></author><category term="CS" /><summary type="html"><![CDATA[2의 보수]]></summary></entry></feed>
+<p>어디서 에러가 날 지 찾으라는 문제가 나올 거라고는 생각을 하지 못해서 시험장에서 꽤 당황했었던 기억이 난다.</p>]]></content><author><name>ash tensor</name></author><category term="JAVA" /><summary type="html"><![CDATA[PSVM]]></summary></entry></feed>
