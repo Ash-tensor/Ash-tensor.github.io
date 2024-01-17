@@ -8,18 +8,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>
-    [깃허브 블로그]지킬 블로그 코멘트 기능 추가(clean blog theme) - Tensor Studio
+    [깃허브 블로그] 동일 카테고리의 최근 글 기능 개발(clean blog theme) - Tensor Studio
     
   </title>
 
-  <meta name="description" content="troubleshooting">
-  <meta property="og:description" content="troubleshooting">
+  <meta name="description" content="동일 카테고리의 최근 글 기능">
+  <meta property="og:description" content="동일 카테고리의 최근 글 기능">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="[깃허브 블로그]지킬 블로그 코멘트 기능 추가(clean blog theme)">
-  <meta property="og:url" content="https://ash-tensor.github.io/%EA%B9%83%ED%97%88%EB%B8%8C/2023/12/14/jekyll-blog-theme-3.html">
+  <meta property="og:title" content="[깃허브 블로그] 동일 카테고리의 최근 글 기능 개발(clean blog theme)">
+  <meta property="og:url" content="https://ash-tensor.github.io/%EA%B9%83%ED%97%88%EB%B8%8C/2024/01/17/bottom-category-build.html">
 
   
-    <meta property="og:image" content="https://ash-tensor.github.io/img/posts/06.jpg"/>
+    <meta property="og:image" content="https://ash-tensor.github.io/img/port.jpg"/>
   
 
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2023/12/14/jekyll-blog-theme-3.html">
+  <link rel="canonical" href="http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2024/01/17/bottom-category-build.html">
   <link rel="alternate" type="application/rss+xml" title="Tensor Studio" href="/feed.xml">
 
 </head>
@@ -68,22 +68,20 @@
   <!-- Page Header -->
 
 
-<header class="masthead" style="background-image: url('/img/posts/06.jpg')">
+<header class="masthead" style="background-image: url('/img/port.jpg')">
 
   <div class="overlay"></div>
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="post-heading">
-          <h1>[깃허브 블로그]지킬 블로그 코멘트 기능 추가(clean blog theme)</h1>
-          
-          <h2 class="subheading">disqus를 이용한 clean blog theme 댓글 코멘트 기능 추가</h2>
+          <h1>[깃허브 블로그] 동일 카테고리의 최근 글 기능 개발(clean blog theme)</h1>
           
           <span class="meta">Posted by
             <a href="#">ash tensor</a>
-            on December 14, 2023 &middot; <span class="reading-time" title="Estimated read time">
+            on January 17, 2024 &middot; <span class="reading-time" title="Estimated read time">
   
-   2 mins  read </span>
+   3 mins  read </span>
 
           </span>
 
@@ -124,65 +122,77 @@
           
 <!-- 본문 카테고리를 추가하는 코드 -->
 
-      <h1 id="깃허브-블로그-코멘트-기능-추가clean-blog-theme">깃허브 블로그 코멘트 기능 추가(clean blog theme)</h1>
+      <h2 id="동일-카테고리의-최근-글-기능">동일 카테고리의 최근 글 기능</h2>
 
-<p>블로그에는 기본적으로 댓글 란은 무조건 있어야 한다고 생각한다. 추가하는게 어렵지 않다. 터미널을 두드릴 필요도 없다. 오히려 카테고리 란을 추가하는게 조금 더 어려운 것 같다. 그러면 한번 추가해 보자고!</p>
+<p><img src="/img/posts/clean-blog-setup/18.PNG" style="width: 80%" /></p>
 
-<h2 id="disqus">DISQUS</h2>
+<p>사진을 보면 이해가 아주 쉬울텐데
+티스토리 블로그나 네이버 블로그 모두, 블로그 하단부에는 최근 동일 카테고리의 글 몇개를 보여주는 기능이 존재한다(정확히 무슨 이름인지는 모르겠다). 상황에 따라 전부 보여주기도 하고, 최근 글 몇개만 보여주기도 한다. 아마 잘은 모르겠지만 blogger나 wordpress 모두 동일할 것이다. 나도 그런 블로그에 익숙해서인지 모르겠지만 NavBar에 카테고리를 추가하기도 하고, 헤더 부분과 본문에 카테고리 링크를 표시하는 기능을 추가하기도 했는데 아무리 그래도 이 기능이 없으면 허전하다고 느껴서 리퀴드 / html에 익숙해지기도 했고 해서, 이렇게 추가하게 되었다.</p>
 
-<p>깃허브 페이지를 사용하는 데 있어서 가장 많이 사용하는 덧글/코멘트 기능이라고 하면 DISQUS다. STACK OVERFLOW나 다른 곳에서도 가장 먼저 추천하는 기능이다. 게다가 무료다! 사용하지 않을 이유가 없다.</p>
+<h3 id="코드">코드</h3>
 
-<p><img src="/img/posts/clean-blog-setup/09.png" style="width: 75%" /></p>
+<p>post.markdown 파일을 수정하면 된다. 나는 댓글창 위에 있는게 편해서 if page.comments 부분 위에 추가했는데 본인이 불편하지 않은 곳 어디든 추가하면 된다. 당연히 기존 코드 구조를 해치지 않는 선에서.</p>
 
-<p>지금 이 포스트 아래에도 붙어있는 댓글란인데, 많은 깃허브 페이지들을 보다 보면 대부분의 댓글이 이렇게 생긴 것을 확인할 수 있을 것이다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+&lt;ul class="row mb-5 "&gt;
+{% assign firstCategory = page.categories | first %}
+&lt;p&gt;
+    &lt;a style= "font-size: 20px; font-weight: bold;" href= "{{ site.url }}/category/{{ firstCategory }}.html"&gt;
+    {{ firstCategory }} 카테고리의 다른 글
+    &lt;/a&gt;
+&lt;/p&gt;
+{% assign posts = site.categories[firstCategory] | sort: 'date' | reverse | limit: 5 %}
+{% assign counter = 0 %}
+{% for post in posts %}
+    {% if counter &lt; 5 %}
+    
+    &lt;li&gt;
+        &lt;h3&gt;
+        &lt;a href="{{ site.baseurl }}{{ post.url }}" style= "font-size: 20px;"&gt;
+            {{ post.title }}
+        &lt;/a&gt;
+        &lt;small style= "font-size: 20px;"&gt;{{ post.date | date_to_string }}&lt;/small&gt;
+        &lt;/h3&gt;
+    &lt;/li&gt;
+    {% assign counter = counter | plus: 1 %}
+    {% endif %}
+{% endfor %}
+&lt;/ul&gt;
 
-<p><a href="https://disqus.com/profile/signup/intent/">일단 여기</a>서 회원가입을 해 주면 된다.</p>
 
-<p><img src="/img/posts/clean-blog-setup/10.png" style="width: 75%" /></p>
-
-<p>회원가입을 하고 나면 이런 창이 보일 텐데, I want to install Disqus on my site를 눌러 주면 된다. 그리고 사이트 이름을 정해주고 난 뒤, 요금이 들지 않는 BASIC 요금제를 선택해 주고 select platform에서 jekyll을 선택해 주면 된다.</p>
-
-<p><img src="/img/posts/clean-blog-setup/12.png" style="width: 75%" /></p>
-
-<p>그리고 나면</p>
-
-<p><img src="/img/posts/clean-blog-setup/13.png" style="width: 75%" /></p>
-
-<p>위 사진에서도 나와있듯이 Universial Embed code 링크를 클릭해서 들어간 뒤</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;div id="disqus_thread"&gt;&lt;/div&gt;
-&lt;script&gt;
-    /**
-    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM
-    *  ...
-    *  ...
-    *  생략함
 </code></pre></div></div>
 
-<p>위 꼴의 universial embed code를 복사한다. 그리고 난 뒤 자신의 지킬 블로그가 설치되어 있는 로컬 폴더로 들어간다.</p>
+<h3 id="설명">설명</h3>
 
-<p>그리고 난 뒤, _layout 디렉토리의 post.markdown 파일로 들어간 뒤</p>
+<p>지킬에서 사용하는 리퀴드 언어에서는 assign을 이용해서 변수를 할당한다. 이건 자바스크립트와 조금 비슷한 것 같다. 그래서 코드를 살펴보면  firstCategory라는 변수에 page의 categories의 첫번째 카테고리를 할당한다. 여기서 page.categories라는 리스트는 프론트매터의 categoris: xxx에 해당하는 부분이다.</p>
 
-<p><img src="/img/posts/clean-blog-setup/15.png" style="width: 75%" /></p>
+<p><img src="/img/posts/clean-blog-setup/19.PNG" style="width: 80%" /></p>
 
-<p>이 부분에 아까 복사한 자신의 코드를 붙여넣기 하면 된다! 이제 다 끝났다!</p>
+<p>바로 이 부분.</p>
 
-<h2 id="yaml-프론트매터">YAML 프론트매터</h2>
+<p>당연하겠지만 이 기능은 첫번째 카테고리의 내용만을 표시한다. 카테고리에는 여러개의 카테고리를 할당할 수는 있지만 보여주는건 하나뿐이다. 아무래도 여러개를 보여주면 너무 헷갈리지 않을까 싶어서 이렇게 설정했다. 리퀴드에서는 파이썬의 for문과 똑같이 for x in xlist 구조의 향상된 순회가 가능하다.</p>
 
-<p>위 코드는 자신의 disqus 댓글창을 생성하는 코드로, 당연하겠지만 항상 코멘트 섹션을 생성한다. 만약 그게 싫고, 포스트별로 댓글 창을 설정하고 싶은 경우에는 추가적으로 코드를 적어 넣어야 한다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign posts = site.categories[firstCategory] | sort: 'date' | reverse | limit: 5 %}
+{% assign counter = 0 %}
+{% for post in posts %}
+    {% if counter &lt; 5 %}
+    
+    &lt;li&gt;
+        &lt;h3&gt;
+        &lt;a href="{{ site.baseurl }}{{ post.url }}" style= "font-size: 20px;"&gt;
+            {{ post.title }}
+        &lt;/a&gt;
+        &lt;small style= "font-size: 20px;"&gt;{{ post.date | date_to_string }}&lt;/small&gt;
+        &lt;/h3&gt;
+    &lt;/li&gt;
+    {% assign counter = counter | plus: 1 %}
+    {% endif %}
+{% endfor %}
+</code></pre></div></div>
 
-<p><img src="/img/posts/clean-blog-setup/14.png" style="width: 75%" /></p>
+<p>그리고 위 부분에서는 예전에 카테고리를 만들때 사용했던 코드를 응용했는데, 이해가 가지 않았던 점은 분명 <strong>limit: 5</strong>를 설정했는데 어떻게 해도 5개 이상으로 표시가 되어서 GPT에게도 물어봤지만 “코드는 정확해, 아무런 문제도 없어.” 라는 대답만 들을 수 있었다. 왜 그런지 잘 모르겠는데, 정렬 문제인가 싶어서 여러번 설정을 바꿔봤지만 그 문제는 아닌 것 같다. 어쩔 수 없이 그냥 for 문에 카운터를 설정해서 5개만 표시되도록 코드를 수정했다. « 이유 아는 사람 있으면 알려주시길</p>
 
-<p>이 포스트의 프론트매터인데, 댓글을 달고싶은 포스트의 프론트매터에 위 사진처럼</p>
-
-<p>속성을 넣어주면 된다. 그러면 지킬이 페이지를 구성할 때, disquss를 참조해서 포스트를 구성하게 된다. 그리고 난 뒤, 아까 수정했던 post.markdown에 들어가서 아까 작성했던 코드 스니펫의 앞 뒤에 if page.comments 와 endif 블록을 작성해 넣으면 된다.</p>
-
-<p><img src="/img/posts/clean-blog-setup/16.png" style="width: 75%" />
-<img src="/img/posts/clean-blog-setup/17.png" style="width: 75%" /></p>
-
-<p>이런식으로!</p>
-
-<p>충분히 이해 가능하겠지만, 이는 페이지의 yaml 프론트메터의 comments 부분이 참이면 아래의 코드 스니펫을 실행하라는 의미이다.</p>
+<p>아무튼 수정한 결과 이 문단의 바로 아랫부분에 나오는 페이지를 완성할 수 있었다! CSS 스타일을 내가 처음부터 직접 만든 게 아니라 상당히 투박하기도 하고 모바일에서 어떻게 나올지는 잘 모르겠지만 일단 작동은 하긴 하니까, 여기에서 마무리 지어야겠다.</p>
 
 
       <hr>
@@ -196,7 +206,7 @@
     <div>
 
       <a
-          href="https://www.linkedin.com/sharing/share-offsite?url=https://ash-tensor.github.io/%EA%B9%83%ED%97%88%EB%B8%8C/2023/12/14/jekyll-blog-theme-3.html"
+          href="https://www.linkedin.com/sharing/share-offsite?url=https://ash-tensor.github.io/%EA%B9%83%ED%97%88%EB%B8%8C/2024/01/17/bottom-category-build.html"
           onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
           class="d-inline-block mr-2"
        >
@@ -207,7 +217,7 @@
       </a>
 
       <a
-          href="https://twitter.com/intent/tweet?text=[깃허브 블로그]지킬 블로그 코멘트 기능 추가(clean blog theme)&url=https://ash-tensor.github.io/%EA%B9%83%ED%97%88%EB%B8%8C/2023/12/14/jekyll-blog-theme-3.html"
+          href="https://twitter.com/intent/tweet?text=[깃허브 블로그] 동일 카테고리의 최근 글 기능 개발(clean blog theme)&url=https://ash-tensor.github.io/%EA%B9%83%ED%97%88%EB%B8%8C/2024/01/17/bottom-category-build.html"
           onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
           class="d-inline-block mr-2">
         <span class="fa-stack fa-lg" style="color: #1DA1F2;">
@@ -217,7 +227,7 @@
       </a>
 
       <a
-          href="http://www.reddit.com/submit?url=https://ash-tensor.github.io/%EA%B9%83%ED%97%88%EB%B8%8C/2023/12/14/jekyll-blog-theme-3.html"
+          href="http://www.reddit.com/submit?url=https://ash-tensor.github.io/%EA%B9%83%ED%97%88%EB%B8%8C/2024/01/17/bottom-category-build.html"
           onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
           class="d-inline-block mr-2">
         <span class="fa-stack fa-lg" style="color: #FF4500;">
@@ -347,11 +357,11 @@
 <!-- 코멘트 란을 추가하는 코드 -->
 
         
-        <a class="btn btn-primary float-left" href="/%EA%B9%83%ED%97%88%EB%B8%8C/2023/12/13/jekyll-blog-theme-2.html" data-toggle="tooltip" data-placement="top" title="[깃허브 블로그]지킬 블로그 테마 설치 및 오류 수정(clean blog theme)">&larr; Previous<span class="d-none d-md-inline">
+        <a class="btn btn-primary float-left" href="/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber.html" data-toggle="tooltip" data-placement="top" title="[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)">&larr; Previous<span class="d-none d-md-inline">
             Post</span></a>
         
         
-        <a class="btn btn-primary float-right" href="/%EA%B9%83%ED%97%88%EB%B8%8C/2023/12/15/jekyll-blog-theme-4.html" data-toggle="tooltip" data-placement="top" title="[깃허브 블로그]지킬 블로그 카테고리 / NAVBAR 기능 추가(clean blog theme) - 1">Next<span class="d-none d-md-inline">
+        <a class="btn btn-primary float-right" href="/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany.html" data-toggle="tooltip" data-placement="top" title="[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)">Next<span class="d-none d-md-inline">
             Post</span> &rarr;</a>
         
 

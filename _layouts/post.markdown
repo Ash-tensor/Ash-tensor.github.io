@@ -67,8 +67,41 @@ layout: default
 
       <hr>
       {% include thanks.html %}
+      <div class="clearfix" >
 
-      <div class="clearfix">
+<!-- 수정중 -->
+<!-- 가장 첫번쨰 카테고리의 최근 글 불러오는 글 기능 추가  -->
+<!-- <ul class="posts-list"> -->
+
+<ul class="row mb-5 ">
+  {% assign firstCategory = page.categories | first %}
+  <p>
+    <a style= "font-size: 20px; font-weight: bold;" href= "{{ site.url }}/category/{{ firstCategory }}.html">
+      {{ firstCategory }} 카테고리의 다른 글
+    </a>
+  </p>
+  {% assign posts = site.categories[firstCategory] | sort: 'date' | reverse | limit: 5 %}
+  {% assign counter = 0 %}
+  {% for post in posts %}
+    {% if counter < 5 %}
+    
+      <li>
+        <h3>
+          <a href="{{ site.baseurl }}{{ post.url }}" style= "font-size: 17px;">
+            {{ post.title }}
+          </a>
+          <small style= "font-size: 14px;">{{ post.date | date_to_string }}</small>
+        </h3>
+      </li>
+      {% assign counter = counter | plus: 1 %}
+    {% endif %}
+  {% endfor %}
+</ul>
+
+
+<!-- 수정중 -->
+<!-- 가장 첫번쨰 카테고리의 최근 글 불러오는 글 기능 추가  -->
+
 
 
 <!-- 코멘트 란을 추가하는 코드 -->

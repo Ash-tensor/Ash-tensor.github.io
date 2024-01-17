@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-01-17T13:16:03+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)</title><link href="http://localhost:4000/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany.html" rel="alternate" type="text/html" title="[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)" /><published>2024-01-17T00:00:00+09:00</published><updated>2024-01-17T00:00:00+09:00</updated><id>http://localhost:4000/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany</id><content type="html" xml:base="http://localhost:4000/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany.html"><![CDATA[<h1 id="백준ps-회사에-있는-사람--실버-5자료구조">[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-01-17T17:22:50+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)</title><link href="http://localhost:4000/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany.html" rel="alternate" type="text/html" title="[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)" /><published>2024-01-17T00:00:00+09:00</published><updated>2024-01-17T00:00:00+09:00</updated><id>http://localhost:4000/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany</id><content type="html" xml:base="http://localhost:4000/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany.html"><![CDATA[<h1 id="백준ps-회사에-있는-사람--실버-5자료구조">[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)</h1>
 
 <h2 id="문제-설명">문제 설명</h2>
 
@@ -95,7 +95,77 @@
         <span class="o">}</span>
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="PS" /><category term="백준" /><category term="JAVA" /><category term="자료구조" /><summary type="html"><![CDATA[[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)]]></summary></entry><entry><title type="html">[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)</title><link href="http://localhost:4000/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber.html" rel="alternate" type="text/html" title="[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)" /><published>2024-01-16T00:00:00+09:00</published><updated>2024-01-16T00:00:00+09:00</updated><id>http://localhost:4000/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber</id><content type="html" xml:base="http://localhost:4000/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber.html"><![CDATA[<h1 id="프로그래머스ps-타겟-넘버--level-2-dp-풀이">[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)</h1>
+</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="PS" /><category term="백준" /><category term="JAVA" /><category term="자료구조" /><summary type="html"><![CDATA[[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)]]></summary></entry><entry><title type="html">[깃허브 블로그] 동일 카테고리의 최근 글 기능 개발(clean blog theme)</title><link href="http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2024/01/17/bottom-category-build.html" rel="alternate" type="text/html" title="[깃허브 블로그] 동일 카테고리의 최근 글 기능 개발(clean blog theme)" /><published>2024-01-17T00:00:00+09:00</published><updated>2024-01-17T00:00:00+09:00</updated><id>http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2024/01/17/bottom-category-build</id><content type="html" xml:base="http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2024/01/17/bottom-category-build.html"><![CDATA[<h2 id="동일-카테고리의-최근-글-기능">동일 카테고리의 최근 글 기능</h2>
+
+<p><img src="/img/posts/clean-blog-setup/18.PNG" style="width: 80%" /></p>
+
+<p>사진을 보면 이해가 아주 쉬울텐데
+티스토리 블로그나 네이버 블로그 모두, 블로그 하단부에는 최근 동일 카테고리의 글 몇개를 보여주는 기능이 존재한다(정확히 무슨 이름인지는 모르겠다). 상황에 따라 전부 보여주기도 하고, 최근 글 몇개만 보여주기도 한다. 아마 잘은 모르겠지만 blogger나 wordpress 모두 동일할 것이다. 나도 그런 블로그에 익숙해서인지 모르겠지만 NavBar에 카테고리를 추가하기도 하고, 헤더 부분과 본문에 카테고리 링크를 표시하는 기능을 추가하기도 했는데 아무리 그래도 이 기능이 없으면 허전하다고 느껴서 리퀴드 / html에 익숙해지기도 했고 해서, 이렇게 추가하게 되었다.</p>
+
+<h3 id="코드">코드</h3>
+
+<p>post.markdown 파일을 수정하면 된다. 나는 댓글창 위에 있는게 편해서 if page.comments 부분 위에 추가했는데 본인이 불편하지 않은 곳 어디든 추가하면 된다. 당연히 기존 코드 구조를 해치지 않는 선에서.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+&lt;ul class="row mb-5 "&gt;
+{% assign firstCategory = page.categories | first %}
+&lt;p&gt;
+    &lt;a style= "font-size: 20px; font-weight: bold;" href= "{{ site.url }}/category/{{ firstCategory }}.html"&gt;
+    {{ firstCategory }} 카테고리의 다른 글
+    &lt;/a&gt;
+&lt;/p&gt;
+{% assign posts = site.categories[firstCategory] | sort: 'date' | reverse | limit: 5 %}
+{% assign counter = 0 %}
+{% for post in posts %}
+    {% if counter &lt; 5 %}
+    
+    &lt;li&gt;
+        &lt;h3&gt;
+        &lt;a href="{{ site.baseurl }}{{ post.url }}" style= "font-size: 20px;"&gt;
+            {{ post.title }}
+        &lt;/a&gt;
+        &lt;small style= "font-size: 20px;"&gt;{{ post.date | date_to_string }}&lt;/small&gt;
+        &lt;/h3&gt;
+    &lt;/li&gt;
+    {% assign counter = counter | plus: 1 %}
+    {% endif %}
+{% endfor %}
+&lt;/ul&gt;
+
+
+</code></pre></div></div>
+
+<h3 id="설명">설명</h3>
+
+<p>지킬에서 사용하는 리퀴드 언어에서는 assign을 이용해서 변수를 할당한다. 이건 자바스크립트와 조금 비슷한 것 같다. 그래서 코드를 살펴보면  firstCategory라는 변수에 page의 categories의 첫번째 카테고리를 할당한다. 여기서 page.categories라는 리스트는 프론트매터의 categoris: xxx에 해당하는 부분이다.</p>
+
+<p><img src="/img/posts/clean-blog-setup/19.PNG" style="width: 80%" /></p>
+
+<p>바로 이 부분.</p>
+
+<p>당연하겠지만 이 기능은 첫번째 카테고리의 내용만을 표시한다. 카테고리에는 여러개의 카테고리를 할당할 수는 있지만 보여주는건 하나뿐이다. 아무래도 여러개를 보여주면 너무 헷갈리지 않을까 싶어서 이렇게 설정했다. 리퀴드에서는 파이썬의 for문과 똑같이 for x in xlist 구조의 향상된 순회가 가능하다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign posts = site.categories[firstCategory] | sort: 'date' | reverse | limit: 5 %}
+{% assign counter = 0 %}
+{% for post in posts %}
+    {% if counter &lt; 5 %}
+    
+    &lt;li&gt;
+        &lt;h3&gt;
+        &lt;a href="{{ site.baseurl }}{{ post.url }}" style= "font-size: 20px;"&gt;
+            {{ post.title }}
+        &lt;/a&gt;
+        &lt;small style= "font-size: 20px;"&gt;{{ post.date | date_to_string }}&lt;/small&gt;
+        &lt;/h3&gt;
+    &lt;/li&gt;
+    {% assign counter = counter | plus: 1 %}
+    {% endif %}
+{% endfor %}
+</code></pre></div></div>
+
+<p>그리고 위 부분에서는 예전에 카테고리를 만들때 사용했던 코드를 응용했는데, 이해가 가지 않았던 점은 분명 <strong>limit: 5</strong>를 설정했는데 어떻게 해도 5개 이상으로 표시가 되어서 GPT에게도 물어봤지만 “코드는 정확해, 아무런 문제도 없어.” 라는 대답만 들을 수 있었다. 왜 그런지 잘 모르겠는데, 정렬 문제인가 싶어서 여러번 설정을 바꿔봤지만 그 문제는 아닌 것 같다. 어쩔 수 없이 그냥 for 문에 카운터를 설정해서 5개만 표시되도록 코드를 수정했다. « 이유 아는 사람 있으면 알려주시길</p>
+
+<p>아무튼 수정한 결과 이 문단의 바로 아랫부분에 나오는 페이지를 완성할 수 있었다! CSS 스타일을 내가 처음부터 직접 만든 게 아니라 상당히 투박하기도 하고 모바일에서 어떻게 나올지는 잘 모르겠지만 일단 작동은 하긴 하니까, 여기에서 마무리 지어야겠다.</p>]]></content><author><name>ash tensor</name></author><category term="깃허브" /><summary type="html"><![CDATA[동일 카테고리의 최근 글 기능]]></summary></entry><entry><title type="html">[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)</title><link href="http://localhost:4000/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber.html" rel="alternate" type="text/html" title="[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)" /><published>2024-01-16T00:00:00+09:00</published><updated>2024-01-16T00:00:00+09:00</updated><id>http://localhost:4000/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber</id><content type="html" xml:base="http://localhost:4000/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber.html"><![CDATA[<h1 id="프로그래머스ps-타겟-넘버--level-2-dp-풀이">[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)</h1>
 
 <h2 id="문제-설명">문제 설명</h2>
 
@@ -226,100 +296,7 @@ dp[4] = dp[4- num (즉 3)] ….. dp[1] = dp[1] + dp[1 - num(즉 0)] 이 된다. 
         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">answer</span><span class="o">);</span>
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="PS" /><category term="DP" /><category term="파이썬" /><category term="프로그래머스" /><category term="JAVA" /><summary type="html"><![CDATA[[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)]]></summary></entry><entry><title type="html">[HTML/JAVASCRIPT] 아주 간단한 버켓리스트 페이지 제작 - 도장찍기 부분 제작 (2/2)</title><link href="http://localhost:4000/web/2024/01/12/bucketlist-stamp.html" rel="alternate" type="text/html" title="[HTML/JAVASCRIPT] 아주 간단한 버켓리스트 페이지 제작 - 도장찍기 부분 제작 (2/2)" /><published>2024-01-12T00:00:00+09:00</published><updated>2024-01-12T00:00:00+09:00</updated><id>http://localhost:4000/web/2024/01/12/bucketlist-stamp</id><content type="html" xml:base="http://localhost:4000/web/2024/01/12/bucketlist-stamp.html"><![CDATA[<p>javascript를 이용해 도장을 찍는 기능을 구현했다. javascript는 동적 웹 페이지를 만들기 위한 프로그래밍 언어로, 웹 브라우저에서 실행된다. 깃허브 페이지는 정적 웹 페이지를 호스팅 하는데 쓰이지만, 동적 서버 코드를 사용하는 것이 아니기 때문에 상관 없다.</p>
-
-<h1 id="완성된-버켓리스트">완성된 버켓리스트</h1>
-
-<iframe src="https://ash-tensor.github.io/bucketlist/" width="100%" height="800"></iframe>
-
-<p>간단한 완료 도장이 찍히는 코드.</p>
-
-<h2 id="코드">코드</h2>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;script&gt;
-    // 페이지 로드 시 이전 상태 복원
-    document.addEventListener("DOMContentLoaded", (event) =&gt; {
-    const buckets = document.querySelectorAll(".bucket");
-    buckets.forEach((bucket, index) =&gt; {
-        // 로컬 스토리지에서 상태 읽기
-        const isDone = localStorage.getItem("bucket" + index) === "done";
-        if (isDone) {
-        bucket.classList.add("done");
-        }
-    });
-    });
-
-    // 버킷 리스트 클릭 이벤트
-    const buckets = document.querySelectorAll(".bucket");
-    buckets.forEach((bucket, index) =&gt; {
-    bucket.addEventListener("click", function () {
-        // 클래스 토글
-        bucket.classList.toggle("done");
-
-        // 로컬 스토리지에 상태 저장
-        if (bucket.classList.contains("done")) {
-        localStorage.setItem("bucket" + index, "done");
-        } else {
-        localStorage.setItem("bucket" + index, "");
-        }
-    });
-    });
-&lt;/script&gt;
-&lt;/body&gt;
-
-&lt;/html&gt;
-</code></pre></div></div>
-
-<h2 id="코드-설명">코드 설명</h2>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>document.addEventListener("DOMContentLoaded", (event) =&gt; { ... }):
-</code></pre></div></div>
-
-<p>이 코드는 웹 페이지의 HTML이 완전히 로드되고 나서 실행된다. 이를 통해 페이지가 로드되자마자 필요한 작업을 수행할 수 있는데, 여기서는 로드되고 난 후, 이전에 저장된 상태를 불러오는 것을 맡고 있다.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const buckets = document.querySelectorAll(".bucket");
-</code></pre></div></div>
-
-<p>웹 페이지에서 클래스 이름이 “bucket”인 모든 요소를 선택하고, 그 결과를 “buckets”라는 상수에 저장함.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>buckets.forEach((bucket, index) =&gt; { ... })
-</code></pre></div></div>
-
-<p>“buckets”라는 변수에 저장된 모든 요소에 대해 작업을 수행함.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const isDone = localStorage.getItem("bucket" + index) === "done";:
-</code></pre></div></div>
-
-<p>로컬 스토리지에서 “bucket” + index(인덱스 번호)라는 키를 가진 아이템을 가져와서, 그 값이 “done”인지 확인함.</p>
-
-<p>로컬 스토리지는 웹 브라우저에서 제공하는 간단한 키-값 형태의 클라이언트 측 웹 스토리지 메커니즘이다. 웹 앱에서 데이터를 로컬에 저장하고 나중에 사용자가 페이지를 새로고침하거나 다시 방문할 때도 그 데이터를 유지할 수 있게 한다.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if (isDone) { bucket.classList.add("done"); }:
-</code></pre></div></div>
-
-<p>만약 위에서 확인한 값이 “done”이라면, 해당 버킷에 “done” 클래스를 추가함.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bucket.addEventListener("click", function () { ... }):
-</code></pre></div></div>
-
-<p>이 코드는 각 버킷에 클릭 이벤트 리스너를 추가한다. 이를 통해 사용자가 버킷을 클릭할 때마다 특정 함수가 실행된다.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bucket.classList.toggle("done");:
-</code></pre></div></div>
-
-<p>클릭 이벤트가 발생하면, 해당 버킷의 클래스 리스트에서done” 클래스를 토글(있으면 제거, 없으면 추가)</p>
-
-<p>if (bucket.classList.contains(“done”)) { localStorage.setItem(“bucket” + index, “done”); } else { localStorage.setItem(“bucket” + index, “”); }:</p>
-
-<p>버킷에 “done” 클래스가 있으면 로컬 스토리지에 “done”이라는 값을 저장하고, 없으면 빈 문자열을 저장한다.</p>
-
-<p>이렇게 페이지 로드 시 웹 브라우저의 로컬 스토리지를 확인하여 버킷 리스트의 상태를 복원하고, 사용자가 버킷을 클릭하여 상태를 변경할 때마다 그 상태를 로컬 스토리지에 저장하는 역할을 해 도장을 찍는 간단한 기능을 구현할 수 있다!</p>
-
-<h2 id="마무리">마무리</h2>
-
-<p>2024년이 시작한지 얼마 안 지났는데, 하루하루가 굉장히 빠르다는 느낌이 든다. 아침에 일어나고 일과가 끝나고 집에 돌아가면 여섯시 - 일곱시 가량인데, 하루하루 목표를 위해서 열심히 달려야 간단하게 제작한 버켓리스트 페이지에 도장을 찍을 수 있을 것 같다.</p>
-
-<p>열심히 해 보자고!</p>]]></content><author><name>ash tensor</name></author><category term="WEB" /><summary type="html"><![CDATA[javascript를 이용해 도장을 찍는 기능을 구현했다. javascript는 동적 웹 페이지를 만들기 위한 프로그래밍 언어로, 웹 브라우저에서 실행된다. 깃허브 페이지는 정적 웹 페이지를 호스팅 하는데 쓰이지만, 동적 서버 코드를 사용하는 것이 아니기 때문에 상관 없다.]]></summary></entry><entry><title type="html">[JAVA] 중첩 클래스</title><link href="http://localhost:4000/java/2024/01/12/nestedclass.html" rel="alternate" type="text/html" title="[JAVA] 중첩 클래스" /><published>2024-01-12T00:00:00+09:00</published><updated>2024-01-12T00:00:00+09:00</updated><id>http://localhost:4000/java/2024/01/12/nestedclass</id><content type="html" xml:base="http://localhost:4000/java/2024/01/12/nestedclass.html"><![CDATA[<p>자바의 중첩 클래스(Nested Class)는 다른 클래스 내부에 정의된 클래스를 말한다. 중첩 클래스는 외부 클래스의 멤버로 간주되고, 외부 클래스의 멤버 변수 및 메서드에 쉽게 접근할 수 있다. 보통 논리적으로 관련된 클래스를 그룹화하는데 사용된다.</p>
+</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="PS" /><category term="DP" /><category term="파이썬" /><category term="프로그래머스" /><category term="JAVA" /><summary type="html"><![CDATA[[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)]]></summary></entry><entry><title type="html">[JAVA] 중첩 클래스</title><link href="http://localhost:4000/java/2024/01/12/nestedclass.html" rel="alternate" type="text/html" title="[JAVA] 중첩 클래스" /><published>2024-01-12T00:00:00+09:00</published><updated>2024-01-12T00:00:00+09:00</updated><id>http://localhost:4000/java/2024/01/12/nestedclass</id><content type="html" xml:base="http://localhost:4000/java/2024/01/12/nestedclass.html"><![CDATA[<p>자바의 중첩 클래스(Nested Class)는 다른 클래스 내부에 정의된 클래스를 말한다. 중첩 클래스는 외부 클래스의 멤버로 간주되고, 외부 클래스의 멤버 변수 및 메서드에 쉽게 접근할 수 있다. 보통 논리적으로 관련된 클래스를 그룹화하는데 사용된다.</p>
 
 <p><strong>상속과 같은 개념의 확장 관계는 아니지만 어떤 개념의 상하관계를 개념적으로 구현해야 하는 경우에 사용되는데</strong> 예를 들어서 국적 또는 국민은 국가라는 개념의 확장이 아니므로 상속 관계로 표현이 불가능하기 때문이다.</p>
 
@@ -921,7 +898,100 @@ dp[4] = dp[4- num (즉 3)] ….. dp[1] = dp[1] + dp[1 - num(즉 0)] 이 된다. 
         <span class="o">}</span>
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="JAVA" /><summary type="html"><![CDATA[자바의 중첩 클래스(Nested Class)는 다른 클래스 내부에 정의된 클래스를 말한다. 중첩 클래스는 외부 클래스의 멤버로 간주되고, 외부 클래스의 멤버 변수 및 메서드에 쉽게 접근할 수 있다. 보통 논리적으로 관련된 클래스를 그룹화하는데 사용된다.]]></summary></entry><entry><title type="html">[HTML/JAVASCRIPT] 아주 간단한 버켓리스트 페이지 제작</title><link href="http://localhost:4000/web/2024/01/10/bucketlist.html" rel="alternate" type="text/html" title="[HTML/JAVASCRIPT] 아주 간단한 버켓리스트 페이지 제작" /><published>2024-01-10T00:00:00+09:00</published><updated>2024-01-10T00:00:00+09:00</updated><id>http://localhost:4000/web/2024/01/10/bucketlist</id><content type="html" xml:base="http://localhost:4000/web/2024/01/10/bucketlist.html"><![CDATA[<p>2024년이 시작한지도 벌써 10일이 지나긴 했지만, 새해를 맞아 새해의 목표를 세우는 것은 필요한 것 같다. 막연하게 생각했었던 새해 목표도 구체적으로 정리하고, 일일 목표를 세우기 위해서라도.</p>
+</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="JAVA" /><summary type="html"><![CDATA[자바의 중첩 클래스(Nested Class)는 다른 클래스 내부에 정의된 클래스를 말한다. 중첩 클래스는 외부 클래스의 멤버로 간주되고, 외부 클래스의 멤버 변수 및 메서드에 쉽게 접근할 수 있다. 보통 논리적으로 관련된 클래스를 그룹화하는데 사용된다.]]></summary></entry><entry><title type="html">[HTML/JAVASCRIPT] 아주 간단한 버켓리스트 페이지 제작 - 도장찍기 부분 제작 (2/2)</title><link href="http://localhost:4000/web/2024/01/12/bucketlist-stamp.html" rel="alternate" type="text/html" title="[HTML/JAVASCRIPT] 아주 간단한 버켓리스트 페이지 제작 - 도장찍기 부분 제작 (2/2)" /><published>2024-01-12T00:00:00+09:00</published><updated>2024-01-12T00:00:00+09:00</updated><id>http://localhost:4000/web/2024/01/12/bucketlist-stamp</id><content type="html" xml:base="http://localhost:4000/web/2024/01/12/bucketlist-stamp.html"><![CDATA[<p>javascript를 이용해 도장을 찍는 기능을 구현했다. javascript는 동적 웹 페이지를 만들기 위한 프로그래밍 언어로, 웹 브라우저에서 실행된다. 깃허브 페이지는 정적 웹 페이지를 호스팅 하는데 쓰이지만, 동적 서버 코드를 사용하는 것이 아니기 때문에 상관 없다.</p>
+
+<h1 id="완성된-버켓리스트">완성된 버켓리스트</h1>
+
+<iframe src="https://ash-tensor.github.io/bucketlist/" width="100%" height="800"></iframe>
+
+<p>간단한 완료 도장이 찍히는 코드.</p>
+
+<h2 id="코드">코드</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;script&gt;
+    // 페이지 로드 시 이전 상태 복원
+    document.addEventListener("DOMContentLoaded", (event) =&gt; {
+    const buckets = document.querySelectorAll(".bucket");
+    buckets.forEach((bucket, index) =&gt; {
+        // 로컬 스토리지에서 상태 읽기
+        const isDone = localStorage.getItem("bucket" + index) === "done";
+        if (isDone) {
+        bucket.classList.add("done");
+        }
+    });
+    });
+
+    // 버킷 리스트 클릭 이벤트
+    const buckets = document.querySelectorAll(".bucket");
+    buckets.forEach((bucket, index) =&gt; {
+    bucket.addEventListener("click", function () {
+        // 클래스 토글
+        bucket.classList.toggle("done");
+
+        // 로컬 스토리지에 상태 저장
+        if (bucket.classList.contains("done")) {
+        localStorage.setItem("bucket" + index, "done");
+        } else {
+        localStorage.setItem("bucket" + index, "");
+        }
+    });
+    });
+&lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre></div></div>
+
+<h2 id="코드-설명">코드 설명</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>document.addEventListener("DOMContentLoaded", (event) =&gt; { ... }):
+</code></pre></div></div>
+
+<p>이 코드는 웹 페이지의 HTML이 완전히 로드되고 나서 실행된다. 이를 통해 페이지가 로드되자마자 필요한 작업을 수행할 수 있는데, 여기서는 로드되고 난 후, 이전에 저장된 상태를 불러오는 것을 맡고 있다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const buckets = document.querySelectorAll(".bucket");
+</code></pre></div></div>
+
+<p>웹 페이지에서 클래스 이름이 “bucket”인 모든 요소를 선택하고, 그 결과를 “buckets”라는 상수에 저장함.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>buckets.forEach((bucket, index) =&gt; { ... })
+</code></pre></div></div>
+
+<p>“buckets”라는 변수에 저장된 모든 요소에 대해 작업을 수행함.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>const isDone = localStorage.getItem("bucket" + index) === "done";:
+</code></pre></div></div>
+
+<p>로컬 스토리지에서 “bucket” + index(인덱스 번호)라는 키를 가진 아이템을 가져와서, 그 값이 “done”인지 확인함.</p>
+
+<p>로컬 스토리지는 웹 브라우저에서 제공하는 간단한 키-값 형태의 클라이언트 측 웹 스토리지 메커니즘이다. 웹 앱에서 데이터를 로컬에 저장하고 나중에 사용자가 페이지를 새로고침하거나 다시 방문할 때도 그 데이터를 유지할 수 있게 한다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if (isDone) { bucket.classList.add("done"); }:
+</code></pre></div></div>
+
+<p>만약 위에서 확인한 값이 “done”이라면, 해당 버킷에 “done” 클래스를 추가함.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bucket.addEventListener("click", function () { ... }):
+</code></pre></div></div>
+
+<p>이 코드는 각 버킷에 클릭 이벤트 리스너를 추가한다. 이를 통해 사용자가 버킷을 클릭할 때마다 특정 함수가 실행된다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bucket.classList.toggle("done");:
+</code></pre></div></div>
+
+<p>클릭 이벤트가 발생하면, 해당 버킷의 클래스 리스트에서done” 클래스를 토글(있으면 제거, 없으면 추가)</p>
+
+<p>if (bucket.classList.contains(“done”)) { localStorage.setItem(“bucket” + index, “done”); } else { localStorage.setItem(“bucket” + index, “”); }:</p>
+
+<p>버킷에 “done” 클래스가 있으면 로컬 스토리지에 “done”이라는 값을 저장하고, 없으면 빈 문자열을 저장한다.</p>
+
+<p>이렇게 페이지 로드 시 웹 브라우저의 로컬 스토리지를 확인하여 버킷 리스트의 상태를 복원하고, 사용자가 버킷을 클릭하여 상태를 변경할 때마다 그 상태를 로컬 스토리지에 저장하는 역할을 해 도장을 찍는 간단한 기능을 구현할 수 있다!</p>
+
+<h2 id="마무리">마무리</h2>
+
+<p>2024년이 시작한지 얼마 안 지났는데, 하루하루가 굉장히 빠르다는 느낌이 든다. 아침에 일어나고 일과가 끝나고 집에 돌아가면 여섯시 - 일곱시 가량인데, 하루하루 목표를 위해서 열심히 달려야 간단하게 제작한 버켓리스트 페이지에 도장을 찍을 수 있을 것 같다.</p>
+
+<p>열심히 해 보자고!</p>]]></content><author><name>ash tensor</name></author><category term="WEB" /><summary type="html"><![CDATA[javascript를 이용해 도장을 찍는 기능을 구현했다. javascript는 동적 웹 페이지를 만들기 위한 프로그래밍 언어로, 웹 브라우저에서 실행된다. 깃허브 페이지는 정적 웹 페이지를 호스팅 하는데 쓰이지만, 동적 서버 코드를 사용하는 것이 아니기 때문에 상관 없다.]]></summary></entry><entry><title type="html">[HTML/JAVASCRIPT] 아주 간단한 버켓리스트 페이지 제작</title><link href="http://localhost:4000/web/2024/01/10/bucketlist.html" rel="alternate" type="text/html" title="[HTML/JAVASCRIPT] 아주 간단한 버켓리스트 페이지 제작" /><published>2024-01-10T00:00:00+09:00</published><updated>2024-01-10T00:00:00+09:00</updated><id>http://localhost:4000/web/2024/01/10/bucketlist</id><content type="html" xml:base="http://localhost:4000/web/2024/01/10/bucketlist.html"><![CDATA[<p>2024년이 시작한지도 벌써 10일이 지나긴 했지만, 새해를 맞아 새해의 목표를 세우는 것은 필요한 것 같다. 막연하게 생각했었던 새해 목표도 구체적으로 정리하고, 일일 목표를 세우기 위해서라도.</p>
 
 <p>그래서 간단한 2024년 버켓리스트 페이지를 제작했다! 제작하면서 기초적인 HTML 태그, javascript, css 지식을 정리할 수 있는 좋은 기회였다.</p>
 
@@ -1639,146 +1709,4 @@ num2 = 10000 0000(2) ## num1의 2의 보수
 최상위 비트 1을 버리면 0110(6)으로 정답이다.
 </code></pre></div></div>
 
-<p>이런 간결성 덕분에 2의 보수는 대부분의 컴퓨터 구조에서 음수를 표현하는 방법으로 표현된다.</p>]]></content><author><name>ash tensor</name></author><category term="CS" /><summary type="html"><![CDATA[2의 보수]]></summary></entry><entry><title type="html">[Android Studio]Bottom Navigation Bar 구현 - OnItemSelectedListener 이용</title><link href="http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/2023/12/29/bottomNavigationView.html" rel="alternate" type="text/html" title="[Android Studio]Bottom Navigation Bar 구현 - OnItemSelectedListener 이용" /><published>2023-12-29T00:00:00+09:00</published><updated>2023-12-29T00:00:00+09:00</updated><id>http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/2023/12/29/bottomNavigationView</id><content type="html" xml:base="http://localhost:4000/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/2023/12/29/bottomNavigationView.html"><![CDATA[<h1 id="bottom-navigation-bar">Bottom Navigation Bar</h1>
-
-<p>어떤 앱이든 Bottom Naviagation Bar가 없는 앱은 상상하기 힘들다. 토스, 에브리타임, 카카오톡은 아닌가? 아무튼, 과장 좀 보태서 거의 모든 앱의 하단 부분에는 이 Bottom Navigation Bar가 존재한다.</p>
-
-<p><img src="/img/posts/android_studio/3.jpeg" style="width: 80%" /></p>
-
-<p>이런거 말이다.</p>
-
-<p>그런데 흔히 온라인에서 돌아다니는 BottomNavigationBar 구현방법 대부분은 사용중지가 될 예정인 setOnNavigationItemSelectedListener와 onNavigationItemSelectedListener를 사용하고 있어서, 사용이 비권장된다. 안드로이드 호환성 때문에 나중에 사용하다가 에러가 뜰 가능성도 높고, Deprecate될 기능을 사용하는 건 당연히 좋지 못하다. 사용중지가 될 기능을 유지보수하고 있는건 웃기기도 하고.</p>
-
-<p>그래서 android 팀이 권장하는 OnItemSelectedListener를 이용해서 BottomNavigationBar룰 구현해보았다.</p>
-
-<h2 id="menuxml">menu.xml</h2>
-
-<p>일단 먼저 menu.xml을 추가해 주어야 한다. 그러기 위해서는 res 디렉토리에 menu라는 android resources directory를 추가해야 하는데</p>
-
-<p><img src="/img/posts/android_studio/menu1.png" style="width: 80%" /></p>
-
-<p>이렇게 추가한 뒤에, 똑같게 File &gt; New &gt; Menu Resources File을 추가하면 된다. 그 뒤에 item을 추가해 준다. item은 BottomNavigationBar의 각 메뉴로 구현된다.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    &lt;item
-        android:id="@+id/menu_1"
-        android:title="MENU1"
-            ##android:title은 화면에 표시될 이름이다
-            ##나중에 bottomNavigationView와 연결할 때 android:id를 이용해서 연결한다.
-        #android:icon="" 에서 icon에 아이콘 파일을 연결해 주면 아이콘이 나오는데 에셋을 만드는 중이라 현재는 추가하지 않았다
-        /&gt;
-     &lt;item
-        android:id="@+id/menu_2"
-        android:title="MENU2"
-        /&gt;
-     &lt;item
-        android:id="@+id/menu_3"
-        android:title="MENU3"
-        /&gt;
-    
-    
-    &gt;
-</code></pre></div></div>
-
-<h2 id="activity_mainxml">activity_main.xml</h2>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity"&gt;
-
-    &lt;LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"&gt;
-
-        &lt;FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"  ## 레이아웃의 높이를 가중치를 이용하여 조정
-            android:layout_weight="1"    ## 부모 레이아웃의 남은 공간을 모두 차지
-            android:id="@+id/FragmentContainer" &gt;
-            &lt;TextView
-                android:id="@+id/testTextView"   ## 프래그먼트가 바뀌었는지 확인용
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="firstView"
-                android:gravity="center"
-            /&gt;
-        &lt;/FrameLayout&gt;
-
-        &lt;com.google.android.material.bottomnavigation.BottomNavigationView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:id="@+id/bottomNavigationView"
-            app:menu="@menu/menu" /&gt;    ## 아까 만든 메뉴를 적으면 됨
-    &lt;/LinearLayout&gt;
-
-&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;
-</code></pre></div></div>
-
-<p>기본적으로 리니어 레이아웃과 프레임 레이아웃을 사용해서 레이아웃을 설정했다. android:layout_height=”0dp”, android:layout_weight=”1”을 이용해서 바텀 네비게이션 뷰를 차지한 공간 이외의 공간을 모두 LinearLayout이 차지하기로 하고, 이 리니어 레이아웃에 이후에 바텀 네비게이션 뷰의 메뉴를 누른 경우에 Fragment가 표시될 예정이다. android:id=”@+id/FragmentContaner id를 이용해서 연결한다!</p>
-
-<h2 id="fragment1-추가">fragment1 추가</h2>
-
-<p><img src="/img/posts/android_studio/fragment2.png" style="width: 80%" /></p>
-
-<p>File &gt; New &gt; New Fragment를 추가해주고, Fragment를 작성한다. 이번에는 일단 BottomNavigationView를 작성하는게 목표기 때문에 따로 수정은 하지 않았다.</p>
-
-<h2 id="mainactivityjava">MainActivity.java</h2>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class MainActivity extends AppCompatActivity  {
-
-    public FragmentManager fragmentManager = getSupportFragmentManager();
-    BottomNavigationView bottomNavigationView;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setOnItemSelectedListener(navListener);
-
-    }
-
-    private NavigationBarView.OnItemSelectedListener navListener = new NavigationBarView.OnItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Fragment selectedFragment = null;
-
-            switch (item.getItemId()) {    ## 누른 해당 메뉴의 id가 menu_1인 경우에
-                case R.id.menu_1:
-                    selectedFragment = new fragment1();     ## fragment를 할당
-                    break;
-            }
-            TextView testTextView = findViewById(R.id.testTextView);
-            ##테스트용 TextView를 숨김
-            testTextView.setVisibility(View.GONE);
-            getSupportFragmentManager().beginTransaction().replace(R.id.FragmentContainer, selectedFragment).commit();
-
-            return true;
-        }
-    } ;
-}
-</code></pre></div></div>
-
-<p>FrameLayout은 레이아웃을 겹쳐서 보여주기 때문에 testTextView와 Fragment1의 TextView가 겹쳐서 보여지게 된다. 그렇기 때문에 항상 Visibility를 바꿔줘야 한다.</p>
-
-<h2 id="실행">실행</h2>
-
-<p><img src="/img/posts/android_studio/2.PNG" style="width: 50%" /></p>
-
-<ul>
-  <li>처음 실행 화면</li>
-</ul>
-
-<p><img src="/img/posts/android_studio/1.PNG" style="width: 50%" /></p>
-
-<ul>
-  <li>menu1을 선택한 화면</li>
-</ul>
-
-<p>예상한대로 BottomNavigationView가 제대로 작동하는 모습을 볼 수 있다!</p>]]></content><author><name>ash tensor</name></author><category term="안드로이드" /><summary type="html"><![CDATA[android studio]]></summary></entry></feed>
+<p>이런 간결성 덕분에 2의 보수는 대부분의 컴퓨터 구조에서 음수를 표현하는 방법으로 표현된다.</p>]]></content><author><name>ash tensor</name></author><category term="CS" /><summary type="html"><![CDATA[2의 보수]]></summary></entry></feed>
