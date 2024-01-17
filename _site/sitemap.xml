@@ -3,6 +3,10 @@
 
     
     <url>
+        <loc>http://localhost:4000/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany.html</loc>
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber.html</loc>
     </url>
     
@@ -204,6 +208,14 @@
     
     <url>
         <loc>http://localhost:4000/category/%EC%9E%90%EA%B2%A9%EC%A6%9D.html</loc>
+    </url>
+    
+    
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/category/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0.html</loc>
     </url>
     
     

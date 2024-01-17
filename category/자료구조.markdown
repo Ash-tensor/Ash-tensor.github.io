@@ -1,0 +1,6 @@
+---
+layout: category
+title: 자료구조
+description: 자료구조 📁카테고리. 개발에 필요한 자료구조를 배우고 실제 알고리즘에서의 적용사례를 정리합니다.
+background: '/img/bg-category.jpg'
+---

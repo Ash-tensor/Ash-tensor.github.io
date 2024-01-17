@@ -10,7 +10,7 @@ background: '/img/port.jpg'
 ---
 
 
-
+# [프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)
 
 ## 문제 설명
 

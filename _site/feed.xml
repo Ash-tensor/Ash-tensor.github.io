@@ -1,4 +1,103 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-01-16T16:04:55+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)</title><link href="http://localhost:4000/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber.html" rel="alternate" type="text/html" title="[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)" /><published>2024-01-16T00:00:00+09:00</published><updated>2024-01-16T00:00:00+09:00</updated><id>http://localhost:4000/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber</id><content type="html" xml:base="http://localhost:4000/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber.html"><![CDATA[<h2 id="문제-설명">문제 설명</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-01-17T13:16:03+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)</title><link href="http://localhost:4000/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany.html" rel="alternate" type="text/html" title="[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)" /><published>2024-01-17T00:00:00+09:00</published><updated>2024-01-17T00:00:00+09:00</updated><id>http://localhost:4000/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany</id><content type="html" xml:base="http://localhost:4000/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany.html"><![CDATA[<h1 id="백준ps-회사에-있는-사람--실버-5자료구조">[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)</h1>
+
+<h2 id="문제-설명">문제 설명</h2>
+
+<p>상근이는 세계적인 소프트웨어 회사 기글에서 일한다. 이 회사의 가장 큰 특징은 자유로운 출퇴근 시간이다. 따라서, 직원들은 반드시 9시부터 6시까지 회사에 있지 않아도 된다.</p>
+
+<p>각 직원은 자기가 원할 때 출근할 수 있고, 아무때나 퇴근할 수 있다.</p>
+
+<p>상근이는 모든 사람의 출입카드 시스템의 로그를 가지고 있다. 이 로그는 어떤 사람이 회사에 들어왔는지, 나갔는지가 기록되어져 있다. 로그가 주어졌을 때, 현재 회사에 있는 모든 사람을 구하는 프로그램을 작성하시오.</p>
+
+<p><strong>입력</strong></p>
+
+<p>첫째 줄에 로그에 기록된 출입 기록의 수 n이 주어진다. (2 ≤ n ≤ 106) 다음 n개의 줄에는 출입 기록이 순서대로 주어지며, 각 사람의 이름이 주어지고 “enter”나 “leave”가 주어진다. “enter”인 경우는 출근, “leave”인 경우는 퇴근이다.</p>
+
+<p>회사에는 동명이인이 없으며, 대소문자가 다른 경우에는 다른 이름이다. 사람들의 이름은 알파벳 대소문자로 구성된 5글자 이하의 문자열이다.</p>
+
+<p><strong>출력</strong></p>
+
+<p>현재 회사에 있는 사람의 이름을 사전 순의 역순으로 한 줄에 한 명씩 출력한다.</p>
+
+<h2 id="제한시간">제한시간</h2>
+
+<p>1초, 메모리제한 256MB</p>
+
+<h3 id="접근-방법">접근 방법</h3>
+
+<p>솔직히 엄청 쉬운 문제다. 누구나 구현할 수 있고, 전공자가 아니더라도 누구나 이 문제를 구현하는데는 문제가 없을 것이다. 맵 자료형을 써도 되고, 파이썬에서는 딕셔너리를 쓰거나, 해시 맵을 쓰거나, 집합 자료구조를 사용해도 문제는 무리 없이 풀린다. 하지만 자료구조에 대한 이해가 없이 배열과 같은 선형 자료구조를 사용하면 <strong>시간 초과</strong>를 마주치는 문제다. 개인적으로 이 문제는 좋은 문제라고 생각해서 가져왔다.</p>
+
+<h4 id="잘못된-접근">잘못된 접근</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">boj</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.lang.reflect.Array</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">boj7785</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">coworkerList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="nc">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">coworkerNumber</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">coworkerNumber</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="nc">String</span> <span class="n">coworkerName</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+            <span class="nc">String</span> <span class="n">sign</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">sign</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"enter"</span><span class="o">)){</span>
+                <span class="n">coworkerList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">coworkerName</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="o">{</span>
+               <span class="n">coworkerList</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">coworkerName</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="nc">Collections</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">coworkerList</span><span class="o">,</span> <span class="nc">Collections</span><span class="o">.</span><span class="na">reverseOrder</span><span class="o">());</span>
+        <span class="k">for</span><span class="o">(</span><span class="nc">String</span> <span class="n">coworker</span> <span class="o">:</span> <span class="n">coworkerList</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">coworker</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>이렇게 풀어도 답은 문제없이 나온다. 하지만 시간초과로 문제 해결이 실패하게 된다. 구현방법을 보면 enter이면 ArrayList<String>에 동료의 이름을 집어 넣고, 만약에 leave라는 문자열을 마주치면 ArrayList에서 해당 문자열을 삭제한다.</String></p>
+
+<p>여기서 문제가 발생하는데, 배열과 같은 선형 자료구조는 중간 노드의 삽입과 삭제가 빈번하게 일어날 때, 성능이 매우 나빠진다.</p>
+
+<p>왜냐하면 연속된 메모리 공간에 요소들을 저장하고 있기 때문에 중간에 요소를 추가하거나, 삭제하면 해당 위치 이후의 모든 요소를 이동시켜야만 한다. 이런 경우에 노드의 추가와 삭제에 소요되는 시간 복잡도는 O(n)이 된다. 이렇게 추가적으로 시간이 매우 많이 소요되기 때문에 1초라는 시간으로는 문제를 풀이할 수 없다.</p>
+
+<p>이런 경우에는 순서가 상관없는 자료구조로 문제를 풀이해야 한다. 대표적으로는 set 자료형이 있다. 다음은 HashSet 자료형으로 풀이한 자바 코드다.</p>
+
+<h3 id="자바-풀이">자바 풀이</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">boj7785</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Set</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">coworkerSet</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;&gt;();</span>
+
+        <span class="nc">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">coworkerNumber</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">coworkerNumber</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="nc">String</span> <span class="n">coworkerName</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+            <span class="nc">String</span> <span class="n">sign</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+
+            <span class="k">if</span> <span class="o">(</span><span class="n">sign</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"enter"</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">coworkerSet</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">coworkerName</span><span class="o">);</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="n">coworkerSet</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">coworkerName</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">coworkerList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">coworkerSet</span><span class="o">);</span>
+        <span class="nc">Collections</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">coworkerList</span><span class="o">,</span> <span class="nc">Collections</span><span class="o">.</span><span class="na">reverseOrder</span><span class="o">());</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">coworker</span> <span class="o">:</span> <span class="n">coworkerList</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">coworker</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="PS" /><category term="백준" /><category term="JAVA" /><category term="자료구조" /><summary type="html"><![CDATA[[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)]]></summary></entry><entry><title type="html">[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)</title><link href="http://localhost:4000/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber.html" rel="alternate" type="text/html" title="[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)" /><published>2024-01-16T00:00:00+09:00</published><updated>2024-01-16T00:00:00+09:00</updated><id>http://localhost:4000/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber</id><content type="html" xml:base="http://localhost:4000/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber.html"><![CDATA[<h1 id="프로그래머스ps-타겟-넘버--level-2-dp-풀이">[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)</h1>
+
+<h2 id="문제-설명">문제 설명</h2>
 
 <p>문제 설명
 n개의 음이 아닌 정수들이 있습니다. 이 정수들을 순서를 바꾸지 않고 적절히 더하거나 빼서 타겟 넘버를 만들려고 합니다. 예를 들어 [1, 1, 1, 1, 1]로 숫자 3을 만들려면 다음 다섯 방법을 쓸 수 있습니다.</p>
@@ -127,7 +226,7 @@ dp[4] = dp[4- num (즉 3)] ….. dp[1] = dp[1] + dp[1 - num(즉 0)] 이 된다. 
         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">answer</span><span class="o">);</span>
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="PS" /><category term="DP" /><category term="파이썬" /><category term="프로그래머스" /><category term="JAVA" /><summary type="html"><![CDATA[문제 설명]]></summary></entry><entry><title type="html">[HTML/JAVASCRIPT] 아주 간단한 버켓리스트 페이지 제작 - 도장찍기 부분 제작 (2/2)</title><link href="http://localhost:4000/web/2024/01/12/bucketlist-stamp.html" rel="alternate" type="text/html" title="[HTML/JAVASCRIPT] 아주 간단한 버켓리스트 페이지 제작 - 도장찍기 부분 제작 (2/2)" /><published>2024-01-12T00:00:00+09:00</published><updated>2024-01-12T00:00:00+09:00</updated><id>http://localhost:4000/web/2024/01/12/bucketlist-stamp</id><content type="html" xml:base="http://localhost:4000/web/2024/01/12/bucketlist-stamp.html"><![CDATA[<p>javascript를 이용해 도장을 찍는 기능을 구현했다. javascript는 동적 웹 페이지를 만들기 위한 프로그래밍 언어로, 웹 브라우저에서 실행된다. 깃허브 페이지는 정적 웹 페이지를 호스팅 하는데 쓰이지만, 동적 서버 코드를 사용하는 것이 아니기 때문에 상관 없다.</p>
+</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="PS" /><category term="DP" /><category term="파이썬" /><category term="프로그래머스" /><category term="JAVA" /><summary type="html"><![CDATA[[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)]]></summary></entry><entry><title type="html">[HTML/JAVASCRIPT] 아주 간단한 버켓리스트 페이지 제작 - 도장찍기 부분 제작 (2/2)</title><link href="http://localhost:4000/web/2024/01/12/bucketlist-stamp.html" rel="alternate" type="text/html" title="[HTML/JAVASCRIPT] 아주 간단한 버켓리스트 페이지 제작 - 도장찍기 부분 제작 (2/2)" /><published>2024-01-12T00:00:00+09:00</published><updated>2024-01-12T00:00:00+09:00</updated><id>http://localhost:4000/web/2024/01/12/bucketlist-stamp</id><content type="html" xml:base="http://localhost:4000/web/2024/01/12/bucketlist-stamp.html"><![CDATA[<p>javascript를 이용해 도장을 찍는 기능을 구현했다. javascript는 동적 웹 페이지를 만들기 위한 프로그래밍 언어로, 웹 브라우저에서 실행된다. 깃허브 페이지는 정적 웹 페이지를 호스팅 하는데 쓰이지만, 동적 서버 코드를 사용하는 것이 아니기 때문에 상관 없다.</p>
 
 <h1 id="완성된-버켓리스트">완성된 버켓리스트</h1>
 
@@ -1682,85 +1781,4 @@ num2 = 10000 0000(2) ## num1의 2의 보수
   <li>menu1을 선택한 화면</li>
 </ul>
 
-<p>예상한대로 BottomNavigationView가 제대로 작동하는 모습을 볼 수 있다!</p>]]></content><author><name>ash tensor</name></author><category term="안드로이드" /><summary type="html"><![CDATA[android studio]]></summary></entry><entry><title type="html">[AI 그림]프롬프트의 한계점 - 올바른 프롬프트 작성하기</title><link href="http://localhost:4000/ml/ai%EA%B7%B8%EB%A6%BC/2023/12/28/stable-diffusion.html" rel="alternate" type="text/html" title="[AI 그림]프롬프트의 한계점 - 올바른 프롬프트 작성하기" /><published>2023-12-28T00:00:00+09:00</published><updated>2023-12-28T00:00:00+09:00</updated><id>http://localhost:4000/ml/ai%EA%B7%B8%EB%A6%BC/2023/12/28/stable-diffusion</id><content type="html" xml:base="http://localhost:4000/ml/ai%EA%B7%B8%EB%A6%BC/2023/12/28/stable-diffusion.html"><![CDATA[<h1 id="ai-그림">AI 그림</h1>
-
-<p>솔직히 말해서, 이제 인공지능 그림은 놀라움을 넘어서서 조금은 지루한 소재인 것 같다. 인공지능이 사람의 그림을 뛰어넘는 그림을 그려 내는 것을 이제는 모두가 당연하게 느낀다.</p>
-
-<p>이제는 GPT도 인공지능 그림을 그려주고(gpt 4를 구독했을때), BING도 그림을 그려준다. 뤼튼도 마찬가지다. 이제 인공지능과 그림은 분리할 수 없는 소재가 되어 버렸다.</p>
-
-<p>인공지능 그림을 크게 나누자면 GPT와 bing, NAI 와 같이 SaaS형 AI와 스테이블 디퓨전과 같이 사용자의 PC에서 로컬 PC의 자원을 사용해서 그림을 그려내는 신경망이 존재한다.</p>
-
-<p>개인적으로 모두 사용해 본 결과, 가장 쉽게 그림을 그려낼 수 있는 건 SaaS형 서비스들이다. 예를 들어서 GPT와 같은 경우에 그림이 마음에 안 드는 경우에 그 그림에 덧붙여 추가적으로 그림을 수정해 달라고 요청하기도 쉽고, 채팅으로 요청만 하면 되기 때문에 전문적인 지식이 없는 사람에게는 꽤나 높은 수준의 에셋을 얻을 수 있기 때문이다.</p>
-
-<h2 id="프롬프트">프롬프트</h2>
-
-<ol>
-  <li><img src="/img/posts/ai_image/adventure2.PNG" style="width: 80%" /></li>
-</ol>
-
-<p>프롬프트 : 모험가 길드의 내부</p>
-
-<ol>
-  <li><img src="/img/posts/ai_image/adventurer1.PNG" style="width: 80%" /></li>
-</ol>
-
-<p>프롬프트 : 모험가 길드의 내부, 압도적인 현실감, 뛰어난 디테일, 높은 퀄리티</p>
-
-<ol>
-  <li><img src="/img/posts/ai_image/adventurer3.PNG" style="width: 80%" /></li>
-</ol>
-
-<p>프롬프트 : 모험가 길드의 내부, 압도적인 현실감, 뛰어난 디테일, 높은 퀄리티, masterpiece, best quality</p>
-
-<p>이런 식이다. 1번에서 2번을 넘어갈 때 가장 큰 퀄리티의 차이가 보이고, 2번에서 3번을 넘어갈 때는 그렇게 큰 성능 향상이 일어나지는 않아 보인다. 이런 SaaS형 서비스들에서도 그림을 그릴 때, 퀄리티 프롬프트(추가한 best quality, masterpiece, 뛰어난 디테일과 같은 지시)가 적용되는 것을 확인할 수 있는데, 이는 스테이블 디퓨전과 비슷한 모습이다. 당연하겠지만.</p>
-
-<ol>
-  <li><img src="/img/posts/ai_image/3.jpeg" style="width: 80%" /></li>
-</ol>
-
-<p>프롬프트 : 모험가 길드의 내부, 압도적인 현실감, 뛰어난 디테일, 높은 퀄리티, masterpiece, best quality, fantasy world</p>
-
-<ol>
-  <li><img src="/img/posts/ai_image/4.jpeg" style="width: 80%" /></li>
-</ol>
-
-<p>4번 그림은 모험가 길드를 넘어서서 거대한 왕성을 그려냈고, 5번 그림은 원래 주제인 모험가 길드는 오른쪽 구석에 조그마하게 쳐박혀 있는 모습을 볼 수 있다. 둘 다 모두 기존 프롬프트에 fantasy world라는 프롬프트를 추가한 내용이다.</p>
-
-<p>이렇듯 bing Ai에서도 똑같은 주제를 요청한다고 하더라도 다음과 같이 프롬프트에 따라서 영향이 미치는 모습을 확인할 수 있는데, 점점 가면 갈수록 그림이 급격하게 변화하는 것을 확인할 수 있다. 모험가 길드의 내부라는 주제와는 다른 방향으로 이동하고 있는데, 이는 프롬프트의 한계성에서 기인한다.</p>
-
-<h3 id="프롬프트의-한계성">프롬프트의 한계성</h3>
-
-<p>bing ai는 DALLE 3를 사용하고, DALLE-3는 프롬프트를 해석할 때 GPT-3를 이용해서 이미지를 재구성한다. GPT를 이용해 본 사람들은 GPT가 가끔 오타를 내거나 내 지시에 오타가 있더라도 그것과는 상관없이 잘 무시하고 대답하는 걸 볼 수 있었을 텐데, 이는 언어모델이라는 GPT의 한계 때문이다.</p>
-
-<p>따라서 DALL-E 는 culture라는 단어에서, Sculpture라는 단어를 연상하고야 만다…</p>
-
-<ol>
-  <li><img src="/img/posts/ai_image/2.jpeg" style="width: 80%" /></li>
-</ol>
-
-<p>이런식으로. 위 그림의 프롬프트에는 지금까지의 프롬프트에 더해서 fantasy culture를 추가한 모습이다. masterpiece와 culture가 서로 영향을 끼쳐 멋진 스태츄를 그려준 모습이다.</p>
-
-<p>또한 DALL-E와 Stable diffusion이 완벽히 같다고 할 수는 없지만 open ai가 발표한 여러 논문을 참고해 보면 (https://cdn.openai.com/papers/dall-e-3.pdf) DALLE-3 역시 그림 - 태그 쌍을 통해 프롬프트를 해석한다고 밝혔는데 아마도 이는 Stable diffusion이 Devian art, danbooru와 같은 그림 - 태그 학습이 이뤄진 이미지 사이트들을 바탕으로 학습한 것과 비슷할 것으로 보인다.</p>
-
-<p>따라서 어떤 특정한 단어가 danbooru와 같은 사이트에서 다른 뜻으로 학습이 되어 있거나 한 경우에는 올바르지 않은 결과를 출력하고야 만다. 
-예를 들어서, legend 라는 단어는 흔히 쓰이는 보통명사지만 league of legend라는 고유명사의 일부이다. 이런 경우에, GPT와 같은 트랜스포머 신경망은 내가 리그 오브 레전드의 그림을 그려주기를 바라지 않더라도, 리그 오브 레전드의 요소를 섞어서 그려내고야 마는 것이다.</p>
-
-<ol>
-  <li><img src="/img/posts/ai_image/4.jpeg" style="width: 80%" /></li>
-</ol>
-
-<p>여기에는 5번 그림을 다시 가져왔는데, 보면 확인할 수 있지만 화면 둘레에 마치 액자와 같은 모습을 확인할 수 있을 것이다. 이는 masterpiece라는 프롬프트 때문이다. 명작을 보여달라고 했기 때문에 DALL-E 3는 박물관에 있을 법한 명작을 출력해 준 것이다.</p>
-
-<p>나는 퀄리티 프롬프트라고 생각했던 프롬프트가 어디선가 이런 작용을 하고 있을 수 있다는 것을 항상 염두에 두어야 한다.</p>
-
-<h3 id="환각">환각</h3>
-
-<p><img src="/img/posts/ai_image/elephant.PNG" style="width: 80%" /></p>
-
-<p>위 그림은 신경망에게 차 키를 들고 있지 않은 소년이라고 요청한 내용이다. 하지만 코끼리 효과가 일어난 모양인지 여지없이 차 키를 들고 있다.</p>
-
-<p>이 둘은 GPT가 환각을 보는 원리와도 비슷하다. 뉴스에서 빔샤벨을 든 세종대왕의 멕북 에어 사태를 설명해 줘, 라고 요청했을 때 GPT가 신나서 설명해 주던 것 말이다. 이는 언어 모델의 한계 때문이지만 개인적으로는 꽤나 멋지다고 생각한다.</p>
-
-<p>누가 빔샤벨을 든 세종대왕의 맥북 에어 사태를 그림으로 그릴 수 있겠는가? 안드로이드는 전기 양의 꿈을 꾸는가? 적어도 GPT는 그 꿈을 그릴 수 있는 것 같다.</p>
-
-<p>사실 이 모든 과정이 어쩌면 창의성의 근본일지도 모른다. 고흐도 별이 빛나는 밤에를 그릴 때, 사실은 환각을 보고 있었다고 하니까.</p>]]></content><author><name>ash tensor</name></author><category term="ML" /><category term="AI그림" /><summary type="html"><![CDATA[ml, ai]]></summary></entry></feed>
+<p>예상한대로 BottomNavigationView가 제대로 작동하는 모습을 볼 수 있다!</p>]]></content><author><name>ash tensor</name></author><category term="안드로이드" /><summary type="html"><![CDATA[android studio]]></summary></entry></feed>
