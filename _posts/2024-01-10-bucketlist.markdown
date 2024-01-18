@@ -13,14 +13,14 @@ background: '/img/port.jpg'
 
 그래서 간단한 2024년 버켓리스트 페이지를 제작했다! 제작하면서 기초적인 HTML 태그, javascript, css 지식을 정리할 수 있는 좋은 기회였다.
 
-# 완성된 버켓리스트
+## 완성된 버켓리스트
 
 
 <iframe src="https://ash-tensor.github.io/bucketlist/" width="100%" height="800"></iframe>
 
 기능이라고 할 것도 없이 간단한데, 클릭을 하면 완료 도장이 찍히는 것이다. 
 
-## 코드
+### 코드
 
 
     <!DOCTYPE html>
@@ -124,7 +124,7 @@ background: '/img/port.jpg'
 
     </html>
 
-## 코드 설명
+### 코드 설명
 
     <meta name="viewport" content="width=device-width">
         // 뷰포트(viewport)의 너비를 기기의 너비로 설정하여 

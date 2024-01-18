@@ -11,13 +11,13 @@ background: '/img/port.jpg'
 
 javascript를 이용해 도장을 찍는 기능을 구현했다. javascript는 동적 웹 페이지를 만들기 위한 프로그래밍 언어로, 웹 브라우저에서 실행된다. 깃허브 페이지는 정적 웹 페이지를 호스팅 하는데 쓰이지만, 동적 서버 코드를 사용하는 것이 아니기 때문에 상관 없다.
 
-# 완성된 버켓리스트
+## 완성된 버켓리스트
 
 <iframe src="https://ash-tensor.github.io/bucketlist/" width="100%" height="800"></iframe>
 
 간단한 완료 도장이 찍히는 코드.
 
-## 코드
+### 코드
     
     <script>
         // 페이지 로드 시 이전 상태 복원
@@ -52,7 +52,7 @@ javascript를 이용해 도장을 찍는 기능을 구현했다. javascript는 �
 
     </html>
 
-## 코드 설명
+### 코드 설명
 
     document.addEventListener("DOMContentLoaded", (event) => { ... }):
 
@@ -91,7 +91,7 @@ if (bucket.classList.contains("done")) { localStorage.setItem("bucket" + index, 
 
 이렇게 페이지 로드 시 웹 브라우저의 로컬 스토리지를 확인하여 버킷 리스트의 상태를 복원하고, 사용자가 버킷을 클릭하여 상태를 변경할 때마다 그 상태를 로컬 스토리지에 저장하는 역할을 해 도장을 찍는 간단한 기능을 구현할 수 있다!
 
-## 마무리
+### 마무리
 
 2024년이 시작한지 얼마 안 지났는데, 하루하루가 굉장히 빠르다는 느낌이 든다. 아침에 일어나고 일과가 끝나고 집에 돌아가면 여섯시 - 일곱시 가량인데, 하루하루 목표를 위해서 열심히 달려야 간단하게 제작한 버켓리스트 페이지에 도장을 찍을 수 있을 것 같다.
 

@@ -138,9 +138,9 @@
           
 <!-- 본문 카테고리를 추가하는 코드 -->
 
-      <h1 id="프로그래머스ps-타겟-넘버--level-2-dp-풀이">[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)</h1>
+      <h2 id="프로그래머스ps-타겟-넘버--level-2-dp-풀이">[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)</h2>
 
-<h2 id="문제-설명">문제 설명</h2>
+<h3 id="문제-설명">문제 설명</h3>
 
 <p>문제 설명
 n개의 음이 아닌 정수들이 있습니다. 이 정수들을 순서를 바꾸지 않고 적절히 더하거나 빼서 타겟 넘버를 만들려고 합니다. 예를 들어 [1, 1, 1, 1, 1]로 숫자 3을 만들려면 다음 다섯 방법을 쓸 수 있습니다.</p>
@@ -165,14 +165,14 @@ n개의 음이 아닌 정수들이 있습니다. 이 정수들을 순서를 바�
   <li>타겟 넘버는 1 이상 1000 이하인 자연수입니다.</li>
 </ol>
 
-<h2 id="서론">서론</h2>
+<h3 id="서론">서론</h3>
 
 <p>일단 프로그래머스에서는 이 문제를 DFS / BFS 문제로 설정해 놓았다. 당연히, 이렇게 풀 수 있다. 
 조합을 만들어서, 선택된 값들을 음수 또는 양수로 바꿔서 Sum을 리턴하면 되는 문제다.
 하지만 굳이 풀어보지 않더라도 아마 이 방법은 분명 최적해가 아닐 것이다. (DFS, BFS로 풀지 못한다는 말이 아니다!!) 
 내 경험상 많은 경우에, 이런 문제의 최적해는 DP로 풀어야 하는 경우가 많다.</p>
 
-<h2 id="접근-방법">접근 방법</h2>
+<h3 id="접근-방법">접근 방법</h3>
 
 <p>이 문제는 <strong>동전 거스름돈 문제</strong> 와 유사하다.</p>
 
@@ -205,7 +205,7 @@ n개의 음이 아닌 정수들이 있습니다. 이 정수들을 순서를 바�
 
 <p>이제 DP를 사용할 수 있다.</p>
 
-<h2 id="파이썬-코드">파이썬 코드</h2>
+<h3 id="파이썬-코드">파이썬 코드</h3>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="k">def</span> <span class="nf">solution</span><span class="p">(</span><span class="n">quest</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
@@ -239,7 +239,7 @@ dp[4] = dp[4- num (즉 3)] ….. dp[1] = dp[1] + dp[1 - num(즉 0)] 이 된다. 
 
 <p>dp[j]에 dp[j - num]을 더하는 것은, “j원”을 만드는 방법에 “j - num원”을 만드는 방법을 추가하는 것으로 이는 “num원 짜리 동전”을 추가로 사용하여 “j원”을 만드는 새로운 방법을 찾는 것을 의미한다.</p>
 
-<h2 id="자바-풀이">자바 풀이</h2>
+<h3 id="자바-풀이">자바 풀이</h3>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="kt">int</span> <span class="nf">solution</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">quest</span><span class="o">,</span> <span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
@@ -264,8 +264,8 @@ dp[4] = dp[4- num (즉 3)] ….. dp[1] = dp[1] + dp[1 - num(즉 0)] 이 된다. 
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
         <span class="kt">int</span><span class="o">[]</span> <span class="n">quest</span> <span class="o">=</span> <span class="o">{</span><span class="mi">4</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">};</span>
         <span class="kt">int</span> <span class="n">targetNumber</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span>
-        <span class="nc">Solution</span> <span class="n">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Solution</span><span class="o">();</span> <span class="c1">// Solution 클래스의 인스턴스 생성</span>
-        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">solution</span><span class="o">(</span><span class="n">quest</span><span class="o">,</span><span class="n">targetNumber</span><span class="o">);</span> <span class="c1">// 인스턴스 메소드 호출</span>
+        <span class="nc">Solution</span> <span class="n">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Solution</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="na">solution</span><span class="o">(</span><span class="n">quest</span><span class="o">,</span><span class="n">targetNumber</span><span class="o">);</span> 
         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">answer</span><span class="o">);</span>
     <span class="o">}</span>
 <span class="o">}</span>

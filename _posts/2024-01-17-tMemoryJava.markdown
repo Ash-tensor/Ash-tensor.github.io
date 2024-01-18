@@ -9,12 +9,12 @@ categories: JAVA 자료구조
 background: '/img/port.jpg'
 ---
 
-# [자바][자료구조] T 메모리구조
+## [자바][자료구조] T 메모리구조
 
 <img src="/img/posts/JAVA/TMemorySample.png" style="display: block; margin-left: auto; margin-right: auto; width: 100%">
 
 
-## Main.java
+### Main.java
 
 ~~~ java
 package tmemorysample;
@@ -60,7 +60,7 @@ class SolveA {
 }
 ~~~ 
 
-## SolveB.java
+### SolveB.java
 
 ~~~ java
 

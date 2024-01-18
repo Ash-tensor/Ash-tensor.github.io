@@ -13,7 +13,7 @@ background: '/img/port.jpg'
 
 인터페이스를 배울 때 (적어도 나는) 추상 클래스와는 다르게 다중 상속이 가능하다는 것이 기억나는데 이는 객체지향에 익숙하지 않으면 추상 클래스와 인터페이스가 어떤 일을 하는지 정확히 이해하기 힘들기 때문이라고 생각한다.
 
-# 인터페이스
+## 인터페이스
 
 인터페이스는 추상 클래스와는 별도로 **구현 객체가 같은 동작을 한다는 것을 보장하기 위해 초점을 두는 것이 추상 클래스와는 다르다.** 예를 들어서, 리모컨이라는 추상 클래스가 존재한다고 할 때, TV리모컨과 에어컨 리모컨은 하는 역할이 다를 것이다. 
 
@@ -50,9 +50,9 @@ background: '/img/port.jpg'
 
 이렇게 동작의 메서드를 각각 인터페이스마다 분리하여 설계함으로서 조금 더 구조적이고 더욱 추상적인 객체를 설계할 수 있다. 
 
-## 구현 예제
+### 구현 예제
 
-### IRemoteControlable 인터페이스
+#### IRemoteControlable 인터페이스
 
     public interface IRemoteControlable {
     void turnOn();
@@ -64,7 +64,7 @@ background: '/img/port.jpg'
     void putChannel(int value);
     }
 
-### Controller 클래스
+#### Controller 클래스
 
     package jan5th;
     import java.util.Scanner;
@@ -199,7 +199,7 @@ background: '/img/port.jpg'
     }
 
 
-### Human 클래스
+#### Human 클래스
 
     package jan5th;
 
@@ -223,7 +223,7 @@ background: '/img/port.jpg'
     }
 
 
-### 메인 클래스
+#### 메인 클래스
 
     package jan5th;
 

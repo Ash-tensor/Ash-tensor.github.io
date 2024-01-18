@@ -9,7 +9,7 @@ categories: JAVA
 background: '/img/port.jpg'
 ---
 
-# 예외처리
+## 예외처리
 
 자바는 솔직히 예외처리를 아주 빡빡하게 처리하는 언어다. 다른 언어들이 특정 예외가 일어났을 때를 열거해서 (divideByZero error, Stack overflow error 등) 제외하는 것에 비해서 조금은 특이하다.
 
@@ -17,7 +17,7 @@ background: '/img/port.jpg'
 
 하지만 널리 사용되는 언어인 Javascript와 Python에 비교해 봐도, 자바처럼 Checked 에러와 Unchecked 에러를 나눠서 구현을 강제해서 구분하는 언어는 충분히 드물다고 할 수 있다.
 
-## Checked Error - Unchecked Error
+### Checked Error - Unchecked Error
 
     class ExceptionExample {
         // 예외를 던질 수 있는 메서드
@@ -63,7 +63,7 @@ throws 키워드는 Checked Error를 열거하는 예약어로, 만약 이 메�
 
 이런식으로. 
 
-## throws가 없는 프로그램
+### throws가 없는 프로그램
 
     class ExceptionExample {
         public void methodWithoutThrows() {

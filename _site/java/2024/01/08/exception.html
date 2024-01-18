@@ -124,7 +124,7 @@
           
 <!-- 본문 카테고리를 추가하는 코드 -->
 
-      <h1 id="예외처리">예외처리</h1>
+      <h2 id="예외처리">예외처리</h2>
 
 <p>자바는 솔직히 예외처리를 아주 빡빡하게 처리하는 언어다. 다른 언어들이 특정 예외가 일어났을 때를 열거해서 (divideByZero error, Stack overflow error 등) 제외하는 것에 비해서 조금은 특이하다.</p>
 
@@ -132,7 +132,7 @@
 
 <p>하지만 널리 사용되는 언어인 Javascript와 Python에 비교해 봐도, 자바처럼 Checked 에러와 Unchecked 에러를 나눠서 구현을 강제해서 구분하는 언어는 충분히 드물다고 할 수 있다.</p>
 
-<h2 id="checked-error---unchecked-error">Checked Error - Unchecked Error</h2>
+<h3 id="checked-error---unchecked-error">Checked Error - Unchecked Error</h3>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class ExceptionExample {
     // 예외를 던질 수 있는 메서드
@@ -184,7 +184,7 @@ class CustomException extends Exception {
 
 <p>이런식으로.</p>
 
-<h2 id="throws가-없는-프로그램">throws가 없는 프로그램</h2>
+<h3 id="throws가-없는-프로그램">throws가 없는 프로그램</h3>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class ExceptionExample {
     public void methodWithoutThrows() {
