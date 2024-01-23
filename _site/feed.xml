@@ -1,140 +1,148 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-01-23T16:59:14+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[자바][자료구조] T 메모리구조</title><link href="http://localhost:4000/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/tMemoryJava.html" rel="alternate" type="text/html" title="[자바][자료구조] T 메모리구조" /><published>2024-01-17T00:00:00+09:00</published><updated>2024-01-17T00:00:00+09:00</updated><id>http://localhost:4000/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/tMemoryJava</id><content type="html" xml:base="http://localhost:4000/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/tMemoryJava.html"><![CDATA[<h2 id="자바자료구조-t-메모리구조">[자바][자료구조] T 메모리구조</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-01-23T17:18:48+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[백준][자료구조] 백준 1935번 :: 후위 표기식 2 :: 실버 3</title><link href="http://localhost:4000/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%EB%B0%B1%EC%A4%80/ps/2024/01/23/boj1935.html" rel="alternate" type="text/html" title="[백준][자료구조] 백준 1935번 :: 후위 표기식 2 :: 실버 3" /><published>2024-01-23T00:00:00+09:00</published><updated>2024-01-23T00:00:00+09:00</updated><id>http://localhost:4000/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%EB%B0%B1%EC%A4%80/ps/2024/01/23/boj1935</id><content type="html" xml:base="http://localhost:4000/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%EB%B0%B1%EC%A4%80/ps/2024/01/23/boj1935.html"><![CDATA[<h2 id="백준자료구조-백준-1935번--후위-표기식-2--실버-3">[백준][자료구조] 백준 1935번 :: 후위 표기식 2 :: 실버 3</h2>
 
-<p><img src="/img/posts/JAVA/TMemorySample.png" style="display: block; margin-left: auto; margin-right: auto; width: 100%" /></p>
+<h3 id="문제-설명">문제 설명</h3>
 
-<h3 id="mainjava">Main.java</h3>
+<p>후위 표기식과 각 피연산자에 대응하는 값들이 주어져 있을 때, 그 식을 계산하는 프로그램을 작성하시오.</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">tmemorysample</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<p><strong>입력</strong></p>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
-    <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">SAMPLE_INTEGER_A</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
-    <span class="kd">static</span> <span class="kt">int</span> <span class="no">SAMPLE_INTEGER_B</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+<p>첫째 줄에 피연산자의 개수(1 ≤ N ≤ 26) 가 주어진다. 그리고 둘째 줄에는 후위 표기식이 주어진다. (여기서 피연산자는 A~Z의 영대문자이며, A부터 순서대로 N개의 영대문자만이 사용되며, 길이는 100을 넘지 않는다) 그리고 셋째 줄부터 N+2번째 줄까지는 각 피연산자에 대응하는 값이 주어진다. 3번째 줄에는 A에 해당하는 값, 4번째 줄에는 B에 해당하는값 , 5번째 줄에는 C …이 주어진다, 그리고 피연산자에 대응 하는 값은 100보다 작거나 같은 자연수이다.</p>
 
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">fact</span><span class="o">(</span><span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">target</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
-        <span class="o">}</span>
-        <span class="k">else</span> <span class="o">{</span>
-            <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">target</span> <span class="o">*</span> <span class="n">fact</span><span class="o">(</span><span class="n">target</span><span class="o">-</span><span class="mi">1</span><span class="o">);</span>
-            <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+<p>후위 표기식을 앞에서부터 계산했을 때, 식의 결과와 중간 결과가 -20억보다 크거나 같고, 20억보다 작거나 같은 입력만 주어진다.</p>
 
-        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">sample</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
-        <span class="n">sample</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="no">SAMPLE_INTEGER_A</span><span class="o">);</span>
-        <span class="n">sample</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="no">SAMPLE_INTEGER_B</span><span class="o">);</span>
+<p><strong>출력</strong></p>
 
-        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="nc">SolveA</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">sample</span><span class="o">);</span>
+<p>계산 결과를 소숫점 둘째 자리까지 출력한다.</p>
 
-        <span class="nc">SolveB</span> <span class="n">solveB</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SolveB</span><span class="o">();</span>
-        <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="n">solveB</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">sample</span><span class="o">);</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">&gt;=</span> <span class="no">SAMPLE_INTEGER_A</span><span class="o">)</span> <span class="o">{</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">fact</span><span class="o">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">));</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-<span class="kd">class</span> <span class="nc">SolveA</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">add</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">a</span><span class="o">){</span>
-        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">a</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="n">answer</span> <span class="o">+=</span> <span class="n">a</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
+<h3 id="제한시간">제한시간</h3>
 
-<h3 id="solvebjava">SolveB.java</h3>
+<p>2 초	128 MB</p>
+
+<h3 id="예제-입력">예제 입력</h3>
+
+<p>5
+ABC*+DE/-
+1
+2
+3
+4
+5</p>
+
+<h3 id="예제-출력">예제 출력</h3>
+
+<p>6.20</p>
+
+<h4 id="접근방법">접근방법</h4>
+
+<p>이 문제는 자료구조의 스택을 활용하는 문제로, 대표적인 스택을 활용한 자료구조 예제 중 하나이다. 보통 괄호 검사와 함께 자료구조 시간에 배우는데, 이를 풀기 위해서는 후위 표기식을 알아야 하고, 스택 자료구조를 사용할 줄 알아야 한다.</p>
+
+<p>5%에서 해결이 안 돼서 곤란했는데 float으로는 정밀도를 해결할 수 없어서 Double로 계산해야만 문제가 풀린다.</p>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="kn">package</span> <span class="nn">tmemorysample</span><span class="o">;</span>
+<span class="kn">package</span> <span class="nn">boj</span><span class="o">;</span>
 
-<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SolveB</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">add</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">a</span><span class="o">){</span>
-        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">a</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="n">answer</span> <span class="o">+=</span> <span class="n">a</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">boj1935</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">solve</span><span class="o">();</span>
+
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">solve</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">quest</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+        <span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
+
+        <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Double</span><span class="o">&gt;</span> <span class="n">operandMap</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+
+
+        <span class="kt">char</span><span class="o">[]</span> <span class="n">operator</span> <span class="o">=</span> <span class="o">{</span><span class="sc">'*'</span><span class="o">,</span> <span class="sc">'+'</span><span class="o">,</span> <span class="sc">'-'</span><span class="o">,</span> <span class="sc">'/'</span><span class="o">};</span>
+
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">&gt;</span> <span class="n">operators</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">char</span> <span class="n">c</span> <span class="o">:</span> <span class="n">operator</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">operators</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
         <span class="o">}</span>
-        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+
+        <span class="nc">String</span> <span class="n">questLine</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
+        <span class="kt">char</span><span class="o">[]</span> <span class="n">questArray</span> <span class="o">=</span> <span class="n">questLine</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">();</span>
+
+        <span class="nc">Stack</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">questStack</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Stack</span><span class="o">&lt;&gt;();</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">questLine</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">operators</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">questArray</span><span class="o">[</span><span class="n">i</span><span class="o">]))</span> <span class="o">{</span>
+
+                <span class="k">switch</span><span class="o">(</span><span class="n">questArray</span><span class="o">[</span><span class="n">i</span><span class="o">])</span> <span class="o">{</span>
+                    <span class="k">case</span> <span class="sc">'*'</span> <span class="o">:</span>
+                        <span class="nc">String</span> <span class="n">temp1</span> <span class="o">=</span> <span class="n">questStack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+                        <span class="nc">String</span> <span class="n">temp2</span> <span class="o">=</span> <span class="n">questStack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+
+                        <span class="nc">Double</span> <span class="n">operand1</span> <span class="o">=</span> <span class="n">operandMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">temp2</span><span class="o">);</span>
+                        <span class="nc">Double</span> <span class="n">operand2</span> <span class="o">=</span> <span class="n">operandMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">temp1</span><span class="o">);</span>
+
+                        <span class="nc">Double</span> <span class="n">tempAnswer</span> <span class="o">=</span> <span class="n">operand1</span> <span class="o">*</span> <span class="n">operand2</span><span class="o">;</span>
+                        <span class="n">questStack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">tempAnswer</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+                        <span class="n">operandMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">tempAnswer</span><span class="o">.</span><span class="na">toString</span><span class="o">(),</span> <span class="n">tempAnswer</span><span class="o">);</span>
+                        <span class="k">break</span><span class="o">;</span>
+
+                    <span class="k">case</span> <span class="sc">'-'</span> <span class="o">:</span>
+                        <span class="nc">String</span> <span class="n">temp3</span> <span class="o">=</span> <span class="n">questStack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+                        <span class="nc">String</span> <span class="n">temp4</span> <span class="o">=</span> <span class="n">questStack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+
+                        <span class="nc">Double</span> <span class="n">operand3</span> <span class="o">=</span> <span class="n">operandMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">temp4</span><span class="o">);</span>
+                        <span class="nc">Double</span> <span class="n">operand4</span> <span class="o">=</span> <span class="n">operandMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">temp3</span><span class="o">);</span>
+
+                        <span class="nc">Double</span> <span class="n">tempAnswer1</span> <span class="o">=</span> <span class="n">operand3</span> <span class="o">-</span> <span class="n">operand4</span><span class="o">;</span>
+                        <span class="n">questStack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">tempAnswer1</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+                        <span class="n">operandMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">tempAnswer1</span><span class="o">.</span><span class="na">toString</span><span class="o">(),</span> <span class="n">tempAnswer1</span><span class="o">);</span>
+                        <span class="k">break</span><span class="o">;</span>
+
+                    <span class="k">case</span> <span class="sc">'+'</span> <span class="o">:</span>
+                        <span class="nc">String</span> <span class="n">temp5</span> <span class="o">=</span> <span class="n">questStack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+                        <span class="nc">String</span> <span class="n">temp6</span> <span class="o">=</span> <span class="n">questStack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+
+                        <span class="nc">Double</span> <span class="n">operand5</span> <span class="o">=</span> <span class="n">operandMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">temp6</span><span class="o">);</span>
+                        <span class="nc">Double</span> <span class="n">operand6</span> <span class="o">=</span> <span class="n">operandMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">temp5</span><span class="o">);</span>
+
+                        <span class="nc">Double</span> <span class="n">tempAnswer2</span> <span class="o">=</span> <span class="n">operand5</span> <span class="o">+</span> <span class="n">operand6</span><span class="o">;</span>
+                        <span class="n">questStack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">tempAnswer2</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+                        <span class="n">operandMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">tempAnswer2</span><span class="o">.</span><span class="na">toString</span><span class="o">(),</span> <span class="n">tempAnswer2</span><span class="o">);</span>
+                        <span class="k">break</span><span class="o">;</span>
+
+                    <span class="k">case</span> <span class="sc">'/'</span> <span class="o">:</span>
+                        <span class="nc">String</span> <span class="n">temp7</span> <span class="o">=</span> <span class="n">questStack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+                        <span class="nc">String</span> <span class="n">temp8</span> <span class="o">=</span> <span class="n">questStack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+
+                        <span class="nc">Double</span> <span class="n">operand7</span> <span class="o">=</span> <span class="n">operandMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">temp8</span><span class="o">);</span>
+                        <span class="nc">Double</span> <span class="n">operand8</span> <span class="o">=</span> <span class="n">operandMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">temp7</span><span class="o">);</span>
+
+                        <span class="nc">Double</span> <span class="n">tempAnswer3</span> <span class="o">=</span> <span class="n">operand7</span> <span class="o">/</span> <span class="n">operand8</span><span class="o">;</span>
+                        <span class="n">questStack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">tempAnswer3</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+                        <span class="n">operandMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">tempAnswer3</span><span class="o">.</span><span class="na">toString</span><span class="o">(),</span> <span class="n">tempAnswer3</span><span class="o">);</span>
+                        <span class="k">break</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">operandMap</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="nc">Character</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">questArray</span><span class="o">[</span><span class="n">i</span><span class="o">])))</span> <span class="o">{</span>
+                    <span class="n">questStack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="nc">Character</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">questArray</span><span class="o">[</span><span class="n">i</span><span class="o">]));</span>
+
+                <span class="o">}</span>
+                <span class="k">else</span> <span class="o">{</span>
+                <span class="nc">Double</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextDouble</span><span class="o">();</span>
+                <span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
+
+                <span class="n">operandMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="nc">Character</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">questArray</span><span class="o">[</span><span class="n">i</span><span class="o">]),</span> <span class="n">temp</span><span class="o">);</span>
+                <span class="n">questStack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="nc">Character</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">questArray</span><span class="o">[</span><span class="n">i</span><span class="o">]));</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="nc">String</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">questStack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+        <span class="nc">Double</span> <span class="n">finalAnswer</span> <span class="o">=</span> <span class="nc">Double</span><span class="o">.</span><span class="na">parseDouble</span><span class="o">(</span><span class="n">answer</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="nc">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"%.2f"</span><span class="o">,</span> <span class="n">finalAnswer</span><span class="o">));</span>
     <span class="o">}</span>
 <span class="o">}</span>
 
-</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="JAVA" /><category term="자료구조" /><summary type="html"><![CDATA[[자바][자료구조] T 메모리구조]]></summary></entry><entry><title type="html">[깃허브 블로그] 동일 카테고리의 최근 글 기능 개발(clean blog theme)</title><link href="http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2024/01/17/bottom-category-build.html" rel="alternate" type="text/html" title="[깃허브 블로그] 동일 카테고리의 최근 글 기능 개발(clean blog theme)" /><published>2024-01-17T00:00:00+09:00</published><updated>2024-01-17T00:00:00+09:00</updated><id>http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2024/01/17/bottom-category-build</id><content type="html" xml:base="http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2024/01/17/bottom-category-build.html"><![CDATA[<h2 id="동일-카테고리의-최근-글-기능">동일 카테고리의 최근 글 기능</h2>
-
-<p><img src="/img/posts/clean-blog-setup/18.png" style="display: block; margin-left: auto; margin-right: auto; width: 80%" /></p>
-
-<p>사진을 보면 이해가 아주 쉬울텐데
-티스토리 블로그나 네이버 블로그 모두, 블로그 하단부에는 최근 동일 카테고리의 글 몇개를 보여주는 기능이 존재한다(정확히 무슨 이름인지는 모르겠다). 상황에 따라 전부 보여주기도 하고, 최근 글 몇개만 보여주기도 한다. 아마 잘은 모르겠지만 blogger나 wordpress 모두 동일할 것이다. 나도 그런 블로그에 익숙해서인지 모르겠지만 NavBar에 카테고리를 추가하기도 하고, 헤더 부분과 본문에 카테고리 링크를 표시하는 기능을 추가하기도 했는데 아무리 그래도 블로그에 이 기능이 없으면 허전하다고 느꼈고, 리퀴드 / html에 익숙해지기도 했고 해서, 이렇게 추가하게 되었다.</p>
-
-<h3 id="코드">코드</h3>
-
-<p>post.markdown 파일을 수정하면 된다. 나는 댓글창 위에 있는게 편해서 if page.comments 부분 위에 추가했는데 본인이 불편하지 않은 곳 어디든 추가하면 된다. 당연히 기존 코드 구조를 해치지 않는 선에서.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-&lt;ul class="row mb-5 "&gt;
-{% assign firstCategory = page.categories | first %}
-&lt;p&gt;
-    &lt;a style= "font-size: 20px; font-weight: bold;" href= "{{ site.url }}/category/{{ firstCategory }}.html"&gt;
-    {{ firstCategory }} 카테고리의 다른 글
-    &lt;/a&gt;
-&lt;/p&gt;
-{% assign posts = site.categories[firstCategory] | sort: 'date' | reverse | limit: 5 %}
-{% assign counter = 0 %}
-{% for post in posts %}
-    {% if counter &lt; 5 %}
-    
-    &lt;li&gt;
-        &lt;h3&gt;
-        &lt;a href="{{ site.baseurl }}{{ post.url }}" style= "font-size: 20px;"&gt;
-            {{ post.title }}
-        &lt;/a&gt;
-        &lt;small style= "font-size: 20px;"&gt;{{ post.date | date_to_string }}&lt;/small&gt;
-        &lt;/h3&gt;
-    &lt;/li&gt;
-    {% assign counter = counter | plus: 1 %}
-    {% endif %}
-{% endfor %}
-&lt;/ul&gt;
-
-
-</code></pre></div></div>
-
-<h3 id="설명">설명</h3>
-
-<p>지킬에서 사용하는 리퀴드 언어에서는 assign을 이용해서 변수를 할당한다. 이건 자바스크립트와 조금 비슷한 것 같다. 그래서 코드를 살펴보면  firstCategory라는 변수에 page의 categories의 첫번째 카테고리를 할당한다. 여기서 page.categories라는 리스트는 프론트매터의 categoris: xxx에 해당하는 부분이다.</p>
-
-<p><img src="/img/posts/clean-blog-setup/19.png" style="display: block; margin-left: auto; margin-right: auto; width: 80%" /></p>
-
-<p>바로 이 부분.</p>
-
-<p>당연하겠지만 이 기능은 첫번째 카테고리의 내용만을 표시한다. 카테고리에는 여러개의 카테고리를 할당할 수는 있지만 보여주는건 하나뿐이다. 아무래도 여러개를 보여주면 너무 헷갈리지 않을까 싶어서 이렇게 설정했다. 리퀴드에서는 파이썬의 for문과 똑같이 for x in xlist 구조의 향상된 순회가 가능하다.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign posts = site.categories[firstCategory] | sort: 'date' | reverse | limit: 5 %}
-{% assign counter = 0 %}
-{% for post in posts %}
-    {% if counter &lt; 5 %}
-    
-    &lt;li&gt;
-        &lt;h3&gt;
-        &lt;a href="{{ site.baseurl }}{{ post.url }}" style= "font-size: 20px;"&gt;
-            {{ post.title }}
-        &lt;/a&gt;
-        &lt;small style= "font-size: 20px;"&gt;{{ post.date | date_to_string }}&lt;/small&gt;
-        &lt;/h3&gt;
-    &lt;/li&gt;
-    {% assign counter = counter | plus: 1 %}
-    {% endif %}
-{% endfor %}
-</code></pre></div></div>
-
-<p>그리고 위 부분에서는 예전에 카테고리를 만들때 사용했던 코드를 응용했는데, 이해가 가지 않았던 점은 분명 <strong>limit: 5</strong>를 설정했는데 어떻게 해도 5개 이상으로 표시가 되어서 GPT에게도 물어봤지만 “코드는 정확해, 아무런 문제도 없어.” 라는 대답만 들을 수 있었다. 왜 그런지 잘 모르겠는데, 정렬 문제인가 싶어서 여러번 설정을 바꿔봤지만 그 문제는 아닌 것 같다. 어쩔 수 없이 그냥 for 문에 카운터를 설정해서 5개만 표시되도록 코드를 수정했다. « 이유 아는 사람 있으면 알려주시길</p>
-
-<p>아무튼 수정한 결과 이 문단의 바로 아랫부분에 나오는 페이지를 완성할 수 있었다! CSS 스타일을 내가 처음부터 직접 만든 게 아니라 상당히 투박하기도 하고 모바일에서 어떻게 나올지는 잘 모르겠지만 일단 작동은 하긴 하니까, 여기에서 마무리 지어야겠다.</p>]]></content><author><name>ash tensor</name></author><category term="깃허브" /><summary type="html"><![CDATA[동일 카테고리의 최근 글 기능]]></summary></entry><entry><title type="html">[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)</title><link href="http://localhost:4000/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany.html" rel="alternate" type="text/html" title="[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)" /><published>2024-01-17T00:00:00+09:00</published><updated>2024-01-17T00:00:00+09:00</updated><id>http://localhost:4000/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany</id><content type="html" xml:base="http://localhost:4000/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany.html"><![CDATA[<h2 id="백준ps-회사에-있는-사람--실버-5자료구조">[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)</h2>
+</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="JAVA" /><category term="자료구조" /><category term="백준" /><category term="PS" /><summary type="html"><![CDATA[[백준][자료구조] 백준 1935번 :: 후위 표기식 2 :: 실버 3]]></summary></entry><entry><title type="html">[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)</title><link href="http://localhost:4000/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany.html" rel="alternate" type="text/html" title="[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)" /><published>2024-01-17T00:00:00+09:00</published><updated>2024-01-17T00:00:00+09:00</updated><id>http://localhost:4000/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany</id><content type="html" xml:base="http://localhost:4000/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany.html"><![CDATA[<h2 id="백준ps-회사에-있는-사람--실버-5자료구조">[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)</h2>
 
 <h3 id="문제-설명">문제 설명</h3>
 
@@ -231,7 +239,143 @@
         <span class="o">}</span>
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="PS" /><category term="백준" /><category term="JAVA" /><category term="자료구조" /><summary type="html"><![CDATA[[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)]]></summary></entry><entry><title type="html">[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)</title><link href="http://localhost:4000/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber.html" rel="alternate" type="text/html" title="[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)" /><published>2024-01-16T00:00:00+09:00</published><updated>2024-01-16T00:00:00+09:00</updated><id>http://localhost:4000/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber</id><content type="html" xml:base="http://localhost:4000/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber.html"><![CDATA[<h2 id="프로그래머스ps-타겟-넘버--level-2-dp-풀이">[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)</h2>
+</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="PS" /><category term="백준" /><category term="JAVA" /><category term="자료구조" /><summary type="html"><![CDATA[[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)]]></summary></entry><entry><title type="html">[깃허브 블로그] 동일 카테고리의 최근 글 기능 개발(clean blog theme)</title><link href="http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2024/01/17/bottom-category-build.html" rel="alternate" type="text/html" title="[깃허브 블로그] 동일 카테고리의 최근 글 기능 개발(clean blog theme)" /><published>2024-01-17T00:00:00+09:00</published><updated>2024-01-17T00:00:00+09:00</updated><id>http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2024/01/17/bottom-category-build</id><content type="html" xml:base="http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2024/01/17/bottom-category-build.html"><![CDATA[<h2 id="동일-카테고리의-최근-글-기능">동일 카테고리의 최근 글 기능</h2>
+
+<p><img src="/img/posts/clean-blog-setup/18.png" style="display: block; margin-left: auto; margin-right: auto; width: 80%" /></p>
+
+<p>사진을 보면 이해가 아주 쉬울텐데
+티스토리 블로그나 네이버 블로그 모두, 블로그 하단부에는 최근 동일 카테고리의 글 몇개를 보여주는 기능이 존재한다(정확히 무슨 이름인지는 모르겠다). 상황에 따라 전부 보여주기도 하고, 최근 글 몇개만 보여주기도 한다. 아마 잘은 모르겠지만 blogger나 wordpress 모두 동일할 것이다. 나도 그런 블로그에 익숙해서인지 모르겠지만 NavBar에 카테고리를 추가하기도 하고, 헤더 부분과 본문에 카테고리 링크를 표시하는 기능을 추가하기도 했는데 아무리 그래도 블로그에 이 기능이 없으면 허전하다고 느꼈고, 리퀴드 / html에 익숙해지기도 했고 해서, 이렇게 추가하게 되었다.</p>
+
+<h3 id="코드">코드</h3>
+
+<p>post.markdown 파일을 수정하면 된다. 나는 댓글창 위에 있는게 편해서 if page.comments 부분 위에 추가했는데 본인이 불편하지 않은 곳 어디든 추가하면 된다. 당연히 기존 코드 구조를 해치지 않는 선에서.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+&lt;ul class="row mb-5 "&gt;
+{% assign firstCategory = page.categories | first %}
+&lt;p&gt;
+    &lt;a style= "font-size: 20px; font-weight: bold;" href= "{{ site.url }}/category/{{ firstCategory }}.html"&gt;
+    {{ firstCategory }} 카테고리의 다른 글
+    &lt;/a&gt;
+&lt;/p&gt;
+{% assign posts = site.categories[firstCategory] | sort: 'date' | reverse | limit: 5 %}
+{% assign counter = 0 %}
+{% for post in posts %}
+    {% if counter &lt; 5 %}
+    
+    &lt;li&gt;
+        &lt;h3&gt;
+        &lt;a href="{{ site.baseurl }}{{ post.url }}" style= "font-size: 20px;"&gt;
+            {{ post.title }}
+        &lt;/a&gt;
+        &lt;small style= "font-size: 20px;"&gt;{{ post.date | date_to_string }}&lt;/small&gt;
+        &lt;/h3&gt;
+    &lt;/li&gt;
+    {% assign counter = counter | plus: 1 %}
+    {% endif %}
+{% endfor %}
+&lt;/ul&gt;
+
+
+</code></pre></div></div>
+
+<h3 id="설명">설명</h3>
+
+<p>지킬에서 사용하는 리퀴드 언어에서는 assign을 이용해서 변수를 할당한다. 이건 자바스크립트와 조금 비슷한 것 같다. 그래서 코드를 살펴보면  firstCategory라는 변수에 page의 categories의 첫번째 카테고리를 할당한다. 여기서 page.categories라는 리스트는 프론트매터의 categoris: xxx에 해당하는 부분이다.</p>
+
+<p><img src="/img/posts/clean-blog-setup/19.png" style="display: block; margin-left: auto; margin-right: auto; width: 80%" /></p>
+
+<p>바로 이 부분.</p>
+
+<p>당연하겠지만 이 기능은 첫번째 카테고리의 내용만을 표시한다. 카테고리에는 여러개의 카테고리를 할당할 수는 있지만 보여주는건 하나뿐이다. 아무래도 여러개를 보여주면 너무 헷갈리지 않을까 싶어서 이렇게 설정했다. 리퀴드에서는 파이썬의 for문과 똑같이 for x in xlist 구조의 향상된 순회가 가능하다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% assign posts = site.categories[firstCategory] | sort: 'date' | reverse | limit: 5 %}
+{% assign counter = 0 %}
+{% for post in posts %}
+    {% if counter &lt; 5 %}
+    
+    &lt;li&gt;
+        &lt;h3&gt;
+        &lt;a href="{{ site.baseurl }}{{ post.url }}" style= "font-size: 20px;"&gt;
+            {{ post.title }}
+        &lt;/a&gt;
+        &lt;small style= "font-size: 20px;"&gt;{{ post.date | date_to_string }}&lt;/small&gt;
+        &lt;/h3&gt;
+    &lt;/li&gt;
+    {% assign counter = counter | plus: 1 %}
+    {% endif %}
+{% endfor %}
+</code></pre></div></div>
+
+<p>그리고 위 부분에서는 예전에 카테고리를 만들때 사용했던 코드를 응용했는데, 이해가 가지 않았던 점은 분명 <strong>limit: 5</strong>를 설정했는데 어떻게 해도 5개 이상으로 표시가 되어서 GPT에게도 물어봤지만 “코드는 정확해, 아무런 문제도 없어.” 라는 대답만 들을 수 있었다. 왜 그런지 잘 모르겠는데, 정렬 문제인가 싶어서 여러번 설정을 바꿔봤지만 그 문제는 아닌 것 같다. 어쩔 수 없이 그냥 for 문에 카운터를 설정해서 5개만 표시되도록 코드를 수정했다. « 이유 아는 사람 있으면 알려주시길</p>
+
+<p>아무튼 수정한 결과 이 문단의 바로 아랫부분에 나오는 페이지를 완성할 수 있었다! CSS 스타일을 내가 처음부터 직접 만든 게 아니라 상당히 투박하기도 하고 모바일에서 어떻게 나올지는 잘 모르겠지만 일단 작동은 하긴 하니까, 여기에서 마무리 지어야겠다.</p>]]></content><author><name>ash tensor</name></author><category term="깃허브" /><summary type="html"><![CDATA[동일 카테고리의 최근 글 기능]]></summary></entry><entry><title type="html">[자바][자료구조] T 메모리구조</title><link href="http://localhost:4000/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/tMemoryJava.html" rel="alternate" type="text/html" title="[자바][자료구조] T 메모리구조" /><published>2024-01-17T00:00:00+09:00</published><updated>2024-01-17T00:00:00+09:00</updated><id>http://localhost:4000/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/tMemoryJava</id><content type="html" xml:base="http://localhost:4000/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/tMemoryJava.html"><![CDATA[<h2 id="자바자료구조-t-메모리구조">[자바][자료구조] T 메모리구조</h2>
+
+<p><img src="/img/posts/JAVA/TMemorySample.png" style="display: block; margin-left: auto; margin-right: auto; width: 100%" /></p>
+
+<h3 id="mainjava">Main.java</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">tmemorysample</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">SAMPLE_INTEGER_A</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
+    <span class="kd">static</span> <span class="kt">int</span> <span class="no">SAMPLE_INTEGER_B</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">fact</span><span class="o">(</span><span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">target</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">target</span> <span class="o">*</span> <span class="n">fact</span><span class="o">(</span><span class="n">target</span><span class="o">-</span><span class="mi">1</span><span class="o">);</span>
+            <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">sample</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">sample</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="no">SAMPLE_INTEGER_A</span><span class="o">);</span>
+        <span class="n">sample</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="no">SAMPLE_INTEGER_B</span><span class="o">);</span>
+
+        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="nc">SolveA</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">sample</span><span class="o">);</span>
+
+        <span class="nc">SolveB</span> <span class="n">solveB</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SolveB</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="n">solveB</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">sample</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">&gt;=</span> <span class="no">SAMPLE_INTEGER_A</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">fact</span><span class="o">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">));</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="kd">class</span> <span class="nc">SolveA</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">add</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">a</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">a</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">answer</span> <span class="o">+=</span> <span class="n">a</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="solvebjava">SolveB.java</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">package</span> <span class="nn">tmemorysample</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SolveB</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">add</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">a</span><span class="o">){</span>
+        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">a</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">answer</span> <span class="o">+=</span> <span class="n">a</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="JAVA" /><category term="자료구조" /><summary type="html"><![CDATA[[자바][자료구조] T 메모리구조]]></summary></entry><entry><title type="html">[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)</title><link href="http://localhost:4000/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber.html" rel="alternate" type="text/html" title="[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)" /><published>2024-01-16T00:00:00+09:00</published><updated>2024-01-16T00:00:00+09:00</updated><id>http://localhost:4000/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber</id><content type="html" xml:base="http://localhost:4000/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber.html"><![CDATA[<h2 id="프로그래머스ps-타겟-넘버--level-2-dp-풀이">[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)</h2>
 
 <h3 id="문제-설명">문제 설명</h3>
 
@@ -1642,76 +1786,4 @@ public class Main {
         me.input(Hand);
     }
 }
-</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="JAVA" /><summary type="html"><![CDATA[추상 클래스와 인터페이스는 모두 자바에서 객체지향의 원칙 중 추상화를 구현하기 위해 사용되는 개념이지만 몇가지 중요한 차이가 존재한다. 솔직히 내 생각에는, 자바라는 언어가 어쩌면 극단적으로 객체지향을 중시한다는 것을 보여주는 예시라고 생각한다. 파이썬에서는 굳이 인터페이스를 사용하지 않는 경우가 많은 것 같다. “call” 처럼 간단한 인터페이스라면 객체를 그냥 파이썬 함수처럼 호출해서 사용하는 경우도 있고.]]></summary></entry><entry><title type="html">[JAVA] PSVM - public static void main(string[] args)</title><link href="http://localhost:4000/java/2024/01/04/psvm.html" rel="alternate" type="text/html" title="[JAVA] PSVM - public static void main(string[] args)" /><published>2024-01-04T00:00:00+09:00</published><updated>2024-01-04T00:00:00+09:00</updated><id>http://localhost:4000/java/2024/01/04/psvm</id><content type="html" xml:base="http://localhost:4000/java/2024/01/04/psvm.html"><![CDATA[<h2 id="psvm">PSVM</h2>
-
-<p>자바를 즐겨 사용하는 사람도 자바의 코드가 간결함과는 거리가 멀다는 데는 동의할 것이다. 당장 파이썬에서 하는 것처럼 print(“hello world”)를 실행하려고 해도, 아니면 자바를 이어받은 코틀린에서조차</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fun main() {
-println("Hello")
-}
-</code></pre></div></div>
-
-<p>이렇게 간결한데 자바에서는</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class Main {
-public static void main(String args[]) {
-    System.out.println("Hello");
-    }
-}
-</code></pre></div></div>
-
-<p>이런 식으로 작성해야 될 정도고, 저 부분을 수정하면</p>
-
-<p><img src="/img/posts/PSVM.PNG" style="width: 80%" /></p>
-
-<p>이렇게 아예 IDE에서부터 프로그램을 실행할 수 없다고 말해버린다. 이렇듯 자바는 public static final 처럼 문법적으로 꼭 필요한 서식과 문법적 구조가 너무 늘어진다. 그렇다보니 PS에서는 자바를 그다지 사용하지 않는 것 같다. 당연히 느려서 그런 것도 있겠지만, 똑같이 엄청 느린 파이썬을 많이 사용하는 걸 보면 꼭 그런것 만은 아닌 것 같다.</p>
-
-<p>그런데 왜 자바에서는 PSVM string args를 써야하는 걸까?</p>
-
-<h3 id="public">public</h3>
-
-<p>public은 접근 제어자이다. 자바는 프로그램의 시작을 Main 메소드에서 시작한다. 그러므로 어디에서든 접근해야 하기 때문에 public으로 선언하는 것은 당연하다.</p>
-
-<h3 id="static">static</h3>
-
-<p>자바에서 static 키워드는 많은 용도로 사용되는데, 정적 변수(Static Variable)과 정적 메서드(Static Method)가 대표적이다. 그리고 PSVM을 무조건 사용해야 되는 이유도 바로 여기에 있다. 
-정적 변수는 클래스가 메모리에 로드 될 때 생성되며 <strong>정적 영역</strong>에 적재된다. 정적 변수는 클래스 이름을 통해 접근할 수 있으며 (ex: Integer.MAX_VALUE) 객체를 생성하지 않아도 된다. 정적 메서드도 똑같은데, 정적 메서드 역시 클래스 이름을 통해 직접 호출할 수 있고, <strong>인스턴스의 변수나 인스턴스의 메서드를 직접 사용하거나 호출할 수 없다.</strong>
-오로지 정적 변수나 정적 메서드만 호출할 수 있다. 이 정적 메서드의 가장 대표적인 메서드가 바로 메인 메서드다.</p>
-
-<p>이 때문에 자바의 메인 메서드에는 public static void main(string[] args) 를 적어야 하는데, 자바의 메인 메서드는 객체를 생성하지 않고 실행되어야 하기 때문에 static, 즉 정적 메서드여야 하는 것이다.</p>
-
-<p>우리가 자바를 사용할 때, Main 클래스를 인스턴스해서, 예를 들어서</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Main classMain = new Main(args[]);
-classMain.main();
-</code></pre></div></div>
-
-<p>이런 식으로 터미널에 작성해서 실행하지는 않으니까.</p>
-
-<p>그리고 인스턴스의 변수나 인스턴스의 메서드를 직접 사용하거나 호출할 수 없는데 내 기억에 가장 깊게 남아있는 예시가 있다. 23년 정보처리기사 3회 자바 문제인데</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 에러가 나는 라인을 고르시오</span>
-<span class="kd">class</span> <span class="nf">Person</span><span class="o">(</span>
-    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
-    <span class="kd">public</span> <span class="nf">Person</span><span class="o">(</span><span class="nc">String</span> <span class="n">val</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">name</span> <span class="o">=</span> <span class="n">val</span><span class="o">;</span>
-    <span class="o">}</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">String</span> <span class="nf">get</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
-    <span class="o">}</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">print</span><span class="o">()</span> <span class="o">{</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">)</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Engineer</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">string</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="nc">Person</span> <span class="n">obj</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Person</span><span class="o">(</span><span class="s">"Kim"</span><span class="o">);</span>
-        <span class="n">obj</span><span class="o">.</span><span class="na">print</span><span class="o">();</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>이런 문제였다. 여기서는 7번 라인, <strong>return name</strong> 부분에서 에러가 나는데, 이는 <strong>get()이라는 메서드가 static 메서드이기 때문에, 2번 라인에서 선언된 private String name 이라는 인스턴스 변수를 참조할 수 없기 때문에</strong> 에러가 나는 것이다.</p>
-
-<p>어디서 에러가 날 지 찾으라는 문제가 나올 거라고는 생각을 하지 못해서 시험장에서 꽤 당황했었던 기억이 난다.</p>]]></content><author><name>ash tensor</name></author><category term="JAVA" /><summary type="html"><![CDATA[PSVM]]></summary></entry></feed>
+</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="JAVA" /><summary type="html"><![CDATA[추상 클래스와 인터페이스는 모두 자바에서 객체지향의 원칙 중 추상화를 구현하기 위해 사용되는 개념이지만 몇가지 중요한 차이가 존재한다. 솔직히 내 생각에는, 자바라는 언어가 어쩌면 극단적으로 객체지향을 중시한다는 것을 보여주는 예시라고 생각한다. 파이썬에서는 굳이 인터페이스를 사용하지 않는 경우가 많은 것 같다. “call” 처럼 간단한 인터페이스라면 객체를 그냥 파이썬 함수처럼 호출해서 사용하는 경우도 있고.]]></summary></entry></feed>

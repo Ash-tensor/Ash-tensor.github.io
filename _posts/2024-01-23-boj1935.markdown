@@ -1,0 +1,158 @@
+---
+layout: post
+comments: true
+title: "[백준][자료구조] 백준 1935번 :: 후위 표기식 2 :: 실버 3 "
+subtitle: 
+description: 
+date: 2024-01-23
+categories: JAVA 자료구조 백준 PS
+background: '/img/port.jpg'
+---
+
+## [백준][자료구조] 백준 1935번 :: 후위 표기식 2 :: 실버 3 
+
+### 문제 설명
+
+후위 표기식과 각 피연산자에 대응하는 값들이 주어져 있을 때, 그 식을 계산하는 프로그램을 작성하시오.
+
+**입력**
+
+첫째 줄에 피연산자의 개수(1 ≤ N ≤ 26) 가 주어진다. 그리고 둘째 줄에는 후위 표기식이 주어진다. (여기서 피연산자는 A~Z의 영대문자이며, A부터 순서대로 N개의 영대문자만이 사용되며, 길이는 100을 넘지 않는다) 그리고 셋째 줄부터 N+2번째 줄까지는 각 피연산자에 대응하는 값이 주어진다. 3번째 줄에는 A에 해당하는 값, 4번째 줄에는 B에 해당하는값 , 5번째 줄에는 C ...이 주어진다, 그리고 피연산자에 대응 하는 값은 100보다 작거나 같은 자연수이다.
+
+후위 표기식을 앞에서부터 계산했을 때, 식의 결과와 중간 결과가 -20억보다 크거나 같고, 20억보다 작거나 같은 입력만 주어진다.
+
+**출력**
+
+계산 결과를 소숫점 둘째 자리까지 출력한다.
+
+### 제한시간
+
+2 초	128 MB
+
+### 예제 입력
+
+5
+ABC*+DE/-
+1
+2
+3
+4
+5
+
+### 예제 출력
+
+6.20
+
+#### 접근방법
+
+이 문제는 자료구조의 스택을 활용하는 문제로, 대표적인 스택을 활용한 자료구조 예제 중 하나이다. 보통 괄호 검사와 함께 자료구조 시간에 배우는데, 이를 풀기 위해서는 후위 표기식을 알아야 하고, 스택 자료구조를 사용할 줄 알아야 한다. 
+
+5%에서 해결이 안 돼서 곤란했는데 float으로는 정밀도를 해결할 수 없어서 Double로 계산해야만 문제가 풀린다. 
+
+
+~~~ java
+
+package boj;
+
+import java.util.*;
+
+public class boj1935 {
+    public static void main(String[] args) {
+        solve();
+
+    }
+    public static void solve() {
+        Scanner scanner = new Scanner(System.in);
+        int quest = scanner.nextInt();
+        scanner.nextLine();
+
+        Map<String, Double> operandMap = new HashMap<>();
+
+
+        char[] operator = {'*', '+', '-', '/'};
+
+        List<Character> operators = new ArrayList<>();
+        for (char c : operator) {
+            operators.add(c);
+        }
+
+        String questLine = scanner.nextLine();
+        char[] questArray = questLine.toCharArray();
+
+        Stack<String> questStack = new Stack<>();
+
+        for (int i = 0; i < questLine.length(); i++) {
+            if (operators.contains(questArray[i])) {
+
+                switch(questArray[i]) {
+                    case '*' :
+                        String temp1 = questStack.pop();
+                        String temp2 = questStack.pop();
+
+                        Double operand1 = operandMap.get(temp2);
+                        Double operand2 = operandMap.get(temp1);
+
+                        Double tempAnswer = operand1 * operand2;
+                        questStack.push(tempAnswer.toString());
+                        operandMap.put(tempAnswer.toString(), tempAnswer);
+                        break;
+
+                    case '-' :
+                        String temp3 = questStack.pop();
+                        String temp4 = questStack.pop();
+
+                        Double operand3 = operandMap.get(temp4);
+                        Double operand4 = operandMap.get(temp3);
+
+                        Double tempAnswer1 = operand3 - operand4;
+                        questStack.push(tempAnswer1.toString());
+                        operandMap.put(tempAnswer1.toString(), tempAnswer1);
+                        break;
+
+                    case '+' :
+                        String temp5 = questStack.pop();
+                        String temp6 = questStack.pop();
+
+                        Double operand5 = operandMap.get(temp6);
+                        Double operand6 = operandMap.get(temp5);
+
+                        Double tempAnswer2 = operand5 + operand6;
+                        questStack.push(tempAnswer2.toString());
+                        operandMap.put(tempAnswer2.toString(), tempAnswer2);
+                        break;
+
+                    case '/' :
+                        String temp7 = questStack.pop();
+                        String temp8 = questStack.pop();
+
+                        Double operand7 = operandMap.get(temp8);
+                        Double operand8 = operandMap.get(temp7);
+
+                        Double tempAnswer3 = operand7 / operand8;
+                        questStack.push(tempAnswer3.toString());
+                        operandMap.put(tempAnswer3.toString(), tempAnswer3);
+                        break;
+                }
+            }
+            else {
+                if(operandMap.containsKey(Character.toString(questArray[i]))) {
+                    questStack.push(Character.toString(questArray[i]));
+
+                }
+                else {
+                Double temp = scanner.nextDouble();
+                scanner.nextLine();
+
+                operandMap.put(Character.toString(questArray[i]), temp);
+                questStack.push(Character.toString(questArray[i]));
+                }
+            }
+        }
+
+        String answer = questStack.pop();
+        Double finalAnswer = Double.parseDouble(answer);
+        System.out.print(String.format("%.2f", finalAnswer));
+    }
+}
+
+~~~
