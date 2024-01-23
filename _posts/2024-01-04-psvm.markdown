@@ -56,29 +56,29 @@ public은 접근 제어자이다. 자바는 프로그램의 시작을 Main 메�
 
 그리고 인스턴스의 변수나 인스턴스의 메서드를 직접 사용하거나 호출할 수 없는데 내 기억에 가장 깊게 남아있는 예시가 있다. 23년 정보처리기사 3회 자바 문제인데
 
-
-    // 에러가 나는 라인을 고르시오
-    class Person(
-        private String name;
-        public Person(String val) {
-            name = val;
-        }
-        public static String get() {
-            return name;
-        }
-        public void print() {
-            System.out.println(name);
-        }
-    )
-
-    public class Engineer {
-        public static void main(string[] args) {
-            Person obj = new Person("Kim");
-            obj.print();
-        }
+~~~ java
+// 에러가 나는 라인을 고르시오
+class Person(
+    private String name;
+    public Person(String val) {
+        name = val;
     }
+    public static String get() {
+        return name;
+    }
+    public void print() {
+        System.out.println(name);
+    }
+)
 
+public class Engineer {
+    public static void main(string[] args) {
+        Person obj = new Person("Kim");
+        obj.print();
+    }
+}
+~~~
 
-이런 문제였다. 여기서는 7번 라인, **return name** 부분에서 에러가 나는데, 이는 get()이라는 메서드가 static 메서드이기 때문에, 2번 라인에서 선언된 private String name 이라는 인스턴스 변수를 참조할 수 없기 때문에 에러가 나는 것이다.
+이런 문제였다. 여기서는 7번 라인, **return name** 부분에서 에러가 나는데, 이는 **get()이라는 메서드가 static 메서드이기 때문에, 2번 라인에서 선언된 private String name 이라는 인스턴스 변수를 참조할 수 없기 때문에** 에러가 나는 것이다.
 
 어디서 에러가 날 지 찾으라는 문제가 나올 거라고는 생각을 하지 못해서 시험장에서 꽤 당황했었던 기억이 난다.
