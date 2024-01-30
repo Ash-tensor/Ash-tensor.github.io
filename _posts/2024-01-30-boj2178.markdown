@@ -210,6 +210,7 @@ def bfs_to_goal(the_map, start_node : list, goal: list) -> list:
 
 open_list는 deque이다. 일반 list로 구현할 경우에는 굉장히 느려지기 때문에, deque를 사용해야 한다. 또한 visited_set은 2차원 boolean 배열인데, 처음에는 시간을 위해서 set을 사용했지만(list를 사용하면 안 된다. list는 매우 느리기 때문에 시간초과로 문제가 터져버린다) 이런 경우에 메모리가 초과되어 버렸다. 따라서 2차원 boolean 배열로 각각 노드마다 방문을 했는지 하지 않았는지를 검사했다.
 
+##### java 코드
 
 ~~~ java
 
