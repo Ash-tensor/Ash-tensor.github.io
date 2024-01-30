@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>
+    [백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1  - Tensor Studio
+    
+  </title>
+
+  <meta name="description" content="[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1">
+  <meta property="og:description" content="[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1">
+  <meta property="og:url" content="https://ash-tensor.github.io/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178.html">
+
+  
+    <meta property="og:image" content="https://ash-tensor.github.io/img/port.jpg"/>
+  
+
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script> -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178.html">
+  <link rel="alternate" type="application/rss+xml" title="Tensor Studio" href="/feed.xml">
+
+</head>
+
+
+<body>
+
+  <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="/">Tensor Studio</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/posts">Posts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/categol">Categories</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Page Header -->
+
+
+<header class="masthead" style="background-image: url('/img/port.jpg')">
+
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-heading">
+          <h1>[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1 </h1>
+          
+          <span class="meta">Posted by
+            <a href="#">ash tensor</a>
+            on January 30, 2024 &middot; <span class="reading-time" title="Estimated read time">
+  
+   17 mins  read </span>
+
+          </span>
+
+<!-- 카테고리를 추가하는 코드 -->
+            <a>
+            
+              카테고리
+            <a>
+
+          <div>
+            
+              <a href="http://localhost:4000/category/백준.html" style="color: white;">📁백준</a>
+            
+              <a href="http://localhost:4000/category/PS.html" style="color: white;">📁PS</a>
+            
+              <a href="http://localhost:4000/category/자료구조.html" style="color: white;">📁자료구조</a>
+            
+              <a href="http://localhost:4000/category/파이썬.html" style="color: white;">📁파이썬</a>
+            
+              <a href="http://localhost:4000/category/JAVA.html" style="color: white;">📁JAVA</a>
+            
+          </div>
+
+<!-- 카테고리를 추가하는 코드 -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+
+<!-- 본문 카테고리를 추가하는 코드 -->
+            <a>
+              카테고리 링크
+            <a>
+
+          <div>
+            
+              <a href="http://localhost:4000/category/백준.html" style="color: black;">📁 백준</a>
+            
+              <a href="http://localhost:4000/category/PS.html" style="color: black;">📁 PS</a>
+            
+              <a href="http://localhost:4000/category/자료구조.html" style="color: black;">📁 자료구조</a>
+            
+              <a href="http://localhost:4000/category/파이썬.html" style="color: black;">📁 파이썬</a>
+            
+              <a href="http://localhost:4000/category/JAVA.html" style="color: black;">📁 JAVA</a>
+            
+          </div>
+          
+<!-- 본문 카테고리를 추가하는 코드 -->
+
+      <h2 id="백준자료구조-백준-2178번--미로-탐색--실버-1">[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1</h2>
+
+<h3 id="문제-설명">문제 설명</h3>
+
+<p>N * M 크기의 배열로 표현되는 미로가 있다. 미로에서 1은 이동할 수 있는 칸을 나타내고, 0은 이동할 수 없는 칸을 나타낸다. 이러한 미로가 주어졌을 때, (1, 1)에서 출발하여 (N, M)의 위치로 이동할 때 지나야 하는 최소의 칸 수를 구하는 프로그램을 작성하시오. 한 칸에서 다른 칸으로 이동할 때, 서로 인접한 칸으로만 이동할 수 있다.</p>
+
+<p>위의 예에서는 15칸을 지나야 (N, M)의 위치로 이동할 수 있다. 칸을 셀 때에는 시작 위치와 도착 위치도 포함한다.</p>
+
+<p><strong>입력</strong></p>
+
+<p>첫째 줄에 두 정수 N, M(2 ≤ N, M ≤ 100)이 주어진다. 다음 N개의 줄에는 M개의 정수로 미로가 주어진다. 각각의 수들은 붙어서 입력으로 주어진다.</p>
+
+<p><strong>출력</strong></p>
+
+<p>첫째 줄에 지나야 하는 최소의 칸 수를 출력한다. 항상 도착위치로 이동할 수 있는 경우만 입력으로 주어진다.</p>
+
+<h3 id="제한시간">제한시간</h3>
+
+<p>1 초	192 MB</p>
+
+<h3 id="예제-입력">예제 입력</h3>
+
+<p>4 6
+101111
+101010
+101011
+111011</p>
+
+<h3 id="예제-출력">예제 출력</h3>
+
+<p>15</p>
+
+<h4 id="접근방법">접근방법</h4>
+
+<p>흔한 4방향 미로찾기 문제이다. 이런 문제는 너무 템플릿화 되어서, 푸는 방법이 정형화되어 있다.</p>
+<ol>
+  <li>첫번째로 이런 격자형 문제는 방향 배열을 사용해서 문제에 접근한다. 위, 아래, 좌, 우를 각각 dx, dy라는 방향 배열을 정의하는 것이다. 만약 방향 배열을 정의하지 않으면 코드가 너무 복잡해진다.</li>
+  <li>또한 <strong>최단거리</strong>를 구하는 문제이기 때문에 BFS로 접근하는 편이 좋다.</li>
+</ol>
+
+<h5 id="방향배열">방향배열</h5>
+
+<p>방향 배열을 사용하지 않은 예시를 보자. 이는 다음과 같다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">def</span> <span class="nf">connected_node_checker</span><span class="p">(</span><span class="n">the_map</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="p">:</span>
+    <span class="c1">## 가장 첫번쨰 열일때.
+</span>    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+            <span class="n">connected_node</span> <span class="o">=</span> <span class="p">[[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">],[</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">]]</span>
+            <span class="n">valued_connected_node</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">connected_node</span> <span class="p">:</span>
+                <span class="k">if</span> <span class="n">the_map</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">:</span>
+                    <span class="n">valued_connected_node</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="k">else</span> <span class="p">:</span>
+                    <span class="k">pass</span>
+            <span class="k">return</span> <span class="n">valued_connected_node</span>
+
+        <span class="k">elif</span> <span class="n">y</span> <span class="o">==</span> <span class="nf">len</span><span class="p">(</span><span class="n">the_map</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span> <span class="p">:</span>
+            <span class="n">connected_node</span> <span class="o">=</span> <span class="p">[[</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">],[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+            <span class="n">valued_connected_node</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">connected_node</span> <span class="p">:</span>
+                <span class="k">if</span> <span class="n">the_map</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">:</span>
+                    <span class="n">valued_connected_node</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="k">else</span> <span class="p">:</span>
+                    <span class="k">pass</span>
+            <span class="k">return</span> <span class="n">valued_connected_node</span>
+
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="n">connected_node</span> <span class="o">=</span> <span class="p">[[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="p">],[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">],[</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">y</span><span class="p">]]</span>
+            <span class="n">valued_connected_node</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">connected_node</span> <span class="p">:</span>
+                <span class="k">if</span> <span class="n">the_map</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">valued_connected_node</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="k">else</span> <span class="p">:</span>
+                    <span class="k">pass</span>
+            <span class="k">return</span> <span class="n">valued_connected_node</span>
+
+    <span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="nf">len</span><span class="p">(</span><span class="n">the_map</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+            <span class="n">valued_connected_node</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">connected_node</span> <span class="o">=</span> <span class="p">[[</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">],[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">]]</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">connected_node</span> <span class="p">:</span>
+                <span class="k">if</span> <span class="n">the_map</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">:</span>
+                    <span class="n">valued_connected_node</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="k">else</span> <span class="p">:</span>
+                    <span class="k">pass</span>
+            <span class="k">return</span> <span class="n">valued_connected_node</span>
+
+        <span class="k">elif</span> <span class="n">y</span> <span class="o">==</span> <span class="nf">len</span><span class="p">(</span><span class="n">the_map</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">:</span>
+            <span class="n">valued_connected_node</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">connected_node</span> <span class="o">=</span> <span class="p">[[</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span> <span class="p">,</span><span class="n">y</span><span class="p">],</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">connected_node</span> <span class="p">:</span>
+                <span class="k">if</span> <span class="n">the_map</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">:</span>
+                    <span class="n">valued_connected_node</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="k">else</span> <span class="p">:</span>
+                    <span class="k">pass</span>
+            <span class="k">return</span> <span class="n">valued_connected_node</span>
+
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="n">valued_connected_node</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">connected_node</span> <span class="o">=</span> <span class="p">[[</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]]</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">connected_node</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">the_map</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">valued_connected_node</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">pass</span>
+            <span class="k">return</span> <span class="n">valued_connected_node</span>
+
+    <span class="k">else</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
+            <span class="n">connected_node</span> <span class="o">=</span> <span class="p">[[</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">],[</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">],[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">]]</span>
+            <span class="n">valued_connected_node</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">connected_node</span> <span class="p">:</span>
+                <span class="k">if</span> <span class="n">the_map</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">:</span>
+                    <span class="n">valued_connected_node</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="k">else</span> <span class="p">:</span>
+                    <span class="k">pass</span>
+            <span class="k">return</span> <span class="n">valued_connected_node</span>
+
+        <span class="k">elif</span> <span class="n">y</span> <span class="o">==</span> <span class="nf">len</span><span class="p">(</span><span class="n">the_map</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">:</span>
+            <span class="n">connected_node</span> <span class="o">=</span> <span class="p">[[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="p">],[</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">],[</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">]]</span>
+            <span class="n">valued_connected_node</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">connected_node</span> <span class="p">:</span>
+                <span class="k">if</span> <span class="n">the_map</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">:</span>
+                    <span class="n">valued_connected_node</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="k">else</span> <span class="p">:</span>
+                    <span class="k">pass</span>
+            <span class="k">return</span> <span class="n">valued_connected_node</span>
+
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="n">connected_node</span> <span class="o">=</span> <span class="p">[[</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">],[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mi">1</span> <span class="p">],[</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">],[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+            <span class="n">valued_connected_node</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">connected_node</span> <span class="p">:</span>
+                <span class="k">if</span> <span class="n">the_map</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">:</span>
+                    <span class="n">valued_connected_node</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="k">else</span> <span class="p">:</span>
+                    <span class="k">pass</span>
+            <span class="k">return</span> <span class="n">valued_connected_node</span>
+
+</code></pre></div></div>
+
+<p>위 방법은 매우 불편하다. 물론 이 방법으로 문제를 접근한다고 하더라도 답은 똑같다. 하지만 이렇게 배열의 첫번째 인덱스, 두번쨰 인덱스 모두의 경우의 수를 다 따져서 하드코딩하는 경우에는 반복문의 수가 너무 많고, 구현 과정에서 Human error가 발생할 가능성이 높다. 따라서 이런 경우에는 방향배열이라는 방법을 사용한다. 위 방법과 마찬가지인 내용이지만 훨신 간단하다. 코드를 한번 보자.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1"># 방향 배열 정의 (상, 우, 하, 좌)
+</span><span class="n">dx</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">dy</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">connected_node_checker_2</span><span class="p">(</span><span class="n">the_map</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">valued_connected_node</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+        <span class="n">nx</span><span class="p">,</span> <span class="n">ny</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">dx</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">y</span> <span class="o">+</span> <span class="n">dy</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">nx</span> <span class="o">&lt;</span> <span class="nf">len</span><span class="p">(</span><span class="n">the_map</span><span class="p">)</span> <span class="ow">and</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">ny</span> <span class="o">&lt;</span> <span class="nf">len</span><span class="p">(</span><span class="n">the_map</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="ow">and</span> <span class="n">the_map</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">valued_connected_node</span><span class="p">.</span><span class="nf">append</span><span class="p">([</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">valued_connected_node</span>
+
+</code></pre></div></div>
+
+<p>코드가 훨신 간단해졌다. 코드의 내용은 간단하다. 중요한 부분은 5번째 라인의 if문이다. 주어진 조건 the_map[i][j] 에서 nx(배열의 첫번째 인덱스)가 0 이하가 될 수는 없다. 그런 경우에는 indexOutOf에러가 발생할 것이다. 또한 nx가 len(the_map)보다 커질 수도 없다. y도 마찬가지이다. if 0 &lt;= nx &lt; len(the_map) and 0 &lt;= ny &lt; len(the_map[0]) 이 부분이 바로 그러한 인덱스를 제한해 준 조건이다.</p>
+
+<p>그리고 and the_map[nx][ny] == 1 부분은 실제로 값을 참조해서 연결되어 있는 노드가 있는지 확인하는 조건이다.
+방향 배열을 사용하니 코드가 더 간단해졌다. 수없이 많은 반복문이 없어진 것은 덤이다.</p>
+
+<h5 id="bfs">BFS</h5>
+
+<p>위 함수를 사용하여 BFS를 구현한 함수이다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">def</span> <span class="nf">bfs_to_goal</span><span class="p">(</span><span class="n">the_map</span><span class="p">,</span> <span class="n">start_node</span> <span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">goal</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+    <span class="n">open_list</span> <span class="o">=</span> <span class="nf">deque</span><span class="p">()</span>
+    <span class="n">visited_set</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">False</span><span class="p">]</span><span class="o">*</span><span class="nf">len</span><span class="p">(</span><span class="n">the_map</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">the_map</span><span class="p">))]</span>
+
+    <span class="n">open_list</span><span class="p">.</span><span class="nf">append</span><span class="p">([</span><span class="n">start_node</span><span class="p">])</span>
+    <span class="n">visited_set</span><span class="p">[</span><span class="n">start_node</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">start_node</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="bp">True</span> 
+
+    <span class="k">while</span> <span class="n">open_list</span> <span class="p">:</span>
+        <span class="n">selected_node</span> <span class="o">=</span> <span class="n">open_list</span><span class="p">.</span><span class="nf">popleft</span><span class="p">()</span>
+        <span class="n">last_selected_node</span> <span class="o">=</span> <span class="n">selected_node</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">last_selected_node</span> <span class="o">==</span> <span class="n">goal</span> <span class="p">:</span>
+            <span class="k">return</span> <span class="nf">len</span><span class="p">(</span><span class="n">selected_node</span><span class="p">)</span>
+
+        <span class="n">connected_node_list</span> <span class="o">=</span> <span class="nf">connected_node_checker_2</span><span class="p">(</span><span class="n">the_map</span><span class="p">,</span> <span class="n">last_selected_node</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">last_selected_node</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">connected_node_list</span> <span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">visited_set</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="p">:</span>
+                <span class="n">temp</span> <span class="o">=</span> <span class="n">selected_node</span><span class="p">[:]</span>
+                <span class="n">temp</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="n">open_list</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+                <span class="n">visited_set</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="bp">True</span> 
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+</code></pre></div></div>
+
+<p>open_list는 deque이다. 일반 list로 구현할 경우에는 굉장히 느려지기 때문에, deque를 사용해야 한다. 또한 visited_set은 2차원 boolean 배열인데, 처음에는 시간을 위해서 set을 사용했지만(list를 사용하면 안 된다. list는 매우 느리기 때문에 시간초과로 문제가 터져버린다) 이런 경우에 메모리가 초과되어 버렸다. 따라서 2차원 boolean 배열로 각각 노드마다 방문을 했는지 하지 않았는지를 검사했다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">dx</span> <span class="o">=</span> <span class="o">{-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">};</span>
+    <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">dy</span> <span class="o">=</span> <span class="o">{</span><span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">};</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">condition</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">2</span><span class="o">];</span>
+        <span class="n">condition</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+        <span class="n">condition</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+        <span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
+
+        <span class="kt">int</span><span class="o">[][]</span> <span class="n">theMap</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">condition</span><span class="o">[</span><span class="mi">0</span><span class="o">]][</span><span class="n">condition</span><span class="o">[</span><span class="mi">1</span><span class="o">]];</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">condition</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="nc">String</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">temp</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="n">theMap</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">j</span><span class="o">)</span> <span class="o">-</span> <span class="sc">'0'</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">startNode</span> <span class="o">=</span> <span class="o">{</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">};</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">goal</span> <span class="o">=</span> <span class="o">{</span><span class="n">condition</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">-</span> <span class="mi">1</span><span class="o">,</span> <span class="n">condition</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">-</span> <span class="mi">1</span><span class="o">};</span>
+        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">bfsToGoal</span><span class="o">(</span><span class="n">theMap</span><span class="o">,</span> <span class="n">startNode</span><span class="o">,</span> <span class="n">goal</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">answer</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;</span> <span class="nf">connectedNodeChecker</span><span class="o">(</span><span class="kt">int</span><span class="o">[][]</span> <span class="n">theMap</span><span class="o">,</span> <span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;</span> <span class="n">valuedConnectedNode</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">nx</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">dx</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+            <span class="kt">int</span> <span class="n">ny</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">dy</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+            <span class="k">if</span><span class="o">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">nx</span> <span class="o">&amp;&amp;</span> <span class="n">nx</span> <span class="o">&lt;</span> <span class="n">theMap</span><span class="o">.</span><span class="na">length</span> <span class="o">&amp;&amp;</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">ny</span> <span class="o">&amp;&amp;</span> <span class="n">ny</span> <span class="o">&lt;</span> <span class="n">theMap</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">length</span> <span class="o">&amp;&amp;</span> <span class="n">theMap</span><span class="o">[</span><span class="n">nx</span><span class="o">][</span><span class="n">ny</span><span class="o">]</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                <span class="kt">int</span><span class="o">[]</span> <span class="n">temp</span> <span class="o">=</span> <span class="o">{</span><span class="n">nx</span><span class="o">,</span> <span class="n">ny</span><span class="o">};</span>
+                <span class="n">valuedConnectedNode</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">temp</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">valuedConnectedNode</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">bfsToGoal</span><span class="o">(</span><span class="kt">int</span><span class="o">[][]</span> <span class="n">theMap</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">startNode</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">goal</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;&gt;</span> <span class="n">openList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
+        <span class="kt">boolean</span><span class="o">[][]</span> <span class="n">visitedSet</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">theMap</span><span class="o">.</span><span class="na">length</span><span class="o">][</span><span class="n">theMap</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">length</span><span class="o">];</span>
+        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;</span> <span class="n">tempStartNode</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">tempStartNode</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">startNode</span><span class="o">);</span>
+        <span class="n">openList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">tempStartNode</span><span class="o">);</span>
+        <span class="n">visitedSet</span><span class="o">[</span><span class="n">startNode</span><span class="o">[</span><span class="mi">0</span><span class="o">]][</span><span class="n">startNode</span><span class="o">[</span><span class="mi">1</span><span class="o">]]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+
+        <span class="k">while</span> <span class="o">(!</span><span class="n">openList</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;</span> <span class="n">selectedNode</span> <span class="o">=</span> <span class="n">openList</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
+            <span class="kt">int</span><span class="o">[]</span> <span class="n">lastSelectedNode</span> <span class="o">=</span> <span class="n">selectedNode</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">selectedNode</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">lastSelectedNode</span><span class="o">,</span> <span class="n">goal</span><span class="o">))</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="n">selectedNode</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>
+            <span class="o">}</span>
+
+            <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;</span> <span class="n">connectedNodeList</span> <span class="o">=</span> <span class="n">connectedNodeChecker</span><span class="o">(</span><span class="n">theMap</span><span class="o">,</span> <span class="n">lastSelectedNode</span><span class="o">[</span><span class="mi">0</span><span class="o">],</span> <span class="n">lastSelectedNode</span><span class="o">[</span><span class="mi">1</span><span class="o">]);</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">i</span> <span class="o">:</span> <span class="n">connectedNodeList</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(!</span><span class="n">visitedSet</span><span class="o">[</span><span class="n">i</span><span class="o">[</span><span class="mi">0</span><span class="o">]][</span><span class="n">i</span><span class="o">[</span><span class="mi">1</span><span class="o">]])</span> <span class="o">{</span>
+                    <span class="n">visitedSet</span><span class="o">[</span><span class="n">i</span><span class="o">[</span><span class="mi">0</span><span class="o">]][</span><span class="n">i</span><span class="o">[</span><span class="mi">1</span><span class="o">]]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+                    <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;</span> <span class="n">clonedSelectedNode</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">selectedNode</span><span class="o">);</span>
+                    <span class="n">clonedSelectedNode</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+                    <span class="n">openList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">clonedSelectedNode</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+
+      <hr>
+      <div class="row mb-5 mt-5">
+  <div class="col-md-6 d-flex align-items-end ">
+    <span>Thanks. <i>mind sharing?</i></span>
+  </div>
+
+  <!-- Right Column with Social Media Icons (on the right for larger screens, on bottom for smaller screens) -->
+  <div class="col-md-6 order-md-2 order-1 text-md-right text-center mt-3 mt-md-0">
+    <div>
+
+      <a
+          href="https://www.linkedin.com/sharing/share-offsite?url=https://ash-tensor.github.io/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178.html"
+          onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+          class="d-inline-block mr-2"
+       >
+        <span class="fa-stack fa-lg" style="color: #0077b5;">
+          <i class="fas fa-square fa-stack-2x"></i>
+          <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+
+      <a
+          href="https://twitter.com/intent/tweet?text=[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1 &url=https://ash-tensor.github.io/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178.html"
+          onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+          class="d-inline-block mr-2">
+        <span class="fa-stack fa-lg" style="color: #1DA1F2;">
+          <i class="fas fa-square fa-stack-2x"></i>
+          <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+
+      <a
+          href="http://www.reddit.com/submit?url=https://ash-tensor.github.io/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178.html"
+          onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+          class="d-inline-block mr-2">
+        <span class="fa-stack fa-lg" style="color: #FF4500;">
+          <i class="fas fa-square fa-stack-2x"></i>
+          <i class="fab fa-reddit fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<hr/>
+
+      <div class="clearfix" >
+
+<!-- 수정중 -->
+<!-- 가장 첫번쨰 카테고리의 최근 글 불러오는 글 기능 추가  -->
+<!-- <ul class="posts-list"> -->
+
+<ul class="mb-5 ">
+  
+  <p>
+    <a style= "font-size: 20px; font-weight: bold;" href= "http://localhost:4000/category/백준.html">
+      백준 카테고리의 다른 글
+    </a>
+  </p>
+  
+  
+  
+    
+    
+      <li>
+        <h3>
+          <a href="/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178.html" style= "font-size: 17px;">
+            [백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1 
+          </a>
+          <small style= "font-size: 14px;">30 Jan 2024</small>
+        </h3>
+      </li>
+      
+    
+  
+    
+    
+      <li>
+        <h3>
+          <a href="/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%EB%B0%B1%EC%A4%80/ps/2024/01/23/boj1935.html" style= "font-size: 17px;">
+            [백준][자료구조] 백준 1935번 :: 후위 표기식 2 :: 실버 3 
+          </a>
+          <small style= "font-size: 14px;">23 Jan 2024</small>
+        </h3>
+      </li>
+      
+    
+  
+    
+    
+      <li>
+        <h3>
+          <a href="/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany.html" style= "font-size: 17px;">
+            [백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)
+          </a>
+          <small style= "font-size: 14px;">17 Jan 2024</small>
+        </h3>
+      </li>
+      
+    
+  
+</ul>
+
+
+<!-- 수정중 -->
+<!-- 가장 첫번쨰 카테고리의 최근 글 불러오는 글 기능 추가  -->
+
+
+
+<!-- 코멘트 란을 추가하는 코드 -->
+
+
+  <div id="disqus_thread"></div>
+  <script>
+      /**
+      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+      *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+      /*
+      var disqus_config = function () {
+      this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      };
+      */
+      (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://tensorstudio.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<!-- 코멘트 란을 추가하는 코드 -->
+
+        
+        <a class="btn btn-primary float-left" href="/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%EB%B0%B1%EC%A4%80/ps/2024/01/23/boj1935.html" data-toggle="tooltip" data-placement="top" title="[백준][자료구조] 백준 1935번 :: 후위 표기식 2 :: 실버 3 ">&larr; Previous<span class="d-none d-md-inline">
+            Post</span></a>
+        
+        
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+  <!-- Footer -->
+
+<hr>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <ul class="list-inline text-center">
+          
+          <li class="list-inline-item">
+            <a href="mailto:tensor17s@gmail.com" class="text-gray">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          
+          
+          
+          
+        </ul>
+
+        <p class="copyright text-muted">
+          Build with: 
+          <a 
+            href="https://github.com/StartBootstrap/startbootstrap-clean-blog-jekyll"
+            class="text-gray"
+            target="_blank">startbootstrap-clean-blog-jekyll
+          </a>
+        </p>
+        <p class="copyright text-center text-gray">
+            TENSOR STUDIO
+        </p>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/blog/js/scripts.js"></script>
+
+<script src="/assets/scripts.js"></script>
+
+
+
+
+  
+
+</body>
+
+</html>

@@ -1,0 +1,286 @@
+---
+layout: post
+comments: true
+title: "[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1 "
+subtitle: 
+description: 
+date: 2024-01-30
+categories: 백준 PS 자료구조 파이썬 JAVA
+background: '/img/port.jpg'
+---
+
+## [백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1 
+
+### 문제 설명
+
+N * M 크기의 배열로 표현되는 미로가 있다. 미로에서 1은 이동할 수 있는 칸을 나타내고, 0은 이동할 수 없는 칸을 나타낸다. 이러한 미로가 주어졌을 때, (1, 1)에서 출발하여 (N, M)의 위치로 이동할 때 지나야 하는 최소의 칸 수를 구하는 프로그램을 작성하시오. 한 칸에서 다른 칸으로 이동할 때, 서로 인접한 칸으로만 이동할 수 있다.
+
+위의 예에서는 15칸을 지나야 (N, M)의 위치로 이동할 수 있다. 칸을 셀 때에는 시작 위치와 도착 위치도 포함한다.
+
+**입력**
+
+첫째 줄에 두 정수 N, M(2 ≤ N, M ≤ 100)이 주어진다. 다음 N개의 줄에는 M개의 정수로 미로가 주어진다. 각각의 수들은 붙어서 입력으로 주어진다.
+
+**출력**
+
+첫째 줄에 지나야 하는 최소의 칸 수를 출력한다. 항상 도착위치로 이동할 수 있는 경우만 입력으로 주어진다.
+
+### 제한시간
+
+1 초	192 MB
+
+### 예제 입력
+
+4 6
+101111
+101010
+101011
+111011
+
+### 예제 출력
+
+15
+
+#### 접근방법
+
+흔한 4방향 미로찾기 문제이다. 이런 문제는 너무 템플릿화 되어서, 푸는 방법이 정형화되어 있다. 
+1. 첫번째로 이런 격자형 문제는 방향 배열을 사용해서 문제에 접근한다. 위, 아래, 좌, 우를 각각 dx, dy라는 방향 배열을 정의하는 것이다. 만약 방향 배열을 정의하지 않으면 코드가 너무 복잡해진다.
+2. 또한 **최단거리**를 구하는 문제이기 때문에 BFS로 접근하는 편이 좋다.
+
+
+##### 방향배열
+
+방향 배열을 사용하지 않은 예시를 보자. 이는 다음과 같다.
+
+~~~ python
+
+def connected_node_checker(the_map, x, y) :
+    ## 가장 첫번쨰 열일때.
+    if x == 0 :
+        if y == 0 :
+            connected_node = [[x, y+1],[x+1, y]]
+            valued_connected_node = []
+            for i in connected_node :
+                if the_map[i[0]][i[1]] == 1 :
+                    valued_connected_node.append(i)
+                else :
+                    pass
+            return valued_connected_node
+
+        elif y == len(the_map[0])-1 :
+            connected_node = [[x+1, y],[x, y-1]]
+            valued_connected_node = []
+            for i in connected_node :
+                if the_map[i[0]][i[1]] == 1 :
+                    valued_connected_node.append(i)
+                else :
+                    pass
+            return valued_connected_node
+
+        else :
+            connected_node = [[x,y-1],[x,y+1],[x+1,y]]
+            valued_connected_node = []
+            for i in connected_node :
+                if the_map[i[0]][i[1]] == 1:
+                    valued_connected_node.append(i)
+                else :
+                    pass
+            return valued_connected_node
+
+    elif x == len(the_map) - 1 :
+        if y == 0 :
+            valued_connected_node = []
+            connected_node = [[x-1, y],[x, y+1]]
+            for i in connected_node :
+                if the_map[i[0]][i[1]] == 1 :
+                    valued_connected_node.append(i)
+                else :
+                    pass
+            return valued_connected_node
+
+        elif y == len(the_map[0]) - 1 :
+            valued_connected_node = []
+            connected_node = [[x-1 ,y], [x, y-1]]
+            for i in connected_node :
+                if the_map[i[0]][i[1]] == 1 :
+                    valued_connected_node.append(i)
+                else :
+                    pass
+            return valued_connected_node
+
+        else :
+            valued_connected_node = []
+            connected_node = [[x - 1, y], [x, y - 1], [x, y + 1]]
+            for i in connected_node:
+                if the_map[i[0]][i[1]] == 1:
+                    valued_connected_node.append(i)
+                else:
+                    pass
+            return valued_connected_node
+
+    else :
+        if y == 0 :
+            connected_node = [[x-1, y],[x+1, y],[x, y+1]]
+            valued_connected_node = []
+            for i in connected_node :
+                if the_map[i[0]][i[1]] == 1 :
+                    valued_connected_node.append(i)
+                else :
+                    pass
+            return valued_connected_node
+
+        elif y == len(the_map[0]) - 1 :
+            connected_node = [[x, y-1],[x+1, y],[x-1, y]]
+            valued_connected_node = []
+            for i in connected_node :
+                if the_map[i[0]][i[1]] == 1 :
+                    valued_connected_node.append(i)
+                else :
+                    pass
+            return valued_connected_node
+
+        else :
+            connected_node = [[x+1, y],[x, y+1 ],[x-1, y],[x, y-1]]
+            valued_connected_node = []
+            for i in connected_node :
+                if the_map[i[0]][i[1]] == 1 :
+                    valued_connected_node.append(i)
+                else :
+                    pass
+            return valued_connected_node
+
+~~~
+
+위 방법은 매우 불편하다. 물론 이 방법으로 문제를 접근한다고 하더라도 답은 똑같다. 하지만 이렇게 배열의 첫번째 인덱스, 두번쨰 인덱스 모두의 경우의 수를 다 따져서 하드코딩하는 경우에는 반복문의 수가 너무 많고, 구현 과정에서 Human error가 발생할 가능성이 높다. 따라서 이런 경우에는 방향배열이라는 방법을 사용한다. 위 방법과 마찬가지인 내용이지만 훨신 간단하다. 코드를 한번 보자.
+
+
+~~~ python
+
+# 방향 배열 정의 (상, 우, 하, 좌)
+dx = [-1, 0, 1, 0]
+dy = [0, 1, 0, -1]
+
+def connected_node_checker_2(the_map, x, y) :
+    valued_connected_node = []
+    for i in range(4):
+        nx, ny = x + dx[i], y + dy[i]
+        if 0 <= nx < len(the_map) and 0 <= ny < len(the_map[0]) and the_map[nx][ny] == 1:
+            valued_connected_node.append([nx, ny])
+    return valued_connected_node
+
+~~~
+
+코드가 훨신 간단해졌다. 코드의 내용은 간단하다. 중요한 부분은 5번째 라인의 if문이다. 주어진 조건 the_map[i][j] 에서 nx(배열의 첫번째 인덱스)가 0 이하가 될 수는 없다. 그런 경우에는 indexOutOf에러가 발생할 것이다. 또한 nx가 len(the_map)보다 커질 수도 없다. y도 마찬가지이다. if 0 <= nx < len(the_map) and 0 <= ny < len(the_map[0]) 이 부분이 바로 그러한 인덱스를 제한해 준 조건이다.
+
+그리고 and the_map[nx][ny] == 1 부분은 실제로 값을 참조해서 연결되어 있는 노드가 있는지 확인하는 조건이다.
+방향 배열을 사용하니 코드가 더 간단해졌다. 수없이 많은 반복문이 없어진 것은 덤이다.
+
+
+##### BFS
+
+
+위 함수를 사용하여 BFS를 구현한 함수이다.
+~~~ python
+
+def bfs_to_goal(the_map, start_node : list, goal: list) -> list:
+    open_list = deque()
+    visited_set = [[False]*len(the_map[0]) for _ in range(len(the_map))]
+
+    open_list.append([start_node])
+    visited_set[start_node[0]][start_node[1]] = True 
+
+    while open_list :
+        selected_node = open_list.popleft()
+        last_selected_node = selected_node[-1]
+
+        if last_selected_node == goal :
+            return len(selected_node)
+
+        connected_node_list = connected_node_checker_2(the_map, last_selected_node[0], last_selected_node[1])
+
+        for i in connected_node_list :
+            if not visited_set[i[0]][i[1]] :
+                temp = selected_node[:]
+                temp.append(i)
+                open_list.append(temp)
+                visited_set[i[0]][i[1]] = True 
+    return -1
+
+~~~
+
+open_list는 deque이다. 일반 list로 구현할 경우에는 굉장히 느려지기 때문에, deque를 사용해야 한다. 또한 visited_set은 2차원 boolean 배열인데, 처음에는 시간을 위해서 set을 사용했지만(list를 사용하면 안 된다. list는 매우 느리기 때문에 시간초과로 문제가 터져버린다) 이런 경우에 메모리가 초과되어 버렸다. 따라서 2차원 boolean 배열로 각각 노드마다 방문을 했는지 하지 않았는지를 검사했다.
+
+
+~~~ java
+
+
+import java.util.*;
+
+public class Main {
+    static int[] dx = {-1, 0, 1, 0};
+    static int[] dy = {0, 1, 0, -1};
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int[] condition = new int[2];
+        condition[0] = scanner.nextInt();
+        condition[1] = scanner.nextInt();
+        scanner.nextLine();
+
+        int[][] theMap = new int[condition[0]][condition[1]];
+        for(int i = 0; i < condition[0]; i++) {
+            String temp = scanner.nextLine();
+            for(int j = 0; j < temp.length(); j++) {
+                theMap[i][j] = temp.charAt(j) - '0';
+            }
+        }
+
+        int[] startNode = {0, 0};
+        int[] goal = {condition[0] - 1, condition[1] - 1};
+        int answer = bfsToGoal(theMap, startNode, goal);
+        System.out.println(answer);
+    }
+
+    public static ArrayList<int[]> connectedNodeChecker(int[][] theMap, int x, int y) {
+        ArrayList<int[]> valuedConnectedNode = new ArrayList<>();
+        for(int i = 0; i < 4; i++) {
+            int nx = x + dx[i];
+            int ny = y + dy[i];
+            if(0 <= nx && nx < theMap.length && 0 <= ny && ny < theMap[0].length && theMap[nx][ny] == 1) {
+                int[] temp = {nx, ny};
+                valuedConnectedNode.add(temp);
+            }
+        }
+        return valuedConnectedNode;
+    }
+
+    public static int bfsToGoal(int[][] theMap, int[] startNode, int[] goal) {
+        Queue<ArrayList<int[]>> openList = new LinkedList<>();
+        boolean[][] visitedSet = new boolean[theMap.length][theMap[0].length];
+        ArrayList<int[]> tempStartNode = new ArrayList<>();
+        tempStartNode.add(startNode);
+        openList.add(tempStartNode);
+        visitedSet[startNode[0]][startNode[1]] = true;
+
+        while (!openList.isEmpty()) {
+            ArrayList<int[]> selectedNode = openList.poll();
+            int[] lastSelectedNode = selectedNode.get(selectedNode.size() - 1);
+            if (Arrays.equals(lastSelectedNode, goal)) {
+                return selectedNode.size();
+            }
+
+            ArrayList<int[]> connectedNodeList = connectedNodeChecker(theMap, lastSelectedNode[0], lastSelectedNode[1]);
+            for(int[] i : connectedNodeList) {
+                if (!visitedSet[i[0]][i[1]]) {
+                    visitedSet[i[0]][i[1]] = true;
+                    ArrayList<int[]> clonedSelectedNode = new ArrayList<>(selectedNode);
+                    clonedSelectedNode.add(i);
+                    openList.add(clonedSelectedNode);
+                }
+            }
+        }
+        return -1;
+    }
+}
+
+~~~
