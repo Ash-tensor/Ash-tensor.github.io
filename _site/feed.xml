@@ -1,4 +1,134 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-01-30T17:27:12+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1</title><link href="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178.html" rel="alternate" type="text/html" title="[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1" /><published>2024-01-30T00:00:00+09:00</published><updated>2024-01-30T00:00:00+09:00</updated><id>http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178</id><content type="html" xml:base="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178.html"><![CDATA[<h2 id="백준자료구조-백준-2178번--미로-탐색--실버-1">[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-02-01T09:44:10+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[백준] 백준 1931번 :: 회의실 배정 :: 실버 1</title><link href="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/02/01/boj1931.html" rel="alternate" type="text/html" title="[백준] 백준 1931번 :: 회의실 배정 :: 실버 1" /><published>2024-02-01T00:00:00+09:00</published><updated>2024-02-01T00:00:00+09:00</updated><id>http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/02/01/boj1931</id><content type="html" xml:base="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/02/01/boj1931.html"><![CDATA[<h2 id="백준-백준-1931번--회의실-배정--실버-1">[백준] 백준 1931번 :: 회의실 배정 :: 실버 1</h2>
+
+<h3 id="문제-설명">문제 설명</h3>
+
+<p>한 개의 회의실이 있는데 이를 사용하고자 하는 N개의 회의에 대하여 회의실 사용표를 만들려고 한다. 각 회의 I에 대해 시작시간과 끝나는 시간이 주어져 있고, 각 회의가 겹치지 않게 하면서 회의실을 사용할 수 있는 회의의 최대 개수를 찾아보자. 단, 회의는 한번 시작하면 중간에 중단될 수 없으며 한 회의가 끝나는 것과 동시에 다음 회의가 시작될 수 있다. 회의의 시작시간과 끝나는 시간이 같을 수도 있다. 이 경우에는 시작하자마자 끝나는 것으로 생각하면 된다.</p>
+
+<p><strong>입력</strong></p>
+
+<p>첫째 줄에 회의의 수 N(1 ≤ N ≤ 100,000)이 주어진다. 둘째 줄부터 N+1 줄까지 각 회의의 정보가 주어지는데 이것은 공백을 사이에 두고 회의의 시작시간과 끝나는 시간이 주어진다. 시작 시간과 끝나는 시간은 231-1보다 작거나 같은 자연수 또는 0이다.</p>
+
+<p><strong>출력</strong></p>
+
+<p>첫째 줄에 최대 사용할 수 있는 회의의 최대 개수를 출력한다.</p>
+
+<h3 id="제한시간">제한시간</h3>
+
+<p>2 초	128 MB</p>
+
+<h3 id="예제-입력">예제 입력</h3>
+
+<p>11</p>
+
+<p>1 4</p>
+
+<p>3 5</p>
+
+<p>0 6</p>
+
+<p>5 7</p>
+
+<p>3 8</p>
+
+<p>5 9</p>
+
+<p>6 10</p>
+
+<p>8 11</p>
+
+<p>8 12</p>
+
+<p>2 13</p>
+
+<p>12 14</p>
+
+<h3 id="예제-출력">예제 출력</h3>
+
+<p>4</p>
+
+<h4 id="접근방법">접근방법</h4>
+
+<p>나는 이거 좀 어려웠다. 개인적으로 흔한 골드 문제보다도 어려웠던 것 같은데, 왜냐하면 그리디로 풀어야 하나? 하고 돌려봤더니 답이 안나와서 DP로 도전하다 다시 그리디로 돌아왔기 때문이다.</p>
+
+<p>처음에는 회의 시작 시간 기준으로 그리디를 적용했으나, 정답이 나오지 않았다. 그리디의 특성상 최소단위로 나눈 작업의 결과가 항상 최적이라는 보장이 없기 때문에 그렇다. 이런 경우에는 작업을 나누는 기준이 잘못되었거나/그리디로 해결할 수 있는 문제가 아닌 경우가 많다. 아니면 기준/정렬이 잘못되었거나.</p>
+
+<p>이 문제의 경우에는 회의가 끝나는 시간을 기준으로 정렬해서 그리디를 적용해야 풀이가 가능했다. 다음은 시작시간, 끝시간을 입력으로 받아서 튜플을 (끝시간, 시작시간)으로 저장한 예시 코드이다.</p>
+
+<h4 id="파이썬-코드">파이썬 코드</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">conference_number</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="nf">input</span><span class="p">())</span>
+<span class="n">conference_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">conference_number</span><span class="p">)</span> <span class="p">:</span>
+    <span class="n">first</span><span class="p">,</span> <span class="n">second</span> <span class="o">=</span> <span class="nf">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nf">input</span><span class="p">().</span><span class="nf">split</span><span class="p">())</span>
+    <span class="n">conference_list</span><span class="p">.</span><span class="nf">append</span><span class="p">((</span><span class="n">second</span><span class="p">,</span> <span class="n">first</span><span class="p">))</span>
+
+<span class="n">conference_list</span><span class="p">.</span><span class="nf">sort</span><span class="p">()</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">conference_list</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="n">c</span> <span class="p">:</span>
+        <span class="n">answer</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">i</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<h4 id="자바-코드시작시간-끝시간-정렬">자바 코드(시작시간, 끝시간) 정렬</h4>
+
+<p>다음은 위 코드를 자바 코드로, 정렬을 (끝시간, 시작시간) 으로 해 풀이한 것이 아니라 (시작시간, 끝시간)을 기준으로 정렬해 풀이한 코드이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">package</span> <span class="nn">boj</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.lang.reflect.Array</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Collections</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Comparator</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">boj1931</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">conferenceNumber</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+
+        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;</span> <span class="n">conferenceList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">conferenceNumber</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">int</span><span class="o">[]</span> <span class="n">temp</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">2</span><span class="o">];</span>
+            <span class="kt">int</span> <span class="n">start</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+            <span class="kt">int</span> <span class="n">end</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+            <span class="n">temp</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">start</span><span class="o">;</span>
+            <span class="n">temp</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">end</span><span class="o">;</span>
+            <span class="n">conferenceList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">temp</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="nc">Collections</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">conferenceList</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Comparator</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compare</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">o1</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">o2</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">o1</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">==</span> <span class="n">o2</span><span class="o">[</span><span class="mi">1</span><span class="o">])</span> <span class="o">{</span>
+                    <span class="k">return</span> <span class="n">o1</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">-</span> <span class="n">o2</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
+                <span class="o">}</span><span class="k">else</span> <span class="o">{</span>
+                    <span class="k">return</span> <span class="n">o1</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">-</span> <span class="n">o2</span><span class="o">[</span><span class="mi">1</span><span class="o">];</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span> <span class="o">);</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">conferenceList</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="n">conferenceList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">)[</span><span class="mi">0</span><span class="o">])</span> <span class="o">{</span>
+                <span class="n">answer</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">;</span>
+                <span class="n">n</span> <span class="o">=</span> <span class="n">conferenceList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">)[</span><span class="mi">1</span><span class="o">];</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">answer</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+
+</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="백준" /><category term="PS" /><category term="파이썬" /><category term="JAVA" /><summary type="html"><![CDATA[[백준] 백준 1931번 :: 회의실 배정 :: 실버 1]]></summary></entry><entry><title type="html">[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1</title><link href="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178.html" rel="alternate" type="text/html" title="[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1" /><published>2024-01-30T00:00:00+09:00</published><updated>2024-01-30T00:00:00+09:00</updated><id>http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178</id><content type="html" xml:base="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178.html"><![CDATA[<h2 id="백준자료구조-백준-2178번--미로-탐색--실버-1">[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1</h2>
 
 <h3 id="문제-설명">문제 설명</h3>
 
@@ -193,6 +323,8 @@
 </code></pre></div></div>
 
 <p>open_list는 deque이다. 일반 list로 구현할 경우에는 굉장히 느려지기 때문에, deque를 사용해야 한다. 또한 visited_set은 2차원 boolean 배열인데, 처음에는 시간을 위해서 set을 사용했지만(list를 사용하면 안 된다. list는 매우 느리기 때문에 시간초과로 문제가 터져버린다) 이런 경우에 메모리가 초과되어 버렸다. 따라서 2차원 boolean 배열로 각각 노드마다 방문을 했는지 하지 않았는지를 검사했다.</p>
+
+<h5 id="java-코드">java 코드</h5>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 
@@ -409,7 +541,104 @@ ABC*+DE/-
     <span class="o">}</span>
 <span class="o">}</span>
 
-</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="JAVA" /><category term="자료구조" /><category term="백준" /><category term="PS" /><summary type="html"><![CDATA[[백준][자료구조] 백준 1935번 :: 후위 표기식 2 :: 실버 3]]></summary></entry><entry><title type="html">[깃허브 블로그] 동일 카테고리의 최근 글 기능 개발(clean blog theme)</title><link href="http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2024/01/17/bottom-category-build.html" rel="alternate" type="text/html" title="[깃허브 블로그] 동일 카테고리의 최근 글 기능 개발(clean blog theme)" /><published>2024-01-17T00:00:00+09:00</published><updated>2024-01-17T00:00:00+09:00</updated><id>http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2024/01/17/bottom-category-build</id><content type="html" xml:base="http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2024/01/17/bottom-category-build.html"><![CDATA[<h2 id="동일-카테고리의-최근-글-기능">동일 카테고리의 최근 글 기능</h2>
+</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="JAVA" /><category term="자료구조" /><category term="백준" /><category term="PS" /><summary type="html"><![CDATA[[백준][자료구조] 백준 1935번 :: 후위 표기식 2 :: 실버 3]]></summary></entry><entry><title type="html">[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)</title><link href="http://localhost:4000/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany.html" rel="alternate" type="text/html" title="[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)" /><published>2024-01-17T00:00:00+09:00</published><updated>2024-01-17T00:00:00+09:00</updated><id>http://localhost:4000/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany</id><content type="html" xml:base="http://localhost:4000/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany.html"><![CDATA[<h2 id="백준ps-회사에-있는-사람--실버-5자료구조">[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)</h2>
+
+<h3 id="문제-설명">문제 설명</h3>
+
+<p>상근이는 세계적인 소프트웨어 회사 기글에서 일한다. 이 회사의 가장 큰 특징은 자유로운 출퇴근 시간이다. 따라서, 직원들은 반드시 9시부터 6시까지 회사에 있지 않아도 된다.</p>
+
+<p>각 직원은 자기가 원할 때 출근할 수 있고, 아무때나 퇴근할 수 있다.</p>
+
+<p>상근이는 모든 사람의 출입카드 시스템의 로그를 가지고 있다. 이 로그는 어떤 사람이 회사에 들어왔는지, 나갔는지가 기록되어져 있다. 로그가 주어졌을 때, 현재 회사에 있는 모든 사람을 구하는 프로그램을 작성하시오.</p>
+
+<p><strong>입력</strong></p>
+
+<p>첫째 줄에 로그에 기록된 출입 기록의 수 n이 주어진다. (2 ≤ n ≤ 106) 다음 n개의 줄에는 출입 기록이 순서대로 주어지며, 각 사람의 이름이 주어지고 “enter”나 “leave”가 주어진다. “enter”인 경우는 출근, “leave”인 경우는 퇴근이다.</p>
+
+<p>회사에는 동명이인이 없으며, 대소문자가 다른 경우에는 다른 이름이다. 사람들의 이름은 알파벳 대소문자로 구성된 5글자 이하의 문자열이다.</p>
+
+<p><strong>출력</strong></p>
+
+<p>현재 회사에 있는 사람의 이름을 사전 순의 역순으로 한 줄에 한 명씩 출력한다.</p>
+
+<h3 id="제한시간">제한시간</h3>
+
+<p>1초, 메모리제한 256MB</p>
+
+<h4 id="접근-방법">접근 방법</h4>
+
+<p>솔직히 엄청 쉬운 문제다. 누구나 구현할 수 있고, 전공자가 아니더라도 누구나 이 문제를 구현하는데는 문제가 없을 것이다. 맵 자료형을 써도 되고, 파이썬에서는 딕셔너리를 쓰거나, 해시 맵을 쓰거나, 집합 자료구조를 사용해도 문제는 무리 없이 풀린다. 하지만 자료구조에 대한 이해가 없이 배열과 같은 선형 자료구조를 사용하면 <strong>시간 초과</strong>를 마주치는 문제다. 개인적으로 이 문제는 좋은 문제라고 생각해서 가져왔다.</p>
+
+<h5 id="잘못된-접근">잘못된 접근</h5>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">boj</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.lang.reflect.Array</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">boj7785</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">coworkerList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="nc">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">coworkerNumber</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">coworkerNumber</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="nc">String</span> <span class="n">coworkerName</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+            <span class="nc">String</span> <span class="n">sign</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">sign</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"enter"</span><span class="o">)){</span>
+                <span class="n">coworkerList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">coworkerName</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="o">{</span>
+               <span class="n">coworkerList</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">coworkerName</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="nc">Collections</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">coworkerList</span><span class="o">,</span> <span class="nc">Collections</span><span class="o">.</span><span class="na">reverseOrder</span><span class="o">());</span>
+        <span class="k">for</span><span class="o">(</span><span class="nc">String</span> <span class="n">coworker</span> <span class="o">:</span> <span class="n">coworkerList</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">coworker</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>이렇게 풀어도 답은 문제없이 나온다. 하지만 시간초과로 문제 해결이 실패하게 된다. 구현방법을 보면 enter이면 ArrayList<String>에 동료의 이름을 집어 넣고, 만약에 leave라는 문자열을 마주치면 ArrayList에서 해당 문자열을 삭제한다.</String></p>
+
+<p>여기서 문제가 발생하는데, 배열과 같은 선형 자료구조는 중간 노드의 삽입과 삭제가 빈번하게 일어날 때, 성능이 매우 나빠진다.</p>
+
+<p>왜냐하면 연속된 메모리 공간에 요소들을 저장하고 있기 때문에 중간에 요소를 추가하거나, 삭제하면 해당 위치 이후의 모든 요소를 이동시켜야만 한다. 이런 경우에 노드의 추가와 삭제에 소요되는 시간 복잡도는 O(n)이 된다. 이렇게 추가적으로 시간이 매우 많이 소요되기 때문에 1초라는 시간으로는 문제를 풀이할 수 없다.</p>
+
+<p>이런 경우에는 순서가 상관없는 자료구조로 문제를 풀이해야 한다. 대표적으로는 set 자료형이 있다. 다음은 HashSet 자료형으로 풀이한 자바 코드다.</p>
+
+<h4 id="자바-풀이">자바 풀이</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">boj7785</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Set</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">coworkerSet</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;&gt;();</span>
+
+        <span class="nc">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">coworkerNumber</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">coworkerNumber</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="nc">String</span> <span class="n">coworkerName</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+            <span class="nc">String</span> <span class="n">sign</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+
+            <span class="k">if</span> <span class="o">(</span><span class="n">sign</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"enter"</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">coworkerSet</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">coworkerName</span><span class="o">);</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="n">coworkerSet</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">coworkerName</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">coworkerList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">coworkerSet</span><span class="o">);</span>
+        <span class="nc">Collections</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">coworkerList</span><span class="o">,</span> <span class="nc">Collections</span><span class="o">.</span><span class="na">reverseOrder</span><span class="o">());</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">coworker</span> <span class="o">:</span> <span class="n">coworkerList</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">coworker</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="PS" /><category term="백준" /><category term="JAVA" /><category term="자료구조" /><summary type="html"><![CDATA[[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)]]></summary></entry><entry><title type="html">[깃허브 블로그] 동일 카테고리의 최근 글 기능 개발(clean blog theme)</title><link href="http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2024/01/17/bottom-category-build.html" rel="alternate" type="text/html" title="[깃허브 블로그] 동일 카테고리의 최근 글 기능 개발(clean blog theme)" /><published>2024-01-17T00:00:00+09:00</published><updated>2024-01-17T00:00:00+09:00</updated><id>http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2024/01/17/bottom-category-build</id><content type="html" xml:base="http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2024/01/17/bottom-category-build.html"><![CDATA[<h2 id="동일-카테고리의-최근-글-기능">동일 카테고리의 최근 글 기능</h2>
 
 <p><img src="/img/posts/clean-blog-setup/18.png" style="display: block; margin-left: auto; margin-right: auto; width: 80%" /></p>
 
@@ -545,104 +774,7 @@ ABC*+DE/-
     <span class="o">}</span>
 <span class="o">}</span>
 
-</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="JAVA" /><category term="자료구조" /><summary type="html"><![CDATA[[자바][자료구조] T 메모리구조]]></summary></entry><entry><title type="html">[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)</title><link href="http://localhost:4000/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany.html" rel="alternate" type="text/html" title="[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)" /><published>2024-01-17T00:00:00+09:00</published><updated>2024-01-17T00:00:00+09:00</updated><id>http://localhost:4000/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany</id><content type="html" xml:base="http://localhost:4000/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany.html"><![CDATA[<h2 id="백준ps-회사에-있는-사람--실버-5자료구조">[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)</h2>
-
-<h3 id="문제-설명">문제 설명</h3>
-
-<p>상근이는 세계적인 소프트웨어 회사 기글에서 일한다. 이 회사의 가장 큰 특징은 자유로운 출퇴근 시간이다. 따라서, 직원들은 반드시 9시부터 6시까지 회사에 있지 않아도 된다.</p>
-
-<p>각 직원은 자기가 원할 때 출근할 수 있고, 아무때나 퇴근할 수 있다.</p>
-
-<p>상근이는 모든 사람의 출입카드 시스템의 로그를 가지고 있다. 이 로그는 어떤 사람이 회사에 들어왔는지, 나갔는지가 기록되어져 있다. 로그가 주어졌을 때, 현재 회사에 있는 모든 사람을 구하는 프로그램을 작성하시오.</p>
-
-<p><strong>입력</strong></p>
-
-<p>첫째 줄에 로그에 기록된 출입 기록의 수 n이 주어진다. (2 ≤ n ≤ 106) 다음 n개의 줄에는 출입 기록이 순서대로 주어지며, 각 사람의 이름이 주어지고 “enter”나 “leave”가 주어진다. “enter”인 경우는 출근, “leave”인 경우는 퇴근이다.</p>
-
-<p>회사에는 동명이인이 없으며, 대소문자가 다른 경우에는 다른 이름이다. 사람들의 이름은 알파벳 대소문자로 구성된 5글자 이하의 문자열이다.</p>
-
-<p><strong>출력</strong></p>
-
-<p>현재 회사에 있는 사람의 이름을 사전 순의 역순으로 한 줄에 한 명씩 출력한다.</p>
-
-<h3 id="제한시간">제한시간</h3>
-
-<p>1초, 메모리제한 256MB</p>
-
-<h4 id="접근-방법">접근 방법</h4>
-
-<p>솔직히 엄청 쉬운 문제다. 누구나 구현할 수 있고, 전공자가 아니더라도 누구나 이 문제를 구현하는데는 문제가 없을 것이다. 맵 자료형을 써도 되고, 파이썬에서는 딕셔너리를 쓰거나, 해시 맵을 쓰거나, 집합 자료구조를 사용해도 문제는 무리 없이 풀린다. 하지만 자료구조에 대한 이해가 없이 배열과 같은 선형 자료구조를 사용하면 <strong>시간 초과</strong>를 마주치는 문제다. 개인적으로 이 문제는 좋은 문제라고 생각해서 가져왔다.</p>
-
-<h5 id="잘못된-접근">잘못된 접근</h5>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">boj</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.lang.reflect.Array</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">boj7785</span> <span class="o">{</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">coworkerList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
-        <span class="nc">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
-        <span class="kt">int</span> <span class="n">coworkerNumber</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
-
-        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">coworkerNumber</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="nc">String</span> <span class="n">coworkerName</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
-            <span class="nc">String</span> <span class="n">sign</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">sign</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"enter"</span><span class="o">)){</span>
-                <span class="n">coworkerList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">coworkerName</span><span class="o">);</span>
-            <span class="o">}</span>
-            <span class="k">else</span> <span class="o">{</span>
-               <span class="n">coworkerList</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">coworkerName</span><span class="o">);</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-
-        <span class="nc">Collections</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">coworkerList</span><span class="o">,</span> <span class="nc">Collections</span><span class="o">.</span><span class="na">reverseOrder</span><span class="o">());</span>
-        <span class="k">for</span><span class="o">(</span><span class="nc">String</span> <span class="n">coworker</span> <span class="o">:</span> <span class="n">coworkerList</span><span class="o">)</span> <span class="o">{</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">coworker</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>이렇게 풀어도 답은 문제없이 나온다. 하지만 시간초과로 문제 해결이 실패하게 된다. 구현방법을 보면 enter이면 ArrayList<String>에 동료의 이름을 집어 넣고, 만약에 leave라는 문자열을 마주치면 ArrayList에서 해당 문자열을 삭제한다.</String></p>
-
-<p>여기서 문제가 발생하는데, 배열과 같은 선형 자료구조는 중간 노드의 삽입과 삭제가 빈번하게 일어날 때, 성능이 매우 나빠진다.</p>
-
-<p>왜냐하면 연속된 메모리 공간에 요소들을 저장하고 있기 때문에 중간에 요소를 추가하거나, 삭제하면 해당 위치 이후의 모든 요소를 이동시켜야만 한다. 이런 경우에 노드의 추가와 삭제에 소요되는 시간 복잡도는 O(n)이 된다. 이렇게 추가적으로 시간이 매우 많이 소요되기 때문에 1초라는 시간으로는 문제를 풀이할 수 없다.</p>
-
-<p>이런 경우에는 순서가 상관없는 자료구조로 문제를 풀이해야 한다. 대표적으로는 set 자료형이 있다. 다음은 HashSet 자료형으로 풀이한 자바 코드다.</p>
-
-<h4 id="자바-풀이">자바 풀이</h4>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">boj7785</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="nc">Set</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">coworkerSet</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;&gt;();</span>
-
-        <span class="nc">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
-        <span class="kt">int</span> <span class="n">coworkerNumber</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
-
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">coworkerNumber</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="nc">String</span> <span class="n">coworkerName</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
-            <span class="nc">String</span> <span class="n">sign</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
-
-            <span class="k">if</span> <span class="o">(</span><span class="n">sign</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"enter"</span><span class="o">))</span> <span class="o">{</span>
-                <span class="n">coworkerSet</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">coworkerName</span><span class="o">);</span>
-            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-                <span class="n">coworkerSet</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">coworkerName</span><span class="o">);</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-
-        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">coworkerList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">coworkerSet</span><span class="o">);</span>
-        <span class="nc">Collections</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">coworkerList</span><span class="o">,</span> <span class="nc">Collections</span><span class="o">.</span><span class="na">reverseOrder</span><span class="o">());</span>
-
-        <span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">coworker</span> <span class="o">:</span> <span class="n">coworkerList</span><span class="o">)</span> <span class="o">{</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">coworker</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="PS" /><category term="백준" /><category term="JAVA" /><category term="자료구조" /><summary type="html"><![CDATA[[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)]]></summary></entry><entry><title type="html">[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)</title><link href="http://localhost:4000/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber.html" rel="alternate" type="text/html" title="[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)" /><published>2024-01-16T00:00:00+09:00</published><updated>2024-01-16T00:00:00+09:00</updated><id>http://localhost:4000/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber</id><content type="html" xml:base="http://localhost:4000/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber.html"><![CDATA[<h2 id="프로그래머스ps-타겟-넘버--level-2-dp-풀이">[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)</h2>
+</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="JAVA" /><category term="자료구조" /><summary type="html"><![CDATA[[자바][자료구조] T 메모리구조]]></summary></entry><entry><title type="html">[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)</title><link href="http://localhost:4000/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber.html" rel="alternate" type="text/html" title="[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)" /><published>2024-01-16T00:00:00+09:00</published><updated>2024-01-16T00:00:00+09:00</updated><id>http://localhost:4000/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber</id><content type="html" xml:base="http://localhost:4000/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber.html"><![CDATA[<h2 id="프로그래머스ps-타겟-넘버--level-2-dp-풀이">[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)</h2>
 
 <h3 id="문제-설명">문제 설명</h3>
 
@@ -1700,126 +1832,4 @@ align-items: center;: 플렉스 아이템들이 교차 축(이 경우에는 세�
 
 <p>이 두 클래스가 적용되어 버킷리스트가 한줄에 두 개씩 표시되고, 플렉스 아이템이 한 줄에 표시될 수 없으므로 다음 줄로 감싸지도록(줄바꿈)이 됨</p>
 
-<p>자바스크립트 코드는 다음 포스트에 자세히 정리하겠다.</p>]]></content><author><name>ash tensor</name></author><category term="WEB" /><summary type="html"><![CDATA[2024년이 시작한지도 벌써 10일이 지나긴 했지만, 새해를 맞아 새해의 목표를 세우는 것은 필요한 것 같다. 막연하게 생각했었던 새해 목표도 구체적으로 정리하고, 일일 목표를 세우기 위해서라도.]]></summary></entry><entry><title type="html">[JAVA] 예외처리 - throw, throws, throwable</title><link href="http://localhost:4000/java/2024/01/08/exception.html" rel="alternate" type="text/html" title="[JAVA] 예외처리 - throw, throws, throwable" /><published>2024-01-08T00:00:00+09:00</published><updated>2024-01-08T00:00:00+09:00</updated><id>http://localhost:4000/java/2024/01/08/exception</id><content type="html" xml:base="http://localhost:4000/java/2024/01/08/exception.html"><![CDATA[<h2 id="예외처리">예외처리</h2>
-
-<p>자바는 솔직히 예외처리를 아주 빡빡하게 처리하는 언어다. 다른 언어들이 특정 예외가 일어났을 때를 열거해서 (divideByZero error, Stack overflow error 등) 제외하는 것에 비해서 조금은 특이하다.</p>
-
-<p>물론 C 처럼 예외 처리를 아예 강제하지 않는 언어와 비교하려는 것은 아니다. Python이나 C++, C# 모두 try - catch - finally와 같은 예외 처리를 지원하고, 자바와 사용되는 예약어만 다들 뿐 그 궤는 비슷하다.</p>
-
-<p>하지만 널리 사용되는 언어인 Javascript와 Python에 비교해 봐도, 자바처럼 Checked 에러와 Unchecked 에러를 나눠서 구현을 강제해서 구분하는 언어는 충분히 드물다고 할 수 있다.</p>
-
-<h3 id="checked-error---unchecked-error">Checked Error - Unchecked Error</h3>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class ExceptionExample {
-    // 예외를 던질 수 있는 메서드
-    public void methodWithThrows() throws CustomException { &lt;&lt; 에러 열거
-        System.out.println("메서드에서 예외를 던집니다.");
-        throw new CustomException("Custom 예외 발생");
-    }
-
-    // 호출하는 코드
-    public static void main(String[] args) {
-        ExceptionExample example = new ExceptionExample();
-
-        try {
-            example.methodWithThrows();
-        } catch (CustomException e) {   &lt;&lt; 열거한 에러 처리
-            System.out.println("예외를 처리합니다: " + e.getMessage());
-        }
-    }
-}
-
-// CustomException 정의
-class CustomException extends Exception {
-    public CustomException(String message) {
-        super(message);
-    }
-}
-</code></pre></div></div>
-
-<p>여기서 세번째 라인의 throws가 바로 Checked Error를 열거하는 예약어다. 보통 throws 키워드를 설명할 때</p>
-
-<blockquote>
-  <blockquote>
-    <p>[Throws 키워드는 메소드 선언부 끝에 작성되어 메소드에서 처리하지 않은 예외를 호출한 곳으로 떠넘기는 역할을 합니다.]</p>
-  </blockquote>
-</blockquote>
-
-<p>라고 설명하는데, 이 말을 처음 들을 때 이해가 쉽지는 않다(고 생각한다).</p>
-
-<p>throws 키워드는 Checked Error를 열거하는 예약어로, 만약 이 메소드를 호출하는 메소드가 있다면 무조건 예외처리를 해야 컴파일이 가능하다는 뜻이다.</p>
-
-<p>즉 위 예시 코드로 설명해 보자면, 예외를 던질 수 있는 메서드에서 customException을 throws 예약어로 열거했으므로 //호출하는 코드 부분에서 무조건적으로</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>catch(CustomException e)
-</code></pre></div></div>
-
-<p>부분이 없으면 실행을 아예 거부해버린다.</p>
-
-<p><img src="/img/posts/JAVA/throws.PNG" style="width: 80%" /></p>
-
-<p>이런식으로.</p>
-
-<h3 id="throws가-없는-프로그램">throws가 없는 프로그램</h3>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class ExceptionExample {
-    public void methodWithoutThrows() {
-        System.out.println("예외 테스트");
-        ExceptionExample example = new ExceptionExample();
-        example.methodWithoutThrows();
-    }
-
-    // 호출하는 코드
-    public static void main(String[] args) {
-        ExceptionExample example = new ExceptionExample();
-        example.methodWithoutThrows();
-        }
-    }
-</code></pre></div></div>
-
-<p>throws를 제거한 코드다. try - catch 문이 없어도 문제 없이 컴파일 가능한 모습을 볼 수 있다. methodWithoutThrows는 예외를 던지지 않으므로 호출하는 코드에서는 예외 처리를 할 필요가 없다.</p>
-
-<p>이렇게 throws를 사용하면 메서드를 사용하는 측에게 어떤 예외가 발생할 수 있는지 명시함으로써 명확한 예외 처리를 유도할 수 있다… 곤 하지만, 솔직히 아무리 문법적으로 강제해도 제대로 하지 않을 사람은 안 한다. 아예 JVM으로 에러를 던져버리는 것이다.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// main 메소드 throws
-
-public class Example {
-    public static void main(String[] args) throws Exception {
-        // 예외가 발생할 수 있는 코드
-    }
-}
-</code></pre></div></div>
-
-<p>이런 식으로, main 메소드에서 throws를 사용하는 것은 에러를 JVM에게 전가한다는 뜻이다. Main 메소드보다 더 상위의 메소드는 JVM밖에는 없기에, 에러를 던져도 JVM은 에러 메시지만 출력하고 프로그램을 종료한다.</p>
-
-<p>main 메서드에서 throws를 사용할 때는 주로 런타임 예외인 RuntimeException 또는 Exception과 같은 일반적인 예외를 사용하며, 이를 통해 예외 처리를 뒷단으로 미루는 경우가 있다.</p>
-
-<blockquote>
-  <blockquote>
-    <p>[throws &lt;unchecked exception(runtime exception)&gt; 키워드가 붙어있는 메서드는 꼭 try 블록 내부에서 호출되지 않더라도 컴파일이 됩니다. 하지만 매우 문제가 있는 코드입니다.]</p>
-  </blockquote>
-</blockquote>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// RuntimeException throws
-
-public class Example {
-    // 예외를 던질 수 있는 메서드
-    public static void methodWithThrows() throws RuntimeException {
-        System.out.println("메서드에서 예외를 던집니다.");
-        throw new RuntimeException("런타임 예외 발생");
-    }
-
-    // 호출하는 코드
-    public static void main(String[] args) {
-        // 메서드 호출 시 try-catch 블록 없음
-        methodWithThrows();
-        
-        // 아래 코드는 실행되지 않음 (Unreachable code 에러 발생)
-        System.out.println("메서드 호출 후의 코드");
-    }
-}
-</code></pre></div></div>
-
-<p>위의 코드에서 methodWithThrows는 RuntimeException을 던질 수 있는데, 호출하는 main 메서드에서는 해당 예외를 처리하는 try-catch 블록이 없다. 그러나 컴파일은 문제없이 진행된다.</p>
-
-<p>하지만 실행 시에는 methodWithThrows에서 발생한 예외가 main 메서드로 전파되어, “Unreachable code” 에러가 발생하면서 프로그램이 비정상적으로 종료된다.</p>]]></content><author><name>ash tensor</name></author><category term="JAVA" /><summary type="html"><![CDATA[예외처리]]></summary></entry></feed>
+<p>자바스크립트 코드는 다음 포스트에 자세히 정리하겠다.</p>]]></content><author><name>ash tensor</name></author><category term="WEB" /><summary type="html"><![CDATA[2024년이 시작한지도 벌써 10일이 지나긴 했지만, 새해를 맞아 새해의 목표를 세우는 것은 필요한 것 같다. 막연하게 생각했었던 새해 목표도 구체적으로 정리하고, 일일 목표를 세우기 위해서라도.]]></summary></entry></feed>
