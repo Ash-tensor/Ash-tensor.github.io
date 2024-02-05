@@ -1,0 +1,20 @@
+---
+layout: post
+comments: true
+title: "[리눅스] 애플 실리콘 맥에 리눅스 설치하는 법(UTM)"
+subtitle: 
+description: 
+date: 2024-02-01
+categories: linux
+background: '/img/port.jpg'
+---
+
+## [리눅스] 애플 실리콘 맥에 리눅스 설치 후기(UTM)
+
+### UTM
+
+[UTM](https://mac.getutm.app/)은 이 링크에서 얻을 수 있다. 일단 [이 페이지](https://gymdev.tistory.com/75)에서 너무 설치법을 잘 정리해 주고 있어서 내가 따로 첨언할 부분은 없었다. 아, 설치 중 중간에 **display out을 확인할 수 없다** 고 한동안 표시돼서 설치가 안되는건가 했는데, 조금 기다리면 문제 없이 리눅스가 부팅되니까 조금 기다리면 된다! 
+
+<img src="/img/스크린샷 2024-02-01 오후 1.27.20.png" style="width: 80%">
+
+m1맥에서 제대로 구동되는 것을 확인했다.
