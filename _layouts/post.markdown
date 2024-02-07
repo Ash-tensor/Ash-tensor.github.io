@@ -28,11 +28,10 @@ layout: default
 
 <!-- 카테고리를 추가하는 코드 -->
             <a>
-            
               카테고리
             <a>
 
-          <div>
+          <div style="font-family: 'Noto Sans KR', sans-serif;">
             {% for category in page.categories %}
               <a href="{{ site.url }}/category/{{ category }}.html" style="color: white;">📁{{ category }}</a>
             {% endfor %}
@@ -46,16 +45,16 @@ layout: default
   </div>
 </header>
 
-<div class="container">
+<div class="container" style="font-family: 'Noto Serif KR', serif;">
   <div class="row">
     <div class="col-lg-8 col-md-10 mx-auto">
 
 <!-- 본문 카테고리를 추가하는 코드 -->
-            <a>
+            <a style="font-family: 'Noto Sans KR', sans-serif;">
               카테고리 링크
             <a>
 
-          <div>
+          <div style="font-family: 'Noto Sans KR', sans-serif;">
             {% for category in page.categories %}
               <a href="{{ site.url }}/category/{{ category }}.html" style="color: black;">📁 {{ category }}</a>
             {% endfor %}
@@ -73,10 +72,12 @@ layout: default
 <!-- 가장 첫번쨰 카테고리의 최근 글 불러오는 글 기능 추가  -->
 <!-- <ul class="posts-list"> -->
 
+style="font-family: 'Noto Sans KR', sans-serif;"
+
 <ul class="mb-5 ">
   {% assign firstCategory = page.categories | first %}
   <p>
-    <a style= "font-size: 20px; font-weight: bold;" href= "{{ site.url }}/category/{{ firstCategory }}.html">
+    <a style= "font-size: 20px; font-weight: bold; font-family: 'Noto Sans KR', sans-serif;" href= "{{ site.url }}/category/{{ firstCategory }}.html">
       {{ firstCategory }} 카테고리의 다른 글
     </a>
   </p>
@@ -103,11 +104,10 @@ layout: default
 <!-- 가장 첫번쨰 카테고리의 최근 글 불러오는 글 기능 추가  -->
 
 
-
 <!-- 코멘트 란을 추가하는 코드 -->
 
 {% if page.comments %}
-  <div id="disqus_thread"></div>
+  <div id="disqus_thread" style="font-family: sans-serif"></div>
   <script>
       /**
       *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
