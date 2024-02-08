@@ -25,30 +25,60 @@ layout: default
             on {{ page.date | date: '%B %d, %Y' }} &middot; {% include read_time.html
             content=page.content %}
           </span>
-
 <!-- 카테고리를 추가하는 코드 -->
             <a>
               카테고리
             <a>
-
           <div style="font-family: 'Noto Sans KR', sans-serif;">
             {% for category in page.categories %}
               <a href="{{ site.url }}/category/{{ category }}.html" style="color: white;">📁{{ category }}</a>
             {% endfor %}
           </div>
-
 <!-- 카테고리를 추가하는 코드 -->
-
         </div>
       </div>
     </div>
   </div>
 </header>
-
-<div class="container" style="font-family: 'Noto Serif KR', serif;">
+<div class="container" style="font-family: 'Noto Serif KR', serif; display: flex ">
   <div class="row">
-    <div class="col-lg-8 col-md-10 mx-auto">
+<!-- sidebar를 추가하는 코드 -->
+    <sidebar id="sidebar" 
+            style="width: 260px; 
+            border-right: gray 1px solid; 
+            padding-left: 0; 
+            padding-right: 20px;"
+            >
+    <ul>
+        <p style="font-weight: bold; border-top: black 1px solid; border-bottom: black 1px solid; text-align: center; margin-top: 2px; padding: 2px; padding-top: 4px">
+TENSOR STUDIO
+        </p>
+        {% for category in site.categories %}
+            <p style="margin-bottom: 0; margin-top: 10px">
+                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold; font-family: 'Noto Sans KR', sans-serif;" href= "{{ site.url }}/category/{{ category[0] }}.html">
+                    {{ category[0] }}
+                </a>
+                    <a> 🔽
+                    </a>
+            </p>
+            {% assign posts = category[1] | sort: 'date' | reverse | limit: 5 %}
+            {% assign counter = 0 %}
+            {% for post in posts %}
+                {% if counter < 3 %}
+                    <li style="margin: 0px">
+                        <a href="{{ site.baseurl }}{{ post.url }}" style= "color: black; font-size: 12px; font-family: 'Noto Sans KR';">
+                            {{ post.title }}
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">{{ post.date | date_to_string }}</small>
+                    </li>
+                    {% assign counter = counter | plus: 1 %}
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+    </ul>
+</sidebar>
 
+    <div class="col-lg-8 col-md-10 mx-auto">
 <!-- 본문 카테고리를 추가하는 코드 -->
             <a style="font-family: 'Noto Sans KR', sans-serif;">
               카테고리 링크
@@ -83,7 +113,6 @@ layout: default
   {% assign counter = 0 %}
   {% for post in posts %}
     {% if counter < 5 %}
-    
       <li>
         <h3>
           <a href="{{ site.baseurl }}{{ post.url }}" style= "font-size: 17px;">
