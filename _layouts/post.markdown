@@ -72,8 +72,6 @@ layout: default
 <!-- 가장 첫번쨰 카테고리의 최근 글 불러오는 글 기능 추가  -->
 <!-- <ul class="posts-list"> -->
 
-style="font-family: 'Noto Sans KR', sans-serif;"
-
 <ul class="mb-5 ">
   {% assign firstCategory = page.categories | first %}
   <p>
