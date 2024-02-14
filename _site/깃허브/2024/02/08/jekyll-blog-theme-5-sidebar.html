@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>
+    [깃허브 블로그]지킬 블로그 카테고리 / SIDEBAR 기능 추가(clean blog theme) - Tensor Studio
+    
+  </title>
+
+  <meta name="description" content="깃허브 블로그 SIDEBAR 기능 추가(clean blog theme)">
+  <meta property="og:description" content="깃허브 블로그 SIDEBAR 기능 추가(clean blog theme)">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="[깃허브 블로그]지킬 블로그 카테고리 / SIDEBAR 기능 추가(clean blog...">
+  <meta property="og:url" content="https://ash-tensor.github.io/%EA%B9%83%ED%97%88%EB%B8%8C/2024/02/08/jekyll-blog-theme-5-sidebar.html">
+
+  
+    <meta property="og:image" content="https://ash-tensor.github.io/img/port.jpg"/>
+  
+
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script> -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+
+<!--  goun doun font // font-family: 'Noto Serif KR', serif;-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2024/02/08/jekyll-blog-theme-5-sidebar.html">
+  <link rel="alternate" type="application/rss+xml" title="Tensor Studio" href="/feed.xml">
+
+  <style>
+    #sidebar {
+      display: none;
+    }
+    @media (min-width: 1000px) {
+      #sidebar {
+        display: block;
+      }
+      
+    }
+  </style>
+  
+</head>
+
+
+<body>
+
+  <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="/">Tensor Studio</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/posts">Posts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/categol">Categories</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Page Header -->
+
+
+<header class="masthead" style="background-image: url('/img/port.jpg')">
+
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-heading">
+          <h1>[깃허브 블로그]지킬 블로그 카테고리 / SIDEBAR 기능 추가(clean blog theme)</h1>
+          
+          <h2 class="subheading">사이드바 기능 추가</h2>
+          
+          <span class="meta">Posted by
+            <a href="#">ash tensor</a>
+            on February 08, 2024 &middot; <span class="reading-time" title="Estimated read time">
+  
+   3 mins  read </span>
+
+          </span>
+<!-- 카테고리를 추가하는 코드 -->
+            <a>
+              카테고리
+            <a>
+          <div style="font-family: 'Noto Sans KR', sans-serif;">
+            
+              <a href="http://localhost:4000/category/깃허브.html" style="color: white;">📁깃허브</a>
+            
+          </div>
+<!-- 카테고리를 추가하는 코드 -->
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="container" style="font-family: 'Noto Serif KR', serif; display: flex">
+  <div class="row">
+<!-- sidebar를 추가하는 코드 -->
+    <sidebar id="sidebar" 
+            style="width: 260px; 
+            border-right: gray 1px solid; 
+            padding-left: 0; 
+            padding-right: 20px;"
+            >
+    <ul>
+        <p style="font-weight: bold; border-top: black 1px solid; border-bottom: black 1px solid; text-align: center; margin-top: 2px; padding: 2px; padding-top: 4px">
+TENSOR STUDIO
+        </p>
+        
+            <p style="margin-bottom: 0; margin-top: 10px">
+                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold; font-family: 'Noto Sans KR', sans-serif;" href= "http://localhost:4000/category/자격증.html">
+                    자격증
+                </a>
+                    <a> 🔽
+                    </a>
+            </p>
+            
+            
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/%EC%9E%90%EA%B2%A9%EC%A6%9D/2023/12/07/sqld.html" style= "color: black; font-size: 12px; font-family: 'Noto Sans KR';">
+                            51회차 SQLD 시험 후기
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">07 Dec 2023</small>
+                    </li>
+                    
+                
+            
+        
+            <p style="margin-bottom: 0; margin-top: 10px">
+                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold; font-family: 'Noto Sans KR', sans-serif;" href= "http://localhost:4000/category/깃허브.html">
+                    깃허브
+                </a>
+                    <a> 🔽
+                    </a>
+            </p>
+            
+            
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/%EA%B9%83%ED%97%88%EB%B8%8C/2024/02/08/jekyll-blog-theme-5-sidebar.html" style= "color: black; font-size: 12px; font-family: 'Noto Sans KR';">
+                            [깃허브 블로그]지킬 블로그 카테고리 / SIDEBAR 기능 추가(clean blog theme)
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">08 Feb 2024</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/%EA%B9%83%ED%97%88%EB%B8%8C/2024/01/17/bottom-category-build.html" style= "color: black; font-size: 12px; font-family: 'Noto Sans KR';">
+                            [깃허브 블로그] 동일 카테고리의 최근 글 기능 개발(clean blog theme)
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">17 Jan 2024</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/%EA%B9%83%ED%97%88%EB%B8%8C/2023/12/15/jekyll-blog-theme-4.html" style= "color: black; font-size: 12px; font-family: 'Noto Sans KR';">
+                            [깃허브 블로그]지킬 블로그 카테고리 / NAVBAR 기능 추가(clean blog theme) - 1
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">15 Dec 2023</small>
+                    </li>
+                    
+                
+            
+                
+            
+                
+            
+                
+            
+        
+            <p style="margin-bottom: 0; margin-top: 10px">
+                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold; font-family: 'Noto Sans KR', sans-serif;" href= "http://localhost:4000/category/ML.html">
+                    ML
+                </a>
+                    <a> 🔽
+                    </a>
+            </p>
+            
+            
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/ml/ai%EA%B7%B8%EB%A6%BC/2023/12/28/stable-diffusion.html" style= "color: black; font-size: 12px; font-family: 'Noto Sans KR';">
+                            [AI 그림]프롬프트의 한계점 - 올바른 프롬프트 작성하기
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">28 Dec 2023</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/ml/2023/12/19/esports-ml-1.html" style= "color: black; font-size: 12px; font-family: 'Noto Sans KR';">
+                            [데이터 분석]조합에 따른 승률은 얼마나 차이가 날까?
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">19 Dec 2023</small>
+                    </li>
+                    
+                
+            
+        
+            <p style="margin-bottom: 0; margin-top: 10px">
+                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold; font-family: 'Noto Sans KR', sans-serif;" href= "http://localhost:4000/category/AI그림.html">
+                    AI그림
+                </a>
+                    <a> 🔽
+                    </a>
+            </p>
+            
+            
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/ml/ai%EA%B7%B8%EB%A6%BC/2023/12/28/stable-diffusion.html" style= "color: black; font-size: 12px; font-family: 'Noto Sans KR';">
+                            [AI 그림]프롬프트의 한계점 - 올바른 프롬프트 작성하기
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">28 Dec 2023</small>
+                    </li>
+                    
+                
+            
+        
+            <p style="margin-bottom: 0; margin-top: 10px">
+                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold; font-family: 'Noto Sans KR', sans-serif;" href= "http://localhost:4000/category/안드로이드.html">
+                    안드로이드
+                </a>
+                    <a> 🔽
+                    </a>
+            </p>
+            
+            
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/2023/12/29/bottomNavigationView.html" style= "color: black; font-size: 12px; font-family: 'Noto Sans KR';">
+                            [Android Studio]Bottom Navigation Bar 구현 - OnItemSelectedListener 이용
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">29 Dec 2023</small>
+                    </li>
+                    
+                
+            
+        
+            <p style="margin-bottom: 0; margin-top: 10px">
+                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold; font-family: 'Noto Sans KR', sans-serif;" href= "http://localhost:4000/category/CS.html">
+                    CS
+                </a>
+                    <a> 🔽
+                    </a>
+            </p>
+            
+            
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/cs/2024/01/02/binary.html" style= "color: black; font-size: 12px; font-family: 'Noto Sans KR';">
+                            [CS] 2의 보수
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">02 Jan 2024</small>
+                    </li>
+                    
+                
+            
+        
+            <p style="margin-bottom: 0; margin-top: 10px">
+                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold; font-family: 'Noto Sans KR', sans-serif;" href= "http://localhost:4000/category/JAVA.html">
+                    JAVA
+                </a>
+                    <a> 🔽
+                    </a>
+            </p>
+            
+            
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/%EB%B0%B1%EC%A4%80/ps/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/02/01/boj1931.html" style= "color: black; font-size: 12px; font-family: 'Noto Sans KR';">
+                            [백준] 백준 1931번 :: 회의실 배정 :: 실버 1 
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">01 Feb 2024</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178.html" style= "color: black; font-size: 12px; font-family: 'Noto Sans KR';">
+                            [백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1 
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">30 Jan 2024</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%EB%B0%B1%EC%A4%80/ps/2024/01/23/boj1935.html" style= "color: black; font-size: 12px; font-family: 'Noto Sans KR';">
+                            [백준][자료구조] 백준 1935번 :: 후위 표기식 2 :: 실버 3 
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">23 Jan 2024</small>
+                    </li>
+                    
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+        
+            <p style="margin-bottom: 0; margin-top: 10px">
+                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold; font-family: 'Noto Sans KR', sans-serif;" href= "http://localhost:4000/category/WEB.html">
+                    WEB
+                </a>
+                    <a> 🔽
+                    </a>
+            </p>
+            
+            
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/web/2024/01/12/bucketlist-stamp.html" style= "color: black; font-size: 12px; font-family: 'Noto Sans KR';">
+                            [HTML/JAVASCRIPT] 아주 간단한 버켓리스트 페이지 제작 - 도장찍기 부분 제작 (2/2)
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">12 Jan 2024</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/web/2024/01/10/bucketlist.html" style= "color: black; font-size: 12px; font-family: 'Noto Sans KR';">
+                            [HTML/JAVASCRIPT] 아주 간단한 버켓리스트 페이지 제작
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">10 Jan 2024</small>
+                    </li>
+                    
+                
+            
+        
+            <p style="margin-bottom: 0; margin-top: 10px">
+                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold; font-family: 'Noto Sans KR', sans-serif;" href= "http://localhost:4000/category/PS.html">
+                    PS
+                </a>
+                    <a> 🔽
+                    </a>
+            </p>
+            
+            
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/%EB%B0%B1%EC%A4%80/ps/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/02/01/boj1931.html" style= "color: black; font-size: 12px; font-family: 'Noto Sans KR';">
+                            [백준] 백준 1931번 :: 회의실 배정 :: 실버 1 
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">01 Feb 2024</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178.html" style= "color: black; font-size: 12px; font-family: 'Noto Sans KR';">
+                            [백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1 
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">30 Jan 2024</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%EB%B0%B1%EC%A4%80/ps/2024/01/23/boj1935.html" style= "color: black; font-size: 12px; font-family: 'Noto Sans KR';">
+                            [백준][자료구조] 백준 1935번 :: 후위 표기식 2 :: 실버 3 
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">23 Jan 2024</small>
+                    </li>
+                    
+                
+            
+                
+            
+                
+            
+        
+            <p style="margin-bottom: 0; margin-top: 10px">
+                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold; font-family: 'Noto Sans KR', sans-serif;" href= "http://localhost:4000/category/DP.html">
+                    DP
+                </a>
+                    <a> 🔽
+                    </a>
+            </p>
+            
+            
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber.html" style= "color: black; font-size: 12px; font-family: 'Noto Sans KR';">
+                            [프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">16 Jan 2024</small>
+                    </li>
+                    
+                
+            
+        
+            <p style="margin-bottom: 0; margin-top: 10px">
+                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold; font-family: 'Noto Sans KR', sans-serif;" href= "http://localhost:4000/category/파이썬.html">
+                    파이썬
+                </a>
+                    <a> 🔽
+                    </a>
+            </p>
+            
+            
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/%EB%B0%B1%EC%A4%80/ps/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/02/01/boj1931.html" style= "color: black; font-size: 12px; font-family: 'Noto Sans KR';">
+                            [백준] 백준 1931번 :: 회의실 배정 :: 실버 1 
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">01 Feb 2024</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178.html" style= "color: black; font-size: 12px; font-family: 'Noto Sans KR';">
+                            [백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1 
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">30 Jan 2024</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber.html" style= "color: black; font-size: 12px; font-family: 'Noto Sans KR';">
+                            [프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">16 Jan 2024</small>
+                    </li>
+                    
+                
+            
+        
+            <p style="margin-bottom: 0; margin-top: 10px">
+                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold; font-family: 'Noto Sans KR', sans-serif;" href= "http://localhost:4000/category/프로그래머스.html">
+                    프로그래머스
+                </a>
+                    <a> 🔽
+                    </a>
+            </p>
+            
+            
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber.html" style= "color: black; font-size: 12px; font-family: 'Noto Sans KR';">
+                            [프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">16 Jan 2024</small>
+                    </li>
+                    
+                
+            
+        
+            <p style="margin-bottom: 0; margin-top: 10px">
+                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold; font-family: 'Noto Sans KR', sans-serif;" href= "http://localhost:4000/category/백준.html">
+                    백준
+                </a>
+                    <a> 🔽
+                    </a>
+            </p>
+            
+            
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/%EB%B0%B1%EC%A4%80/ps/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/02/01/boj1931.html" style= "color: black; font-size: 12px; font-family: 'Noto Sans KR';">
+                            [백준] 백준 1931번 :: 회의실 배정 :: 실버 1 
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">01 Feb 2024</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178.html" style= "color: black; font-size: 12px; font-family: 'Noto Sans KR';">
+                            [백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1 
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">30 Jan 2024</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%EB%B0%B1%EC%A4%80/ps/2024/01/23/boj1935.html" style= "color: black; font-size: 12px; font-family: 'Noto Sans KR';">
+                            [백준][자료구조] 백준 1935번 :: 후위 표기식 2 :: 실버 3 
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">23 Jan 2024</small>
+                    </li>
+                    
+                
+            
+                
+            
+        
+            <p style="margin-bottom: 0; margin-top: 10px">
+                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold; font-family: 'Noto Sans KR', sans-serif;" href= "http://localhost:4000/category/자료구조.html">
+                    자료구조
+                </a>
+                    <a> 🔽
+                    </a>
+            </p>
+            
+            
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178.html" style= "color: black; font-size: 12px; font-family: 'Noto Sans KR';">
+                            [백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1 
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">30 Jan 2024</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%EB%B0%B1%EC%A4%80/ps/2024/01/23/boj1935.html" style= "color: black; font-size: 12px; font-family: 'Noto Sans KR';">
+                            [백준][자료구조] 백준 1935번 :: 후위 표기식 2 :: 실버 3 
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">23 Jan 2024</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany.html" style= "color: black; font-size: 12px; font-family: 'Noto Sans KR';">
+                            [백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">17 Jan 2024</small>
+                    </li>
+                    
+                
+            
+                
+            
+        
+            <p style="margin-bottom: 0; margin-top: 10px">
+                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold; font-family: 'Noto Sans KR', sans-serif;" href= "http://localhost:4000/category/linux.html">
+                    linux
+                </a>
+                    <a> 🔽
+                    </a>
+            </p>
+            
+            
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/linux/2024/02/01/utm.html" style= "color: black; font-size: 12px; font-family: 'Noto Sans KR';">
+                            [리눅스] 애플 실리콘 맥에 리눅스 설치하는 법(UTM)
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">01 Feb 2024</small>
+                    </li>
+                    
+                
+            
+        
+    </ul>
+</sidebar>
+
+    <div class="col-lg-8 col-md-10 mx-auto">
+<!-- 본문 카테고리를 추가하는 코드 -->
+            <a style="font-family: 'Noto Sans KR', sans-serif;">
+              카테고리 링크
+            <a>
+
+          <div style="font-family: 'Noto Sans KR', sans-serif;">
+            
+              <a href="http://localhost:4000/category/깃허브.html" style="color: black;">📁 깃허브</a>
+            
+          </div>
+          
+<!-- 본문 카테고리를 추가하는 코드 -->
+
+      <h2 id="깃허브-블로그-sidebar-기능-추가clean-blog-theme">깃허브 블로그 SIDEBAR 기능 추가(clean blog theme)</h2>
+
+<p>블로그에 사이드바 기능을 추가할 지 말지 고민했는데, 그래도 기능은 많으면 많을수록 좋다고 느껴서 사이드바 기능을 추가했다. 
+최근 HTML과 CSS를 공부하는 중이라서 공부하는 겸 sidebar 기능을 개발해 보기로 했다. 리퀴드를 이용해서 구현했고, 추가적으로 카테고리별로 축소시켰다, 늘렸다 하는 기능을 추가할까도 생각중이다.
+CLEAN BLOG THEME은 자체적으로 사이드바를 지원하는 테마는 아니기 때문에 여타 다른 테마의 수려한 기능과는 거리가 멀긴 하지만 일단 작동은 하게 만들었으니, 이정도로 마무리 지을까 한다.</p>
+
+<h3 id="카테고리-레이아웃">카테고리 레이아웃</h3>
+
+<p>이를 구현하기 위해서는 사이드바와 컨텐츠를 수평으로 담기 위해서 최상의 컨테이너의 display 속성을 flex로 변경해야 한다. _layouts의 post.markdown 파일이다.</p>
+
+<p><img src="/img/posts/sidebar/sidebar-1.png" style="width: 80%" /></p>
+
+<p>그리고 너무 작은 화면에서는 사이드바가 나오지 않게 하기 위해(너무 작은 화면에서는 사이드바가 있어봐야 소용이 없기 때문에 / 그리고 화면이 너무 지저분해지기도 하고) general 스타일 시트를 변경하려고 했는데, general.scss 파일은 물론이고 asset의 main css, post.scss 파일을 아무리 수정해도 스타일이 먹지를 않아서 어쩔 수 없이 header에 직접 스타일을 때려넣어야만 했다.</p>
+
+<p><img src="/img/posts/sidebar/sidebar-2.png" style="width: 80%" /></p>
+
+<p>이런식으로, 기본적으로 사이드바의 display 설정은 none으로 하고, 일정 크기 이상으로 화면이 커져야만 display 되도록 하는 방식이다. 솔직히 아직도 너무 지저분한 방식이라고 생각은 하지만, 왜 적용이 안되는지 방법을 모르겠어서 어쩔 수 없었다… 아무튼, 이 이후에 .post문서의 세번째 컨테이너에 이 코드를 추가하면 된다. 첫번쨰 사진을 확인하면 어떻게 추가하는지 이해가 쉬울 것이다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;!-- sidebar를 추가하는 코드 --&gt;
+&lt;sidebar id="sidebar" 
+            style="width: 260px; 
+            border-right: gray 1px solid; 
+            padding-left: 0; 
+            padding-right: 20px;"
+            &gt;
+    &lt;ul&gt;
+        &lt;p style="font-weight: bold; border-top: black 1px solid; border-bottom: black 1px solid; text-align: center; margin-top: 2px; padding: 2px; padding-top: 4px"&gt;
+            TENSOR STUDIO
+        &lt;/p&gt;
+        {% for category in site.categories %}
+            &lt;p style="margin-bottom: 0; margin-top: 10px"&gt;
+            &lt;a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold; font-family: 'Noto Sans KR', sans-serif;" href= "{{ site.url }}/category/{{ category[0] }}.html"&gt;
+                {{ category[0] }}
+            &lt;/a&gt;
+            &lt;a&gt; 🔽
+            &lt;/a&gt;
+        &lt;/p&gt;
+        {% assign posts = category[1] | sort: 'date' | reverse | limit: 5 %}
+        {% assign counter = 0 %}
+        {% for post in posts %}
+        {% if counter &lt; 3 %}
+        &lt;li style="margin: 0px"&gt;
+            &lt;a href="{{ site.baseurl }}{{ post.url }}" style= "color: black; font-size: 12px; font-family: 'Noto Sans KR';"&gt;
+                {{ post.title }}
+            &lt;/a&gt;
+            &lt;small style= "margin-bottom: 0px; font-size: 10px;"&gt;{{ post.date | date_to_string }}&lt;/small&gt;
+        &lt;/li&gt;
+            {% assign counter = counter | plus: 1 %}
+            {% endif %}
+            {% endfor %}
+        {% endfor %}
+    &lt;/ul&gt;
+&lt;/sidebar&gt;
+</code></pre></div></div>
+
+<h3 id="완성된-모습">완성된 모습</h3>
+
+<p><img src="/img/posts/sidebar/sidebar-3.png" style="width: 80%" /></p>
+
+<p>현재는 최근 세 개의 포스트만 나오게 되어 있는데, 이는 내부 코드의 카운터 부분을 바꾸면 된다. 추가적으로 레이아웃에서 건드릴 것이 많기는 하지만(display 속성을 이용해서 완성도를 높일 수 있을 것 같다) 아무튼 여기서 마무리 지을 것이다!</p>
+
+
+
+      <hr>
+      <div class="row mb-5 mt-5">
+  <div class="col-md-6 d-flex align-items-end ">
+    <span>Thanks. <i>mind sharing?</i></span>
+  </div>
+
+  <!-- Right Column with Social Media Icons (on the right for larger screens, on bottom for smaller screens) -->
+  <div class="col-md-6 order-md-2 order-1 text-md-right text-center mt-3 mt-md-0">
+    <div>
+
+      <a
+          href="https://www.linkedin.com/sharing/share-offsite?url=https://ash-tensor.github.io/%EA%B9%83%ED%97%88%EB%B8%8C/2024/02/08/jekyll-blog-theme-5-sidebar.html"
+          onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+          class="d-inline-block mr-2"
+       >
+        <span class="fa-stack fa-lg" style="color: #0077b5;">
+          <i class="fas fa-square fa-stack-2x"></i>
+          <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+
+      <a
+          href="https://twitter.com/intent/tweet?text=[깃허브 블로그]지킬 블로그 카테고리 / SIDEBAR 기능 추가(clean blog theme)&url=https://ash-tensor.github.io/%EA%B9%83%ED%97%88%EB%B8%8C/2024/02/08/jekyll-blog-theme-5-sidebar.html"
+          onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+          class="d-inline-block mr-2">
+        <span class="fa-stack fa-lg" style="color: #1DA1F2;">
+          <i class="fas fa-square fa-stack-2x"></i>
+          <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+
+      <a
+          href="http://www.reddit.com/submit?url=https://ash-tensor.github.io/%EA%B9%83%ED%97%88%EB%B8%8C/2024/02/08/jekyll-blog-theme-5-sidebar.html"
+          onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+          class="d-inline-block mr-2">
+        <span class="fa-stack fa-lg" style="color: #FF4500;">
+          <i class="fas fa-square fa-stack-2x"></i>
+          <i class="fab fa-reddit fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<hr/>
+
+      <div class="clearfix" >
+
+<!-- 수정중 -->
+<!-- 가장 첫번쨰 카테고리의 최근 글 불러오는 글 기능 추가  -->
+<!-- <ul class="posts-list"> -->
+
+<ul class="mb-5 ">
+  
+  <p>
+    <a style= "font-size: 20px; font-weight: bold; font-family: 'Noto Sans KR', sans-serif;" href= "http://localhost:4000/category/깃허브.html">
+      깃허브 카테고리의 다른 글
+    </a>
+  </p>
+  
+  
+  
+    
+      <li>
+        <h3>
+          <a href="/%EA%B9%83%ED%97%88%EB%B8%8C/2024/02/08/jekyll-blog-theme-5-sidebar.html" style= "font-size: 17px;">
+            [깃허브 블로그]지킬 블로그 카테고리 / SIDEBAR 기능 추가(clean blog theme)
+          </a>
+          <small style= "font-size: 14px;">08 Feb 2024</small>
+        </h3>
+      </li>
+      
+    
+  
+    
+      <li>
+        <h3>
+          <a href="/%EA%B9%83%ED%97%88%EB%B8%8C/2024/01/17/bottom-category-build.html" style= "font-size: 17px;">
+            [깃허브 블로그] 동일 카테고리의 최근 글 기능 개발(clean blog theme)
+          </a>
+          <small style= "font-size: 14px;">17 Jan 2024</small>
+        </h3>
+      </li>
+      
+    
+  
+    
+      <li>
+        <h3>
+          <a href="/%EA%B9%83%ED%97%88%EB%B8%8C/2023/12/15/jekyll-blog-theme-4.html" style= "font-size: 17px;">
+            [깃허브 블로그]지킬 블로그 카테고리 / NAVBAR 기능 추가(clean blog theme) - 1
+          </a>
+          <small style= "font-size: 14px;">15 Dec 2023</small>
+        </h3>
+      </li>
+      
+    
+  
+    
+      <li>
+        <h3>
+          <a href="/%EA%B9%83%ED%97%88%EB%B8%8C/2023/12/14/jekyll-blog-theme-3.html" style= "font-size: 17px;">
+            [깃허브 블로그]지킬 블로그 코멘트 기능 추가(clean blog theme)
+          </a>
+          <small style= "font-size: 14px;">14 Dec 2023</small>
+        </h3>
+      </li>
+      
+    
+  
+    
+      <li>
+        <h3>
+          <a href="/%EA%B9%83%ED%97%88%EB%B8%8C/2023/12/13/jekyll-blog-theme-2.html" style= "font-size: 17px;">
+            [깃허브 블로그]지킬 블로그 테마 설치 및 오류 수정(clean blog theme)
+          </a>
+          <small style= "font-size: 14px;">13 Dec 2023</small>
+        </h3>
+      </li>
+      
+    
+  
+    
+  
+</ul>
+
+
+<!-- 수정중 -->
+<!-- 가장 첫번쨰 카테고리의 최근 글 불러오는 글 기능 추가  -->
+
+
+<!-- 코멘트 란을 추가하는 코드 -->
+
+
+  <div id="disqus_thread" style="font-family: sans-serif"></div>
+  <script>
+      /**
+      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+      *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+      /*
+      var disqus_config = function () {
+      this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      };
+      */
+      (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://tensorstudio.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<!-- 코멘트 란을 추가하는 코드 -->
+
+        
+        <a class="btn btn-primary float-left" href="/linux/2024/02/01/utm.html" data-toggle="tooltip" data-placement="top" title="[리눅스] 애플 실리콘 맥에 리눅스 설치하는 법(UTM)">&larr; Previous<span class="d-none d-md-inline">
+            Post</span></a>
+        
+        
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+  <!-- Footer -->
+
+<hr>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <ul class="list-inline text-center">
+          
+          <li class="list-inline-item">
+            <a href="mailto:tensor17s@gmail.com" class="text-gray">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          
+          
+          
+          
+        </ul>
+
+        <p class="copyright text-muted">
+          Build with: 
+          <a 
+            href="https://github.com/StartBootstrap/startbootstrap-clean-blog-jekyll"
+            class="text-gray"
+            target="_blank">startbootstrap-clean-blog-jekyll
+          </a>
+        </p>
+        <p class="copyright text-center text-gray">
+            TENSOR STUDIO
+        </p>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/blog/js/scripts.js"></script>
+
+<script src="/assets/scripts.js"></script>
+
+
+
+
+  
+
+</body>
+
+</html>
