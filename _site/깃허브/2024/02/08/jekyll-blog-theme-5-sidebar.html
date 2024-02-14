@@ -659,12 +659,16 @@ CLEAN BLOG THEME은 자체적으로 사이드바를 지원하는 테마는 아�
             padding-right: 20px;"
             &gt;
     &lt;ul&gt;
-        &lt;p style="font-weight: bold; border-top: black 1px solid; border-bottom: black 1px solid; text-align: center; margin-top: 2px; padding: 2px; padding-top: 4px"&gt;
+        &lt;p style="font-weight: bold; border-top: black 1px solid; 
+            border-bottom: black 1px solid; text-align: center; margin-top: 2px; 
+            padding: 2px; padding-top: 4px"&gt;
             TENSOR STUDIO
         &lt;/p&gt;
         {% for category in site.categories %}
             &lt;p style="margin-bottom: 0; margin-top: 10px"&gt;
-            &lt;a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold; font-family: 'Noto Sans KR', sans-serif;" href= "{{ site.url }}/category/{{ category[0] }}.html"&gt;
+            &lt;a style= "margin-bottom: 0px; font-size: 15px; color: black; 
+                font-weight: bold; font-family: 'Noto Sans KR', sans-serif;" 
+                href= "{{ site.url }}/category/{{ category[0] }}.html"&gt;
                 {{ category[0] }}
             &lt;/a&gt;
             &lt;a&gt; 🔽
@@ -675,7 +679,8 @@ CLEAN BLOG THEME은 자체적으로 사이드바를 지원하는 테마는 아�
         {% for post in posts %}
         {% if counter &lt; 3 %}
         &lt;li style="margin: 0px"&gt;
-            &lt;a href="{{ site.baseurl }}{{ post.url }}" style= "color: black; font-size: 12px; font-family: 'Noto Sans KR';"&gt;
+            &lt;a href="{{ site.baseurl }}{{ post.url }}" style= "color: black; 
+                font-size: 12px; font-family: 'Noto Sans KR';"&gt;
                 {{ post.title }}
             &lt;/a&gt;
             &lt;small style= "margin-bottom: 0px; font-size: 10px;"&gt;{{ post.date | date_to_string }}&lt;/small&gt;

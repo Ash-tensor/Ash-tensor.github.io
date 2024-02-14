@@ -38,12 +38,16 @@ CLEAN BLOG THEME은 자체적으로 사이드바를 지원하는 테마는 아�
                 padding-right: 20px;"
                 >
         <ul>
-            <p style="font-weight: bold; border-top: black 1px solid; border-bottom: black 1px solid; text-align: center; margin-top: 2px; padding: 2px; padding-top: 4px">
+            <p style="font-weight: bold; border-top: black 1px solid; 
+                border-bottom: black 1px solid; text-align: center; margin-top: 2px; 
+                padding: 2px; padding-top: 4px">
                 TENSOR STUDIO
             </p>
             {% for category in site.categories %}
                 <p style="margin-bottom: 0; margin-top: 10px">
-                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold; font-family: 'Noto Sans KR', sans-serif;" href= "{{ site.url }}/category/{{ category[0] }}.html">
+                <a style= "margin-bottom: 0px; font-size: 15px; color: black; 
+                    font-weight: bold; font-family: 'Noto Sans KR', sans-serif;" 
+                    href= "{{ site.url }}/category/{{ category[0] }}.html">
                     {{ category[0] }}
                 </a>
                 <a> 🔽
@@ -54,7 +58,8 @@ CLEAN BLOG THEME은 자체적으로 사이드바를 지원하는 테마는 아�
             {% for post in posts %}
             {% if counter < 3 %}
             <li style="margin: 0px">
-                <a href="{{ site.baseurl }}{{ post.url }}" style= "color: black; font-size: 12px; font-family: 'Noto Sans KR';">
+                <a href="{{ site.baseurl }}{{ post.url }}" style= "color: black; 
+                    font-size: 12px; font-family: 'Noto Sans KR';">
                     {{ post.title }}
                 </a>
                 <small style= "margin-bottom: 0px; font-size: 10px;">{{ post.date | date_to_string }}</small>
