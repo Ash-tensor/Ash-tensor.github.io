@@ -40,7 +40,7 @@ layout: default
     </div>
   </div>
 </header>
-<div class="container" style="font-family: 'Noto Serif KR', serif; display: flex ">
+<div class="container" style="font-family: 'Noto Serif KR', serif; display: flex">
   <div class="row">
 <!-- sidebar를 추가하는 코드 -->
     <sidebar id="sidebar" 
