@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-02-17T17:07:42+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[WEB]GCP(google cloud platform) 프리 티어 VM 생성 / MYSQL 서버 연결</title><link href="http://localhost:4000/web/2024/02/17/jekyll-blog-theme-5-sidebar.html" rel="alternate" type="text/html" title="[WEB]GCP(google cloud platform) 프리 티어 VM 생성 / MYSQL 서버 연결" /><published>2024-02-17T00:00:00+09:00</published><updated>2024-02-17T00:00:00+09:00</updated><id>http://localhost:4000/web/2024/02/17/jekyll-blog-theme-5-sidebar</id><content type="html" xml:base="http://localhost:4000/web/2024/02/17/jekyll-blog-theme-5-sidebar.html"><![CDATA[<h2 id="webgcpgoogle-cloud-platform-프리-티어-vm-생성">[WEB]GCP(google cloud platform) 프리 티어 VM 생성</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-02-17T17:13:54+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[WEB]GCP(google cloud platform) 프리 티어 VM 생성 / MYSQL 서버 연결</title><link href="http://localhost:4000/web/2024/02/17/gcp-free-tier-settings.html" rel="alternate" type="text/html" title="[WEB]GCP(google cloud platform) 프리 티어 VM 생성 / MYSQL 서버 연결" /><published>2024-02-17T00:00:00+09:00</published><updated>2024-02-17T00:00:00+09:00</updated><id>http://localhost:4000/web/2024/02/17/gcp-free-tier-settings</id><content type="html" xml:base="http://localhost:4000/web/2024/02/17/gcp-free-tier-settings.html"><![CDATA[<h2 id="webgcpgoogle-cloud-platform-프리-티어-vm-생성">[WEB]GCP(google cloud platform) 프리 티어 VM 생성</h2>
 
 <p>클라우드 서비스로 가장 우선적으로 선택하는 것 중에 하나가 바로 AWS일 것이다. 하지만 AWS 같은 경우에는 프리티어 VM의 사용 기한이 1년으로, 
 1년이 지나면 자동으로 등록해 놓은 신용카드로 사용 요금이 빠져나간다. 그래서 나 같은 경우에는 프리티어로 사용하던 VM의 사용 기한이 끝나 매달 2만원 가량의 요금이
@@ -79,7 +79,79 @@
 
 <p><img src="/img/posts/gcp/mysql3.png" style="width: 80%" /></p>
 
-<p>이러면 mysql 서버를 사용할 기본적인 설정은 모두 끝났다!</p>]]></content><author><name>ash tensor</name></author><category term="WEB" /><summary type="html"><![CDATA[[WEB]GCP(google cloud platform) 프리 티어 VM 생성]]></summary></entry><entry><title type="html">[백준] 백준 1931번 :: 회의실 배정 :: 실버 1</title><link href="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/02/01/boj1931.html" rel="alternate" type="text/html" title="[백준] 백준 1931번 :: 회의실 배정 :: 실버 1" /><published>2024-02-01T00:00:00+09:00</published><updated>2024-02-01T00:00:00+09:00</updated><id>http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/02/01/boj1931</id><content type="html" xml:base="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/02/01/boj1931.html"><![CDATA[<h2 id="백준-백준-1931번--회의실-배정--실버-1">[백준] 백준 1931번 :: 회의실 배정 :: 실버 1</h2>
+<p>이러면 mysql 서버를 사용할 기본적인 설정은 모두 끝났다!</p>]]></content><author><name>ash tensor</name></author><category term="WEB" /><summary type="html"><![CDATA[[WEB]GCP(google cloud platform) 프리 티어 VM 생성]]></summary></entry><entry><title type="html">[깃허브 블로그]지킬 블로그 카테고리 / SIDEBAR 기능 추가(clean blog theme)</title><link href="http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2024/02/08/jekyll-blog-theme-5-sidebar.html" rel="alternate" type="text/html" title="[깃허브 블로그]지킬 블로그 카테고리 / SIDEBAR 기능 추가(clean blog theme)" /><published>2024-02-08T00:00:00+09:00</published><updated>2024-02-08T00:00:00+09:00</updated><id>http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2024/02/08/jekyll-blog-theme-5-sidebar</id><content type="html" xml:base="http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2024/02/08/jekyll-blog-theme-5-sidebar.html"><![CDATA[<h2 id="깃허브-블로그-sidebar-기능-추가clean-blog-theme">깃허브 블로그 SIDEBAR 기능 추가(clean blog theme)</h2>
+
+<p>블로그에 사이드바 기능을 추가할 지 말지 고민했는데, 그래도 기능은 많으면 많을수록 좋다고 느껴서 사이드바 기능을 추가했다. 
+최근 HTML과 CSS를 공부하는 중이라서 공부하는 겸 sidebar 기능을 개발해 보기로 했다. 리퀴드를 이용해서 구현했고, 추가적으로 카테고리별로 축소시켰다, 늘렸다 하는 기능을 추가할까도 생각중이다.
+CLEAN BLOG THEME은 자체적으로 사이드바를 지원하는 테마는 아니기 때문에 여타 다른 테마의 수려한 기능과는 거리가 멀긴 하지만 일단 작동은 하게 만들었으니, 이정도로 마무리 지을까 한다.</p>
+
+<h3 id="카테고리-레이아웃">카테고리 레이아웃</h3>
+
+<p>이를 구현하기 위해서는 사이드바와 컨텐츠를 수평으로 담기 위해서 최상의 컨테이너의 display 속성을 flex로 변경해야 한다. _layouts의 post.markdown 파일이다.</p>
+
+<p><img src="/img/posts/sidebar/sidebar-1.png" style="width: 80%" /></p>
+
+<p>그리고 너무 작은 화면에서는 사이드바가 나오지 않게 하기 위해(너무 작은 화면에서는 사이드바가 있어봐야 소용이 없기 때문에 / 그리고 화면이 너무 지저분해지기도 하고) general 스타일 시트를 변경하려고 했는데, general.scss 파일은 물론이고 asset의 main css, post.scss 파일을 아무리 수정해도 스타일이 먹지를 않아서 어쩔 수 없이 header에 직접 스타일을 때려넣어야만 했다.</p>
+
+<p><img src="/img/posts/sidebar/sidebar-2.png" style="width: 80%" /></p>
+
+<p>이런식으로, 기본적으로 사이드바의 display 설정은 none으로 하고, 일정 크기 이상으로 화면이 커져야만 display 되도록 하는 방식이다. 솔직히 아직도 너무 지저분한 방식이라고 생각은 하지만, 왜 적용이 안되는지 방법을 모르겠어서 어쩔 수 없었다… 아무튼, 이 이후에 .post문서의 세번째 컨테이너에 이 코드를 추가하면 된다. 첫번쨰 사진을 확인하면 어떻게 추가하는지 이해가 쉬울 것이다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;!-- sidebar를 추가하는 코드 --&gt;
+&lt;sidebar id="sidebar" 
+            style="width: 260px; 
+            border-right: gray 1px solid; 
+            padding-left: 0; 
+            padding-right: 20px;"
+            &gt;
+    &lt;ul&gt;
+        &lt;p style="font-weight: bold; border-top: black 1px solid; 
+            border-bottom: black 1px solid; text-align: center; margin-top: 2px; 
+            padding: 2px; padding-top: 4px"&gt;
+            TENSOR STUDIO
+        &lt;/p&gt;
+        {% for category in site.categories %}
+            &lt;p style="margin-bottom: 0; margin-top: 10px"&gt;
+            &lt;a style= "margin-bottom: 0px; font-size: 15px; color: black; 
+                font-weight: bold; font-family: 'Noto Sans KR', sans-serif;" 
+                href= "{{ site.url }}/category/{{ category[0] }}.html"&gt;
+                {{ category[0] }}
+            &lt;/a&gt;
+            &lt;a&gt; 🔽
+            &lt;/a&gt;
+        &lt;/p&gt;
+        {% assign posts = category[1] | sort: 'date' | reverse | limit: 5 %}
+        {% assign counter = 0 %}
+        {% for post in posts %}
+        {% if counter &lt; 3 %}
+        &lt;li style="margin: 0px"&gt;
+            &lt;a href="{{ site.baseurl }}{{ post.url }}" style= "color: black; 
+                font-size: 12px; font-family: 'Noto Sans KR';"&gt;
+                {{ post.title }}
+            &lt;/a&gt;
+            &lt;small style= "margin-bottom: 0px; font-size: 10px;"&gt;{{ post.date | date_to_string }}&lt;/small&gt;
+        &lt;/li&gt;
+            {% assign counter = counter | plus: 1 %}
+            {% endif %}
+            {% endfor %}
+        {% endfor %}
+    &lt;/ul&gt;
+&lt;/sidebar&gt;
+</code></pre></div></div>
+
+<h3 id="완성된-모습">완성된 모습</h3>
+
+<p><img src="/img/posts/sidebar/sidebar-3.png" style="width: 80%" /></p>
+
+<p>현재는 최근 세 개의 포스트만 나오게 되어 있는데, 이는 내부 코드의 카운터 부분을 바꾸면 된다. 추가적으로 레이아웃에서 건드릴 것이 많기는 하지만(display 속성을 이용해서 완성도를 높일 수 있을 것 같다) 아무튼 여기서 마무리 지을 것이다!</p>]]></content><author><name>ash tensor</name></author><category term="깃허브" /><summary type="html"><![CDATA[깃허브 블로그 SIDEBAR 기능 추가(clean blog theme)]]></summary></entry><entry><title type="html">[리눅스] 애플 실리콘 맥에 리눅스 설치하는 법(UTM)</title><link href="http://localhost:4000/linux/2024/02/01/utm.html" rel="alternate" type="text/html" title="[리눅스] 애플 실리콘 맥에 리눅스 설치하는 법(UTM)" /><published>2024-02-01T00:00:00+09:00</published><updated>2024-02-01T00:00:00+09:00</updated><id>http://localhost:4000/linux/2024/02/01/utm</id><content type="html" xml:base="http://localhost:4000/linux/2024/02/01/utm.html"><![CDATA[<h2 id="리눅스-애플-실리콘-맥에-리눅스-설치-후기utm">[리눅스] 애플 실리콘 맥에 리눅스 설치 후기(UTM)</h2>
+
+<h3 id="utm">UTM</h3>
+
+<p><a href="https://mac.getutm.app/">UTM</a>은 이 링크에서 얻을 수 있다. 일단 <a href="https://gymdev.tistory.com/75">이 페이지</a>에서 너무 설치법을 잘 정리해 주고 있어서 내가 따로 첨언할 부분은 없었다. 아, 설치 중 중간에 <strong>display out을 확인할 수 없다</strong> 고 한동안 표시돼서 설치가 안되는건가 했는데, 조금 기다리면 문제 없이 리눅스가 부팅되니까 조금 기다리면 된다!</p>
+
+<p><img src="/img/스크린샷 2024-02-01 오후 1.27.20.png" style="width: 80%" /></p>
+
+<p>m1맥에서 제대로 구동되는 것을 확인했다.</p>]]></content><author><name>ash tensor</name></author><category term="linux" /><summary type="html"><![CDATA[[리눅스] 애플 실리콘 맥에 리눅스 설치 후기(UTM)]]></summary></entry><entry><title type="html">[백준] 백준 1931번 :: 회의실 배정 :: 실버 1</title><link href="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/02/01/boj1931.html" rel="alternate" type="text/html" title="[백준] 백준 1931번 :: 회의실 배정 :: 실버 1" /><published>2024-02-01T00:00:00+09:00</published><updated>2024-02-01T00:00:00+09:00</updated><id>http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/02/01/boj1931</id><content type="html" xml:base="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/02/01/boj1931.html"><![CDATA[<h2 id="백준-백준-1931번--회의실-배정--실버-1">[백준] 백준 1931번 :: 회의실 배정 :: 실버 1</h2>
 
 <h3 id="문제-설명">문제 설명</h3>
 
@@ -209,15 +281,7 @@
 <span class="o">}</span>
 
 
-</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="백준" /><category term="PS" /><category term="파이썬" /><category term="JAVA" /><summary type="html"><![CDATA[[백준] 백준 1931번 :: 회의실 배정 :: 실버 1]]></summary></entry><entry><title type="html">[리눅스] 애플 실리콘 맥에 리눅스 설치하는 법(UTM)</title><link href="http://localhost:4000/linux/2024/02/01/utm.html" rel="alternate" type="text/html" title="[리눅스] 애플 실리콘 맥에 리눅스 설치하는 법(UTM)" /><published>2024-02-01T00:00:00+09:00</published><updated>2024-02-01T00:00:00+09:00</updated><id>http://localhost:4000/linux/2024/02/01/utm</id><content type="html" xml:base="http://localhost:4000/linux/2024/02/01/utm.html"><![CDATA[<h2 id="리눅스-애플-실리콘-맥에-리눅스-설치-후기utm">[리눅스] 애플 실리콘 맥에 리눅스 설치 후기(UTM)</h2>
-
-<h3 id="utm">UTM</h3>
-
-<p><a href="https://mac.getutm.app/">UTM</a>은 이 링크에서 얻을 수 있다. 일단 <a href="https://gymdev.tistory.com/75">이 페이지</a>에서 너무 설치법을 잘 정리해 주고 있어서 내가 따로 첨언할 부분은 없었다. 아, 설치 중 중간에 <strong>display out을 확인할 수 없다</strong> 고 한동안 표시돼서 설치가 안되는건가 했는데, 조금 기다리면 문제 없이 리눅스가 부팅되니까 조금 기다리면 된다!</p>
-
-<p><img src="/img/스크린샷 2024-02-01 오후 1.27.20.png" style="width: 80%" /></p>
-
-<p>m1맥에서 제대로 구동되는 것을 확인했다.</p>]]></content><author><name>ash tensor</name></author><category term="linux" /><summary type="html"><![CDATA[[리눅스] 애플 실리콘 맥에 리눅스 설치 후기(UTM)]]></summary></entry><entry><title type="html">[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1</title><link href="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178.html" rel="alternate" type="text/html" title="[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1" /><published>2024-01-30T00:00:00+09:00</published><updated>2024-01-30T00:00:00+09:00</updated><id>http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178</id><content type="html" xml:base="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178.html"><![CDATA[<h2 id="백준자료구조-백준-2178번--미로-탐색--실버-1">[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1</h2>
+</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="백준" /><category term="PS" /><category term="파이썬" /><category term="JAVA" /><summary type="html"><![CDATA[[백준] 백준 1931번 :: 회의실 배정 :: 실버 1]]></summary></entry><entry><title type="html">[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1</title><link href="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178.html" rel="alternate" type="text/html" title="[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1" /><published>2024-01-30T00:00:00+09:00</published><updated>2024-01-30T00:00:00+09:00</updated><id>http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178</id><content type="html" xml:base="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178.html"><![CDATA[<h2 id="백준자료구조-백준-2178번--미로-탐색--실버-1">[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1</h2>
 
 <h3 id="문제-설명">문제 설명</h3>
 
@@ -994,606 +1058,4 @@ dp[4] = dp[4- num (즉 3)] ….. dp[1] = dp[1] + dp[1 - num(즉 0)] 이 된다. 
         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">answer</span><span class="o">);</span>
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="PS" /><category term="DP" /><category term="파이썬" /><category term="프로그래머스" /><category term="JAVA" /><summary type="html"><![CDATA[[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)]]></summary></entry><entry><title type="html">[JAVA] 중첩 클래스</title><link href="http://localhost:4000/java/2024/01/12/nestedclass.html" rel="alternate" type="text/html" title="[JAVA] 중첩 클래스" /><published>2024-01-12T00:00:00+09:00</published><updated>2024-01-12T00:00:00+09:00</updated><id>http://localhost:4000/java/2024/01/12/nestedclass</id><content type="html" xml:base="http://localhost:4000/java/2024/01/12/nestedclass.html"><![CDATA[<p>자바의 중첩 클래스(Nested Class)는 다른 클래스 내부에 정의된 클래스를 말한다. 중첩 클래스는 외부 클래스의 멤버로 간주되고, 외부 클래스의 멤버 변수 및 메서드에 쉽게 접근할 수 있다. 보통 논리적으로 관련된 클래스를 그룹화하는데 사용된다.</p>
-
-<p><strong>상속과 같은 개념의 확장 관계는 아니지만 어떤 개념의 상하관계를 개념적으로 구현해야 하는 경우에 사용되는데</strong> 예를 들어서 국적 또는 국민은 국가라는 개념의 확장이 아니므로 상속 관계로 표현이 불가능하기 때문이다.</p>
-
-<p>구현 포인트는 다음과 같다.</p>
-
-<ol>
-  <li>
-    <p>예시 코드에서 Korean 및 American, NorthKorean 은 각 국가의 중첩 클래스로 작성하였다. Korean.Korean, US.American은 인터페이스 <strong>ILibertyToMove</strong>의 구현체이기 때문에 <strong>tourAbroad(Nation nation) 및 submittingPassport 메소드</strong>가 존재하기 때문에 여행이 가능하고, NorthKorea.NorthKorean은 구현체가 아니라 해외 여행 및 여권 제출이 불가능하다.</p>
-  </li>
-  <li>
-    <p>마찬가지로 Korea, US, NorthKorea 모두 추상 클래스 Nation을 상속받았지만, Korea, US는 인터페이스 <strong>IVisitable</strong>의 구현체이여서 Korea.Korean, US.American이 서로의 국가를 방문 가능하다. 하지만 NorthKorean은 IVisitable의 구현체가 아니기 때문에 타 국가가 해당 국가의 방문이 불가능하다.</p>
-  </li>
-  <li>
-    <p>각 국가는 중첩 클래스로 <strong>.administraionBureau, .ImmigrationBureau</strong>를 가지고(싱글톤이다), 각 Bureau는 추상 클래스인 Bureau를 상속하고, <strong>ImmigrationBureau는 IImmigrationBureau라는 인터페이스</strong>를 상속받아 <strong>visa 메소드와 immigrationScreening 메소드</strong>와 같은 일반적인 Bureau가 아닌 이민청의 일을 할 수 있게 구현했다.</p>
-  </li>
-</ol>
-
-<p>이번 구현을 통해서 타입 캐스팅을 하며 인터페이스가 왜 필요한지 절실히 깨닫는 계기가 되었다. 구현이 부족한 부분이 많지만 일단 이 정도로 마무리할 생각이다.</p>
-
-<p>자세한 코드는 <a href="https://github.com/Ash-tensor/studyingJava.git">깃허브 주소</a>에 업로드했다.</p>
-
-<h2 id="구현-예시">구현 예시</h2>
-
-<h3 id="main">Main</h3>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">jan11st</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-
-        <span class="c1">// 싱글톤이기 때문에 Korea, US, NorthKorea 객체는 생성하지 않아도 됨</span>
-
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"객체 생성"</span><span class="o">);</span>
-        <span class="nc">Korea</span><span class="o">.</span><span class="na">Korean</span> <span class="no">A</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Korea</span><span class="o">.</span><span class="na">Korean</span><span class="o">(</span><span class="s">"한국인"</span><span class="o">,</span> <span class="s">"Male"</span><span class="o">,</span> <span class="s">"KOREA"</span><span class="o">);</span>
-        <span class="no">US</span><span class="o">.</span><span class="na">American</span> <span class="no">B</span> <span class="o">=</span> <span class="k">new</span> <span class="no">US</span><span class="o">.</span><span class="na">American</span><span class="o">(</span><span class="s">"미국인"</span><span class="o">,</span> <span class="s">"Female"</span><span class="o">,</span> <span class="s">"US"</span><span class="o">);</span>
-        <span class="nc">NorthKorea</span><span class="o">.</span><span class="na">NorthKorean</span> <span class="no">C</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">NorthKorea</span><span class="o">.</span><span class="na">NorthKorean</span><span class="o">(</span><span class="s">"북한인"</span><span class="o">,</span> <span class="s">"Male"</span><span class="o">,</span> <span class="s">"NorthKorea"</span><span class="o">);</span>
-
-        <span class="no">A</span><span class="o">.</span><span class="na">birthRegistration</span><span class="o">();</span>
-        <span class="no">B</span><span class="o">.</span><span class="na">birthRegistration</span><span class="o">();</span>
-        <span class="no">C</span><span class="o">.</span><span class="na">birthRegistration</span><span class="o">();</span>
-
-
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"현재 %s의 위치 : %s\n"</span><span class="o">,</span> <span class="no">A</span><span class="o">.</span><span class="na">name</span><span class="o">,</span> <span class="no">A</span><span class="o">.</span><span class="na">region</span><span class="o">);</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"현재 %s의 위치 : %s\n"</span><span class="o">,</span> <span class="no">B</span><span class="o">.</span><span class="na">name</span><span class="o">,</span> <span class="no">B</span><span class="o">.</span><span class="na">region</span><span class="o">);</span>
-
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\n* 한국인의 미국 방문 상황 :"</span><span class="o">);</span>
-
-        <span class="no">A</span><span class="o">.</span><span class="na">tourAbroad</span><span class="o">(</span><span class="no">US</span><span class="o">.</span><span class="na">getInstance</span><span class="o">());</span>
-
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\n* 미국인의 한국 방문 상황 :"</span><span class="o">);</span>
-
-        <span class="no">B</span><span class="o">.</span><span class="na">tourAbroad</span><span class="o">(</span><span class="nc">Korea</span><span class="o">.</span><span class="na">getInstance</span><span class="o">());</span>
-        <span class="c1">// C는 ILibertyToMove(이동할 자유)를 구현하지 않기 때문에 .tourAbroad 할 수 없다.</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\n* 북한 방문 상황 :"</span><span class="o">);</span>
-
-        <span class="c1">// NorthKorea는 IVisitable interface를 구현하지 않기 때문에 방문할 수 없다.</span>
-        <span class="no">A</span><span class="o">.</span><span class="na">tourAbroad</span><span class="o">(</span><span class="nc">NorthKorea</span><span class="o">.</span><span class="na">getInstance</span><span class="o">());</span>
-        <span class="no">B</span><span class="o">.</span><span class="na">tourAbroad</span><span class="o">(</span><span class="nc">NorthKorea</span><span class="o">.</span><span class="na">getInstance</span><span class="o">());</span>
-
-
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"* 현재 %s의 위치 : %s\n"</span><span class="o">,</span> <span class="no">A</span><span class="o">.</span><span class="na">name</span><span class="o">,</span> <span class="no">A</span><span class="o">.</span><span class="na">region</span><span class="o">);</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"* 현재 %s의 위치 : %s\n"</span><span class="o">,</span> <span class="no">B</span><span class="o">.</span><span class="na">name</span><span class="o">,</span> <span class="no">B</span><span class="o">.</span><span class="na">region</span><span class="o">);</span>
-
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\n* Situation Immigration :"</span><span class="o">);</span>
-
-        <span class="no">A</span><span class="o">.</span><span class="na">Immigrate</span><span class="o">(</span><span class="no">US</span><span class="o">.</span><span class="na">getInstance</span><span class="o">());</span>
-
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<h3 id="실행-결과">실행 결과</h3>
-
-<p><img src="/img/posts/nestedclass/1.PNG" style="width: 75%" /></p>
-
-<p><img src="/img/posts/nestedclass/2.PNG" style="width: 75%" /></p>
-
-<h3 id="ivisitable-인터페이스">IVisitable 인터페이스</h3>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="kn">package</span> <span class="nn">jan11st</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IVisitable</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="nc">Bureau</span> <span class="nf">visitImmigrationBureau</span><span class="o">();</span>
-<span class="o">}</span>
-
-</code></pre></div></div>
-
-<h3 id="korea-클래스">Korea 클래스</h3>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="kn">package</span> <span class="nn">jan11st</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.lang.reflect.Array</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
-
-<span class="c1">// IVisitable 인터페이스를 구현해야만 Human 객체가 해당 Nation을 방문할 수 있음</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Korea</span> <span class="kd">extends</span> <span class="nc">Nation</span> <span class="kd">implements</span> <span class="nc">Republic</span><span class="o">,</span> <span class="nc">IVisitable</span><span class="o">{</span>
-
-    <span class="c1">// 싱글톤</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Korea</span> <span class="no">INSTANCE</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Korea</span><span class="o">();</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">String</span> <span class="no">NAME</span> <span class="o">=</span> <span class="s">"Republic Of Korea"</span><span class="o">;</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">String</span> <span class="no">CAPITAL_CITY</span> <span class="o">=</span> <span class="s">"SEOUL"</span><span class="o">;</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">String</span> <span class="no">REGION</span> <span class="o">=</span> <span class="s">"ASIA"</span><span class="o">;</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">String</span> <span class="no">LANGUAGE</span> <span class="o">=</span> <span class="s">"KOREAN"</span><span class="o">;</span>
-
-    <span class="c1">//국가 리스트</span>
-    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Korean</span><span class="o">&gt;</span> <span class="n">civilianList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
-
-    <span class="kd">private</span> <span class="nf">Korea</span><span class="o">()</span> <span class="o">{</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">Korea</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="no">INSTANCE</span><span class="o">;</span>
-    <span class="o">}</span>
-    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">immigrationRegistration</span><span class="o">(</span><span class="nc">Human</span> <span class="n">human</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">if</span> <span class="o">(</span><span class="nc">ImmigrationBureau</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">immigrationScreening</span><span class="o">(</span><span class="n">human</span><span class="o">))</span> <span class="o">{</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"한국 정부 : 이민 최종 승인"</span><span class="o">);</span>
-        <span class="o">}</span>
-        <span class="k">else</span> <span class="o">{</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"한국 정부 : 이민 최종 거절"</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="nc">ImmigrationBureau</span> <span class="nf">visitImmigrationBureau</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="nc">ImmigrationBureau</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
-    <span class="o">}</span>
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="nc">Bureau</span> <span class="nf">visitAdministartionBureau</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="nc">AdministrationBureau</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
-    <span class="o">}</span>
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getNAME</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="nc">Korea</span><span class="o">.</span><span class="na">NAME</span><span class="o">;</span>
-    <span class="o">}</span>
-
-<span class="c1">//정부 구현</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">AdministrationBureau</span> <span class="kd">extends</span> <span class="nc">Bureau</span> <span class="o">{</span>
-        <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">AdministrationBureau</span> <span class="no">INSTANCE</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AdministrationBureau</span><span class="o">();</span>
-        <span class="kd">private</span> <span class="nf">AdministrationBureau</span><span class="o">()</span> <span class="o">{}</span>
-        <span class="kd">public</span> <span class="kd">static</span> <span class="nc">AdministrationBureau</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span>
-            <span class="k">return</span> <span class="no">INSTANCE</span><span class="o">;</span>
-        <span class="o">}</span>
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">birthRegistration</span><span class="o">(</span><span class="nc">Korean</span> <span class="n">korean</span><span class="o">)</span> <span class="o">{</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"한국 정부 : %s 출생신고 접수 완료\n"</span><span class="o">,</span> <span class="n">korean</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
-            <span class="nc">Korea</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">civilianList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">korean</span><span class="o">);</span>
-        <span class="o">}</span>
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">deathRegistration</span><span class="o">(</span><span class="nc">Korean</span> <span class="n">korean</span><span class="o">)</span> <span class="o">{</span>
-            <span class="nc">Korea</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">civilianList</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">korean</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-
-    <span class="c1">//이민청 구현, Bureau 추상클래스를 상속하고, IImmigrationBureau 인터페이스를 구현해 visa 발급,</span>
-    <span class="c1">// 이민 신청등의 일(일반 Bureau가 아닌 이민청이 해야하는 일을 구현)</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">ImmigrationBureau</span> <span class="kd">extends</span> <span class="nc">Bureau</span> <span class="kd">implements</span> <span class="nc">IImmigrationBureau</span> <span class="o">{</span>
-
-        <span class="c1">//수교국 리스트를 생성, List는 Nation 추상클래스 받아 모든 Nation이 ListArray에 들어갈 수 있게함</span>
-
-        <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Nation</span><span class="o">&gt;</span> <span class="n">dipolomaticNations</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="no">US</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(),</span> <span class="nc">Korea</span><span class="o">.</span><span class="na">getInstance</span><span class="o">());</span>
-
-        <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">ImmigrationBureau</span> <span class="no">INSTANCE</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ImmigrationBureau</span><span class="o">();</span>
-
-        <span class="kd">private</span> <span class="nf">ImmigrationBureau</span><span class="o">()</span> <span class="o">{</span>
-        <span class="o">}</span>
-
-        <span class="kd">public</span> <span class="kd">static</span> <span class="nc">ImmigrationBureau</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span>
-            <span class="k">return</span> <span class="no">INSTANCE</span><span class="o">;</span>
-        <span class="o">}</span>
-        <span class="nd">@Override</span>
-        <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">visa</span><span class="o">(</span><span class="nc">Human</span> <span class="n">human</span><span class="o">)</span> <span class="o">{</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"visa"</span><span class="o">);</span>
-            <span class="c1">// 수교국 명단에 있으면 비자주기</span>
-<span class="c1">//            human이 IlibertyToMove 구현체이면</span>
-            <span class="k">if</span><span class="o">(</span><span class="n">human</span> <span class="k">instanceof</span> <span class="nc">ILibertyToMove</span><span class="o">)</span> <span class="o">{</span>
-                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"%s : 여권 있음\n"</span><span class="o">,</span> <span class="n">human</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
-                <span class="nc">ILibertyToMove</span> <span class="n">tourist</span> <span class="o">=</span> <span class="o">(</span><span class="nc">ILibertyToMove</span><span class="o">)</span> <span class="n">human</span><span class="o">;</span>
-                <span class="nc">Nation</span> <span class="n">passport</span> <span class="o">=</span> <span class="n">tourist</span><span class="o">.</span><span class="na">passportSubmitting</span><span class="o">();</span>
-
-            <span class="k">for</span><span class="o">(</span><span class="nc">Nation</span> <span class="n">nation</span> <span class="o">:</span> <span class="k">this</span><span class="o">.</span><span class="na">dipolomaticNations</span><span class="o">)</span> <span class="o">{</span>
-                <span class="k">if</span> <span class="o">(</span><span class="n">passport</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">nation</span><span class="o">))</span> <span class="o">{</span>
-                    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"이민청 : 수교국 명단에 있음"</span><span class="o">);</span>
-                    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"이민청 : 비자 발급 가능"</span><span class="o">);</span>
-                    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
-                <span class="o">}</span>
-            <span class="o">}</span>
-            <span class="o">}</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"이민청 : 수교국 명단에 없음"</span><span class="o">);</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"이민청 : 비자 발급 불가"</span><span class="o">);</span>
-            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
-        <span class="o">}</span>
-        <span class="nd">@Override</span>
-        <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">immigrationScreening</span><span class="o">(</span><span class="nc">Human</span> <span class="n">human</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">if</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">visa</span><span class="o">(</span><span class="n">human</span><span class="o">))</span> <span class="o">{</span>
-                <span class="k">if</span><span class="o">(</span><span class="n">human</span> <span class="k">instanceof</span> <span class="nc">IImmigrant</span><span class="o">)</span> <span class="o">{</span>
-                    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"이민청 :이민심사 승인"</span><span class="o">);</span>
-                    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
-                <span class="o">}</span>
-            <span class="o">}</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"이민청 :이민심사 거절"</span><span class="o">);</span>
-            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-
-<span class="c1">//    Korean은 Human이고 이동할 수 있는 자유가 있음</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Korean</span> <span class="kd">extends</span> <span class="nc">Human</span> <span class="kd">implements</span> <span class="nc">ILibertyToMove</span><span class="o">{</span>
-        <span class="nc">Boolean</span> <span class="n">died</span><span class="o">;</span>
-        <span class="nc">Nation</span> <span class="n">nationality</span><span class="o">;</span>
-
-        <span class="kd">public</span> <span class="nf">Korean</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="nc">String</span> <span class="n">sex</span><span class="o">,</span> <span class="nc">String</span> <span class="n">region</span><span class="o">)</span> <span class="o">{</span>
-            <span class="kd">super</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">sex</span><span class="o">,</span> <span class="n">region</span><span class="o">);</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"%s : %s 출생\n"</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">region</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
-        <span class="o">}</span>
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">birthRegistration</span><span class="o">()</span> <span class="o">{</span>
-            <span class="nc">Bureau</span> <span class="n">administrationBureau</span> <span class="o">=</span> <span class="nc">Korea</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">visitAdministartionBureau</span><span class="o">();</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"%s : %s 한국 행정센터 방문\n"</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">name</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">region</span><span class="o">);</span>
-            <span class="nc">AdministrationBureau</span> <span class="n">koreaAdministartionBureau</span> <span class="o">=</span> <span class="o">(</span><span class="nc">AdministrationBureau</span><span class="o">)</span> <span class="n">administrationBureau</span><span class="o">;</span>
-            <span class="n">koreaAdministartionBureau</span><span class="o">.</span><span class="na">birthRegistration</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
-            <span class="k">this</span><span class="o">.</span><span class="na">nationality</span> <span class="o">=</span> <span class="nc">Korea</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
-        <span class="o">}</span>
-        <span class="nd">@Override</span>
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">death</span><span class="o">()</span> <span class="o">{</span>
-            <span class="k">this</span><span class="o">.</span><span class="na">died</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
-        <span class="o">}</span>
-
-        <span class="nd">@Override</span>
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">tourAbroad</span><span class="o">(</span><span class="nc">Nation</span> <span class="n">nation</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">if</span><span class="o">(</span><span class="n">nation</span> <span class="k">instanceof</span> <span class="nc">IVisitable</span><span class="o">)</span> <span class="o">{</span>
-                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"%s : %s 방문 가능.\n"</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">name</span><span class="o">,</span> <span class="n">nation</span><span class="o">.</span><span class="na">getNAME</span><span class="o">());</span>
-                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"%s : %s 도착\n"</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">name</span><span class="o">,</span> <span class="n">nation</span><span class="o">.</span><span class="na">getNAME</span><span class="o">());</span>
-                <span class="nc">IVisitable</span> <span class="n">travelDestination</span> <span class="o">=</span> <span class="o">(</span><span class="nc">IVisitable</span><span class="o">)</span> <span class="n">nation</span><span class="o">;</span>
-
-                <span class="nc">Bureau</span> <span class="n">immigrationBureau</span> <span class="o">=</span> <span class="n">travelDestination</span><span class="o">.</span><span class="na">visitImmigrationBureau</span><span class="o">();</span>
-
-                <span class="k">if</span> <span class="o">(</span><span class="n">immigrationBureau</span> <span class="k">instanceof</span> <span class="nc">IImmigrationBureau</span><span class="o">)</span> <span class="o">{</span>
-                    <span class="nc">IImmigrationBureau</span> <span class="nc">IBureau</span> <span class="o">=</span> <span class="o">(</span><span class="nc">IImmigrationBureau</span><span class="o">)</span> <span class="n">immigrationBureau</span><span class="o">;</span>
-
-                    <span class="k">if</span><span class="o">(</span><span class="nc">IBureau</span><span class="o">.</span><span class="na">visa</span><span class="o">(</span><span class="k">this</span><span class="o">))</span> <span class="o">{</span>
-                        <span class="k">this</span><span class="o">.</span><span class="na">region</span> <span class="o">=</span> <span class="n">nation</span><span class="o">.</span><span class="na">getNAME</span><span class="o">();</span>
-                    <span class="o">}</span>
-                <span class="o">}</span>
-            <span class="o">}</span>
-            <span class="k">else</span><span class="o">{</span>
-                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"%s : 목적지는 방문할 수 없다.\n"</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        <span class="nd">@Override</span>
-        <span class="kd">public</span> <span class="nc">Nation</span> <span class="nf">passportSubmitting</span><span class="o">()</span> <span class="o">{</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"%s : 여권 제출.\n"</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
-            <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">nationality</span><span class="o">;</span>
-        <span class="o">}</span>
-
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">Immigrate</span><span class="o">(</span><span class="nc">Nation</span> <span class="n">nation</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">nation</span> <span class="k">instanceof</span> <span class="nc">IVisitable</span><span class="o">)</span> <span class="o">{</span>
-                <span class="nc">IVisitable</span> <span class="n">targetNation</span> <span class="o">=</span> <span class="o">(</span><span class="nc">IVisitable</span><span class="o">)</span> <span class="n">nation</span><span class="o">;</span>
-
-                <span class="nc">Bureau</span> <span class="n">targetNationBureau</span> <span class="o">=</span> <span class="n">targetNation</span><span class="o">.</span><span class="na">visitImmigrationBureau</span><span class="o">();</span>
-                <span class="nc">IImmigrationBureau</span> <span class="n">targetNationImmigrationBureau</span> <span class="o">=</span> <span class="o">(</span><span class="nc">IImmigrationBureau</span><span class="o">)</span> <span class="n">targetNationBureau</span><span class="o">;</span>
-                <span class="n">targetNationImmigrationBureau</span><span class="o">.</span><span class="na">immigrationScreening</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
-
-            <span class="o">}</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-
-</code></pre></div></div>
-
-<h3 id="iimmigrationbureau-인터페이스">IImmigrationBureau 인터페이스</h3>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="kn">package</span> <span class="nn">jan11st</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IImmigrationBureau</span> <span class="o">{</span>
-    <span class="kt">boolean</span> <span class="nf">visa</span><span class="o">(</span><span class="nc">Human</span> <span class="n">human</span><span class="o">);</span>
-    <span class="kt">boolean</span> <span class="nf">immigrationScreening</span><span class="o">(</span><span class="nc">Human</span> <span class="n">human</span><span class="o">);</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<h3 id="northkorea-클래스">NorthKorea 클래스</h3>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="kn">package</span> <span class="nn">jan11st</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.lang.reflect.Array</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
-
-<span class="c1">//NorthKorea는 IVisitable의 구현체가 아니기 때문에 방문할 수 없음.</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NorthKorea</span> <span class="kd">extends</span> <span class="nc">Nation</span> <span class="kd">implements</span> <span class="nc">Dictatorship</span><span class="o">{</span>
-
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">NorthKorea</span> <span class="no">INSTANCE</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">NorthKorea</span><span class="o">();</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">String</span> <span class="no">NAME</span> <span class="o">=</span> <span class="s">"Democratic People\'s Republic of Korea"</span><span class="o">;</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">String</span> <span class="no">CAPITAL_CITY</span> <span class="o">=</span> <span class="s">"PYEONGYANG"</span><span class="o">;</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">String</span> <span class="no">REGION</span> <span class="o">=</span> <span class="s">"ASIA"</span><span class="o">;</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">String</span> <span class="no">LANGUAGE</span> <span class="o">=</span> <span class="s">"KOREAN"</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">NorthKorean</span><span class="o">&gt;</span> <span class="n">civilianList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
-
-    <span class="kd">private</span> <span class="nf">NorthKorea</span><span class="o">()</span> <span class="o">{</span>
-    <span class="o">}</span>
-
-    <span class="c1">// NorthKorean은 ILibertyToMove의 구현체가 아니기 때문에</span>
-    <span class="c1">// tourAborad와 submittingPassport 메소드가 없음</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">NorthKorea</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="no">INSTANCE</span><span class="o">;</span>
-    <span class="o">}</span>
-    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">immigrationRegistration</span><span class="o">(</span><span class="nc">Human</span> <span class="n">human</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">if</span> <span class="o">(</span><span class="nc">ImmigrationBureau</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">immigrationScreening</span><span class="o">(</span><span class="n">human</span><span class="o">))</span> <span class="o">{</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"NorthKorean immigration Bureau : immigration Accepted"</span><span class="o">);</span>
-        <span class="o">}</span>
-        <span class="k">else</span> <span class="o">{</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"NorthKorean immigratoin Bureau : immigration Disaccepted"</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getNAME</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="nc">NorthKorea</span><span class="o">.</span><span class="na">NAME</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="nc">Bureau</span> <span class="nf">visitAdministartionBureau</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="nc">AdministrationBureau</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">AdministrationBureau</span> <span class="kd">extends</span> <span class="nc">Bureau</span> <span class="o">{</span>
-        <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">AdministrationBureau</span> <span class="no">INSTANCE</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AdministrationBureau</span><span class="o">();</span>
-        <span class="kd">private</span> <span class="nf">AdministrationBureau</span><span class="o">()</span> <span class="o">{}</span>
-        <span class="kd">public</span> <span class="kd">static</span> <span class="nc">AdministrationBureau</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span>
-            <span class="k">return</span> <span class="no">INSTANCE</span><span class="o">;</span>
-        <span class="o">}</span>
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">birthRegistration</span><span class="o">(</span><span class="nc">NorthKorean</span> <span class="n">northKorean</span><span class="o">)</span> <span class="o">{</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"북한 정부 : %s 출생신고 접수 완료\n"</span><span class="o">,</span> <span class="n">northKorean</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
-            <span class="nc">NorthKorea</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">civilianList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">northKorean</span><span class="o">);</span>
-        <span class="o">}</span>
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">deathRegistration</span><span class="o">(</span><span class="nc">NorthKorean</span> <span class="n">northKorean</span><span class="o">)</span> <span class="o">{</span>
-            <span class="nc">NorthKorea</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">civilianList</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">northKorean</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">ImmigrationBureau</span> <span class="kd">extends</span> <span class="nc">Bureau</span> <span class="kd">implements</span> <span class="nc">IImmigrationBureau</span> <span class="o">{</span>
-        <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Nation</span><span class="o">&gt;</span> <span class="n">dipolomaticNations</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">();</span>
-
-        <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">ImmigrationBureau</span> <span class="no">INSTANCE</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ImmigrationBureau</span><span class="o">();</span>
-
-        <span class="kd">private</span> <span class="nf">ImmigrationBureau</span><span class="o">()</span> <span class="o">{</span>
-        <span class="o">}</span>
-
-        <span class="kd">public</span> <span class="kd">static</span> <span class="nc">ImmigrationBureau</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span>
-            <span class="k">return</span> <span class="no">INSTANCE</span><span class="o">;</span>
-        <span class="o">}</span>
-        <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">visa</span><span class="o">(</span><span class="nc">Human</span> <span class="n">human</span><span class="o">)</span> <span class="o">{</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"visa"</span><span class="o">);</span>
-            <span class="c1">// 수교국 명단에 있으면 비자주기</span>
-
-            <span class="k">if</span><span class="o">(</span><span class="n">human</span> <span class="k">instanceof</span> <span class="nc">ILibertyToMove</span><span class="o">)</span> <span class="o">{</span>
-                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"%s : 여권 있음\n"</span><span class="o">,</span> <span class="n">human</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
-                <span class="nc">ILibertyToMove</span> <span class="n">tourist</span> <span class="o">=</span> <span class="o">(</span><span class="nc">ILibertyToMove</span><span class="o">)</span> <span class="n">human</span><span class="o">;</span>
-                <span class="nc">Nation</span> <span class="n">passport</span> <span class="o">=</span> <span class="n">tourist</span><span class="o">.</span><span class="na">passportSubmitting</span><span class="o">();</span>
-
-                <span class="k">for</span><span class="o">(</span><span class="nc">Nation</span> <span class="n">nation</span> <span class="o">:</span> <span class="k">this</span><span class="o">.</span><span class="na">dipolomaticNations</span><span class="o">)</span> <span class="o">{</span>
-<span class="c1">//                if(human instanceof ILibertyToMove) {</span>
-<span class="c1">//                    System.out.printf("%s : 여권 있음\n", human.name);</span>
-<span class="c1">//                    ILibertyToMove tourist = (ILibertyToMove) human;</span>
-<span class="c1">//                    Nation passport = tourist.passportSubmitting();</span>
-
-                    <span class="k">if</span> <span class="o">(</span><span class="n">passport</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">nation</span><span class="o">))</span> <span class="o">{</span>
-                        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"이민청 : 수교국 명단에 있음"</span><span class="o">);</span>
-                        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"이민청 : 비자 발급 가능"</span><span class="o">);</span>
-                        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
-                    <span class="o">}</span>
-                <span class="o">}</span>
-            <span class="o">}</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"이민청 : 수교국 명단에 없음"</span><span class="o">);</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"이민청 : 비자 발급 불가"</span><span class="o">);</span>
-            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
-        <span class="o">}</span>
-
-        <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">immigrationScreening</span><span class="o">(</span><span class="nc">Human</span> <span class="n">human</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">if</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">visa</span><span class="o">(</span><span class="n">human</span><span class="o">))</span> <span class="o">{</span>
-                <span class="k">if</span><span class="o">(</span><span class="n">human</span> <span class="k">instanceof</span> <span class="nc">IImmigrant</span><span class="o">)</span> <span class="o">{</span>
-                    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"이민청 :이민심사 승인"</span><span class="o">);</span>
-                    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
-                <span class="o">}</span>
-            <span class="o">}</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"이민청 :이민심사 거절"</span><span class="o">);</span>
-            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">NorthKorean</span> <span class="kd">extends</span> <span class="nc">Human</span><span class="o">{</span>
-        <span class="nc">Boolean</span> <span class="n">died</span><span class="o">;</span>
-        <span class="nc">Nation</span> <span class="n">nationality</span><span class="o">;</span>
-
-        <span class="kd">public</span> <span class="nf">NorthKorean</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="nc">String</span> <span class="n">sex</span><span class="o">,</span> <span class="nc">String</span> <span class="n">region</span><span class="o">)</span> <span class="o">{</span>
-            <span class="kd">super</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">sex</span><span class="o">,</span> <span class="n">region</span><span class="o">);</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"%s : %s Born\n"</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">region</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
-        <span class="o">}</span>
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">birthRegistration</span><span class="o">()</span> <span class="o">{</span>
-            <span class="nc">Bureau</span> <span class="n">administrationBureau</span> <span class="o">=</span> <span class="nc">NorthKorea</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">visitAdministartionBureau</span><span class="o">();</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"%s : visit %s Administration Bureau\n"</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">name</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">region</span><span class="o">);</span>
-            <span class="nc">AdministrationBureau</span> <span class="n">northKoreaAdministartionBureau</span> <span class="o">=</span> <span class="o">(</span><span class="nc">AdministrationBureau</span><span class="o">)</span> <span class="n">administrationBureau</span><span class="o">;</span>
-            <span class="n">northKoreaAdministartionBureau</span><span class="o">.</span><span class="na">birthRegistration</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
-            <span class="k">this</span><span class="o">.</span><span class="na">nationality</span> <span class="o">=</span> <span class="nc">NorthKorea</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
-        <span class="o">}</span>
-        <span class="nd">@Override</span>
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">death</span><span class="o">()</span> <span class="o">{</span>
-            <span class="k">this</span><span class="o">.</span><span class="na">died</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<h3 id="human-클래스">Human 클래스</h3>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">jan11st</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Human</span> <span class="o">{</span>
-    <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
-    <span class="nc">String</span> <span class="n">sex</span><span class="o">;</span>
-    <span class="nc">String</span> <span class="n">region</span><span class="o">;</span>
-    <span class="kd">public</span> <span class="nf">Human</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="nc">String</span> <span class="n">sex</span><span class="o">,</span> <span class="nc">String</span> <span class="n">region</span><span class="o">){</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">sex</span> <span class="o">=</span> <span class="n">sex</span><span class="o">;</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">region</span> <span class="o">=</span> <span class="n">region</span><span class="o">;</span>
-    <span class="o">}</span>
-    <span class="kt">void</span> <span class="nf">death</span><span class="o">()</span> <span class="o">{</span>
-    <span class="o">};</span>
-
-    <span class="kt">void</span> <span class="nf">eat</span><span class="o">()</span> <span class="o">{};</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<h3 id="us-클래스">US 클래스</h3>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="kn">package</span> <span class="nn">jan11st</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.lang.reflect.Array</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">US</span> <span class="kd">extends</span> <span class="nc">Nation</span> <span class="kd">implements</span> <span class="nc">Republic</span><span class="o">,</span> <span class="nc">IVisitable</span><span class="o">{</span>
-
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="no">US</span> <span class="no">INSTANCE</span> <span class="o">=</span> <span class="k">new</span> <span class="no">US</span><span class="o">();</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">String</span> <span class="no">NAME</span> <span class="o">=</span> <span class="s">"United States Of America"</span><span class="o">;</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">String</span> <span class="no">CAPITAL_CITY</span> <span class="o">=</span> <span class="s">"WASHINTON"</span><span class="o">;</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">String</span> <span class="no">REGION</span> <span class="o">=</span> <span class="s">"NA"</span><span class="o">;</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">String</span> <span class="no">LANGUAGE</span> <span class="o">=</span> <span class="s">"ENGLISH"</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">American</span><span class="o">&gt;</span> <span class="n">civilianList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
-
-    <span class="kd">private</span> <span class="nf">US</span><span class="o">()</span> <span class="o">{</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="no">US</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="no">INSTANCE</span><span class="o">;</span>
-    <span class="o">}</span>
-    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">immigrationRegistration</span><span class="o">(</span><span class="nc">Human</span> <span class="n">human</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">if</span> <span class="o">(</span><span class="nc">ImmigrationBureau</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">immigrationScreening</span><span class="o">(</span><span class="n">human</span><span class="o">))</span> <span class="o">{</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"US Government : Immigration Finally Accepted"</span><span class="o">);</span>
-        <span class="o">}</span>
-        <span class="k">else</span> <span class="o">{</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"US Government : Immigration Finally Disaccepted"</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getNAME</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="no">US</span><span class="o">.</span><span class="na">NAME</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="nc">ImmigrationBureau</span> <span class="nf">visitImmigrationBureau</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="nc">ImmigrationBureau</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
-    <span class="o">}</span>
-
-    <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="nc">Bureau</span> <span class="nf">visitAdministartionBureau</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="nc">AdministrationBureau</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">AdministrationBureau</span> <span class="kd">extends</span> <span class="nc">Bureau</span> <span class="o">{</span>
-        <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">AdministrationBureau</span> <span class="no">INSTANCE</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">AdministrationBureau</span><span class="o">();</span>
-        <span class="kd">private</span> <span class="nf">AdministrationBureau</span><span class="o">()</span> <span class="o">{}</span>
-        <span class="kd">public</span> <span class="kd">static</span> <span class="nc">AdministrationBureau</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span>
-            <span class="k">return</span> <span class="no">INSTANCE</span><span class="o">;</span>
-        <span class="o">}</span>
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">birthRegistration</span><span class="o">(</span><span class="nc">American</span> <span class="n">american</span><span class="o">)</span> <span class="o">{</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"US Administration Bureau : %s \'s birth registration Accepted\n"</span><span class="o">,</span> <span class="n">american</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
-
-            <span class="no">US</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">civilianList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">american</span><span class="o">);</span>
-        <span class="o">}</span>
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">deathRegistration</span><span class="o">(</span><span class="nc">American</span> <span class="n">american</span><span class="o">)</span> <span class="o">{</span>
-            <span class="no">US</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">civilianList</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">american</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">ImmigrationBureau</span> <span class="kd">extends</span> <span class="nc">Bureau</span> <span class="kd">implements</span> <span class="nc">IImmigrationBureau</span><span class="o">{</span>
-        <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Nation</span><span class="o">&gt;</span> <span class="n">dipolomaticNations</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="no">US</span><span class="o">.</span><span class="na">getInstance</span><span class="o">(),</span> <span class="nc">Korea</span><span class="o">.</span><span class="na">getInstance</span><span class="o">());</span>
-
-        <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">ImmigrationBureau</span> <span class="no">INSTANCE</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ImmigrationBureau</span><span class="o">();</span>
-
-        <span class="kd">private</span> <span class="nf">ImmigrationBureau</span><span class="o">()</span> <span class="o">{</span>
-        <span class="o">}</span>
-
-        <span class="kd">public</span> <span class="kd">static</span> <span class="nc">ImmigrationBureau</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span>
-            <span class="k">return</span> <span class="no">INSTANCE</span><span class="o">;</span>
-        <span class="o">}</span>
-        <span class="nd">@Override</span>
-        <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">visa</span><span class="o">(</span><span class="nc">Human</span> <span class="n">human</span><span class="o">)</span> <span class="o">{</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"visa"</span><span class="o">);</span>
-            <span class="c1">// 수교국 명단에 있으면 비자주기</span>
-
-            <span class="k">if</span> <span class="o">(</span><span class="n">human</span> <span class="k">instanceof</span> <span class="nc">ILibertyToMove</span><span class="o">)</span> <span class="o">{</span>
-                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"%s : Having Passport \n"</span><span class="o">,</span> <span class="n">human</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
-                <span class="nc">ILibertyToMove</span> <span class="n">tourist</span> <span class="o">=</span> <span class="o">(</span><span class="nc">ILibertyToMove</span><span class="o">)</span> <span class="n">human</span><span class="o">;</span>
-                <span class="nc">Nation</span> <span class="n">passport</span> <span class="o">=</span> <span class="n">tourist</span><span class="o">.</span><span class="na">passportSubmitting</span><span class="o">();</span>
-
-            <span class="k">for</span><span class="o">(</span><span class="nc">Nation</span> <span class="n">nation</span> <span class="o">:</span> <span class="k">this</span><span class="o">.</span><span class="na">dipolomaticNations</span><span class="o">)</span> <span class="o">{</span>
-<span class="c1">//                if(human instanceof ILibertyToMove) {</span>
-<span class="c1">//                    System.out.printf("%s : 여권 있음\n", human.name);</span>
-<span class="c1">//                    ILibertyToMove tourist = (ILibertyToMove) human;</span>
-<span class="c1">//                    Nation passport = tourist.passportSubmitting();</span>
-
-                    <span class="k">if</span> <span class="o">(</span><span class="n">passport</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">nation</span><span class="o">))</span> <span class="o">{</span>
-                        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Immigration Bureau : Visa Waiver Program Partner"</span><span class="o">);</span>
-                        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Immigration Bureau : Visa Granted"</span><span class="o">);</span>
-                        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
-                    <span class="o">}</span>
-                <span class="o">}</span>
-            <span class="o">}</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Immigration Bureau : Not Visa Waiver Program Partner"</span><span class="o">);</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Immigration Bureau : Visa not Granted"</span><span class="o">);</span>
-            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
-        <span class="o">}</span>
-        <span class="nd">@Override</span>
-        <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">immigrationScreening</span><span class="o">(</span><span class="nc">Human</span> <span class="n">human</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">if</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">visa</span><span class="o">(</span><span class="n">human</span><span class="o">))</span> <span class="o">{</span>
-                <span class="k">if</span><span class="o">(</span><span class="n">human</span> <span class="k">instanceof</span> <span class="nc">IImmigrant</span><span class="o">)</span> <span class="o">{</span>
-                    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Immigration Bureau : Immigration Accepted"</span><span class="o">);</span>
-                    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
-                <span class="o">}</span>
-            <span class="o">}</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Immigration Bureau : Immigration Disaccepted"</span><span class="o">);</span>
-            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">American</span> <span class="kd">extends</span> <span class="nc">Human</span> <span class="kd">implements</span> <span class="nc">ILibertyToMove</span><span class="o">{</span>
-        <span class="nc">Boolean</span> <span class="n">died</span><span class="o">;</span>
-        <span class="nc">Nation</span> <span class="n">nationality</span><span class="o">;</span>
-
-        <span class="kd">public</span> <span class="nf">American</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">,</span> <span class="nc">String</span> <span class="n">sex</span><span class="o">,</span> <span class="nc">String</span> <span class="n">region</span><span class="o">)</span> <span class="o">{</span>
-            <span class="kd">super</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">sex</span><span class="o">,</span> <span class="n">region</span><span class="o">);</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"%s : %s Born\n"</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">region</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
-        <span class="o">}</span>
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">birthRegistration</span><span class="o">()</span> <span class="o">{</span>
-            <span class="nc">Bureau</span> <span class="n">administrationBureau</span> <span class="o">=</span> <span class="no">US</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">visitAdministartionBureau</span><span class="o">();</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"%s : visit %s Administration Bureau\n"</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">name</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">region</span><span class="o">);</span>
-            <span class="nc">AdministrationBureau</span> <span class="nc">USAdministartionBureau</span> <span class="o">=</span> <span class="o">(</span><span class="nc">AdministrationBureau</span><span class="o">)</span> <span class="n">administrationBureau</span><span class="o">;</span>
-            <span class="nc">USAdministartionBureau</span><span class="o">.</span><span class="na">birthRegistration</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
-            <span class="k">this</span><span class="o">.</span><span class="na">nationality</span> <span class="o">=</span> <span class="nc">Korea</span><span class="o">.</span><span class="na">getInstance</span><span class="o">();</span>
-        <span class="o">}</span>
-        <span class="nd">@Override</span>
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">death</span><span class="o">()</span> <span class="o">{</span>
-            <span class="k">this</span><span class="o">.</span><span class="na">died</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
-        <span class="o">}</span>
-
-        <span class="nd">@Override</span>
-        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">tourAbroad</span><span class="o">(</span><span class="nc">Nation</span> <span class="n">nation</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">if</span><span class="o">(</span><span class="n">nation</span> <span class="k">instanceof</span> <span class="nc">IVisitable</span><span class="o">)</span> <span class="o">{</span>
-                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"%s : %s can be visited.\n"</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">name</span><span class="o">,</span> <span class="n">nation</span><span class="o">.</span><span class="na">getNAME</span><span class="o">());</span>
-                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"%s : Arrived at %s\n"</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">name</span><span class="o">,</span> <span class="n">nation</span><span class="o">.</span><span class="na">getNAME</span><span class="o">());</span>
-                <span class="nc">IVisitable</span> <span class="n">travelDestination</span> <span class="o">=</span> <span class="o">(</span><span class="nc">IVisitable</span><span class="o">)</span> <span class="n">nation</span><span class="o">;</span>
-
-                <span class="nc">Bureau</span> <span class="n">immigrationBureau</span> <span class="o">=</span> <span class="n">travelDestination</span><span class="o">.</span><span class="na">visitImmigrationBureau</span><span class="o">();</span>
-
-
-                <span class="k">if</span> <span class="o">(</span><span class="n">immigrationBureau</span> <span class="k">instanceof</span> <span class="nc">IImmigrationBureau</span><span class="o">)</span> <span class="o">{</span>
-                    <span class="nc">IImmigrationBureau</span> <span class="nc">IBureau</span> <span class="o">=</span> <span class="o">(</span><span class="nc">IImmigrationBureau</span><span class="o">)</span> <span class="n">immigrationBureau</span><span class="o">;</span>
-
-                    <span class="k">if</span><span class="o">(</span><span class="nc">IBureau</span><span class="o">.</span><span class="na">visa</span><span class="o">(</span><span class="k">this</span><span class="o">))</span> <span class="o">{</span>
-                        <span class="k">this</span><span class="o">.</span><span class="na">region</span> <span class="o">=</span> <span class="n">nation</span><span class="o">.</span><span class="na">getNAME</span><span class="o">();</span>
-                    <span class="o">}</span>
-                <span class="o">}</span>
-            <span class="o">}</span>
-            <span class="k">else</span><span class="o">{</span>
-                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"%s :Destination is not available to visit.\n"</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        <span class="nd">@Override</span>
-        <span class="kd">public</span> <span class="nc">Nation</span> <span class="nf">passportSubmitting</span><span class="o">()</span> <span class="o">{</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"%s : Submit Passport\n"</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">name</span><span class="o">);</span>
-            <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">nationality</span><span class="o">;</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="JAVA" /><summary type="html"><![CDATA[자바의 중첩 클래스(Nested Class)는 다른 클래스 내부에 정의된 클래스를 말한다. 중첩 클래스는 외부 클래스의 멤버로 간주되고, 외부 클래스의 멤버 변수 및 메서드에 쉽게 접근할 수 있다. 보통 논리적으로 관련된 클래스를 그룹화하는데 사용된다.]]></summary></entry></feed>
+</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="PS" /><category term="DP" /><category term="파이썬" /><category term="프로그래머스" /><category term="JAVA" /><summary type="html"><![CDATA[[프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)]]></summary></entry></feed>
