@@ -40,7 +40,7 @@ layout: default
     </div>
   </div>
 </header>
-<div class="container" style="font-family: 'Noto Serif KR', serif; display: flex">
+<div class="container" style="display: flex">
   <div class="row">
 <!-- sidebar를 추가하는 코드 -->
     <sidebar id="sidebar" 
@@ -55,7 +55,7 @@ TENSOR STUDIO
         </p>
         {% for category in site.categories %}
             <p style="margin-bottom: 0; margin-top: 10px">
-                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold; font-family: 'Noto Sans KR', sans-serif;" href= "{{ site.url }}/category/{{ category[0] }}.html">
+                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold;" href= "{{ site.url }}/category/{{ category[0] }}.html">
                     {{ category[0] }}
                 </a>
                     <a> 🔽
@@ -66,7 +66,7 @@ TENSOR STUDIO
             {% for post in posts %}
                 {% if counter < 3 %}
                     <li style="margin: 0px">
-                        <a href="{{ site.baseurl }}{{ post.url }}" style= "color: black; font-size: 12px; font-family: 'Noto Sans KR';">
+                        <a href="{{ site.baseurl }}{{ post.url }}" style= "color: black; font-size: 12px;">
                             {{ post.title }}
                         </a>
                         <small style= "margin-bottom: 0px; font-size: 10px;">{{ post.date | date_to_string }}</small>
@@ -134,7 +134,7 @@ TENSOR STUDIO
 <!-- 코멘트 란을 추가하는 코드 -->
 
 {% if page.comments %}
-  <div id="disqus_thread" style="font-family: sans-serif"></div>
+  <div id="disqus_thread"></div>
   <script>
       /**
       *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
