@@ -1,4 +1,201 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-02-21T20:55:18+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[백준] 백준 1987번 :: 알파벳 :: 골드 4</title><link href="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/java/2024/02/21/boj1987.html" rel="alternate" type="text/html" title="[백준] 백준 1987번 :: 알파벳 :: 골드 4" /><published>2024-02-21T00:00:00+09:00</published><updated>2024-02-21T00:00:00+09:00</updated><id>http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/java/2024/02/21/boj1987</id><content type="html" xml:base="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/java/2024/02/21/boj1987.html"><![CDATA[<h2 id="백준-백준-1987번--알파벳--골드-4">[백준] 백준 1987번 :: 알파벳 :: 골드 4</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-02-27T15:08:51+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[백준] 백준 1743번 :: 음식물 피하기 :: 실버 1</title><link href="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/java/%ED%8C%8C%EC%9D%B4%EC%8D%AC/2024/02/21/boj1743.html" rel="alternate" type="text/html" title="[백준] 백준 1743번 :: 음식물 피하기 :: 실버 1" /><published>2024-02-21T00:00:00+09:00</published><updated>2024-02-21T00:00:00+09:00</updated><id>http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/java/%ED%8C%8C%EC%9D%B4%EC%8D%AC/2024/02/21/boj1743</id><content type="html" xml:base="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/java/%ED%8C%8C%EC%9D%B4%EC%8D%AC/2024/02/21/boj1743.html"><![CDATA[<h2 id="백준-백준-1743번--음식물-피하기--실버-1">[백준] 백준 1743번 :: 음식물 피하기 :: 실버 1</h2>
+
+<h3 id="문제-설명">문제 설명</h3>
+
+<p>코레스코 콘도미니엄 8층은 학생들이 3끼의 식사를 해결하는 공간이다. 그러나 몇몇 비양심적인 학생들의 만행으로 음식물이 통로 중간 중간에 떨어져 있다. 이러한 음식물들은 근처에 있는 것끼리 뭉치게 돼서 큰 음식물 쓰레기가 된다.</p>
+
+<p>이 문제를 출제한 선생님은 개인적으로 이러한 음식물을 실내화에 묻히는 것을 정말 진정으로 싫어한다. 참고로 우리가 구해야 할 답은 이 문제를 낸 조교를 맞추는 것이 아니다.</p>
+
+<p>통로에 떨어진 음식물을 피해가기란 쉬운 일이 아니다. 따라서 선생님은 떨어진 음식물 중에 제일 큰 음식물만은 피해 가려고 한다.</p>
+
+<p>선생님을 도와 제일 큰 음식물의 크기를 구해서 “10ra”를 외치지 않게 도와주자.</p>
+
+<p><strong>입력</strong></p>
+
+<p>첫째 줄에 통로의 세로 길이 N(1 ≤ N ≤ 100)과 가로 길이 M(1 ≤ M ≤ 100) 그리고 음식물 쓰레기의 개수 K(1 ≤ K ≤ N×M)이 주어진다.  그리고 다음 K개의 줄에 음식물이 떨어진 좌표 (r, c)가 주어진다.</p>
+
+<p>좌표 (r, c)의 r은 위에서부터, c는 왼쪽에서부터가 기준이다. 입력으로 주어지는 좌표는 중복되지 않는다.</p>
+
+<p><strong>출력</strong></p>
+
+<p>첫째 줄에 음식물 중 가장 큰 음식물의 크기를 출력하라.</p>
+
+<h3 id="제한시간">제한시간</h3>
+
+<p>2 초	256 MB</p>
+
+<h3 id="예제-입력">예제 입력</h3>
+
+<p>3 4 5</p>
+
+<p>3 2</p>
+
+<p>2 2</p>
+
+<p>3 1</p>
+
+<p>2 3</p>
+
+<p>1 1</p>
+
+<h3 id="예제-출력">예제 출력</h3>
+
+<p>4</p>
+
+<h3 id="힌트">힌트</h3>
+
+<p>O . . .</p>
+
+<p>. O O .</p>
+
+<p>O O . .</p>
+
+<h4 id="접근방법">접근방법</h4>
+
+<p>탐색 문제이고, 군집군 검사? 이런 문제를 어떻게 부르는지는 잘 모르겠지만, 가까이 있는 동일한 개체를 찾아내는 문제의 표본이라고 할 수 있는 문제이다.
+단순한 BFS / DFS 탐색 문제하고는 다른데, 그 이유는 이 문제는 군집을 찾아내는 문제이기 때문이다. 왜냐하면 DFS/BFS로 탐색을 하더라도, 한번의 Depth에서 모든 연결되어 있는 노드를
+검색할 수 없기 때문에, 중간에 탐색이 한 번 끊기게 되고 그 다음에 탐색을 시작하게 되면 사실 붙어있는 같은 군집인데 실제로는 다른 군집을 찾게 되기 때문이다.</p>
+
+<p>위의 힌트를 가지고 예를 들어 보자.</p>
+
+<p>(2, 2)의 점(이 문제에서는 첫번째 행과 첫번째 열이 1로 주어졌다)에서 DFS로 탐색을 시작한다고 해 보자.</p>
+
+<p>그렇다면 실제로 연결되어 있는 노드는 (2, 3), (3, 2), (3, 1)이다. 하지만 첫번째 Depth에서는 (2, 3)과 (3, 2)를 탐색하고, 다음 Depth에서 (3, 1)을 탐색하게 되는데,
+이 경우에 각각의 Depth에서의 탐색은 서로 다른 군집으로 인식할 수 있기 때문에, 이를 제대로 세 주어야 한다.</p>
+
+<p>그리고 이 문제를 풀면서, 처음에는 각각의 노드의 순서쌍을 배열 int[] node = new int[2]로 선언해서 사용했는데, 이렇게 하면 HashSet에 넣을 때, 같은 순서쌍이라도 다른 객체로 인식되어서
+HashSet에 중복된 노드가 들어가게 된다. 또한 중복 검사, 예를 들면 visitedNodes.contains()와 같은 메소드에서 항상 false만을 리턴하게 된다.
+그래서 ArrayList<Integer>로 선언해서 사용했는데, 더 간단한 방법이 있을 것 같아서 조금 더 공부할 필요를 느꼈다.</Integer></p>
+
+<h4 id="자바-코드">자바 코드</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">package</span> <span class="nn">boj</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">newboj1743</span> <span class="o">{</span>
+
+    <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="no">MAX_AMOUNT</span><span class="o">;</span> <span class="c1">// 군집을 세기 위해서 선언한 배열</span>
+    <span class="c1">// 각각 노드의 군집의 크기를 저장하기 위한 배열로 크기는 nodeList.size()와 같다.</span>
+    <span class="kd">static</span> <span class="nc">HashSet</span><span class="o">&lt;</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">visitedNodes</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;&gt;();</span>
+    <span class="c1">// 방문한 노드를 저장하기 위한 HashSet</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
+        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">condition</span> <span class="o">=</span> <span class="n">setCondition</span><span class="o">(</span><span class="n">scanner</span><span class="o">);</span>
+        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">nodeList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">condition</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">nodeList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">condition</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
+        <span class="o">}</span>
+
+        <span class="no">MAX_AMOUNT</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">nodeList</span><span class="o">.</span><span class="na">size</span><span class="o">()];</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="no">MAX_AMOUNT</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="no">MAX_AMOUNT</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+            
+            <span class="c1">//군집 배열의 값을 1로 초기화</span>
+        <span class="o">}</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">node</span> <span class="o">:</span> <span class="n">nodeList</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(!</span><span class="n">visitedNodes</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">node</span><span class="o">))</span> <span class="o">{</span>
+            <span class="c1">//nodeList에 있어서 각각의 node가 방문한 노드가 아니라면 dfs를 시작한다.</span>
+                <span class="n">dfs</span><span class="o">(</span><span class="n">node</span><span class="o">,</span> <span class="n">nodeList</span><span class="o">,</span> <span class="n">condition</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">),</span> <span class="n">nodeList</span><span class="o">.</span><span class="na">indexOf</span><span class="o">(</span><span class="n">node</span><span class="o">));</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="nc">OptionalInt</span> <span class="n">max</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="no">MAX_AMOUNT</span><span class="o">).</span><span class="na">max</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">max</span><span class="o">.</span><span class="na">getAsInt</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">answer</span><span class="o">);</span>
+
+
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="nf">setCondition</span><span class="o">(</span><span class="nc">Scanner</span> <span class="n">scanner</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">repeat</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+        <span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
+
+        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">answer</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">condition</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">condition</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">x</span><span class="o">);</span>
+        <span class="n">condition</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">y</span><span class="o">);</span>
+        <span class="n">answer</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">condition</span><span class="o">);</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">repeat</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">first</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+            <span class="kt">int</span> <span class="n">second</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
+            <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">temp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+            <span class="n">temp</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">first</span><span class="o">);</span>
+            <span class="n">temp</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">second</span><span class="o">);</span>
+
+            <span class="n">answer</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">temp</span><span class="o">);</span>
+
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="nf">connectedNodeChecker</span>
+            <span class="o">(</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">node</span><span class="o">,</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">limit</span><span class="o">,</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">condition</span><span class="o">)</span> <span class="o">{</span>
+            
+        <span class="c1">// 방향 배열 선언</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">xDirections</span> <span class="o">=</span> <span class="o">{-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">};</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">yDirections</span> <span class="o">=</span> <span class="o">{</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">};</span>
+
+        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+
+        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">answer</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">calculatedX</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">xDirections</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+            <span class="kt">int</span> <span class="n">calculatedY</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">yDirections</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+
+            <span class="k">if</span> <span class="o">(</span><span class="n">calculatedX</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">calculatedX</span> <span class="o">&gt;</span> <span class="n">limit</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="o">||</span>
+            <span class="n">calculatedY</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">calculatedY</span> <span class="o">&gt;</span> <span class="n">limit</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">))</span> <span class="o">{</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="o">{</span>
+                <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">temp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+                <span class="n">temp</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">calculatedX</span><span class="o">);</span>
+                <span class="n">temp</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">calculatedY</span><span class="o">);</span>
+                
+                <span class="c1">// 각각 4방향의 연결된 노드 중에서, condition에 포함되어 있는 노드라면 answer에 추가한다.</span>
+
+                <span class="k">if</span> <span class="o">(</span><span class="n">condition</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">temp</span><span class="o">))</span> <span class="o">{</span>
+                    <span class="n">answer</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">temp</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">dfs</span><span class="o">(</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">node</span><span class="o">,</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">nodeList</span><span class="o">,</span>
+                           <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">limit</span><span class="o">,</span> <span class="kt">int</span> <span class="n">number</span><span class="o">)</span> <span class="o">{</span>
+                           
+        <span class="c1">// number는 군집 배열의 인덱스를 나타낸다.</span>
+                           
+        <span class="n">visitedNodes</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">node</span><span class="o">);</span>
+        
+        <span class="c1">// connectedNodeChecker를 통해서 연결된 노드를 찾아내고, 그 노드가 방문한 노드가 아니라면 dfs를 시작한다.</span>
+        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">connectedNodes</span> <span class="o">=</span> <span class="n">connectedNodeChecker</span><span class="o">(</span><span class="n">node</span><span class="o">,</span> <span class="n">limit</span><span class="o">,</span> <span class="n">nodeList</span><span class="o">);</span>
+
+        <span class="k">if</span> <span class="o">(</span><span class="n">connectedNodes</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">connectedNode</span> <span class="o">:</span> <span class="n">connectedNodes</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(!</span><span class="n">visitedNodes</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">connectedNode</span><span class="o">))</span> <span class="o">{</span>
+                
+                    <span class="no">MAX_AMOUNT</span><span class="o">[</span><span class="n">number</span><span class="o">]</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">;</span>
+                    <span class="n">dfs</span><span class="o">(</span><span class="n">connectedNode</span><span class="o">,</span> <span class="n">nodeList</span><span class="o">,</span> <span class="n">limit</span><span class="o">,</span> <span class="n">number</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="백준" /><category term="PS" /><category term="JAVA" /><category term="파이썬" /><summary type="html"><![CDATA[[백준] 백준 1743번 :: 음식물 피하기 :: 실버 1]]></summary></entry><entry><title type="html">[백준] 백준 1987번 :: 알파벳 :: 골드 4</title><link href="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/java/2024/02/21/boj1987.html" rel="alternate" type="text/html" title="[백준] 백준 1987번 :: 알파벳 :: 골드 4" /><published>2024-02-21T00:00:00+09:00</published><updated>2024-02-21T00:00:00+09:00</updated><id>http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/java/2024/02/21/boj1987</id><content type="html" xml:base="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/java/2024/02/21/boj1987.html"><![CDATA[<h2 id="백준-백준-1987번--알파벳--골드-4">[백준] 백준 1987번 :: 알파벳 :: 골드 4</h2>
 
 <h3 id="문제-설명">문제 설명</h3>
 
@@ -131,7 +328,8 @@ ADCB</p>
             
             <span class="c1">// 배열을 벗어나지 않는지 체크</span>
 
-            <span class="k">if</span><span class="o">(</span><span class="n">x_position</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">x_position</span> <span class="o">&gt;</span> <span class="n">theMap</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span> <span class="o">||</span> <span class="n">y_position</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">y_position</span> <span class="o">&gt;</span> <span class="n">theMap</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span> <span class="o">){</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">x_position</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">x_position</span> <span class="o">&gt;</span> <span class="n">theMap</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span> <span class="o">||</span> <span class="n">y_position</span> <span class="o">&lt;</span> <span class="mi">0</span> 
+                <span class="o">||</span> <span class="n">y_position</span> <span class="o">&gt;</span> <span class="n">theMap</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span> <span class="o">){</span>
             <span class="o">}</span>
             <span class="k">else</span> <span class="o">{</span>
                 <span class="kt">int</span><span class="o">[]</span> <span class="n">temp</span> <span class="o">=</span> <span class="o">{</span><span class="n">x_position</span><span class="o">,</span> <span class="n">y_position</span><span class="o">};</span>
@@ -287,7 +485,15 @@ CLEAN BLOG THEME은 자체적으로 사이드바를 지원하는 테마는 아�
 
 <p><img src="/img/posts/sidebar/sidebar-3.png" style="width: 80%" /></p>
 
-<p>현재는 최근 세 개의 포스트만 나오게 되어 있는데, 이는 내부 코드의 카운터 부분을 바꾸면 된다. 추가적으로 레이아웃에서 건드릴 것이 많기는 하지만(display 속성을 이용해서 완성도를 높일 수 있을 것 같다) 아무튼 여기서 마무리 지을 것이다!</p>]]></content><author><name>ash tensor</name></author><category term="깃허브" /><summary type="html"><![CDATA[깃허브 블로그 SIDEBAR 기능 추가(clean blog theme)]]></summary></entry><entry><title type="html">[백준] 백준 1931번 :: 회의실 배정 :: 실버 1</title><link href="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/02/01/boj1931.html" rel="alternate" type="text/html" title="[백준] 백준 1931번 :: 회의실 배정 :: 실버 1" /><published>2024-02-01T00:00:00+09:00</published><updated>2024-02-01T00:00:00+09:00</updated><id>http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/02/01/boj1931</id><content type="html" xml:base="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/02/01/boj1931.html"><![CDATA[<h2 id="백준-백준-1931번--회의실-배정--실버-1">[백준] 백준 1931번 :: 회의실 배정 :: 실버 1</h2>
+<p>현재는 최근 세 개의 포스트만 나오게 되어 있는데, 이는 내부 코드의 카운터 부분을 바꾸면 된다. 추가적으로 레이아웃에서 건드릴 것이 많기는 하지만(display 속성을 이용해서 완성도를 높일 수 있을 것 같다) 아무튼 여기서 마무리 지을 것이다!</p>]]></content><author><name>ash tensor</name></author><category term="깃허브" /><summary type="html"><![CDATA[깃허브 블로그 SIDEBAR 기능 추가(clean blog theme)]]></summary></entry><entry><title type="html">[리눅스] 애플 실리콘 맥에 리눅스 설치하는 법(UTM)</title><link href="http://localhost:4000/linux/2024/02/01/utm.html" rel="alternate" type="text/html" title="[리눅스] 애플 실리콘 맥에 리눅스 설치하는 법(UTM)" /><published>2024-02-01T00:00:00+09:00</published><updated>2024-02-01T00:00:00+09:00</updated><id>http://localhost:4000/linux/2024/02/01/utm</id><content type="html" xml:base="http://localhost:4000/linux/2024/02/01/utm.html"><![CDATA[<h2 id="리눅스-애플-실리콘-맥에-리눅스-설치-후기utm">[리눅스] 애플 실리콘 맥에 리눅스 설치 후기(UTM)</h2>
+
+<h3 id="utm">UTM</h3>
+
+<p><a href="https://mac.getutm.app/">UTM</a>은 이 링크에서 얻을 수 있다. 일단 <a href="https://gymdev.tistory.com/75">이 페이지</a>에서 너무 설치법을 잘 정리해 주고 있어서 내가 따로 첨언할 부분은 없었다. 아, 설치 중 중간에 <strong>display out을 확인할 수 없다</strong> 고 한동안 표시돼서 설치가 안되는건가 했는데, 조금 기다리면 문제 없이 리눅스가 부팅되니까 조금 기다리면 된다!</p>
+
+<p><img src="/img/스크린샷 2024-02-01 오후 1.27.20.png" style="width: 80%" /></p>
+
+<p>m1맥에서 제대로 구동되는 것을 확인했다.</p>]]></content><author><name>ash tensor</name></author><category term="linux" /><summary type="html"><![CDATA[[리눅스] 애플 실리콘 맥에 리눅스 설치 후기(UTM)]]></summary></entry><entry><title type="html">[백준] 백준 1931번 :: 회의실 배정 :: 실버 1</title><link href="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/02/01/boj1931.html" rel="alternate" type="text/html" title="[백준] 백준 1931번 :: 회의실 배정 :: 실버 1" /><published>2024-02-01T00:00:00+09:00</published><updated>2024-02-01T00:00:00+09:00</updated><id>http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/02/01/boj1931</id><content type="html" xml:base="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/02/01/boj1931.html"><![CDATA[<h2 id="백준-백준-1931번--회의실-배정--실버-1">[백준] 백준 1931번 :: 회의실 배정 :: 실버 1</h2>
 
 <h3 id="문제-설명">문제 설명</h3>
 
@@ -417,15 +623,7 @@ CLEAN BLOG THEME은 자체적으로 사이드바를 지원하는 테마는 아�
 <span class="o">}</span>
 
 
-</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="백준" /><category term="PS" /><category term="파이썬" /><category term="JAVA" /><summary type="html"><![CDATA[[백준] 백준 1931번 :: 회의실 배정 :: 실버 1]]></summary></entry><entry><title type="html">[리눅스] 애플 실리콘 맥에 리눅스 설치하는 법(UTM)</title><link href="http://localhost:4000/linux/2024/02/01/utm.html" rel="alternate" type="text/html" title="[리눅스] 애플 실리콘 맥에 리눅스 설치하는 법(UTM)" /><published>2024-02-01T00:00:00+09:00</published><updated>2024-02-01T00:00:00+09:00</updated><id>http://localhost:4000/linux/2024/02/01/utm</id><content type="html" xml:base="http://localhost:4000/linux/2024/02/01/utm.html"><![CDATA[<h2 id="리눅스-애플-실리콘-맥에-리눅스-설치-후기utm">[리눅스] 애플 실리콘 맥에 리눅스 설치 후기(UTM)</h2>
-
-<h3 id="utm">UTM</h3>
-
-<p><a href="https://mac.getutm.app/">UTM</a>은 이 링크에서 얻을 수 있다. 일단 <a href="https://gymdev.tistory.com/75">이 페이지</a>에서 너무 설치법을 잘 정리해 주고 있어서 내가 따로 첨언할 부분은 없었다. 아, 설치 중 중간에 <strong>display out을 확인할 수 없다</strong> 고 한동안 표시돼서 설치가 안되는건가 했는데, 조금 기다리면 문제 없이 리눅스가 부팅되니까 조금 기다리면 된다!</p>
-
-<p><img src="/img/스크린샷 2024-02-01 오후 1.27.20.png" style="width: 80%" /></p>
-
-<p>m1맥에서 제대로 구동되는 것을 확인했다.</p>]]></content><author><name>ash tensor</name></author><category term="linux" /><summary type="html"><![CDATA[[리눅스] 애플 실리콘 맥에 리눅스 설치 후기(UTM)]]></summary></entry><entry><title type="html">[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1</title><link href="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178.html" rel="alternate" type="text/html" title="[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1" /><published>2024-01-30T00:00:00+09:00</published><updated>2024-01-30T00:00:00+09:00</updated><id>http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178</id><content type="html" xml:base="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178.html"><![CDATA[<h2 id="백준자료구조-백준-2178번--미로-탐색--실버-1">[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1</h2>
+</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="백준" /><category term="PS" /><category term="파이썬" /><category term="JAVA" /><summary type="html"><![CDATA[[백준] 백준 1931번 :: 회의실 배정 :: 실버 1]]></summary></entry><entry><title type="html">[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1</title><link href="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178.html" rel="alternate" type="text/html" title="[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1" /><published>2024-01-30T00:00:00+09:00</published><updated>2024-01-30T00:00:00+09:00</updated><id>http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178</id><content type="html" xml:base="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178.html"><![CDATA[<h2 id="백준자료구조-백준-2178번--미로-탐색--실버-1">[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1</h2>
 
 <h3 id="문제-설명">문제 설명</h3>
 
@@ -838,104 +1036,7 @@ ABC*+DE/-
     <span class="o">}</span>
 <span class="o">}</span>
 
-</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="JAVA" /><category term="자료구조" /><category term="백준" /><category term="PS" /><summary type="html"><![CDATA[[백준][자료구조] 백준 1935번 :: 후위 표기식 2 :: 실버 3]]></summary></entry><entry><title type="html">[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)</title><link href="http://localhost:4000/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany.html" rel="alternate" type="text/html" title="[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)" /><published>2024-01-17T00:00:00+09:00</published><updated>2024-01-17T00:00:00+09:00</updated><id>http://localhost:4000/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany</id><content type="html" xml:base="http://localhost:4000/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany.html"><![CDATA[<h2 id="백준ps-회사에-있는-사람--실버-5자료구조">[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)</h2>
-
-<h3 id="문제-설명">문제 설명</h3>
-
-<p>상근이는 세계적인 소프트웨어 회사 기글에서 일한다. 이 회사의 가장 큰 특징은 자유로운 출퇴근 시간이다. 따라서, 직원들은 반드시 9시부터 6시까지 회사에 있지 않아도 된다.</p>
-
-<p>각 직원은 자기가 원할 때 출근할 수 있고, 아무때나 퇴근할 수 있다.</p>
-
-<p>상근이는 모든 사람의 출입카드 시스템의 로그를 가지고 있다. 이 로그는 어떤 사람이 회사에 들어왔는지, 나갔는지가 기록되어져 있다. 로그가 주어졌을 때, 현재 회사에 있는 모든 사람을 구하는 프로그램을 작성하시오.</p>
-
-<p><strong>입력</strong></p>
-
-<p>첫째 줄에 로그에 기록된 출입 기록의 수 n이 주어진다. (2 ≤ n ≤ 106) 다음 n개의 줄에는 출입 기록이 순서대로 주어지며, 각 사람의 이름이 주어지고 “enter”나 “leave”가 주어진다. “enter”인 경우는 출근, “leave”인 경우는 퇴근이다.</p>
-
-<p>회사에는 동명이인이 없으며, 대소문자가 다른 경우에는 다른 이름이다. 사람들의 이름은 알파벳 대소문자로 구성된 5글자 이하의 문자열이다.</p>
-
-<p><strong>출력</strong></p>
-
-<p>현재 회사에 있는 사람의 이름을 사전 순의 역순으로 한 줄에 한 명씩 출력한다.</p>
-
-<h3 id="제한시간">제한시간</h3>
-
-<p>1초, 메모리제한 256MB</p>
-
-<h4 id="접근-방법">접근 방법</h4>
-
-<p>솔직히 엄청 쉬운 문제다. 누구나 구현할 수 있고, 전공자가 아니더라도 누구나 이 문제를 구현하는데는 문제가 없을 것이다. 맵 자료형을 써도 되고, 파이썬에서는 딕셔너리를 쓰거나, 해시 맵을 쓰거나, 집합 자료구조를 사용해도 문제는 무리 없이 풀린다. 하지만 자료구조에 대한 이해가 없이 배열과 같은 선형 자료구조를 사용하면 <strong>시간 초과</strong>를 마주치는 문제다. 개인적으로 이 문제는 좋은 문제라고 생각해서 가져왔다.</p>
-
-<h5 id="잘못된-접근">잘못된 접근</h5>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">boj</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.lang.reflect.Array</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">boj7785</span> <span class="o">{</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">coworkerList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
-        <span class="nc">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
-        <span class="kt">int</span> <span class="n">coworkerNumber</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
-
-        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">coworkerNumber</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="nc">String</span> <span class="n">coworkerName</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
-            <span class="nc">String</span> <span class="n">sign</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">sign</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"enter"</span><span class="o">)){</span>
-                <span class="n">coworkerList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">coworkerName</span><span class="o">);</span>
-            <span class="o">}</span>
-            <span class="k">else</span> <span class="o">{</span>
-               <span class="n">coworkerList</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">coworkerName</span><span class="o">);</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-
-        <span class="nc">Collections</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">coworkerList</span><span class="o">,</span> <span class="nc">Collections</span><span class="o">.</span><span class="na">reverseOrder</span><span class="o">());</span>
-        <span class="k">for</span><span class="o">(</span><span class="nc">String</span> <span class="n">coworker</span> <span class="o">:</span> <span class="n">coworkerList</span><span class="o">)</span> <span class="o">{</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">coworker</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>이렇게 풀어도 답은 문제없이 나온다. 하지만 시간초과로 문제 해결이 실패하게 된다. 구현방법을 보면 enter이면 ArrayList<String>에 동료의 이름을 집어 넣고, 만약에 leave라는 문자열을 마주치면 ArrayList에서 해당 문자열을 삭제한다.</String></p>
-
-<p>여기서 문제가 발생하는데, 배열과 같은 선형 자료구조는 중간 노드의 삽입과 삭제가 빈번하게 일어날 때, 성능이 매우 나빠진다.</p>
-
-<p>왜냐하면 연속된 메모리 공간에 요소들을 저장하고 있기 때문에 중간에 요소를 추가하거나, 삭제하면 해당 위치 이후의 모든 요소를 이동시켜야만 한다. 이런 경우에 노드의 추가와 삭제에 소요되는 시간 복잡도는 O(n)이 된다. 이렇게 추가적으로 시간이 매우 많이 소요되기 때문에 1초라는 시간으로는 문제를 풀이할 수 없다.</p>
-
-<p>이런 경우에는 순서가 상관없는 자료구조로 문제를 풀이해야 한다. 대표적으로는 set 자료형이 있다. 다음은 HashSet 자료형으로 풀이한 자바 코드다.</p>
-
-<h4 id="자바-풀이">자바 풀이</h4>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">boj7785</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="nc">Set</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">coworkerSet</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;&gt;();</span>
-
-        <span class="nc">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
-        <span class="kt">int</span> <span class="n">coworkerNumber</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
-
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">coworkerNumber</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="nc">String</span> <span class="n">coworkerName</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
-            <span class="nc">String</span> <span class="n">sign</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
-
-            <span class="k">if</span> <span class="o">(</span><span class="n">sign</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"enter"</span><span class="o">))</span> <span class="o">{</span>
-                <span class="n">coworkerSet</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">coworkerName</span><span class="o">);</span>
-            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-                <span class="n">coworkerSet</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">coworkerName</span><span class="o">);</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-
-        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">coworkerList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">coworkerSet</span><span class="o">);</span>
-        <span class="nc">Collections</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">coworkerList</span><span class="o">,</span> <span class="nc">Collections</span><span class="o">.</span><span class="na">reverseOrder</span><span class="o">());</span>
-
-        <span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">coworker</span> <span class="o">:</span> <span class="n">coworkerList</span><span class="o">)</span> <span class="o">{</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">coworker</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="PS" /><category term="백준" /><category term="JAVA" /><category term="자료구조" /><summary type="html"><![CDATA[[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)]]></summary></entry><entry><title type="html">[깃허브 블로그] 동일 카테고리의 최근 글 기능 개발(clean blog theme)</title><link href="http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2024/01/17/bottom-category-build.html" rel="alternate" type="text/html" title="[깃허브 블로그] 동일 카테고리의 최근 글 기능 개발(clean blog theme)" /><published>2024-01-17T00:00:00+09:00</published><updated>2024-01-17T00:00:00+09:00</updated><id>http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2024/01/17/bottom-category-build</id><content type="html" xml:base="http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2024/01/17/bottom-category-build.html"><![CDATA[<h2 id="동일-카테고리의-최근-글-기능">동일 카테고리의 최근 글 기능</h2>
+</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="JAVA" /><category term="자료구조" /><category term="백준" /><category term="PS" /><summary type="html"><![CDATA[[백준][자료구조] 백준 1935번 :: 후위 표기식 2 :: 실버 3]]></summary></entry><entry><title type="html">[깃허브 블로그] 동일 카테고리의 최근 글 기능 개발(clean blog theme)</title><link href="http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2024/01/17/bottom-category-build.html" rel="alternate" type="text/html" title="[깃허브 블로그] 동일 카테고리의 최근 글 기능 개발(clean blog theme)" /><published>2024-01-17T00:00:00+09:00</published><updated>2024-01-17T00:00:00+09:00</updated><id>http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2024/01/17/bottom-category-build</id><content type="html" xml:base="http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2024/01/17/bottom-category-build.html"><![CDATA[<h2 id="동일-카테고리의-최근-글-기능">동일 카테고리의 최근 글 기능</h2>
 
 <p><img src="/img/posts/clean-blog-setup/18.png" style="display: block; margin-left: auto; margin-right: auto; width: 80%" /></p>
 

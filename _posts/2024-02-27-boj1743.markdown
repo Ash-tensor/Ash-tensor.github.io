@@ -1,0 +1,210 @@
+---
+layout: post
+comments: true
+title: "[백준] 백준 1743번 :: 음식물 피하기 :: 실버 1 "
+subtitle: 
+description: 
+date: 2024-02-21
+categories: 백준 PS JAVA 파이썬
+background: '/img/port.jpg'
+---
+
+## [백준] 백준 1743번 :: 음식물 피하기 :: 실버 1
+
+### 문제 설명
+
+코레스코 콘도미니엄 8층은 학생들이 3끼의 식사를 해결하는 공간이다. 그러나 몇몇 비양심적인 학생들의 만행으로 음식물이 통로 중간 중간에 떨어져 있다. 이러한 음식물들은 근처에 있는 것끼리 뭉치게 돼서 큰 음식물 쓰레기가 된다.
+
+이 문제를 출제한 선생님은 개인적으로 이러한 음식물을 실내화에 묻히는 것을 정말 진정으로 싫어한다. 참고로 우리가 구해야 할 답은 이 문제를 낸 조교를 맞추는 것이 아니다.
+
+통로에 떨어진 음식물을 피해가기란 쉬운 일이 아니다. 따라서 선생님은 떨어진 음식물 중에 제일 큰 음식물만은 피해 가려고 한다.
+
+선생님을 도와 제일 큰 음식물의 크기를 구해서 “10ra"를 외치지 않게 도와주자.
+
+**입력**
+
+첫째 줄에 통로의 세로 길이 N(1 ≤ N ≤ 100)과 가로 길이 M(1 ≤ M ≤ 100) 그리고 음식물 쓰레기의 개수 K(1 ≤ K ≤ N×M)이 주어진다.  그리고 다음 K개의 줄에 음식물이 떨어진 좌표 (r, c)가 주어진다.
+
+좌표 (r, c)의 r은 위에서부터, c는 왼쪽에서부터가 기준이다. 입력으로 주어지는 좌표는 중복되지 않는다.
+
+**출력**
+
+첫째 줄에 음식물 중 가장 큰 음식물의 크기를 출력하라.
+
+### 제한시간
+
+2 초	256 MB
+
+### 예제 입력
+
+3 4 5
+
+3 2
+
+2 2
+
+3 1
+
+2 3
+
+1 1
+
+### 예제 출력
+
+4
+
+### 힌트
+
+O . . .
+
+. O O .
+
+O O . .
+
+#### 접근방법
+
+탐색 문제이고, 군집군 검사? 이런 문제를 어떻게 부르는지는 잘 모르겠지만, 가까이 있는 동일한 개체를 찾아내는 문제의 표본이라고 할 수 있는 문제이다.
+단순한 BFS / DFS 탐색 문제하고는 다른데, 그 이유는 이 문제는 군집을 찾아내는 문제이기 때문이다. 왜냐하면 DFS/BFS로 탐색을 하더라도, 한번의 Depth에서 모든 연결되어 있는 노드를
+검색할 수 없기 때문에, 중간에 탐색이 한 번 끊기게 되고 그 다음에 탐색을 시작하게 되면 사실 붙어있는 같은 군집인데 실제로는 다른 군집을 찾게 되기 때문이다.
+
+위의 힌트를 가지고 예를 들어 보자.
+
+(2, 2)의 점(이 문제에서는 첫번째 행과 첫번째 열이 1로 주어졌다)에서 DFS로 탐색을 시작한다고 해 보자.
+
+그렇다면 실제로 연결되어 있는 노드는 (2, 3), (3, 2), (3, 1)이다. 하지만 첫번째 Depth에서는 (2, 3)과 (3, 2)를 탐색하고, 다음 Depth에서 (3, 1)을 탐색하게 되는데,
+이 경우에 각각의 Depth에서의 탐색은 서로 다른 군집으로 인식할 수 있기 때문에, 이를 제대로 세 주어야 한다.
+
+그리고 이 문제를 풀면서, 처음에는 각각의 노드의 순서쌍을 배열 int[] node = new int[2]로 선언해서 사용했는데, 이렇게 하면 HashSet에 넣을 때, 같은 순서쌍이라도 다른 객체로 인식되어서
+HashSet에 중복된 노드가 들어가게 된다. 또한 중복 검사, 예를 들면 visitedNodes.contains()와 같은 메소드에서 항상 false만을 리턴하게 된다.
+그래서 ArrayList<Integer>로 선언해서 사용했는데, 더 간단한 방법이 있을 것 같아서 조금 더 공부할 필요를 느꼈다.
+
+#### 자바 코드
+
+~~~ java
+
+package boj;
+
+import java.util.*;
+
+public class newboj1743 {
+
+    static int[] MAX_AMOUNT; // 군집을 세기 위해서 선언한 배열
+    // 각각 노드의 군집의 크기를 저장하기 위한 배열로 크기는 nodeList.size()와 같다.
+    static HashSet<ArrayList<Integer>> visitedNodes = new HashSet<>();
+    // 방문한 노드를 저장하기 위한 HashSet
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<ArrayList<Integer>> condition = setCondition(scanner);
+        ArrayList<ArrayList<Integer>> nodeList = new ArrayList<>();
+
+        for (int i = 1; i < condition.size(); i++) {
+            nodeList.add(condition.get(i));
+        }
+
+        MAX_AMOUNT = new int[nodeList.size()];
+        for (int i = 0; i < MAX_AMOUNT.length; i++) {
+            MAX_AMOUNT[i] = 1;
+            
+            //군집 배열의 값을 1로 초기화
+        }
+
+        for (ArrayList<Integer> node : nodeList) {
+            if (!visitedNodes.contains(node)) {
+            //nodeList에 있어서 각각의 node가 방문한 노드가 아니라면 dfs를 시작한다.
+                dfs(node, nodeList, condition.get(0), nodeList.indexOf(node));
+            }
+        }
+
+        OptionalInt max = Arrays.stream(MAX_AMOUNT).max();
+        int answer = max.getAsInt();
+        System.out.println(answer);
+
+
+    }
+
+    public static ArrayList<ArrayList<Integer>> setCondition(Scanner scanner) {
+        int x = scanner.nextInt();
+        int y = scanner.nextInt();
+        int repeat = scanner.nextInt();
+        scanner.nextLine();
+
+        ArrayList<ArrayList<Integer>> answer = new ArrayList<>();
+        ArrayList<Integer> condition = new ArrayList<>();
+        condition.add(x);
+        condition.add(y);
+        answer.add(condition);
+
+        for (int i = 0; i < repeat; i++) {
+            int first = scanner.nextInt();
+            int second = scanner.nextInt();
+            ArrayList<Integer> temp = new ArrayList<>();
+            temp.add(first);
+            temp.add(second);
+
+            answer.add(temp);
+
+        }
+        return answer;
+    }
+
+    public static ArrayList<ArrayList<Integer>> connectedNodeChecker
+            (ArrayList<Integer> node, ArrayList<Integer> limit, ArrayList<ArrayList<Integer>> condition) {
+            
+        // 방향 배열 선언
+        int[] xDirections = {-1, 1, 0, 0};
+        int[] yDirections = {0, 0, -1, 1};
+
+        int x = node.get(0);
+        int y = node.get(1);
+
+        ArrayList<ArrayList<Integer>> answer = new ArrayList<>();
+
+        for (int i = 0; i < 4; i++) {
+            int calculatedX = x + xDirections[i];
+            int calculatedY = y + yDirections[i];
+
+            if (calculatedX < 1 || calculatedX > limit.get(0) ||
+            calculatedY < 1 || calculatedY > limit.get(1)) {
+            }
+            else {
+                ArrayList<Integer> temp = new ArrayList<>();
+                temp.add(calculatedX);
+                temp.add(calculatedY);
+                
+                // 각각 4방향의 연결된 노드 중에서, condition에 포함되어 있는 노드라면 answer에 추가한다.
+
+                if (condition.contains(temp)) {
+                    answer.add(temp);
+                }
+            }
+        }
+        return answer;
+    }
+
+    public static void dfs(ArrayList<Integer> node, ArrayList<ArrayList<Integer>> nodeList,
+                           ArrayList<Integer> limit, int number) {
+                           
+        // number는 군집 배열의 인덱스를 나타낸다.
+                           
+        visitedNodes.add(node);
+        
+        // connectedNodeChecker를 통해서 연결된 노드를 찾아내고, 그 노드가 방문한 노드가 아니라면 dfs를 시작한다.
+        ArrayList<ArrayList<Integer>> connectedNodes = connectedNodeChecker(node, limit, nodeList);
+
+        if (connectedNodes.size() == 0) {
+            return;
+        }
+        else {
+            for (ArrayList<Integer> connectedNode : connectedNodes) {
+                if (!visitedNodes.contains(connectedNode)) {
+                
+                    MAX_AMOUNT[number] += 1;
+                    dfs(connectedNode, nodeList, limit, number);
+                }
+            }
+        }
+    }
+}
+
+~~~
