@@ -4,7 +4,7 @@ comments: true
 title: "[백준] 백준 1743번 :: 음식물 피하기 :: 실버 1 "
 subtitle: 
 description: 
-date: 2024-02-21
+date: 2024-02-27
 categories: 백준 PS JAVA 파이썬
 background: '/img/port.jpg'
 ---
