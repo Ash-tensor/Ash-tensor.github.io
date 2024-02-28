@@ -1,4 +1,104 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-02-27T21:20:42+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[백준] 백준 1743번 :: 음식물 피하기 :: 실버 1</title><link href="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/java/%ED%8C%8C%EC%9D%B4%EC%8D%AC/2024/02/27/boj1743.html" rel="alternate" type="text/html" title="[백준] 백준 1743번 :: 음식물 피하기 :: 실버 1" /><published>2024-02-27T00:00:00+09:00</published><updated>2024-02-27T00:00:00+09:00</updated><id>http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/java/%ED%8C%8C%EC%9D%B4%EC%8D%AC/2024/02/27/boj1743</id><content type="html" xml:base="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/java/%ED%8C%8C%EC%9D%B4%EC%8D%AC/2024/02/27/boj1743.html"><![CDATA[<h2 id="백준-백준-1743번--음식물-피하기--실버-1">[백준] 백준 1743번 :: 음식물 피하기 :: 실버 1</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-02-29T00:47:17+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[JAVA] 배열에서는 왜 contains() 메소드가 제대로 작동하지 않을까?</title><link href="http://localhost:4000/java/2024/02/28/java-contain.html" rel="alternate" type="text/html" title="[JAVA] 배열에서는 왜 contains() 메소드가 제대로 작동하지 않을까?" /><published>2024-02-28T00:00:00+09:00</published><updated>2024-02-28T00:00:00+09:00</updated><id>http://localhost:4000/java/2024/02/28/java-contain</id><content type="html" xml:base="http://localhost:4000/java/2024/02/28/java-contain.html"><![CDATA[<h2 id="java-배열에서는-왜-contains-메소드가-제대로-작동하지-않을까">[JAVA] 배열에서는 왜 contains() 메소드가 제대로 작동하지 않을까?</h2>
+
+<h3 id="문제-설명">문제 설명</h3>
+
+<p>자바의 contain() 메소드는 배열에서 제대로 작동하지 않는다. 다시 말하면, 예를 들어서 ArrayList에 int[] 타입의 배열을 넣고, contains() 메소드를 사용하여 같은 값을 가진 배열을 찾아내는 것이 불가능하다.
+하지만 ArrayList에 Integer 타입의 배열을 넣고, contains() 메소드를 사용하여 같은 값을 가진 배열을 찾아내는 것은 가능하다.
+분명 contains() 메소드도 eqauls() 메소드를 사용하여 값을 비교하도록 되어있는데, ArrayList<Integer>의 경우에는 가능하고, int[]의 경우에는 불가능하다.</Integer></p>
+
+<p>왜 가능할까?</p>
+
+<h4 id="배열의-경우">배열의 경우</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">package</span> <span class="nn">boj</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">equal_test</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    
+    <span class="c1">// 테스트용 ArrayList 생성</span>
+        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;</span> <span class="n">testArrayList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">targetIntArray</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">};</span>
+
+        <span class="n">testArrayList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">targetIntArray</span><span class="o">);</span>
+        <span class="kt">boolean</span> <span class="n">question1</span> <span class="o">=</span> <span class="n">testArrayList</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">targetIntArray</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">question1</span><span class="o">);</span>
+        <span class="c1">// true 출력</span>
+
+        <span class="c1">// 같은 값을 가진 배열을 생성하여 contains() 메소드를 사용</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">sameValueArray</span> <span class="o">=</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">};</span>
+        <span class="kt">boolean</span> <span class="n">question2</span> <span class="o">=</span> <span class="n">testArrayList</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">sameValueArray</span><span class="o">);</span>
+        
+        <span class="c1">// false 출력</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">question2</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p><img src="/img/posts/JAVA/equals/2.png" style="display: block; margin-left: auto; margin-right: auto; width: 100%" /></p>
+
+<p>아마 감이 좋다면 String에서 == 연산자와 equals() 메소드의 차이점을 떠올리며 감을 잡을 수 있을 것이다. String의 경우에는 == 연산자를 사용하여 두 String의 주소를 비교하고, equals() 메소드를 사용하여 두 String의 값을 비교했었다.
+contain() 역시 equal() 메소드를 사용한다. 그렇다면 왜 같은 값을 가진 배열을 찾아내지 못할까?</p>
+
+<p>위 코드의 예시를 통해 확인할 수 있듯, 배열의 경우 contains() 메소드를 사용하여 같은 값을 가진 배열을 찾아내는 것이 불가능하다. 디버거를 이용해서 주소를 확인해 보면 다음과 같은데
+배열 변수의 주소가 다른 것을 확인할 수 있다. 하지만 배열 변수의 주소가 다르기 때문에 false를 반환하는 것이 아니다. ArrayList의 equals() 메소드는 단순히 배열 변수의 주소만을 비교하지는 않는다. 이는 다음 코드를 확인하면 더욱 명확해진다.</p>
+
+<h4 id="arraylist-의-경우">ArrayList<Integer> 의 경우</Integer></h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">package</span> <span class="nn">boj</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">equal_test</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    
+    <span class="c1">// 테스트용 ArrayList 생성</span>
+        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">testArrayList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+
+    <span class="c1">// ArrayList에 Integer 타입의 ArrayList를 넣음</span>
+        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">targetIntArrayList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">targetIntArrayList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+        <span class="n">targetIntArrayList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+        <span class="n">testArrayList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">targetIntArrayList</span><span class="o">);</span>
+        
+        <span class="kt">boolean</span> <span class="n">question1</span> <span class="o">=</span> <span class="n">testArrayList</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">targetIntArrayList</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">question1</span><span class="o">);</span>
+    <span class="c1">// true 출력</span>
+
+        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">sameValueArray</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        
+    <span class="c1">// 같은 값을 가진 ArrayList를 생성하여 contains() 메소드를 사용</span>
+        <span class="n">sameValueArray</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+        <span class="n">sameValueArray</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+        <span class="kt">boolean</span> <span class="n">question2</span> <span class="o">=</span> <span class="n">testArrayList</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">sameValueArray</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">question2</span><span class="o">);</span>
+    <span class="c1">// true 출력</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>위 코드를 실행해 보면 알 수 있듯, 배열과는 달리, 같은 값을 가진 ArrayList<Integer> 의 경우에는 둘 다 true를 반환하는 것을 확인할 수 있다. 하지만 이를 디버거로 확인해 보면, 두 ArrayList<Integer>의 
+주소는 다르다. 그런데도 불구하고, contains() 메소드는 두 ArrayList<Integer>의 값을 비교하여 같은 값을 가진 것으로 판단한다.</Integer></Integer></Integer></p>
+
+<p><img src="/img/posts/JAVA/equals/4.png" style="display: block; margin-left: auto; margin-right: auto; width: 100%" /></p>
+
+<p>이는 ArrayList<Integer>의 경우에, int 값이 아닌 Integer 객체를 비교하기 때문이다. 위 사진을 보면 코드상에서는 분명, 둘 다 각각 int(1, 2)를 집어넣었는데도 불구하고
+Integer 객체의 경우에 두 ArrayList 모두 똑같은 객체의 Integer 객체를 가리키고 있는 것을 확인할 수 있다. 이 이전의 배열 사진을 확인해 보면 각각의 int는 다른 객체를 가리키고 있는 것을 확인할 수 있다.
+자바에서 기본 자료형 (int, char 등)은 객체로 취급받지 않고 특정한 값으로 취급받는다. 하지만 Integer, Character 등은 객체로 취급받고, java의 Heap 영역에 적재되어 있다. 
+따라서 아무리 많은 Integer, Character, String 등의 객체를 사용하더라도, 같은 값을 가지고 있으면 같은 주소를 가지는 동일한 객체를 가리키고 있는 것이다.</Integer></p>
+
+<p>또한 ArrayList<Integer>의 경우에는 equals() 메소드를 사용하여 두 객체의 값을 비교한다. equals() 메소드는 객체의 값을 비교하기 위해 equals() 메소드를 오버라이딩하여 사용한다.</Integer></p>
+
+<p>그래서 ArrayList<Integer>의 경우에는 contains() 메소드를 사용하여 같은 값을 가진 객체를 찾아낼 수 있다!!</Integer></p>]]></content><author><name>ash tensor</name></author><category term="JAVA" /><summary type="html"><![CDATA[[JAVA] 배열에서는 왜 contains() 메소드가 제대로 작동하지 않을까?]]></summary></entry><entry><title type="html">[백준] 백준 1743번 :: 음식물 피하기 :: 실버 1</title><link href="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/java/%ED%8C%8C%EC%9D%B4%EC%8D%AC/2024/02/27/boj1743.html" rel="alternate" type="text/html" title="[백준] 백준 1743번 :: 음식물 피하기 :: 실버 1" /><published>2024-02-27T00:00:00+09:00</published><updated>2024-02-27T00:00:00+09:00</updated><id>http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/java/%ED%8C%8C%EC%9D%B4%EC%8D%AC/2024/02/27/boj1743</id><content type="html" xml:base="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/java/%ED%8C%8C%EC%9D%B4%EC%8D%AC/2024/02/27/boj1743.html"><![CDATA[<h2 id="백준-백준-1743번--음식물-피하기--실버-1">[백준] 백준 1743번 :: 음식물 피하기 :: 실버 1</h2>
 
 <h3 id="문제-설명">문제 설명</h3>
 
@@ -485,15 +585,7 @@ CLEAN BLOG THEME은 자체적으로 사이드바를 지원하는 테마는 아�
 
 <p><img src="/img/posts/sidebar/sidebar-3.png" style="width: 80%" /></p>
 
-<p>현재는 최근 세 개의 포스트만 나오게 되어 있는데, 이는 내부 코드의 카운터 부분을 바꾸면 된다. 추가적으로 레이아웃에서 건드릴 것이 많기는 하지만(display 속성을 이용해서 완성도를 높일 수 있을 것 같다) 아무튼 여기서 마무리 지을 것이다!</p>]]></content><author><name>ash tensor</name></author><category term="깃허브" /><summary type="html"><![CDATA[깃허브 블로그 SIDEBAR 기능 추가(clean blog theme)]]></summary></entry><entry><title type="html">[리눅스] 애플 실리콘 맥에 리눅스 설치하는 법(UTM)</title><link href="http://localhost:4000/linux/2024/02/01/utm.html" rel="alternate" type="text/html" title="[리눅스] 애플 실리콘 맥에 리눅스 설치하는 법(UTM)" /><published>2024-02-01T00:00:00+09:00</published><updated>2024-02-01T00:00:00+09:00</updated><id>http://localhost:4000/linux/2024/02/01/utm</id><content type="html" xml:base="http://localhost:4000/linux/2024/02/01/utm.html"><![CDATA[<h2 id="리눅스-애플-실리콘-맥에-리눅스-설치-후기utm">[리눅스] 애플 실리콘 맥에 리눅스 설치 후기(UTM)</h2>
-
-<h3 id="utm">UTM</h3>
-
-<p><a href="https://mac.getutm.app/">UTM</a>은 이 링크에서 얻을 수 있다. 일단 <a href="https://gymdev.tistory.com/75">이 페이지</a>에서 너무 설치법을 잘 정리해 주고 있어서 내가 따로 첨언할 부분은 없었다. 아, 설치 중 중간에 <strong>display out을 확인할 수 없다</strong> 고 한동안 표시돼서 설치가 안되는건가 했는데, 조금 기다리면 문제 없이 리눅스가 부팅되니까 조금 기다리면 된다!</p>
-
-<p><img src="/img/스크린샷 2024-02-01 오후 1.27.20.png" style="width: 80%" /></p>
-
-<p>m1맥에서 제대로 구동되는 것을 확인했다.</p>]]></content><author><name>ash tensor</name></author><category term="linux" /><summary type="html"><![CDATA[[리눅스] 애플 실리콘 맥에 리눅스 설치 후기(UTM)]]></summary></entry><entry><title type="html">[백준] 백준 1931번 :: 회의실 배정 :: 실버 1</title><link href="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/02/01/boj1931.html" rel="alternate" type="text/html" title="[백준] 백준 1931번 :: 회의실 배정 :: 실버 1" /><published>2024-02-01T00:00:00+09:00</published><updated>2024-02-01T00:00:00+09:00</updated><id>http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/02/01/boj1931</id><content type="html" xml:base="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/02/01/boj1931.html"><![CDATA[<h2 id="백준-백준-1931번--회의실-배정--실버-1">[백준] 백준 1931번 :: 회의실 배정 :: 실버 1</h2>
+<p>현재는 최근 세 개의 포스트만 나오게 되어 있는데, 이는 내부 코드의 카운터 부분을 바꾸면 된다. 추가적으로 레이아웃에서 건드릴 것이 많기는 하지만(display 속성을 이용해서 완성도를 높일 수 있을 것 같다) 아무튼 여기서 마무리 지을 것이다!</p>]]></content><author><name>ash tensor</name></author><category term="깃허브" /><summary type="html"><![CDATA[깃허브 블로그 SIDEBAR 기능 추가(clean blog theme)]]></summary></entry><entry><title type="html">[백준] 백준 1931번 :: 회의실 배정 :: 실버 1</title><link href="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/02/01/boj1931.html" rel="alternate" type="text/html" title="[백준] 백준 1931번 :: 회의실 배정 :: 실버 1" /><published>2024-02-01T00:00:00+09:00</published><updated>2024-02-01T00:00:00+09:00</updated><id>http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/02/01/boj1931</id><content type="html" xml:base="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/02/01/boj1931.html"><![CDATA[<h2 id="백준-백준-1931번--회의실-배정--실버-1">[백준] 백준 1931번 :: 회의실 배정 :: 실버 1</h2>
 
 <h3 id="문제-설명">문제 설명</h3>
 
@@ -623,7 +715,15 @@ CLEAN BLOG THEME은 자체적으로 사이드바를 지원하는 테마는 아�
 <span class="o">}</span>
 
 
-</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="백준" /><category term="PS" /><category term="파이썬" /><category term="JAVA" /><summary type="html"><![CDATA[[백준] 백준 1931번 :: 회의실 배정 :: 실버 1]]></summary></entry><entry><title type="html">[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1</title><link href="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178.html" rel="alternate" type="text/html" title="[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1" /><published>2024-01-30T00:00:00+09:00</published><updated>2024-01-30T00:00:00+09:00</updated><id>http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178</id><content type="html" xml:base="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178.html"><![CDATA[<h2 id="백준자료구조-백준-2178번--미로-탐색--실버-1">[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1</h2>
+</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="백준" /><category term="PS" /><category term="파이썬" /><category term="JAVA" /><summary type="html"><![CDATA[[백준] 백준 1931번 :: 회의실 배정 :: 실버 1]]></summary></entry><entry><title type="html">[리눅스] 애플 실리콘 맥에 리눅스 설치하는 법(UTM)</title><link href="http://localhost:4000/linux/2024/02/01/utm.html" rel="alternate" type="text/html" title="[리눅스] 애플 실리콘 맥에 리눅스 설치하는 법(UTM)" /><published>2024-02-01T00:00:00+09:00</published><updated>2024-02-01T00:00:00+09:00</updated><id>http://localhost:4000/linux/2024/02/01/utm</id><content type="html" xml:base="http://localhost:4000/linux/2024/02/01/utm.html"><![CDATA[<h2 id="리눅스-애플-실리콘-맥에-리눅스-설치-후기utm">[리눅스] 애플 실리콘 맥에 리눅스 설치 후기(UTM)</h2>
+
+<h3 id="utm">UTM</h3>
+
+<p><a href="https://mac.getutm.app/">UTM</a>은 이 링크에서 얻을 수 있다. 일단 <a href="https://gymdev.tistory.com/75">이 페이지</a>에서 너무 설치법을 잘 정리해 주고 있어서 내가 따로 첨언할 부분은 없었다. 아, 설치 중 중간에 <strong>display out을 확인할 수 없다</strong> 고 한동안 표시돼서 설치가 안되는건가 했는데, 조금 기다리면 문제 없이 리눅스가 부팅되니까 조금 기다리면 된다!</p>
+
+<p><img src="/img/스크린샷 2024-02-01 오후 1.27.20.png" style="width: 80%" /></p>
+
+<p>m1맥에서 제대로 구동되는 것을 확인했다.</p>]]></content><author><name>ash tensor</name></author><category term="linux" /><summary type="html"><![CDATA[[리눅스] 애플 실리콘 맥에 리눅스 설치 후기(UTM)]]></summary></entry><entry><title type="html">[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1</title><link href="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178.html" rel="alternate" type="text/html" title="[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1" /><published>2024-01-30T00:00:00+09:00</published><updated>2024-01-30T00:00:00+09:00</updated><id>http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178</id><content type="html" xml:base="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178.html"><![CDATA[<h2 id="백준자료구조-백준-2178번--미로-탐색--실버-1">[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1</h2>
 
 <h3 id="문제-설명">문제 설명</h3>
 
@@ -1102,101 +1202,4 @@ ABC*+DE/-
     <span class="o">}</span>
 <span class="o">}</span>
 
-</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="JAVA" /><category term="자료구조" /><summary type="html"><![CDATA[[자바][자료구조] T 메모리구조]]></summary></entry><entry><title type="html">[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)</title><link href="http://localhost:4000/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany.html" rel="alternate" type="text/html" title="[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)" /><published>2024-01-17T00:00:00+09:00</published><updated>2024-01-17T00:00:00+09:00</updated><id>http://localhost:4000/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany</id><content type="html" xml:base="http://localhost:4000/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany.html"><![CDATA[<h2 id="백준ps-회사에-있는-사람--실버-5자료구조">[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)</h2>
-
-<h3 id="문제-설명">문제 설명</h3>
-
-<p>상근이는 세계적인 소프트웨어 회사 기글에서 일한다. 이 회사의 가장 큰 특징은 자유로운 출퇴근 시간이다. 따라서, 직원들은 반드시 9시부터 6시까지 회사에 있지 않아도 된다.</p>
-
-<p>각 직원은 자기가 원할 때 출근할 수 있고, 아무때나 퇴근할 수 있다.</p>
-
-<p>상근이는 모든 사람의 출입카드 시스템의 로그를 가지고 있다. 이 로그는 어떤 사람이 회사에 들어왔는지, 나갔는지가 기록되어져 있다. 로그가 주어졌을 때, 현재 회사에 있는 모든 사람을 구하는 프로그램을 작성하시오.</p>
-
-<p><strong>입력</strong></p>
-
-<p>첫째 줄에 로그에 기록된 출입 기록의 수 n이 주어진다. (2 ≤ n ≤ 106) 다음 n개의 줄에는 출입 기록이 순서대로 주어지며, 각 사람의 이름이 주어지고 “enter”나 “leave”가 주어진다. “enter”인 경우는 출근, “leave”인 경우는 퇴근이다.</p>
-
-<p>회사에는 동명이인이 없으며, 대소문자가 다른 경우에는 다른 이름이다. 사람들의 이름은 알파벳 대소문자로 구성된 5글자 이하의 문자열이다.</p>
-
-<p><strong>출력</strong></p>
-
-<p>현재 회사에 있는 사람의 이름을 사전 순의 역순으로 한 줄에 한 명씩 출력한다.</p>
-
-<h3 id="제한시간">제한시간</h3>
-
-<p>1초, 메모리제한 256MB</p>
-
-<h4 id="접근-방법">접근 방법</h4>
-
-<p>솔직히 엄청 쉬운 문제다. 누구나 구현할 수 있고, 전공자가 아니더라도 누구나 이 문제를 구현하는데는 문제가 없을 것이다. 맵 자료형을 써도 되고, 파이썬에서는 딕셔너리를 쓰거나, 해시 맵을 쓰거나, 집합 자료구조를 사용해도 문제는 무리 없이 풀린다. 하지만 자료구조에 대한 이해가 없이 배열과 같은 선형 자료구조를 사용하면 <strong>시간 초과</strong>를 마주치는 문제다. 개인적으로 이 문제는 좋은 문제라고 생각해서 가져왔다.</p>
-
-<h5 id="잘못된-접근">잘못된 접근</h5>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">boj</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.lang.reflect.Array</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">boj7785</span> <span class="o">{</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">coworkerList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
-        <span class="nc">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
-        <span class="kt">int</span> <span class="n">coworkerNumber</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
-
-        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">coworkerNumber</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="nc">String</span> <span class="n">coworkerName</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
-            <span class="nc">String</span> <span class="n">sign</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">sign</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"enter"</span><span class="o">)){</span>
-                <span class="n">coworkerList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">coworkerName</span><span class="o">);</span>
-            <span class="o">}</span>
-            <span class="k">else</span> <span class="o">{</span>
-               <span class="n">coworkerList</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">coworkerName</span><span class="o">);</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-
-        <span class="nc">Collections</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">coworkerList</span><span class="o">,</span> <span class="nc">Collections</span><span class="o">.</span><span class="na">reverseOrder</span><span class="o">());</span>
-        <span class="k">for</span><span class="o">(</span><span class="nc">String</span> <span class="n">coworker</span> <span class="o">:</span> <span class="n">coworkerList</span><span class="o">)</span> <span class="o">{</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">coworker</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>이렇게 풀어도 답은 문제없이 나온다. 하지만 시간초과로 문제 해결이 실패하게 된다. 구현방법을 보면 enter이면 ArrayList<String>에 동료의 이름을 집어 넣고, 만약에 leave라는 문자열을 마주치면 ArrayList에서 해당 문자열을 삭제한다.</String></p>
-
-<p>여기서 문제가 발생하는데, 배열과 같은 선형 자료구조는 중간 노드의 삽입과 삭제가 빈번하게 일어날 때, 성능이 매우 나빠진다.</p>
-
-<p>왜냐하면 연속된 메모리 공간에 요소들을 저장하고 있기 때문에 중간에 요소를 추가하거나, 삭제하면 해당 위치 이후의 모든 요소를 이동시켜야만 한다. 이런 경우에 노드의 추가와 삭제에 소요되는 시간 복잡도는 O(n)이 된다. 이렇게 추가적으로 시간이 매우 많이 소요되기 때문에 1초라는 시간으로는 문제를 풀이할 수 없다.</p>
-
-<p>이런 경우에는 순서가 상관없는 자료구조로 문제를 풀이해야 한다. 대표적으로는 set 자료형이 있다. 다음은 HashSet 자료형으로 풀이한 자바 코드다.</p>
-
-<h4 id="자바-풀이">자바 풀이</h4>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">boj7785</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="nc">Set</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">coworkerSet</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;&gt;();</span>
-
-        <span class="nc">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
-        <span class="kt">int</span> <span class="n">coworkerNumber</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
-
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">coworkerNumber</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="nc">String</span> <span class="n">coworkerName</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
-            <span class="nc">String</span> <span class="n">sign</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
-
-            <span class="k">if</span> <span class="o">(</span><span class="n">sign</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">"enter"</span><span class="o">))</span> <span class="o">{</span>
-                <span class="n">coworkerSet</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">coworkerName</span><span class="o">);</span>
-            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-                <span class="n">coworkerSet</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">coworkerName</span><span class="o">);</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-
-        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">coworkerList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">coworkerSet</span><span class="o">);</span>
-        <span class="nc">Collections</span><span class="o">.</span><span class="na">sort</span><span class="o">(</span><span class="n">coworkerList</span><span class="o">,</span> <span class="nc">Collections</span><span class="o">.</span><span class="na">reverseOrder</span><span class="o">());</span>
-
-        <span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">coworker</span> <span class="o">:</span> <span class="n">coworkerList</span><span class="o">)</span> <span class="o">{</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">coworker</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="PS" /><category term="백준" /><category term="JAVA" /><category term="자료구조" /><summary type="html"><![CDATA[[백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)]]></summary></entry></feed>
+</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="JAVA" /><category term="자료구조" /><summary type="html"><![CDATA[[자바][자료구조] T 메모리구조]]></summary></entry></feed>
