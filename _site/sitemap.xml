@@ -3,6 +3,10 @@
 
     
     <url>
+        <loc>http://localhost:4000/db/2024/02/29/materialized-view.html</loc>
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/java/2024/02/28/java-contain.html</loc>
     </url>
     
@@ -135,6 +139,14 @@
     
     
     <url>
+        <loc>http://localhost:4000/category/DB.html</loc>
+    </url>
+    
+    
+    
+    
+    
+    <url>
         <loc>http://localhost:4000/category/DP.html</loc>
     </url>
     
@@ -207,7 +219,7 @@
     
     
     <url>
-        <loc>http://localhost:4000/posts/</loc>
+        <loc>http://localhost:4000/</loc>
     </url>
     
     
@@ -215,7 +227,7 @@
     
     
     <url>
-        <loc>http://localhost:4000/</loc>
+        <loc>http://localhost:4000/posts/</loc>
     </url>
     
     

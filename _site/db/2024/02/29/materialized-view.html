@@ -8,15 +8,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>
-    [JAVA] 예외처리 - throw, throws, throwable - Tensor Studio
+    [DB] 구체화된 뷰는 테이블과 어떻게 다를까? - Tensor Studio
     
   </title>
 
-  <meta name="description" content="예외처리">
-  <meta property="og:description" content="예외처리">
+  <meta name="description" content="[DB] 물리 뷰는 테이블과 어떻게 다를까?">
+  <meta property="og:description" content="[DB] 물리 뷰는 테이블과 어떻게 다를까?">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="[JAVA] 예외처리 - throw, throws, throwable">
-  <meta property="og:url" content="https://ash-tensor.github.io/java/2024/01/08/exception.html">
+  <meta property="og:title" content="[DB] 구체화된 뷰는 테이블과 어떻게 다를까?">
+  <meta property="og:url" content="https://ash-tensor.github.io/db/2024/02/29/materialized-view.html">
 
   
     <meta property="og:image" content="https://ash-tensor.github.io/img/port.jpg"/>
@@ -35,7 +35,7 @@
 
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/java/2024/01/08/exception.html">
+  <link rel="canonical" href="http://localhost:4000/db/2024/02/29/materialized-view.html">
   <link rel="alternate" type="application/rss+xml" title="Tensor Studio" href="/feed.xml">
 
 <!--  favicon-->
@@ -112,15 +112,13 @@
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="post-heading">
-          <h1>[JAVA] 예외처리 - throw, throws, throwable</h1>
-          
-          <h2 class="subheading">Checked Error - Unchecked Error</h2>
+          <h1>[DB] 구체화된 뷰는 테이블과 어떻게 다를까?</h1>
           
           <span class="meta">Posted by
             <a href="#">ash tensor</a>
-            on January 08, 2024 &middot; <span class="reading-time" title="Estimated read time">
+            on February 29, 2024 &middot; <span class="reading-time" title="Estimated read time">
   
-   4 mins  read </span>
+   3 mins  read </span>
 
           </span>
 <!-- 카테고리를 추가하는 코드 -->
@@ -129,7 +127,7 @@
             <a>
           <div style="font-family: 'Noto Sans KR', sans-serif;">
             
-              <a href="http://localhost:4000/category/JAVA.html" style="color: white;">📁JAVA</a>
+              <a href="http://localhost:4000/category/DB.html" style="color: white;">📁DB</a>
             
           </div>
 <!-- 카테고리를 추가하는 코드 -->
@@ -693,136 +691,82 @@ TENSOR STUDIO
 
           <div style="font-family: 'Noto Sans KR', sans-serif;">
             
-              <a href="http://localhost:4000/category/JAVA.html" style="color: black;">📁 JAVA</a>
+              <a href="http://localhost:4000/category/DB.html" style="color: black;">📁 DB</a>
             
           </div>
           
 <!-- 본문 카테고리를 추가하는 코드 -->
 
-      <h2 id="예외처리">예외처리</h2>
+      <h2 id="db-물리-뷰는-테이블과-어떻게-다를까">[DB] 물리 뷰는 테이블과 어떻게 다를까?</h2>
 
-<p>자바는 솔직히 예외처리를 아주 빡빡하게 처리하는 언어다. 다른 언어들이 특정 예외가 일어났을 때를 열거해서 (divideByZero error, Stack overflow error 등) 제외하는 것에 비해서 조금은 특이하다.</p>
+<h3 id="문제-설명">문제 설명</h3>
 
-<p>물론 C 처럼 예외 처리를 아예 강제하지 않는 언어와 비교하려는 것은 아니다. Python이나 C++, C# 모두 try - catch - finally와 같은 예외 처리를 지원하고, 자바와 사용되는 예약어만 다들 뿐 그 궤는 비슷하다.</p>
+<p>테이블은 데이터베이스의 기본적인 저장 단위로, 행과 열로 구성되어 있고, 실제로 데이터를 저장한다. 그리고 뷰는 실제 데이터를 저장하지 않는다.
+뷰는 하나 이상의 테이블을 가상의 테이블처럼 보이게 하는 것이다. 
+뷰는 쿼리를 이용해서 생성되며, 실제 데이터를 저장하지는 않고, 데이터에 대한 참조만을 저장한다.</p>
 
-<p>하지만 널리 사용되는 언어인 Javascript와 Python에 비교해 봐도, 자바처럼 Checked 에러와 Unchecked 에러를 나눠서 구현을 강제해서 구분하는 언어는 충분히 드물다고 할 수 있다.</p>
+<p>이는 일반적인 논리적 뷰의 설명이다. 그렇다면 물리적 뷰는 테이블과 어떻게 다를까?</p>
 
-<h3 id="checked-error---unchecked-error">Checked Error - Unchecked Error</h3>
+<h3 id="물리적-뷰--구체화된-뷰">물리적 뷰 / 구체화된 뷰</h3>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class ExceptionExample {
-    // 예외를 던질 수 있는 메서드
-    public void methodWithThrows() throws CustomException { &lt;&lt; 에러 열거
-        System.out.println("메서드에서 예외를 던집니다.");
-        throw new CustomException("Custom 예외 발생");
-    }
+<p>“물리적 뷰는 테이블과 어떻게 다르지?” 라는 질문을 받았는데, 대답을 하지 못해서 당황했었다. 왜냐하면, 물리 뷰라는 이름에서 다가오는 늬앙스가 
+뷰라는 실체가 없고 가상의 테이블이라는 늬앙스와는 다르게 느껴졌기 때문이다.</p>
 
-    // 호출하는 코드
-    public static void main(String[] args) {
-        ExceptionExample example = new ExceptionExample();
+<p>뷰는 실제 데이터를 저장하지 않는데, 물리 뷰라고? 그렇다면 Physical view라는 말인가? 그럼 피지컬한 실체가 있는 건가? 이런 식으로 생각이 흘러갔기 때문이다.
+하지만 물리적 뷰, 즉 materialized view는 이런 개념과는 거리가 있다.</p>
 
-        try {
-            example.methodWithThrows();
-        } catch (CustomException e) {   &lt;&lt; 열거한 에러 처리
-            System.out.println("예외를 처리합니다: " + e.getMessage());
-        }
-    }
-}
+<p>물리적 뷰는 뷰와는 다르게 실제 데이터를 저장한다. 뷰는 쿼리를 이용하여 생성되며, 실제 데이터를 저장하지 않는다. 하지만 물리적 뷰는 쿼리를 이용하여 생성되며, 실제 데이터를 저장한다.
+일반적인 뷰와는 다르게, 물리적 뷰는 DB상에 그 실체가 있다.</p>
 
-// CustomException 정의
-class CustomException extends Exception {
-    public CustomException(String message) {
-        super(message);
-    }
-}
+<p>그렇다면 정말로, 테이블이라고 할 수 있을 것이다. 그렇다면 물리적 뷰는 테이블과 어떻게 다를까?</p>
+
+<h3 id="물리적-뷰는-새로운-데이터를-저장하는-것이-아니라-기존의-데이터를-저장한다">물리적 뷰는 새로운 데이터를 저장하는 것이 아니라, 기존의 데이터를 저장한다.</h3>
+
+<p>그러니까 즉, 물리적 뷰는 이미 존재하는 데이터를 이용해서, 일정부분 가공하고, 필터링된 데이터를 저장한다고 볼 수 있다. 새로운 데이터를 저장하는 테이블과는 거리가 있다. 정규화가 잘 된 테이블이 존재한다고 해 보자. 그런 경우에는 
+사업 또는 비즈니스 사이클에 필요한 데이터를 얻는다고 할 때, 정규화된 여러 테이블을 조인해야만 필요한 데이터를 얻어야 하는 경우가 많다.</p>
+
+<p>하지만 이런 경우에는 데이터를 조회할 때마다 계속 조인이 발생하고, 매번 쿼리할 때마다 계산이 필요해진다. 이런 경우에는 정규화가 잘 된 테이블이지만 오히려 서비스의 성능을 낮출 수 있다.</p>
+
+<h3 id="반정규화">반정규화?</h3>
+
+<p>아마 DB이론을 공부한 사람이라면 이 경우에 바로 반정규화를 떠올릴 것이다. 중복 테이블을 생성하거나, 중복 컬럼 생성, 테이블 병합 등, 여러 방법이 존재하지만 이 경우에 DB의 무결성이 깨지게 되고, 이는 
+시스템의 안정성을 해칠 수 있다. 반정규화에 대한 대안으로 물리적 뷰를 사용할 수 있다.</p>
+
+<p>물리적 뷰, 구체화된 뷰는 특정 쿼리의 결과를 데이터베이스에 물리적 실체로 저장하고, 뷰에 엑세스 할 때마다 
+복잡한 쿼리(JOIN, GROUP BY, ORDER BY 등)를 실행하지 않고, 저장된 결과를 단순히 조회함으로써 성능을 향상시킬 수 있다.</p>
+
+<h3 id="예제">예제</h3>
+
+<p>아래 쿼리는 sales 테이블에서 sale_date를 기준으로 월별 매출 합계를 계산하여 
+monthly_sales_summary 매터리얼라이즈드 뷰를 생성한다. 
+이제 이 매터리얼라이즈드 뷰를 사용하여 월별 매출에 대한 정보를 조회 한 번으로 얻을 수 있다.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">-- 매터리얼라이즈드 뷰 생성 쿼리</span>
+<span class="k">CREATE</span> <span class="n">MATERIALIZED</span> <span class="k">VIEW</span> <span class="n">monthly_sales_summary</span> <span class="k">AS</span>
+<span class="k">SELECT</span>
+    <span class="k">EXTRACT</span><span class="p">(</span><span class="nb">YEAR</span> <span class="k">FROM</span> <span class="n">sale_date</span><span class="p">)</span> <span class="k">AS</span> <span class="n">sale_year</span><span class="p">,</span>
+    <span class="k">EXTRACT</span><span class="p">(</span><span class="k">MONTH</span> <span class="k">FROM</span> <span class="n">sale_date</span><span class="p">)</span> <span class="k">AS</span> <span class="n">sale_month</span><span class="p">,</span>
+    <span class="k">SUM</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span> <span class="k">AS</span> <span class="n">total_sales</span>
+<span class="k">FROM</span>
+    <span class="n">sales</span>
+<span class="k">GROUP</span> <span class="k">BY</span>
+    <span class="k">EXTRACT</span><span class="p">(</span><span class="nb">YEAR</span> <span class="k">FROM</span> <span class="n">sale_date</span><span class="p">),</span>
+    <span class="k">EXTRACT</span><span class="p">(</span><span class="k">MONTH</span> <span class="k">FROM</span> <span class="n">sale_date</span><span class="p">);</span>
+
 </code></pre></div></div>
 
-<p>여기서 세번째 라인의 throws가 바로 Checked Error를 열거하는 예약어다. 보통 throws 키워드를 설명할 때</p>
+<p>다음은 매터리얼라이즈드 뷰 새로고침 명령이다. 이 명령은 매터리얼라이즈드 뷰의 데이터를 새로 고쳐서 최신 데이터로 업데이트한다.</p>
 
-<blockquote>
-  <blockquote>
-    <p>[Throws 키워드는 메소드 선언부 끝에 작성되어 메소드에서 처리하지 않은 예외를 호출한 곳으로 떠넘기는 역할을 합니다.]</p>
-  </blockquote>
-</blockquote>
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">REFRESH</span> <span class="n">MATERIALIZED</span> <span class="k">VIEW</span> <span class="n">monthly_sales_summary</span><span class="p">;</span>
 
-<p>라고 설명하는데, 이 말을 처음 들을 때 이해가 쉽지는 않다(고 생각한다).</p>
-
-<p>throws 키워드는 Checked Error를 열거하는 예약어로, 만약 이 메소드를 호출하는 메소드가 있다면 무조건 예외처리를 해야 컴파일이 가능하다는 뜻이다.</p>
-
-<p>즉 위 예시 코드로 설명해 보자면, 예외를 던질 수 있는 메서드에서 customException을 throws 예약어로 열거했으므로 //호출하는 코드 부분에서 무조건적으로</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>catch(CustomException e)
 </code></pre></div></div>
 
-<p>부분이 없으면 실행을 아예 거부해버린다.</p>
+<h3 id="dbms-별-구체화된-뷰-지원">DBMS 별 구체화된 뷰 지원</h3>
 
-<p><img src="/img/posts/JAVA/throws.PNG" style="width: 80%" /></p>
-
-<p>이런식으로.</p>
-
-<h3 id="throws가-없는-프로그램">throws가 없는 프로그램</h3>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class ExceptionExample {
-    public void methodWithoutThrows() {
-        System.out.println("예외 테스트");
-        ExceptionExample example = new ExceptionExample();
-        example.methodWithoutThrows();
-    }
-
-    // 호출하는 코드
-    public static void main(String[] args) {
-        ExceptionExample example = new ExceptionExample();
-        example.methodWithoutThrows();
-        }
-    }
-</code></pre></div></div>
-
-<p>throws를 제거한 코드다. try - catch 문이 없어도 문제 없이 컴파일 가능한 모습을 볼 수 있다. methodWithoutThrows는 예외를 던지지 않으므로 호출하는 코드에서는 예외 처리를 할 필요가 없다.</p>
-
-<p>이렇게 throws를 사용하면 메서드를 사용하는 측에게 어떤 예외가 발생할 수 있는지 명시함으로써 명확한 예외 처리를 유도할 수 있다… 곤 하지만, 솔직히 아무리 문법적으로 강제해도 제대로 하지 않을 사람은 안 한다. 아예 JVM으로 에러를 던져버리는 것이다.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// main 메소드 throws
-
-public class Example {
-    public static void main(String[] args) throws Exception {
-        // 예외가 발생할 수 있는 코드
-    }
-}
-</code></pre></div></div>
-
-<p>이런 식으로, main 메소드에서 throws를 사용하는 것은 에러를 JVM에게 전가한다는 뜻이다. Main 메소드보다 더 상위의 메소드는 JVM밖에는 없기에, 에러를 던져도 JVM은 에러 메시지만 출력하고 프로그램을 종료한다.</p>
-
-<p>main 메서드에서 throws를 사용할 때는 주로 런타임 예외인 RuntimeException 또는 Exception과 같은 일반적인 예외를 사용하며, 이를 통해 예외 처리를 뒷단으로 미루는 경우가 있다.</p>
-
-<blockquote>
-  <blockquote>
-    <p>[throws &lt;unchecked exception(runtime exception)&gt; 키워드가 붙어있는 메서드는 꼭 try 블록 내부에서 호출되지 않더라도 컴파일이 됩니다. 하지만 매우 문제가 있는 코드입니다.]</p>
-  </blockquote>
-</blockquote>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// RuntimeException throws
-
-public class Example {
-    // 예외를 던질 수 있는 메서드
-    public static void methodWithThrows() throws RuntimeException {
-        System.out.println("메서드에서 예외를 던집니다.");
-        throw new RuntimeException("런타임 예외 발생");
-    }
-
-    // 호출하는 코드
-    public static void main(String[] args) {
-        // 메서드 호출 시 try-catch 블록 없음
-        methodWithThrows();
-        
-        // 아래 코드는 실행되지 않음 (Unreachable code 에러 발생)
-        System.out.println("메서드 호출 후의 코드");
-    }
-}
-</code></pre></div></div>
-
-<p>위의 코드에서 methodWithThrows는 RuntimeException을 던질 수 있는데, 호출하는 main 메서드에서는 해당 예외를 처리하는 try-catch 블록이 없다. 그러나 컴파일은 문제없이 진행된다.</p>
-
-<p>하지만 실행 시에는 methodWithThrows에서 발생한 예외가 main 메서드로 전파되어, “Unreachable code” 에러가 발생하면서 프로그램이 비정상적으로 종료된다.</p>
-
+<p>구체화된 뷰는 DBMS에 따라 지원 여부가 다르다. MYSQL은 지원하지 않는다. 오라클은 지원한다. 오라클은 보통 자동으로 새로 고치지만,
+수동으로 새로고침을 할 수도 있다. SQL Server는 Indexed View라는 이름으로 지원한다.</p>
 
 
       <hr>
@@ -836,7 +780,7 @@ public class Example {
     <div>
 
       <a
-          href="https://www.linkedin.com/sharing/share-offsite?url=https://ash-tensor.github.io/java/2024/01/08/exception.html"
+          href="https://www.linkedin.com/sharing/share-offsite?url=https://ash-tensor.github.io/db/2024/02/29/materialized-view.html"
           onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
           class="d-inline-block mr-2"
        >
@@ -847,7 +791,7 @@ public class Example {
       </a>
 
       <a
-          href="https://twitter.com/intent/tweet?text=[JAVA] 예외처리 - throw, throws, throwable&url=https://ash-tensor.github.io/java/2024/01/08/exception.html"
+          href="https://twitter.com/intent/tweet?text=[DB] 구체화된 뷰는 테이블과 어떻게 다를까?&url=https://ash-tensor.github.io/db/2024/02/29/materialized-view.html"
           onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
           class="d-inline-block mr-2">
         <span class="fa-stack fa-lg" style="color: #1DA1F2;">
@@ -857,7 +801,7 @@ public class Example {
       </a>
 
       <a
-          href="http://www.reddit.com/submit?url=https://ash-tensor.github.io/java/2024/01/08/exception.html"
+          href="http://www.reddit.com/submit?url=https://ash-tensor.github.io/db/2024/02/29/materialized-view.html"
           onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
           class="d-inline-block mr-2">
         <span class="fa-stack fa-lg" style="color: #FF4500;">
@@ -880,8 +824,8 @@ public class Example {
 <ul class="mb-5 ">
   
   <p>
-    <a style= "font-size: 20px; font-weight: bold; font-family: 'Noto Sans KR', sans-serif;" href= "http://localhost:4000/category/JAVA.html">
-      JAVA 카테고리의 다른 글
+    <a style= "font-size: 20px; font-weight: bold; font-family: 'Noto Sans KR', sans-serif;" href= "http://localhost:4000/category/DB.html">
+      DB 카테고리의 다른 글
     </a>
   </p>
   
@@ -890,77 +834,13 @@ public class Example {
     
       <li>
         <h3>
-          <a href="/java/2024/02/28/java-contain.html" style= "font-size: 17px;">
-            [JAVA] 배열에서는 왜 contains() 메소드가 제대로 작동하지 않을까?
+          <a href="/db/2024/02/29/materialized-view.html" style= "font-size: 17px;">
+            [DB] 구체화된 뷰는 테이블과 어떻게 다를까?
           </a>
-          <small style= "font-size: 14px;">28 Feb 2024</small>
+          <small style= "font-size: 14px;">29 Feb 2024</small>
         </h3>
       </li>
       
-    
-  
-    
-      <li>
-        <h3>
-          <a href="/%EB%B0%B1%EC%A4%80/ps/java/%ED%8C%8C%EC%9D%B4%EC%8D%AC/2024/02/27/boj1743.html" style= "font-size: 17px;">
-            [백준] 백준 1743번 :: 음식물 피하기 :: 실버 1 
-          </a>
-          <small style= "font-size: 14px;">27 Feb 2024</small>
-        </h3>
-      </li>
-      
-    
-  
-    
-      <li>
-        <h3>
-          <a href="/%EB%B0%B1%EC%A4%80/ps/java/2024/02/21/boj1987.html" style= "font-size: 17px;">
-            [백준] 백준 1987번 :: 알파벳 :: 골드 4 
-          </a>
-          <small style= "font-size: 14px;">21 Feb 2024</small>
-        </h3>
-      </li>
-      
-    
-  
-    
-      <li>
-        <h3>
-          <a href="/%EB%B0%B1%EC%A4%80/ps/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/02/01/boj1931.html" style= "font-size: 17px;">
-            [백준] 백준 1931번 :: 회의실 배정 :: 실버 1 
-          </a>
-          <small style= "font-size: 14px;">01 Feb 2024</small>
-        </h3>
-      </li>
-      
-    
-  
-    
-      <li>
-        <h3>
-          <a href="/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178.html" style= "font-size: 17px;">
-            [백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1 
-          </a>
-          <small style= "font-size: 14px;">30 Jan 2024</small>
-        </h3>
-      </li>
-      
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
     
   
 </ul>
@@ -997,12 +877,9 @@ public class Example {
 <!-- 코멘트 란을 추가하는 코드 -->
 
         
-        <a class="btn btn-primary float-left" href="/java/2024/01/07/interface.html" data-toggle="tooltip" data-placement="top" title="[JAVA] 인터페이스와 추상클래스의 차이">&larr; Previous<span class="d-none d-md-inline">
+        <a class="btn btn-primary float-left" href="/java/2024/02/28/java-contain.html" data-toggle="tooltip" data-placement="top" title="[JAVA] 배열에서는 왜 contains() 메소드가 제대로 작동하지 않을까?">&larr; Previous<span class="d-none d-md-inline">
             Post</span></a>
         
-        
-        <a class="btn btn-primary float-right" href="/web/2024/01/10/bucketlist.html" data-toggle="tooltip" data-placement="top" title="[HTML/JAVASCRIPT] 아주 간단한 버켓리스트 페이지 제작">Next<span class="d-none d-md-inline">
-            Post</span> &rarr;</a>
         
 
       </div>

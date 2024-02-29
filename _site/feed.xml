@@ -1,4 +1,73 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-02-29T00:47:17+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[JAVA] 배열에서는 왜 contains() 메소드가 제대로 작동하지 않을까?</title><link href="http://localhost:4000/java/2024/02/28/java-contain.html" rel="alternate" type="text/html" title="[JAVA] 배열에서는 왜 contains() 메소드가 제대로 작동하지 않을까?" /><published>2024-02-28T00:00:00+09:00</published><updated>2024-02-28T00:00:00+09:00</updated><id>http://localhost:4000/java/2024/02/28/java-contain</id><content type="html" xml:base="http://localhost:4000/java/2024/02/28/java-contain.html"><![CDATA[<h2 id="java-배열에서는-왜-contains-메소드가-제대로-작동하지-않을까">[JAVA] 배열에서는 왜 contains() 메소드가 제대로 작동하지 않을까?</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-02-29T23:17:20+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[DB] 구체화된 뷰는 테이블과 어떻게 다를까?</title><link href="http://localhost:4000/db/2024/02/29/materialized-view.html" rel="alternate" type="text/html" title="[DB] 구체화된 뷰는 테이블과 어떻게 다를까?" /><published>2024-02-29T00:00:00+09:00</published><updated>2024-02-29T00:00:00+09:00</updated><id>http://localhost:4000/db/2024/02/29/materialized-view</id><content type="html" xml:base="http://localhost:4000/db/2024/02/29/materialized-view.html"><![CDATA[<h2 id="db-물리-뷰는-테이블과-어떻게-다를까">[DB] 물리 뷰는 테이블과 어떻게 다를까?</h2>
+
+<h3 id="문제-설명">문제 설명</h3>
+
+<p>테이블은 데이터베이스의 기본적인 저장 단위로, 행과 열로 구성되어 있고, 실제로 데이터를 저장한다. 그리고 뷰는 실제 데이터를 저장하지 않는다.
+뷰는 하나 이상의 테이블을 가상의 테이블처럼 보이게 하는 것이다. 
+뷰는 쿼리를 이용해서 생성되며, 실제 데이터를 저장하지는 않고, 데이터에 대한 참조만을 저장한다.</p>
+
+<p>이는 일반적인 논리적 뷰의 설명이다. 그렇다면 물리적 뷰는 테이블과 어떻게 다를까?</p>
+
+<h3 id="물리적-뷰--구체화된-뷰">물리적 뷰 / 구체화된 뷰</h3>
+
+<p>“물리적 뷰는 테이블과 어떻게 다르지?” 라는 질문을 받았는데, 대답을 하지 못해서 당황했었다. 왜냐하면, 물리 뷰라는 이름에서 다가오는 늬앙스가 
+뷰라는 실체가 없고 가상의 테이블이라는 늬앙스와는 다르게 느껴졌기 때문이다.</p>
+
+<p>뷰는 실제 데이터를 저장하지 않는데, 물리 뷰라고? 그렇다면 Physical view라는 말인가? 그럼 피지컬한 실체가 있는 건가? 이런 식으로 생각이 흘러갔기 때문이다.
+하지만 물리적 뷰, 즉 materialized view는 이런 개념과는 거리가 있다.</p>
+
+<p>물리적 뷰는 뷰와는 다르게 실제 데이터를 저장한다. 뷰는 쿼리를 이용하여 생성되며, 실제 데이터를 저장하지 않는다. 하지만 물리적 뷰는 쿼리를 이용하여 생성되며, 실제 데이터를 저장한다.
+일반적인 뷰와는 다르게, 물리적 뷰는 DB상에 그 실체가 있다.</p>
+
+<p>그렇다면 정말로, 테이블이라고 할 수 있을 것이다. 그렇다면 물리적 뷰는 테이블과 어떻게 다를까?</p>
+
+<h3 id="물리적-뷰는-새로운-데이터를-저장하는-것이-아니라-기존의-데이터를-저장한다">물리적 뷰는 새로운 데이터를 저장하는 것이 아니라, 기존의 데이터를 저장한다.</h3>
+
+<p>그러니까 즉, 물리적 뷰는 이미 존재하는 데이터를 이용해서, 일정부분 가공하고, 필터링된 데이터를 저장한다고 볼 수 있다. 새로운 데이터를 저장하는 테이블과는 거리가 있다. 정규화가 잘 된 테이블이 존재한다고 해 보자. 그런 경우에는 
+사업 또는 비즈니스 사이클에 필요한 데이터를 얻는다고 할 때, 정규화된 여러 테이블을 조인해야만 필요한 데이터를 얻어야 하는 경우가 많다.</p>
+
+<p>하지만 이런 경우에는 데이터를 조회할 때마다 계속 조인이 발생하고, 매번 쿼리할 때마다 계산이 필요해진다. 이런 경우에는 정규화가 잘 된 테이블이지만 오히려 서비스의 성능을 낮출 수 있다.</p>
+
+<h3 id="반정규화">반정규화?</h3>
+
+<p>아마 DB이론을 공부한 사람이라면 이 경우에 바로 반정규화를 떠올릴 것이다. 중복 테이블을 생성하거나, 중복 컬럼 생성, 테이블 병합 등, 여러 방법이 존재하지만 이 경우에 DB의 무결성이 깨지게 되고, 이는 
+시스템의 안정성을 해칠 수 있다. 반정규화에 대한 대안으로 물리적 뷰를 사용할 수 있다.</p>
+
+<p>물리적 뷰, 구체화된 뷰는 특정 쿼리의 결과를 데이터베이스에 물리적 실체로 저장하고, 뷰에 엑세스 할 때마다 
+복잡한 쿼리(JOIN, GROUP BY, ORDER BY 등)를 실행하지 않고, 저장된 결과를 단순히 조회함으로써 성능을 향상시킬 수 있다.</p>
+
+<h3 id="예제">예제</h3>
+
+<p>아래 쿼리는 sales 테이블에서 sale_date를 기준으로 월별 매출 합계를 계산하여 
+monthly_sales_summary 매터리얼라이즈드 뷰를 생성한다. 
+이제 이 매터리얼라이즈드 뷰를 사용하여 월별 매출에 대한 정보를 조회 한 번으로 얻을 수 있다.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">-- 매터리얼라이즈드 뷰 생성 쿼리</span>
+<span class="k">CREATE</span> <span class="n">MATERIALIZED</span> <span class="k">VIEW</span> <span class="n">monthly_sales_summary</span> <span class="k">AS</span>
+<span class="k">SELECT</span>
+    <span class="k">EXTRACT</span><span class="p">(</span><span class="nb">YEAR</span> <span class="k">FROM</span> <span class="n">sale_date</span><span class="p">)</span> <span class="k">AS</span> <span class="n">sale_year</span><span class="p">,</span>
+    <span class="k">EXTRACT</span><span class="p">(</span><span class="k">MONTH</span> <span class="k">FROM</span> <span class="n">sale_date</span><span class="p">)</span> <span class="k">AS</span> <span class="n">sale_month</span><span class="p">,</span>
+    <span class="k">SUM</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span> <span class="k">AS</span> <span class="n">total_sales</span>
+<span class="k">FROM</span>
+    <span class="n">sales</span>
+<span class="k">GROUP</span> <span class="k">BY</span>
+    <span class="k">EXTRACT</span><span class="p">(</span><span class="nb">YEAR</span> <span class="k">FROM</span> <span class="n">sale_date</span><span class="p">),</span>
+    <span class="k">EXTRACT</span><span class="p">(</span><span class="k">MONTH</span> <span class="k">FROM</span> <span class="n">sale_date</span><span class="p">);</span>
+
+</code></pre></div></div>
+
+<p>다음은 매터리얼라이즈드 뷰 새로고침 명령이다. 이 명령은 매터리얼라이즈드 뷰의 데이터를 새로 고쳐서 최신 데이터로 업데이트한다.</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">REFRESH</span> <span class="n">MATERIALIZED</span> <span class="k">VIEW</span> <span class="n">monthly_sales_summary</span><span class="p">;</span>
+
+</code></pre></div></div>
+
+<h3 id="dbms-별-구체화된-뷰-지원">DBMS 별 구체화된 뷰 지원</h3>
+
+<p>구체화된 뷰는 DBMS에 따라 지원 여부가 다르다. MYSQL은 지원하지 않는다. 오라클은 지원한다. 오라클은 보통 자동으로 새로 고치지만,
+수동으로 새로고침을 할 수도 있다. SQL Server는 Indexed View라는 이름으로 지원한다.</p>]]></content><author><name>ash tensor</name></author><category term="DB" /><summary type="html"><![CDATA[[DB] 물리 뷰는 테이블과 어떻게 다를까?]]></summary></entry><entry><title type="html">[JAVA] 배열에서는 왜 contains() 메소드가 제대로 작동하지 않을까?</title><link href="http://localhost:4000/java/2024/02/28/java-contain.html" rel="alternate" type="text/html" title="[JAVA] 배열에서는 왜 contains() 메소드가 제대로 작동하지 않을까?" /><published>2024-02-28T00:00:00+09:00</published><updated>2024-02-28T00:00:00+09:00</updated><id>http://localhost:4000/java/2024/02/28/java-contain</id><content type="html" xml:base="http://localhost:4000/java/2024/02/28/java-contain.html"><![CDATA[<h2 id="java-배열에서는-왜-contains-메소드가-제대로-작동하지-않을까">[JAVA] 배열에서는 왜 contains() 메소드가 제대로 작동하지 않을까?</h2>
 
 <h3 id="문제-설명">문제 설명</h3>
 
@@ -585,7 +654,15 @@ CLEAN BLOG THEME은 자체적으로 사이드바를 지원하는 테마는 아�
 
 <p><img src="/img/posts/sidebar/sidebar-3.png" style="width: 80%" /></p>
 
-<p>현재는 최근 세 개의 포스트만 나오게 되어 있는데, 이는 내부 코드의 카운터 부분을 바꾸면 된다. 추가적으로 레이아웃에서 건드릴 것이 많기는 하지만(display 속성을 이용해서 완성도를 높일 수 있을 것 같다) 아무튼 여기서 마무리 지을 것이다!</p>]]></content><author><name>ash tensor</name></author><category term="깃허브" /><summary type="html"><![CDATA[깃허브 블로그 SIDEBAR 기능 추가(clean blog theme)]]></summary></entry><entry><title type="html">[백준] 백준 1931번 :: 회의실 배정 :: 실버 1</title><link href="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/02/01/boj1931.html" rel="alternate" type="text/html" title="[백준] 백준 1931번 :: 회의실 배정 :: 실버 1" /><published>2024-02-01T00:00:00+09:00</published><updated>2024-02-01T00:00:00+09:00</updated><id>http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/02/01/boj1931</id><content type="html" xml:base="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/02/01/boj1931.html"><![CDATA[<h2 id="백준-백준-1931번--회의실-배정--실버-1">[백준] 백준 1931번 :: 회의실 배정 :: 실버 1</h2>
+<p>현재는 최근 세 개의 포스트만 나오게 되어 있는데, 이는 내부 코드의 카운터 부분을 바꾸면 된다. 추가적으로 레이아웃에서 건드릴 것이 많기는 하지만(display 속성을 이용해서 완성도를 높일 수 있을 것 같다) 아무튼 여기서 마무리 지을 것이다!</p>]]></content><author><name>ash tensor</name></author><category term="깃허브" /><summary type="html"><![CDATA[깃허브 블로그 SIDEBAR 기능 추가(clean blog theme)]]></summary></entry><entry><title type="html">[리눅스] 애플 실리콘 맥에 리눅스 설치하는 법(UTM)</title><link href="http://localhost:4000/linux/2024/02/01/utm.html" rel="alternate" type="text/html" title="[리눅스] 애플 실리콘 맥에 리눅스 설치하는 법(UTM)" /><published>2024-02-01T00:00:00+09:00</published><updated>2024-02-01T00:00:00+09:00</updated><id>http://localhost:4000/linux/2024/02/01/utm</id><content type="html" xml:base="http://localhost:4000/linux/2024/02/01/utm.html"><![CDATA[<h2 id="리눅스-애플-실리콘-맥에-리눅스-설치-후기utm">[리눅스] 애플 실리콘 맥에 리눅스 설치 후기(UTM)</h2>
+
+<h3 id="utm">UTM</h3>
+
+<p><a href="https://mac.getutm.app/">UTM</a>은 이 링크에서 얻을 수 있다. 일단 <a href="https://gymdev.tistory.com/75">이 페이지</a>에서 너무 설치법을 잘 정리해 주고 있어서 내가 따로 첨언할 부분은 없었다. 아, 설치 중 중간에 <strong>display out을 확인할 수 없다</strong> 고 한동안 표시돼서 설치가 안되는건가 했는데, 조금 기다리면 문제 없이 리눅스가 부팅되니까 조금 기다리면 된다!</p>
+
+<p><img src="/img/스크린샷 2024-02-01 오후 1.27.20.png" style="width: 80%" /></p>
+
+<p>m1맥에서 제대로 구동되는 것을 확인했다.</p>]]></content><author><name>ash tensor</name></author><category term="linux" /><summary type="html"><![CDATA[[리눅스] 애플 실리콘 맥에 리눅스 설치 후기(UTM)]]></summary></entry><entry><title type="html">[백준] 백준 1931번 :: 회의실 배정 :: 실버 1</title><link href="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/02/01/boj1931.html" rel="alternate" type="text/html" title="[백준] 백준 1931번 :: 회의실 배정 :: 실버 1" /><published>2024-02-01T00:00:00+09:00</published><updated>2024-02-01T00:00:00+09:00</updated><id>http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/02/01/boj1931</id><content type="html" xml:base="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/02/01/boj1931.html"><![CDATA[<h2 id="백준-백준-1931번--회의실-배정--실버-1">[백준] 백준 1931번 :: 회의실 배정 :: 실버 1</h2>
 
 <h3 id="문제-설명">문제 설명</h3>
 
@@ -715,15 +792,7 @@ CLEAN BLOG THEME은 자체적으로 사이드바를 지원하는 테마는 아�
 <span class="o">}</span>
 
 
-</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="백준" /><category term="PS" /><category term="파이썬" /><category term="JAVA" /><summary type="html"><![CDATA[[백준] 백준 1931번 :: 회의실 배정 :: 실버 1]]></summary></entry><entry><title type="html">[리눅스] 애플 실리콘 맥에 리눅스 설치하는 법(UTM)</title><link href="http://localhost:4000/linux/2024/02/01/utm.html" rel="alternate" type="text/html" title="[리눅스] 애플 실리콘 맥에 리눅스 설치하는 법(UTM)" /><published>2024-02-01T00:00:00+09:00</published><updated>2024-02-01T00:00:00+09:00</updated><id>http://localhost:4000/linux/2024/02/01/utm</id><content type="html" xml:base="http://localhost:4000/linux/2024/02/01/utm.html"><![CDATA[<h2 id="리눅스-애플-실리콘-맥에-리눅스-설치-후기utm">[리눅스] 애플 실리콘 맥에 리눅스 설치 후기(UTM)</h2>
-
-<h3 id="utm">UTM</h3>
-
-<p><a href="https://mac.getutm.app/">UTM</a>은 이 링크에서 얻을 수 있다. 일단 <a href="https://gymdev.tistory.com/75">이 페이지</a>에서 너무 설치법을 잘 정리해 주고 있어서 내가 따로 첨언할 부분은 없었다. 아, 설치 중 중간에 <strong>display out을 확인할 수 없다</strong> 고 한동안 표시돼서 설치가 안되는건가 했는데, 조금 기다리면 문제 없이 리눅스가 부팅되니까 조금 기다리면 된다!</p>
-
-<p><img src="/img/스크린샷 2024-02-01 오후 1.27.20.png" style="width: 80%" /></p>
-
-<p>m1맥에서 제대로 구동되는 것을 확인했다.</p>]]></content><author><name>ash tensor</name></author><category term="linux" /><summary type="html"><![CDATA[[리눅스] 애플 실리콘 맥에 리눅스 설치 후기(UTM)]]></summary></entry><entry><title type="html">[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1</title><link href="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178.html" rel="alternate" type="text/html" title="[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1" /><published>2024-01-30T00:00:00+09:00</published><updated>2024-01-30T00:00:00+09:00</updated><id>http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178</id><content type="html" xml:base="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178.html"><![CDATA[<h2 id="백준자료구조-백준-2178번--미로-탐색--실버-1">[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1</h2>
+</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="백준" /><category term="PS" /><category term="파이썬" /><category term="JAVA" /><summary type="html"><![CDATA[[백준] 백준 1931번 :: 회의실 배정 :: 실버 1]]></summary></entry><entry><title type="html">[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1</title><link href="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178.html" rel="alternate" type="text/html" title="[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1" /><published>2024-01-30T00:00:00+09:00</published><updated>2024-01-30T00:00:00+09:00</updated><id>http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178</id><content type="html" xml:base="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178.html"><![CDATA[<h2 id="백준자료구조-백준-2178번--미로-탐색--실버-1">[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1</h2>
 
 <h3 id="문제-설명">문제 설명</h3>
 
@@ -1136,70 +1205,4 @@ ABC*+DE/-
     <span class="o">}</span>
 <span class="o">}</span>
 
-</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="JAVA" /><category term="자료구조" /><category term="백준" /><category term="PS" /><summary type="html"><![CDATA[[백준][자료구조] 백준 1935번 :: 후위 표기식 2 :: 실버 3]]></summary></entry><entry><title type="html">[자바][자료구조] T 메모리구조</title><link href="http://localhost:4000/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/tMemoryJava.html" rel="alternate" type="text/html" title="[자바][자료구조] T 메모리구조" /><published>2024-01-17T00:00:00+09:00</published><updated>2024-01-17T00:00:00+09:00</updated><id>http://localhost:4000/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/tMemoryJava</id><content type="html" xml:base="http://localhost:4000/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/tMemoryJava.html"><![CDATA[<h2 id="자바자료구조-t-메모리구조">[자바][자료구조] T 메모리구조</h2>
-
-<p><img src="/img/posts/JAVA/TMemorySample.png" style="display: block; margin-left: auto; margin-right: auto; width: 100%" /></p>
-
-<h3 id="mainjava">Main.java</h3>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">tmemorysample</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
-    <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">SAMPLE_INTEGER_A</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
-    <span class="kd">static</span> <span class="kt">int</span> <span class="no">SAMPLE_INTEGER_B</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">fact</span><span class="o">(</span><span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">target</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
-        <span class="o">}</span>
-        <span class="k">else</span> <span class="o">{</span>
-            <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">target</span> <span class="o">*</span> <span class="n">fact</span><span class="o">(</span><span class="n">target</span><span class="o">-</span><span class="mi">1</span><span class="o">);</span>
-            <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-
-        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">sample</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
-        <span class="n">sample</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="no">SAMPLE_INTEGER_A</span><span class="o">);</span>
-        <span class="n">sample</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="no">SAMPLE_INTEGER_B</span><span class="o">);</span>
-
-        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="nc">SolveA</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">sample</span><span class="o">);</span>
-
-        <span class="nc">SolveB</span> <span class="n">solveB</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SolveB</span><span class="o">();</span>
-        <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="n">solveB</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">sample</span><span class="o">);</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">&gt;=</span> <span class="no">SAMPLE_INTEGER_A</span><span class="o">)</span> <span class="o">{</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">fact</span><span class="o">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="o">));</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-<span class="kd">class</span> <span class="nc">SolveA</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">add</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">a</span><span class="o">){</span>
-        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">a</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="n">answer</span> <span class="o">+=</span> <span class="n">a</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<h3 id="solvebjava">SolveB.java</h3>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="kn">package</span> <span class="nn">tmemorysample</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SolveB</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">add</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">a</span><span class="o">){</span>
-        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">a</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="n">answer</span> <span class="o">+=</span> <span class="n">a</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-
-</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="JAVA" /><category term="자료구조" /><summary type="html"><![CDATA[[자바][자료구조] T 메모리구조]]></summary></entry></feed>
+</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="JAVA" /><category term="자료구조" /><category term="백준" /><category term="PS" /><summary type="html"><![CDATA[[백준][자료구조] 백준 1935번 :: 후위 표기식 2 :: 실버 3]]></summary></entry></feed>
