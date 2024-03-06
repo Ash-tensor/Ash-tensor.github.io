@@ -1,4 +1,46 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-02-29T23:17:20+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[DB] 구체화된 뷰는 테이블과 어떻게 다를까?</title><link href="http://localhost:4000/db/2024/02/29/materialized-view.html" rel="alternate" type="text/html" title="[DB] 구체화된 뷰는 테이블과 어떻게 다를까?" /><published>2024-02-29T00:00:00+09:00</published><updated>2024-02-29T00:00:00+09:00</updated><id>http://localhost:4000/db/2024/02/29/materialized-view</id><content type="html" xml:base="http://localhost:4000/db/2024/02/29/materialized-view.html"><![CDATA[<h2 id="db-물리-뷰는-테이블과-어떻게-다를까">[DB] 물리 뷰는 테이블과 어떻게 다를까?</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-03-06T15:17:15+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[후기] 알리익스프레스 SD카드 배송 후기 / 용량 뻥튀기 확인하는법</title><link href="http://localhost:4000/%EB%A6%AC%EB%B7%B0/2024/03/06/sd-card.html" rel="alternate" type="text/html" title="[후기] 알리익스프레스 SD카드 배송 후기 / 용량 뻥튀기 확인하는법" /><published>2024-03-06T00:00:00+09:00</published><updated>2024-03-06T00:00:00+09:00</updated><id>http://localhost:4000/%EB%A6%AC%EB%B7%B0/2024/03/06/sd-card</id><content type="html" xml:base="http://localhost:4000/%EB%A6%AC%EB%B7%B0/2024/03/06/sd-card.html"><![CDATA[<h2 id="후기-알리익스프레스-sd카드-배송-리뷰">[후기] 알리익스프레스 SD카드 배송 리뷰</h2>
+
+<p>최근 알리익스프레스에서 SD카드를 주문했다. 왜냐하면, 라즈베리파이를 웹 데이터베이스로 사용하고 싶었는데, 그러기 위해서는 SD카드가 필요했기 때문이다.
+기본적으로 라즈베리파이나 오렌지파이 같은 원보드 컴퓨터들은 저장공간으로 SD카드를 사용하고, 부트로더도 SD카드를 사용하기 때문에, 한번 키기 위해서라도 SD카드가 필수적이다.</p>
+
+<p>아무래도 웹 데이터베이스로 사용할 것이기 때문에 큰 용량이 필요했고, 256GB SD카드를 주문했다.</p>
+
+<p><img src="/img/posts/sdcard/1.png" width="80%" /></p>
+
+<p>이게 모든 문제의 시작이었다.</p>
+
+<h3 id="문제-설명">문제 설명</h3>
+
+<p>알리익스프레스에서 저장장치를 사지 말라고 하는건 굉장히 널리 퍼진 조언이지만, 예전에 SSD를 저렴하게 구매한 적이 있는데, 그 SSD는 아무런 문제 없이 작동했고,
+꽤나 성능도 괜찮았기 때문에 “설마 SSD도 제대로 오는데 SD카드가 제대로 오지 않겠어?” 라고 생각했기 때문이다…</p>
+
+<p>그때 500GB SSD를 2만원 안 되게 산 것 같은데, 이번 SD카드도 1만원 좀 안 되길래 용량 뻥튀기나 사기가 아니지 않을까? 라는 헛된 생각이 있었고,
+그리고 AliExpress Choice 라는 딱지가 붙어 있었기 때문에, 뭔가 나에게 약간의 신뢰감을 줬다. 그래서 구매했지만…</p>
+
+<h3 id="와-실제-사용할-수-있는-용량은-500메가도-안-돼">와 실제 사용할 수 있는 용량은 500메가도 안 돼?</h3>
+
+<p>SD카드를 받고, 라즈베리파이 운영체제 이미지를 굽기 위해서 balenaEtcher를 이용해서 깔기 시작했는데 초기 500메가 정도만 인스톨되고 그 이후에는 초당 0.3메가 정도로 떨어지더니 
+전부 인스톨되는데 예상시간이 하염없이 길어지기 시작했다. 여기서 눈치챘다. 아, 내가 당했구나 라고…</p>
+
+<p>이런 경우에 사용할 수 있는 프로그램으로 <strong>H2testw</strong> 라는 프로그램이 있다. 이 프로그램은 SD카드의 실제 용량을 확인할 수 있는 프로그램이다. 더미 파일을 만들고, 그 파일을 validate하는 방식으로 용량을 확인한다.
+그래서 확인해 본 결과…</p>
+
+<p><img src="/img/posts/sdcard/2.png" width="80%" /></p>
+
+<p>실제 사용할 수 있는 용량은 500메가 정도 밖에는 안 되고, 나머지는 전부 오류가 나는 모습을 확인할 수 있다. 
+게다가 악질인 건, SD 카드의 모습이 마치 SanDisk 제품인 것처럼 래핑을 해 놓은 모습인데(실제로는 SanDian 으로 적혀있다..) 이런 가짜 SSD 카드가 알리 익스프레스에
+널려 있다는 것이다.</p>
+
+<ol>
+  <li>이렇게 SanDian과 같이 이미 존재하는 브랜드를 흉내내는 경우</li>
+  <li>그리고 레노버 SD카드라고 판매하는 제품이 있는데 « 레노버는 SD카드를 판매하지 않는다고 하니까 의심해 볼만 하다.</li>
+  <li>용량에 비해 가격이 너무 저렴한 경우</li>
+</ol>
+
+<p>에는 의심을 해야 할 것 같다.</p>
+
+<p>환불 받고 싶지만 환불하기까지의 과정이 너무 복잡하고, 고객센터 및 판매자와의 소통이 너무 어려워서 그냥 포기하고, 다시 SD카드를 구매하기로 했다.
+쿠팡에서 삼성 SD 카드로..</p>]]></content><author><name>ash tensor</name></author><category term="리뷰" /><summary type="html"><![CDATA[[후기] 알리익스프레스 SD카드 배송 리뷰]]></summary></entry><entry><title type="html">[DB] 구체화된 뷰는 테이블과 어떻게 다를까?</title><link href="http://localhost:4000/db/2024/02/29/materialized-view.html" rel="alternate" type="text/html" title="[DB] 구체화된 뷰는 테이블과 어떻게 다를까?" /><published>2024-02-29T00:00:00+09:00</published><updated>2024-02-29T00:00:00+09:00</updated><id>http://localhost:4000/db/2024/02/29/materialized-view</id><content type="html" xml:base="http://localhost:4000/db/2024/02/29/materialized-view.html"><![CDATA[<h2 id="db-물리-뷰는-테이블과-어떻게-다를까">[DB] 물리 뷰는 테이블과 어떻게 다를까?</h2>
 
 <h3 id="문제-설명">문제 설명</h3>
 
@@ -1061,148 +1103,4 @@ CLEAN BLOG THEME은 자체적으로 사이드바를 지원하는 테마는 아�
     <span class="o">}</span>
 <span class="o">}</span>
 
-</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="백준" /><category term="PS" /><category term="자료구조" /><category term="파이썬" /><category term="JAVA" /><summary type="html"><![CDATA[[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1]]></summary></entry><entry><title type="html">[백준][자료구조] 백준 1935번 :: 후위 표기식 2 :: 실버 3</title><link href="http://localhost:4000/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%EB%B0%B1%EC%A4%80/ps/2024/01/23/boj1935.html" rel="alternate" type="text/html" title="[백준][자료구조] 백준 1935번 :: 후위 표기식 2 :: 실버 3" /><published>2024-01-23T00:00:00+09:00</published><updated>2024-01-23T00:00:00+09:00</updated><id>http://localhost:4000/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%EB%B0%B1%EC%A4%80/ps/2024/01/23/boj1935</id><content type="html" xml:base="http://localhost:4000/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%EB%B0%B1%EC%A4%80/ps/2024/01/23/boj1935.html"><![CDATA[<h2 id="백준자료구조-백준-1935번--후위-표기식-2--실버-3">[백준][자료구조] 백준 1935번 :: 후위 표기식 2 :: 실버 3</h2>
-
-<h3 id="문제-설명">문제 설명</h3>
-
-<p>후위 표기식과 각 피연산자에 대응하는 값들이 주어져 있을 때, 그 식을 계산하는 프로그램을 작성하시오.</p>
-
-<p><strong>입력</strong></p>
-
-<p>첫째 줄에 피연산자의 개수(1 ≤ N ≤ 26) 가 주어진다. 그리고 둘째 줄에는 후위 표기식이 주어진다. (여기서 피연산자는 A~Z의 영대문자이며, A부터 순서대로 N개의 영대문자만이 사용되며, 길이는 100을 넘지 않는다) 그리고 셋째 줄부터 N+2번째 줄까지는 각 피연산자에 대응하는 값이 주어진다. 3번째 줄에는 A에 해당하는 값, 4번째 줄에는 B에 해당하는값 , 5번째 줄에는 C …이 주어진다, 그리고 피연산자에 대응 하는 값은 100보다 작거나 같은 자연수이다.</p>
-
-<p>후위 표기식을 앞에서부터 계산했을 때, 식의 결과와 중간 결과가 -20억보다 크거나 같고, 20억보다 작거나 같은 입력만 주어진다.</p>
-
-<p><strong>출력</strong></p>
-
-<p>계산 결과를 소숫점 둘째 자리까지 출력한다.</p>
-
-<h3 id="제한시간">제한시간</h3>
-
-<p>2 초	128 MB</p>
-
-<h3 id="예제-입력">예제 입력</h3>
-
-<p>5
-ABC*+DE/-
-1
-2
-3
-4
-5</p>
-
-<h3 id="예제-출력">예제 출력</h3>
-
-<p>6.20</p>
-
-<h4 id="접근방법">접근방법</h4>
-
-<p>이 문제는 자료구조의 스택을 활용하는 문제로, 대표적인 스택을 활용한 자료구조 예제 중 하나이다. 보통 괄호 검사와 함께 자료구조 시간에 배우는데, 이를 풀기 위해서는 후위 표기식을 알아야 하고, 스택 자료구조를 사용할 줄 알아야 한다.</p>
-
-<p>5%에서 해결이 안 돼서 곤란했는데 float으로는 정밀도를 해결할 수 없어서 Double로 계산해야만 문제가 풀린다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="kn">package</span> <span class="nn">boj</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">boj1935</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">solve</span><span class="o">();</span>
-
-    <span class="o">}</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">solve</span><span class="o">()</span> <span class="o">{</span>
-        <span class="nc">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
-        <span class="kt">int</span> <span class="n">quest</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
-        <span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
-
-        <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Double</span><span class="o">&gt;</span> <span class="n">operandMap</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
-
-
-        <span class="kt">char</span><span class="o">[]</span> <span class="n">operator</span> <span class="o">=</span> <span class="o">{</span><span class="sc">'*'</span><span class="o">,</span> <span class="sc">'+'</span><span class="o">,</span> <span class="sc">'-'</span><span class="o">,</span> <span class="sc">'/'</span><span class="o">};</span>
-
-        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">&gt;</span> <span class="n">operators</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
-        <span class="k">for</span> <span class="o">(</span><span class="kt">char</span> <span class="n">c</span> <span class="o">:</span> <span class="n">operator</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">operators</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
-        <span class="o">}</span>
-
-        <span class="nc">String</span> <span class="n">questLine</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
-        <span class="kt">char</span><span class="o">[]</span> <span class="n">questArray</span> <span class="o">=</span> <span class="n">questLine</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">();</span>
-
-        <span class="nc">Stack</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">questStack</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Stack</span><span class="o">&lt;&gt;();</span>
-
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">questLine</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">operators</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">questArray</span><span class="o">[</span><span class="n">i</span><span class="o">]))</span> <span class="o">{</span>
-
-                <span class="k">switch</span><span class="o">(</span><span class="n">questArray</span><span class="o">[</span><span class="n">i</span><span class="o">])</span> <span class="o">{</span>
-                    <span class="k">case</span> <span class="sc">'*'</span> <span class="o">:</span>
-                        <span class="nc">String</span> <span class="n">temp1</span> <span class="o">=</span> <span class="n">questStack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
-                        <span class="nc">String</span> <span class="n">temp2</span> <span class="o">=</span> <span class="n">questStack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
-
-                        <span class="nc">Double</span> <span class="n">operand1</span> <span class="o">=</span> <span class="n">operandMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">temp2</span><span class="o">);</span>
-                        <span class="nc">Double</span> <span class="n">operand2</span> <span class="o">=</span> <span class="n">operandMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">temp1</span><span class="o">);</span>
-
-                        <span class="nc">Double</span> <span class="n">tempAnswer</span> <span class="o">=</span> <span class="n">operand1</span> <span class="o">*</span> <span class="n">operand2</span><span class="o">;</span>
-                        <span class="n">questStack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">tempAnswer</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
-                        <span class="n">operandMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">tempAnswer</span><span class="o">.</span><span class="na">toString</span><span class="o">(),</span> <span class="n">tempAnswer</span><span class="o">);</span>
-                        <span class="k">break</span><span class="o">;</span>
-
-                    <span class="k">case</span> <span class="sc">'-'</span> <span class="o">:</span>
-                        <span class="nc">String</span> <span class="n">temp3</span> <span class="o">=</span> <span class="n">questStack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
-                        <span class="nc">String</span> <span class="n">temp4</span> <span class="o">=</span> <span class="n">questStack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
-
-                        <span class="nc">Double</span> <span class="n">operand3</span> <span class="o">=</span> <span class="n">operandMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">temp4</span><span class="o">);</span>
-                        <span class="nc">Double</span> <span class="n">operand4</span> <span class="o">=</span> <span class="n">operandMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">temp3</span><span class="o">);</span>
-
-                        <span class="nc">Double</span> <span class="n">tempAnswer1</span> <span class="o">=</span> <span class="n">operand3</span> <span class="o">-</span> <span class="n">operand4</span><span class="o">;</span>
-                        <span class="n">questStack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">tempAnswer1</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
-                        <span class="n">operandMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">tempAnswer1</span><span class="o">.</span><span class="na">toString</span><span class="o">(),</span> <span class="n">tempAnswer1</span><span class="o">);</span>
-                        <span class="k">break</span><span class="o">;</span>
-
-                    <span class="k">case</span> <span class="sc">'+'</span> <span class="o">:</span>
-                        <span class="nc">String</span> <span class="n">temp5</span> <span class="o">=</span> <span class="n">questStack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
-                        <span class="nc">String</span> <span class="n">temp6</span> <span class="o">=</span> <span class="n">questStack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
-
-                        <span class="nc">Double</span> <span class="n">operand5</span> <span class="o">=</span> <span class="n">operandMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">temp6</span><span class="o">);</span>
-                        <span class="nc">Double</span> <span class="n">operand6</span> <span class="o">=</span> <span class="n">operandMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">temp5</span><span class="o">);</span>
-
-                        <span class="nc">Double</span> <span class="n">tempAnswer2</span> <span class="o">=</span> <span class="n">operand5</span> <span class="o">+</span> <span class="n">operand6</span><span class="o">;</span>
-                        <span class="n">questStack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">tempAnswer2</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
-                        <span class="n">operandMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">tempAnswer2</span><span class="o">.</span><span class="na">toString</span><span class="o">(),</span> <span class="n">tempAnswer2</span><span class="o">);</span>
-                        <span class="k">break</span><span class="o">;</span>
-
-                    <span class="k">case</span> <span class="sc">'/'</span> <span class="o">:</span>
-                        <span class="nc">String</span> <span class="n">temp7</span> <span class="o">=</span> <span class="n">questStack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
-                        <span class="nc">String</span> <span class="n">temp8</span> <span class="o">=</span> <span class="n">questStack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
-
-                        <span class="nc">Double</span> <span class="n">operand7</span> <span class="o">=</span> <span class="n">operandMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">temp8</span><span class="o">);</span>
-                        <span class="nc">Double</span> <span class="n">operand8</span> <span class="o">=</span> <span class="n">operandMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">temp7</span><span class="o">);</span>
-
-                        <span class="nc">Double</span> <span class="n">tempAnswer3</span> <span class="o">=</span> <span class="n">operand7</span> <span class="o">/</span> <span class="n">operand8</span><span class="o">;</span>
-                        <span class="n">questStack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">tempAnswer3</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
-                        <span class="n">operandMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">tempAnswer3</span><span class="o">.</span><span class="na">toString</span><span class="o">(),</span> <span class="n">tempAnswer3</span><span class="o">);</span>
-                        <span class="k">break</span><span class="o">;</span>
-                <span class="o">}</span>
-            <span class="o">}</span>
-            <span class="k">else</span> <span class="o">{</span>
-                <span class="k">if</span><span class="o">(</span><span class="n">operandMap</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="nc">Character</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">questArray</span><span class="o">[</span><span class="n">i</span><span class="o">])))</span> <span class="o">{</span>
-                    <span class="n">questStack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="nc">Character</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">questArray</span><span class="o">[</span><span class="n">i</span><span class="o">]));</span>
-
-                <span class="o">}</span>
-                <span class="k">else</span> <span class="o">{</span>
-                <span class="nc">Double</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextDouble</span><span class="o">();</span>
-                <span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
-
-                <span class="n">operandMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="nc">Character</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">questArray</span><span class="o">[</span><span class="n">i</span><span class="o">]),</span> <span class="n">temp</span><span class="o">);</span>
-                <span class="n">questStack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="nc">Character</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">questArray</span><span class="o">[</span><span class="n">i</span><span class="o">]));</span>
-                <span class="o">}</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-
-        <span class="nc">String</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">questStack</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
-        <span class="nc">Double</span> <span class="n">finalAnswer</span> <span class="o">=</span> <span class="nc">Double</span><span class="o">.</span><span class="na">parseDouble</span><span class="o">(</span><span class="n">answer</span><span class="o">);</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="nc">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"%.2f"</span><span class="o">,</span> <span class="n">finalAnswer</span><span class="o">));</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-
-</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="JAVA" /><category term="자료구조" /><category term="백준" /><category term="PS" /><summary type="html"><![CDATA[[백준][자료구조] 백준 1935번 :: 후위 표기식 2 :: 실버 3]]></summary></entry></feed>
+</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="백준" /><category term="PS" /><category term="자료구조" /><category term="파이썬" /><category term="JAVA" /><summary type="html"><![CDATA[[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1]]></summary></entry></feed>

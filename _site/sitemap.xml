@@ -3,6 +3,10 @@
 
     
     <url>
+        <loc>http://localhost:4000/%EB%A6%AC%EB%B7%B0/2024/03/06/sd-card.html</loc>
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/db/2024/02/29/materialized-view.html</loc>
     </url>
     
@@ -219,7 +223,7 @@
     
     
     <url>
-        <loc>http://localhost:4000/</loc>
+        <loc>http://localhost:4000/posts/</loc>
     </url>
     
     
@@ -227,7 +231,7 @@
     
     
     <url>
-        <loc>http://localhost:4000/posts/</loc>
+        <loc>http://localhost:4000/</loc>
     </url>
     
     
@@ -241,6 +245,14 @@
     
     
     
+    
+    
+    
+    
+    
+    <url>
+        <loc>http://localhost:4000/category/%E1%84%85%E1%85%B5%E1%84%87%E1%85%B2.html</loc>
+    </url>
     
     
     

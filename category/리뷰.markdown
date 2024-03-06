@@ -1,0 +1,6 @@
+---
+layout: category
+title: 리뷰
+description: 리뷰 및 후기 📁카테고리.
+background: '/img/bg-category.jpg'
+---
