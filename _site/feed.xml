@@ -1,4 +1,71 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-03-06T15:17:15+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[후기] 알리익스프레스 SD카드 배송 후기 / 용량 뻥튀기 확인하는법</title><link href="http://localhost:4000/%EB%A6%AC%EB%B7%B0/2024/03/06/sd-card.html" rel="alternate" type="text/html" title="[후기] 알리익스프레스 SD카드 배송 후기 / 용량 뻥튀기 확인하는법" /><published>2024-03-06T00:00:00+09:00</published><updated>2024-03-06T00:00:00+09:00</updated><id>http://localhost:4000/%EB%A6%AC%EB%B7%B0/2024/03/06/sd-card</id><content type="html" xml:base="http://localhost:4000/%EB%A6%AC%EB%B7%B0/2024/03/06/sd-card.html"><![CDATA[<h2 id="후기-알리익스프레스-sd카드-배송-리뷰">[후기] 알리익스프레스 SD카드 배송 리뷰</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-03-19T19:22:06+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[데이터]개인정보 처리 위탁과 제 3자 제공의 차이</title><link href="http://localhost:4000/ml/2024/03/19/personal-information.html" rel="alternate" type="text/html" title="[데이터]개인정보 처리 위탁과 제 3자 제공의 차이" /><published>2024-03-19T00:00:00+09:00</published><updated>2024-03-19T00:00:00+09:00</updated><id>http://localhost:4000/ml/2024/03/19/personal-information</id><content type="html" xml:base="http://localhost:4000/ml/2024/03/19/personal-information.html"><![CDATA[<h2 id="데이터개인정보-처리-위탁과-제-3자-제공의-차이">[데이터]개인정보 처리 위탁과 제 3자 제공의 차이</h2>
+
+<p>개인정보의 처리 위탁과 개인정보의 제 3자 제공은 언뜻 보면 비슷한 개념으로 보일 수 있지만, 실제로는 매우 다른 개념이다.
+빅데이터분석기사나 보안 등의 과목에서 개인정보의 이전에 관련된 과목에서</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>개인정보의 처리 위탁은 개인정보처리자의 업무를 처리할 목적으로 제 3자에게 이전되는 것이다.
+</code></pre></div></div>
+
+<p>라고 설명하고, 개인정보의 제 3자 제공은</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>해당 정보를 제공받는 자의 고유한 업무를 처리할 목적 및 이익을 위하여 개인정보가 이전되는 것이다.
+</code></pre></div></div>
+
+<p>라고 설명하고 있다. 이 말만 들어서는 정확히 어떤 차이가 있는지 명확히 이해하기는 어렵다. 대법원에서는 개인정보의 처리위탁은 본래의 개인정보 수집 이용 목적과 관련된
+ 위탁자의 업무 처리와 이익을 위하여 개인정보가 이전되는 경우를 의미한다,고 판시한 적이 있다. 아니, 생각해보면 개인정보의 제 3자 제공이나 개인정보의 위탁이나
+ 어쨌든 회사에게 내 개인정보를 넘기는 것이고, 대법원이 판시한 것처럼, 중간에 있는 회사를 위해서 개인정보가 제공되는 것 같은데 왜 제 3자 제공과는 다른가? 라는 생각이 들 수 있다.</p>
+
+<p>또한 문제에서는</p>
+
+<ul>
+  <li>해당 정보를 제공받는 자의 고유한 업무를 처리할 목적 및 이익을 위하여 개인정보가 이전되는 것이다.</li>
+  <li>개인정보를 제공하는 자의 업무 처리와 이익을 위하는 경우이다.</li>
+  <li>개인정보를 제공받는 자의 업무 처리와 이익을 위하는 경우이다.</li>
+  <li>개인정보처리자의 업무를 처리할 목적으로 제 3자에게 이전되는 것이다.</li>
+  <li>해당 정보를 제공받는 자의 고유한 업무를 처리할 목적 및 이익을 위하여 개인정보가 이전되는 것이다.</li>
+</ul>
+
+<p>등의 선지로 등장하기 때문에, 제대로 차이점을 이해하지 못했다면 헷갈릴 수가 있다. 그 이유는 해당 문장들에서 주어나 목적어등이 생략된 나머지 정보가 
+완전하지 않기 때문이다.</p>
+
+<h3 id="개인정보의-처리-위탁">개인정보의 처리 위탁</h3>
+
+<p>개인정보의 처리 위탁은 개인정보처리자의 업무를 처리할 목적으로 제 3자에게 이전되는 것이다. 또한 위의 선지에서 골라보자면</p>
+
+<ul>
+  <li>개인정보를 제공하는 자의 업무 처리와 이익을 위하는 경우</li>
+  <li>개인정보처리자의 업무를 처리할 목적으로 제 3자에게 이전되는 것이다.</li>
+</ul>
+
+<p>이렇게 고를 수 있다. 차이를 알기 위해서는 그림을 그려보면 간단하다.</p>
+
+<p><img src="/img/posts/personal-information/1.png" width="80%" /></p>
+
+<p>이러한 관계가 있다고 하자, 첫번째로 개인정보의 처리 위탁이 일어날 때, 위 관계는 다음과 같이 표현할 수 있다.</p>
+
+<p><img src="/img/posts/personal-information/2.png" width="80%" /></p>
+
+<p>개인정보의 처리 위탁은 본래의 개인정보 수집 이용 목적과 관련된 위탁자의 업무 처리와 이익을 위하여 개인정보가 이전되는 것이다. 
+즉 위의 나왔던 선지와 문장의 이익은 개인정보를 제공한 자의 이익과 그 개인정보를 1차적으로 받고, 타 사에 위탁한 위탁자의 업무 처리와 관련된 이익을 말한다.</p>
+
+<p>여기서 개인정보는 비즈니스를 수행하는데 필요한 정보여야만 하고, 이를 최종적으로 마지막에 위탁받은 자 역시, 그 개인정보를 자신의 이익을 위하여 사용해서는 안 된다.</p>
+
+<p>따라서 위 문장들 중에서 개인정보를 제공받는 자의 고유한 업무를 처리할 목적 및 이익을 위하여 개인정보가 이전되는 것이다 « 이 문장은 개인정보 위탁이 아닌 개인정보 제 3자 제공에 관련된 문장이 된다.
+왜냐하면 택배를 예시로 들어보자, 분명 이렇게 생각할 수 있다. 택배 회사에 개인정보를 제공한다고 했을 때, 택배 회사의 업무를 위해서 개인정보를 제공하는 것이니까 택배회사의 고유한 업무를 수행하기 때문에 제 3자 제공이다. 이렇게 생각할 수도 있지만
+ 사실 택배 회사의 업무는 특정 쇼핑몰의 요청에 따라 사용자에게 물건을 배송하는 것이고, 이는 특정 쇼핑몰의 비즈니스의 일부분인 것이고, 택배 회사의 고유한 업무를 처리할 목적으로 개인정보를 사용하는 것은 아니다.</p>
+
+<p>이러한 경우에는 정보를 다루는 주체가 정보를 어떻게 이용할지 예측이 가능하기 때문에 관리 감독 의무는 위탁자(중간에 끼어있는 회사)에게 존재하고, 손해배상의 책임은 위탁자 및 수탁자가 공통으로 부담한다.</p>
+
+<h3 id="개인정보의-제-3자-제공">개인정보의 제 3자 제공</h3>
+
+<p><img src="/img/posts/personal-information/3.png" width="80%" /></p>
+
+<p>개인정보의 제 3자 제공은 해당 정보를 제공받는 자의 고유한 업무를 처리할 목적 및 이익을 위하여 개인정보가 이전되는 것이다. 이걸 보면 개인정보 위탁과는 다르다는 점이 이해가 확 될 것이다.
+위 그림에서 확인할 수 있는 것과 같이, 중간의 회사가 누군가에게 개인정보 제 3자 제공을 한다면, 그건 중간의 회사와 고객간의 비즈니스와는 관련이 없는,
+그냥 개인정보를 제공할 뿐인 것이다. 즉, 광고 전화나 판촉 전화, 개인정보 판매와 같은 일이 일어난다는 것이다. 이는 개인정보를 최초에 제공한 고객의 이익과는 아무런 관련이 없다. 또한 중간에 존재하는 회사와 고객간의 비즈니스에는 
+아무런 관련이 없다. 오직 제 3자의 회사의 특정한 이익과 업무를 위해 사용될 뿐인 것이다.</p>
+
+<p>이러한 경우에는 제공자가 정보가 어떻게 이용될지 예측이 알 수 없고 개인정보의 제 3자의 이익을 위해 사용되기 때문에, 관리 감독 의무나 손해배상 책임이 제 3자에게 존재한다.</p>]]></content><author><name>ash tensor</name></author><category term="ML" /><summary type="html"><![CDATA[[데이터]개인정보 처리 위탁과 제 3자 제공의 차이]]></summary></entry><entry><title type="html">[후기] 알리익스프레스 SD카드 배송 후기 / 용량 뻥튀기 확인하는법</title><link href="http://localhost:4000/%EB%A6%AC%EB%B7%B0/2024/03/06/sd-card.html" rel="alternate" type="text/html" title="[후기] 알리익스프레스 SD카드 배송 후기 / 용량 뻥튀기 확인하는법" /><published>2024-03-06T00:00:00+09:00</published><updated>2024-03-06T00:00:00+09:00</updated><id>http://localhost:4000/%EB%A6%AC%EB%B7%B0/2024/03/06/sd-card</id><content type="html" xml:base="http://localhost:4000/%EB%A6%AC%EB%B7%B0/2024/03/06/sd-card.html"><![CDATA[<h2 id="후기-알리익스프레스-sd카드-배송-리뷰">[후기] 알리익스프레스 SD카드 배송 리뷰</h2>
 
 <p>최근 알리익스프레스에서 SD카드를 주문했다. 왜냐하면, 라즈베리파이를 웹 데이터베이스로 사용하고 싶었는데, 그러기 위해서는 SD카드가 필요했기 때문이다.
 기본적으로 라즈베리파이나 오렌지파이 같은 원보드 컴퓨터들은 저장공간으로 SD카드를 사용하고, 부트로더도 SD카드를 사용하기 때문에, 한번 키기 위해서라도 SD카드가 필수적이다.</p>
@@ -834,273 +901,4 @@ CLEAN BLOG THEME은 자체적으로 사이드바를 지원하는 테마는 아�
 <span class="o">}</span>
 
 
-</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="백준" /><category term="PS" /><category term="파이썬" /><category term="JAVA" /><summary type="html"><![CDATA[[백준] 백준 1931번 :: 회의실 배정 :: 실버 1]]></summary></entry><entry><title type="html">[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1</title><link href="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178.html" rel="alternate" type="text/html" title="[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1" /><published>2024-01-30T00:00:00+09:00</published><updated>2024-01-30T00:00:00+09:00</updated><id>http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178</id><content type="html" xml:base="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178.html"><![CDATA[<h2 id="백준자료구조-백준-2178번--미로-탐색--실버-1">[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1</h2>
-
-<h3 id="문제-설명">문제 설명</h3>
-
-<p>N * M 크기의 배열로 표현되는 미로가 있다. 미로에서 1은 이동할 수 있는 칸을 나타내고, 0은 이동할 수 없는 칸을 나타낸다. 이러한 미로가 주어졌을 때, (1, 1)에서 출발하여 (N, M)의 위치로 이동할 때 지나야 하는 최소의 칸 수를 구하는 프로그램을 작성하시오. 한 칸에서 다른 칸으로 이동할 때, 서로 인접한 칸으로만 이동할 수 있다.</p>
-
-<p>위의 예에서는 15칸을 지나야 (N, M)의 위치로 이동할 수 있다. 칸을 셀 때에는 시작 위치와 도착 위치도 포함한다.</p>
-
-<p><strong>입력</strong></p>
-
-<p>첫째 줄에 두 정수 N, M(2 ≤ N, M ≤ 100)이 주어진다. 다음 N개의 줄에는 M개의 정수로 미로가 주어진다. 각각의 수들은 붙어서 입력으로 주어진다.</p>
-
-<p><strong>출력</strong></p>
-
-<p>첫째 줄에 지나야 하는 최소의 칸 수를 출력한다. 항상 도착위치로 이동할 수 있는 경우만 입력으로 주어진다.</p>
-
-<h3 id="제한시간">제한시간</h3>
-
-<p>1 초	192 MB</p>
-
-<h3 id="예제-입력">예제 입력</h3>
-
-<p>4 6
-101111
-101010
-101011
-111011</p>
-
-<h3 id="예제-출력">예제 출력</h3>
-
-<p>15</p>
-
-<h4 id="접근방법">접근방법</h4>
-
-<p>흔한 4방향 미로찾기 문제이다. 이런 문제는 너무 템플릿화 되어서, 푸는 방법이 정형화되어 있다.</p>
-<ol>
-  <li>첫번째로 이런 격자형 문제는 방향 배열을 사용해서 문제에 접근한다. 위, 아래, 좌, 우를 각각 dx, dy라는 방향 배열을 정의하는 것이다. 만약 방향 배열을 정의하지 않으면 코드가 너무 복잡해진다.</li>
-  <li>또한 <strong>최단거리</strong>를 구하는 문제이기 때문에 BFS로 접근하는 편이 좋다.</li>
-</ol>
-
-<h5 id="방향배열">방향배열</h5>
-
-<p>방향 배열을 사용하지 않은 예시를 보자. 이는 다음과 같다.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="k">def</span> <span class="nf">connected_node_checker</span><span class="p">(</span><span class="n">the_map</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="p">:</span>
-    <span class="c1">## 가장 첫번쨰 열일때.
-</span>    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
-        <span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
-            <span class="n">connected_node</span> <span class="o">=</span> <span class="p">[[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">],[</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">]]</span>
-            <span class="n">valued_connected_node</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">connected_node</span> <span class="p">:</span>
-                <span class="k">if</span> <span class="n">the_map</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">:</span>
-                    <span class="n">valued_connected_node</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-                <span class="k">else</span> <span class="p">:</span>
-                    <span class="k">pass</span>
-            <span class="k">return</span> <span class="n">valued_connected_node</span>
-
-        <span class="k">elif</span> <span class="n">y</span> <span class="o">==</span> <span class="nf">len</span><span class="p">(</span><span class="n">the_map</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span> <span class="p">:</span>
-            <span class="n">connected_node</span> <span class="o">=</span> <span class="p">[[</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">],[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
-            <span class="n">valued_connected_node</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">connected_node</span> <span class="p">:</span>
-                <span class="k">if</span> <span class="n">the_map</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">:</span>
-                    <span class="n">valued_connected_node</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-                <span class="k">else</span> <span class="p">:</span>
-                    <span class="k">pass</span>
-            <span class="k">return</span> <span class="n">valued_connected_node</span>
-
-        <span class="k">else</span> <span class="p">:</span>
-            <span class="n">connected_node</span> <span class="o">=</span> <span class="p">[[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="p">],[</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">],[</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">y</span><span class="p">]]</span>
-            <span class="n">valued_connected_node</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">connected_node</span> <span class="p">:</span>
-                <span class="k">if</span> <span class="n">the_map</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-                    <span class="n">valued_connected_node</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-                <span class="k">else</span> <span class="p">:</span>
-                    <span class="k">pass</span>
-            <span class="k">return</span> <span class="n">valued_connected_node</span>
-
-    <span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="nf">len</span><span class="p">(</span><span class="n">the_map</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">:</span>
-        <span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
-            <span class="n">valued_connected_node</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="n">connected_node</span> <span class="o">=</span> <span class="p">[[</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">],[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">]]</span>
-            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">connected_node</span> <span class="p">:</span>
-                <span class="k">if</span> <span class="n">the_map</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">:</span>
-                    <span class="n">valued_connected_node</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-                <span class="k">else</span> <span class="p">:</span>
-                    <span class="k">pass</span>
-            <span class="k">return</span> <span class="n">valued_connected_node</span>
-
-        <span class="k">elif</span> <span class="n">y</span> <span class="o">==</span> <span class="nf">len</span><span class="p">(</span><span class="n">the_map</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">:</span>
-            <span class="n">valued_connected_node</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="n">connected_node</span> <span class="o">=</span> <span class="p">[[</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span> <span class="p">,</span><span class="n">y</span><span class="p">],</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
-            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">connected_node</span> <span class="p">:</span>
-                <span class="k">if</span> <span class="n">the_map</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">:</span>
-                    <span class="n">valued_connected_node</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-                <span class="k">else</span> <span class="p">:</span>
-                    <span class="k">pass</span>
-            <span class="k">return</span> <span class="n">valued_connected_node</span>
-
-        <span class="k">else</span> <span class="p">:</span>
-            <span class="n">valued_connected_node</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="n">connected_node</span> <span class="o">=</span> <span class="p">[[</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]]</span>
-            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">connected_node</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">the_map</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-                    <span class="n">valued_connected_node</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="k">pass</span>
-            <span class="k">return</span> <span class="n">valued_connected_node</span>
-
-    <span class="k">else</span> <span class="p">:</span>
-        <span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">:</span>
-            <span class="n">connected_node</span> <span class="o">=</span> <span class="p">[[</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">],[</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">],[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">]]</span>
-            <span class="n">valued_connected_node</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">connected_node</span> <span class="p">:</span>
-                <span class="k">if</span> <span class="n">the_map</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">:</span>
-                    <span class="n">valued_connected_node</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-                <span class="k">else</span> <span class="p">:</span>
-                    <span class="k">pass</span>
-            <span class="k">return</span> <span class="n">valued_connected_node</span>
-
-        <span class="k">elif</span> <span class="n">y</span> <span class="o">==</span> <span class="nf">len</span><span class="p">(</span><span class="n">the_map</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">:</span>
-            <span class="n">connected_node</span> <span class="o">=</span> <span class="p">[[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="p">],[</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">],[</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">]]</span>
-            <span class="n">valued_connected_node</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">connected_node</span> <span class="p">:</span>
-                <span class="k">if</span> <span class="n">the_map</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">:</span>
-                    <span class="n">valued_connected_node</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-                <span class="k">else</span> <span class="p">:</span>
-                    <span class="k">pass</span>
-            <span class="k">return</span> <span class="n">valued_connected_node</span>
-
-        <span class="k">else</span> <span class="p">:</span>
-            <span class="n">connected_node</span> <span class="o">=</span> <span class="p">[[</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">],[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mi">1</span> <span class="p">],[</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">],[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
-            <span class="n">valued_connected_node</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">connected_node</span> <span class="p">:</span>
-                <span class="k">if</span> <span class="n">the_map</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">:</span>
-                    <span class="n">valued_connected_node</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-                <span class="k">else</span> <span class="p">:</span>
-                    <span class="k">pass</span>
-            <span class="k">return</span> <span class="n">valued_connected_node</span>
-
-</code></pre></div></div>
-
-<p>위 방법은 매우 불편하다. 물론 이 방법으로 문제를 접근한다고 하더라도 답은 똑같다. 하지만 이렇게 배열의 첫번째 인덱스, 두번쨰 인덱스 모두의 경우의 수를 다 따져서 하드코딩하는 경우에는 반복문의 수가 너무 많고, 구현 과정에서 Human error가 발생할 가능성이 높다. 따라서 이런 경우에는 방향배열이라는 방법을 사용한다. 위 방법과 마찬가지인 내용이지만 훨신 간단하다. 코드를 한번 보자.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="c1"># 방향 배열 정의 (상, 우, 하, 좌)
-</span><span class="n">dx</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-<span class="n">dy</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-
-<span class="k">def</span> <span class="nf">connected_node_checker_2</span><span class="p">(</span><span class="n">the_map</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="p">:</span>
-    <span class="n">valued_connected_node</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
-        <span class="n">nx</span><span class="p">,</span> <span class="n">ny</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">dx</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">y</span> <span class="o">+</span> <span class="n">dy</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-        <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">nx</span> <span class="o">&lt;</span> <span class="nf">len</span><span class="p">(</span><span class="n">the_map</span><span class="p">)</span> <span class="ow">and</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">ny</span> <span class="o">&lt;</span> <span class="nf">len</span><span class="p">(</span><span class="n">the_map</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="ow">and</span> <span class="n">the_map</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="n">valued_connected_node</span><span class="p">.</span><span class="nf">append</span><span class="p">([</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">])</span>
-    <span class="k">return</span> <span class="n">valued_connected_node</span>
-
-</code></pre></div></div>
-
-<p>코드가 훨신 간단해졌다. 코드의 내용은 간단하다. 중요한 부분은 5번째 라인의 if문이다. 주어진 조건 the_map[i][j] 에서 nx(배열의 첫번째 인덱스)가 0 이하가 될 수는 없다. 그런 경우에는 indexOutOf에러가 발생할 것이다. 또한 nx가 len(the_map)보다 커질 수도 없다. y도 마찬가지이다. if 0 &lt;= nx &lt; len(the_map) and 0 &lt;= ny &lt; len(the_map[0]) 이 부분이 바로 그러한 인덱스를 제한해 준 조건이다.</p>
-
-<p>그리고 and the_map[nx][ny] == 1 부분은 실제로 값을 참조해서 연결되어 있는 노드가 있는지 확인하는 조건이다.
-방향 배열을 사용하니 코드가 더 간단해졌다. 수없이 많은 반복문이 없어진 것은 덤이다.</p>
-
-<h5 id="bfs">BFS</h5>
-
-<p>위 함수를 사용하여 BFS를 구현한 함수이다.</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="k">def</span> <span class="nf">bfs_to_goal</span><span class="p">(</span><span class="n">the_map</span><span class="p">,</span> <span class="n">start_node</span> <span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">goal</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
-    <span class="n">open_list</span> <span class="o">=</span> <span class="nf">deque</span><span class="p">()</span>
-    <span class="n">visited_set</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">False</span><span class="p">]</span><span class="o">*</span><span class="nf">len</span><span class="p">(</span><span class="n">the_map</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">the_map</span><span class="p">))]</span>
-
-    <span class="n">open_list</span><span class="p">.</span><span class="nf">append</span><span class="p">([</span><span class="n">start_node</span><span class="p">])</span>
-    <span class="n">visited_set</span><span class="p">[</span><span class="n">start_node</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">start_node</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="bp">True</span> 
-
-    <span class="k">while</span> <span class="n">open_list</span> <span class="p">:</span>
-        <span class="n">selected_node</span> <span class="o">=</span> <span class="n">open_list</span><span class="p">.</span><span class="nf">popleft</span><span class="p">()</span>
-        <span class="n">last_selected_node</span> <span class="o">=</span> <span class="n">selected_node</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-
-        <span class="k">if</span> <span class="n">last_selected_node</span> <span class="o">==</span> <span class="n">goal</span> <span class="p">:</span>
-            <span class="k">return</span> <span class="nf">len</span><span class="p">(</span><span class="n">selected_node</span><span class="p">)</span>
-
-        <span class="n">connected_node_list</span> <span class="o">=</span> <span class="nf">connected_node_checker_2</span><span class="p">(</span><span class="n">the_map</span><span class="p">,</span> <span class="n">last_selected_node</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">last_selected_node</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">connected_node_list</span> <span class="p">:</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">visited_set</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="p">:</span>
-                <span class="n">temp</span> <span class="o">=</span> <span class="n">selected_node</span><span class="p">[:]</span>
-                <span class="n">temp</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-                <span class="n">open_list</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
-                <span class="n">visited_set</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="bp">True</span> 
-    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
-
-</code></pre></div></div>
-
-<p>open_list는 deque이다. 일반 list로 구현할 경우에는 굉장히 느려지기 때문에, deque를 사용해야 한다. 또한 visited_set은 2차원 boolean 배열인데, 처음에는 시간을 위해서 set을 사용했지만(list를 사용하면 안 된다. list는 매우 느리기 때문에 시간초과로 문제가 터져버린다) 이런 경우에 메모리가 초과되어 버렸다. 따라서 2차원 boolean 배열로 각각 노드마다 방문을 했는지 하지 않았는지를 검사했다.</p>
-
-<h5 id="java-코드">java 코드</h5>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-
-<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
-    <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">dx</span> <span class="o">=</span> <span class="o">{-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">};</span>
-    <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">dy</span> <span class="o">=</span> <span class="o">{</span><span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">};</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="nc">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
-        <span class="kt">int</span><span class="o">[]</span> <span class="n">condition</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">2</span><span class="o">];</span>
-        <span class="n">condition</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
-        <span class="n">condition</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
-        <span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
-
-        <span class="kt">int</span><span class="o">[][]</span> <span class="n">theMap</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">condition</span><span class="o">[</span><span class="mi">0</span><span class="o">]][</span><span class="n">condition</span><span class="o">[</span><span class="mi">1</span><span class="o">]];</span>
-        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">condition</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="nc">String</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
-            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">temp</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
-                <span class="n">theMap</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">j</span><span class="o">)</span> <span class="o">-</span> <span class="sc">'0'</span><span class="o">;</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-
-        <span class="kt">int</span><span class="o">[]</span> <span class="n">startNode</span> <span class="o">=</span> <span class="o">{</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">};</span>
-        <span class="kt">int</span><span class="o">[]</span> <span class="n">goal</span> <span class="o">=</span> <span class="o">{</span><span class="n">condition</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">-</span> <span class="mi">1</span><span class="o">,</span> <span class="n">condition</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">-</span> <span class="mi">1</span><span class="o">};</span>
-        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">bfsToGoal</span><span class="o">(</span><span class="n">theMap</span><span class="o">,</span> <span class="n">startNode</span><span class="o">,</span> <span class="n">goal</span><span class="o">);</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">answer</span><span class="o">);</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;</span> <span class="nf">connectedNodeChecker</span><span class="o">(</span><span class="kt">int</span><span class="o">[][]</span> <span class="n">theMap</span><span class="o">,</span> <span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
-        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;</span> <span class="n">valuedConnectedNode</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
-        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="kt">int</span> <span class="n">nx</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">dx</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
-            <span class="kt">int</span> <span class="n">ny</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">dy</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
-            <span class="k">if</span><span class="o">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">nx</span> <span class="o">&amp;&amp;</span> <span class="n">nx</span> <span class="o">&lt;</span> <span class="n">theMap</span><span class="o">.</span><span class="na">length</span> <span class="o">&amp;&amp;</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">ny</span> <span class="o">&amp;&amp;</span> <span class="n">ny</span> <span class="o">&lt;</span> <span class="n">theMap</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">length</span> <span class="o">&amp;&amp;</span> <span class="n">theMap</span><span class="o">[</span><span class="n">nx</span><span class="o">][</span><span class="n">ny</span><span class="o">]</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
-                <span class="kt">int</span><span class="o">[]</span> <span class="n">temp</span> <span class="o">=</span> <span class="o">{</span><span class="n">nx</span><span class="o">,</span> <span class="n">ny</span><span class="o">};</span>
-                <span class="n">valuedConnectedNode</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">temp</span><span class="o">);</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="n">valuedConnectedNode</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">bfsToGoal</span><span class="o">(</span><span class="kt">int</span><span class="o">[][]</span> <span class="n">theMap</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">startNode</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">goal</span><span class="o">)</span> <span class="o">{</span>
-        <span class="nc">Queue</span><span class="o">&lt;</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;&gt;</span> <span class="n">openList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedList</span><span class="o">&lt;&gt;();</span>
-        <span class="kt">boolean</span><span class="o">[][]</span> <span class="n">visitedSet</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">theMap</span><span class="o">.</span><span class="na">length</span><span class="o">][</span><span class="n">theMap</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">length</span><span class="o">];</span>
-        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;</span> <span class="n">tempStartNode</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
-        <span class="n">tempStartNode</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">startNode</span><span class="o">);</span>
-        <span class="n">openList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">tempStartNode</span><span class="o">);</span>
-        <span class="n">visitedSet</span><span class="o">[</span><span class="n">startNode</span><span class="o">[</span><span class="mi">0</span><span class="o">]][</span><span class="n">startNode</span><span class="o">[</span><span class="mi">1</span><span class="o">]]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
-
-        <span class="k">while</span> <span class="o">(!</span><span class="n">openList</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
-            <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;</span> <span class="n">selectedNode</span> <span class="o">=</span> <span class="n">openList</span><span class="o">.</span><span class="na">poll</span><span class="o">();</span>
-            <span class="kt">int</span><span class="o">[]</span> <span class="n">lastSelectedNode</span> <span class="o">=</span> <span class="n">selectedNode</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">selectedNode</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
-            <span class="k">if</span> <span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">lastSelectedNode</span><span class="o">,</span> <span class="n">goal</span><span class="o">))</span> <span class="o">{</span>
-                <span class="k">return</span> <span class="n">selectedNode</span><span class="o">.</span><span class="na">size</span><span class="o">();</span>
-            <span class="o">}</span>
-
-            <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;</span> <span class="n">connectedNodeList</span> <span class="o">=</span> <span class="n">connectedNodeChecker</span><span class="o">(</span><span class="n">theMap</span><span class="o">,</span> <span class="n">lastSelectedNode</span><span class="o">[</span><span class="mi">0</span><span class="o">],</span> <span class="n">lastSelectedNode</span><span class="o">[</span><span class="mi">1</span><span class="o">]);</span>
-            <span class="k">for</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">i</span> <span class="o">:</span> <span class="n">connectedNodeList</span><span class="o">)</span> <span class="o">{</span>
-                <span class="k">if</span> <span class="o">(!</span><span class="n">visitedSet</span><span class="o">[</span><span class="n">i</span><span class="o">[</span><span class="mi">0</span><span class="o">]][</span><span class="n">i</span><span class="o">[</span><span class="mi">1</span><span class="o">]])</span> <span class="o">{</span>
-                    <span class="n">visitedSet</span><span class="o">[</span><span class="n">i</span><span class="o">[</span><span class="mi">0</span><span class="o">]][</span><span class="n">i</span><span class="o">[</span><span class="mi">1</span><span class="o">]]</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
-                    <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;</span> <span class="n">clonedSelectedNode</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">selectedNode</span><span class="o">);</span>
-                    <span class="n">clonedSelectedNode</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
-                    <span class="n">openList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">clonedSelectedNode</span><span class="o">);</span>
-                <span class="o">}</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-
-</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="백준" /><category term="PS" /><category term="자료구조" /><category term="파이썬" /><category term="JAVA" /><summary type="html"><![CDATA[[백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1]]></summary></entry></feed>
+</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="백준" /><category term="PS" /><category term="파이썬" /><category term="JAVA" /><summary type="html"><![CDATA[[백준] 백준 1931번 :: 회의실 배정 :: 실버 1]]></summary></entry></feed>
