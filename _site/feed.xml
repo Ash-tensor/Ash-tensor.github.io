@@ -1,4 +1,99 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-05-02T17:48:24+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[백준][JAVA] 백준 7562번 :: 나이트의 이동 :: 실버 1</title><link href="http://localhost:4000/java/ps/%EB%B0%B1%EC%A4%80/2024/03/28/boj7562.html" rel="alternate" type="text/html" title="[백준][JAVA] 백준 7562번 :: 나이트의 이동 :: 실버 1" /><published>2024-03-28T00:00:00+09:00</published><updated>2024-03-28T00:00:00+09:00</updated><id>http://localhost:4000/java/ps/%EB%B0%B1%EC%A4%80/2024/03/28/boj7562</id><content type="html" xml:base="http://localhost:4000/java/ps/%EB%B0%B1%EC%A4%80/2024/03/28/boj7562.html"><![CDATA[<h2 id="백준java-백준-7562번--나이트의-이동--실버-1">[백준][JAVA] 백준 7562번 :: 나이트의 이동 :: 실버 1</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-05-07T00:16:49+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[자격증][필기] 빅데이터 분석기사 8회 필기 분석 및 후기</title><link href="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/05/03/bigdata-processor-engineer.html" rel="alternate" type="text/html" title="[자격증][필기] 빅데이터 분석기사 8회 필기 분석 및 후기" /><published>2024-05-03T00:00:00+09:00</published><updated>2024-05-03T00:00:00+09:00</updated><id>http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/05/03/bigdata-processor-engineer</id><content type="html" xml:base="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/05/03/bigdata-processor-engineer.html"><![CDATA[<h2 id="자격증필기-빅데이터-분석기사-8회-후기">[자격증][필기] 빅데이터 분석기사 8회 후기</h2>
+
+<h3 id="합격-인증">합격 인증</h3>
+
+<p><img src="/img/posts/bigdata/1.png" width="80%" /></p>
+
+<p>일단 합격 인증부터 올린다. 지난 4월경에 본 시험인데, 약 2주 정도 시험 공부를 했던 것 같다. 하루에 약 세시간 정도 공부했고, 
+책은 이기적의 빅데이터 분석기사 필기 책을 통해서 공부했다.</p>
+
+<h3 id="시험-내용">시험 내용</h3>
+
+<p>시험이 4과목으로 나뉘어져 있는데 1과목은 빅데이터 분석 기획, 2과목은 빅데이터 탐색, 3과목은 빅데이터 모델링, 
+4과목은 빅데이터 결과 해석으로 나뉘어져 있다. 1과목은 빅데이터에 대한 개론 및 기획에 대한 내용이고, 2과목은 주로 통계 기법에 대한 내용을 다룬다.
+예를 들어서 통계 기법 중에서도 가설 검정, 회귀분석, 군집분석, PCA 등에 대한 내용이 나오고 간단한 계산 문제도 같이 출제된다.(ex. z값 계산, z값을 이용한 추정 등)</p>
+
+<p>그리고 3과목은 모델에 관한 내용이 출제되는데 회귀분석, 의사결정나무, SVM, ANN, CNN, RNN 등 다양한 인공신경망과 머신러닝 기법, 
+그리고 그 특징에 대해 출제된다. 4과목은 3과목과 (내가 느끼기엔) 그렇게 큰 차이는 없는 것 같다. 3과목에서 나온 내용을 바탕으로 해당 모델을 해석하는
+방법 등을 물어보는데, 오즈비나 precision, recall, F1 score 등에 대한 내용을 빼면 결국에는 모델의 특징을 물어보는 문제가 주가 되기 때문이다.</p>
+
+<p>그래서 나중에 데이터 카페에서도 문제를 복원할 때, 문제는 77문제 가까이 복원했지만 해당 문제가 어떤 과목인지 까지는 복원하지 않아서 
+본인이 과락할지도 모르겠다고 겁먹은 사람들도 있었다.</p>
+
+<p>그런데 그럴 수 밖에 없겠다고 느꼈던 이유 중에 하나가 이번 시험 문제가 꽤 어려웠기 때문이다!! 특히 3과목은 정말 어려웠다고 원성이 자자했다.</p>
+
+<p>시험 보기 전에 이전 기출 회차를 거의 다 풀어보고 나서 시험을 봤는데, 7회 기출문제 수준이 아니어서 깜짝 놀랐다. 
+이번 8회차가 어려웠던 이유는 문제가</p>
+
+<blockquote>
+  <p><strong>개념에 대해 완벽하게 알고 있는지</strong></p>
+</blockquote>
+
+<p>를 물어보기 때문이었다고 생각한다. 예를 들어서, 복원된 PCA문제를 보자.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[14] 주성분 분석(PCA)에 대한 설명으로 옳은 것을 모두 고르시오
+
+(가) 정규성을 가정한다(뭐 이런 느낌의 선지였던 것 같다)
+
+(나) 차원축소는 변수들간에 관계가 없어도 가능하다
+
+(다) 분산이 크다
+
+1. (가)
+
+2. (다) ✅
+
+3. (가), (다)
+
+4. (가), (나), (다)
+</code></pre></div></div>
+
+<p>이런 식으로 출제되었는데, 일단 문제 자체가 (가) 를 모르면 풀 수 없게 설계가 되어 있고, (가)만 알아도 문제를 맞출 수 있었다.
+나는 시험장에서 PCA가 정규성을 가정하지 않아도 된다는 것을 알고 있기 때문에 (가)를 제외하고 나니 남은 선지가 (다) 뿐이 없어서 2번을 선택했었는데 
+PCA가 주성분 분석이라는 것, 각각 주성분에 대한 분산을 최대화 한다는 것을 대강 알고 있는 것 만으로는 풀 수 없는 문제였고, 
+선형회귀와 로지스틱회귀 등에 대한 다음 문제를 보자.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[58] 선형회귀와 로지스틱회귀에 대한 설명으로 옳지 않은 것
+
+1. 종속변수가 범주형인 경우 로지스틱 회귀 사용
+
+2. 선형, 로지스틱 회귀 모두 잔차 정규성을 가정 ✅
+
+3. 선형회귀 계수 LSE로 추정하면 불편추정량 ~~
+
+4. 선형, 로지스틱 회귀 모두 MLE로 계수추정 가능
+</code></pre></div></div>
+
+<p>이런 식으로 출제되었는데, 이 문제도 마찬가지로 선형회귀와 로지스틱회귀에 대한 개념을 완벽하게 알고 있어야 풀 수 있는 문제였다. 
+따라서 데이터 카페에서도 해당 회차에 대해 매우 어렵다는 의견이 많았다.</p>
+
+<h3 id="공부법">공부법</h3>
+
+<p>일단 대학교에서 3학점짜리 통계학 과목을 하나라도 수강했던 사람이라면 2과목 공부량이 매우 줄어들어서 3, 4 과목만 공부하면 된다. 
+여기에 전공자이거나 해서 해서 머신러닝, 딥러닝에 대한 지식이 있는 사람이라면 3, 4과목에서 도움을 받을 수 있다.
+그리고 데이터진흥원 시험은 계산기를 허용하지 않기 때문에 엄청 큰 수식을 계산하는 문제는 거의 나오지 않는다. 기껏해야 기본적인 통계 계산 정도가 전부이다.
+z값 계산과 같은 각 통계 분포의 기초적인 통계량 계산과 검정 정도만 출제되기 때문에 대학에서 3학점으로 개설되는 기초 통계학이나 확률통계 과목들보다 난이도 자체는 더 쉽다.</p>
+
+<p>그리고 3, 4과목은 머신러닝과 딥러닝에 대한 내용이 출제되는데, 8회차를 보면서 개인적으로는 단순히 책을 달달 외우는게 좋은 공부법은 아니라고 느꼈다. 
+빅데이터 분석기사가 정보처리기사와는 다르게 단순히 기출문제를 많이 풀어서 <strong>키워드 기반으로 넓고 얕게 공부하는 것은 도움이 되지 않는것 같다.</strong> 
+아직 시행된지 얼마 안 돼서 그럴 수도 있지만, 매 회차 과거 기출과 비슷한 문제가 나온다기 보다는 새로 출제되는 문제가 많기 때문이다.</p>
+
+<p>따라서 해당 개념을 가지고 GPT에 물어보거나 아니면 다양한 자료를 접하면서 시험에 출제되는 개념을 다양하게 기억하는 것을 추천한다.</p>
+
+<h3 id="합격률">합격률</h3>
+
+<p><img src="/img/posts/bigdata/2.png" width="80%" /></p>
+
+<p><a href="&quot;https://cafe.naver.com/sqlpd&quot;">출처 : 8회 빅데이터 분석기사 필기 합격률</a></p>
+
+<p>솔직히 나도 시험을 보면서 꽤나 어려웠다고 생각했는데, 8회차 합격률은 꽤나 높은 52.6%에 달했다. 
+이러면 앞으로도 시험이 쉬워지거나 하지는 않을 것으로 예상된다. 1년에 두번밖에 볼 수 없는 시험이니만큼 준비를 확실히 하는 편이 좋겠다고 생각이 든다.</p>
+
+<p>나의 경우는 대학교에서 확률 통계 과목을 수강했고, 머신러닝, 딥러닝에 관한 과목도 한학기씩 수강해서 해당 과목들을 통해 얻은 지식이 많은 도움이 되었다.
+물론 그렇다고 하더라도 모든 것을 기억하고 있지는 않는 데다가, 
+앞서 말했듯이 키워드 기반 넓고 얕게 아는 것보다는 나오는 내용을 중심으로 자세히 아는 것이 더 중요하기 때문에 약 2주 정도 하루에 세시간 정도씩 공부했다.</p>
+
+<p>비전공자인 경우에는 이보다 조금 더 공부해야 안정적으로 합격할 수 있지 않을까 싶다.</p>]]></content><author><name>ash tensor</name></author><category term="자격증" /><summary type="html"><![CDATA[[자격증][필기] 빅데이터 분석기사 8회 후기]]></summary></entry><entry><title type="html">[백준][JAVA] 백준 7562번 :: 나이트의 이동 :: 실버 1</title><link href="http://localhost:4000/java/ps/%EB%B0%B1%EC%A4%80/2024/05/02/boj7562.html" rel="alternate" type="text/html" title="[백준][JAVA] 백준 7562번 :: 나이트의 이동 :: 실버 1" /><published>2024-05-02T00:00:00+09:00</published><updated>2024-05-02T00:00:00+09:00</updated><id>http://localhost:4000/java/ps/%EB%B0%B1%EC%A4%80/2024/05/02/boj7562</id><content type="html" xml:base="http://localhost:4000/java/ps/%EB%B0%B1%EC%A4%80/2024/05/02/boj7562.html"><![CDATA[<h2 id="백준java-백준-7562번--나이트의-이동--실버-1">[백준][JAVA] 백준 7562번 :: 나이트의 이동 :: 실버 1</h2>
 
 <h3 id="문제-설명">문제 설명</h3>
 
@@ -1423,85 +1518,4 @@ ADCB</p>
     <span class="o">}</span>
 <span class="o">}</span>
 
-</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="백준" /><category term="PS" /><category term="JAVA" /><summary type="html"><![CDATA[[백준] 백준 1987번 :: 알파벳 :: 골드 4]]></summary></entry><entry><title type="html">[WEB]GCP(google cloud platform) 프리 티어 VM 생성 / MYSQL 서버 연결</title><link href="http://localhost:4000/web/2024/02/17/gcp-free-tier-settings.html" rel="alternate" type="text/html" title="[WEB]GCP(google cloud platform) 프리 티어 VM 생성 / MYSQL 서버 연결" /><published>2024-02-17T00:00:00+09:00</published><updated>2024-02-17T00:00:00+09:00</updated><id>http://localhost:4000/web/2024/02/17/gcp-free-tier-settings</id><content type="html" xml:base="http://localhost:4000/web/2024/02/17/gcp-free-tier-settings.html"><![CDATA[<h2 id="webgcpgoogle-cloud-platform-프리-티어-vm-생성">[WEB]GCP(google cloud platform) 프리 티어 VM 생성</h2>
-
-<p>클라우드 서비스로 가장 우선적으로 선택하는 것 중에 하나가 바로 AWS일 것이다. 하지만 AWS 같은 경우에는 프리티어 VM의 사용 기한이 1년으로, 
-1년이 지나면 자동으로 등록해 놓은 신용카드로 사용 요금이 빠져나간다. 그래서 나 같은 경우에는 프리티어로 사용하던 VM의 사용 기한이 끝나 매달 2만원 가량의 요금이
- 지불되고 있는데… 솔직히 돈이 너무 아까웠다. 그래서 이에 대한 대책으로 다른 클라우드 서비스 프리 티어를 살펴보고 최종적으로 GCP에 MYSQL 서버를 설치하고 접속되게 변경했다.</p>
-
-<h3 id="오라클은-가입이-안됨">오라클은 가입이 안됨…</h3>
-
-<p>사실 이런 프리티어 클라우드 서비스 중에 가장 성능이 좋은 서비스는 오라클이다. 그런데 이 오라클 클라우드의 가장 큰 단점은 회원가입이 어럽다는 점이다…
-농담이 아니라 실제 많은 사람들이 호소하는 불편함으로, 이 마지막 화면에서 “트랜잭션 오류가 발생하였습니다.” 라는 오류를 뱉으며 회원가입이 안 되는 오류가 있다.</p>
-
-<p><img src="/img/posts/gcp/oraclefail.png" style="width: 80%" /></p>
-
-<p>바로 이 화면이다. 해결 방법으로는 오라클 고객센터 라이브 챗으로 풀어달라고 하면 해결된다고는 하는데, 나 같은 경우에는 응답이 없어서, 그냥 GCP로 바꾸기로 했다.</p>
-
-<h3 id="gcp">GCP</h3>
-
-<p>GCP와 오라클이 프리티어에서 가장 큰 강점을 가지는 것은 바로 영구 무료 유지라는 점이다. AWS는 물론이고 MS 애저도 1년이 지나면 얄짤없이 유료화 시키는데 비해서
-프리 티어 성능 안에서는 1년이 지나건 몇년이 지나건 무료로 서비스를 사용할 수 있다는 점이 큰 매력이다.</p>
-
-<p><img src="/img/posts/gcp/gcp1.png" style="width: 80%" /></p>
-
-<p>이 사진에서 알수있듯, 오리건, 아이오와, 사우스캐롤라이나의 VM이라면 30GB 용량까지 평생 무료로 사용할 수 있다. 하지만 스펙이 저열한데, 프리티어의 e2-micro
-성능은 vcpu 1개와 0.5GB 메모리, 그리고 1GB 트래픽만 허용된다.</p>
-
-<p>vcpu 1개의 경우에는 대략 0.2Ghz 정도의 성능을 가지는데, 아무리 무료라고는 하지만 좋은 성능은 아니다. 0.2Ghz다. 0.2Ghz!! 아마 피쳐폰보다 성능이 안좋을지도 모른다.
-게다가 램도 겨우 500메가 정도로, 정말 20달러짜리 라즈베리파이보다 성능이 안좋을 것이다. 라즈베리파이는 단 돈 5만원에 2Ghz CPU 8개가 달려있는데…</p>
-
-<p>아무튼 프리티어는 프리티어인 이유가 있다. 간단한 실증 정도의 테스트만 가능한 환경이니 너무 큰 프로젝트는 올리지 않는 편이 좋다.</p>
-
-<h4 id="vm생성">VM생성</h4>
-
-<p><a href="https://cloud.google.com/free/?utm_source=google&amp;utm_medium=cpc&amp;utm_campaign=japac-KR-all-en-dr-BKWS-all-core-trial-EXA-dr-1605216&amp;utm_content=text-ad-none-none-DEV_c-CRE_644033776725-ADGP_Hybrid+%7C+BKWS+-+EXA+%7C+Txt+~+GCP_General_core+brand_main-KWID_43700074755444107-kwd-87853815&amp;userloc_1009871-network_g&amp;utm_term=KW_gcp&amp;gad_source=1&amp;gclid=CjwKCAiArLyuBhA7EiwA-qo80PzDfq52iWQuvaP7LEccHJPst6zFmWL2s0Fu31ddUOkLIflDbWUbBxoCogEQAvD_BwE&amp;gclsrc=aw.ds&amp;hl=ko">이 페이지(GCP)</a>에서 회원가입을 한 후에,</p>
-
-<p><img src="/img/posts/gcp/gcp2.png" style="width: 80%" /></p>
-
-<p>“사용” 버튼을 누른후 인스턴스 만들기를 선택하면 된다. 그리고 난 뒤에</p>
-
-<p><img src="/img/posts/gcp/gcp3.png" style="width: 80%" /></p>
-
-<p>아까 언급했던 것처럼, 오리건, 아이오와, 사우스캐롤라이나와 같이 프리티어를 제공하는 리전을 선택한 뒤에(아마도 서부가 아주 조금이라도 더 빠를 것이다) 머신 구성에서는
- E2를 선택하고</p>
-
-<p><img src="/img/posts/gcp/gcp6.png" style="width: 80%" /></p>
-
-<p>엑세스 범위: 모든 클라우드 API에 대해 전체 액세스 허용, HTTP, HTTPS 트래픽 허용을 선택해 준다.</p>
-
-<p><img src="/img/posts/gcp/gcp4.png" style="width: 80%" /></p>
-
-<p>머신 유형에서는 프리티어를 제공해주는 e2-micro를 선택하자. 이후 부팅 디스크에서 새로운 SSD 영구 디스크, 크기는 30GB내에서 원하는 만큼 
-선택하면 된다.</p>
-
-<p><img src="/img/posts/gcp/gcp5.png" style="width: 80%" /></p>
-
-<p>이후 인스턴스를 생성한 뒤 SSH로 접속을 선택하면 흔히 사용했던 bash가 새로운 브라우저 창으로 등장할 것이다.</p>
-
-<h3 id="mysql-설치-및-설정">MYSQL 설치 및 설정</h3>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get install mariadb-server mariadb-client
-/usr/bin/mysql_secure_installation (db초기화 작업)
-</code></pre></div></div>
-
-<p>나는 우분투 환경이기 때문에 apt-get install mariadb-server mariadb-client로 mysql을 설치했다. 그리고 이 이후에 방화벽을 설정해야한다.</p>
-
-<p>VCP 네트워크의 방화벽 - 방화벽 규칙 만들기를 통해서 새로운 방화벽 규칙을 만들어야 한다 (프로젝트 창 옆에 있는 검색창에 방화벽이라고 검색해도 찾을 수 있다.)</p>
-
-<p><img src="/img/posts/gcp/mysql1.png" style="width: 80%" /></p>
-
-<p>8080포트, tcp/ip 프로토콜에 대해서 0.0.0.0/0 (모든 ip 입력에 대해서 허용, 자신의 IP범위를 적어 넣는편이 당연히 보안에 무조건 좋다)</p>
-
-<p><img src="/img/posts/gcp/mysql2.png" style="width: 80%" /></p>
-
-<p>3306포트에 대해서 (mysql) 접근 허용 방화벽 규칙을 설정해 준다. 이 이후에, 로컬에서만 접속할 수 있도록 바인딩 해 놓은 mysql 설정 파일도 수정해야한다.</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nano /etc/mysql/mariadb.conf.d/50-server.cnf 
-</code></pre></div></div>
-
-<p>룰 한 뒤에, bind-address= 127.0.0.1 을 지우던지, 주석처리 해야 한다.</p>
-
-<p><img src="/img/posts/gcp/mysql3.png" style="width: 80%" /></p>
-
-<p>이러면 mysql 서버를 사용할 기본적인 설정은 모두 끝났다!</p>]]></content><author><name>ash tensor</name></author><category term="WEB" /><summary type="html"><![CDATA[[WEB]GCP(google cloud platform) 프리 티어 VM 생성]]></summary></entry></feed>
+</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="백준" /><category term="PS" /><category term="JAVA" /><summary type="html"><![CDATA[[백준] 백준 1987번 :: 알파벳 :: 골드 4]]></summary></entry></feed>

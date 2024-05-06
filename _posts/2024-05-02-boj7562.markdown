@@ -4,7 +4,7 @@ comments: true
 title: "[백준][JAVA] 백준 7562번 :: 나이트의 이동 :: 실버 1"
 subtitle: 
 description: 
-date: 2024-03-28
+date: 2024-05-02
 categories: JAVA PS 백준
 background: '/img/port.jpg'
 ---
