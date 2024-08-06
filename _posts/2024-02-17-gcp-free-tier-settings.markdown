@@ -7,6 +7,7 @@ description:
 date: 2024-02-17
 categories: WEB
 background: '/img/port.jpg'
+
 ---
 
 
@@ -59,8 +60,9 @@ vcpu 1개의 경우에는 대략 0.2Ghz 정도의 성능을 가지는데, 아무
 
 <img src="/img/posts/gcp/gcp4.png" style="width: 80%"> 
 
-머신 유형에서는 프리티어를 제공해주는 e2-micro를 선택하자. 이후 부팅 디스크에서 새로운 SSD 영구 디스크, 크기는 30GB내에서 원하는 만큼 
-선택하면 된다.
+머신 유형에서는 프리티어를 제공해주는 e2-micro를 선택하자. 이후 부팅 디스크에서 새로운 SSD 영구 디스크를 고르면 안 된다!! 이 경우에는
+프리티어에 적용되지 않아서 과금이 될 수 있기 때문에, 표준 영구 디스크를 설정해야 한다. 만약 GCP가 초기에 과금되었다면(어차피 300$는 주니까 나중에 바꾸면 되지만)
+이러한 경우가 대부분이었다. 크기는 30GB내에서 원하는 만큼 선택하면 된다.
 
 <img src="/img/posts/gcp/gcp5.png" style="width: 80%"> 
 
