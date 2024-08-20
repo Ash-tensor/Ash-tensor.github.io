@@ -8,15 +8,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>
-    [백준] 백준 1743번 :: 음식물 피하기 :: 실버 1  - Tensor Studio
+    [WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기 - Tensor Studio
     
   </title>
 
-  <meta name="description" content="[백준] 백준 1743번 :: 음식물 피하기 :: 실버 1">
-  <meta property="og:description" content="[백준] 백준 1743번 :: 음식물 피하기 :: 실버 1">
+  <meta name="description" content="[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기">
+  <meta property="og:description" content="[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="[백준] 백준 1743번 :: 음식물 피하기 :: 실버 1">
-  <meta property="og:url" content="https://ash-tensor.github.io/%EB%B0%B1%EC%A4%80/ps/java/%ED%8C%8C%EC%9D%B4%EC%8D%AC/2024/02/27/boj1743.html">
+  <meta property="og:title" content="[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기">
+  <meta property="og:url" content="https://ash-tensor.github.io/web/java/2024/08/20/spring-gcp-bucket.html">
 
   
     <meta property="og:image" content="https://ash-tensor.github.io/img/port.jpg"/>
@@ -35,7 +35,7 @@
 
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/%EB%B0%B1%EC%A4%80/ps/java/%ED%8C%8C%EC%9D%B4%EC%8D%AC/2024/02/27/boj1743.html">
+  <link rel="canonical" href="http://localhost:4000/web/java/2024/08/20/spring-gcp-bucket.html">
   <link rel="alternate" type="application/rss+xml" title="Tensor Studio" href="/feed.xml">
 
 <!--  favicon-->
@@ -112,11 +112,11 @@
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="post-heading">
-          <h1>[백준] 백준 1743번 :: 음식물 피하기 :: 실버 1 </h1>
+          <h1>[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기</h1>
           
           <span class="meta">Posted by
             <a href="#">ash tensor</a>
-            on February 27, 2024 &middot; <span class="reading-time" title="Estimated read time">
+            on August 20, 2024 &middot; <span class="reading-time" title="Estimated read time">
   
    10 mins  read </span>
 
@@ -127,13 +127,9 @@
             <a>
           <div style="font-family: 'Noto Sans KR', sans-serif;">
             
-              <a href="http://localhost:4000/category/백준.html" style="color: white;">📁백준</a>
-            
-              <a href="http://localhost:4000/category/PS.html" style="color: white;">📁PS</a>
+              <a href="http://localhost:4000/category/WEB.html" style="color: white;">📁WEB</a>
             
               <a href="http://localhost:4000/category/JAVA.html" style="color: white;">📁JAVA</a>
-            
-              <a href="http://localhost:4000/category/파이썬.html" style="color: white;">📁파이썬</a>
             
           </div>
 <!-- 카테고리를 추가하는 코드 -->
@@ -770,216 +766,261 @@ TENSOR STUDIO
 
           <div style="font-family: 'Noto Sans KR', sans-serif;">
             
-              <a href="http://localhost:4000/category/백준.html" style="color: black;">📁 백준</a>
-            
-              <a href="http://localhost:4000/category/PS.html" style="color: black;">📁 PS</a>
+              <a href="http://localhost:4000/category/WEB.html" style="color: black;">📁 WEB</a>
             
               <a href="http://localhost:4000/category/JAVA.html" style="color: black;">📁 JAVA</a>
-            
-              <a href="http://localhost:4000/category/파이썬.html" style="color: black;">📁 파이썬</a>
             
           </div>
           
 <!-- 본문 카테고리를 추가하는 코드 -->
 
-      <h2 id="백준-백준-1743번--음식물-피하기--실버-1">[백준] 백준 1743번 :: 음식물 피하기 :: 실버 1</h2>
+      <h2 id="webgcp-spring-boot에서-gcp-bucket에-파일-업로드하기">[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기</h2>
 
 <h3 id="문제-설명">문제 설명</h3>
 
-<p>코레스코 콘도미니엄 8층은 학생들이 3끼의 식사를 해결하는 공간이다. 그러나 몇몇 비양심적인 학생들의 만행으로 음식물이 통로 중간 중간에 떨어져 있다. 이러한 음식물들은 근처에 있는 것끼리 뭉치게 돼서 큰 음식물 쓰레기가 된다.</p>
+<p>사실 구현한지는 두달은 된 것 같은데, 프로젝트를 제대로 정리할 시간이 없다 보니까 이제서야 정리하게 되었다.
+음, 일단 AWS S3보다 GCP 클라우드 버켓을 사용하는 경우가 더 적다 보니까, 인터넷에 잘 정리되어 있는 자료가 많지 않았다.
+물론 클라우드 버켓이 S3보다 더 좋은 서비스를 제공하지는 않지만, AWS의 프리티어보다 GCP 프리티어의 제공량이 더 많기도 하고,
+새 계정을 만들 경우에는 300$ 크레딧을 제공하기 때문에, 한번 새로운 계정을 만들어서 사용하는 것도 나쁘지 않다.</p>
 
-<p>이 문제를 출제한 선생님은 개인적으로 이러한 음식물을 실내화에 묻히는 것을 정말 진정으로 싫어한다. 참고로 우리가 구해야 할 답은 이 문제를 낸 조교를 맞추는 것이 아니다.</p>
+<p>사실 GCP 버켓에 파일을 업로드하는 것은 AWS S3에 파일을 업로드하는 것과 크게 다르지 않다.</p>
 
-<p>통로에 떨어진 음식물을 피해가기란 쉬운 일이 아니다. 따라서 선생님은 떨어진 음식물 중에 제일 큰 음식물만은 피해 가려고 한다.</p>
+<h3 id="gcpconfig">GCPConfig</h3>
 
-<p>선생님을 도와 제일 큰 음식물의 크기를 구해서 “10ra”를 외치지 않게 도와주자.</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">
+    </span><span class="err">dependencies</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">'implementation</span><span class="w"> </span><span class="err">'com.google.cloud:spring-cloud-gcp-starter-storage:</span><span class="mf">5.3</span><span class="err">.</span><span class="mi">0</span><span class="err">'</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    
+</span></code></pre></div></div>
 
-<p><strong>입력</strong></p>
+<p>일단 gradle에 위와 같은 의존성을 추가해 준다. GPT는 starter 의존성을 추가하는게 아니라.</p>
 
-<p>첫째 줄에 통로의 세로 길이 N(1 ≤ N ≤ 100)과 가로 길이 M(1 ≤ M ≤ 100) 그리고 음식물 쓰레기의 개수 K(1 ≤ K ≤ N×M)이 주어진다.  그리고 다음 K개의 줄에 음식물이 떨어진 좌표 (r, c)가 주어진다.</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">
+</span><span class="err">implementation</span><span class="w"> </span><span class="err">'com.google.cloud:google-cloud-storage:latest_version'</span><span class="w">
 
-<p>좌표 (r, c)의 r은 위에서부터, c는 왼쪽에서부터가 기준이다. 입력으로 주어지는 좌표는 중복되지 않는다.</p>
+</span></code></pre></div></div>
 
-<p><strong>출력</strong></p>
+<p>이렇게 개별 의존성을 추가하는 식으로 조언해 주는데, 공식 문서에서는 starter 의존성을 추가하는 방향으로
+설명하고 있어서, 해당 의존성을 추가했다.
+그리고 GCP 버켓에 접속할 수 있도록 서비스 계정을 생성하고 인증 키를 만들어야 한다.</p>
 
-<p>첫째 줄에 음식물 중 가장 큰 음식물의 크기를 출력하라.</p>
+<p><img src="/img/posts/gcp/bucket/1.png" width="80%" /></p>
 
-<h3 id="제한시간">제한시간</h3>
+<ol>
+  <li>Google Cloud Console에 접속.</li>
+  <li>IAM &amp; Admin &gt; Service Accounts에서 새로운 서비스 계정을 생성.</li>
+  <li>서비스 계정에 적절한 역할(예: Storage Admin 또는 Storage Object Admin)을 부여.</li>
+  <li>서비스 계정의 키를 생성하고 JSON 파일을 다운로드.</li>
+</ol>
 
-<p>2 초	256 MB</p>
+<h3 id="환경변수-추가">환경변수 추가</h3>
 
-<h3 id="예제-입력">예제 입력</h3>
+<p>그리고 해당 키를 스프링에서 사용할 수 있게 하기 위해서 해당 키 파일을 환경변수로 설정해주거나, 
+직접 키 파일을 프로젝트 내에 삽입하는 방법이 있다. 물론 보안상으로 당연히 환경변수로 설정하는 것이 좋다.
+mac 기준으로 자신의 .zshrc에 해당 키를 환경변수로 설정해주면 된다.</p>
 
-<p>3 4 5</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nb">sudo </span>nano ~/.zshrc
 
-<p>3 2</p>
+// 해당 키를 환경변수로 설정<span class="o">(</span>마지막줄에 추가해주면 된다<span class="o">)</span>
 
-<p>2 2</p>
+<span class="nb">export </span><span class="nv">GOOGLE_APPLICATION_CREDENTIALS</span><span class="o">=</span><span class="s2">"/path/to/your-service-account-file.json"</span>
 
-<p>3 1</p>
+</code></pre></div></div>
 
-<p>2 3</p>
+<p>배포때도 해당 키를 환경변수로 설정해주면 되는데, 서버의 경우 대부분이 우분투이기 때문에 .bashrc에 해당 키를 설정해주면 된다.
+그리고 로컬 환경에서 해당 키를 설정해 주었는데도 오류가 나는 경우가 있는데, 배포는 문제 없이 잘 작동하는데 로컬에서만 오류가 나는 경우가 있었다.
+내 경우에는 IntelliJ에서 해당 키를 인식하지 못한게 그 이유였는데 이를 해결하기 위해서는 인텔리제이의 환경변수에 해당 키를 추가해주면 된다.</p>
 
-<p>1 1</p>
+<p>인텔리제이에서 해당 키를 직접 추가하는 방법으로는</p>
 
-<h3 id="예제-출력">예제 출력</h3>
+<ol>
+  <li>Run &gt; Edit Configurations</li>
+</ol>
 
-<p>4</p>
+<p><img src="/img/posts/gcp/bucket/2.png" width="80%" /></p>
 
-<h3 id="힌트">힌트</h3>
+<ol>
+  <li>Environment Variables에 해당 키를 추가해주면 된다.</li>
+</ol>
 
-<p>O . . .</p>
+<p><img src="/img/posts/gcp/bucket/3.png" width="80%" /></p>
 
-<p>. O O .</p>
-
-<p>O O . .</p>
-
-<h4 id="접근방법">접근방법</h4>
-
-<p>탐색 문제이고, 군집군 검사? 이런 문제를 어떻게 부르는지는 잘 모르겠지만, 가까이 있는 동일한 개체를 찾아내는 문제의 표본이라고 할 수 있는 문제이다.
-단순한 BFS / DFS 탐색 문제하고는 다른데, 그 이유는 이 문제는 군집을 찾아내는 문제이기 때문이다. 왜냐하면 DFS/BFS로 탐색을 하더라도, 한번의 Depth에서 모든 연결되어 있는 노드를
-검색할 수 없기 때문에, 중간에 탐색이 한 번 끊기게 되고 그 다음에 탐색을 시작하게 되면 사실 붙어있는 같은 군집인데 실제로는 다른 군집을 찾게 되기 때문이다.</p>
-
-<p>위의 힌트를 가지고 예를 들어 보자.</p>
-
-<p>(2, 2)의 점(이 문제에서는 첫번째 행과 첫번째 열이 1로 주어졌다)에서 DFS로 탐색을 시작한다고 해 보자.</p>
-
-<p>그렇다면 실제로 연결되어 있는 노드는 (2, 3), (3, 2), (3, 1)이다. 하지만 첫번째 Depth에서는 (2, 3)과 (3, 2)를 탐색하고, 다음 Depth에서 (3, 1)을 탐색하게 되는데,
-이 경우에 각각의 Depth에서의 탐색은 서로 다른 군집으로 인식할 수 있기 때문에, 이를 제대로 세 주어야 한다.</p>
-
-<p>그리고 이 문제를 풀면서, 처음에는 각각의 노드의 순서쌍을 배열 int[] node = new int[2]로 선언해서 사용했는데, 이렇게 하면 HashSet에 넣을 때, 같은 순서쌍이라도 다른 객체로 인식되어서
-HashSet에 중복된 노드가 들어가게 된다. 또한 중복 검사, 예를 들면 visitedNodes.contains()와 같은 메소드에서 항상 false만을 리턴하게 된다.
-그래서 ArrayList<Integer>로 선언해서 사용했는데, 더 간단한 방법이 있을 것 같아서 조금 더 공부할 필요를 느꼈다.</Integer></p>
-
-<h4 id="자바-코드">자바 코드</h4>
+<h3 id="gcpconfigjava">GcpConfig.java</h3>
 
 <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="kn">package</span> <span class="nn">boj</span><span class="o">;</span>
+<span class="kn">package</span> <span class="nn">ac.su.kiosk.config</span><span class="o">;</span>
 
-<span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.google.auth.oauth2.GoogleCredentials</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.google.cloud.storage.Storage</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.google.cloud.storage.StorageOptions</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.slf4j.LoggerFactory</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.context.annotation.Bean</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.context.annotation.Configuration</span><span class="o">;</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">newboj1743</span> <span class="o">{</span>
+<span class="kn">import</span> <span class="nn">java.io.FileInputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.slf4j.Logger</span><span class="o">;</span>
 
-    <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="no">MAX_AMOUNT</span><span class="o">;</span> <span class="c1">// 군집을 세기 위해서 선언한 배열</span>
-    <span class="c1">// 각각 노드의 군집의 크기를 저장하기 위한 배열로 크기는 nodeList.size()와 같다.</span>
-    <span class="kd">static</span> <span class="nc">HashSet</span><span class="o">&lt;</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">visitedNodes</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;&gt;();</span>
-    <span class="c1">// 방문한 노드를 저장하기 위한 HashSet</span>
+<span class="nd">@Configuration</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">GCPConfig</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Logger</span> <span class="n">logger</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="nc">GCPConfig</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
 
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="nc">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
-        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">condition</span> <span class="o">=</span> <span class="n">setCondition</span><span class="o">(</span><span class="n">scanner</span><span class="o">);</span>
-        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">nodeList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
-
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">condition</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="n">nodeList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">condition</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
+    <span class="nd">@Bean</span>
+    <span class="kd">public</span> <span class="nc">Storage</span> <span class="nf">storage</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">credentialsPath</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">getenv</span><span class="o">(</span><span class="s">"GOOGLE_APPLICATION_CREDENTIALS"</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">credentialsPath</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">IllegalStateException</span><span class="o">(</span><span class="s">"GOOGLE_APPLICATION_CREDENTIALS environment variable is not set."</span><span class="o">);</span>
         <span class="o">}</span>
 
-        <span class="no">MAX_AMOUNT</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">nodeList</span><span class="o">.</span><span class="na">size</span><span class="o">()];</span>
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="no">MAX_AMOUNT</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="no">MAX_AMOUNT</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
-            
-            <span class="c1">//군집 배열의 값을 1로 초기화</span>
-        <span class="o">}</span>
+        <span class="n">logger</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"Using GOOGLE_APPLICATION_CREDENTIALS from: "</span> <span class="o">+</span> <span class="n">credentialsPath</span><span class="o">);</span>
 
-        <span class="k">for</span> <span class="o">(</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">node</span> <span class="o">:</span> <span class="n">nodeList</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">if</span> <span class="o">(!</span><span class="n">visitedNodes</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">node</span><span class="o">))</span> <span class="o">{</span>
-            <span class="c1">//nodeList에 있어서 각각의 node가 방문한 노드가 아니라면 dfs를 시작한다.</span>
-                <span class="n">dfs</span><span class="o">(</span><span class="n">node</span><span class="o">,</span> <span class="n">nodeList</span><span class="o">,</span> <span class="n">condition</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">),</span> <span class="n">nodeList</span><span class="o">.</span><span class="na">indexOf</span><span class="o">(</span><span class="n">node</span><span class="o">));</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-
-        <span class="nc">OptionalInt</span> <span class="n">max</span> <span class="o">=</span> <span class="nc">Arrays</span><span class="o">.</span><span class="na">stream</span><span class="o">(</span><span class="no">MAX_AMOUNT</span><span class="o">).</span><span class="na">max</span><span class="o">();</span>
-        <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="n">max</span><span class="o">.</span><span class="na">getAsInt</span><span class="o">();</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">answer</span><span class="o">);</span>
-
-
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="nf">setCondition</span><span class="o">(</span><span class="nc">Scanner</span> <span class="n">scanner</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
-        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
-        <span class="kt">int</span> <span class="n">repeat</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
-        <span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
-
-        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">answer</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
-        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">condition</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
-        <span class="n">condition</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">x</span><span class="o">);</span>
-        <span class="n">condition</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">y</span><span class="o">);</span>
-        <span class="n">answer</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">condition</span><span class="o">);</span>
-
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">repeat</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="kt">int</span> <span class="n">first</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
-            <span class="kt">int</span> <span class="n">second</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
-            <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">temp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
-            <span class="n">temp</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">first</span><span class="o">);</span>
-            <span class="n">temp</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">second</span><span class="o">);</span>
-
-            <span class="n">answer</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">temp</span><span class="o">);</span>
-
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="nf">connectedNodeChecker</span>
-            <span class="o">(</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">node</span><span class="o">,</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">limit</span><span class="o">,</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">condition</span><span class="o">)</span> <span class="o">{</span>
-            
-        <span class="c1">// 방향 배열 선언</span>
-        <span class="kt">int</span><span class="o">[]</span> <span class="n">xDirections</span> <span class="o">=</span> <span class="o">{-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">};</span>
-        <span class="kt">int</span><span class="o">[]</span> <span class="n">yDirections</span> <span class="o">=</span> <span class="o">{</span><span class="mi">0</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">1</span><span class="o">};</span>
-
-        <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
-        <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
-
-        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">answer</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
-
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="kt">int</span> <span class="n">calculatedX</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">xDirections</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
-            <span class="kt">int</span> <span class="n">calculatedY</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">yDirections</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
-
-            <span class="k">if</span> <span class="o">(</span><span class="n">calculatedX</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">calculatedX</span> <span class="o">&gt;</span> <span class="n">limit</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="o">||</span>
-            <span class="n">calculatedY</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">calculatedY</span> <span class="o">&gt;</span> <span class="n">limit</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">))</span> <span class="o">{</span>
-            <span class="o">}</span>
-            <span class="k">else</span> <span class="o">{</span>
-                <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">temp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
-                <span class="n">temp</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">calculatedX</span><span class="o">);</span>
-                <span class="n">temp</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">calculatedY</span><span class="o">);</span>
-                
-                <span class="c1">// 각각 4방향의 연결된 노드 중에서, condition에 포함되어 있는 노드라면 answer에 추가한다.</span>
-
-                <span class="k">if</span> <span class="o">(</span><span class="n">condition</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">temp</span><span class="o">))</span> <span class="o">{</span>
-                    <span class="n">answer</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">temp</span><span class="o">);</span>
-                <span class="o">}</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="n">answer</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">dfs</span><span class="o">(</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">node</span><span class="o">,</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">nodeList</span><span class="o">,</span>
-                           <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">limit</span><span class="o">,</span> <span class="kt">int</span> <span class="n">number</span><span class="o">)</span> <span class="o">{</span>
-                           
-        <span class="c1">// number는 군집 배열의 인덱스를 나타낸다.</span>
-                           
-        <span class="n">visitedNodes</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">node</span><span class="o">);</span>
-        
-        <span class="c1">// connectedNodeChecker를 통해서 연결된 노드를 찾아내고, 그 노드가 방문한 노드가 아니라면 dfs를 시작한다.</span>
-        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">connectedNodes</span> <span class="o">=</span> <span class="n">connectedNodeChecker</span><span class="o">(</span><span class="n">node</span><span class="o">,</span> <span class="n">limit</span><span class="o">,</span> <span class="n">nodeList</span><span class="o">);</span>
-
-        <span class="k">if</span> <span class="o">(</span><span class="n">connectedNodes</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">return</span><span class="o">;</span>
-        <span class="o">}</span>
-        <span class="k">else</span> <span class="o">{</span>
-            <span class="k">for</span> <span class="o">(</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">connectedNode</span> <span class="o">:</span> <span class="n">connectedNodes</span><span class="o">)</span> <span class="o">{</span>
-                <span class="k">if</span> <span class="o">(!</span><span class="n">visitedNodes</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">connectedNode</span><span class="o">))</span> <span class="o">{</span>
-                
-                    <span class="no">MAX_AMOUNT</span><span class="o">[</span><span class="n">number</span><span class="o">]</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">;</span>
-                    <span class="n">dfs</span><span class="o">(</span><span class="n">connectedNode</span><span class="o">,</span> <span class="n">nodeList</span><span class="o">,</span> <span class="n">limit</span><span class="o">,</span> <span class="n">number</span><span class="o">);</span>
-                <span class="o">}</span>
-            <span class="o">}</span>
+        <span class="k">try</span> <span class="o">(</span><span class="nc">FileInputStream</span> <span class="n">credentialsStream</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileInputStream</span><span class="o">(</span><span class="n">credentialsPath</span><span class="o">))</span> <span class="o">{</span>
+            <span class="nc">GoogleCredentials</span> <span class="n">credentials</span> <span class="o">=</span> <span class="nc">GoogleCredentials</span><span class="o">.</span><span class="na">fromStream</span><span class="o">(</span><span class="n">credentialsStream</span><span class="o">)</span>
+                    <span class="o">.</span><span class="na">createScoped</span><span class="o">(</span><span class="nc">List</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="s">"https://www.googleapis.com/auth/cloud-platform"</span><span class="o">));</span>
+            <span class="k">return</span> <span class="nc">StorageOptions</span><span class="o">.</span><span class="na">newBuilder</span><span class="o">().</span><span class="na">setCredentials</span><span class="o">(</span><span class="n">credentials</span><span class="o">).</span><span class="na">build</span><span class="o">().</span><span class="na">getService</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">logger</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"Failed to load GoogleCredentials from path: "</span> <span class="o">+</span> <span class="n">credentialsPath</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
+            <span class="k">throw</span> <span class="n">e</span><span class="o">;</span>
         <span class="o">}</span>
     <span class="o">}</span>
 <span class="o">}</span>
 
 </code></pre></div></div>
+
+<p>이렇게 GCPConfig를 만들어서 Storage를 Bean으로 등록해주면 된다. 
+이렇게 하면 GCP 버켓에 접근할 수 있는 Storage 객체를 사용할 수 있다.</p>
+
+<ul>
+  <li>파일 입력 스트림 생성
+  FileInputStream credentialsStream = new FileInputStream(credentialsPath):
+  지정된 경로의 인증 파일(JSON)을 읽기 위해 파일 입력 스트림을 생성.
+  try-with-resources 문을 사용하여 스트림이 자동으로 닫히도록 함.</li>
+  <li>
+    <p>GoogleCredentials 객체 생성 및 스코프 설정
+  GoogleCredentials.fromStream(credentialsStream):
+  파일 입력 스트림에서 인증 정보를 읽어와 GoogleCredentials 객체를 생성.
+  .createScoped(List.of(“https://www.googleapis.com/auth/cloud-platform”)):
+  필요한 OAuth 2.0 스코프를 설정.
+  여기서는 cloud-platform 스코프를 사용하여 GCP의 모든 리소스에 대한 액세스 권한을 부여.
+  필요에 따라 더 제한적인 스코프를 설정할 수 있음.
+  https://www.googleapis.com/auth/devstorage.read_only: 읽기 전용 액세스</p>
+
+    <p>https://www.googleapis.com/auth/devstorage.read_write: 읽기 및 쓰기 액세스</p>
+
+    <p>https://www.googleapis.com/auth/devstorage.full_control: 완전한 제어 권한</p>
+  </li>
+  <li>Storage 객체 생성
+  StorageOptions.newBuilder().setCredentials(credentials).build().getService():
+  StorageOptions 빌더를 사용하여 GoogleCredentials를 설정하고 Storage 서비스 객체를 생성.
+  이렇게 생성된 Storage 객체를 반환하여 애플리케이션 내에서 GCS와 상호 작용할 수 있도록 함.</li>
+</ul>
+
+<h3 id="storageservicejava">StorageService.java</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">import</span> <span class="nn">com.google.cloud.storage.BlobInfo</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.google.cloud.storage.Storage</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.RequiredArgsConstructor</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.beans.factory.annotation.Value</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Service</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RestController</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.multipart.MultipartFile</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+
+<span class="nd">@RequiredArgsConstructor</span>
+<span class="nd">@Service</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StorageService</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">Storage</span> <span class="n">storage</span><span class="o">;</span>
+    
+    <span class="c1">// application.properties에 설정한 버킷 이름을 가져옴</span>
+    <span class="nd">@Value</span><span class="o">(</span><span class="s">"${spring.cloud.gcp.storage.bucket-name}"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">bucketName</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">uploadFile</span><span class="o">(</span><span class="nc">MultipartFile</span> <span class="n">file</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">blobName</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="na">getOriginalFilename</span><span class="o">();</span>
+        <span class="nc">BlobInfo</span> <span class="n">blobInfo</span> <span class="o">=</span> <span class="n">storage</span><span class="o">.</span><span class="na">create</span><span class="o">(</span>
+                <span class="nc">BlobInfo</span><span class="o">.</span><span class="na">newBuilder</span><span class="o">(</span><span class="n">bucketName</span><span class="o">,</span> <span class="n">blobName</span><span class="o">).</span><span class="na">build</span><span class="o">(),</span>
+                <span class="n">file</span><span class="o">.</span><span class="na">getBytes</span><span class="o">()</span>
+        <span class="o">);</span>
+        <span class="k">return</span> <span class="n">blobInfo</span><span class="o">.</span><span class="na">getMediaLink</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>uploadFile 메소드는 업로드된 파일의 URL을 반환한다. 나는 application.properties에 버킷 이름을 설정했는데, 
+문자열로 직접 설정해도 상관 없다.</p>
+
+<h3 id="storagecontrollerjava">StorageController.java</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    <span class="nd">@RestController</span>
+    <span class="nd">@PostMapping</span><span class="o">(</span><span class="s">"/upload_test"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">ResponseEntity</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">restImage</span><span class="o">(</span><span class="nd">@RequestPart</span><span class="o">(</span><span class="s">"file"</span><span class="o">)</span> <span class="nc">MultipartFile</span> <span class="n">file</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="nc">String</span> <span class="n">message</span> <span class="o">=</span> <span class="n">storageService</span><span class="o">.</span><span class="na">uploadFile</span><span class="o">(</span><span class="n">file</span><span class="o">);</span>
+            <span class="nc">TestEntity</span> <span class="n">test</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TestEntity</span><span class="o">();</span>
+            <span class="n">test</span><span class="o">.</span><span class="na">setTestString</span><span class="o">(</span><span class="n">message</span><span class="o">);</span>
+            <span class="n">testRepo</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">test</span><span class="o">);</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nc">ResponseEntity</span><span class="o">&lt;&gt;(</span><span class="nc">HttpStatus</span><span class="o">.</span><span class="na">CREATED</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nc">ResponseEntity</span><span class="o">&lt;&gt;(</span><span class="nc">HttpStatus</span><span class="o">.</span><span class="na">INTERNAL_SERVER_ERROR</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+</code></pre></div></div>
+
+<p>이렇게 파일을 업로드하는 컨트롤러를 만들어주면 된다. 업로드된 파일의 URL을 반환하고, 해당 URL을 DB에 저장하는 식으로 구현했다.
+그리고 해당 컨트롤러는 RestController인데 파일을 업로드 하는 경우에, @RequestPart를 사용해야 한다.
+이 부분에서 트러블슈팅에 시간이 많이 걸렸는데 @RequestBody나 @RequestParam을 사용하면 파일을 업로드할 수 없다.</p>
+
+<p>@RequestPart와 @RequestParam, @RequestBody 가 정확히 뭔지 모르고 막연하게 사용하다가 이런 문제가 생겼는데, 이번에
+확실히 정리하게 되어서 오히려 좋은 기회가 되었다고 생각한다.</p>
+
+<h3 id="requestpart와-requestparam-requestbody">RequestPart와 RequestParam, RequestBody</h3>
+
+<h4 id="requestpart에-대한-자세한-설명">@RequestPart에 대한 자세한 설명</h4>
+
+<p>@RequestPart는 Spring MVC에서 멀티파트 요청(multipart request)에서 특정한 파트를 매핑하기 위해 사용되는 어노테이션이다. 
+주로 파일 업로드 또는 복합 데이터(파일 + JSON 객체 등)를 처리할 때 사용되는데, 다음과 같은 시나리오에서 사용된다.</p>
+
+<ol>
+  <li>파일 업로드 시, 파일을 받기 위해 사용.</li>
+  <li>파일과 함께 전송되는 다른 데이터를 받기 위해 사용.</li>
+  <li>JSON 데이터와 파일을 함께 처리할 때 사용.</li>
+</ol>
+
+<h4 id="주요-특징">주요 특징</h4>
+<ol>
+  <li>다양한 데이터 타입 처리: @RequestPart는 MultipartFile뿐만 아니라, 문자열, JSON 객체, POJO 등 다양한 타입을 처리할 수 있다.</li>
+  <li>
+    <p>멀티파트 요청과 JSON 객체: 파일 외에도 JSON 객체를 함께 전송할 수 있으며, 이를 각각의 파트로 분리하여 처리할 수 있다.</p>
+  </li>
+  <li>
+    <p>JSON 파싱 및 파일 업로드
+@RequestPart는 JSON 데이터를 자동으로 파싱하여 POJO로 변환할 수 있으며, 동시에 파일 업로드도 처리할 수 있다. 이러한 기능은 파일과 관련된 메타데이터를 함께 처리해야 할 때 매우 유용하다.</p>
+  </li>
+  <li>Content-Type 헤더 요구사항
+@RequestPart: multipart/form-data로 인코딩된 요청에서 특정 파트를 처리하는 데 적합하며, JSON 객체를 포함하는 멀티파트 요청의 <strong>Content-Type</strong>이 multipart/form-data로 지정되어야 한다.
+@RequestParam: application/x-www-form-urlencoded와 같은 단순 폼 데이터에 적합하며, JSON 데이터를 처리하기에는 제한적.</li>
+</ol>
+
+<h4 id="requestbody와-requestpart의-차이점">@RequestBody와 @RequestPart의 차이점</h4>
+<ol>
+  <li>@RequestBody
+주요 목적: HTTP 요청의 본문(body)에 포함된 데이터를 직접 매핑하여 자바 객체로 변환하는 데 사용된다.</li>
+</ol>
+
+<p>지원하는 Content-Type: @RequestBody는 주로 JSON, XML, plain text 등과 같은 데이터를 처리하는 데 사용된다. 이 경우 요청의 Content-Type이 application/json 또는 application/xml 같은 형식이 된다.</p>
+
+<p>사용 사례:</p>
+
+<p>단순한 JSON 객체를 자바 객체로 매핑할 때 주로 사용됨.
+예를 들어, 클라이언트가 JSON으로 인코딩된 데이터를 전송하고, 서버가 이를 자바 객체로 변환하여 처리하는 경우에 적합함.</p>
+
 
 
       <hr>
@@ -993,7 +1034,7 @@ HashSet에 중복된 노드가 들어가게 된다. 또한 중복 검사, 예를
     <div>
 
       <a
-          href="https://www.linkedin.com/sharing/share-offsite?url=https://ash-tensor.github.io/%EB%B0%B1%EC%A4%80/ps/java/%ED%8C%8C%EC%9D%B4%EC%8D%AC/2024/02/27/boj1743.html"
+          href="https://www.linkedin.com/sharing/share-offsite?url=https://ash-tensor.github.io/web/java/2024/08/20/spring-gcp-bucket.html"
           onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
           class="d-inline-block mr-2"
        >
@@ -1004,7 +1045,7 @@ HashSet에 중복된 노드가 들어가게 된다. 또한 중복 검사, 예를
       </a>
 
       <a
-          href="https://twitter.com/intent/tweet?text=[백준] 백준 1743번 :: 음식물 피하기 :: 실버 1 &url=https://ash-tensor.github.io/%EB%B0%B1%EC%A4%80/ps/java/%ED%8C%8C%EC%9D%B4%EC%8D%AC/2024/02/27/boj1743.html"
+          href="https://twitter.com/intent/tweet?text=[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기&url=https://ash-tensor.github.io/web/java/2024/08/20/spring-gcp-bucket.html"
           onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
           class="d-inline-block mr-2">
         <span class="fa-stack fa-lg" style="color: #1DA1F2;">
@@ -1014,7 +1055,7 @@ HashSet에 중복된 노드가 들어가게 된다. 또한 중복 검사, 예를
       </a>
 
       <a
-          href="http://www.reddit.com/submit?url=https://ash-tensor.github.io/%EB%B0%B1%EC%A4%80/ps/java/%ED%8C%8C%EC%9D%B4%EC%8D%AC/2024/02/27/boj1743.html"
+          href="http://www.reddit.com/submit?url=https://ash-tensor.github.io/web/java/2024/08/20/spring-gcp-bucket.html"
           onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
           class="d-inline-block mr-2">
         <span class="fa-stack fa-lg" style="color: #FF4500;">
@@ -1037,8 +1078,8 @@ HashSet에 중복된 노드가 들어가게 된다. 또한 중복 검사, 예를
 <ul class="mb-5 ">
   
   <p>
-    <a style= "font-size: 20px; font-weight: bold; font-family: 'Noto Sans KR', sans-serif;" href= "http://localhost:4000/category/백준.html">
-      백준 카테고리의 다른 글
+    <a style= "font-size: 20px; font-weight: bold; font-family: 'Noto Sans KR', sans-serif;" href= "http://localhost:4000/category/WEB.html">
+      WEB 카테고리의 다른 글
     </a>
   </p>
   
@@ -1047,10 +1088,10 @@ HashSet에 중복된 노드가 들어가게 된다. 또한 중복 검사, 예를
     
       <li>
         <h3>
-          <a href="/java/ps/%EB%B0%B1%EC%A4%80/2024/05/02/boj7562.html" style= "font-size: 17px;">
-            [백준][JAVA] 백준 7562번 :: 나이트의 이동 :: 실버 1
+          <a href="/web/java/2024/08/20/spring-gcp-bucket.html" style= "font-size: 17px;">
+            [WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기
           </a>
-          <small style= "font-size: 14px;">02 May 2024</small>
+          <small style= "font-size: 14px;">20 Aug 2024</small>
         </h3>
       </li>
       
@@ -1059,10 +1100,10 @@ HashSet에 중복된 노드가 들어가게 된다. 또한 중복 검사, 예를
     
       <li>
         <h3>
-          <a href="/java/ps/%EB%B0%B1%EC%A4%80/2024/03/28/boj12100.html" style= "font-size: 17px;">
-            [백준][JAVA] 백준 12100번 :: 2048(Easy) :: 골드 2
+          <a href="/web/2024/08/05/gcp-app-engine-frontend-deploy.html" style= "font-size: 17px;">
+            [WEB] GCP App Engine을 이용한 프론트엔드 서비스 배포
           </a>
-          <small style= "font-size: 14px;">28 Mar 2024</small>
+          <small style= "font-size: 14px;">05 Aug 2024</small>
         </h3>
       </li>
       
@@ -1071,10 +1112,10 @@ HashSet에 중복된 노드가 들어가게 된다. 또한 중복 검사, 예를
     
       <li>
         <h3>
-          <a href="/%EB%B0%B1%EC%A4%80/ps/java/%ED%8C%8C%EC%9D%B4%EC%8D%AC/2024/02/27/boj1743.html" style= "font-size: 17px;">
-            [백준] 백준 1743번 :: 음식물 피하기 :: 실버 1 
+          <a href="/web/2024/02/17/gcp-free-tier-settings.html" style= "font-size: 17px;">
+            [WEB]GCP(google cloud platform) 프리 티어 VM 생성 / MYSQL 서버 연결
           </a>
-          <small style= "font-size: 14px;">27 Feb 2024</small>
+          <small style= "font-size: 14px;">17 Feb 2024</small>
         </h3>
       </li>
       
@@ -1083,10 +1124,10 @@ HashSet에 중복된 노드가 들어가게 된다. 또한 중복 검사, 예를
     
       <li>
         <h3>
-          <a href="/%EB%B0%B1%EC%A4%80/ps/java/2024/02/21/boj1987.html" style= "font-size: 17px;">
-            [백준] 백준 1987번 :: 알파벳 :: 골드 4 
+          <a href="/web/2024/01/12/bucketlist-stamp.html" style= "font-size: 17px;">
+            [HTML/JAVASCRIPT] 아주 간단한 버켓리스트 페이지 제작 - 도장찍기 부분 제작 (2/2)
           </a>
-          <small style= "font-size: 14px;">21 Feb 2024</small>
+          <small style= "font-size: 14px;">12 Jan 2024</small>
         </h3>
       </li>
       
@@ -1095,19 +1136,13 @@ HashSet에 중복된 노드가 들어가게 된다. 또한 중복 검사, 예를
     
       <li>
         <h3>
-          <a href="/%EB%B0%B1%EC%A4%80/ps/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/02/01/boj1931.html" style= "font-size: 17px;">
-            [백준] 백준 1931번 :: 회의실 배정 :: 실버 1 
+          <a href="/web/2024/01/10/bucketlist.html" style= "font-size: 17px;">
+            [HTML/JAVASCRIPT] 아주 간단한 버켓리스트 페이지 제작
           </a>
-          <small style= "font-size: 14px;">01 Feb 2024</small>
+          <small style= "font-size: 14px;">10 Jan 2024</small>
         </h3>
       </li>
       
-    
-  
-    
-  
-    
-  
     
   
 </ul>
@@ -1144,12 +1179,9 @@ HashSet에 중복된 노드가 들어가게 된다. 또한 중복 검사, 예를
 <!-- 코멘트 란을 추가하는 코드 -->
 
         
-        <a class="btn btn-primary float-left" href="/%EB%B0%B1%EC%A4%80/ps/java/2024/02/21/boj1987.html" data-toggle="tooltip" data-placement="top" title="[백준] 백준 1987번 :: 알파벳 :: 골드 4 ">&larr; Previous<span class="d-none d-md-inline">
+        <a class="btn btn-primary float-left" href="/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/20/bigdata-processing-engineer.html" data-toggle="tooltip" data-placement="top" title="[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기">&larr; Previous<span class="d-none d-md-inline">
             Post</span></a>
         
-        
-        <a class="btn btn-primary float-right" href="/java/2024/02/28/java-contain.html" data-toggle="tooltip" data-placement="top" title="[JAVA] 배열에서는 왜 contains() 메소드가 제대로 작동하지 않을까?">Next<span class="d-none d-md-inline">
-            Post</span> &rarr;</a>
         
 
       </div>
