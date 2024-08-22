@@ -1,4 +1,414 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-08-22T09:17:03+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기</title><link href="http://localhost:4000/web/java/2024/08/20/spring-gcp-bucket.html" rel="alternate" type="text/html" title="[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기" /><published>2024-08-20T00:00:00+09:00</published><updated>2024-08-20T00:00:00+09:00</updated><id>http://localhost:4000/web/java/2024/08/20/spring-gcp-bucket</id><content type="html" xml:base="http://localhost:4000/web/java/2024/08/20/spring-gcp-bucket.html"><![CDATA[<h2 id="webgcp-spring-boot에서-gcp-bucket에-파일-업로드하기">[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-08-22T22:11:32+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[WEB][AWS] AWS Rekognition Face Detection Spring Boot 설정</title><link href="http://localhost:4000/web/java/2024/08/22/aws-rekognition-spring-setup.html" rel="alternate" type="text/html" title="[WEB][AWS] AWS Rekognition Face Detection Spring Boot 설정" /><published>2024-08-22T00:00:00+09:00</published><updated>2024-08-22T00:00:00+09:00</updated><id>http://localhost:4000/web/java/2024/08/22/aws-rekognition-spring-setup</id><content type="html" xml:base="http://localhost:4000/web/java/2024/08/22/aws-rekognition-spring-setup.html"><![CDATA[<h2 id="webaws-aws-rekognition-face-detection-spring-boot-설정">[WEB][AWS] AWS Rekognition Face Detection Spring Boot 설정</h2>
+
+<h3 id="1-서론">1. 서론</h3>
+
+<p>흔히 인터넷에서 많이 본 기능중에, 사진을 업로드하면 해당 사진 속의 얼굴을 인식하여 박스를 그리고, 얼굴의 감정 및 나이, 특징등을 
+분석해서 보여주는 사진을 많이 보았을 것이다. 뜬금 없는 사진에서 역겨움이나 놀람, 행복 등으로 웃음을 주는 밈들을 생각해 보면 바로 떠올릴 수 있을 것이다.
+…이런 식으로</p>
+
+<p><img src="/img/posts/aws_face_rekognition/1.jpeg" width="80%" /></p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"faceDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"boundingBox"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"width"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.38674828</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"height"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.37040558</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"left"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.30599424</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"top"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.19806679</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"ageRange"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"smile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.86501</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"eyeglasses"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.99978</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"sunglasses"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.95743</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">57.465927</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"beard"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">98.73258</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"mustache"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.56685</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"eyesOpen"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.998924</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"mouthOpen"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.27673</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"emotions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CALM"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.0</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAD"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.009685755</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONFUSED"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0065863132</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DISGUSTED"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0038862228</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANGRY"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.003117323</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HAPPY"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0012536843</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SURPRISED"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.2701445E-4</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FEAR"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.2947788E-4</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div></div>
+
+<p>일단 내 정장 사진을 입은 모습으로 테스트해 본 결과인데 나이는 20세에서 26세 정도로 나오고, 
+웃음이 없고 안경을 썼으며, 남자로 판단하고, 수염은 없다고 판단하고, 눈은 떠있고, 입은 닫혀있으며, 감정은 차분하다고 판단했다.
+혹시 몰라서 다른 사진으로도 테스트 해 보면</p>
+
+<p><img src="/img/posts/aws_face_rekognition/2.jpeg" width="80%" /></p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"faceDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"ageRange"</span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="err">...</span><span class="w">
+            </span><span class="s2">"gender"</span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Female"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.85323</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="err">...</span><span class="w">
+            </span><span class="s2">"emotions"</span><span class="err">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CALM"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">96.09375</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SURPRISED"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.1915436</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONFUSED"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.54200494</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DISGUSTED"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.11892319</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HAPPY"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.086530045</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANGRY"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.013077259</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAD"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.003439188</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FEAR"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.529953E-4</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="err">...</span><span class="w">
+</span><span class="err">}</span><span class="w">
+
+</span></code></pre></div></div>
+
+<p>일단 나이가 생각보다 정확하게 나온다는 점에서 놀랐는데, 일단 동양인의 얼굴은 나이가 보다 더 어려보이게 나오는 것 같기는 하다.
+나의 경우에도 20세는 턱도 없이 어린 나이인데도 20세로 나오고, 카리나의 경우에는 10세에서 16세로 나왔다. 물론 AWS API이므로
+만 나이겠지만, 아무리 그래도 10세는 너무 어린 나이로 나오는게 아닐까ㅋㅋㅋ 그리고 내 성별의 경우에도 남자일 확률이 57% 밖에는 
+확신할 수 없다는 점이 좀 웃겼다.</p>
+
+<p>아무튼, 이런 기능을 구현하기 위해서는 AWS Rekognition API를 사용하면 된다. 
+내 다른 프로젝트에서 얼굴 인식, 즉 나이대와 성별을 체크하는 기능을 구현하고자 했는데 이를 위해서 AWS Rekognition API를 사용하였다.
+그런데 AWS의 자습서 내용이 형편없기도 하고, 그리고 한국어로 된 Spring Boot에서 AWS Rekognition API를 사용하는 방법에 대한 자료가 많이 없어서
+이렇게 직접 구현하면서 정리해보려고 한다.</p>
+
+<h3 id="2-의존성-추가">2. 의존성 추가</h3>
+
+<p>일단 메이븐의 경우에는 아래와 같이 의존성을 추가해주면 된다.</p>
+
+<h4 id="pomxml">pom.xml</h4>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        <span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>com.amazonaws<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>aws-java-sdk-rekognition<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>1.12.770<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+   
+</code></pre></div></div>
+
+<p>자바 버전 17, 그리고 스프링 부트 버전 3.3.1을 사용했고, AWS Rekognition API의 버전은 1.12.770을 사용했다.
+그래들의 경우에는</p>
+
+<h4 id="buildgradle">build.gradle</h4>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">
+    </span><span class="err">implementation</span><span class="w"> </span><span class="err">'com.amazonaws:aws-java-sdk-rekognition:</span><span class="mf">1.12</span><span class="err">.</span><span class="mi">770</span><span class="err">'</span><span class="w">
+    </span><span class="err">implementation</span><span class="w"> </span><span class="err">'com.amazonaws:aws-java-sdk-core:</span><span class="mf">1.12</span><span class="err">.</span><span class="mi">770</span><span class="err">'</span><span class="w">
+    
+</span></code></pre></div></div>
+
+<p>이 의존성을 추가해 주어야 한다. 이 의존성을 추가해 주면 다음과 같은 경고 메시지가 나오는데</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2024-08-22T21:12:40.570+09:00  WARN 2168 --- [           main] com.amazonaws.util.VersionInfoUtils      : The 
+AWS SDK for Java 1.x entered maintenance mode starting July 31, 2024 and will reach end of support on December 
+31, 2025. For more information, see https://aws.amazon.com/blogs/developer/the-aws-sdk-for-java-1-x-is-in-
+maintenance-mode-effective-july-31-2024/
+You can print where on the file system the AWS SDK for Java 1.x core runtime is located by setting the AWS_JAVA_V1_
+PRINT_LOCATION environment variable or aws.java.v1.printLocation system property to 'true'.
+This message can be disabled by setting the AWS_JAVA_V1_DISABLE_DEPRECATION_ANNOUNCEMENT environment variable or 
+aws.java.v1.disableDeprecationAnnouncement system property to 'true'.
+The AWS SDK for Java 1.x is being used here:
+</code></pre></div></div>
+
+<p>이런 경고 메시지가 나오는데, 이는 AWS SDK for Java 1.x가 2025년 12월 31일까지 지원이 중단된다는 것을 알려주는 메시지이다.
+메이븐 센트럴에서도 확인해 봤지만 일단 1.x 버전이 최신 버전이라서 1.x 버전을 사용해야 하는 것 같다. 2 버전은 출시되지는 않았다.</p>
+
+<p><img src="/img/posts/aws_face_rekognition/3.png" width="80%" /></p>
+
+<h3 id="3-aws-키-설정">3. AWS 키 설정</h3>
+
+<p>그리고 AWS Rekognition API를 사용하기 위해서는 AWS키를 설정해 주어야 하는데, 나는 귀찮아서 루트키를 발급 받았지만 AWS에서는 IAM 사용자를 생성해서
+키를 생성하는 것을 권장하고 있다. IAM 사용자를 생성하고, 해당 사용자에게 RekognitionFullAccess 권한을 부여하고, 해당 사용자의 키를 사용하면 된다.</p>
+
+<p>혹시라도 어떻게 하는지 모르겠으면 <a href="&quot;https://aws.amazon.com/de/blogs/security/wheres-my-secret-access-key/&quot;">여기</a>를 참고하면 된다.</p>
+
+<p><img src="/img/posts/aws_face_rekognition/4.png" width="80%" /></p>
+
+<p>그리고 원래는 환경변수로 설정해 주는 것을 권장하지만, 일단 빠른 테스트를 위해 application.properties에 직접 삽입했다.</p>
+
+<h4 id="applicationproperties">application.properties</h4>
+
+<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="py">aws.accessKeyId</span><span class="p">=</span><span class="s">your-access-key</span>
+<span class="py">aws.secretKey</span><span class="p">=</span><span class="s">your-secret-key</span>
+
+</code></pre></div></div>
+
+<h3 id="4-awsrekognitionconfiguration">4. AWSRekognitionConfiguration</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">import</span> <span class="nn">com.amazonaws.auth.AWSStaticCredentialsProvider</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.amazonaws.auth.BasicAWSCredentials</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.amazonaws.regions.Regions</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.amazonaws.services.rekognition.AmazonRekognition</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.amazonaws.services.rekognition.AmazonRekognitionClientBuilder</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.beans.factory.annotation.Value</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.context.annotation.Bean</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.context.annotation.Configuration</span><span class="o">;</span>
+
+<span class="nd">@Configuration</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AwsRekognitionConfiguration</span> <span class="o">{</span>
+
+    <span class="nd">@Value</span><span class="o">(</span><span class="s">"${aws.access-key}"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">accessKey</span><span class="o">;</span>
+
+    <span class="nd">@Value</span><span class="o">(</span><span class="s">"${aws.secret-key}"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">secretKey</span><span class="o">;</span>
+
+    <span class="nd">@Bean</span>
+    <span class="kd">public</span> <span class="nc">AmazonRekognition</span> <span class="nf">amazonRekognition</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">BasicAWSCredentials</span> <span class="n">credentials</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BasicAWSCredentials</span><span class="o">(</span><span class="n">accessKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
+        <span class="k">return</span> <span class="nc">AmazonRekognitionClientBuilder</span>
+                <span class="o">.</span><span class="na">standard</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">withRegion</span><span class="o">(</span><span class="nc">Regions</span><span class="o">.</span><span class="na">EU_WEST_1</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">withCredentials</span><span class="o">(</span><span class="k">new</span> <span class="nc">AWSStaticCredentialsProvider</span><span class="o">(</span><span class="n">credentials</span><span class="o">))</span>
+                <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>이렇게 AWSRekognitionConfiguration을 만들어서 AmazonRekognition 객체를 Bean으로 등록해 주면 된다. 
+이 이후에는 AWSRekognitionService를 만들어서 실제 얼굴 인식을 하는 메소드를 만들어 주면 된다.</p>
+
+<h3 id="5-awsrekognitionservice-및-awsrekognitioncontroller-생성">5. AWSRekognitionService 및 AWSRekognitionController 생성</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">import</span> <span class="nn">com.amazonaws.services.rekognition.AmazonRekognition</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.amazonaws.services.rekognition.model.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Service</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.multipart.MultipartFile</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.ByteBuffer</span><span class="o">;</span>
+
+<span class="nd">@RequiredArgsConstructor</span>
+<span class="nd">@Service</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AwsRekognitionService</span> <span class="o">{</span>
+    
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="nc">AmazonRekognition</span> <span class="n">client</span><span class="o">;</span>
+
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="nc">DetectFacesResult</span> <span class="nf">detectFacesRequest</span><span class="o">(</span><span class="nc">MultipartFile</span> <span class="n">multipartFile</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="nc">DetectFacesRequest</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DetectFacesRequest</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">withImage</span><span class="o">(</span><span class="k">new</span> <span class="nc">Image</span><span class="o">().</span><span class="na">withBytes</span><span class="o">(</span><span class="nc">ByteBuffer</span><span class="o">.</span><span class="na">wrap</span><span class="o">(</span><span class="n">multipartFile</span><span class="o">.</span><span class="na">getBytes</span><span class="o">())))</span>
+                <span class="o">.</span><span class="na">withAttributes</span><span class="o">(</span><span class="nc">Attribute</span><span class="o">.</span><span class="na">ALL</span><span class="o">);</span>
+
+        <span class="k">return</span> <span class="n">client</span><span class="o">.</span><span class="na">detectFaces</span><span class="o">(</span><span class="n">request</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+<span class="kn">import</span> <span class="nn">com.amazonaws.services.rekognition.model.DetectFacesRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.amazonaws.services.rekognition.model.DetectFacesResult</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.example.awsrekognition.service.AwsRekognitionService</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.http.ResponseEntity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.multipart.MultipartFile</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+
+<span class="nd">@RestController</span>
+<span class="nd">@RequiredArgsConstructor</span>
+<span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">"/api"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AwsRekognitionRestController</span> <span class="o">{</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="nc">AwsRekognitionService</span> <span class="n">awsRekognitionService</span><span class="o">;</span>
+
+    <span class="nd">@PostMapping</span><span class="o">(</span><span class="s">"/images/test-face"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">ResponseEntity</span><span class="o">&lt;</span><span class="nc">DetectFacesResult</span><span class="o">&gt;</span> <span class="nf">detectFaces</span><span class="o">(</span><span class="nd">@RequestPart</span> <span class="nc">MultipartFile</span> <span class="n">image</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nc">ResponseEntity</span><span class="o">.</span><span class="na">ok</span><span class="o">(</span><span class="n">awsRekognitionService</span><span class="o">.</span><span class="na">detectFacesRequest</span><span class="o">(</span><span class="n">image</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>이러면 이미지를 업로드하면 해당 이미지의 얼굴을 인식하는 기능을 구현할 수 있다.</p>
+
+<h3 id="6-마무리">6. 마무리</h3>
+
+<p>이렇게 AWS Rekognition API를 사용하여 Spring Boot에서 얼굴 인식을 구현하는 방법을 정리해 보았다.
+이런 방법 말고도 S3 버킷에 이미지를 업로드하면 해당 이미지의 URL을 가져와서 얼굴 인식을 하는 방법도 있긴 하고,
+여러 사진 중에서 해당 사진의 얼굴을 찾는 방법도 있다. 아마도 출입국 심사대나 보안 설정 같은 곳에서 유용하게 사용할 수 있지 않을까 싶다.</p>
+
+<p>끝!</p>]]></content><author><name>ash tensor</name></author><category term="WEB" /><category term="JAVA" /><summary type="html"><![CDATA[AWS Rekognition API를 사용하여 Spring Boot에서 얼굴 인식을 구현.]]></summary></entry><entry><title type="html">[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기</title><link href="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/20/bigdata-processing-engineer.html" rel="alternate" type="text/html" title="[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기" /><published>2024-08-20T00:00:00+09:00</published><updated>2024-08-20T00:00:00+09:00</updated><id>http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/20/bigdata-processing-engineer</id><content type="html" xml:base="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/20/bigdata-processing-engineer.html"><![CDATA[<h2 id="자격증실기-빅데이터-분석기사-2024년-1회8회실기-합격-후기-및-시험-문제">[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기 및 시험 문제</h2>
+
+<h3 id="합격-인증">합격 인증</h3>
+
+<p><img src="/img/posts/bigdata/3.png" width="80%" /></p>
+
+<p>솔직히 좀 부끄럽긴 한데… 3과목 점수가 5점밖에 안나와서 남 보여줄만한 점수는 아니긴 해도, 일단 합격은 합격이니까.</p>
+
+<h3 id="시험-총평">시험 총평</h3>
+
+<p>나는 시험을 동부자격검정센터에서 실기 시험을 봤는데 생각보다 시험장이 조금 작긴 했다. 
+일단 태릉입구 근방 주민은 쉽게 찾아갈 수 있는게, BYC 직영매장 근처에 바로 시험장이 있어서 찾아가기 쉽다.</p>
+
+<p>일단 빅데이터 분석기사의 실기 시험을 공부하며 내가 느꼈던 점은, 필기가 더 어렵고, 실기가 더 쉽다고 느꼈던 점이었다.</p>
+
+<h4 id="1과목">1과목</h4>
+
+<p><img src="/img/posts/bigdata/6.png" width="80%" /></p>
+
+<p>(8회 시험에서는 약 몇백줄 되는 CSV를 제공했는데 다양한 나라의 맥주 판매? 소비 데이터 중에서 특정 조건에 맞는 나라의 정보를 추출하는 문제였다.
+즉 꼭 저런 식의 전처리 문제만 나오는 건 아니다..!)
+1과목은 데이터 전처리 과목인데, 판다스 라이브러리 등을 사용해서 기초적인 데이터 조작을 할 수 있는지를 묻는 문제인데,
+파이썬을 쓸 줄만 안다면 누구나 이 문제를 풀 수 있다. 왜냐하면 help와 dir 명령어를 사용할 수 있기 때문에 pandas를 사용하지 못한다고 하더라도
+도움을 받을 수 있기 때문이다. 사실상 30점은 기본으로 가져가는 점수라고 생각한다.</p>
+
+<h4 id="2과목">2과목</h4>
+
+<p><img src="/img/posts/bigdata/7.png" width="80%" /></p>
+
+<p>2과목은 분석 모델링 과목인데, 회귀 모델이나 분류 모델을 사용해서 주어진 문제에 따른 데이터를 반환하는 문제다.
+이 문제는 40점 배점으로 이 문제도 어려운 문제는 아니다. 내 기준으로 RMSE가 100에서 120 사이에 있었는데 40점으로 만점을 받았다.</p>
+
+<p>8회차 문제를 설명하자면, 두 지하철역의 주요 변수(이름, 날씨, 기온, 습도, 풍속, 미세먼지 등)를 이용해서 두 지하철역의 승하차 인원을 예측하는 문제였다.</p>
+
+<p>일단 2과목에서 점수를 받지 못하면 합격이 어렵다고 봐야 한다. 2유형은 40점이라 배점이 크기도 하지만, 아예 0점이 나오는 경우가 많아서 
+숙달될 수 있을 정도로 코드를 써보는 편이 좋다.
+내 경험상 2유형을 정리해 보자면 일단 <strong>원본 데이터를 잘 살펴 봐야 한다.</strong> 예를 들어서, 범주형 변수인 경우에는
+라벨 인코딩 보다는(물론 안하는 것보다는 성능이 좋겠지만) pandas의 get_dummies를 이용하는 원핫 인코딩을 사용하는 것이 좋다.</p>
+
+<p>또한, 이번 8회차 시험 문제를 설명했듯이, 두 지하철역의 승하차 인원을 예측하는 문제였는데, 꽤 많은 사람들이 <strong>지하철 역 이름</strong>을 변수로 사용하지 않아서 
+점수가 낮게 나왔는데(문제에서는 A역 B역으로 주어졌다) 아마도 A역, B역으로 익명화 되어 있어서 변수로 사용하지 않은 건 이해한다. 하지만 우리가 
+실제 지하철 역을 이용할 때 항상 집에서 가까운 지하철 역을 이용하는 것처럼, 강남의 유동인구가 많기 때문에 강남역은 당연히 노선도의 끝의 지하철 역보다는
+이용자수가 많을 것이 분명하다.</p>
+
+<p>이런 점을 고려하지 않고 지하철 역 이름을 변수로 사용하지 않은 사람들이 많았는데, 물론 사용하지 않다고 하더라도 점수를 받을 수는 있지만 내가 시험장에서 해당 데이터를 기반으로
+분석했을때, 해당 변수가 설명력이 가장 높은 변수였기 때문에 아마 점수가 조금 떨어졌을 것이다. 이렇듯 어느정도 실제 데이터를 살펴보는게 중요하다!</p>
+
+<p><img src="/img/posts/bigdata/4.png" width="80%" /></p>
+
+<p>그리고 돌아다니는 팁으로 랜덤포레스트 회귀 &amp; 분류를 암기해 가는 2과목 팁이 존재하는데 실제로 이 방법이 가장 좋은 것 같다. 실제 시험장에서 
+결측치와 이상치 제거를 수행한 뒤에 선형 회귀 및 다양한 모델을 사용해서 예측을 수행했는데, 그냥 원 핫 인코딩을 적용한 랜덤포레스트 회귀가 가장 좋은 성능을 보였다.</p>
+
+<p>그리고 0점 나오는 경우가 많았는데, 이는 csv 파일을 저장하지 않은 경우도 있겠지만 <strong>정답 행 갯수보다 적거나 많은 행을 제출</strong>해서 그렇다.
+이런 경우에는 0점이 나올 수 있기 때문에 주의해야 한다. 앞에 있던 사진처럼 총 행의 갯수(학습용 데이터 수, 평가용 데이터 수)를 제공해주기 때문에 
+무조건 csv 파일을 제출할 때 정답 행 갯수와 같은지 len() 함수 등을 이용해서 <strong>꼭꼭</strong> 확인해야 한다!!</p>
+
+<h4 id="3과목">3과목</h4>
+
+<p><img src="/img/posts/bigdata/8.png" width="80%" /></p>
+
+<p>물론 5점 맞은 주제에 무슨 후기냐 싶겠지만, 변명을 하자면 문제가 두문제 나오는데, 각각 5점짜리 소문항 3개씩 15점짜리 문제 두 개였다.
+각각 문제는 1번 소문항이 틀리면 나머지 두개의 문항도 모두 틀리는 구조이기 때문에 2번 문항에서 t-검정의 유의구간을 반대로 설정하는 
+실수를 저질러서 모두 다 틀려버리고 말았다….</p>
+
+<p>개인적으로는 3과목이 가장 어려운 과목이라고 생각하고, 앞으로도 계속 어려워 질 것이라고 생각한다.
+그 이유는 일단 지금 3과목에서는 통계적 검정을 주로 물어보기는 하지만 꼭 통계적 검정(t 검정 혹은 카이제곱 검정)을 물어보지 않을 수도 있다는 점이다.
+실제로 저 예시 문제에서 나온 것처럼 선형 회귀의 계수나 변수 중요도, 오즈비를 물어보는 경우가 대부분이었다.
+실제 기 치뤄진 시험의 기출문제에서도 다른 통계적 지식을 물어보는 경우가 있었는데 이런 경우에는 정말 어려운 문제가 나올 수 있다고 느꼈다. 
+게다가 빅분기 특성상 기출문제도 정확하지 않기 때문에, 추후에 이 시험의 난이도를 올리고자 한다면 2과목 점수를 낮추고 3과목 점수를 올리는 식으로 
+변별력을 줄 수도 있지 않을까? 그런 생각이 들었다.</p>
+
+<p><img src="/img/posts/bigdata/5.png" width="80%" /></p>
+
+<p>게다가, 지금은 1과목과 2과목을 모두 맞추면 70점으로 무조건 합격이 가능하기에 떠도는 팁으로는 1과목 2과목만 준비해서 특정 방법(랜덤포레스트 회귀 또는 분류)
+만 달달 외워서 시험보는 편이 팁이라고 돌아다니는데, 랜덤포레스트 특성상 이런 시험의 데이터 셋에서는 어느정도 무조건적으로 성능이 좋게 나올 수 밖에는 
+없기 때문에… 시험 점수 등을 조정해서 3과목을 공부할 수 밖에는 없게끔 시험을 언젠가 바꿀 수도 있지 않을까 생각이 들었다.</p>
+
+<h3 id="마치며">마치며</h3>
+
+<p>빅데이터 분석기사는 일단 필기를 합격했다면 실기는 수월하게 합격할 수 있는 시험이라고 느꼈다. 비록 작업형 시험이기는 하지만 코드가 정말 익숙하지 않은 사람이라도 
+충분히 합격할 수 있는 시험이다. 
+일단 수험서로는 ㅇㄱㅈ 출판사의 책을 사용했는데, 솔직히 별로 좋지 않았다고 할 수 밖에는 없다. 내용이 완전 틀린 내용이 실려있기도 했고,
+해설과 본문 내용이 충돌되는 경우도 많았다. 다른 출판사의 책을 보지는 않았지만 사는 것이 더 좋지 않을까? 그런 생각은 있다. 적어도 2024년에는..</p>
+
+<p>아무튼, 이렇게 빅데이터 분석기사 24년 1회 후기를 마친다!!</p>]]></content><author><name>ash tensor</name></author><category term="자격증" /><summary type="html"><![CDATA[[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기 및 시험 문제]]></summary></entry><entry><title type="html">[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기</title><link href="http://localhost:4000/web/java/2024/08/20/spring-gcp-bucket.html" rel="alternate" type="text/html" title="[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기" /><published>2024-08-20T00:00:00+09:00</published><updated>2024-08-20T00:00:00+09:00</updated><id>http://localhost:4000/web/java/2024/08/20/spring-gcp-bucket</id><content type="html" xml:base="http://localhost:4000/web/java/2024/08/20/spring-gcp-bucket.html"><![CDATA[<h2 id="webgcp-spring-boot에서-gcp-bucket에-파일-업로드하기">[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기</h2>
 
 <h3 id="문제-설명">문제 설명</h3>
 
@@ -243,91 +653,7 @@ mac 기준으로 자신의 .zshrc에 해당 키를 환경변수로 설정해주�
 <p>사용 사례:</p>
 
 <p>단순한 JSON 객체를 자바 객체로 매핑할 때 주로 사용됨.
-예를 들어, 클라이언트가 JSON으로 인코딩된 데이터를 전송하고, 서버가 이를 자바 객체로 변환하여 처리하는 경우에 적합함.</p>]]></content><author><name>ash tensor</name></author><category term="WEB" /><category term="JAVA" /><summary type="html"><![CDATA[[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기]]></summary></entry><entry><title type="html">[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기</title><link href="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/20/bigdata-processing-engineer.html" rel="alternate" type="text/html" title="[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기" /><published>2024-08-20T00:00:00+09:00</published><updated>2024-08-20T00:00:00+09:00</updated><id>http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/20/bigdata-processing-engineer</id><content type="html" xml:base="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/20/bigdata-processing-engineer.html"><![CDATA[<h2 id="자격증실기-빅데이터-분석기사-2024년-1회8회실기-합격-후기-및-시험-문제">[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기 및 시험 문제</h2>
-
-<h3 id="합격-인증">합격 인증</h3>
-
-<p><img src="/img/posts/bigdata/3.png" width="80%" /></p>
-
-<p>솔직히 좀 부끄럽긴 한데… 3과목 점수가 5점밖에 안나와서 남 보여줄만한 점수는 아니긴 해도, 일단 합격은 합격이니까.</p>
-
-<h3 id="시험-총평">시험 총평</h3>
-
-<p>나는 시험을 동부자격검정센터에서 실기 시험을 봤는데 생각보다 시험장이 조금 작긴 했다. 
-일단 태릉입구 근방 주민은 쉽게 찾아갈 수 있는게, BYC 직영매장 근처에 바로 시험장이 있어서 찾아가기 쉽다.</p>
-
-<p>일단 빅데이터 분석기사의 실기 시험을 공부하며 내가 느꼈던 점은, 필기가 더 어렵고, 실기가 더 쉽다고 느꼈던 점이었다.</p>
-
-<h4 id="1과목">1과목</h4>
-
-<p><img src="/img/posts/bigdata/6.png" width="80%" /></p>
-
-<p>(8회 시험에서는 약 몇백줄 되는 CSV를 제공했는데 다양한 나라의 맥주 판매? 소비 데이터 중에서 특정 조건에 맞는 나라의 정보를 추출하는 문제였다.
-즉 꼭 저런 식의 전처리 문제만 나오는 건 아니다..!)
-1과목은 데이터 전처리 과목인데, 판다스 라이브러리 등을 사용해서 기초적인 데이터 조작을 할 수 있는지를 묻는 문제인데,
-파이썬을 쓸 줄만 안다면 누구나 이 문제를 풀 수 있다. 왜냐하면 help와 dir 명령어를 사용할 수 있기 때문에 pandas를 사용하지 못한다고 하더라도
-도움을 받을 수 있기 때문이다. 사실상 30점은 기본으로 가져가는 점수라고 생각한다.</p>
-
-<h4 id="2과목">2과목</h4>
-
-<p><img src="/img/posts/bigdata/7.png" width="80%" /></p>
-
-<p>2과목은 분석 모델링 과목인데, 회귀 모델이나 분류 모델을 사용해서 주어진 문제에 따른 데이터를 반환하는 문제다.
-이 문제는 40점 배점으로 이 문제도 어려운 문제는 아니다. 내 기준으로 RMSE가 100에서 120 사이에 있었는데 40점으로 만점을 받았다.</p>
-
-<p>8회차 문제를 설명하자면, 두 지하철역의 주요 변수(이름, 날씨, 기온, 습도, 풍속, 미세먼지 등)를 이용해서 두 지하철역의 승하차 인원을 예측하는 문제였다.</p>
-
-<p>일단 2과목에서 점수를 받지 못하면 합격이 어렵다고 봐야 한다. 2유형은 40점이라 배점이 크기도 하지만, 아예 0점이 나오는 경우가 많아서 
-숙달될 수 있을 정도로 코드를 써보는 편이 좋다.
-내 경험상 2유형을 정리해 보자면 일단 <strong>원본 데이터를 잘 살펴 봐야 한다.</strong> 예를 들어서, 범주형 변수인 경우에는
-라벨 인코딩 보다는(물론 안하는 것보다는 성능이 좋겠지만) pandas의 get_dummies를 이용하는 원핫 인코딩을 사용하는 것이 좋다.</p>
-
-<p>또한, 이번 8회차 시험 문제를 설명했듯이, 두 지하철역의 승하차 인원을 예측하는 문제였는데, 꽤 많은 사람들이 <strong>지하철 역 이름</strong>을 변수로 사용하지 않아서 
-점수가 낮게 나왔는데(문제에서는 A역 B역으로 주어졌다) 아마도 A역, B역으로 익명화 되어 있어서 변수로 사용하지 않은 건 이해한다. 하지만 우리가 
-실제 지하철 역을 이용할 때 항상 집에서 가까운 지하철 역을 이용하는 것처럼, 강남의 유동인구가 많기 때문에 강남역은 당연히 노선도의 끝의 지하철 역보다는
-이용자수가 많을 것이 분명하다.</p>
-
-<p>이런 점을 고려하지 않고 지하철 역 이름을 변수로 사용하지 않은 사람들이 많았는데, 물론 사용하지 않다고 하더라도 점수를 받을 수는 있지만 내가 시험장에서 해당 데이터를 기반으로
-분석했을때, 해당 변수가 설명력이 가장 높은 변수였기 때문에 아마 점수가 조금 떨어졌을 것이다. 이렇듯 어느정도 실제 데이터를 살펴보는게 중요하다!</p>
-
-<p><img src="/img/posts/bigdata/4.png" width="80%" /></p>
-
-<p>그리고 돌아다니는 팁으로 랜덤포레스트 회귀 &amp; 분류를 암기해 가는 2과목 팁이 존재하는데 실제로 이 방법이 가장 좋은 것 같다. 실제 시험장에서 
-결측치와 이상치 제거를 수행한 뒤에 선형 회귀 및 다양한 모델을 사용해서 예측을 수행했는데, 그냥 원 핫 인코딩을 적용한 랜덤포레스트 회귀가 가장 좋은 성능을 보였다.</p>
-
-<p>그리고 0점 나오는 경우가 많았는데, 이는 csv 파일을 저장하지 않은 경우도 있겠지만 <strong>정답 행 갯수보다 적거나 많은 행을 제출</strong>해서 그렇다.
-이런 경우에는 0점이 나올 수 있기 때문에 주의해야 한다. 앞에 있던 사진처럼 총 행의 갯수(학습용 데이터 수, 평가용 데이터 수)를 제공해주기 때문에 
-무조건 csv 파일을 제출할 때 정답 행 갯수와 같은지 len() 함수 등을 이용해서 <strong>꼭꼭</strong> 확인해야 한다!!</p>
-
-<h4 id="3과목">3과목</h4>
-
-<p><img src="/img/posts/bigdata/8.png" width="80%" /></p>
-
-<p>물론 5점 맞은 주제에 무슨 후기냐 싶겠지만, 변명을 하자면 문제가 두문제 나오는데, 각각 5점짜리 소문항 3개씩 15점짜리 문제 두 개였다.
-각각 문제는 1번 소문항이 틀리면 나머지 두개의 문항도 모두 틀리는 구조이기 때문에 2번 문항에서 t-검정의 유의구간을 반대로 설정하는 
-실수를 저질러서 모두 다 틀려버리고 말았다….</p>
-
-<p>개인적으로는 3과목이 가장 어려운 과목이라고 생각하고, 앞으로도 계속 어려워 질 것이라고 생각한다.
-그 이유는 일단 지금 3과목에서는 통계적 검정을 주로 물어보기는 하지만 꼭 통계적 검정(t 검정 혹은 카이제곱 검정)을 물어보지 않을 수도 있다는 점이다.
-실제로 저 예시 문제에서 나온 것처럼 선형 회귀의 계수나 변수 중요도, 오즈비를 물어보는 경우가 대부분이었다.
-실제 기 치뤄진 시험의 기출문제에서도 다른 통계적 지식을 물어보는 경우가 있었는데 이런 경우에는 정말 어려운 문제가 나올 수 있다고 느꼈다. 
-게다가 빅분기 특성상 기출문제도 정확하지 않기 때문에, 추후에 이 시험의 난이도를 올리고자 한다면 2과목 점수를 낮추고 3과목 점수를 올리는 식으로 
-변별력을 줄 수도 있지 않을까? 그런 생각이 들었다.</p>
-
-<p><img src="/img/posts/bigdata/5.png" width="80%" /></p>
-
-<p>게다가, 지금은 1과목과 2과목을 모두 맞추면 70점으로 무조건 합격이 가능하기에 떠도는 팁으로는 1과목 2과목만 준비해서 특정 방법(랜덤포레스트 회귀 또는 분류)
-만 달달 외워서 시험보는 편이 팁이라고 돌아다니는데, 랜덤포레스트 특성상 이런 시험의 데이터 셋에서는 어느정도 무조건적으로 성능이 좋게 나올 수 밖에는 
-없기 때문에… 시험 점수 등을 조정해서 3과목을 공부할 수 밖에는 없게끔 시험을 언젠가 바꿀 수도 있지 않을까 생각이 들었다.</p>
-
-<h3 id="마치며">마치며</h3>
-
-<p>빅데이터 분석기사는 일단 필기를 합격했다면 실기는 수월하게 합격할 수 있는 시험이라고 느꼈다. 비록 작업형 시험이기는 하지만 코드가 정말 익숙하지 않은 사람이라도 
-충분히 합격할 수 있는 시험이다. 
-일단 수험서로는 ㅇㄱㅈ 출판사의 책을 사용했는데, 솔직히 별로 좋지 않았다고 할 수 밖에는 없다. 내용이 완전 틀린 내용이 실려있기도 했고,
-해설과 본문 내용이 충돌되는 경우도 많았다. 다른 출판사의 책을 보지는 않았지만 사는 것이 더 좋지 않을까? 그런 생각은 있다. 적어도 2024년에는..</p>
-
-<p>아무튼, 이렇게 빅데이터 분석기사 24년 1회 후기를 마친다!!</p>]]></content><author><name>ash tensor</name></author><category term="자격증" /><summary type="html"><![CDATA[[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기 및 시험 문제]]></summary></entry><entry><title type="html">[자격증][실기] 정보처리기사 2024년 1회 실기 합격 후기</title><link href="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/06/engineer-information-processor.html" rel="alternate" type="text/html" title="[자격증][실기] 정보처리기사 2024년 1회 실기 합격 후기" /><published>2024-08-06T00:00:00+09:00</published><updated>2024-08-06T00:00:00+09:00</updated><id>http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/06/engineer-information-processor</id><content type="html" xml:base="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/06/engineer-information-processor.html"><![CDATA[<h2 id="자격증실기-정보처리기사-2024년-1회-실기-합격-후기">[자격증][실기] 정보처리기사 2024년 1회 실기 합격 후기</h2>
+예를 들어, 클라이언트가 JSON으로 인코딩된 데이터를 전송하고, 서버가 이를 자바 객체로 변환하여 처리하는 경우에 적합함.</p>]]></content><author><name>ash tensor</name></author><category term="WEB" /><category term="JAVA" /><summary type="html"><![CDATA[[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기]]></summary></entry><entry><title type="html">[자격증][실기] 정보처리기사 2024년 1회 실기 합격 후기</title><link href="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/06/engineer-information-processor.html" rel="alternate" type="text/html" title="[자격증][실기] 정보처리기사 2024년 1회 실기 합격 후기" /><published>2024-08-06T00:00:00+09:00</published><updated>2024-08-06T00:00:00+09:00</updated><id>http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/06/engineer-information-processor</id><content type="html" xml:base="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/06/engineer-information-processor.html"><![CDATA[<h2 id="자격증실기-정보처리기사-2024년-1회-실기-합격-후기">[자격증][실기] 정보처리기사 2024년 1회 실기 합격 후기</h2>
 
 <h3 id="합격-인증">합격 인증</h3>
 
@@ -1560,46 +1886,4 @@ z값 계산과 같은 각 통계 분포의 기초적인 통계량 계산과 검�
 그냥 개인정보를 제공할 뿐인 것이다. 즉, 광고 전화나 판촉 전화, 개인정보 판매와 같은 일이 일어난다는 것이다. 이는 개인정보를 최초에 제공한 고객의 이익과는 아무런 관련이 없다. 또한 중간에 존재하는 회사와 고객간의 비즈니스에는 
 아무런 관련이 없다. 오직 제 3자의 회사의 특정한 이익과 업무를 위해 사용될 뿐인 것이다.</p>
 
-<p>이러한 경우에는 제공자가 정보가 어떻게 이용될지 예측이 알 수 없고 개인정보의 제 3자의 이익을 위해 사용되기 때문에, 관리 감독 의무나 손해배상 책임이 제 3자에게 존재한다.</p>]]></content><author><name>ash tensor</name></author><category term="ML" /><summary type="html"><![CDATA[[데이터]개인정보 처리 위탁과 제 3자 제공의 차이]]></summary></entry><entry><title type="html">[후기] 알리익스프레스 SD카드 배송 후기 / 용량 뻥튀기 확인하는법</title><link href="http://localhost:4000/%EB%A6%AC%EB%B7%B0/2024/03/06/sd-card.html" rel="alternate" type="text/html" title="[후기] 알리익스프레스 SD카드 배송 후기 / 용량 뻥튀기 확인하는법" /><published>2024-03-06T00:00:00+09:00</published><updated>2024-03-06T00:00:00+09:00</updated><id>http://localhost:4000/%EB%A6%AC%EB%B7%B0/2024/03/06/sd-card</id><content type="html" xml:base="http://localhost:4000/%EB%A6%AC%EB%B7%B0/2024/03/06/sd-card.html"><![CDATA[<h2 id="후기-알리익스프레스-sd카드-배송-리뷰">[후기] 알리익스프레스 SD카드 배송 리뷰</h2>
-
-<p>최근 알리익스프레스에서 SD카드를 주문했다. 왜냐하면, 라즈베리파이를 웹 데이터베이스로 사용하고 싶었는데, 그러기 위해서는 SD카드가 필요했기 때문이다.
-기본적으로 라즈베리파이나 오렌지파이 같은 원보드 컴퓨터들은 저장공간으로 SD카드를 사용하고, 부트로더도 SD카드를 사용하기 때문에, 한번 키기 위해서라도 SD카드가 필수적이다.</p>
-
-<p>아무래도 웹 데이터베이스로 사용할 것이기 때문에 큰 용량이 필요했고, 256GB SD카드를 주문했다.</p>
-
-<p><img src="/img/posts/sdcard/1.png" width="80%" /></p>
-
-<p>이게 모든 문제의 시작이었다.</p>
-
-<h3 id="문제-설명">문제 설명</h3>
-
-<p>알리익스프레스에서 저장장치를 사지 말라고 하는건 굉장히 널리 퍼진 조언이지만, 예전에 SSD를 저렴하게 구매한 적이 있는데, 그 SSD는 아무런 문제 없이 작동했고,
-꽤나 성능도 괜찮았기 때문에 “설마 SSD도 제대로 오는데 SD카드가 제대로 오지 않겠어?” 라고 생각했기 때문이다…</p>
-
-<p>그때 500GB SSD를 2만원 안 되게 산 것 같은데, 이번 SD카드도 1만원 좀 안 되길래 용량 뻥튀기나 사기가 아니지 않을까? 라는 헛된 생각이 있었고,
-그리고 AliExpress Choice 라는 딱지가 붙어 있었기 때문에, 뭔가 나에게 약간의 신뢰감을 줬다. 그래서 구매했지만…</p>
-
-<h3 id="와-실제-사용할-수-있는-용량은-500메가도-안-돼">와 실제 사용할 수 있는 용량은 500메가도 안 돼?</h3>
-
-<p>SD카드를 받고, 라즈베리파이 운영체제 이미지를 굽기 위해서 balenaEtcher를 이용해서 깔기 시작했는데 초기 500메가 정도만 인스톨되고 그 이후에는 초당 0.3메가 정도로 떨어지더니 
-전부 인스톨되는데 예상시간이 하염없이 길어지기 시작했다. 여기서 눈치챘다. 아, 내가 당했구나 라고…</p>
-
-<p>이런 경우에 사용할 수 있는 프로그램으로 <strong>H2testw</strong> 라는 프로그램이 있다. 이 프로그램은 SD카드의 실제 용량을 확인할 수 있는 프로그램이다. 더미 파일을 만들고, 그 파일을 validate하는 방식으로 용량을 확인한다.
-그래서 확인해 본 결과…</p>
-
-<p><img src="/img/posts/sdcard/2.png" width="80%" /></p>
-
-<p>실제 사용할 수 있는 용량은 500메가 정도 밖에는 안 되고, 나머지는 전부 오류가 나는 모습을 확인할 수 있다. 
-게다가 악질인 건, SD 카드의 모습이 마치 SanDisk 제품인 것처럼 래핑을 해 놓은 모습인데(실제로는 SanDian 으로 적혀있다..) 이런 가짜 SSD 카드가 알리 익스프레스에
-널려 있다는 것이다.</p>
-
-<ol>
-  <li>이렇게 SanDian과 같이 이미 존재하는 브랜드를 흉내내는 경우</li>
-  <li>그리고 레노버 SD카드라고 판매하는 제품이 있는데 « 레노버는 SD카드를 판매하지 않는다고 하니까 의심해 볼만 하다.</li>
-  <li>용량에 비해 가격이 너무 저렴한 경우</li>
-</ol>
-
-<p>에는 의심을 해야 할 것 같다.</p>
-
-<p>환불 받고 싶지만 환불하기까지의 과정이 너무 복잡하고, 고객센터 및 판매자와의 소통이 너무 어려워서 그냥 포기하고, 다시 SD카드를 구매하기로 했다.
-쿠팡에서 삼성 SD 카드로..</p>]]></content><author><name>ash tensor</name></author><category term="리뷰" /><summary type="html"><![CDATA[[후기] 알리익스프레스 SD카드 배송 리뷰]]></summary></entry></feed>
+<p>이러한 경우에는 제공자가 정보가 어떻게 이용될지 예측이 알 수 없고 개인정보의 제 3자의 이익을 위해 사용되기 때문에, 관리 감독 의무나 손해배상 책임이 제 3자에게 존재한다.</p>]]></content><author><name>ash tensor</name></author><category term="ML" /><summary type="html"><![CDATA[[데이터]개인정보 처리 위탁과 제 3자 제공의 차이]]></summary></entry></feed>

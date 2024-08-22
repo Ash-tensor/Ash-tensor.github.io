@@ -8,18 +8,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>
-    [깃허브 블로그]지킬 블로그 카테고리 / NAVBAR 기능 추가(clean blog theme) - 1 - Tensor Studio
+    [WEB][AWS] AWS Rekognition Face Detection Spring Boot 설정 - Tensor Studio
     
   </title>
 
-  <meta name="description" content="troubleshooting">
-  <meta property="og:description" content="troubleshooting">
+  <meta name="description" content="AWS Rekognition API를 사용하여 Spring Boot에서 얼굴 인식을 구현.">
+  <meta property="og:description" content="AWS Rekognition API를 사용하여 Spring Boot에서 얼굴 인식을 구현.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="[깃허브 블로그]지킬 블로그 카테고리 / NAVBAR 기능 추가(clean blog ...">
-  <meta property="og:url" content="https://ash-tensor.github.io/%EA%B9%83%ED%97%88%EB%B8%8C/2023/12/15/jekyll-blog-theme-4.html">
+  <meta property="og:title" content="[WEB][AWS] AWS Rekognition Face Detection Sprin...">
+  <meta property="og:url" content="https://ash-tensor.github.io/web/java/2024/08/22/aws-rekognition-spring-setup.html">
 
   
-    <meta property="og:image" content="https://ash-tensor.github.io/img/posts/06.jpg"/>
+    <meta property="og:image" content="https://ash-tensor.github.io/img/port.jpg"/>
   
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6058208689389341"
@@ -38,7 +38,7 @@
 
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/%EA%B9%83%ED%97%88%EB%B8%8C/2023/12/15/jekyll-blog-theme-4.html">
+  <link rel="canonical" href="http://localhost:4000/web/java/2024/08/22/aws-rekognition-spring-setup.html">
   <link rel="alternate" type="application/rss+xml" title="Tensor Studio" href="/feed.xml">
 
 <!--  favicon-->
@@ -108,22 +108,22 @@
   <!-- Page Header -->
 
 
-<header class="masthead" style="background-image: url('/img/posts/06.jpg')">
+<header class="masthead" style="background-image: url('/img/port.jpg')">
 
   <div class="overlay"></div>
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="post-heading">
-          <h1>[깃허브 블로그]지킬 블로그 카테고리 / NAVBAR 기능 추가(clean blog theme) - 1</h1>
+          <h1>[WEB][AWS] AWS Rekognition Face Detection Spring Boot 설정</h1>
           
-          <h2 class="subheading">카테고리 기능 추가 + navbar 커스터마이징의 첫번째 포스트 (1 / 2)</h2>
+          <h2 class="subheading">AWS Rekognition API를 사용하여 Spring Boot에서 얼굴 인식 및 감정 분석을 구현.</h2>
           
           <span class="meta">Posted by
             <a href="#">ash tensor</a>
-            on December 15, 2023 &middot; <span class="reading-time" title="Estimated read time">
+            on August 22, 2024 &middot; <span class="reading-time" title="Estimated read time">
   
-   3 mins  read </span>
+   12 mins  read </span>
 
           </span>
 <!-- 카테고리를 추가하는 코드 -->
@@ -132,7 +132,9 @@
             <a>
           <div style="font-family: 'Noto Sans KR', sans-serif;">
             
-              <a href="http://localhost:4000/category/깃허브.html" style="color: white;">📁깃허브</a>
+              <a href="http://localhost:4000/category/WEB.html" style="color: white;">📁WEB</a>
+            
+              <a href="http://localhost:4000/category/JAVA.html" style="color: white;">📁JAVA</a>
             
           </div>
 <!-- 카테고리를 추가하는 코드 -->
@@ -773,126 +775,341 @@ TENSOR STUDIO
 
           <div style="font-family: 'Noto Sans KR', sans-serif;">
             
-              <a href="http://localhost:4000/category/깃허브.html" style="color: black;">📁 깃허브</a>
+              <a href="http://localhost:4000/category/WEB.html" style="color: black;">📁 WEB</a>
+            
+              <a href="http://localhost:4000/category/JAVA.html" style="color: black;">📁 JAVA</a>
             
           </div>
           
 <!-- 본문 카테고리를 추가하는 코드 -->
 
-      <h2 id="깃허브-블로그-카테고리-기능-추가clean-blog-theme">깃허브 블로그 카테고리 기능 추가(clean blog theme)</h2>
+      <h2 id="webaws-aws-rekognition-face-detection-spring-boot-설정">[WEB][AWS] AWS Rekognition Face Detection Spring Boot 설정</h2>
 
-<p>네이버 블로그나 티스토리 블로그를 확인해 보면 당연히 카테고리 섹션이 있다. 이것도 역시, 댓글창처럼 당연하다면 당연하다고 생각한다. 그럴게, 블로그나 인터넷에서 글을 볼 때, 검색해서 들어가게 되면 그 주제의 글을 계속 봐야 할 때가 생긴다. 웹툰도, 만화도 1화만 보고 그 다음 화를 보지 못하면 답답하잖아?</p>
+<h3 id="1-서론">1. 서론</h3>
 
-<p><img src="/img/posts/category/01.png" style="width: 75%" /></p>
+<p>흔히 인터넷에서 많이 본 기능중에, 사진을 업로드하면 해당 사진 속의 얼굴을 인식하여 박스를 그리고, 얼굴의 감정 및 나이, 특징등을 
+분석해서 보여주는 사진을 많이 보았을 것이다. 뜬금 없는 사진에서 역겨움이나 놀람, 행복 등으로 웃음을 주는 밈들을 생각해 보면 바로 떠올릴 수 있을 것이다.
+…이런 식으로</p>
 
-<p>위에 볼 수 있는 것처럼 Clean blog theme에는 전체 post를 볼 수 있는 기능은 있지만 카테고리 기능이 없어서 불편하다고 생각했다.</p>
+<p><img src="/img/posts/aws_face_rekognition/1.jpeg" width="80%" /></p>
 
-<p>필요하다면 만든다. 만드는데 조금 시간이 걸렸다.</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"faceDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"boundingBox"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"width"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.38674828</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"height"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.37040558</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"left"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.30599424</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"top"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.19806679</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"ageRange"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="mi">26</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"smile"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.86501</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"eyeglasses"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.99978</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"sunglasses"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.95743</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">57.465927</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"beard"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">98.73258</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"mustache"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.56685</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"eyesOpen"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.998924</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"mouthOpen"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.27673</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"emotions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CALM"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">100.0</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAD"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.009685755</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONFUSED"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0065863132</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DISGUSTED"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0038862228</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANGRY"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.003117323</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HAPPY"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0012536843</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SURPRISED"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.2701445E-4</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FEAR"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.2947788E-4</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 
-<h3 id="카테고리-레이아웃">카테고리 레이아웃</h3>
+</span></code></pre></div></div>
 
-<p><img src="/img/posts/category/02.png" style="width: 75%" /></p>
+<p>일단 내 정장 사진을 입은 모습으로 테스트해 본 결과인데 나이는 20세에서 26세 정도로 나오고, 
+웃음이 없고 안경을 썼으며, 남자로 판단하고, 수염은 없다고 판단하고, 눈은 떠있고, 입은 닫혀있으며, 감정은 차분하다고 판단했다.
+혹시 몰라서 다른 사진으로도 테스트 해 보면</p>
 
-<p>일단 내가 구현한 방법으로는, 위 사진처럼 전체 카테고리를 나열하는 전체 카테고리와</p>
+<p><img src="/img/posts/aws_face_rekognition/2.jpeg" width="80%" /></p>
 
-<p><img src="/img/posts/category/03.png" style="width: 75%" /></p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="nl">"faceDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"ageRange"</span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"low"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"high"</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="err">...</span><span class="w">
+            </span><span class="s2">"gender"</span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Female"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">99.85323</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="err">...</span><span class="w">
+            </span><span class="s2">"emotions"</span><span class="err">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CALM"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">96.09375</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SURPRISED"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.1915436</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONFUSED"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.54200494</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DISGUSTED"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.11892319</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HAPPY"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.086530045</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANGRY"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.013077259</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAD"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.003439188</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FEAR"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"confidence"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.529953E-4</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="err">...</span><span class="w">
+</span><span class="err">}</span><span class="w">
 
-<p>그리고 그 세부 카테고리의 모든 글을 표시해주는 페이지를 만드는 방법으로 구현한 뒤에, 이 페이지에 존재하는 것처럼 navigation bar에 카테고리를 추가하는 것이다.</p>
+</span></code></pre></div></div>
 
-<p>첫번째로 카테고리 레이아웃을 생성해야 한다. _layouts 디렉토리에 category.markdown 파일을 생성한다. 그리고</p>
+<p>일단 나이가 생각보다 정확하게 나온다는 점에서 놀랐는데, 일단 동양인의 얼굴은 나이가 보다 더 어려보이게 나오는 것 같기는 하다.
+나의 경우에도 20세는 턱도 없이 어린 나이인데도 20세로 나오고, 카리나의 경우에는 10세에서 16세로 나왔다. 물론 AWS API이므로
+만 나이겠지만, 아무리 그래도 10세는 너무 어린 나이로 나오는게 아닐까ㅋㅋㅋ 그리고 내 성별의 경우에도 남자일 확률이 57% 밖에는 
+확신할 수 없다는 점이 좀 웃겼다.</p>
 
-<p><img src="/img/posts/category/04.png" style="width: 75%" /></p>
+<p>아무튼, 이런 기능을 구현하기 위해서는 AWS Rekognition API를 사용하면 된다. 
+내 다른 프로젝트에서 얼굴 인식, 즉 나이대와 성별을 체크하는 기능을 구현하고자 했는데 이를 위해서 AWS Rekognition API를 사용하였다.
+그런데 AWS의 자습서 내용이 형편없기도 하고, 그리고 한국어로 된 Spring Boot에서 AWS Rekognition API를 사용하는 방법에 대한 자료가 많이 없어서
+이렇게 직접 구현하면서 정리해보려고 한다.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
-layout: page
----
-&lt;ul class="posts-list"&gt;
+<h3 id="2-의존성-추가">2. 의존성 추가</h3>
 
-{% assign category = page.category | default: page.title %}
-{% for post in site.categories[category] %}
-    &lt;li&gt;
-    &lt;h3&gt;
-        &lt;a href="{{ site.baseurl }}{{ post.url }}"&gt;
-        {{ post.title }}   
-        &lt;/a&gt;
-        &lt;small&gt;{{ post.date | date_to_string }}&lt;/small&gt;
-    &lt;/h3&gt;
-    &lt;/li&gt;
-{% endfor %}
+<p>일단 메이븐의 경우에는 아래와 같이 의존성을 추가해주면 된다.</p>
 
-&lt;/ul&gt;
+<h4 id="pomxml">pom.xml</h4>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        <span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>com.amazonaws<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>aws-java-sdk-rekognition<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>1.12.770<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+   
 </code></pre></div></div>
 
-<p>위 코드를 복사, 붙여넣기 한다.</p>
+<p>자바 버전 17, 그리고 스프링 부트 버전 3.3.1을 사용했고, AWS Rekognition API의 버전은 1.12.770을 사용했다.
+그래들의 경우에는</p>
 
-<p>위 코드는 이미 존재하는 페이지 레이아웃을 사용하면서, 모든 페이지를 순회하며 YAML 프론트매터의 categories 부분을 이용하여 카테고리 링크를 생성하는 코드다.</p>
+<h4 id="buildgradle">build.gradle</h4>
 
-<p>그리고 _layouts 디렉토리의 post.markdown을 수정한다.</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">
+    </span><span class="err">implementation</span><span class="w"> </span><span class="err">'com.amazonaws:aws-java-sdk-rekognition:</span><span class="mf">1.12</span><span class="err">.</span><span class="mi">770</span><span class="err">'</span><span class="w">
+    </span><span class="err">implementation</span><span class="w"> </span><span class="err">'com.amazonaws:aws-java-sdk-core:</span><span class="mf">1.12</span><span class="err">.</span><span class="mi">770</span><span class="err">'</span><span class="w">
+    
+</span></code></pre></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;!-- 카테고리를 추가하는 코드 --&gt;
+<p>이 의존성을 추가해 주어야 한다. 이 의존성을 추가해 주면 다음과 같은 경고 메시지가 나오는데</p>
 
-        &lt;div&gt;
-            {% for category in page.categories %}
-            &lt;a href="{{ site.url }}/category/{{ category }}.html" style="color: white;"&gt;카테고리📁: {{ category }}&lt;/a&gt;
-            {% endfor %}
-        &lt;/div&gt;
-
-&lt;!-- 카테고리를 추가하는 코드 --&gt;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2024-08-22T21:12:40.570+09:00  WARN 2168 --- [           main] com.amazonaws.util.VersionInfoUtils      : The 
+AWS SDK for Java 1.x entered maintenance mode starting July 31, 2024 and will reach end of support on December 
+31, 2025. For more information, see https://aws.amazon.com/blogs/developer/the-aws-sdk-for-java-1-x-is-in-
+maintenance-mode-effective-july-31-2024/
+You can print where on the file system the AWS SDK for Java 1.x core runtime is located by setting the AWS_JAVA_V1_
+PRINT_LOCATION environment variable or aws.java.v1.printLocation system property to 'true'.
+This message can be disabled by setting the AWS_JAVA_V1_DISABLE_DEPRECATION_ANNOUNCEMENT environment variable or 
+aws.java.v1.disableDeprecationAnnouncement system property to 'true'.
+The AWS SDK for Java 1.x is being used here:
 </code></pre></div></div>
 
-<p>위 코드를 붙여 넣으면 되는데, 이는 YAML 프론트매터를 이용해서 현재 페이지의 category를 이용해서 해당하는 링크를 만들어주는 코드다.</p>
+<p>이런 경고 메시지가 나오는데, 이는 AWS SDK for Java 1.x가 2025년 12월 31일까지 지원이 중단된다는 것을 알려주는 메시지이다.
+메이븐 센트럴에서도 확인해 봤지만 일단 1.x 버전이 최신 버전이라서 1.x 버전을 사용해야 하는 것 같다. 2 버전은 출시되지는 않았다.</p>
 
-<p><img src="/img/posts/category/05.png" style="width: 75%" /></p>
+<p><img src="/img/posts/aws_face_rekognition/3.png" width="80%" /></p>
 
-<p>나는 위 사진처럼 제목 부분 헤더 컨테이너 안에 하나, 그리고 본문 제목 위에 하나, 이렇게 삽입하고 싶기 때문에 두 번 삽입했다. 자신이 삽입하기 윈하는 위치에 삽입하면 된다.</p>
+<h3 id="3-aws-키-설정">3. AWS 키 설정</h3>
 
-<p>만약 위 사진처럼 삽입하고 싶다면</p>
+<p>그리고 AWS Rekognition API를 사용하기 위해서는 AWS키를 설정해 주어야 하는데, 나는 귀찮아서 루트키를 발급 받았지만 AWS에서는 IAM 사용자를 생성해서
+키를 생성하는 것을 권장하고 있다. IAM 사용자를 생성하고, 해당 사용자에게 RekognitionFullAccess 권한을 부여하고, 해당 사용자의 키를 사용하면 된다.</p>
 
-<p><img src="/img/posts/category/06.png" style="width: 75%" /></p>
+<p>혹시라도 어떻게 하는지 모르겠으면 <a href="&quot;https://aws.amazon.com/de/blogs/security/wheres-my-secret-access-key/&quot;">여기</a>를 참고하면 된다.</p>
 
-<p>여기에 한 번</p>
+<p><img src="/img/posts/aws_face_rekognition/4.png" width="80%" /></p>
 
-<p><img src="/img/posts/category/07.png" style="width: 75%" /></p>
+<p>그리고 원래는 환경변수로 설정해 주는 것을 권장하지만, 일단 빠른 테스트를 위해 application.properties에 직접 삽입했다.</p>
 
-<p>여기에 한 번 복사해 넣으면 된다.</p>
+<h4 id="applicationproperties">application.properties</h4>
 
-<h2 id="카테고리-페이지-추가">카테고리 페이지 추가</h2>
+<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="py">aws.accessKeyId</span><span class="p">=</span><span class="s">your-access-key</span>
+<span class="py">aws.secretKey</span><span class="p">=</span><span class="s">your-secret-key</span>
 
-<p>이게 끝이 아니다. 지킬 페이지는 개별 카테고리의 페이지를 직접 생성해 줘야 한다.</p>
-
-<p><img src="/img/posts/category/03.png" style="width: 75%" /></p>
-
-<p>바로 이 페이지를 만드는 과정이다. 만약 웹 페이지의 카테고리를 추가하기 위해서는 앞으로도 이 과정을 계속 수행해 줘야 한다! 그렇지 않으면 당연히 오류가 난다. 예를 들어서 당신이 지금은 C 카테고리만 있지만, java 카테고리를 만들고 싶으면 java 페이지를 추가해야 하는 것이다.</p>
-
-<p>귀찮다. 하지만 어쩔 수 없다.</p>
-
-<p>일단 루트 디렉토리에 category라는 디렉토리를 생성해야 한다. 어떤 방법으로 생성해도 상관없다.</p>
-
-<p>그리고 난 뒤, 자신의 원하는 카테고리 이름으로 markdown 파일을 생성한다. 예를 들어서 이 페이지의 카테고리인 깃허브 카테고리를 만드려면</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>깃허브.markdown 
-이런 식으로 이름을 생성하면 된다.
 </code></pre></div></div>
 
-<p>그리고 난 뒤 그 파일에 코드를 작성해 줄 텐데</p>
+<h3 id="4-awsrekognitionconfiguration">4. AWSRekognitionConfiguration</h3>
 
-<p><img src="/img/posts/category/08.png" style="width: 75%" /></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">import</span> <span class="nn">com.amazonaws.auth.AWSStaticCredentialsProvider</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.amazonaws.auth.BasicAWSCredentials</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.amazonaws.regions.Regions</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.amazonaws.services.rekognition.AmazonRekognition</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.amazonaws.services.rekognition.AmazonRekognitionClientBuilder</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.beans.factory.annotation.Value</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.context.annotation.Bean</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.context.annotation.Configuration</span><span class="o">;</span>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
-layout: category
-title: 자격증
-description: 자격증 📁카테고리의 모든 글.
-background: '/img/bg-category.jpg'
----
+<span class="nd">@Configuration</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AwsRekognitionConfiguration</span> <span class="o">{</span>
+
+    <span class="nd">@Value</span><span class="o">(</span><span class="s">"${aws.access-key}"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">accessKey</span><span class="o">;</span>
+
+    <span class="nd">@Value</span><span class="o">(</span><span class="s">"${aws.secret-key}"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">secretKey</span><span class="o">;</span>
+
+    <span class="nd">@Bean</span>
+    <span class="kd">public</span> <span class="nc">AmazonRekognition</span> <span class="nf">amazonRekognition</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">BasicAWSCredentials</span> <span class="n">credentials</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BasicAWSCredentials</span><span class="o">(</span><span class="n">accessKey</span><span class="o">,</span> <span class="n">secretKey</span><span class="o">);</span>
+        <span class="k">return</span> <span class="nc">AmazonRekognitionClientBuilder</span>
+                <span class="o">.</span><span class="na">standard</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">withRegion</span><span class="o">(</span><span class="nc">Regions</span><span class="o">.</span><span class="na">EU_WEST_1</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">withCredentials</span><span class="o">(</span><span class="k">new</span> <span class="nc">AWSStaticCredentialsProvider</span><span class="o">(</span><span class="n">credentials</span><span class="o">))</span>
+                <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+
 </code></pre></div></div>
 
-<p>이런 식으로 코드를 작성해 주면 된다. layout은 category를 사용하지만(방금 전 작성한) category layout은 page 레이아웃을 상속받아 사용하기 때문에 descripion 및 background 프론트매터를 사용 가능하다!</p>
+<p>이렇게 AWSRekognitionConfiguration을 만들어서 AmazonRekognition 객체를 Bean으로 등록해 주면 된다. 
+이 이후에는 AWSRekognitionService를 만들어서 실제 얼굴 인식을 하는 메소드를 만들어 주면 된다.</p>
 
-<p>descripion은 카테고리 페이지의 설명에 사용되니 자기가 원하는대로 사용하면 된다.</p>
+<h3 id="5-awsrekognitionservice-및-awsrekognitioncontroller-생성">5. AWSRekognitionService 및 AWSRekognitionController 생성</h3>
 
-<p>이러면 카테고리 페이지는 완성했다!</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">import</span> <span class="nn">com.amazonaws.services.rekognition.AmazonRekognition</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.amazonaws.services.rekognition.model.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Service</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.multipart.MultipartFile</span><span class="o">;</span>
 
-<p>사실 한번에 쓰고자 했었는데, 쓰다 보니까 내용이 너무 길어져서 전체 카테고리 포스트 생성과 navigation bar를 생성하는 법은 다음 포스트에 작성하도록 하겠다.</p>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.ByteBuffer</span><span class="o">;</span>
+
+<span class="nd">@RequiredArgsConstructor</span>
+<span class="nd">@Service</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AwsRekognitionService</span> <span class="o">{</span>
+    
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="nc">AmazonRekognition</span> <span class="n">client</span><span class="o">;</span>
+
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="nc">DetectFacesResult</span> <span class="nf">detectFacesRequest</span><span class="o">(</span><span class="nc">MultipartFile</span> <span class="n">multipartFile</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="nc">DetectFacesRequest</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DetectFacesRequest</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">withImage</span><span class="o">(</span><span class="k">new</span> <span class="nc">Image</span><span class="o">().</span><span class="na">withBytes</span><span class="o">(</span><span class="nc">ByteBuffer</span><span class="o">.</span><span class="na">wrap</span><span class="o">(</span><span class="n">multipartFile</span><span class="o">.</span><span class="na">getBytes</span><span class="o">())))</span>
+                <span class="o">.</span><span class="na">withAttributes</span><span class="o">(</span><span class="nc">Attribute</span><span class="o">.</span><span class="na">ALL</span><span class="o">);</span>
+
+        <span class="k">return</span> <span class="n">client</span><span class="o">.</span><span class="na">detectFaces</span><span class="o">(</span><span class="n">request</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+<span class="kn">import</span> <span class="nn">com.amazonaws.services.rekognition.model.DetectFacesRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.amazonaws.services.rekognition.model.DetectFacesResult</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.example.awsrekognition.service.AwsRekognitionService</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.http.ResponseEntity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.multipart.MultipartFile</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+
+<span class="nd">@RestController</span>
+<span class="nd">@RequiredArgsConstructor</span>
+<span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">"/api"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AwsRekognitionRestController</span> <span class="o">{</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="nc">AwsRekognitionService</span> <span class="n">awsRekognitionService</span><span class="o">;</span>
+
+    <span class="nd">@PostMapping</span><span class="o">(</span><span class="s">"/images/test-face"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">ResponseEntity</span><span class="o">&lt;</span><span class="nc">DetectFacesResult</span><span class="o">&gt;</span> <span class="nf">detectFaces</span><span class="o">(</span><span class="nd">@RequestPart</span> <span class="nc">MultipartFile</span> <span class="n">image</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nc">ResponseEntity</span><span class="o">.</span><span class="na">ok</span><span class="o">(</span><span class="n">awsRekognitionService</span><span class="o">.</span><span class="na">detectFacesRequest</span><span class="o">(</span><span class="n">image</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>이러면 이미지를 업로드하면 해당 이미지의 얼굴을 인식하는 기능을 구현할 수 있다.</p>
+
+<h3 id="6-마무리">6. 마무리</h3>
+
+<p>이렇게 AWS Rekognition API를 사용하여 Spring Boot에서 얼굴 인식을 구현하는 방법을 정리해 보았다.
+이런 방법 말고도 S3 버킷에 이미지를 업로드하면 해당 이미지의 URL을 가져와서 얼굴 인식을 하는 방법도 있긴 하고,
+여러 사진 중에서 해당 사진의 얼굴을 찾는 방법도 있다. 아마도 출입국 심사대나 보안 설정 같은 곳에서 유용하게 사용할 수 있지 않을까 싶다.</p>
+
+<p>끝!</p>
 
 
       <hr>
@@ -906,7 +1123,7 @@ background: '/img/bg-category.jpg'
     <div>
 
       <a
-          href="https://www.linkedin.com/sharing/share-offsite?url=https://ash-tensor.github.io/%EA%B9%83%ED%97%88%EB%B8%8C/2023/12/15/jekyll-blog-theme-4.html"
+          href="https://www.linkedin.com/sharing/share-offsite?url=https://ash-tensor.github.io/web/java/2024/08/22/aws-rekognition-spring-setup.html"
           onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
           class="d-inline-block mr-2"
        >
@@ -917,7 +1134,7 @@ background: '/img/bg-category.jpg'
       </a>
 
       <a
-          href="https://twitter.com/intent/tweet?text=[깃허브 블로그]지킬 블로그 카테고리 / NAVBAR 기능 추가(clean blog theme) - 1&url=https://ash-tensor.github.io/%EA%B9%83%ED%97%88%EB%B8%8C/2023/12/15/jekyll-blog-theme-4.html"
+          href="https://twitter.com/intent/tweet?text=[WEB][AWS] AWS Rekognition Face Detection Spring Boot 설정&url=https://ash-tensor.github.io/web/java/2024/08/22/aws-rekognition-spring-setup.html"
           onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
           class="d-inline-block mr-2">
         <span class="fa-stack fa-lg" style="color: #1DA1F2;">
@@ -927,7 +1144,7 @@ background: '/img/bg-category.jpg'
       </a>
 
       <a
-          href="http://www.reddit.com/submit?url=https://ash-tensor.github.io/%EA%B9%83%ED%97%88%EB%B8%8C/2023/12/15/jekyll-blog-theme-4.html"
+          href="http://www.reddit.com/submit?url=https://ash-tensor.github.io/web/java/2024/08/22/aws-rekognition-spring-setup.html"
           onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
           class="d-inline-block mr-2">
         <span class="fa-stack fa-lg" style="color: #FF4500;">
@@ -950,8 +1167,8 @@ background: '/img/bg-category.jpg'
 <ul class="mb-5 ">
   
   <p>
-    <a style= "font-size: 20px; font-weight: bold; font-family: 'Noto Sans KR', sans-serif;" href= "http://localhost:4000/category/깃허브.html">
-      깃허브 카테고리의 다른 글
+    <a style= "font-size: 20px; font-weight: bold; font-family: 'Noto Sans KR', sans-serif;" href= "http://localhost:4000/category/WEB.html">
+      WEB 카테고리의 다른 글
     </a>
   </p>
   
@@ -960,10 +1177,10 @@ background: '/img/bg-category.jpg'
     
       <li>
         <h3>
-          <a href="/%EA%B9%83%ED%97%88%EB%B8%8C/2024/02/08/jekyll-blog-theme-5-sidebar.html" style= "font-size: 17px;">
-            [깃허브 블로그]지킬 블로그 카테고리 / SIDEBAR 기능 추가(clean blog theme)
+          <a href="/web/java/2024/08/22/aws-rekognition-spring-setup.html" style= "font-size: 17px;">
+            [WEB][AWS] AWS Rekognition Face Detection Spring Boot 설정
           </a>
-          <small style= "font-size: 14px;">08 Feb 2024</small>
+          <small style= "font-size: 14px;">22 Aug 2024</small>
         </h3>
       </li>
       
@@ -972,10 +1189,10 @@ background: '/img/bg-category.jpg'
     
       <li>
         <h3>
-          <a href="/%EA%B9%83%ED%97%88%EB%B8%8C/2024/01/17/bottom-category-build.html" style= "font-size: 17px;">
-            [깃허브 블로그] 동일 카테고리의 최근 글 기능 개발(clean blog theme)
+          <a href="/web/java/2024/08/20/spring-gcp-bucket.html" style= "font-size: 17px;">
+            [WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기
           </a>
-          <small style= "font-size: 14px;">17 Jan 2024</small>
+          <small style= "font-size: 14px;">20 Aug 2024</small>
         </h3>
       </li>
       
@@ -984,10 +1201,10 @@ background: '/img/bg-category.jpg'
     
       <li>
         <h3>
-          <a href="/%EA%B9%83%ED%97%88%EB%B8%8C/2023/12/15/jekyll-blog-theme-4.html" style= "font-size: 17px;">
-            [깃허브 블로그]지킬 블로그 카테고리 / NAVBAR 기능 추가(clean blog theme) - 1
+          <a href="/web/2024/08/05/gcp-app-engine-frontend-deploy.html" style= "font-size: 17px;">
+            [WEB] GCP App Engine을 이용한 프론트엔드 서비스 배포
           </a>
-          <small style= "font-size: 14px;">15 Dec 2023</small>
+          <small style= "font-size: 14px;">05 Aug 2024</small>
         </h3>
       </li>
       
@@ -996,10 +1213,10 @@ background: '/img/bg-category.jpg'
     
       <li>
         <h3>
-          <a href="/%EA%B9%83%ED%97%88%EB%B8%8C/2023/12/14/jekyll-blog-theme-3.html" style= "font-size: 17px;">
-            [깃허브 블로그]지킬 블로그 코멘트 기능 추가(clean blog theme)
+          <a href="/web/2024/02/17/gcp-free-tier-settings.html" style= "font-size: 17px;">
+            [WEB]GCP(google cloud platform) 프리 티어 VM 생성 / MYSQL 서버 연결
           </a>
-          <small style= "font-size: 14px;">14 Dec 2023</small>
+          <small style= "font-size: 14px;">17 Feb 2024</small>
         </h3>
       </li>
       
@@ -1008,10 +1225,10 @@ background: '/img/bg-category.jpg'
     
       <li>
         <h3>
-          <a href="/%EA%B9%83%ED%97%88%EB%B8%8C/2023/12/13/jekyll-blog-theme-2.html" style= "font-size: 17px;">
-            [깃허브 블로그]지킬 블로그 테마 설치 및 오류 수정(clean blog theme)
+          <a href="/web/2024/01/12/bucketlist-stamp.html" style= "font-size: 17px;">
+            [HTML/JAVASCRIPT] 아주 간단한 버켓리스트 페이지 제작 - 도장찍기 부분 제작 (2/2)
           </a>
-          <small style= "font-size: 14px;">13 Dec 2023</small>
+          <small style= "font-size: 14px;">12 Jan 2024</small>
         </h3>
       </li>
       
@@ -1053,12 +1270,9 @@ background: '/img/bg-category.jpg'
 <!-- 코멘트 란을 추가하는 코드 -->
 
         
-        <a class="btn btn-primary float-left" href="/%EA%B9%83%ED%97%88%EB%B8%8C/2023/12/14/jekyll-blog-theme-3.html" data-toggle="tooltip" data-placement="top" title="[깃허브 블로그]지킬 블로그 코멘트 기능 추가(clean blog theme)">&larr; Previous<span class="d-none d-md-inline">
+        <a class="btn btn-primary float-left" href="/web/java/2024/08/20/spring-gcp-bucket.html" data-toggle="tooltip" data-placement="top" title="[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기">&larr; Previous<span class="d-none d-md-inline">
             Post</span></a>
         
-        
-        <a class="btn btn-primary float-right" href="/ml/2023/12/19/esports-ml-1.html" data-toggle="tooltip" data-placement="top" title="[데이터 분석]조합에 따른 승률은 얼마나 차이가 날까?">Next<span class="d-none d-md-inline">
-            Post</span> &rarr;</a>
         
 
       </div>
