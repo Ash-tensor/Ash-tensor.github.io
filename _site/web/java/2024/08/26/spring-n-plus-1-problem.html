@@ -8,15 +8,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>
-    [JAVA] 인터페이스와 추상클래스의 차이 - Tensor Studio
+    [WEB][Spring] 스프링 N + 1 문제 - Tensor Studio
     
   </title>
 
-  <meta name="description" content="추상 클래스와 인터페이스는 모두 자바에서 객체지향의 원칙 중 추상화를 구현하기 위해 사용되는 개념이지만 몇가지 중요한 차이가 존재한다. 솔직히 내 생각에는, 자바라는 언어가 어쩌면 극단적으로 객체지향을 중시한다는 것을 보여주는 예시라고 생각한다. 파이썬에서는 굳이 인터페이스를 사용하지 않는 경우가 많은 것 같다. “call” 처럼 간단한 인터페이스라면 객체를 그냥 파이썬 함수처럼 호출해서 사용하는 경우도 있고.">
-  <meta property="og:description" content="추상 클래스와 인터페이스는 모두 자바에서 객체지향의 원칙 중 추상화를 구현하기 위해 사용되는 개념이지만 몇가지 중요한 차이가 존재한다. 솔직히 내 생각에는, 자바라는 언어가 어쩌면 극단적으로 객체지향을 중시한다는 것을 보여주는 예시라고 생각한다. 파이썬에서는 굳이 인터페이스를 사용...">
+  <meta name="description" content="[WEB][Spring] 스프링 N + 1 문제">
+  <meta property="og:description" content="[WEB][Spring] 스프링 N + 1 문제">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="[JAVA] 인터페이스와 추상클래스의 차이">
-  <meta property="og:url" content="https://ash-tensor.github.io/java/2024/01/07/interface.html">
+  <meta property="og:title" content="[WEB][Spring] 스프링 N + 1 문제">
+  <meta property="og:url" content="https://ash-tensor.github.io/web/java/2024/08/26/spring-n-plus-1-problem.html">
 
   
     <meta property="og:image" content="https://ash-tensor.github.io/img/port.jpg"/>
@@ -38,7 +38,7 @@
 
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/java/2024/01/07/interface.html">
+  <link rel="canonical" href="http://localhost:4000/web/java/2024/08/26/spring-n-plus-1-problem.html">
   <link rel="alternate" type="application/rss+xml" title="Tensor Studio" href="/feed.xml">
 
 <!--  favicon-->
@@ -115,13 +115,15 @@
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="post-heading">
-          <h1>[JAVA] 인터페이스와 추상클래스의 차이</h1>
+          <h1>[WEB][Spring] 스프링 N + 1 문제</h1>
+          
+          <h2 class="subheading">단방향 연관 관계에서의 N + 1 문제 해결 방법(패치 조인)</h2>
           
           <span class="meta">Posted by
             <a href="#">ash tensor</a>
-            on January 07, 2024 &middot; <span class="reading-time" title="Estimated read time">
+            on August 26, 2024 &middot; <span class="reading-time" title="Estimated read time">
   
-   5 mins  read </span>
+   8 mins  read </span>
 
           </span>
 <!-- 카테고리를 추가하는 코드 -->
@@ -129,6 +131,8 @@
               카테고리
             <a>
           <div style="font-family: 'Noto Sans KR', sans-serif;">
+            
+              <a href="http://localhost:4000/category/WEB.html" style="color: white;">📁WEB</a>
             
               <a href="http://localhost:4000/category/JAVA.html" style="color: white;">📁JAVA</a>
             
@@ -775,245 +779,227 @@ TENSOR STUDIO
 
           <div style="font-family: 'Noto Sans KR', sans-serif;">
             
+              <a href="http://localhost:4000/category/WEB.html" style="color: black;">📁 WEB</a>
+            
               <a href="http://localhost:4000/category/JAVA.html" style="color: black;">📁 JAVA</a>
             
           </div>
           
 <!-- 본문 카테고리를 추가하는 코드 -->
 
-      <p>추상 클래스와 인터페이스는 모두 자바에서 객체지향의 원칙 중 추상화를 구현하기 위해 사용되는 개념이지만 몇가지 중요한 차이가 존재한다. 솔직히 내 생각에는, 자바라는 언어가 어쩌면 극단적으로 객체지향을 중시한다는 것을 보여주는 예시라고 생각한다. 파이썬에서는 굳이 인터페이스를 사용하지 않는 경우가 많은 것 같다. “<strong>call</strong>” 처럼 간단한 인터페이스라면 객체를 그냥 파이썬 함수처럼 호출해서 사용하는 경우도 있고.</p>
+      <h2 id="webspring-스프링-n--1-문제">[WEB][Spring] 스프링 N + 1 문제</h2>
 
-<p>인터페이스를 배울 때 (적어도 나는) 추상 클래스와는 다르게 다중 상속이 가능하다는 것이 기억나는데 이는 객체지향에 익숙하지 않으면 추상 클래스와 인터페이스가 어떤 일을 하는지 정확히 이해하기 힘들기 때문이라고 생각한다.</p>
+<h3 id="1-서론">1. 서론</h3>
 
-<h2 id="인터페이스">인터페이스</h2>
+<p><img src="/img/posts/spring/1.png" width="80%" /></p>
 
-<p>인터페이스는 추상 클래스와는 별도로 <strong>구현 객체가 같은 동작을 한다는 것을 보장하기 위해 초점을 두는 것이 추상 클래스와는 다르다.</strong> 예를 들어서, 리모컨이라는 추상 클래스가 존재한다고 할 때, TV리모컨과 에어컨 리모컨은 하는 역할이 다를 것이다.</p>
+<p>프로젝트를 진행 중에, 스프링에서 N + 1 문제가 발생했다. 현재 사진에서 보이는 것과 같이, 쿼리 시간이 약 30초 씩이나 걸리는 문제가 있었는데 
+과거에 했던 프로젝트에서 해당 문제가 N+1 문제 때문에 발생한다는 것을 이미 알고 있었기 때문에 트러블 슈팅에 어려움을 겪지는 않았지만,
+이번에 문제를 해결하면서 다시 한 번 정리해 보고자 했다.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>abstract class RemoteControl {
-    abstract void turnOn();
-    abstract void turnOff();
-    abstract void volumeUp(); &lt;&lt; 에어컨 리모컨에서는 구현할 수 없다.
-}
+<p><img src="/img/posts/spring/2.png" width="80%" /></p>
 
-class TVRemote extends RemoteControl {
-    void turnOn();
-    void turnOff();
-    void volumeUp();
-}
+<p>이는 해당 N + 1 문제를 해결한 뒤에 나온 API 테스트 결과이다. 30초에 달하던 쿼리 시간이 1.7초로 줄어든 것을 볼 수 있다.</p>
 
-class AirconditionerRemote extends RemoteControl {
-    void turnOn();
-    void turnOff();
-    void volumeUp(); &lt;&lt; 구현할 수 없음
-}
+<h3 id="2-배경">2. 배경</h3>
+
+<p><img src="/img/posts/spring/3.png" width="80%" /></p>
+
+<p>문제가 되는 테이블은 다음과 같았다. (테이블 설계나 구조, 그리고 네이밍 컨벤션등이 이상하다고 지적한다면, 부끄럽지만 맞다. 
+하지만, 이는 이미 구축된 시스템을 수정하는 과정에서 이미 데이터가 저장된 테이블 구조를 바꾸기 어려워서 그대로 사용하게 되었다.)
+아무튼, 구조를 살펴보자면</p>
+
+<ol>
+  <li>주문을 저장하는 orders 라는 테이블이 존재하고</li>
+  <li>각각 주문의 상세 내역을 저장하는 orderitem 라는 테이블이 존재한다. 그리고 이 테이블은 orders 테이블과 1:N 관계를 가지고 있다.
+orderItem 테이블은 orders 테이블의 id를 참조하는 외래키를 가지고 있다. 
+하지만 orderitem 테이블은 orders 테이블의 id를 참조하는 외래키를 가지고 있지 않다.</li>
+</ol>
+
+<p>이를 스프링 JPA로 구현하면 다음과 같다.</p>
+
+<h4 id="orderjava">Order.java</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">import</span> <span class="nn">jakarta.persistence.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.Getter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.Setter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.time.LocalDateTime</span><span class="o">;</span>
+
+<span class="nd">@Entity</span>
+<span class="nd">@Table</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"orders"</span><span class="o">)</span>
+<span class="nd">@Getter</span> <span class="nd">@Setter</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Order</span> <span class="o">{</span>
+    <span class="nd">@Id</span>
+    <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="nc">GenerationType</span><span class="o">.</span><span class="na">IDENTITY</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="nd">@ManyToOne</span><span class="o">(</span><span class="n">fetch</span> <span class="o">=</span> <span class="nc">FetchType</span><span class="o">.</span><span class="na">LAZY</span><span class="o">,</span> <span class="n">optional</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+    <span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"customerID"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">Customer</span> <span class="n">customer</span><span class="o">;</span>
+
+    <span class="nd">@ManyToOne</span><span class="o">(</span><span class="n">fetch</span> <span class="o">=</span> <span class="nc">FetchType</span><span class="o">.</span><span class="na">LAZY</span><span class="o">,</span> <span class="n">optional</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+    <span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"kioskID"</span><span class="o">,</span> <span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">Kiosk</span> <span class="n">kiosk</span><span class="o">;</span>
+
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">"date_time"</span><span class="o">,</span><span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">LocalDateTime</span> <span class="n">dateTime</span><span class="o">;</span>
+
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">"total_price"</span><span class="o">,</span><span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="kt">long</span> <span class="n">totalPrice</span><span class="o">;</span>
+
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">"is_packaged"</span><span class="o">,</span><span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">isPackaged</span><span class="o">;</span>
+
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">"payment_uid"</span><span class="o">,</span><span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">paymentUid</span><span class="o">;</span>
+
+    <span class="c1">// 결제 환불을 위한 join</span>
+    <span class="nd">@OneToOne</span><span class="o">(</span><span class="n">cascade</span> <span class="o">=</span> <span class="nc">CascadeType</span><span class="o">.</span><span class="na">REMOVE</span><span class="o">)</span>
+    <span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"order_module_dto"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">OrderModuleDTO</span> <span class="n">orderModuleDTO</span><span class="o">;</span>
+<span class="o">}</span>
 </code></pre></div></div>
 
-<p>이런 경우에 인터페이스를 사용하는 것이다. 공통적인 기능의 보장! TurnOn과 TurnOff는 공통적인 기능이므로, 이런 식으로 구현이 될 수 있겠다.</p>
+<h4 id="orderitemjava">OrderItem.java</h4>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Interface Volume {
-    void volumeUp();
-    void volumeDown();
-}
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">import</span> <span class="nn">com.fasterxml.jackson.annotation.JsonIgnoreProperties</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">jakarta.persistence.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.Getter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.Setter</span><span class="o">;</span>
 
-class TVRemote extends RemoteControl implements Volume {
-    void turnOn();
-    void turnOff();
-    void volumeUp();
-}
+<span class="kn">import</span> <span class="nn">java.math.BigDecimal</span><span class="o">;</span>
+
+<span class="nd">@Entity</span>
+<span class="nd">@Getter</span> <span class="nd">@Setter</span>
+<span class="nd">@Table</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"orderitem"</span><span class="o">)</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">OrderItem</span> <span class="o">{</span>
+    <span class="nd">@Id</span>
+    <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="nc">GenerationType</span><span class="o">.</span><span class="na">IDENTITY</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="nd">@ManyToOne</span>
+    <span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"orderID"</span><span class="o">,</span> <span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">Order</span> <span class="n">order</span><span class="o">;</span>
+
+    <span class="nd">@ManyToOne</span>
+    <span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"menuID"</span><span class="o">,</span><span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">Menu</span> <span class="n">menu</span><span class="o">;</span>
+
+    <span class="nd">@ManyToOne</span>
+    <span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"custom_optionID"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">CustomOption</span> <span class="n">customOption</span><span class="o">;</span>
+
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+    <span class="kt">int</span> <span class="n">quantity</span><span class="o">;</span>
+
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+    <span class="nc">Long</span> <span class="n">price</span><span class="o">;</span>
+
+<span class="o">}</span>
+
 </code></pre></div></div>
 
-<p>이렇게 동작의 메서드를 각각 인터페이스마다 분리하여 설계함으로서 조금 더 구조적이고 더욱 추상적인 객체를 설계할 수 있다.</p>
+<ol>
+  <li>여기서 ordermoduledto 라는 테이블이 존재하는데, 이 테이블은 orders 테이블과 1:1 관계를 가지고 있다.
+ordermoduledto 테이블은 orders 테이블의 id를 참조하는 외래키를 가지고 있다.</li>
+</ol>
 
-<h3 id="구현-예제">구현 예제</h3>
+<h3 id="3-문제-발생">3. 문제 발생</h3>
 
-<h4 id="iremotecontrolable-인터페이스">IRemoteControlable 인터페이스</h4>
+<p>그리고 문제가 발생했는데, order_complete를 이용해서 완료되지 않은 orders를 가져오는 API를 만들었는데,
+이 API를 호출하면서 orders 테이블을 찾고, 그 과정에서 orders와 연결된 ordermoduledto 테이블을 추가적으로 찾는 N + 1 이 발생했고,
+또 다시 orderitem 테이블을 쿼리하면서 약 30초간 쿼리 시간이 걸리는 문제가 발생했다.</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public interface IRemoteControlable {
-void turnOn();
-void turnOff();
-void channelUp();
-void channelDown();
-void volumnUp();
-void volumnDown();
-void putChannel(int value);
-}
+<p>다행히도, orderitem 테이블을 쿼리할 때는 N + 1 문제가 발생하지 않았다. 그 이유는 orderitem 테이블이 orders 테이블과 연결되어 있지만 
+캐시되어 있기 때문이다.</p>
+
+<h3 id="4-문제-해결">4. 문제 해결</h3>
+
+<p>이 문제를 해결하기 위해서 일단 나는 <em>패치 조인</em>을 이용해서 해결했다.</p>
+
+<h4 id="ordercompleterepositoryjava">OrderCompleteRepository.java</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">ac.su.kiosk.domain.OrderComplete</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">jakarta.transaction.Transactional</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.data.jpa.repository.JpaRepository</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.data.jpa.repository.Modifying</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.data.jpa.repository.Query</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Repository</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="nd">@Repository</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">OrderCompleteRepository</span> <span class="kd">extends</span> <span class="nc">JpaRepository</span><span class="o">&lt;</span><span class="nc">OrderComplete</span><span class="o">,</span> <span class="nc">Long</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">OrderComplete</span><span class="o">&gt;</span> <span class="nf">findAllByOrderId</span><span class="o">(</span><span class="nc">Long</span> <span class="n">orderId</span><span class="o">);</span>
+
+    <span class="nd">@Transactional</span>
+    <span class="nd">@Modifying</span>
+    <span class="nd">@Query</span><span class="o">(</span><span class="s">"update OrderComplete oc set oc.complete = true where oc.id = :id"</span><span class="o">)</span>
+    <span class="kt">void</span> <span class="nf">updateById</span><span class="o">(</span><span class="nc">Long</span> <span class="n">id</span><span class="o">);</span>
+
+    <span class="nd">@Query</span><span class="o">(</span><span class="s">"select "</span> <span class="o">+</span>
+            <span class="s">"oc from OrderComplete oc "</span> <span class="o">+</span>
+            <span class="s">"JOIN FETCH oc.order o "</span> <span class="o">+</span>
+            <span class="s">"JOIN FETCH o.orderModuleDTO omd "</span> <span class="o">+</span>
+            <span class="s">"where oc.complete = :target"</span><span class="o">)</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">OrderComplete</span><span class="o">&gt;</span> <span class="nf">findAllByComplete</span><span class="o">(</span><span class="nc">Boolean</span> <span class="n">target</span><span class="o">);</span>
+
 </code></pre></div></div>
 
-<h4 id="controller-클래스">Controller 클래스</h4>
+<ol>
+  <li>
+    <p>처음에는 OrderComplete와 Order 테이블을 패치해 봤는데, 35초에 달하는 쿼리 속도가 약 28초 정도로 줄긴 했지만, 여전히 느리다.
+그리고 ordermoduledto 테이블을 패치해 봤는데, 이 결과 약 1.7초로 줄어들어서 문제가 해결되었다.</p>
+  </li>
+  <li>
+    <p><strong>Where in</strong> 을 이용해서 해결했는데, 이건 직접적으로 N + 1 쿼리를 줄이는 것은 아니지만,
+이미 존재하던 코드의 방식으로는 select * from orderitem where orderID = ? 이런 식으로 쿼리를 날리는데,
+이걸 where in을 이용해서 select * from orderitem where orderID in (?,?,?,…) 이런 식으로 쿼리를 날리는 방식으로 변경했다.
+이는 타 프로젝트에서 쿼리 시간을 개선할 때 가장 큰 효과를 보았던 방식이다.</p>
+  </li>
+  <li>
+    <p>그리고 <strong>batch size</strong>를 50으로 설정했는데, 프로젝트가 크지 않아서 이 정도의 배치 사이즈로도 큰 효과를 보았다.</p>
+  </li>
+</ol>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>package jan5th;
-import java.util.Scanner;
+<h3 id="5-패치-조인">5. 패치 조인</h3>
 
-public class Controller implements IRemoteControlable {
-    Television model;
+<p>일단 패치 조인을 이용할 때, 내가 신경쓰였던 점은 List<OrderComplete> findAllByComplete(Boolean target); 이 메소드에서
+리턴해야 할 객체가 List<OrderComplete> 인데,</OrderComplete></OrderComplete></p>
 
-    public Controller(Television model){
-        this.model = model;
-    }
-
-    public boolean analyzer(int value, Scanner hand){
-
-//"1. TV 켜기, 2. TV 끄기, 3. 채널 올리기, 4. 채널 내리기, " +
-//"5. 볼륨 올리기, 6. 볼륨 내리기, 7. 특정 채널로 이동, 0. 종료";
-        
-        switch (value){
-
-            case 1:{
-                this.turnOn();
-                break;
-            }
-            case 2: {
-                this.turnOff();
-                break;
-            }
-            case 3 : {
-                this.channelUp();
-                break;
-            }
-            case 4 : {
-                this.channelDown();
-                break;
-            }
-            case 5 : {
-                this.volumnUp();
-                break;
-            }
-            case 6 : {
-                this.volumnDown();
-                break;
-            }
-            case 7 : {
-                System.out.println("입력할 채널을 선택해주세요");
-                int inputedChannel = hand.nextInt();
-                this.putChannel(inputedChannel);
-                break;
-            }
-            case 0 : {
-                System.out.println("TV를 그만 봅니다.");
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public void turnOn() {
-        model.on = true;
-        System.out.println("TV 전원 : ON");
-    }
-
-    @Override
-    public void turnOff() {
-        model.on = false;
-        System.out.println("TV 전원 : OFF");
-    }
-
-    @Override
-    public void channelUp() {
-        if(model.on == false) {
-            System.out.println("TV STATE : OFF");
-        }
-        else {
-            model.channel += 1;
-            System.out.printf("현재 채널 : %d\n", model.channel);
-        }
-    }
-
-    @Override
-    public void channelDown() {
-        if(model.on == false) {
-            System.out.println("TV STATE : OFF");
-        }
-        else {
-            if (model.channel == 1) {
-                System.out.println("0번 채널은 없습니다.");
-            } else {
-                model.channel -= 1;
-                System.out.printf("현재 채널 : %d\n", model.channel);
-            }
-        }
-    }
-    @Override
-    public void volumnUp() {
-        if(model.on == false) {
-            System.out.println("TV STATE : OFF");
-        }
-        else {
-            model.volume += 1;
-            System.out.printf("현재 볼륨 : %d\n", model.volume);
-        }
-    }
-
-    @Override
-    public void volumnDown() {
-        if(model.on == false) {
-            System.out.println("TV STATE : OFF");
-        }
-        else {
-            if (model.volume == 0) {
-                System.out.println("볼륨을 0 아래로 내릴 수 없습니다.");
-            } else {
-                model.volume -= 1;
-                System.out.printf("현재 볼륨 : %d\n", model.volume);
-            }
-        }
-    }
-    @Override
-    public void putChannel(int value) {
-        if(model.on == false) {
-            System.out.println("TV STATE : OFF");
-        }
-        else {
-            if (value &lt;= 0) {
-                System.out.println("그런 채널은 없습니다.");
-            } else {
-                model.channel = value;
-                System.out.printf("현재 채널 : %d\n", model.channel);
-            }
-        }
-    }
-}
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    <span class="nv">"select "</span> <span class="o">+</span>
+            <span class="nv">"oc from OrderComplete oc "</span> <span class="o">+</span>
+            <span class="nv">"JOIN FETCH oc.order o "</span> <span class="o">+</span>
+            <span class="nv">"JOIN FETCH o.orderModuleDTO omd "</span> <span class="o">+</span>
+            <span class="nv">"where oc.complete = :target"</span>
+            
 </code></pre></div></div>
 
-<h4 id="human-클래스">Human 클래스</h4>
+<p>이런 식으로 패치 조인을 이용하면 List<OrderComplete> 가 아닌 List&lt;Object[]&gt; 가 리턴될 수 있지 않을까? 라는 걱정이었다.
+왜냐면 결과가 OrderComplete, Order, OrderModuleDTO 세 개의 객체가 조인된 객체가 리턴되기 때문이다.</OrderComplete></p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>package jan5th;
+<p>하지만 이런 걱정은 굳이 할 필요가 없었다. 스프링 JPA는 이런 경우에도 List<OrderComplete> 가 리턴된다.</OrderComplete></p>
 
-import java.util.Scanner;
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>즉, JPQL 쿼리에서 
 
-public class Human {
-    Controller model;
+select oc from OrderComplete oc... 
 
-    public Human(Controller controller){
-        this.model = controller;
-    }
-    void input(Scanner Hand){
-        boolean condition = true;
-        while(condition){
-            System.out.println("1. TV 켜기, 2. TV 끄기, 3. 채널 올리기, 4. 채널 내리기, " +
-                    "5. 볼륨 올리기, 6. 볼륨 내리기, 7. 특정 채널로 이동, 0. 종료");
-            int value = Hand.nextInt();
-            condition = this.model.analyzer(value, Hand);
-        }
-    }
-}
+와 같이 특정 엔티티를 선택하면, 
+결과는 List&lt;OrderComplete&gt;로 반환되고, 이 경우 JPA는 OrderComplete 객체를 생성하고 
+패치 조인으로 로드된 관련 엔티티(Order와 OrderModuleDTO)는 해당 객체의 필드에 자동으로 매핑된다.
 </code></pre></div></div>
 
-<h4 id="메인-클래스">메인 클래스</h4>
+<p>그리고, 이번에 공부할 수 있었던 건, <strong>OrderComplete와 Order와는 연결되어 있지만, OrderModuleDTO는 연결되어 있지 않아도
+패치 조인을 이용해서 Order를 타고 Order에 연결되어 있는 OrderModuleDTO를 가져올 수 있었다는 점이다.</strong></p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>package jan5th;
+<h3 id="6-마치며">6. 마치며</h3>
 
-import java.util.Scanner;
-
-public class Main {
-    public static void main(String[] args) {
-        Television appleTV = new Television();
-        Controller appleTVController = new Controller(appleTV);
-        Human me = new Human(appleTVController);
-        me.input(Hand);
-    }
-}
-</code></pre></div></div>
-
+<p>N + 1 매핑을 해결하는 다양한 방법중에, 패치 조인을 이용한 방법을 정리해 보았다. 엔티티 그래프나 그 외의 
+다양한 방법들이 존재하지만 과거에 이 방법을 사용했을 때 가장 효과적이었기 때문에 이 방법을 사용했고,
+엔티티 그래프나 그 외의 방법들도 한 번 정리해 보고 싶다.</p>
 
 
       <hr>
@@ -1027,7 +1013,7 @@ public class Main {
     <div>
 
       <a
-          href="https://www.linkedin.com/sharing/share-offsite?url=https://ash-tensor.github.io/java/2024/01/07/interface.html"
+          href="https://www.linkedin.com/sharing/share-offsite?url=https://ash-tensor.github.io/web/java/2024/08/26/spring-n-plus-1-problem.html"
           onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
           class="d-inline-block mr-2"
        >
@@ -1038,7 +1024,7 @@ public class Main {
       </a>
 
       <a
-          href="https://twitter.com/intent/tweet?text=[JAVA] 인터페이스와 추상클래스의 차이&url=https://ash-tensor.github.io/java/2024/01/07/interface.html"
+          href="https://twitter.com/intent/tweet?text=[WEB][Spring] 스프링 N + 1 문제&url=https://ash-tensor.github.io/web/java/2024/08/26/spring-n-plus-1-problem.html"
           onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
           class="d-inline-block mr-2">
         <span class="fa-stack fa-lg" style="color: #1DA1F2;">
@@ -1048,7 +1034,7 @@ public class Main {
       </a>
 
       <a
-          href="http://www.reddit.com/submit?url=https://ash-tensor.github.io/java/2024/01/07/interface.html"
+          href="http://www.reddit.com/submit?url=https://ash-tensor.github.io/web/java/2024/08/26/spring-n-plus-1-problem.html"
           onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
           class="d-inline-block mr-2">
         <span class="fa-stack fa-lg" style="color: #FF4500;">
@@ -1071,8 +1057,8 @@ public class Main {
 <ul class="mb-5 ">
   
   <p>
-    <a style= "font-size: 20px; font-weight: bold; font-family: 'Noto Sans KR', sans-serif;" href= "http://localhost:4000/category/JAVA.html">
-      JAVA 카테고리의 다른 글
+    <a style= "font-size: 20px; font-weight: bold; font-family: 'Noto Sans KR', sans-serif;" href= "http://localhost:4000/category/WEB.html">
+      WEB 카테고리의 다른 글
     </a>
   </p>
   
@@ -1117,10 +1103,10 @@ public class Main {
     
       <li>
         <h3>
-          <a href="/java/ps/%EB%B0%B1%EC%A4%80/2024/05/02/boj7562.html" style= "font-size: 17px;">
-            [백준][JAVA] 백준 7562번 :: 나이트의 이동 :: 실버 1
+          <a href="/web/2024/08/05/gcp-app-engine-frontend-deploy.html" style= "font-size: 17px;">
+            [WEB] GCP App Engine을 이용한 프론트엔드 서비스 배포
           </a>
-          <small style= "font-size: 14px;">02 May 2024</small>
+          <small style= "font-size: 14px;">05 Aug 2024</small>
         </h3>
       </li>
       
@@ -1129,35 +1115,13 @@ public class Main {
     
       <li>
         <h3>
-          <a href="/java/ps/%EB%B0%B1%EC%A4%80/2024/03/28/boj12100.html" style= "font-size: 17px;">
-            [백준][JAVA] 백준 12100번 :: 2048(Easy) :: 골드 2
+          <a href="/web/2024/02/17/gcp-free-tier-settings.html" style= "font-size: 17px;">
+            [WEB]GCP(google cloud platform) 프리 티어 VM 생성 / MYSQL 서버 연결
           </a>
-          <small style= "font-size: 14px;">28 Mar 2024</small>
+          <small style= "font-size: 14px;">17 Feb 2024</small>
         </h3>
       </li>
       
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
     
   
     
@@ -1198,12 +1162,9 @@ public class Main {
 <!-- 코멘트 란을 추가하는 코드 -->
 
         
-        <a class="btn btn-primary float-left" href="/java/2024/01/04/psvm.html" data-toggle="tooltip" data-placement="top" title="[JAVA] PSVM - public static void main(string[] args)">&larr; Previous<span class="d-none d-md-inline">
+        <a class="btn btn-primary float-left" href="/web/java/2024/08/22/aws-rekognition-spring-setup.html" data-toggle="tooltip" data-placement="top" title="[WEB][AWS] AWS Rekognition Face Detection Spring Boot 설정">&larr; Previous<span class="d-none d-md-inline">
             Post</span></a>
         
-        
-        <a class="btn btn-primary float-right" href="/java/2024/01/08/exception.html" data-toggle="tooltip" data-placement="top" title="[JAVA] 예외처리 - throw, throws, throwable">Next<span class="d-none d-md-inline">
-            Post</span> &rarr;</a>
         
 
       </div>

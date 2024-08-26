@@ -1,4 +1,216 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-08-22T22:11:32+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[WEB][AWS] AWS Rekognition Face Detection Spring Boot 설정</title><link href="http://localhost:4000/web/java/2024/08/22/aws-rekognition-spring-setup.html" rel="alternate" type="text/html" title="[WEB][AWS] AWS Rekognition Face Detection Spring Boot 설정" /><published>2024-08-22T00:00:00+09:00</published><updated>2024-08-22T00:00:00+09:00</updated><id>http://localhost:4000/web/java/2024/08/22/aws-rekognition-spring-setup</id><content type="html" xml:base="http://localhost:4000/web/java/2024/08/22/aws-rekognition-spring-setup.html"><![CDATA[<h2 id="webaws-aws-rekognition-face-detection-spring-boot-설정">[WEB][AWS] AWS Rekognition Face Detection Spring Boot 설정</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-08-26T23:46:02+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[WEB][Spring] 스프링 N + 1 문제</title><link href="http://localhost:4000/web/java/2024/08/26/spring-n-plus-1-problem.html" rel="alternate" type="text/html" title="[WEB][Spring] 스프링 N + 1 문제" /><published>2024-08-26T00:00:00+09:00</published><updated>2024-08-26T00:00:00+09:00</updated><id>http://localhost:4000/web/java/2024/08/26/spring-n-plus-1-problem</id><content type="html" xml:base="http://localhost:4000/web/java/2024/08/26/spring-n-plus-1-problem.html"><![CDATA[<h2 id="webspring-스프링-n--1-문제">[WEB][Spring] 스프링 N + 1 문제</h2>
+
+<h3 id="1-서론">1. 서론</h3>
+
+<p><img src="/img/posts/spring/1.png" width="80%" /></p>
+
+<p>프로젝트를 진행 중에, 스프링에서 N + 1 문제가 발생했다. 현재 사진에서 보이는 것과 같이, 쿼리 시간이 약 30초 씩이나 걸리는 문제가 있었는데 
+과거에 했던 프로젝트에서 해당 문제가 N+1 문제 때문에 발생한다는 것을 이미 알고 있었기 때문에 트러블 슈팅에 어려움을 겪지는 않았지만,
+이번에 문제를 해결하면서 다시 한 번 정리해 보고자 했다.</p>
+
+<p><img src="/img/posts/spring/2.png" width="80%" /></p>
+
+<p>이는 해당 N + 1 문제를 해결한 뒤에 나온 API 테스트 결과이다. 30초에 달하던 쿼리 시간이 1.7초로 줄어든 것을 볼 수 있다.</p>
+
+<h3 id="2-배경">2. 배경</h3>
+
+<p><img src="/img/posts/spring/3.png" width="80%" /></p>
+
+<p>문제가 되는 테이블은 다음과 같았다. (테이블 설계나 구조, 그리고 네이밍 컨벤션등이 이상하다고 지적한다면, 부끄럽지만 맞다. 
+하지만, 이는 이미 구축된 시스템을 수정하는 과정에서 이미 데이터가 저장된 테이블 구조를 바꾸기 어려워서 그대로 사용하게 되었다.)
+아무튼, 구조를 살펴보자면</p>
+
+<ol>
+  <li>주문을 저장하는 orders 라는 테이블이 존재하고</li>
+  <li>각각 주문의 상세 내역을 저장하는 orderitem 라는 테이블이 존재한다. 그리고 이 테이블은 orders 테이블과 1:N 관계를 가지고 있다.
+orderItem 테이블은 orders 테이블의 id를 참조하는 외래키를 가지고 있다. 
+하지만 orderitem 테이블은 orders 테이블의 id를 참조하는 외래키를 가지고 있지 않다.</li>
+</ol>
+
+<p>이를 스프링 JPA로 구현하면 다음과 같다.</p>
+
+<h4 id="orderjava">Order.java</h4>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">import</span> <span class="nn">jakarta.persistence.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.Getter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.Setter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.time.LocalDateTime</span><span class="o">;</span>
+
+<span class="nd">@Entity</span>
+<span class="nd">@Table</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"orders"</span><span class="o">)</span>
+<span class="nd">@Getter</span> <span class="nd">@Setter</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Order</span> <span class="o">{</span>
+    <span class="nd">@Id</span>
+    <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="nc">GenerationType</span><span class="o">.</span><span class="na">IDENTITY</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="nd">@ManyToOne</span><span class="o">(</span><span class="n">fetch</span> <span class="o">=</span> <span class="nc">FetchType</span><span class="o">.</span><span class="na">LAZY</span><span class="o">,</span> <span class="n">optional</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+    <span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"customerID"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">Customer</span> <span class="n">customer</span><span class="o">;</span>
+
+    <span class="nd">@ManyToOne</span><span class="o">(</span><span class="n">fetch</span> <span class="o">=</span> <span class="nc">FetchType</span><span class="o">.</span><span class="na">LAZY</span><span class="o">,</span> <span class="n">optional</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+    <span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"kioskID"</span><span class="o">,</span> <span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">Kiosk</span> <span class="n">kiosk</span><span class="o">;</span>
+
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">"date_time"</span><span class="o">,</span><span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">LocalDateTime</span> <span class="n">dateTime</span><span class="o">;</span>
+
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">"total_price"</span><span class="o">,</span><span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="kt">long</span> <span class="n">totalPrice</span><span class="o">;</span>
+
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">"is_packaged"</span><span class="o">,</span><span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">isPackaged</span><span class="o">;</span>
+
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">"payment_uid"</span><span class="o">,</span><span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">paymentUid</span><span class="o">;</span>
+
+    <span class="c1">// 결제 환불을 위한 join</span>
+    <span class="nd">@OneToOne</span><span class="o">(</span><span class="n">cascade</span> <span class="o">=</span> <span class="nc">CascadeType</span><span class="o">.</span><span class="na">REMOVE</span><span class="o">)</span>
+    <span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"order_module_dto"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">OrderModuleDTO</span> <span class="n">orderModuleDTO</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="orderitemjava">OrderItem.java</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">import</span> <span class="nn">com.fasterxml.jackson.annotation.JsonIgnoreProperties</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">jakarta.persistence.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.Getter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.Setter</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.math.BigDecimal</span><span class="o">;</span>
+
+<span class="nd">@Entity</span>
+<span class="nd">@Getter</span> <span class="nd">@Setter</span>
+<span class="nd">@Table</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"orderitem"</span><span class="o">)</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">OrderItem</span> <span class="o">{</span>
+    <span class="nd">@Id</span>
+    <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="nc">GenerationType</span><span class="o">.</span><span class="na">IDENTITY</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="nd">@ManyToOne</span>
+    <span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"orderID"</span><span class="o">,</span> <span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">Order</span> <span class="n">order</span><span class="o">;</span>
+
+    <span class="nd">@ManyToOne</span>
+    <span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"menuID"</span><span class="o">,</span><span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">Menu</span> <span class="n">menu</span><span class="o">;</span>
+
+    <span class="nd">@ManyToOne</span>
+    <span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"custom_optionID"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">CustomOption</span> <span class="n">customOption</span><span class="o">;</span>
+
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+    <span class="kt">int</span> <span class="n">quantity</span><span class="o">;</span>
+
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+    <span class="nc">Long</span> <span class="n">price</span><span class="o">;</span>
+
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<ol>
+  <li>여기서 ordermoduledto 라는 테이블이 존재하는데, 이 테이블은 orders 테이블과 1:1 관계를 가지고 있다.
+ordermoduledto 테이블은 orders 테이블의 id를 참조하는 외래키를 가지고 있다.</li>
+</ol>
+
+<h3 id="3-문제-발생">3. 문제 발생</h3>
+
+<p>그리고 문제가 발생했는데, order_complete를 이용해서 완료되지 않은 orders를 가져오는 API를 만들었는데,
+이 API를 호출하면서 orders 테이블을 찾고, 그 과정에서 orders와 연결된 ordermoduledto 테이블을 추가적으로 찾는 N + 1 이 발생했고,
+또 다시 orderitem 테이블을 쿼리하면서 약 30초간 쿼리 시간이 걸리는 문제가 발생했다.</p>
+
+<p>다행히도, orderitem 테이블을 쿼리할 때는 N + 1 문제가 발생하지 않았다. 그 이유는 orderitem 테이블이 orders 테이블과 연결되어 있지만 
+캐시되어 있기 때문이다.</p>
+
+<h3 id="4-문제-해결">4. 문제 해결</h3>
+
+<p>이 문제를 해결하기 위해서 일단 나는 <em>패치 조인</em>을 이용해서 해결했다.</p>
+
+<h4 id="ordercompleterepositoryjava">OrderCompleteRepository.java</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">ac.su.kiosk.domain.OrderComplete</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">jakarta.transaction.Transactional</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.data.jpa.repository.JpaRepository</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.data.jpa.repository.Modifying</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.data.jpa.repository.Query</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Repository</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="nd">@Repository</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">OrderCompleteRepository</span> <span class="kd">extends</span> <span class="nc">JpaRepository</span><span class="o">&lt;</span><span class="nc">OrderComplete</span><span class="o">,</span> <span class="nc">Long</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">OrderComplete</span><span class="o">&gt;</span> <span class="nf">findAllByOrderId</span><span class="o">(</span><span class="nc">Long</span> <span class="n">orderId</span><span class="o">);</span>
+
+    <span class="nd">@Transactional</span>
+    <span class="nd">@Modifying</span>
+    <span class="nd">@Query</span><span class="o">(</span><span class="s">"update OrderComplete oc set oc.complete = true where oc.id = :id"</span><span class="o">)</span>
+    <span class="kt">void</span> <span class="nf">updateById</span><span class="o">(</span><span class="nc">Long</span> <span class="n">id</span><span class="o">);</span>
+
+    <span class="nd">@Query</span><span class="o">(</span><span class="s">"select "</span> <span class="o">+</span>
+            <span class="s">"oc from OrderComplete oc "</span> <span class="o">+</span>
+            <span class="s">"JOIN FETCH oc.order o "</span> <span class="o">+</span>
+            <span class="s">"JOIN FETCH o.orderModuleDTO omd "</span> <span class="o">+</span>
+            <span class="s">"where oc.complete = :target"</span><span class="o">)</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">OrderComplete</span><span class="o">&gt;</span> <span class="nf">findAllByComplete</span><span class="o">(</span><span class="nc">Boolean</span> <span class="n">target</span><span class="o">);</span>
+
+</code></pre></div></div>
+
+<ol>
+  <li>
+    <p>처음에는 OrderComplete와 Order 테이블을 패치해 봤는데, 35초에 달하는 쿼리 속도가 약 28초 정도로 줄긴 했지만, 여전히 느리다.
+그리고 ordermoduledto 테이블을 패치해 봤는데, 이 결과 약 1.7초로 줄어들어서 문제가 해결되었다.</p>
+  </li>
+  <li>
+    <p><strong>Where in</strong> 을 이용해서 해결했는데, 이건 직접적으로 N + 1 쿼리를 줄이는 것은 아니지만,
+이미 존재하던 코드의 방식으로는 select * from orderitem where orderID = ? 이런 식으로 쿼리를 날리는데,
+이걸 where in을 이용해서 select * from orderitem where orderID in (?,?,?,…) 이런 식으로 쿼리를 날리는 방식으로 변경했다.
+이는 타 프로젝트에서 쿼리 시간을 개선할 때 가장 큰 효과를 보았던 방식이다.</p>
+  </li>
+  <li>
+    <p>그리고 <strong>batch size</strong>를 50으로 설정했는데, 프로젝트가 크지 않아서 이 정도의 배치 사이즈로도 큰 효과를 보았다.</p>
+  </li>
+</ol>
+
+<h3 id="5-패치-조인">5. 패치 조인</h3>
+
+<p>일단 패치 조인을 이용할 때, 내가 신경쓰였던 점은 List<OrderComplete> findAllByComplete(Boolean target); 이 메소드에서
+리턴해야 할 객체가 List<OrderComplete> 인데,</OrderComplete></OrderComplete></p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    <span class="nv">"select "</span> <span class="o">+</span>
+            <span class="nv">"oc from OrderComplete oc "</span> <span class="o">+</span>
+            <span class="nv">"JOIN FETCH oc.order o "</span> <span class="o">+</span>
+            <span class="nv">"JOIN FETCH o.orderModuleDTO omd "</span> <span class="o">+</span>
+            <span class="nv">"where oc.complete = :target"</span>
+            
+</code></pre></div></div>
+
+<p>이런 식으로 패치 조인을 이용하면 List<OrderComplete> 가 아닌 List&lt;Object[]&gt; 가 리턴될 수 있지 않을까? 라는 걱정이었다.
+왜냐면 결과가 OrderComplete, Order, OrderModuleDTO 세 개의 객체가 조인된 객체가 리턴되기 때문이다.</OrderComplete></p>
+
+<p>하지만 이런 걱정은 굳이 할 필요가 없었다. 스프링 JPA는 이런 경우에도 List<OrderComplete> 가 리턴된다.</OrderComplete></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>즉, JPQL 쿼리에서 
+
+select oc from OrderComplete oc... 
+
+와 같이 특정 엔티티를 선택하면, 
+결과는 List&lt;OrderComplete&gt;로 반환되고, 이 경우 JPA는 OrderComplete 객체를 생성하고 
+패치 조인으로 로드된 관련 엔티티(Order와 OrderModuleDTO)는 해당 객체의 필드에 자동으로 매핑된다.
+</code></pre></div></div>
+
+<p>그리고, 이번에 공부할 수 있었던 건, <strong>OrderComplete와 Order와는 연결되어 있지만, OrderModuleDTO는 연결되어 있지 않아도
+패치 조인을 이용해서 Order를 타고 Order에 연결되어 있는 OrderModuleDTO를 가져올 수 있었다는 점이다.</strong></p>
+
+<h3 id="6-마치며">6. 마치며</h3>
+
+<p>N + 1 매핑을 해결하는 다양한 방법중에, 패치 조인을 이용한 방법을 정리해 보았다. 엔티티 그래프나 그 외의 
+다양한 방법들이 존재하지만 과거에 이 방법을 사용했을 때 가장 효과적이었기 때문에 이 방법을 사용했고,
+엔티티 그래프나 그 외의 방법들도 한 번 정리해 보고 싶다.</p>]]></content><author><name>ash tensor</name></author><category term="WEB" /><category term="JAVA" /><summary type="html"><![CDATA[[WEB][Spring] 스프링 N + 1 문제]]></summary></entry><entry><title type="html">[WEB][AWS] AWS Rekognition Face Detection Spring Boot 설정</title><link href="http://localhost:4000/web/java/2024/08/22/aws-rekognition-spring-setup.html" rel="alternate" type="text/html" title="[WEB][AWS] AWS Rekognition Face Detection Spring Boot 설정" /><published>2024-08-22T00:00:00+09:00</published><updated>2024-08-22T00:00:00+09:00</updated><id>http://localhost:4000/web/java/2024/08/22/aws-rekognition-spring-setup</id><content type="html" xml:base="http://localhost:4000/web/java/2024/08/22/aws-rekognition-spring-setup.html"><![CDATA[<h2 id="webaws-aws-rekognition-face-detection-spring-boot-설정">[WEB][AWS] AWS Rekognition Face Detection Spring Boot 설정</h2>
 
 <h3 id="1-서론">1. 서론</h3>
 
@@ -324,91 +536,7 @@ The AWS SDK for Java 1.x is being used here:
 이런 방법 말고도 S3 버킷에 이미지를 업로드하면 해당 이미지의 URL을 가져와서 얼굴 인식을 하는 방법도 있긴 하고,
 여러 사진 중에서 해당 사진의 얼굴을 찾는 방법도 있다. 아마도 출입국 심사대나 보안 설정 같은 곳에서 유용하게 사용할 수 있지 않을까 싶다.</p>
 
-<p>끝!</p>]]></content><author><name>ash tensor</name></author><category term="WEB" /><category term="JAVA" /><summary type="html"><![CDATA[AWS Rekognition API를 사용하여 Spring Boot에서 얼굴 인식을 구현.]]></summary></entry><entry><title type="html">[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기</title><link href="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/20/bigdata-processing-engineer.html" rel="alternate" type="text/html" title="[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기" /><published>2024-08-20T00:00:00+09:00</published><updated>2024-08-20T00:00:00+09:00</updated><id>http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/20/bigdata-processing-engineer</id><content type="html" xml:base="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/20/bigdata-processing-engineer.html"><![CDATA[<h2 id="자격증실기-빅데이터-분석기사-2024년-1회8회실기-합격-후기-및-시험-문제">[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기 및 시험 문제</h2>
-
-<h3 id="합격-인증">합격 인증</h3>
-
-<p><img src="/img/posts/bigdata/3.png" width="80%" /></p>
-
-<p>솔직히 좀 부끄럽긴 한데… 3과목 점수가 5점밖에 안나와서 남 보여줄만한 점수는 아니긴 해도, 일단 합격은 합격이니까.</p>
-
-<h3 id="시험-총평">시험 총평</h3>
-
-<p>나는 시험을 동부자격검정센터에서 실기 시험을 봤는데 생각보다 시험장이 조금 작긴 했다. 
-일단 태릉입구 근방 주민은 쉽게 찾아갈 수 있는게, BYC 직영매장 근처에 바로 시험장이 있어서 찾아가기 쉽다.</p>
-
-<p>일단 빅데이터 분석기사의 실기 시험을 공부하며 내가 느꼈던 점은, 필기가 더 어렵고, 실기가 더 쉽다고 느꼈던 점이었다.</p>
-
-<h4 id="1과목">1과목</h4>
-
-<p><img src="/img/posts/bigdata/6.png" width="80%" /></p>
-
-<p>(8회 시험에서는 약 몇백줄 되는 CSV를 제공했는데 다양한 나라의 맥주 판매? 소비 데이터 중에서 특정 조건에 맞는 나라의 정보를 추출하는 문제였다.
-즉 꼭 저런 식의 전처리 문제만 나오는 건 아니다..!)
-1과목은 데이터 전처리 과목인데, 판다스 라이브러리 등을 사용해서 기초적인 데이터 조작을 할 수 있는지를 묻는 문제인데,
-파이썬을 쓸 줄만 안다면 누구나 이 문제를 풀 수 있다. 왜냐하면 help와 dir 명령어를 사용할 수 있기 때문에 pandas를 사용하지 못한다고 하더라도
-도움을 받을 수 있기 때문이다. 사실상 30점은 기본으로 가져가는 점수라고 생각한다.</p>
-
-<h4 id="2과목">2과목</h4>
-
-<p><img src="/img/posts/bigdata/7.png" width="80%" /></p>
-
-<p>2과목은 분석 모델링 과목인데, 회귀 모델이나 분류 모델을 사용해서 주어진 문제에 따른 데이터를 반환하는 문제다.
-이 문제는 40점 배점으로 이 문제도 어려운 문제는 아니다. 내 기준으로 RMSE가 100에서 120 사이에 있었는데 40점으로 만점을 받았다.</p>
-
-<p>8회차 문제를 설명하자면, 두 지하철역의 주요 변수(이름, 날씨, 기온, 습도, 풍속, 미세먼지 등)를 이용해서 두 지하철역의 승하차 인원을 예측하는 문제였다.</p>
-
-<p>일단 2과목에서 점수를 받지 못하면 합격이 어렵다고 봐야 한다. 2유형은 40점이라 배점이 크기도 하지만, 아예 0점이 나오는 경우가 많아서 
-숙달될 수 있을 정도로 코드를 써보는 편이 좋다.
-내 경험상 2유형을 정리해 보자면 일단 <strong>원본 데이터를 잘 살펴 봐야 한다.</strong> 예를 들어서, 범주형 변수인 경우에는
-라벨 인코딩 보다는(물론 안하는 것보다는 성능이 좋겠지만) pandas의 get_dummies를 이용하는 원핫 인코딩을 사용하는 것이 좋다.</p>
-
-<p>또한, 이번 8회차 시험 문제를 설명했듯이, 두 지하철역의 승하차 인원을 예측하는 문제였는데, 꽤 많은 사람들이 <strong>지하철 역 이름</strong>을 변수로 사용하지 않아서 
-점수가 낮게 나왔는데(문제에서는 A역 B역으로 주어졌다) 아마도 A역, B역으로 익명화 되어 있어서 변수로 사용하지 않은 건 이해한다. 하지만 우리가 
-실제 지하철 역을 이용할 때 항상 집에서 가까운 지하철 역을 이용하는 것처럼, 강남의 유동인구가 많기 때문에 강남역은 당연히 노선도의 끝의 지하철 역보다는
-이용자수가 많을 것이 분명하다.</p>
-
-<p>이런 점을 고려하지 않고 지하철 역 이름을 변수로 사용하지 않은 사람들이 많았는데, 물론 사용하지 않다고 하더라도 점수를 받을 수는 있지만 내가 시험장에서 해당 데이터를 기반으로
-분석했을때, 해당 변수가 설명력이 가장 높은 변수였기 때문에 아마 점수가 조금 떨어졌을 것이다. 이렇듯 어느정도 실제 데이터를 살펴보는게 중요하다!</p>
-
-<p><img src="/img/posts/bigdata/4.png" width="80%" /></p>
-
-<p>그리고 돌아다니는 팁으로 랜덤포레스트 회귀 &amp; 분류를 암기해 가는 2과목 팁이 존재하는데 실제로 이 방법이 가장 좋은 것 같다. 실제 시험장에서 
-결측치와 이상치 제거를 수행한 뒤에 선형 회귀 및 다양한 모델을 사용해서 예측을 수행했는데, 그냥 원 핫 인코딩을 적용한 랜덤포레스트 회귀가 가장 좋은 성능을 보였다.</p>
-
-<p>그리고 0점 나오는 경우가 많았는데, 이는 csv 파일을 저장하지 않은 경우도 있겠지만 <strong>정답 행 갯수보다 적거나 많은 행을 제출</strong>해서 그렇다.
-이런 경우에는 0점이 나올 수 있기 때문에 주의해야 한다. 앞에 있던 사진처럼 총 행의 갯수(학습용 데이터 수, 평가용 데이터 수)를 제공해주기 때문에 
-무조건 csv 파일을 제출할 때 정답 행 갯수와 같은지 len() 함수 등을 이용해서 <strong>꼭꼭</strong> 확인해야 한다!!</p>
-
-<h4 id="3과목">3과목</h4>
-
-<p><img src="/img/posts/bigdata/8.png" width="80%" /></p>
-
-<p>물론 5점 맞은 주제에 무슨 후기냐 싶겠지만, 변명을 하자면 문제가 두문제 나오는데, 각각 5점짜리 소문항 3개씩 15점짜리 문제 두 개였다.
-각각 문제는 1번 소문항이 틀리면 나머지 두개의 문항도 모두 틀리는 구조이기 때문에 2번 문항에서 t-검정의 유의구간을 반대로 설정하는 
-실수를 저질러서 모두 다 틀려버리고 말았다….</p>
-
-<p>개인적으로는 3과목이 가장 어려운 과목이라고 생각하고, 앞으로도 계속 어려워 질 것이라고 생각한다.
-그 이유는 일단 지금 3과목에서는 통계적 검정을 주로 물어보기는 하지만 꼭 통계적 검정(t 검정 혹은 카이제곱 검정)을 물어보지 않을 수도 있다는 점이다.
-실제로 저 예시 문제에서 나온 것처럼 선형 회귀의 계수나 변수 중요도, 오즈비를 물어보는 경우가 대부분이었다.
-실제 기 치뤄진 시험의 기출문제에서도 다른 통계적 지식을 물어보는 경우가 있었는데 이런 경우에는 정말 어려운 문제가 나올 수 있다고 느꼈다. 
-게다가 빅분기 특성상 기출문제도 정확하지 않기 때문에, 추후에 이 시험의 난이도를 올리고자 한다면 2과목 점수를 낮추고 3과목 점수를 올리는 식으로 
-변별력을 줄 수도 있지 않을까? 그런 생각이 들었다.</p>
-
-<p><img src="/img/posts/bigdata/5.png" width="80%" /></p>
-
-<p>게다가, 지금은 1과목과 2과목을 모두 맞추면 70점으로 무조건 합격이 가능하기에 떠도는 팁으로는 1과목 2과목만 준비해서 특정 방법(랜덤포레스트 회귀 또는 분류)
-만 달달 외워서 시험보는 편이 팁이라고 돌아다니는데, 랜덤포레스트 특성상 이런 시험의 데이터 셋에서는 어느정도 무조건적으로 성능이 좋게 나올 수 밖에는 
-없기 때문에… 시험 점수 등을 조정해서 3과목을 공부할 수 밖에는 없게끔 시험을 언젠가 바꿀 수도 있지 않을까 생각이 들었다.</p>
-
-<h3 id="마치며">마치며</h3>
-
-<p>빅데이터 분석기사는 일단 필기를 합격했다면 실기는 수월하게 합격할 수 있는 시험이라고 느꼈다. 비록 작업형 시험이기는 하지만 코드가 정말 익숙하지 않은 사람이라도 
-충분히 합격할 수 있는 시험이다. 
-일단 수험서로는 ㅇㄱㅈ 출판사의 책을 사용했는데, 솔직히 별로 좋지 않았다고 할 수 밖에는 없다. 내용이 완전 틀린 내용이 실려있기도 했고,
-해설과 본문 내용이 충돌되는 경우도 많았다. 다른 출판사의 책을 보지는 않았지만 사는 것이 더 좋지 않을까? 그런 생각은 있다. 적어도 2024년에는..</p>
-
-<p>아무튼, 이렇게 빅데이터 분석기사 24년 1회 후기를 마친다!!</p>]]></content><author><name>ash tensor</name></author><category term="자격증" /><summary type="html"><![CDATA[[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기 및 시험 문제]]></summary></entry><entry><title type="html">[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기</title><link href="http://localhost:4000/web/java/2024/08/20/spring-gcp-bucket.html" rel="alternate" type="text/html" title="[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기" /><published>2024-08-20T00:00:00+09:00</published><updated>2024-08-20T00:00:00+09:00</updated><id>http://localhost:4000/web/java/2024/08/20/spring-gcp-bucket</id><content type="html" xml:base="http://localhost:4000/web/java/2024/08/20/spring-gcp-bucket.html"><![CDATA[<h2 id="webgcp-spring-boot에서-gcp-bucket에-파일-업로드하기">[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기</h2>
+<p>끝!</p>]]></content><author><name>ash tensor</name></author><category term="WEB" /><category term="JAVA" /><summary type="html"><![CDATA[AWS Rekognition API를 사용하여 Spring Boot에서 얼굴 인식을 구현.]]></summary></entry><entry><title type="html">[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기</title><link href="http://localhost:4000/web/java/2024/08/20/spring-gcp-bucket.html" rel="alternate" type="text/html" title="[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기" /><published>2024-08-20T00:00:00+09:00</published><updated>2024-08-20T00:00:00+09:00</updated><id>http://localhost:4000/web/java/2024/08/20/spring-gcp-bucket</id><content type="html" xml:base="http://localhost:4000/web/java/2024/08/20/spring-gcp-bucket.html"><![CDATA[<h2 id="webgcp-spring-boot에서-gcp-bucket에-파일-업로드하기">[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기</h2>
 
 <h3 id="문제-설명">문제 설명</h3>
 
@@ -653,7 +781,91 @@ mac 기준으로 자신의 .zshrc에 해당 키를 환경변수로 설정해주�
 <p>사용 사례:</p>
 
 <p>단순한 JSON 객체를 자바 객체로 매핑할 때 주로 사용됨.
-예를 들어, 클라이언트가 JSON으로 인코딩된 데이터를 전송하고, 서버가 이를 자바 객체로 변환하여 처리하는 경우에 적합함.</p>]]></content><author><name>ash tensor</name></author><category term="WEB" /><category term="JAVA" /><summary type="html"><![CDATA[[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기]]></summary></entry><entry><title type="html">[자격증][실기] 정보처리기사 2024년 1회 실기 합격 후기</title><link href="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/06/engineer-information-processor.html" rel="alternate" type="text/html" title="[자격증][실기] 정보처리기사 2024년 1회 실기 합격 후기" /><published>2024-08-06T00:00:00+09:00</published><updated>2024-08-06T00:00:00+09:00</updated><id>http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/06/engineer-information-processor</id><content type="html" xml:base="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/06/engineer-information-processor.html"><![CDATA[<h2 id="자격증실기-정보처리기사-2024년-1회-실기-합격-후기">[자격증][실기] 정보처리기사 2024년 1회 실기 합격 후기</h2>
+예를 들어, 클라이언트가 JSON으로 인코딩된 데이터를 전송하고, 서버가 이를 자바 객체로 변환하여 처리하는 경우에 적합함.</p>]]></content><author><name>ash tensor</name></author><category term="WEB" /><category term="JAVA" /><summary type="html"><![CDATA[[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기]]></summary></entry><entry><title type="html">[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기</title><link href="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/20/bigdata-processing-engineer.html" rel="alternate" type="text/html" title="[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기" /><published>2024-08-20T00:00:00+09:00</published><updated>2024-08-20T00:00:00+09:00</updated><id>http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/20/bigdata-processing-engineer</id><content type="html" xml:base="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/20/bigdata-processing-engineer.html"><![CDATA[<h2 id="자격증실기-빅데이터-분석기사-2024년-1회8회실기-합격-후기-및-시험-문제">[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기 및 시험 문제</h2>
+
+<h3 id="합격-인증">합격 인증</h3>
+
+<p><img src="/img/posts/bigdata/3.png" width="80%" /></p>
+
+<p>솔직히 좀 부끄럽긴 한데… 3과목 점수가 5점밖에 안나와서 남 보여줄만한 점수는 아니긴 해도, 일단 합격은 합격이니까.</p>
+
+<h3 id="시험-총평">시험 총평</h3>
+
+<p>나는 시험을 동부자격검정센터에서 실기 시험을 봤는데 생각보다 시험장이 조금 작긴 했다. 
+일단 태릉입구 근방 주민은 쉽게 찾아갈 수 있는게, BYC 직영매장 근처에 바로 시험장이 있어서 찾아가기 쉽다.</p>
+
+<p>일단 빅데이터 분석기사의 실기 시험을 공부하며 내가 느꼈던 점은, 필기가 더 어렵고, 실기가 더 쉽다고 느꼈던 점이었다.</p>
+
+<h4 id="1과목">1과목</h4>
+
+<p><img src="/img/posts/bigdata/6.png" width="80%" /></p>
+
+<p>(8회 시험에서는 약 몇백줄 되는 CSV를 제공했는데 다양한 나라의 맥주 판매? 소비 데이터 중에서 특정 조건에 맞는 나라의 정보를 추출하는 문제였다.
+즉 꼭 저런 식의 전처리 문제만 나오는 건 아니다..!)
+1과목은 데이터 전처리 과목인데, 판다스 라이브러리 등을 사용해서 기초적인 데이터 조작을 할 수 있는지를 묻는 문제인데,
+파이썬을 쓸 줄만 안다면 누구나 이 문제를 풀 수 있다. 왜냐하면 help와 dir 명령어를 사용할 수 있기 때문에 pandas를 사용하지 못한다고 하더라도
+도움을 받을 수 있기 때문이다. 사실상 30점은 기본으로 가져가는 점수라고 생각한다.</p>
+
+<h4 id="2과목">2과목</h4>
+
+<p><img src="/img/posts/bigdata/7.png" width="80%" /></p>
+
+<p>2과목은 분석 모델링 과목인데, 회귀 모델이나 분류 모델을 사용해서 주어진 문제에 따른 데이터를 반환하는 문제다.
+이 문제는 40점 배점으로 이 문제도 어려운 문제는 아니다. 내 기준으로 RMSE가 100에서 120 사이에 있었는데 40점으로 만점을 받았다.</p>
+
+<p>8회차 문제를 설명하자면, 두 지하철역의 주요 변수(이름, 날씨, 기온, 습도, 풍속, 미세먼지 등)를 이용해서 두 지하철역의 승하차 인원을 예측하는 문제였다.</p>
+
+<p>일단 2과목에서 점수를 받지 못하면 합격이 어렵다고 봐야 한다. 2유형은 40점이라 배점이 크기도 하지만, 아예 0점이 나오는 경우가 많아서 
+숙달될 수 있을 정도로 코드를 써보는 편이 좋다.
+내 경험상 2유형을 정리해 보자면 일단 <strong>원본 데이터를 잘 살펴 봐야 한다.</strong> 예를 들어서, 범주형 변수인 경우에는
+라벨 인코딩 보다는(물론 안하는 것보다는 성능이 좋겠지만) pandas의 get_dummies를 이용하는 원핫 인코딩을 사용하는 것이 좋다.</p>
+
+<p>또한, 이번 8회차 시험 문제를 설명했듯이, 두 지하철역의 승하차 인원을 예측하는 문제였는데, 꽤 많은 사람들이 <strong>지하철 역 이름</strong>을 변수로 사용하지 않아서 
+점수가 낮게 나왔는데(문제에서는 A역 B역으로 주어졌다) 아마도 A역, B역으로 익명화 되어 있어서 변수로 사용하지 않은 건 이해한다. 하지만 우리가 
+실제 지하철 역을 이용할 때 항상 집에서 가까운 지하철 역을 이용하는 것처럼, 강남의 유동인구가 많기 때문에 강남역은 당연히 노선도의 끝의 지하철 역보다는
+이용자수가 많을 것이 분명하다.</p>
+
+<p>이런 점을 고려하지 않고 지하철 역 이름을 변수로 사용하지 않은 사람들이 많았는데, 물론 사용하지 않다고 하더라도 점수를 받을 수는 있지만 내가 시험장에서 해당 데이터를 기반으로
+분석했을때, 해당 변수가 설명력이 가장 높은 변수였기 때문에 아마 점수가 조금 떨어졌을 것이다. 이렇듯 어느정도 실제 데이터를 살펴보는게 중요하다!</p>
+
+<p><img src="/img/posts/bigdata/4.png" width="80%" /></p>
+
+<p>그리고 돌아다니는 팁으로 랜덤포레스트 회귀 &amp; 분류를 암기해 가는 2과목 팁이 존재하는데 실제로 이 방법이 가장 좋은 것 같다. 실제 시험장에서 
+결측치와 이상치 제거를 수행한 뒤에 선형 회귀 및 다양한 모델을 사용해서 예측을 수행했는데, 그냥 원 핫 인코딩을 적용한 랜덤포레스트 회귀가 가장 좋은 성능을 보였다.</p>
+
+<p>그리고 0점 나오는 경우가 많았는데, 이는 csv 파일을 저장하지 않은 경우도 있겠지만 <strong>정답 행 갯수보다 적거나 많은 행을 제출</strong>해서 그렇다.
+이런 경우에는 0점이 나올 수 있기 때문에 주의해야 한다. 앞에 있던 사진처럼 총 행의 갯수(학습용 데이터 수, 평가용 데이터 수)를 제공해주기 때문에 
+무조건 csv 파일을 제출할 때 정답 행 갯수와 같은지 len() 함수 등을 이용해서 <strong>꼭꼭</strong> 확인해야 한다!!</p>
+
+<h4 id="3과목">3과목</h4>
+
+<p><img src="/img/posts/bigdata/8.png" width="80%" /></p>
+
+<p>물론 5점 맞은 주제에 무슨 후기냐 싶겠지만, 변명을 하자면 문제가 두문제 나오는데, 각각 5점짜리 소문항 3개씩 15점짜리 문제 두 개였다.
+각각 문제는 1번 소문항이 틀리면 나머지 두개의 문항도 모두 틀리는 구조이기 때문에 2번 문항에서 t-검정의 유의구간을 반대로 설정하는 
+실수를 저질러서 모두 다 틀려버리고 말았다….</p>
+
+<p>개인적으로는 3과목이 가장 어려운 과목이라고 생각하고, 앞으로도 계속 어려워 질 것이라고 생각한다.
+그 이유는 일단 지금 3과목에서는 통계적 검정을 주로 물어보기는 하지만 꼭 통계적 검정(t 검정 혹은 카이제곱 검정)을 물어보지 않을 수도 있다는 점이다.
+실제로 저 예시 문제에서 나온 것처럼 선형 회귀의 계수나 변수 중요도, 오즈비를 물어보는 경우가 대부분이었다.
+실제 기 치뤄진 시험의 기출문제에서도 다른 통계적 지식을 물어보는 경우가 있었는데 이런 경우에는 정말 어려운 문제가 나올 수 있다고 느꼈다. 
+게다가 빅분기 특성상 기출문제도 정확하지 않기 때문에, 추후에 이 시험의 난이도를 올리고자 한다면 2과목 점수를 낮추고 3과목 점수를 올리는 식으로 
+변별력을 줄 수도 있지 않을까? 그런 생각이 들었다.</p>
+
+<p><img src="/img/posts/bigdata/5.png" width="80%" /></p>
+
+<p>게다가, 지금은 1과목과 2과목을 모두 맞추면 70점으로 무조건 합격이 가능하기에 떠도는 팁으로는 1과목 2과목만 준비해서 특정 방법(랜덤포레스트 회귀 또는 분류)
+만 달달 외워서 시험보는 편이 팁이라고 돌아다니는데, 랜덤포레스트 특성상 이런 시험의 데이터 셋에서는 어느정도 무조건적으로 성능이 좋게 나올 수 밖에는 
+없기 때문에… 시험 점수 등을 조정해서 3과목을 공부할 수 밖에는 없게끔 시험을 언젠가 바꿀 수도 있지 않을까 생각이 들었다.</p>
+
+<h3 id="마치며">마치며</h3>
+
+<p>빅데이터 분석기사는 일단 필기를 합격했다면 실기는 수월하게 합격할 수 있는 시험이라고 느꼈다. 비록 작업형 시험이기는 하지만 코드가 정말 익숙하지 않은 사람이라도 
+충분히 합격할 수 있는 시험이다. 
+일단 수험서로는 ㅇㄱㅈ 출판사의 책을 사용했는데, 솔직히 별로 좋지 않았다고 할 수 밖에는 없다. 내용이 완전 틀린 내용이 실려있기도 했고,
+해설과 본문 내용이 충돌되는 경우도 많았다. 다른 출판사의 책을 보지는 않았지만 사는 것이 더 좋지 않을까? 그런 생각은 있다. 적어도 2024년에는..</p>
+
+<p>아무튼, 이렇게 빅데이터 분석기사 24년 1회 후기를 마친다!!</p>]]></content><author><name>ash tensor</name></author><category term="자격증" /><summary type="html"><![CDATA[[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기 및 시험 문제]]></summary></entry><entry><title type="html">[자격증][실기] 정보처리기사 2024년 1회 실기 합격 후기</title><link href="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/06/engineer-information-processor.html" rel="alternate" type="text/html" title="[자격증][실기] 정보처리기사 2024년 1회 실기 합격 후기" /><published>2024-08-06T00:00:00+09:00</published><updated>2024-08-06T00:00:00+09:00</updated><id>http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/06/engineer-information-processor</id><content type="html" xml:base="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/06/engineer-information-processor.html"><![CDATA[<h2 id="자격증실기-정보처리기사-2024년-1회-실기-합격-후기">[자격증][실기] 정보처리기사 2024년 1회 실기 합격 후기</h2>
 
 <h3 id="합격-인증">합격 인증</h3>
 
@@ -1254,7 +1466,74 @@ z값 계산과 같은 각 통계 분포의 기초적인 통계량 계산과 검�
 
 </code></pre></div></div>
 
-<p>좀 더 깔끔하게 풀이할 수도 있을 것 같은데, 오랜만에 알고리즘 문제를 푼 것 치고는 감을 잡는데 도움이 된 것 같아서 만족스럽다.</p>]]></content><author><name>ash tensor</name></author><category term="JAVA" /><category term="PS" /><category term="백준" /><summary type="html"><![CDATA[[백준][JAVA] 백준 7562번 :: 나이트의 이동 :: 실버 1]]></summary></entry><entry><title type="html">[백준][JAVA] 백준 12100번 :: 2048(Easy) :: 골드 2</title><link href="http://localhost:4000/java/ps/%EB%B0%B1%EC%A4%80/2024/03/28/boj12100.html" rel="alternate" type="text/html" title="[백준][JAVA] 백준 12100번 :: 2048(Easy) :: 골드 2" /><published>2024-03-28T00:00:00+09:00</published><updated>2024-03-28T00:00:00+09:00</updated><id>http://localhost:4000/java/ps/%EB%B0%B1%EC%A4%80/2024/03/28/boj12100</id><content type="html" xml:base="http://localhost:4000/java/ps/%EB%B0%B1%EC%A4%80/2024/03/28/boj12100.html"><![CDATA[<h2 id="백준java-백준-12100번--2048easy--골드-2">[백준][JAVA] 백준 12100번 :: 2048(Easy) :: 골드 2</h2>
+<p>좀 더 깔끔하게 풀이할 수도 있을 것 같은데, 오랜만에 알고리즘 문제를 푼 것 치고는 감을 잡는데 도움이 된 것 같아서 만족스럽다.</p>]]></content><author><name>ash tensor</name></author><category term="JAVA" /><category term="PS" /><category term="백준" /><summary type="html"><![CDATA[[백준][JAVA] 백준 7562번 :: 나이트의 이동 :: 실버 1]]></summary></entry><entry><title type="html">[자격증] 리눅스 마스터 2급 2401회 합격 후기</title><link href="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/03/28/linux-master.html" rel="alternate" type="text/html" title="[자격증] 리눅스 마스터 2급 2401회 합격 후기" /><published>2024-03-28T00:00:00+09:00</published><updated>2024-03-28T00:00:00+09:00</updated><id>http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/03/28/linux-master</id><content type="html" xml:base="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/03/28/linux-master.html"><![CDATA[<h2 id="자격증-리눅스-마스터-2급-2401회-합격-후기--시험-정보">[자격증] 리눅스 마스터 2급 2401회 합격 후기 / 시험 정보</h2>
+
+<h3 id="리눅스-마스터-2급">리눅스 마스터 2급</h3>
+
+<p>2401회차 리눅스 마스터 2급 시험을 보고 합격했다. 온라인등에서 리눅스 마스터 2급은 이제 좀 누구나 합격하는 수준의 자격증이라는 느낌이지만,
+내가 대신 약간의 변호를 하자면 평균 합격률이 약 30% 정도의 자격증으로 공부 하나도 필요 없이 하루 이틀 전에 공부해서 합격하는 수준은 아닌 것 같다. 
+기사 수준의 시험도 합격률이 30%대인 시험도 많으니까 말이다. 그리고-</p>
+
+<blockquote>
+  <p>인터넷에서는 공부할 필요 없다, 하루 이틀 기출만 풀면 합격할 수 있다</p>
+</blockquote>
+
+<p>이런 말을 많이 하는데 이런 식의 말은 조금 무책임한 느낌이고, 혹시라도 누군가 이 시험을 도전할 사람이 있다면, 조금 더 차분히 공부해서 
+기본적인 리눅스에 대한 지식을 어느정도 쌓고 가는 것이 좋다고 생각한다.</p>
+
+<h4 id="시험-난이도">시험 난이도</h4>
+
+<p>2022년 합격률은 약 22% 정도로, 2021년에 비해서는 하락했다. 2021년에는 약 30% 정도의 합격률이었는데, 2022년에는 22% 정도로 하락했다.
+일단 리눅스 마스터 2급은 단순 암기 시험으로, 4지선다 80문제에 60점 이상 맞으면 합격인데…</p>
+
+<p>말만 들으면 엄청 쉬운 시험이고 기출문제도 많이 있는 이상 기출을 많이 풀면 해결할 수 있다고 생각할 수 있지만 어려운 이유는 
+문제가 꽤나 <strong>악의적으로</strong> 나온다는 점이다.</p>
+
+<p>어떻게 예를 들어야 될지 잘 생각은 안나지만, 예를 들어서</p>
+
+<ul>
+  <li>리눅스 명령어 중에서 파일의 권한을 표시하는 문제가 출제되는데</li>
+</ul>
+
+<p>권한을 물어보다 보니까 “권한? chmod나 chown 인가?” 하고 생각하고 실제로 선지에도 그렇게 나오지만 실제로는 ls 라는 명령어를 선택해야한다. 
+게다가, 그냥 ls 명령어를 실행하면 권한이 나오지 않고 옵션을 넣어서 검색해야 권한이 출력되고, 선지에도 ls 밖에는 표시되어 있지 않아서 사람을 헷갈리게 만든다.</p>
+
+<ul>
+  <li>또한 리눅스의 다양한 옵션들 (apt-get의 삭제 옵션이 -r인가 -R인가, e인가 d인가, 등)로 장난을 치는 것은 물론이다</li>
+</ul>
+
+<p>전부 다 생각나지는 않지만 꽤나 이렇듯 악의적인 문제가 많이 나온다. 게다가, 이제 2401회차와 전회차와 달라진 점으로는 더 이상 문제를 풀고
+ 문제지를 제공하지 않고 회수한다는 점에 있다. 이전에는 문제지를 제공하고 문제를 풀고 나서 문제지를 회수했기 때문에 기출문제를 
+복원하기 쉬웠지만 이제부터는 기출문제를 복원하기가 어려워져서 앞으로의 난이도가 조금 더 어려워질 수 있다는 생각이 들었다.</p>
+
+<p>그럼에도 불구하고, 쉬운 자격증인 건 맞다. 일단 계산문제가 나오지 않고, 단순히 리눅스 명령어를 많이 외우고, 리눅스에 대한 개념들만 머리속에
+ 정리해 가면 되기 때문에 어려운 자격증은 아니다. 그렇지만 단순히 기출문제를 암기하는 식으로 접근하기 보다는 리눅스에 대한 기본적인 지식을 쌓고 가는 것이 좋다.
+그래야 남는 것도 있을테니까.</p>
+
+<h4 id="공부법">공부법</h4>
+
+<blockquote>
+  <p>인터넷에 돌아다니는 리눅스 마스터 공부법에 대한 조언으로 기출문제 최대한 많이 풀기, 책은 살 필요 없음</p>
+</blockquote>
+
+<p>인데 책은 살 필요가 없는건 맞다…! 책은 살 필요가 없다. 그 이유는 어차피 위에서 말했듯, 단순 암기 시험이기도 하고, 문제가 악의적으로 나오기 때문에
+ 문제가 어떤 식으로 나오는지 감을 잡아야 하기 때문에 책을 사서 공부하는 것은 별로 의미가 없다고 생각한다. 오히려 책을 사서 공부하면 더 헷갈릴 수도 있다.
+나는 밀리의 서재에 있는 리눅스 마스터 2급 책을 참고했는데, 솔직히 도움이 안 됐다… 오히려 기출문제와 인터넷에 돌아다니는 리눅스 마스터 2급 정리 PDF를 바탕으로
+ 내가 풀어본 기출문제에 새로 나왔거나, 개념이 어떻게 기출문제에 나오는지를 정리하면서 공부하는 것이 더 도움이 됐다.</p>
+
+<p>음, 그런데 이제부터는 시험지를 나올때 제출하라고 하니까 기출문제를 복원하기가 어려워져서 앞으로는 기출문제를 풀어보는 것이 더 어려워질 수도 있다. 
+왜냐면 나도 시험을 칠 때 기출문제에 안 나왔던 새로운 문제들이 보였기 때문이다. 그래서 혹시라도 책을 구매하려면 최신 기출문제가 수록되어있는
+ 책을 구매한다면, 그건 좋을 것 같다.</p>
+
+<h4 id="마무리">마무리</h4>
+
+<p>전공자 기준 약 2주 정도(암기를 못한다면) 시험 공부를 하는 게 좋을 것 같고, 비전공자 기준으로도 약 2주 정도 시험 공부를 하는 편이 좋다.
+나는 기출문제 약 2년치 정도(8회분)를 1주일에 걸쳐서 풀고 정리하는 식으로 시험 공부를 하긴 했는데 시험 점수가 생각했던 것보다 아슬아슬하게 나와서(70점)
+ 떨어질 수도 있겠다 싶겠어서, 한 2주 정도는 차분히 공부하는 것이 좋을 것 같다.</p>
+
+<p><img src="/img/posts/linuxmaster/1.png" style="width: 80%" /></p>
+
+<p>아무튼 그래도 합격해서 다행이긴 하다! 떨어지는 것보다는 합격하는게 더 나으니까</p>]]></content><author><name>ash tensor</name></author><category term="자격증" /><summary type="html"><![CDATA[[자격증] 리눅스 마스터 2급 2401회 합격 후기 / 시험 정보]]></summary></entry><entry><title type="html">[백준][JAVA] 백준 12100번 :: 2048(Easy) :: 골드 2</title><link href="http://localhost:4000/java/ps/%EB%B0%B1%EC%A4%80/2024/03/28/boj12100.html" rel="alternate" type="text/html" title="[백준][JAVA] 백준 12100번 :: 2048(Easy) :: 골드 2" /><published>2024-03-28T00:00:00+09:00</published><updated>2024-03-28T00:00:00+09:00</updated><id>http://localhost:4000/java/ps/%EB%B0%B1%EC%A4%80/2024/03/28/boj12100</id><content type="html" xml:base="http://localhost:4000/java/ps/%EB%B0%B1%EC%A4%80/2024/03/28/boj12100.html"><![CDATA[<h2 id="백준java-백준-12100번--2048easy--골드-2">[백준][JAVA] 백준 12100번 :: 2048(Easy) :: 골드 2</h2>
 
 <h3 id="문제-설명">문제 설명</h3>
 
@@ -1752,138 +2031,4 @@ z값 계산과 같은 각 통계 분포의 기초적인 통계량 계산과 검�
          <span class="o">}</span>
      <span class="o">}</span>
  <span class="o">}</span>
-</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="JAVA" /><category term="PS" /><category term="백준" /><summary type="html"><![CDATA[[백준][JAVA] 백준 12100번 :: 2048(Easy) :: 골드 2]]></summary></entry><entry><title type="html">[자격증] 리눅스 마스터 2급 2401회 합격 후기</title><link href="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/03/28/linux-master.html" rel="alternate" type="text/html" title="[자격증] 리눅스 마스터 2급 2401회 합격 후기" /><published>2024-03-28T00:00:00+09:00</published><updated>2024-03-28T00:00:00+09:00</updated><id>http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/03/28/linux-master</id><content type="html" xml:base="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/03/28/linux-master.html"><![CDATA[<h2 id="자격증-리눅스-마스터-2급-2401회-합격-후기--시험-정보">[자격증] 리눅스 마스터 2급 2401회 합격 후기 / 시험 정보</h2>
-
-<h3 id="리눅스-마스터-2급">리눅스 마스터 2급</h3>
-
-<p>2401회차 리눅스 마스터 2급 시험을 보고 합격했다. 온라인등에서 리눅스 마스터 2급은 이제 좀 누구나 합격하는 수준의 자격증이라는 느낌이지만,
-내가 대신 약간의 변호를 하자면 평균 합격률이 약 30% 정도의 자격증으로 공부 하나도 필요 없이 하루 이틀 전에 공부해서 합격하는 수준은 아닌 것 같다. 
-기사 수준의 시험도 합격률이 30%대인 시험도 많으니까 말이다. 그리고-</p>
-
-<blockquote>
-  <p>인터넷에서는 공부할 필요 없다, 하루 이틀 기출만 풀면 합격할 수 있다</p>
-</blockquote>
-
-<p>이런 말을 많이 하는데 이런 식의 말은 조금 무책임한 느낌이고, 혹시라도 누군가 이 시험을 도전할 사람이 있다면, 조금 더 차분히 공부해서 
-기본적인 리눅스에 대한 지식을 어느정도 쌓고 가는 것이 좋다고 생각한다.</p>
-
-<h4 id="시험-난이도">시험 난이도</h4>
-
-<p>2022년 합격률은 약 22% 정도로, 2021년에 비해서는 하락했다. 2021년에는 약 30% 정도의 합격률이었는데, 2022년에는 22% 정도로 하락했다.
-일단 리눅스 마스터 2급은 단순 암기 시험으로, 4지선다 80문제에 60점 이상 맞으면 합격인데…</p>
-
-<p>말만 들으면 엄청 쉬운 시험이고 기출문제도 많이 있는 이상 기출을 많이 풀면 해결할 수 있다고 생각할 수 있지만 어려운 이유는 
-문제가 꽤나 <strong>악의적으로</strong> 나온다는 점이다.</p>
-
-<p>어떻게 예를 들어야 될지 잘 생각은 안나지만, 예를 들어서</p>
-
-<ul>
-  <li>리눅스 명령어 중에서 파일의 권한을 표시하는 문제가 출제되는데</li>
-</ul>
-
-<p>권한을 물어보다 보니까 “권한? chmod나 chown 인가?” 하고 생각하고 실제로 선지에도 그렇게 나오지만 실제로는 ls 라는 명령어를 선택해야한다. 
-게다가, 그냥 ls 명령어를 실행하면 권한이 나오지 않고 옵션을 넣어서 검색해야 권한이 출력되고, 선지에도 ls 밖에는 표시되어 있지 않아서 사람을 헷갈리게 만든다.</p>
-
-<ul>
-  <li>또한 리눅스의 다양한 옵션들 (apt-get의 삭제 옵션이 -r인가 -R인가, e인가 d인가, 등)로 장난을 치는 것은 물론이다</li>
-</ul>
-
-<p>전부 다 생각나지는 않지만 꽤나 이렇듯 악의적인 문제가 많이 나온다. 게다가, 이제 2401회차와 전회차와 달라진 점으로는 더 이상 문제를 풀고
- 문제지를 제공하지 않고 회수한다는 점에 있다. 이전에는 문제지를 제공하고 문제를 풀고 나서 문제지를 회수했기 때문에 기출문제를 
-복원하기 쉬웠지만 이제부터는 기출문제를 복원하기가 어려워져서 앞으로의 난이도가 조금 더 어려워질 수 있다는 생각이 들었다.</p>
-
-<p>그럼에도 불구하고, 쉬운 자격증인 건 맞다. 일단 계산문제가 나오지 않고, 단순히 리눅스 명령어를 많이 외우고, 리눅스에 대한 개념들만 머리속에
- 정리해 가면 되기 때문에 어려운 자격증은 아니다. 그렇지만 단순히 기출문제를 암기하는 식으로 접근하기 보다는 리눅스에 대한 기본적인 지식을 쌓고 가는 것이 좋다.
-그래야 남는 것도 있을테니까.</p>
-
-<h4 id="공부법">공부법</h4>
-
-<blockquote>
-  <p>인터넷에 돌아다니는 리눅스 마스터 공부법에 대한 조언으로 기출문제 최대한 많이 풀기, 책은 살 필요 없음</p>
-</blockquote>
-
-<p>인데 책은 살 필요가 없는건 맞다…! 책은 살 필요가 없다. 그 이유는 어차피 위에서 말했듯, 단순 암기 시험이기도 하고, 문제가 악의적으로 나오기 때문에
- 문제가 어떤 식으로 나오는지 감을 잡아야 하기 때문에 책을 사서 공부하는 것은 별로 의미가 없다고 생각한다. 오히려 책을 사서 공부하면 더 헷갈릴 수도 있다.
-나는 밀리의 서재에 있는 리눅스 마스터 2급 책을 참고했는데, 솔직히 도움이 안 됐다… 오히려 기출문제와 인터넷에 돌아다니는 리눅스 마스터 2급 정리 PDF를 바탕으로
- 내가 풀어본 기출문제에 새로 나왔거나, 개념이 어떻게 기출문제에 나오는지를 정리하면서 공부하는 것이 더 도움이 됐다.</p>
-
-<p>음, 그런데 이제부터는 시험지를 나올때 제출하라고 하니까 기출문제를 복원하기가 어려워져서 앞으로는 기출문제를 풀어보는 것이 더 어려워질 수도 있다. 
-왜냐면 나도 시험을 칠 때 기출문제에 안 나왔던 새로운 문제들이 보였기 때문이다. 그래서 혹시라도 책을 구매하려면 최신 기출문제가 수록되어있는
- 책을 구매한다면, 그건 좋을 것 같다.</p>
-
-<h4 id="마무리">마무리</h4>
-
-<p>전공자 기준 약 2주 정도(암기를 못한다면) 시험 공부를 하는 게 좋을 것 같고, 비전공자 기준으로도 약 2주 정도 시험 공부를 하는 편이 좋다.
-나는 기출문제 약 2년치 정도(8회분)를 1주일에 걸쳐서 풀고 정리하는 식으로 시험 공부를 하긴 했는데 시험 점수가 생각했던 것보다 아슬아슬하게 나와서(70점)
- 떨어질 수도 있겠다 싶겠어서, 한 2주 정도는 차분히 공부하는 것이 좋을 것 같다.</p>
-
-<p><img src="/img/posts/linuxmaster/1.png" style="width: 80%" /></p>
-
-<p>아무튼 그래도 합격해서 다행이긴 하다! 떨어지는 것보다는 합격하는게 더 나으니까</p>]]></content><author><name>ash tensor</name></author><category term="자격증" /><summary type="html"><![CDATA[[자격증] 리눅스 마스터 2급 2401회 합격 후기 / 시험 정보]]></summary></entry><entry><title type="html">[데이터]개인정보 처리 위탁과 제 3자 제공의 차이</title><link href="http://localhost:4000/ml/2024/03/19/personal-information.html" rel="alternate" type="text/html" title="[데이터]개인정보 처리 위탁과 제 3자 제공의 차이" /><published>2024-03-19T00:00:00+09:00</published><updated>2024-03-19T00:00:00+09:00</updated><id>http://localhost:4000/ml/2024/03/19/personal-information</id><content type="html" xml:base="http://localhost:4000/ml/2024/03/19/personal-information.html"><![CDATA[<h2 id="데이터개인정보-처리-위탁과-제-3자-제공의-차이">[데이터]개인정보 처리 위탁과 제 3자 제공의 차이</h2>
-
-<p>개인정보의 처리 위탁과 개인정보의 제 3자 제공은 언뜻 보면 비슷한 개념으로 보일 수 있지만, 실제로는 매우 다른 개념이다.
-빅데이터분석기사나 보안 등의 과목에서 개인정보의 이전에 관련된 과목에서</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>개인정보의 처리 위탁은 개인정보처리자의 업무를 처리할 목적으로 제 3자에게 이전되는 것이다.
-</code></pre></div></div>
-
-<p>라고 설명하고, 개인정보의 제 3자 제공은</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>해당 정보를 제공받는 자의 고유한 업무를 처리할 목적 및 이익을 위하여 개인정보가 이전되는 것이다.
-</code></pre></div></div>
-
-<p>라고 설명하고 있다. 이 말만 들어서는 정확히 어떤 차이가 있는지 명확히 이해하기는 어렵다. 대법원에서는 개인정보의 처리위탁은 본래의 개인정보 수집 이용 목적과 관련된
- 위탁자의 업무 처리와 이익을 위하여 개인정보가 이전되는 경우를 의미한다,고 판시한 적이 있다. 아니, 생각해보면 개인정보의 제 3자 제공이나 개인정보의 위탁이나
- 어쨌든 회사에게 내 개인정보를 넘기는 것이고, 대법원이 판시한 것처럼, 중간에 있는 회사를 위해서 개인정보가 제공되는 것 같은데 왜 제 3자 제공과는 다른가? 라는 생각이 들 수 있다.</p>
-
-<p>또한 문제에서는</p>
-
-<ul>
-  <li>해당 정보를 제공받는 자의 고유한 업무를 처리할 목적 및 이익을 위하여 개인정보가 이전되는 것이다.</li>
-  <li>개인정보를 제공하는 자의 업무 처리와 이익을 위하는 경우이다.</li>
-  <li>개인정보를 제공받는 자의 업무 처리와 이익을 위하는 경우이다.</li>
-  <li>개인정보처리자의 업무를 처리할 목적으로 제 3자에게 이전되는 것이다.</li>
-  <li>해당 정보를 제공받는 자의 고유한 업무를 처리할 목적 및 이익을 위하여 개인정보가 이전되는 것이다.</li>
-</ul>
-
-<p>등의 선지로 등장하기 때문에, 제대로 차이점을 이해하지 못했다면 헷갈릴 수가 있다. 그 이유는 해당 문장들에서 주어나 목적어등이 생략된 나머지 정보가 
-완전하지 않기 때문이다.</p>
-
-<h3 id="개인정보의-처리-위탁">개인정보의 처리 위탁</h3>
-
-<p>개인정보의 처리 위탁은 개인정보처리자의 업무를 처리할 목적으로 제 3자에게 이전되는 것이다. 또한 위의 선지에서 골라보자면</p>
-
-<ul>
-  <li>개인정보를 제공하는 자의 업무 처리와 이익을 위하는 경우</li>
-  <li>개인정보처리자의 업무를 처리할 목적으로 제 3자에게 이전되는 것이다.</li>
-</ul>
-
-<p>이렇게 고를 수 있다. 차이를 알기 위해서는 그림을 그려보면 간단하다.</p>
-
-<p><img src="/img/posts/personal-information/1.png" width="80%" /></p>
-
-<p>이러한 관계가 있다고 하자, 첫번째로 개인정보의 처리 위탁이 일어날 때, 위 관계는 다음과 같이 표현할 수 있다.</p>
-
-<p><img src="/img/posts/personal-information/2.png" width="80%" /></p>
-
-<p>개인정보의 처리 위탁은 본래의 개인정보 수집 이용 목적과 관련된 위탁자의 업무 처리와 이익을 위하여 개인정보가 이전되는 것이다. 
-즉 위의 나왔던 선지와 문장의 이익은 개인정보를 제공한 자의 이익과 그 개인정보를 1차적으로 받고, 타 사에 위탁한 위탁자의 업무 처리와 관련된 이익을 말한다.</p>
-
-<p>여기서 개인정보는 비즈니스를 수행하는데 필요한 정보여야만 하고, 이를 최종적으로 마지막에 위탁받은 자 역시, 그 개인정보를 자신의 이익을 위하여 사용해서는 안 된다.</p>
-
-<p>따라서 위 문장들 중에서 개인정보를 제공받는 자의 고유한 업무를 처리할 목적 및 이익을 위하여 개인정보가 이전되는 것이다 « 이 문장은 개인정보 위탁이 아닌 개인정보 제 3자 제공에 관련된 문장이 된다.
-왜냐하면 택배를 예시로 들어보자, 분명 이렇게 생각할 수 있다. 택배 회사에 개인정보를 제공한다고 했을 때, 택배 회사의 업무를 위해서 개인정보를 제공하는 것이니까 택배회사의 고유한 업무를 수행하기 때문에 제 3자 제공이다. 이렇게 생각할 수도 있지만
- 사실 택배 회사의 업무는 특정 쇼핑몰의 요청에 따라 사용자에게 물건을 배송하는 것이고, 이는 특정 쇼핑몰의 비즈니스의 일부분인 것이고, 택배 회사의 고유한 업무를 처리할 목적으로 개인정보를 사용하는 것은 아니다.</p>
-
-<p>이러한 경우에는 정보를 다루는 주체가 정보를 어떻게 이용할지 예측이 가능하기 때문에 관리 감독 의무는 위탁자(중간에 끼어있는 회사)에게 존재하고, 손해배상의 책임은 위탁자 및 수탁자가 공통으로 부담한다.</p>
-
-<h3 id="개인정보의-제-3자-제공">개인정보의 제 3자 제공</h3>
-
-<p><img src="/img/posts/personal-information/3.png" width="80%" /></p>
-
-<p>개인정보의 제 3자 제공은 해당 정보를 제공받는 자의 고유한 업무를 처리할 목적 및 이익을 위하여 개인정보가 이전되는 것이다. 이걸 보면 개인정보 위탁과는 다르다는 점이 이해가 확 될 것이다.
-위 그림에서 확인할 수 있는 것과 같이, 중간의 회사가 누군가에게 개인정보 제 3자 제공을 한다면, 그건 중간의 회사와 고객간의 비즈니스와는 관련이 없는,
-그냥 개인정보를 제공할 뿐인 것이다. 즉, 광고 전화나 판촉 전화, 개인정보 판매와 같은 일이 일어난다는 것이다. 이는 개인정보를 최초에 제공한 고객의 이익과는 아무런 관련이 없다. 또한 중간에 존재하는 회사와 고객간의 비즈니스에는 
-아무런 관련이 없다. 오직 제 3자의 회사의 특정한 이익과 업무를 위해 사용될 뿐인 것이다.</p>
-
-<p>이러한 경우에는 제공자가 정보가 어떻게 이용될지 예측이 알 수 없고 개인정보의 제 3자의 이익을 위해 사용되기 때문에, 관리 감독 의무나 손해배상 책임이 제 3자에게 존재한다.</p>]]></content><author><name>ash tensor</name></author><category term="ML" /><summary type="html"><![CDATA[[데이터]개인정보 처리 위탁과 제 3자 제공의 차이]]></summary></entry></feed>
+</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="JAVA" /><category term="PS" /><category term="백준" /><summary type="html"><![CDATA[[백준][JAVA] 백준 12100번 :: 2048(Easy) :: 골드 2]]></summary></entry></feed>
