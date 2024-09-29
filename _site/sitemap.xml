@@ -3,6 +3,10 @@
 
     
     <url>
+        <loc>http://localhost:4000/web/java/2024/09/30/spring-gpt-backend.html</loc>
+    </url>
+    
+    <url>
         <loc>http://localhost:4000/web/java/2024/08/26/spring-n-plus-1-problem.html</loc>
     </url>
     
@@ -267,7 +271,7 @@
     
     
     <url>
-        <loc>http://localhost:4000/posts/</loc>
+        <loc>http://localhost:4000/</loc>
     </url>
     
     
@@ -275,7 +279,7 @@
     
     
     <url>
-        <loc>http://localhost:4000/</loc>
+        <loc>http://localhost:4000/posts/</loc>
     </url>
     
     
@@ -295,7 +299,7 @@
     
     
     <url>
-        <loc>http://localhost:4000/category/%E1%84%85%E1%85%B5%E1%84%87%E1%85%B2.html</loc>
+        <loc>http://localhost:4000/category/%EA%B9%83%ED%97%88%EB%B8%8C.html</loc>
     </url>
     
     
@@ -303,7 +307,7 @@
     
     
     <url>
-        <loc>http://localhost:4000/category/%EA%B9%83%ED%97%88%EB%B8%8C.html</loc>
+        <loc>http://localhost:4000/category/%EB%A6%AC%EB%B7%B0.html</loc>
     </url>
     
     
@@ -358,8 +362,6 @@
     
     
     
-    
-    
     <url>
         <loc>http://localhost:4000/posts/page/2/</loc>
     </url>
@@ -387,6 +389,8 @@
     <url>
         <loc>http://localhost:4000/posts/page/5/</loc>
     </url>
+    
+    
     
     
     

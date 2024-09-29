@@ -75,10 +75,12 @@ GEM
       faraday (~> 2.0)
     fastimage (2.2.7)
     ffi (1.16.3)
+    ffi (1.16.3-x64-mingw-ucrt)
     forwardable-extended (2.6.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
     google-protobuf (3.25.1-arm64-darwin)
+    google-protobuf (3.25.1-x64-mingw-ucrt)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
     http_parser.rb (0.8.0)
@@ -156,6 +158,8 @@ GEM
     nio4r (2.7.0)
     nokogiri (1.15.5-arm64-darwin)
       racc (~> 1.4)
+    nokogiri (1.15.5-x64-mingw-ucrt)
+      racc (~> 1.4)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
     pry (0.14.2)
@@ -203,6 +207,8 @@ GEM
     safe_yaml (1.0.5)
     sass-embedded (1.69.5-arm64-darwin)
       google-protobuf (~> 3.23)
+    sass-embedded (1.69.5-x64-mingw-ucrt)
+      google-protobuf (~> 3.23)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -217,7 +223,10 @@ GEM
     timeout (0.4.1)
     tzinfo (1.2.11)
       thread_safe (~> 0.1)
+    tzinfo-data (1.2024.2)
+      tzinfo (>= 1.0.0)
     unicode-display_width (2.5.0)
+    wdm (0.1.1)
     webrick (1.8.1)
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
@@ -226,6 +235,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-22
+  x64-mingw-ucrt
 
 DEPENDENCIES
   jekyll (~> 4.2)
@@ -238,6 +248,7 @@ DEPENDENCIES
   pry
   rogue
   tzinfo-data
+  wdm (~> 0.1.0)
   webrick (~> 1.8)
 
 RUBY VERSION

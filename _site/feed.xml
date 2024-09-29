@@ -1,4 +1,540 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-09-11T22:14:14+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[WEB][Spring] 스프링 N + 1 문제</title><link href="http://localhost:4000/web/java/2024/08/26/spring-n-plus-1-problem.html" rel="alternate" type="text/html" title="[WEB][Spring] 스프링 N + 1 문제" /><published>2024-08-26T00:00:00+09:00</published><updated>2024-08-26T00:00:00+09:00</updated><id>http://localhost:4000/web/java/2024/08/26/spring-n-plus-1-problem</id><content type="html" xml:base="http://localhost:4000/web/java/2024/08/26/spring-n-plus-1-problem.html"><![CDATA[<h2 id="webspring-스프링-n--1-문제">[WEB][Spring] 스프링 N + 1 문제</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-09-30T02:44:37+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[WEB][Spring] 스프링으로 Chat-GPT 기능 구현하기 - 1</title><link href="http://localhost:4000/web/java/2024/09/30/spring-gpt-backend.html" rel="alternate" type="text/html" title="[WEB][Spring] 스프링으로 Chat-GPT 기능 구현하기 - 1" /><published>2024-09-30T00:00:00+09:00</published><updated>2024-09-30T00:00:00+09:00</updated><id>http://localhost:4000/web/java/2024/09/30/spring-gpt-backend</id><content type="html" xml:base="http://localhost:4000/web/java/2024/09/30/spring-gpt-backend.html"><![CDATA[<h2 id="webspring-스프링으로-간단한-chat-gpt-페이지-구현하기---1">[WEB][Spring] 스프링으로 간단한 Chat-GPT 페이지 구현하기 - 1</h2>
+
+<h3 id="1-서론">1. 서론</h3>
+
+<p><img src="/img/posts/spring/gpt/1.png" width="90%" /></p>
+
+<p>개인적으로 진행했던 프로젝트에서 스프링에 GPT-4o API를 이용해 현재 상황을 분석하고 앞으로의 전략을 제시하는 기능을 구현했었는데,
+이번에는 GPT-4o API를 이용해서 간단한 채팅 페이지를 구현해 보고자 한다. 간단한 completion 기능을 이용하고자 한다면 굳이 구독하지는 않아도 
+되지 않을까 싶기도 하고 스프링도 손에 익어서 몇 시간이면 구현이 가능할 것 같아서 완성해 보았다.</p>
+
+<p>약 2일 정도 걸렸고 대부분은 프론트엔드에서 걸린 시간이 많았다. 
+아직 불완전한 부분이 있긴 하지만 충분히 사용할만한 수준으로, 챗GPT 페이지와 유사한 형태의 채팅 페이지를 구현했다.</p>
+
+<h3 id="2-api-요청-방법">2. API 요청 방법</h3>
+
+<p>일단 OpenAI API를 사용하기 위해서는 API Key가 필요하다. 이는 OpenAi 홈페이지에서 계정을 만들고 API Key를 발급받으면 된다.
+또한 OpenAI API를 사용하기 위해서는 요청을 보낼 때, JSON 형식으로 데이터를 보내야 한다.
+이 JSON 형식은 다음과 같은데</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"요청 모델 명 (ex. gpt-3.5-turbo)"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"messages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"사용자가 입력한 메시지"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"assistant"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"사용자가 입력한 메시지에 대한 응답"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+<p>하나의 챗 페이지에서 대화한 내용을 GPT에 보낼 때 위와 같은 형식으로 보내야 한다.</p>
+
+<p>보면 눈치채겠지만, <strong>GPT의 입력은 하나의 챗 페이지에서 대화한 메시지를 모두 다 입력으로 보낸다!!</strong></p>
+
+<p>이는 GPT가 한번의 챗 페이지에서 대화한 내용을 계속 반복해서 입력받는다는 뜻이다. 이를 모르는 사람들이 꽤 있었는데,
+다시 말하면 결국 하나의 대화가 길어지면 길어질수록 GPT의 맥락이 점점 한정되어서 성능이 떨어지게 된다. 생각할 공간이 줄어드는 것과 비슷하다.</p>
+
+<p>또한 토큰에서도 불이익이 있는데 이는 GPT가 한번에 처리할 수 있는 토큰의 수가 제한되어 있기 때문이다. 예를 들어서, GPT-3.5-turbo의 경우 4096개의 토큰을 처리할 수 있다.
+게다가 GPT의 과금에 있어서, OpenAI는 1000개의 토큰을 처리할 때마다 일정량의 과금을 받는데, 한번의 대화가 길어지면 길어질수록 이전 대화의 메시지가 계속 입력되어서
+보다 떨어지는 성능인데도 불구하고 더 많은 과금이 발생하게 된다.</p>
+
+<p>그러니까 불판을 꼭 자주 갈자ㅋㅋ 한번의 대화에서 꼭 고맥락이 필요한 게 아니라면 성능상의 이점은 물론이고 과금적인 측면에서도 대화가 길어지면 길어질수록
+더 많은 불이익이 발생하게 된다.</p>
+
+<p>아무튼, 이러한 GPT의 입력 형식을 알았으니, 이제 이를 스프링에서 어떻게 구현할지 알아보자.</p>
+
+<h3 id="2-configuration-파일">2. Configuration 파일</h3>
+
+<p>인터넷에서 찾은 대부분의 코드는 WebClient를 사용한 것이 아니라 RestTemplate을 사용한 코드가 많았다.
+하지만, RestTemplate은 더 이상 사용되지 않는다고 하니 WebClient를 사용해서 구현해 보았다.</p>
+
+<h4 id="openaiconfigjava">OpenAIConfig.java</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">package</span> <span class="nn">com.chatgptspring.config</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.fasterxml.jackson.databind.JsonNode</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.fasterxml.jackson.databind.ObjectMapper</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.fasterxml.jackson.databind.node.ObjectNode</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.beans.factory.annotation.Value</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.context.annotation.Bean</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.context.annotation.Configuration</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.reactive.function.client.WebClient</span><span class="o">;</span>
+
+<span class="nd">@Configuration</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">OpenAIConfig</span> <span class="o">{</span>
+    <span class="nd">@Value</span><span class="o">(</span><span class="s">"${openai.api.key}"</span><span class="o">)</span> <span class="c1">// application.properties에 저장된 openai.api.key를 불러온다.</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">openAiKey</span><span class="o">;</span>
+
+    <span class="nd">@Bean</span>
+    <span class="kd">public</span> <span class="nc">WebClient</span> <span class="nf">webClient</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nc">WebClient</span><span class="o">.</span><span class="na">builder</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">baseUrl</span><span class="o">(</span><span class="s">"https://api.openai.com"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">defaultHeader</span><span class="o">(</span><span class="s">"Authorization"</span><span class="o">,</span> <span class="s">"Bearer "</span> <span class="o">+</span> <span class="n">openAiKey</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+    <span class="o">}</span>
+    
+    <span class="c1">// ObjectMapper 빈 등록</span>
+
+    <span class="nd">@Bean</span>
+    <span class="kd">public</span> <span class="nc">ObjectMapper</span> <span class="nf">objectMapper</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">ObjectMapper</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<h4 id="applicationproperties">application.properties</h4>
+
+<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="py">spring.application.name</span><span class="p">=</span><span class="s">chatgpt-spring</span>
+
+<span class="py">spring.mvc.static-path-pattern</span><span class="p">=</span><span class="s">/static/**</span>
+<span class="py">spring.thymeleaf.prefix</span><span class="p">=</span><span class="s">classpath:/templates/</span>
+<span class="py">spring.thymeleaf.suffix</span><span class="p">=</span><span class="s">.html</span>
+
+<span class="py">openai.api.key</span><span class="p">=</span> <span class="s">본인 키파일</span>
+
+<span class="py">spring.datasource.url</span><span class="p">=</span><span class="s">본인 DB 호스트</span>
+<span class="py">spring.datasource.username</span><span class="p">=</span><span class="s">본인 DB 유저</span>
+<span class="py">spring.datasource.password</span><span class="p">=</span><span class="s">본인 DB 비밀번호</span>
+
+</code></pre></div></div>
+
+<p>이렇게 설정을 하면 OpenAIConfig 파일에서 WebClient를 빈으로 등록하고, application.properties에서 OpenAI API Key를 불러와서 사용할 수 있다.
+DB 설정은 본인의 DB에 맞게 설정하면 된다. 나는 MariaDB를 사용했다.
+이정도는 스프링을 사용하면서 자주 사용하는 설정이니까 크게 어렵지 않을 것이다. DB에 저장하지 않고, GPT의 응답만 받아서 사용하고 싶다면 DB 설정은 필요없다.</p>
+
+<h3 id="3-domain-파일">3. Domain 파일</h3>
+
+<p>여기에는 DB와 연결되는 엔티티 클래스를 정의한다. 만약 단순히 GPT를 이용해서 응답을 받는 기능을 스프링에 탑재하고자 한다면 이 부분은 필요없이 DTO만 작성하면 된다.
+아무튼 나는 Chat-gpt 페이지와 유사한 형태의 채팅 페이지를 직접 구현해 보고자 했기 때문에 엔티티 클래스를 작성했다.</p>
+
+<h4 id="chatjava">Chat.java</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">package</span> <span class="nn">com.chatgptspring.domain</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.fasterxml.jackson.annotation.JsonManagedReference</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">jakarta.persistence.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.Getter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.Setter</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="nd">@Getter</span> <span class="nd">@Setter</span>
+<span class="nd">@Table</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"chat"</span><span class="o">)</span>
+<span class="nd">@Entity</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Chat</span> <span class="o">{</span>
+    <span class="nd">@Id</span>
+    <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="nc">GenerationType</span><span class="o">.</span><span class="na">IDENTITY</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="nd">@ManyToOne</span>
+    <span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"user_id"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">User</span> <span class="n">user</span><span class="o">;</span>
+
+    <span class="nd">@OneToMany</span><span class="o">(</span><span class="n">mappedBy</span> <span class="o">=</span> <span class="s">"chat"</span><span class="o">)</span>
+    <span class="nd">@JsonManagedReference</span>
+    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Message</span><span class="o">&gt;</span> <span class="n">messages</span><span class="o">;</span>
+
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>이는 앞서 말했던 것처럼 Chat 페이지와 유사한 형태의 채팅 페이지를 구현하기 위한 엔티티 클래스이다. 챗은 맥락을 가지고 있는 메시지의 집합이라고 생각하면 된다.
+어떤 유저(비록 아직 구현하지는 않았지만…ㅋㅋ)의 채팅인지와 메시지의 리스트를 가지고 있다.</p>
+
+<h4 id="messagejava">Message.java</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">package</span> <span class="nn">com.chatgptspring.domain</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.fasterxml.jackson.annotation.JsonBackReference</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.fasterxml.jackson.annotation.JsonManagedReference</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">jakarta.persistence.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.Getter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.Setter</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
+
+<span class="nd">@Getter</span> <span class="nd">@Setter</span>
+<span class="nd">@Table</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"message"</span><span class="o">)</span>
+<span class="nd">@Entity</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Message</span> <span class="o">{</span>
+    <span class="nd">@Id</span>
+    <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="nc">GenerationType</span><span class="o">.</span><span class="na">IDENTITY</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">role</span><span class="o">;</span>
+
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">length</span> <span class="o">=</span> <span class="mi">10000</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">content</span><span class="o">;</span>
+
+    <span class="nd">@ManyToOne</span>
+    <span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"chat_id"</span><span class="o">)</span>
+    <span class="nd">@JsonBackReference</span>
+    <span class="kd">private</span> <span class="nc">Chat</span> <span class="n">chat</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="nc">Integer</span> <span class="n">tokenCount</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">model</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Date</span> <span class="n">datetime</span><span class="o">;</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>메시지는 챗의 메시지이다. 메시지는 역할, 내용, 토큰 수, 모델, 날짜를 가지고 있다. 역할은 사용자인지 GPT인지를 나타내고, 내용은 메시지의 내용을 나타낸다.
+토큰 수는 GPT가 처리한 토큰의 총합을 나타내는데 보낸 메시지의 토큰 수와 받은 메시지의 토큰 수를 합한 값이다. 이게 조금 이상하다고 생각할 수 있지만,
+어차피 Open-ai에서 과금을 계산할 때 보낸 메시지의 토큰 수, 받은 메시지의 토큰 수를 합해 계산하기 때문에 상관이 없기도 하고,</p>
+
+<p>보낸 메시지의 한국어 토큰 계산은 결국 response를 받아야만 알 수 있기 때문에 이렇게 구현했다.</p>
+
+<h4 id="userjava">User.java</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">package</span> <span class="nn">com.chatgptspring.domain</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">jakarta.persistence.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.Getter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.RequiredArgsConstructor</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.Setter</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="nd">@Getter</span> <span class="nd">@Setter</span>
+<span class="nd">@Table</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"user"</span><span class="o">)</span>
+<span class="nd">@Entity</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+    <span class="nd">@Id</span>
+    <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="nc">GenerationType</span><span class="o">.</span><span class="na">IDENTITY</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">email</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">password</span><span class="o">;</span>
+
+    <span class="nd">@OneToMany</span><span class="o">(</span><span class="n">mappedBy</span> <span class="o">=</span> <span class="s">"user"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Chat</span><span class="o">&gt;</span> <span class="n">chats</span><span class="o">;</span>
+
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<h3 id="4-repository-파일">4. Repository 파일</h3>
+
+<p>빠른 개발을 위해서 필요한 부분만 간단히 작성했다. 성능이 나쁠수도 있다. 
+DB설정이 안되어 있거나 DB에 저장하지 않고, GPT의 응답만 받아서 사용하고 싶다면 이 부분은 필요없다.</p>
+
+<h4 id="chatrepositoryjava">ChatRepository.java</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">package</span> <span class="nn">com.chatgptspring.repository</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.chatgptspring.domain.Chat</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.data.jpa.repository.JpaRepository</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Repository</span><span class="o">;</span>
+
+<span class="nd">@Repository</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">ChatRepository</span> <span class="kd">extends</span> <span class="nc">JpaRepository</span><span class="o">&lt;</span><span class="nc">Chat</span><span class="o">,</span> <span class="nc">Long</span><span class="o">&gt;</span> <span class="o">{</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<h4 id="messagerepositoryjava">MessageRepository.java</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">package</span> <span class="nn">com.chatgptspring.repository</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.chatgptspring.domain.Message</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.data.jpa.repository.JpaRepository</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MessageRepository</span> <span class="kd">extends</span> <span class="nc">JpaRepository</span><span class="o">&lt;</span><span class="nc">Message</span><span class="o">,</span> <span class="nc">Long</span><span class="o">&gt;</span> <span class="o">{</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<h4 id="userrepositoryjava">UserRepository.java</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">package</span> <span class="nn">com.chatgptspring.repository</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.chatgptspring.domain.User</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.data.jpa.repository.JpaRepository</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">UserRepository</span> <span class="kd">extends</span> <span class="nc">JpaRepository</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">,</span> <span class="nc">Long</span><span class="o">&gt;</span> <span class="o">{</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<h3 id="5-dto-파일">5. DTO 파일</h3>
+
+<h4 id="chatdtojava">ChatDto.java</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">package</span> <span class="nn">dto</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">lombok.Data</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="nd">@Data</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ChatDTO</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">model</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">MessageDTO</span><span class="o">&gt;</span> <span class="n">messages</span><span class="o">;</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>이 DTO는 GPT의 입력 형식과 동일하게 구성되어 있다. 이를 JSON 형식으로 파싱해서 GPT에 보낼 것이다.</p>
+
+<h4 id="messagedtojava">MessageDTO.java</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">package</span> <span class="nn">dto</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">lombok.Data</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
+
+<span class="nd">@Data</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MessageDTO</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">role</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">content</span><span class="o">;</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>role은 사용자인지 GPT인지를 나타내고, content는 메시지의 내용을 나타낸다. role의 경우 사용자의 메시지는 user, GPT의 응답은 assistant로 고정되어 있어서 다른 값을 넣으면 Bad Request가 발생한다.
+system 롤이 있는데, 이는 해당 대화(Chat)의 GPT의 전반적인 맥락과 규칙을 지시하는 역할을 하고, 보통 가장 먼저 보내는 메시지에 사용된다.</p>
+
+<p>예를 들어서 해당 GPT를 카페의 점원으로 사용하고자 할 때 system role을 이용해서 “너는 카페의 점원이야”라는 메시지를 먼저 보내고, 그 다음에 사용자의 메시지를 보내는 식이다.</p>
+
+<h3 id="6-service-파일">6. Service 파일</h3>
+
+<h4 id="chatservicejava">ChatService.java</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">package</span> <span class="nn">com.chatgptspring.service</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.chatgptspring.domain.Chat</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.chatgptspring.repository.ChatRepository</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.RequiredArgsConstructor</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Service</span><span class="o">;</span>
+
+<span class="nd">@RequiredArgsConstructor</span>
+<span class="nd">@Service</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ChatService</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">ChatRepository</span> <span class="n">chatRepository</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nc">Chat</span> <span class="nf">CreateChat</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">Chat</span> <span class="n">chat</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Chat</span><span class="o">();</span>
+        <span class="n">chatRepository</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">chat</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">chat</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">Iterable</span><span class="o">&lt;</span><span class="nc">Chat</span><span class="o">&gt;</span> <span class="nf">FindAllChats</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">chatRepository</span><span class="o">.</span><span class="na">findAll</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">DeleteChat</span><span class="o">(</span><span class="nc">Long</span> <span class="n">chatId</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">chatRepository</span><span class="o">.</span><span class="na">deleteById</span><span class="o">(</span><span class="n">chatId</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">Chat</span> <span class="nf">FindChatById</span><span class="o">(</span><span class="nc">Long</span> <span class="n">chatId</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">chatRepository</span><span class="o">.</span><span class="na">findById</span><span class="o">(</span><span class="n">chatId</span><span class="o">).</span><span class="na">orElse</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<h4 id="messageservicejava">MessageService.java</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">package</span> <span class="nn">com.chatgptspring.service</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.chatgptspring.domain.Chat</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.chatgptspring.domain.Message</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.chatgptspring.repository.MessageRepository</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.fasterxml.jackson.databind.JsonNode</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.fasterxml.jackson.databind.ObjectMapper</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">dto.ChatDTO</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">dto.MessageDTO</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">io.netty.handler.codec.http.HttpResponseStatus</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.RequiredArgsConstructor</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.beans.factory.annotation.Autowired</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Service</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.reactive.function.client.WebClient</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="nd">@RequiredArgsConstructor</span>
+<span class="nd">@Service</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MessageService</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">ChatService</span> <span class="n">chatService</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">MessageRepository</span> <span class="n">messageRepository</span><span class="o">;</span>
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="nc">WebClient</span> <span class="n">webClient</span><span class="o">;</span>
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="nc">ObjectMapper</span> <span class="n">objectMapper</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nc">Message</span> <span class="nf">SendMessage</span><span class="o">(</span><span class="nc">Long</span> <span class="n">chatId</span><span class="o">,</span> <span class="nc">String</span> <span class="n">content</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Chat</span> <span class="n">chat</span> <span class="o">=</span> <span class="n">chatService</span><span class="o">.</span><span class="na">FindChatById</span><span class="o">(</span><span class="n">chatId</span><span class="o">);</span>
+        <span class="nc">Message</span> <span class="n">message</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Message</span><span class="o">();</span>
+        <span class="n">message</span><span class="o">.</span><span class="na">setChat</span><span class="o">(</span><span class="n">chat</span><span class="o">);</span>
+        <span class="n">message</span><span class="o">.</span><span class="na">setRole</span><span class="o">(</span><span class="s">"user"</span><span class="o">);</span>
+        <span class="n">message</span><span class="o">.</span><span class="na">setContent</span><span class="o">(</span><span class="n">content</span><span class="o">);</span>
+        <span class="n">messageRepository</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">message</span><span class="o">);</span>
+
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Message</span><span class="o">&gt;</span> <span class="n">messages</span> <span class="o">=</span> <span class="n">chat</span><span class="o">.</span><span class="na">getMessages</span><span class="o">();</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">MessageDTO</span><span class="o">&gt;</span> <span class="n">messageDTOs</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="nc">Message</span> <span class="n">m</span> <span class="o">:</span> <span class="n">messages</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">MessageDTO</span> <span class="n">messageDTO</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MessageDTO</span><span class="o">();</span>
+            <span class="n">messageDTO</span><span class="o">.</span><span class="na">setRole</span><span class="o">(</span><span class="n">m</span><span class="o">.</span><span class="na">getRole</span><span class="o">());</span>
+            <span class="n">messageDTO</span><span class="o">.</span><span class="na">setContent</span><span class="o">(</span><span class="n">m</span><span class="o">.</span><span class="na">getContent</span><span class="o">());</span>
+            <span class="n">messageDTOs</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">messageDTO</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="nc">ChatDTO</span> <span class="n">chatDTO</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ChatDTO</span><span class="o">();</span>
+        <span class="n">chatDTO</span><span class="o">.</span><span class="na">setMessages</span><span class="o">(</span><span class="n">messageDTOs</span><span class="o">);</span>
+        <span class="n">chatDTO</span><span class="o">.</span><span class="na">setModel</span><span class="o">(</span><span class="s">"gpt-3.5-turbo"</span><span class="o">);</span>
+
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="nc">String</span> <span class="n">response</span> <span class="o">=</span> <span class="n">webClient</span><span class="o">.</span><span class="na">post</span><span class="o">()</span>
+                    <span class="o">.</span><span class="na">uri</span><span class="o">(</span><span class="s">"https://api.openai.com/v1/chat/completions"</span><span class="o">)</span>
+                    <span class="o">.</span><span class="na">bodyValue</span><span class="o">(</span><span class="n">chatDTO</span><span class="o">)</span>
+                    <span class="o">.</span><span class="na">retrieve</span><span class="o">()</span>
+                    <span class="o">.</span><span class="na">bodyToMono</span><span class="o">(</span><span class="nc">String</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+                    <span class="o">.</span><span class="na">block</span><span class="o">();</span>
+
+            <span class="nc">JsonNode</span> <span class="n">root</span> <span class="o">=</span> <span class="n">objectMapper</span><span class="o">.</span><span class="na">readTree</span><span class="o">(</span><span class="n">response</span><span class="o">);</span>
+            <span class="nc">String</span> <span class="n">assistantContent</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="na">path</span><span class="o">(</span><span class="s">"choices"</span><span class="o">).</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">).</span><span class="na">path</span><span class="o">(</span><span class="s">"message"</span><span class="o">).</span><span class="na">path</span><span class="o">(</span><span class="s">"content"</span><span class="o">).</span><span class="na">asText</span><span class="o">();</span>
+            <span class="nc">Integer</span> <span class="n">totalTokens</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="na">path</span><span class="o">(</span><span class="s">"usage"</span><span class="o">).</span><span class="na">path</span><span class="o">(</span><span class="s">"total_tokens"</span><span class="o">).</span><span class="na">asInt</span><span class="o">();</span>
+
+            <span class="nc">Message</span> <span class="n">responseMessage</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Message</span><span class="o">();</span>
+
+            <span class="n">responseMessage</span><span class="o">.</span><span class="na">setChat</span><span class="o">(</span><span class="n">chat</span><span class="o">);</span>
+            <span class="n">responseMessage</span><span class="o">.</span><span class="na">setModel</span><span class="o">(</span><span class="n">chatDTO</span><span class="o">.</span><span class="na">getModel</span><span class="o">());</span>
+            <span class="n">responseMessage</span><span class="o">.</span><span class="na">setRole</span><span class="o">(</span><span class="s">"assistant"</span><span class="o">);</span>
+            <span class="n">responseMessage</span><span class="o">.</span><span class="na">setContent</span><span class="o">(</span><span class="n">assistantContent</span><span class="o">);</span>
+            <span class="n">responseMessage</span><span class="o">.</span><span class="na">setTokenCount</span><span class="o">(</span><span class="n">totalTokens</span><span class="o">);</span>
+            <span class="n">messageRepository</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">responseMessage</span><span class="o">);</span>
+            <span class="k">return</span> <span class="n">responseMessage</span><span class="o">;</span>
+
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>일단 빠른 테스트를 위해서 model을 고정시켰다. 필요하다면 이를 동적으로 변경하면 된다. 앞서 작성한 DTO 파일과 도메인을 이용해서 GPT에 요청을 보내고, 응답을 받아서 DB에 저장한다.
+만약 도메인 저장이 필요가 없다면 해당 부분을 삭제하면 된다.</p>
+
+<p>Configuration 파일에서 빈으로 등록했던 ObjectMapper를 이용해서 JSON 형식의 응답을 파싱한다.</p>
+
+<h3 id="7-controller-파일">7. Controller 파일</h3>
+
+<h4 id="chatcontrollerjava">ChatController.java</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">package</span> <span class="nn">com.chatgptspring.controller</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.chatgptspring.domain.Chat</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.chatgptspring.repository.ChatRepository</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.chatgptspring.service.ChatService</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.RequiredArgsConstructor</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.*</span><span class="o">;</span>
+
+<span class="nd">@RequiredArgsConstructor</span>
+<span class="nd">@RestController</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ChatController</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">ChatService</span> <span class="n">chatService</span><span class="o">;</span>
+
+    <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/chat"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">Iterable</span><span class="o">&lt;</span><span class="nc">Chat</span><span class="o">&gt;</span> <span class="nf">FindAllChats</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">chatService</span><span class="o">.</span><span class="na">FindAllChats</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@PostMapping</span><span class="o">(</span><span class="s">"/chat/new"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">CreateChat</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">chatService</span><span class="o">.</span><span class="na">CreateChat</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/chat/{chatId}"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">Chat</span> <span class="nf">FindChatById</span><span class="o">(</span><span class="nd">@PathVariable</span> <span class="nc">Long</span> <span class="n">chatId</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">chatService</span><span class="o">.</span><span class="na">FindChatById</span><span class="o">(</span><span class="n">chatId</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<h4 id="messagecontrollerjava">MessageController.java</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">package</span> <span class="nn">com.chatgptspring.controller</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.chatgptspring.domain.Message</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.chatgptspring.service.ChatService</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.chatgptspring.service.MessageService</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">dto.ChatDTO</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">dto.MessageDTO</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.RequiredArgsConstructor</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.*</span><span class="o">;</span>
+
+
+<span class="nd">@RequiredArgsConstructor</span>
+<span class="nd">@RestController</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MessageController</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">ChatService</span> <span class="n">chatService</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">MessageService</span> <span class="n">messageService</span><span class="o">;</span>
+
+    <span class="nd">@PostMapping</span><span class="o">(</span><span class="s">"/chat/{chatId}"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">Message</span> <span class="nf">CreateMessage</span><span class="o">(</span><span class="nd">@PathVariable</span> <span class="nc">Long</span> <span class="n">chatId</span><span class="o">,</span> <span class="nd">@RequestBody</span> <span class="nc">MessageDTO</span> <span class="n">messageDTO</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">messageContent</span> <span class="o">=</span> <span class="n">messageDTO</span><span class="o">.</span><span class="na">getContent</span><span class="o">();</span>
+        <span class="k">return</span> <span class="n">messageService</span><span class="o">.</span><span class="na">SendMessage</span><span class="o">(</span><span class="n">chatId</span><span class="o">,</span> <span class="n">messageContent</span><span class="o">);</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<h3 id="8-테스트">8. 테스트</h3>
+
+<p>이제 Postman을 이용해서 테스트를 해보자. 먼저 챗을 생성하고, 챗의 id를 이용해서 메시지를 보내면 된다.</p>
+
+<h4 id="chat-생성">Chat 생성</h4>
+
+<p><img src="/img/posts/spring/gpt/2.png" width="90%" /></p>
+
+<h4 id="메시지-보내기">메시지 보내기</h4>
+
+<p><img src="/img/posts/spring/gpt/3.png" width="90%" />
+<img src="/img/posts/spring/gpt/4.png" width="90%" /></p>
+
+<p>간단한 시를 써보라고 했는데,</p>
+
+<blockquote>
+  <blockquote>
+    <p>가을밤에 별빛이 찬란하고, 너의 손을 잡으면 행복해지는 마법 같아.</p>
+  </blockquote>
+</blockquote>
+
+<p>라고 시를 작성해 주었다.</p>
+
+<p>꽤나 문학적인걸, GPT.</p>
+
+<h3 id="9-마치며">9. 마치며</h3>
+
+<p>아직 백엔드가 완벽히 구현된 것은 아니다. 이를 이용해서 사용자 인증도 구현해야 하고, 더 많은 기능을 추가해야 한다.
+프론트엔드와 연결하는 부분은 다음 포스트에서 다루도록 하겠다.</p>]]></content><author><name>ash tensor</name></author><category term="WEB" /><category term="JAVA" /><summary type="html"><![CDATA[[WEB][Spring] 스프링으로 간단한 Chat-GPT 페이지 구현하기 - 1]]></summary></entry><entry><title type="html">[WEB][Spring] 스프링 N + 1 문제</title><link href="http://localhost:4000/web/java/2024/08/26/spring-n-plus-1-problem.html" rel="alternate" type="text/html" title="[WEB][Spring] 스프링 N + 1 문제" /><published>2024-08-26T00:00:00+09:00</published><updated>2024-08-26T00:00:00+09:00</updated><id>http://localhost:4000/web/java/2024/08/26/spring-n-plus-1-problem</id><content type="html" xml:base="http://localhost:4000/web/java/2024/08/26/spring-n-plus-1-problem.html"><![CDATA[<h2 id="webspring-스프링-n--1-문제">[WEB][Spring] 스프링 N + 1 문제</h2>
 
 <h3 id="1-서론">1. 서론</h3>
 
@@ -1533,502 +2069,4 @@ z값 계산과 같은 각 통계 분포의 기초적인 통계량 계산과 검�
 
 <p><img src="/img/posts/linuxmaster/1.png" style="width: 80%" /></p>
 
-<p>아무튼 그래도 합격해서 다행이긴 하다! 떨어지는 것보다는 합격하는게 더 나으니까</p>]]></content><author><name>ash tensor</name></author><category term="자격증" /><summary type="html"><![CDATA[[자격증] 리눅스 마스터 2급 2401회 합격 후기 / 시험 정보]]></summary></entry><entry><title type="html">[백준][JAVA] 백준 12100번 :: 2048(Easy) :: 골드 2</title><link href="http://localhost:4000/java/ps/%EB%B0%B1%EC%A4%80/2024/03/28/boj12100.html" rel="alternate" type="text/html" title="[백준][JAVA] 백준 12100번 :: 2048(Easy) :: 골드 2" /><published>2024-03-28T00:00:00+09:00</published><updated>2024-03-28T00:00:00+09:00</updated><id>http://localhost:4000/java/ps/%EB%B0%B1%EC%A4%80/2024/03/28/boj12100</id><content type="html" xml:base="http://localhost:4000/java/ps/%EB%B0%B1%EC%A4%80/2024/03/28/boj12100.html"><![CDATA[<h2 id="백준java-백준-12100번--2048easy--골드-2">[백준][JAVA] 백준 12100번 :: 2048(Easy) :: 골드 2</h2>
-
-<h3 id="문제-설명">문제 설명</h3>
-
-<p>2048 게임은 4×4 크기의 보드에서 혼자 즐기는 재미있는 게임이다. 이 링크를 누르면 게임을 해볼 수 있다.</p>
-
-<p>이 게임에서 한 번의 이동은 보드 위에 있는 전체 블록을 상하좌우 네 방향 중 하나로 이동시키는 것이다. 
-이때, 같은 값을 갖는 두 블록이 충돌하면 두 블록은 하나로 합쳐지게 된다. 한 번의 이동에서 이미 합쳐진 블록은 또 다른 블록과 다시 합쳐질 수 없다. 
-(실제 게임에서는 이동을 한 번 할 때마다 블록이 추가되지만, 이 문제에서 블록이 추가되는 경우는 없다)</p>
-
-<p><img src="/img/posts/boj12100/1.png" width="80%" /></p>
-
-<p>마지막으로, 똑같은 수가 세 개가 있는 경우에는 이동하려고 하는 쪽의 칸이 먼저 합쳐진다. 
-예를 들어, 위로 이동시키는 경우에는 위쪽에 있는 블록이 먼저 합쳐지게 된다. &lt;그림 14&gt;의 경우에 위로 이동하면 &lt;그림 15&gt;를 만든다.</p>
-
-<p>이 문제에서 다루는 2048 게임은 보드의 크기가 N×N 이다. 
-보드의 크기와 보드판의 블록 상태가 주어졌을 때, 최대 5번 이동해서 만들 수 있는 가장 큰 블록의 값을 구하는 프로그램을 작성하시오.</p>
-
-<h3 id="문제-입력">문제 입력</h3>
-
-<p>첫째 줄에 보드의 크기 N (1 ≤ N ≤ 20)이 주어진다. 둘째 줄부터 N개의 줄에는 게임판의 초기 상태가 주어진다. 
-0은 빈 칸을 나타내며, 이외의 값은 모두 블록을 나타낸다. 블록에 쓰여 있는 수는 2보다 크거나 같고, 1024보다 작거나 같은 2의 제곱꼴이다. 
-블록은 적어도 하나 주어진다.</p>
-
-<h3 id="출력">출력</h3>
-
-<p>최대 5번 이동시켜서 얻을 수 있는 가장 큰 블록을 출력한다.</p>
-
-<h3 id="예제-입력">예제 입력</h3>
-
-<p>3</p>
-
-<p>2 2 2</p>
-
-<p>4 4 4</p>
-
-<p>8 8 8</p>
-
-<h3 id="예제-출력">예제 출력</h3>
-
-<p>16</p>
-
-<h4 id="접근방법">접근방법</h4>
-
-<p>사실 이 문제가 골드 2라고는 생각하지 않는다. 왜냐하면 무식한 구현문제라고 생각하기 때문이다. 개인적으로 생각하기엔, 
-이 정도 수준의 구현을 해당 언어가 제공하는 다양한 문법을 이용해서 풀 수 있다면(GPT 등을 최소한으로 이용하고) 
-해당 언어를 어느정도 사용할 수 있다고 말할 수 있다고 말해도 좋다.</p>
-
-<p>문제를 해결하고 다른 사람이 어떻게 접근했는지 살펴봤는데, 나처럼 무식하게 전부 구현해버린 사람은 조금 드문것 같다는 생각이 들었다.
-일단 이 문제를 해결하는데 있어서 가장 중요한 것은 보드의 칸(이하 노드라고 설명)의 움직임과 숫자가 병합되는 규칙등을 
-제대로 구현하는 것이다.</p>
-
-<p>왜냐하면 최대 5번 움직여서 가장 큰 수를 출력하는 것 이라는 조건이 붙어있기는 하지만 단순히 5번 움직이는 것의 중복 조합의 갯수를 구해봐야
- 고작 4^5 수준의 문제공간이기 때문이다. 이정도는 컴퓨터가 모든 중복조합의 경우를 다 구해버리고도 시간이 충분히 남기 때문에, 결국 올바른 구현이
- 가장 중요하다.</p>
-
-<p>개인적으로 이 문제는 자바를 이용해서 푸는 것도 좋다고 생각하는데, 해당 문제가 객체지향을 연습하기 좀 좋은 예제라고 생각하기 때문이다.</p>
-
-<h3 id="코드">코드</h3>
-
-<p>일단 문제를 node 클래스와, board 클래스로 나누어서 구현했다. node 클래스는 각 노드의 값을 저장하고, 이동하는 함수를 구현했다.
-보드는 방향 명령을 내리거나 초기화를 하거나 하는 메소드로 구성되어 있고, 노드 클래스에서는 그 명령을 받아 각 노드의 행동을 구현했다.</p>
-
-<p>노드의 이동을 구현할때, 주의해야 할 점은 예를 들어서 왼쪽 명령을 보드에서 노드에 내린다고 해 보자. 그렇다고 하더라도 실제 노드가 이동하는 것이 아니다.
-노드는 가만히 있고 해당 노드의 값만 바뀌는 것이다.</p>
-
-<p>0 0 2 라는 열이 존재할 때 왼쪽 명령을 가장 오른쪽 노드가 받는다고 쳐보자. 그런 경우에는 첫번째로 [0, 2]노드가 [0, 1] 노드의 값을 변경한다.
-그리고 [0, 1]의 노드의 leftmove 메소드를 호출한다. 이런 식으로 연쇄적으로 방향 명령이 호출되고 병합되는 방식으로 구현된다.</p>
-
-<p>또한 중요한 점은, 한번의 이동에 하나의 노드는 한 번밖에는 병합되지 않는다는 점이다.
-다시말해서</p>
-
-<p>[2, 2, 2, 2] 라는 열이 있다고 할 때, 왼쪽 명령을 받는다고 치자. 그 경우에 올바른 결과는 [4, 4, 0, 0] 이다.
-또한 [4, 2, 2] 라는 열이 있다고 할 때, 왼쪽 명령을 받으면 그 경우에 올바른 결과는 [4, 4, 0] 이다.</p>
-
-<p>첫번째까지는 생각하기 쉬워도 두번째 예시는 한번에 생각해내기 어렵다. 단순히 병합된 후에 연쇄적인 left 콜이 없으면 연쇄가 끊기니까 문제가 없을것이라고 생각했는데, 
-이러한 경우에는 두번째 예시를 만족시키지 못하고 [8, 0, 0] 으로 병합되어버리고 만다. 
-그래서 이런 경우에는 노드의 concated라는 변수를 이용해서 만약 concated가 true이면 한번만 병합되도록 구현했다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
- <span class="kn">package</span> <span class="nn">boj</span><span class="o">;</span>
- 
- <span class="kn">import</span> <span class="nn">java.util.ArrayDeque</span><span class="o">;</span>
- <span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
- <span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
- 
- <span class="kd">public</span> <span class="kd">class</span> <span class="nc">boj12100</span> <span class="o">{</span>
-     <span class="kd">static</span> <span class="kt">int</span> <span class="n">inputedMaximunNumber</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-         <span class="nc">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
-         <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="n">node</span><span class="o">&gt;</span> <span class="n">nodeList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
-         <span class="n">node</span><span class="o">[][]</span> <span class="n">inputModel</span> <span class="o">=</span> <span class="n">gameSetter</span><span class="o">(</span><span class="n">scanner</span><span class="o">);</span>
-         <span class="n">board</span> <span class="nc">Board</span> <span class="o">=</span> <span class="k">new</span> <span class="n">board</span><span class="o">(</span><span class="n">inputModel</span><span class="o">);</span>
- 
-         <span class="kt">int</span> <span class="n">allMaxNumber</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
- 
-         <span class="nc">ArrayDeque</span><span class="o">&lt;</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">orderList</span> <span class="o">=</span> <span class="no">BFS</span><span class="o">();</span>
-         <span class="k">for</span> <span class="o">(</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">row</span> <span class="o">:</span> <span class="n">orderList</span><span class="o">)</span> <span class="o">{</span>
-             <span class="k">for</span> <span class="o">(</span><span class="nc">Integer</span> <span class="n">order</span> <span class="o">:</span> <span class="n">row</span><span class="o">)</span> <span class="o">{</span>
-                 <span class="n">orderInterpreter</span><span class="o">(</span><span class="n">order</span><span class="o">,</span> <span class="nc">Board</span><span class="o">);</span>
-             <span class="o">}</span>
-             <span class="kt">int</span> <span class="n">tempMaxNumber</span> <span class="o">=</span> <span class="nc">Board</span><span class="o">.</span><span class="na">getMaxNumber</span><span class="o">();</span>
-             <span class="k">if</span> <span class="o">(</span><span class="n">allMaxNumber</span> <span class="o">&lt;</span> <span class="n">tempMaxNumber</span><span class="o">)</span> <span class="o">{</span>
-                 <span class="n">allMaxNumber</span> <span class="o">=</span> <span class="n">tempMaxNumber</span><span class="o">;</span>
-             <span class="o">}</span>
-             <span class="nc">Board</span><span class="o">.</span><span class="na">resetBoard</span><span class="o">();</span>
-         <span class="o">}</span>
-         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">allMaxNumber</span><span class="o">);</span>
- 
-     <span class="o">}</span>
-     <span class="kd">public</span> <span class="kd">static</span> <span class="n">node</span><span class="o">[][]</span> <span class="nf">gameSetter</span><span class="o">(</span><span class="nc">Scanner</span> <span class="n">scanner</span><span class="o">)</span> <span class="o">{</span>
-         <span class="kt">int</span> <span class="n">boardSize</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
-         <span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
- 
-         <span class="n">node</span><span class="o">[][]</span> <span class="n">tempBoard</span> <span class="o">=</span> <span class="k">new</span> <span class="n">node</span><span class="o">[</span><span class="n">boardSize</span><span class="o">][</span><span class="n">boardSize</span><span class="o">];</span>
- 
-         <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">boardSize</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-             <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">boardSize</span><span class="o">;</span> <span class="n">k</span><span class="o">++)</span> <span class="o">{</span>
-                 <span class="kt">int</span><span class="o">[]</span> <span class="n">coordinate</span> <span class="o">=</span> <span class="o">{</span><span class="n">i</span><span class="o">,</span> <span class="n">k</span><span class="o">};</span>
-                 <span class="kt">int</span> <span class="n">tempValue</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
-                 <span class="n">inputedMaximunNumber</span> <span class="o">+=</span> <span class="n">tempValue</span><span class="o">;</span>
-                 <span class="n">node</span> <span class="n">tempNode</span> <span class="o">=</span> <span class="k">new</span> <span class="n">node</span><span class="o">(</span><span class="n">tempValue</span><span class="o">,</span> <span class="n">coordinate</span><span class="o">,</span> <span class="n">tempBoard</span><span class="o">);</span>
-             <span class="o">}</span>
-             <span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
-         <span class="o">}</span>
-         <span class="k">return</span> <span class="n">tempBoard</span><span class="o">;</span>
-     <span class="o">}</span>
- 
-     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">orderInterpreter</span><span class="o">(</span><span class="kt">int</span> <span class="n">number</span><span class="o">,</span> <span class="n">board</span> <span class="nc">Board</span><span class="o">)</span> <span class="o">{</span>
-         <span class="k">switch</span> <span class="o">(</span><span class="n">number</span><span class="o">)</span> <span class="o">{</span>
-             <span class="k">case</span> <span class="mi">0</span> <span class="o">:</span>
-                 <span class="nc">Board</span><span class="o">.</span><span class="na">left</span><span class="o">();</span>
-                 <span class="k">break</span><span class="o">;</span>
- 
-             <span class="k">case</span> <span class="mi">1</span> <span class="o">:</span>
-                 <span class="nc">Board</span><span class="o">.</span><span class="na">right</span><span class="o">();</span>
-                 <span class="k">break</span><span class="o">;</span>
- 
-             <span class="k">case</span> <span class="mi">2</span> <span class="o">:</span>
-                 <span class="nc">Board</span><span class="o">.</span><span class="na">up</span><span class="o">();</span>
-                 <span class="k">break</span><span class="o">;</span>
- 
-             <span class="k">case</span> <span class="mi">3</span> <span class="o">:</span>
-                 <span class="nc">Board</span><span class="o">.</span><span class="na">down</span><span class="o">();</span>
-                 <span class="k">break</span><span class="o">;</span>
-         <span class="o">}</span>
-     <span class="o">}</span>
- 
-     <span class="kd">public</span> <span class="kd">static</span> <span class="nc">ArrayDeque</span><span class="o">&lt;</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="nf">BFS</span><span class="o">()</span> <span class="o">{</span>
-         <span class="kt">int</span><span class="o">[]</span> <span class="n">problemSpace</span> <span class="o">=</span> <span class="o">{</span><span class="mi">0</span><span class="o">,</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">3</span><span class="o">};</span>
-         <span class="nc">ArrayDeque</span><span class="o">&lt;</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">openList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;();</span>
-         <span class="nc">ArrayDeque</span><span class="o">&lt;</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;&gt;</span> <span class="n">closedList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;();</span>
- 
-         <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">problemSpace</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-             <span class="kt">int</span> <span class="n">tempNode</span> <span class="o">=</span> <span class="n">problemSpace</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
-             <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">tempArray</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
-             <span class="n">tempArray</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">tempNode</span><span class="o">);</span>
-             <span class="n">openList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">tempArray</span><span class="o">);</span>
-         <span class="o">}</span>
- 
-         <span class="k">while</span> <span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
-             <span class="k">if</span> <span class="o">(</span><span class="n">openList</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-                 <span class="k">return</span> <span class="n">closedList</span><span class="o">;</span>
-             <span class="o">}</span>
-             <span class="k">else</span> <span class="o">{</span>
-                 <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">selectedNode</span> <span class="o">=</span> <span class="n">openList</span><span class="o">.</span><span class="na">pollFirst</span><span class="o">();</span>
-                 <span class="k">if</span> <span class="o">(</span><span class="n">selectedNode</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">==</span> <span class="mi">5</span><span class="o">)</span> <span class="o">{</span>
-                     <span class="n">closedList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">selectedNode</span><span class="o">);</span>
-                 <span class="o">}</span>
-                 <span class="k">else</span> <span class="o">{</span>
-                     <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">:</span> <span class="n">problemSpace</span><span class="o">)</span> <span class="o">{</span>
-                         <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">clonedSelectedNode</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">selectedNode</span><span class="o">);</span>
-                         <span class="n">clonedSelectedNode</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
-                         <span class="n">openList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">clonedSelectedNode</span><span class="o">);</span>
-                     <span class="o">}</span>
-                 <span class="o">}</span>
-             <span class="o">}</span>
-         <span class="o">}</span>
-     <span class="o">}</span>
- <span class="o">}</span>
- 
- <span class="kd">class</span> <span class="nc">node</span> <span class="o">{</span>
- 
-     <span class="n">node</span><span class="o">[][]</span> <span class="n">model</span><span class="o">;</span>
-     <span class="kt">int</span> <span class="n">value</span><span class="o">;</span>
-     <span class="kt">int</span><span class="o">[]</span> <span class="n">coordinate</span><span class="o">;</span>
-     <span class="kt">int</span> <span class="n">initialValue</span><span class="o">;</span>
-     <span class="kt">boolean</span> <span class="n">concated</span><span class="o">;</span>
- <span class="c1">// 생성자임</span>
- 
-     <span class="kd">public</span> <span class="nf">node</span><span class="o">(</span><span class="kt">int</span> <span class="n">value</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">coordinate</span><span class="o">,</span> <span class="n">node</span><span class="o">[][]</span> <span class="n">model</span><span class="o">)</span> <span class="o">{</span>
-         <span class="k">this</span><span class="o">.</span><span class="na">initialValue</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
-         <span class="k">this</span><span class="o">.</span><span class="na">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">;</span>
-         <span class="k">this</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
-         <span class="k">this</span><span class="o">.</span><span class="na">coordinate</span> <span class="o">=</span> <span class="n">coordinate</span><span class="o">;</span>
-         <span class="k">this</span><span class="o">.</span><span class="na">model</span><span class="o">[</span><span class="n">coordinate</span><span class="o">[</span><span class="mi">0</span><span class="o">]][</span><span class="n">coordinate</span><span class="o">[</span><span class="mi">1</span><span class="o">]]</span> <span class="o">=</span> <span class="k">this</span><span class="o">;</span>
-         <span class="k">this</span><span class="o">.</span><span class="na">concated</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
-     <span class="o">}</span>
-     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">concatedReset</span><span class="o">()</span> <span class="o">{</span>
-         <span class="k">this</span><span class="o">.</span><span class="na">concated</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
-     <span class="o">}</span>
- 
-     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">reset</span><span class="o">()</span> <span class="o">{</span>
-         <span class="k">this</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">initialValue</span><span class="o">;</span>
-     <span class="o">}</span>
- 
-     <span class="c1">// 그런데 그러면 board를 업데이트해야함</span>
-     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">leftMove</span><span class="o">()</span> <span class="o">{</span>
-         <span class="k">if</span> <span class="o">(</span><span class="n">leftCheck</span><span class="o">()</span> <span class="o">==</span> <span class="mi">1</span><span class="o">){</span>
-         
-             <span class="c1">// 왼쪽으로 갈 수 있으면 왼쪽으로 감</span>
-             <span class="c1">// this.coordinate[0] -= 1; &lt;&lt; 이런식으로 직접 노드를 옮겨서는 안 됨.</span>
-             <span class="c1">// value를 좌측으로 옮기고 이 노드의 value는 0이 되어야 함.</span>
-             <span class="c1">// 각 체크의 결과는 1 0 value의 값이 나옴, 1인 경우는 옮길 수 있고, 0인 경우는 못옮김</span>
-             
-             <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">value</span><span class="o">;</span>
-             <span class="k">this</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-             
-             <span class="c1">// 이 노드의 값을 0으로 초기화하고</span>
-             <span class="c1">// 좌측이므로</span>
-             <span class="n">node</span> <span class="n">targetNode</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">model</span><span class="o">[</span><span class="k">this</span><span class="o">.</span><span class="na">coordinate</span><span class="o">[</span><span class="mi">0</span><span class="o">]][</span><span class="k">this</span><span class="o">.</span><span class="na">coordinate</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">-</span> <span class="mi">1</span><span class="o">];</span>
-             <span class="c1">// 좌측 노드의 값을 이 노드의 값으로 치환함</span>
-             <span class="n">targetNode</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>
-             <span class="c1">// 그리고 그 노드가 왼쪽 끝까지 가야하기 때문에 연쇄적으로 leftMove콜을 함</span>
-             <span class="n">targetNode</span><span class="o">.</span><span class="na">leftMove</span><span class="o">();</span>
-         <span class="o">}</span>
-         <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">leftCheck</span><span class="o">()</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-         <span class="o">}</span>
-         <span class="k">else</span> <span class="o">{</span>
-             <span class="c1">// 만약 왼편에 존재하는 노드가 값을 가지고 있는 노드의 경우에는</span>
-             <span class="c1">// &lt;&lt; 현재 노드의 값과 같으면 합쳐진다</span>
-             <span class="n">node</span> <span class="n">targetNode</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">model</span><span class="o">[</span><span class="k">this</span><span class="o">.</span><span class="na">coordinate</span><span class="o">[</span><span class="mi">0</span><span class="o">]][</span><span class="k">this</span><span class="o">.</span><span class="na">coordinate</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">-</span> <span class="mi">1</span><span class="o">];</span>
-             <span class="c1">// 만약 현재 노드의 값과 같아도 concated flag가 true 면 패스한다</span>
-             <span class="k">if</span> <span class="o">(!</span><span class="n">targetNode</span><span class="o">.</span><span class="na">concated</span><span class="o">)</span> <span class="o">{</span>
-                 <span class="k">if</span> <span class="o">(</span><span class="n">targetNode</span><span class="o">.</span><span class="na">value</span> <span class="o">==</span> <span class="k">this</span><span class="o">.</span><span class="na">value</span><span class="o">)</span> <span class="o">{</span>
-                     <span class="n">targetNode</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">targetNode</span><span class="o">.</span><span class="na">value</span> <span class="o">*</span> <span class="mi">2</span><span class="o">;</span>
-                     <span class="k">this</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-                     <span class="n">targetNode</span><span class="o">.</span><span class="na">concated</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
- 
-                     <span class="c1">// 보니까 한번만 합쳐지는것같음 모든 블록은 한번만 </span>
-                     <span class="c1">// 합쳐져야하기때문에 합친 후에는 연쇄콜을 하면 안됨</span>
- <span class="c1">//                targetNode.leftMove();</span>
-                 <span class="o">}</span>
-             <span class="o">}</span>
-         <span class="o">}</span>
-     <span class="o">}</span>
-     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">rightMove</span><span class="o">()</span> <span class="o">{</span>
-         <span class="c1">// leftMove와 작동방식이 같기 때문에 굳이 주석은 적지 않겠다</span>
-         <span class="k">if</span> <span class="o">(</span><span class="n">rightCheck</span><span class="o">()</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
-             <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">value</span><span class="o">;</span>
-             <span class="n">node</span> <span class="n">targetNode</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">model</span><span class="o">[</span><span class="k">this</span><span class="o">.</span><span class="na">coordinate</span><span class="o">[</span><span class="mi">0</span><span class="o">]][</span><span class="k">this</span><span class="o">.</span><span class="na">coordinate</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">];</span>
-             <span class="n">targetNode</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>
-             <span class="k">this</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-             <span class="n">targetNode</span><span class="o">.</span><span class="na">rightMove</span><span class="o">();</span>
-         <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">rightCheck</span><span class="o">()</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{}</span>
-         <span class="k">else</span> <span class="o">{</span>
-             <span class="n">node</span> <span class="n">targetNode</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">model</span><span class="o">[</span><span class="k">this</span><span class="o">.</span><span class="na">coordinate</span><span class="o">[</span><span class="mi">0</span><span class="o">]][</span><span class="k">this</span><span class="o">.</span><span class="na">coordinate</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">];</span>
-             <span class="k">if</span> <span class="o">(!</span><span class="n">targetNode</span><span class="o">.</span><span class="na">concated</span><span class="o">)</span> <span class="o">{</span>
-                 <span class="k">if</span> <span class="o">(</span><span class="n">targetNode</span><span class="o">.</span><span class="na">value</span> <span class="o">==</span> <span class="k">this</span><span class="o">.</span><span class="na">value</span><span class="o">)</span> <span class="o">{</span>
-                     <span class="n">targetNode</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">targetNode</span><span class="o">.</span><span class="na">value</span> <span class="o">*</span> <span class="mi">2</span><span class="o">;</span>
-                     <span class="k">this</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-                     <span class="n">targetNode</span><span class="o">.</span><span class="na">concated</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
- <span class="c1">//                targetNode.rightMove();</span>
-                 <span class="o">}</span>
-             <span class="o">}</span>
-         <span class="o">}</span>
-     <span class="o">}</span>
-     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">upMove</span><span class="o">()</span> <span class="o">{</span>
-         <span class="k">if</span> <span class="o">(</span><span class="n">upCheck</span><span class="o">()</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
-             <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">value</span><span class="o">;</span>
-             <span class="n">node</span> <span class="n">targetNode</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">model</span><span class="o">[</span><span class="k">this</span><span class="o">.</span><span class="na">coordinate</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">-</span> <span class="mi">1</span><span class="o">][</span><span class="k">this</span><span class="o">.</span><span class="na">coordinate</span><span class="o">[</span><span class="mi">1</span><span class="o">]];</span>
-             <span class="n">targetNode</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>
-             <span class="k">this</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-             <span class="n">targetNode</span><span class="o">.</span><span class="na">upMove</span><span class="o">();</span>
-         <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">upCheck</span><span class="o">()</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{}</span>
-         <span class="k">else</span> <span class="o">{</span>
-             <span class="n">node</span> <span class="n">targetNode</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">model</span><span class="o">[</span><span class="k">this</span><span class="o">.</span><span class="na">coordinate</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">-</span> <span class="mi">1</span><span class="o">][</span><span class="k">this</span><span class="o">.</span><span class="na">coordinate</span><span class="o">[</span><span class="mi">1</span><span class="o">]];</span>
-             <span class="k">if</span> <span class="o">(!</span><span class="n">targetNode</span><span class="o">.</span><span class="na">concated</span><span class="o">)</span> <span class="o">{</span>
-                 <span class="k">if</span> <span class="o">(</span><span class="n">targetNode</span><span class="o">.</span><span class="na">value</span> <span class="o">==</span> <span class="k">this</span><span class="o">.</span><span class="na">value</span><span class="o">)</span> <span class="o">{</span>
-                     <span class="n">targetNode</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">targetNode</span><span class="o">.</span><span class="na">value</span> <span class="o">*</span> <span class="mi">2</span><span class="o">;</span>
-                     <span class="k">this</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-                     <span class="n">targetNode</span><span class="o">.</span><span class="na">concated</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
- <span class="c1">//                targetNode.upMove();</span>
-                 <span class="o">}</span>
-             <span class="o">}</span>
-         <span class="o">}</span>
-     <span class="o">}</span>
-     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">downMove</span><span class="o">()</span> <span class="o">{</span>
- <span class="c1">//        downCheck는 0이면 움직일 수 없는 곳, 1이면 움직일 수 있는 곳,</span>
-         <span class="k">if</span> <span class="o">(</span><span class="n">downCheck</span><span class="o">()</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
-             <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">value</span><span class="o">;</span>
-             <span class="n">node</span> <span class="n">targetNode</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">model</span><span class="o">[</span><span class="k">this</span><span class="o">.</span><span class="na">coordinate</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">][</span><span class="k">this</span><span class="o">.</span><span class="na">coordinate</span><span class="o">[</span><span class="mi">1</span><span class="o">]];</span>
-             <span class="n">targetNode</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>
-             <span class="k">this</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-             <span class="n">targetNode</span><span class="o">.</span><span class="na">downMove</span><span class="o">();</span>
-         <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">downCheck</span><span class="o">()</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{}</span>
- <span class="c1">//        1도 0도 아닌 정수값인경우</span>
-         <span class="k">else</span> <span class="o">{</span>
-             <span class="n">node</span> <span class="n">targetNode</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">model</span><span class="o">[</span><span class="k">this</span><span class="o">.</span><span class="na">coordinate</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">+</span> <span class="mi">1</span><span class="o">][</span><span class="k">this</span><span class="o">.</span><span class="na">coordinate</span><span class="o">[</span><span class="mi">1</span><span class="o">]];</span>
-             <span class="k">if</span> <span class="o">(!</span><span class="n">targetNode</span><span class="o">.</span><span class="na">concated</span><span class="o">)</span> <span class="o">{</span>
-                 <span class="k">if</span> <span class="o">(</span><span class="n">targetNode</span><span class="o">.</span><span class="na">value</span> <span class="o">==</span> <span class="k">this</span><span class="o">.</span><span class="na">value</span><span class="o">)</span> <span class="o">{</span>
-                     <span class="n">targetNode</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">targetNode</span><span class="o">.</span><span class="na">value</span> <span class="o">*</span> <span class="mi">2</span><span class="o">;</span>
-                     <span class="k">this</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-                     <span class="n">targetNode</span><span class="o">.</span><span class="na">concated</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
- <span class="c1">//                targetNode.downMove();</span>
-                 <span class="o">}</span>
-             <span class="o">}</span>
-         <span class="o">}</span>
- 
-     <span class="o">}</span>
-     <span class="kd">public</span> <span class="kt">int</span> <span class="nf">leftCheck</span><span class="o">()</span> <span class="o">{</span>
-         <span class="kt">int</span> <span class="n">xIndex</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">coordinate</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
-         <span class="kt">int</span> <span class="n">yIndex</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">coordinate</span><span class="o">[</span><span class="mi">1</span><span class="o">];</span>
-         <span class="k">if</span> <span class="o">(</span><span class="n">yIndex</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-             <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
-             <span class="c1">// 0 이면 불가능함</span>
-         <span class="o">}</span>
-         <span class="k">else</span> <span class="o">{</span>
-             <span class="k">if</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">model</span><span class="o">[</span><span class="n">xIndex</span><span class="o">][</span><span class="n">yIndex</span> <span class="o">-</span> <span class="mi">1</span><span class="o">].</span><span class="na">value</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-                 <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
-                 <span class="c1">// 1이면 옮길 수 있음</span>
-             <span class="o">}</span>
-             <span class="k">else</span> <span class="o">{</span>
-                 <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">model</span><span class="o">[</span><span class="n">xIndex</span><span class="o">][</span><span class="n">yIndex</span> <span class="o">-</span> <span class="mi">1</span><span class="o">].</span><span class="na">value</span><span class="o">;</span>
-                 <span class="c1">// 모두 아닌 경우에는 그 노드의 값을 리턴함</span>
-             <span class="o">}</span>
-         <span class="o">}</span>
-     <span class="o">}</span>
-     <span class="kd">public</span> <span class="kt">int</span> <span class="nf">rightCheck</span><span class="o">()</span> <span class="o">{</span>
-         <span class="kt">int</span> <span class="n">xIndex</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">coordinate</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
-         <span class="kt">int</span> <span class="n">yIndex</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">coordinate</span><span class="o">[</span><span class="mi">1</span><span class="o">];</span>
-         <span class="c1">// 문제 공간은 정사각형 형태이고 가장 오른쪽에 위치해 있을 때이고</span>
-         <span class="c1">// length는 index보다 1높게 나오므로 1빼줘야함 ㅇㄱㄹㅇ</span>
-         <span class="k">if</span> <span class="o">(</span><span class="n">yIndex</span> <span class="o">==</span> <span class="k">this</span><span class="o">.</span><span class="na">model</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
-             <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
-         <span class="o">}</span>
-         <span class="k">else</span> <span class="o">{</span>
-             <span class="k">if</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">model</span><span class="o">[</span><span class="n">xIndex</span><span class="o">][</span><span class="n">yIndex</span> <span class="o">+</span> <span class="mi">1</span><span class="o">].</span><span class="na">value</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-                 <span class="c1">//오른쪽 노드가 공노드이면</span>
-                 <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
-             <span class="o">}</span>
-             <span class="k">else</span> <span class="o">{</span>
-                 <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">model</span><span class="o">[</span><span class="n">xIndex</span><span class="o">][</span><span class="n">yIndex</span> <span class="o">+</span> <span class="mi">1</span><span class="o">].</span><span class="na">value</span><span class="o">;</span>
-             <span class="o">}</span>
-         <span class="o">}</span>
-     <span class="o">}</span>
-     <span class="kd">public</span> <span class="kt">int</span> <span class="nf">upCheck</span><span class="o">()</span> <span class="o">{</span>
-         <span class="kt">int</span> <span class="n">xIndex</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">coordinate</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
-         <span class="kt">int</span> <span class="n">yIndex</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">coordinate</span><span class="o">[</span><span class="mi">1</span><span class="o">];</span>
-         <span class="k">if</span> <span class="o">(</span><span class="n">xIndex</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-             <span class="c1">//위로 더 이상 올라갈 수 없으면</span>
-             <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
-         <span class="o">}</span>
-         <span class="k">else</span> <span class="o">{</span>
-             <span class="k">if</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">model</span><span class="o">[</span><span class="n">xIndex</span> <span class="o">-</span> <span class="mi">1</span><span class="o">][</span><span class="n">yIndex</span><span class="o">].</span><span class="na">value</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-                 <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
-             <span class="o">}</span>
-             <span class="k">else</span> <span class="o">{</span>
-                 <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">model</span><span class="o">[</span><span class="n">xIndex</span> <span class="o">-</span> <span class="mi">1</span><span class="o">][</span><span class="n">yIndex</span><span class="o">].</span><span class="na">value</span><span class="o">;</span>
-             <span class="o">}</span>
-         <span class="o">}</span>
-     <span class="o">}</span>
-     <span class="cm">/**
-      * 아래로 움직일 수 있는지 아닌지를 검사하는 함수임
-      *
-      * @return 아래로 움직일 수 있으면 0, 아래로 움직일 수 없으면 1, 다른 값이면 해당 노드의 값을 리턴
-      */</span>
-     <span class="kd">public</span> <span class="kt">int</span> <span class="nf">downCheck</span><span class="o">()</span> <span class="o">{</span>
-         <span class="kt">int</span> <span class="n">xIndex</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">coordinate</span><span class="o">[</span><span class="mi">0</span><span class="o">];</span>
-         <span class="kt">int</span> <span class="n">yIndex</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">coordinate</span><span class="o">[</span><span class="mi">1</span><span class="o">];</span>
-         <span class="k">if</span> <span class="o">(</span><span class="n">xIndex</span> <span class="o">==</span> <span class="k">this</span><span class="o">.</span><span class="na">model</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
-             <span class="c1">//아래로 더 이상 내려갈 수 없으면</span>
-             <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
-         <span class="o">}</span>
-         <span class="k">else</span> <span class="o">{</span>
-             <span class="k">if</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">model</span><span class="o">[</span><span class="n">xIndex</span> <span class="o">+</span> <span class="mi">1</span><span class="o">][</span><span class="n">yIndex</span><span class="o">].</span><span class="na">value</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-                 <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
-             <span class="o">}</span>
-             <span class="k">else</span> <span class="o">{</span>
-                 <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">model</span><span class="o">[</span><span class="n">xIndex</span> <span class="o">+</span> <span class="mi">1</span><span class="o">][</span><span class="n">yIndex</span><span class="o">].</span><span class="na">value</span><span class="o">;</span>
-             <span class="o">}</span>
-         <span class="o">}</span>
-     <span class="o">}</span>
- <span class="o">}</span>
- <span class="kd">class</span> <span class="nc">board</span> <span class="o">{</span>
-     <span class="n">node</span><span class="o">[][]</span> <span class="n">model</span><span class="o">;</span>
- 
-     <span class="kd">public</span> <span class="nf">board</span><span class="o">(</span><span class="n">node</span><span class="o">[][]</span> <span class="n">inputModel</span><span class="o">)</span> <span class="o">{</span>
-         <span class="c1">//정사각형이니까</span>
-         <span class="k">this</span><span class="o">.</span><span class="na">model</span> <span class="o">=</span> <span class="n">inputModel</span><span class="o">;</span>
-     <span class="o">}</span>
-     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">resetBoard</span><span class="o">()</span> <span class="o">{</span>
-         <span class="k">for</span> <span class="o">(</span><span class="n">node</span><span class="o">[]</span> <span class="n">nodes</span> <span class="o">:</span> <span class="n">model</span><span class="o">)</span> <span class="o">{</span>
-             <span class="k">for</span> <span class="o">(</span><span class="n">node</span> <span class="n">x</span> <span class="o">:</span> <span class="n">nodes</span><span class="o">)</span> <span class="o">{</span>
-                 <span class="n">x</span><span class="o">.</span><span class="na">reset</span><span class="o">();</span>
-             <span class="o">}</span>
-         <span class="o">}</span>
-     <span class="o">}</span>
- 
-     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">printBoard</span><span class="o">()</span> <span class="o">{</span>
-         <span class="k">for</span> <span class="o">(</span><span class="n">node</span><span class="o">[]</span> <span class="n">x</span> <span class="o">:</span> <span class="n">model</span><span class="o">)</span> <span class="o">{</span>
-             <span class="k">for</span> <span class="o">(</span><span class="n">node</span> <span class="n">y</span> <span class="o">:</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span>
-                 <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">printf</span><span class="o">(</span><span class="s">"%d "</span><span class="o">,</span> <span class="n">y</span><span class="o">.</span><span class="na">value</span><span class="o">);</span>
-             <span class="o">}</span>
-             <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
-         <span class="o">}</span>
-     <span class="o">}</span>
- 
-     <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getMaxNumber</span><span class="o">()</span> <span class="o">{</span>
-         <span class="kt">int</span> <span class="n">maxNumber</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-         <span class="k">for</span> <span class="o">(</span><span class="n">node</span><span class="o">[]</span> <span class="n">x</span> <span class="o">:</span> <span class="n">model</span><span class="o">)</span> <span class="o">{</span>
-             <span class="k">for</span> <span class="o">(</span><span class="n">node</span> <span class="n">y</span> <span class="o">:</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span>
-                 <span class="k">if</span> <span class="o">(</span><span class="n">y</span><span class="o">.</span><span class="na">value</span> <span class="o">&gt;</span> <span class="n">maxNumber</span><span class="o">)</span> <span class="o">{</span>
-                     <span class="n">maxNumber</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="na">value</span><span class="o">;</span>
-                 <span class="o">}</span>
-             <span class="o">}</span>
-         <span class="o">}</span>
-         <span class="k">return</span> <span class="n">maxNumber</span><span class="o">;</span>
-     <span class="o">}</span>
- 
-     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setModel</span><span class="o">(</span><span class="n">node</span><span class="o">[][]</span> <span class="n">model</span><span class="o">)</span> <span class="o">{</span>
-         <span class="k">this</span><span class="o">.</span><span class="na">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">;</span>
-     <span class="o">}</span>
-     <span class="kd">public</span> <span class="n">node</span><span class="o">[][]</span> <span class="nf">getModel</span><span class="o">()</span> <span class="o">{</span>
-         <span class="k">return</span> <span class="n">model</span><span class="o">;</span>
-     <span class="o">}</span>
- 
-     <span class="cm">/**
-      * 모든 노드에 대해서 왼쪽 명령을 내림
-      */</span>
-     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">left</span><span class="o">()</span> <span class="o">{</span>
-         <span class="c1">// 모든 노드에 대해서 왼쪽 노드로 이동</span>
-         <span class="k">for</span> <span class="o">(</span><span class="n">node</span><span class="o">[]</span> <span class="n">x</span> <span class="o">:</span> <span class="n">model</span><span class="o">)</span> <span class="o">{</span>
-             <span class="k">for</span> <span class="o">(</span><span class="n">node</span> <span class="n">y</span> <span class="o">:</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span>
-                 <span class="n">y</span><span class="o">.</span><span class="na">leftMove</span><span class="o">();</span>
-             <span class="o">}</span>
-         <span class="o">}</span>
-         <span class="c1">// 한번 움직임이 끝났으면 concated 플래그를 다시 reset 해야함</span>
-         <span class="k">for</span> <span class="o">(</span><span class="n">node</span><span class="o">[]</span> <span class="n">x</span> <span class="o">:</span> <span class="n">model</span><span class="o">)</span> <span class="o">{</span>
-             <span class="k">for</span> <span class="o">(</span><span class="n">node</span> <span class="n">y</span> <span class="o">:</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span>
-                 <span class="n">y</span><span class="o">.</span><span class="na">concatedReset</span><span class="o">();</span>
-             <span class="o">}</span>
-         <span class="o">}</span>
-     <span class="o">}</span>
-     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">right</span><span class="o">()</span> <span class="o">{</span>
-         <span class="c1">// 모든 노드에 대해서 오른쪽 노드로 이동</span>
- <span class="c1">//        for (node[] x : model) {</span>
- <span class="c1">//            for (node y : x) {</span>
- <span class="c1">//                y.rightMove();</span>
- <span class="c1">//            }</span>
- <span class="c1">//        }</span>
-         <span class="c1">// 근데 위의 left식으로 구현하면 안 됨, 왜냐하면 가장 오른편부터 합쳐져야 하기 때문임</span>
-         <span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
-         <span class="k">for</span> <span class="o">(</span><span class="n">node</span><span class="o">[]</span> <span class="n">x</span> <span class="o">:</span> <span class="n">model</span><span class="o">)</span> <span class="o">{</span>
-             <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">max</span><span class="o">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">--)</span> <span class="o">{</span>
-                 <span class="n">x</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="na">rightMove</span><span class="o">();</span>
-             <span class="o">}</span>
-         <span class="o">}</span>
-         <span class="k">for</span> <span class="o">(</span><span class="n">node</span><span class="o">[]</span> <span class="n">x</span> <span class="o">:</span> <span class="n">model</span><span class="o">)</span> <span class="o">{</span>
-             <span class="k">for</span> <span class="o">(</span><span class="n">node</span> <span class="n">y</span> <span class="o">:</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span>
-                 <span class="n">y</span><span class="o">.</span><span class="na">concatedReset</span><span class="o">();</span>
-             <span class="o">}</span>
-         <span class="o">}</span>
-     <span class="o">}</span>
-     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">up</span><span class="o">()</span> <span class="o">{</span>
-         <span class="k">for</span> <span class="o">(</span><span class="n">node</span><span class="o">[]</span> <span class="n">x</span> <span class="o">:</span> <span class="n">model</span><span class="o">)</span> <span class="o">{</span>
-             <span class="k">for</span> <span class="o">(</span><span class="n">node</span> <span class="n">y</span> <span class="o">:</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span>
-                 <span class="n">y</span><span class="o">.</span><span class="na">upMove</span><span class="o">();</span>
-             <span class="o">}</span>
-         <span class="o">}</span>
-         <span class="k">for</span> <span class="o">(</span><span class="n">node</span><span class="o">[]</span> <span class="n">x</span> <span class="o">:</span> <span class="n">model</span><span class="o">)</span> <span class="o">{</span>
-             <span class="k">for</span> <span class="o">(</span><span class="n">node</span> <span class="n">y</span> <span class="o">:</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span>
-                 <span class="n">y</span><span class="o">.</span><span class="na">concatedReset</span><span class="o">();</span>
-             <span class="o">}</span>
-         <span class="o">}</span>
-     <span class="o">}</span>
-     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">down</span><span class="o">()</span> <span class="o">{</span>
- <span class="c1">//        for (node[] x : model) {</span>
- <span class="c1">//            for (node y : x) {</span>
- <span class="c1">//                y.downMove();</span>
- <span class="c1">//            }</span>
- <span class="c1">//        }</span>
- 
-         <span class="c1">// 근데 위의 down 식으로 구현하면 안 됨, 왜냐하면 가장 아래쪽부터 합쳐져야 하기 때문임니당</span>
-         <span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
-         <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">max</span><span class="o">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">--)</span> <span class="o">{</span>
-             <span class="n">node</span><span class="o">[]</span> <span class="n">targetRow</span> <span class="o">=</span> <span class="n">model</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
-             <span class="k">for</span> <span class="o">(</span><span class="n">node</span> <span class="n">x</span> <span class="o">:</span> <span class="n">targetRow</span><span class="o">)</span> <span class="o">{</span>
-                 <span class="n">x</span><span class="o">.</span><span class="na">downMove</span><span class="o">();</span>
-             <span class="o">}</span>
-         <span class="o">}</span>
-         <span class="k">for</span> <span class="o">(</span><span class="n">node</span><span class="o">[]</span> <span class="n">x</span> <span class="o">:</span> <span class="n">model</span><span class="o">)</span> <span class="o">{</span>
-             <span class="k">for</span> <span class="o">(</span><span class="n">node</span> <span class="n">y</span> <span class="o">:</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span>
-                 <span class="n">y</span><span class="o">.</span><span class="na">concatedReset</span><span class="o">();</span>
-             <span class="o">}</span>
-         <span class="o">}</span>
-     <span class="o">}</span>
- <span class="o">}</span>
-</code></pre></div></div>]]></content><author><name>ash tensor</name></author><category term="JAVA" /><category term="PS" /><category term="백준" /><summary type="html"><![CDATA[[백준][JAVA] 백준 12100번 :: 2048(Easy) :: 골드 2]]></summary></entry></feed>
+<p>아무튼 그래도 합격해서 다행이긴 하다! 떨어지는 것보다는 합격하는게 더 나으니까</p>]]></content><author><name>ash tensor</name></author><category term="자격증" /><summary type="html"><![CDATA[[자격증] 리눅스 마스터 2급 2401회 합격 후기 / 시험 정보]]></summary></entry></feed>
