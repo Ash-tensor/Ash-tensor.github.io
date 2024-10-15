@@ -1,4 +1,261 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-09-30T11:15:36+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[WEB][Spring] 스프링으로 Chat-GPT 기능 구현하기 - 1</title><link href="http://localhost:4000/web/java/2024/09/30/spring-gpt-backend.html" rel="alternate" type="text/html" title="[WEB][Spring] 스프링으로 Chat-GPT 기능 구현하기 - 1" /><published>2024-09-30T00:00:00+09:00</published><updated>2024-09-30T00:00:00+09:00</updated><id>http://localhost:4000/web/java/2024/09/30/spring-gpt-backend</id><content type="html" xml:base="http://localhost:4000/web/java/2024/09/30/spring-gpt-backend.html"><![CDATA[<h2 id="webspring-스프링으로-간단한-chat-gpt-페이지-구현하기---1">[WEB][Spring] 스프링으로 간단한 Chat-GPT 페이지 구현하기 - 1</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-10-15T23:00:27+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[WEB][react] Chat-gpt realtime api 구현 및 설명</title><link href="http://localhost:4000/web/react/2024/10/15/openai-realtime.html" rel="alternate" type="text/html" title="[WEB][react] Chat-gpt realtime api 구현 및 설명" /><published>2024-10-15T00:00:00+09:00</published><updated>2024-10-15T00:00:00+09:00</updated><id>http://localhost:4000/web/react/2024/10/15/openai-realtime</id><content type="html" xml:base="http://localhost:4000/web/react/2024/10/15/openai-realtime.html"><![CDATA[<h2 id="webreact-chat-gpt-realtime-api-구현-및-설명">[WEB][react] Chat-gpt realtime api 구현 및 설명</h2>
+
+<h3 id="1-서론">1. 서론</h3>
+
+<p>한 몇달 쯤 전인가? OpenAI에서 GPT앱을 출시하면서 엄청 대단한 기능으로 화제가 된 적이 있다.
+실시간으로 카메라를 통해서 풍경을 이해하고, 음성을 실시간으로 이해하고 어조및 어투가 정말 사람같으며 사람의 농담을 제대로 이해하는 등
+한국 언론은 물론이고 전세계적으로도 엄청난 화제가 되었는데.</p>
+
+<p><img src="/img/posts/react/realtime/1.png" width="80%" /></p>
+
+<p>마지 영화의 HER에서 나오는 AI와 비슷한 느낌이 든다고 화제였었다. 그리고 스칼렛 요한슨 목소리이냐 아니냐로 논란이 있었는데,
+Open AI는 해당 API를 공개하지 않고 있었다. 지금까지 OpenAI의 음성인식은 whisper라고 하는 음성인식 api였는데, 이는 실시간과는 거리가 멀고,
+음성파일을 집어 넣으면 텍스트로 변환해 주거나 하는 기능이었다.</p>
+
+<p>하지만 10월에 들어서 OpenAI에서 realtime API를 일반 개발자들도 사용할 수 있게 공개했는데, 해당 기능으로 실시간으로 마이크를 통해서 
+음성을 인식하는 기능을 구현할 수 있게 되었다.</p>
+
+<p>이를 한번 구현해 보았는데 한국어로 된 자료도 없고, 영어로 된 자료도 마찬가지로 적어서 어디서 오류가 나는지 찾는데 어려움이 있었다.
+그래서 이번 포스트에서는 해당 기능을 간단하게 구현하고, 설명하고자 한다.</p>
+
+<h3 id="2-구현-예제">2. 구현 예제</h3>
+
+<p><img src="/img/posts/react/realtime/2.png" width="80%" /></p>
+
+<p>자세한 API 문서는 <a href="https://platform.openai.com/docs/guides/realtime">OpenAI API</a>을 참고하면 된다. 
+하지만 해당 문서만 가지고 실제 구현해 보기는 어려워서 Open-AI에서 제공한 예제를 참고해서 구현해 보았다.</p>
+
+<p><img src="/img/posts/react/realtime/3.png" width="80%" /></p>
+
+<p>내가 구현한 예제는 <a href="https://github.com/Ash-tensor/realtime-api">VAD 예시</a>를 참고하면 된다. 
+해당 예제는 Open AI에서 제공한 예제를 기반으로 하고 있는데, API를 이해하면서 VAD를 구현하는데 실제 필요하지 않은 기능들을 덜어내고 
+VAD(Voice Activity Detection), 
+즉 앞서 뉴스에서 봤던 것처럼 따로 음성을 올리거나, 아니면 말할때 호출어를 부르거나 버튼을 눌러서 구현하는 게 아니라, 
+마이크를 통해서 실시간으로 음성을 인식하는 기능만을 구현해 놓은 예시이다.</p>
+
+<p>Open ai 예제는 다양한 tool과 map 등, event를 다루는 기능들이 많아 한번에 이해하기 어려웠기 때문에 한번 구현해 보았다.</p>
+
+<h3 id="3-설명">3. 설명</h3>
+
+<h4 id="상태-변수">상태 변수</h4>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">export</span> <span class="kd">function</span> <span class="nf">ConsolePage</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// API 키 설정</span>
+    <span class="kd">const</span> <span class="nx">apiKey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">본인 API 키</span><span class="dl">"</span>
+
+    <span class="c1">// Ref 초기화</span>
+    <span class="kd">const</span> <span class="nx">wavRecorderRef</span> <span class="o">=</span> <span class="nx">useRef</span><span class="o">&lt;</span><span class="nx">WavRecorder</span><span class="o">&gt;</span><span class="p">(</span>
+        <span class="k">new</span> <span class="nc">WavRecorder</span><span class="p">({</span> <span class="na">sampleRate</span><span class="p">:</span> <span class="mi">24000</span> <span class="p">})</span>
+    <span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">wavStreamPlayerRef</span> <span class="o">=</span> <span class="nx">useRef</span><span class="o">&lt;</span><span class="nx">WavStreamPlayer</span><span class="o">&gt;</span><span class="p">(</span>
+        <span class="k">new</span> <span class="nc">WavStreamPlayer</span><span class="p">({</span> <span class="na">sampleRate</span><span class="p">:</span> <span class="mi">24000</span> <span class="p">})</span>
+    <span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">clientRef</span> <span class="o">=</span> <span class="nx">useRef</span><span class="o">&lt;</span><span class="nx">RealtimeClient</span><span class="o">&gt;</span><span class="p">(</span>
+        <span class="k">new</span> <span class="nc">RealtimeClient</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="na">apiKey</span><span class="p">:</span> <span class="nx">apiKey</span><span class="p">,</span>
+                <span class="na">dangerouslyAllowAPIKeyInBrowser</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+    <span class="p">);</span>
+
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">realtimeEvents</span><span class="p">,</span> <span class="nx">setRealtimeEvents</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="o">&lt;</span><span class="nx">RealtimeEvent</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">([]);</span> <span class="c1">// vad만 구현하고자 하면 필요없음</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">expandedEvents</span><span class="p">,</span> <span class="nx">setExpandedEvents</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="o">&lt;</span><span class="p">{</span>  <span class="c1">// vad만 구현하고자 하면 필요없음</span>
+        <span class="p">[</span><span class="na">key</span><span class="p">:</span> <span class="kr">string</span><span class="p">]:</span> <span class="nx">boolean</span><span class="p">;</span>
+    <span class="p">}</span><span class="o">&gt;</span><span class="p">({});</span>
+    <span class="kd">const</span> <span class="p">[</span><span class="nx">items</span><span class="p">,</span> <span class="nx">setItems</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="o">&lt;</span><span class="nx">ItemType</span><span class="p">[]</span><span class="o">&gt;</span><span class="p">([]);</span>
+    
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">items</code>: 모든 대화 항목을 저장하는 배열.</li>
+  <li><code class="language-plaintext highlighter-rouge">realtimeEvents</code>: 확장 가능한 이벤트 로그를 저장하는 배열.</li>
+  <li><code class="language-plaintext highlighter-rouge">expandedEvents</code>: 각 이벤트의 확장 상태를 저장하는 객체.</li>
+</ul>
+
+<p>단순히 vad만을 구현하고자 하면 realtimeEvents 및 expandedEvents는 필요 없다.
+items에 존재하는 대화 항목을 wavStreamPlayer 를 이용해서 음성으로 재생하는 구조이다.</p>
+
+<h4 id="대화-연결-함수">대화 연결 함수</h4>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="cm">/**
+   * 대화 연결 함수
+   */</span>
+  <span class="kd">const</span> <span class="nx">connectConversation</span> <span class="o">=</span> <span class="nf">useCallback</span><span class="p">(</span><span class="k">async </span><span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">clientRef</span><span class="p">.</span><span class="nx">current</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">wavRecorder</span> <span class="o">=</span> <span class="nx">wavRecorderRef</span><span class="p">.</span><span class="nx">current</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">wavStreamPlayer</span> <span class="o">=</span> <span class="nx">wavStreamPlayerRef</span><span class="p">.</span><span class="nx">current</span><span class="p">;</span>
+
+    <span class="nf">setItems</span><span class="p">(</span><span class="nx">client</span><span class="p">.</span><span class="nx">conversation</span><span class="p">.</span><span class="nf">getItems</span><span class="p">());</span>
+
+    <span class="k">if </span><span class="p">(</span><span class="nx">wavRecorder</span><span class="p">.</span><span class="nf">getStatus</span><span class="p">()</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">recording</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">await</span> <span class="nx">wavRecorder</span><span class="p">.</span><span class="nf">pause</span><span class="p">();</span> <span class="c1">// 또는 await wavRecorder.stop();</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">connectConversation</span><span class="dl">'</span><span class="p">,</span> <span class="nx">wavRecorder</span><span class="p">.</span><span class="nf">getStatus</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="k">await</span> <span class="nx">wavRecorder</span><span class="p">.</span><span class="nf">begin</span><span class="p">();</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">connectConversation : wavRecorder begin</span><span class="dl">'</span><span class="p">,</span> <span class="nx">wavRecorder</span><span class="p">.</span><span class="nf">getStatus</span><span class="p">());</span>
+
+    <span class="k">await</span> <span class="nx">wavStreamPlayer</span><span class="p">.</span><span class="nf">connect</span><span class="p">();</span>
+    <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nf">connect</span><span class="p">();</span>
+
+    <span class="nx">client</span><span class="p">.</span><span class="nf">updateSession</span><span class="p">({</span>
+      <span class="na">turn_detection</span><span class="p">:</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">server_vad</span><span class="dl">'</span> <span class="p">},</span> <span class="c1">// VAD 활성화</span>
+      <span class="na">input_audio_transcription</span><span class="p">:</span> <span class="p">{</span> <span class="na">model</span><span class="p">:</span> <span class="dl">'</span><span class="s1">whisper-1</span><span class="dl">'</span> <span class="p">},</span>
+    <span class="p">});</span>
+
+    <span class="c1">// 기본 인사 메시지 전송</span>
+    <span class="nx">client</span><span class="p">.</span><span class="nf">sendUserMessageContent</span><span class="p">([</span>
+      <span class="p">{</span>
+        <span class="na">type</span><span class="p">:</span> <span class="s2">`input_text`</span><span class="p">,</span>
+        <span class="na">text</span><span class="p">:</span> <span class="s2">`Hello!`</span><span class="p">,</span>
+      <span class="p">},</span>
+    <span class="p">]);</span>
+
+    <span class="k">if </span><span class="p">(</span><span class="nx">client</span><span class="p">.</span><span class="nf">getTurnDetectionType</span><span class="p">()</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">server_vad</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span> <span class="dl">'</span><span class="s1">wavRecorder.getStatus()</span><span class="dl">'</span> <span class="p">,</span><span class="nx">wavRecorder</span><span class="p">.</span><span class="nf">getStatus</span><span class="p">());</span>
+      <span class="k">await</span> <span class="nx">wavRecorder</span><span class="p">.</span><span class="nf">record</span><span class="p">((</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">client</span><span class="p">.</span><span class="nf">appendInputAudio</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">mono</span><span class="p">));</span>
+    <span class="p">}</span>
+  <span class="p">},</span> <span class="p">[]);</span>
+
+</code></pre></div></div>
+
+<p>여기서 중요한 게 client.updateSession 함수인데, 여기서 대부분의 세션 설정이 이루어진다.
+중요한 옵션을 나열하자면</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">modalities</code>: 텍스트로 설정할 건지 음성으로 설정할 건지. [“audio”, “text”] 중 하나를 선택한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">tools</code>: chat completion에도 있는 함수 호출(미리 gpt가 해야할 특정 행동을 정의해놓고 그 행동을 호출하면 gpt가 해당 행동을 수행하게 하는 것)</li>
+  <li><code class="language-plaintext highlighter-rouge">turn_detection</code>: VAD 활성화 또는 비활성화</li>
+  <li><code class="language-plaintext highlighter-rouge">instruction</code>: <strong>시스템 설정 메시지</strong></li>
+</ul>
+
+<p>이 중에서 <code class="language-plaintext highlighter-rouge">instruction</code>은 꽤 중요한데, 이는 시스템 설정 메시지를 의미한다. 예전 gpt chat completion 에서 시스템 메시지를 보내는 것과 같은 역할을 한다.</p>
+
+<h5 id="instructionts">instruction.ts</h5>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">instructions</span> <span class="o">=</span> <span class="s2">`System settings:
+Tool use: enabled.
+
+Instructions:
+- You are an artificial intelligence agent responsible for helping test realtime voice capabilities
+- Please make sure to respond with a helpful voice via audio
+- Be kind, helpful, and curteous
+- It is okay to ask the user questions
+- Use tools and functions you have available liberally, it is part of the training apparatus
+- Be open to exploration and conversation
+- Remember: this is just for fun and testing!
+
+Personality:
+- Be upbeat and genuine
+- Try speaking quickly as if excited
+  `</span><span class="p">;</span>
+
+</code></pre></div></div>
+
+<p>이 메시지는 open ai가 설정했던 시스템 메시지로</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    <span class="nx">client</span><span class="p">.</span><span class="nf">updateSession</span><span class="p">({</span> <span class="na">instructions</span><span class="p">:</span> <span class="nx">instructions</span> <span class="p">});</span>
+
+</code></pre></div></div>
+<p>이런 식으로 open ai는 instruction을 설정했었다. 물론 그냥 string으로 박아도 괜찮다.</p>
+
+<h4 id="useeffect">useEffect</h4>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+  <span class="nf">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nf">connectConversation</span><span class="p">();</span>
+  <span class="p">},</span> <span class="p">[]);</span>
+
+  <span class="nf">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">wavStreamPlayer</span> <span class="o">=</span> <span class="nx">wavStreamPlayerRef</span><span class="p">.</span><span class="nx">current</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">clientRef</span><span class="p">.</span><span class="nx">current</span><span class="p">;</span>
+   
+    <span class="nx">client</span><span class="p">.</span><span class="nf">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">conversation.updated</span><span class="dl">'</span><span class="p">,</span> <span class="k">async </span><span class="p">({</span> <span class="nx">item</span><span class="p">,</span> <span class="nx">delta</span> <span class="p">}:</span> <span class="kr">any</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">items</span> <span class="o">=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">conversation</span><span class="p">.</span><span class="nf">getItems</span><span class="p">();</span>
+      <span class="k">if </span><span class="p">(</span><span class="nx">delta</span><span class="p">?.</span><span class="nx">audio</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">wavStreamPlayer</span><span class="p">.</span><span class="nf">add16BitPCM</span><span class="p">(</span><span class="nx">delta</span><span class="p">.</span><span class="nx">audio</span><span class="p">,</span> <span class="nx">item</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="k">if </span><span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">completed</span><span class="dl">'</span> <span class="o">&amp;&amp;</span> <span class="nx">item</span><span class="p">.</span><span class="nx">formatted</span><span class="p">.</span><span class="nx">audio</span><span class="p">?.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">wavFile</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">WavRecorder</span><span class="p">.</span><span class="nf">decode</span><span class="p">(</span>
+          <span class="nx">item</span><span class="p">.</span><span class="nx">formatted</span><span class="p">.</span><span class="nx">audio</span><span class="p">,</span>
+          <span class="mi">24000</span><span class="p">,</span>
+          <span class="mi">24000</span>
+        <span class="p">);</span>
+        <span class="nx">item</span><span class="p">.</span><span class="nx">formatted</span><span class="p">.</span><span class="nx">file</span> <span class="o">=</span> <span class="nx">wavFile</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="nf">setItems</span><span class="p">(</span><span class="nx">items</span><span class="p">);</span>
+    <span class="p">});</span>
+
+    <span class="nf">setItems</span><span class="p">(</span><span class="nx">client</span><span class="p">.</span><span class="nx">conversation</span><span class="p">.</span><span class="nf">getItems</span><span class="p">());</span>
+
+    <span class="k">return </span><span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="c1">// cleanup; resets to defaults</span>
+      <span class="nx">client</span><span class="p">.</span><span class="nf">reset</span><span class="p">();</span>
+    <span class="p">};</span>
+  <span class="p">},</span> <span class="p">[]);</span>
+
+</code></pre></div></div>
+
+<p>useEffect에서 connectConversation을 호출하고, conversation.updated 이벤트를 등록한다.
+즉 realtime api는 conversation.updated 이벤트를 통해서 텍스트 데이터를 받아오고, 이를 wavStreamPlayer를 통해서 음성으로 재생하는 구조이다.</p>
+
+<h4 id="세션-종료-함수">세션 종료 함수</h4>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+  <span class="kd">const</span> <span class="nx">disconnectConversation</span> <span class="o">=</span> <span class="nf">useCallback</span><span class="p">(</span><span class="k">async </span><span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">clientRef</span><span class="p">.</span><span class="nx">current</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">wavRecorder</span> <span class="o">=</span> <span class="nx">wavRecorderRef</span><span class="p">.</span><span class="nx">current</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">wavStreamPlayer</span> <span class="o">=</span> <span class="nx">wavStreamPlayerRef</span><span class="p">.</span><span class="nx">current</span><span class="p">;</span>
+
+    <span class="nx">client</span><span class="p">.</span><span class="nf">disconnect</span><span class="p">();</span>
+    <span class="k">await</span> <span class="nx">wavRecorder</span><span class="p">.</span><span class="nf">end</span><span class="p">();</span>
+    <span class="k">await</span> <span class="nx">wavStreamPlayer</span><span class="p">.</span><span class="nf">interrupt</span><span class="p">();</span>
+  <span class="p">},</span> <span class="p">[]);</span>
+
+</code></pre></div></div>
+
+<h3 id="4-트러블-슈팅">4. 트러블 슈팅</h3>
+
+<p>일단 위의 코드를 보면서 느꼈겠지만</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">// 이 부분이다.</span>
+<span class="k">if </span><span class="p">(</span><span class="nx">wavRecorder</span><span class="p">.</span><span class="nf">getStatus</span><span class="p">()</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">recording</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">await</span> <span class="nx">wavRecorder</span><span class="p">.</span><span class="nf">pause</span><span class="p">();</span> <span class="c1">// 또는 await wavRecorder.stop();</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">connectConversation</span><span class="dl">'</span><span class="p">,</span> <span class="nx">wavRecorder</span><span class="p">.</span><span class="nf">getStatus</span><span class="p">());</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+<p>위 부분은 트러블 슈팅을 하던 때의 흔적이다. 
+wavRecorder.getStatus()가 recording이 아닌데 자꾸 이런 오류가 발생했다.</p>
+
+<blockquote>
+  <p>wav_recorder.js:438 Uncaught (in promise) Error: Already recording: please call .pause() first 
+at WavRecorder.record (wav_recorder.js:438:1)
+at ConsolePage.tsx:75:1</p>
+</blockquote>
+
+<p>이 오류는 strict mode에서 발생하는 오류로, strict mode를 해제하면 오류가 발생하지 않는다.
+두 번 호출하기 때문에 상태 관리에서 오류가 있었던 것 같다.</p>
+
+<p>별 것 아닌 오류였지만 은근 떠올리는데 몇시간 걸렸기도 하고, 인터넷에서 검색해도 이런 오류가 나는 사람도 없었기 때문에
+이런 오류가 나면 strict mode를 한번 해제하고 해보길 바란다.</p>
+
+<h3 id="5-결론">5. 결론</h3>
+
+<p>이번 포스트에서는 OpenAI에서 제공하는 실시간 API를 이용해서 실시간으로 음성을 인식하는 기능을 구현해 보았다.
+또한 더 구체적인 예제는 <a href="https://github.com/openai/openai-realtime-console">Open AI 예제</a>를 참고하면 된다.</p>
+
+<p><strong>근데 realtime api 엄청 비싸다!!!! 농담 안하고 안녕? 반가워, 너 내 한국어 이해해? 이 정도 대화만 하는데 1.3달러 정도 과금한다ㅋㅋㅋ</strong>
+솔직히 너무 비싸서 현업에서는 못쓰지 않을까 생각한다.</p>]]></content><author><name>ash tensor</name></author><category term="WEB" /><category term="REACT" /><summary type="html"><![CDATA[[WEB][react] Chat-gpt realtime api 구현 및 설명]]></summary></entry><entry><title type="html">[WEB][Spring] 스프링으로 Chat-GPT 기능 구현하기 - 1</title><link href="http://localhost:4000/web/java/2024/09/30/spring-gpt-backend.html" rel="alternate" type="text/html" title="[WEB][Spring] 스프링으로 Chat-GPT 기능 구현하기 - 1" /><published>2024-09-30T00:00:00+09:00</published><updated>2024-09-30T00:00:00+09:00</updated><id>http://localhost:4000/web/java/2024/09/30/spring-gpt-backend</id><content type="html" xml:base="http://localhost:4000/web/java/2024/09/30/spring-gpt-backend.html"><![CDATA[<h2 id="webspring-스프링으로-간단한-chat-gpt-페이지-구현하기---1">[WEB][Spring] 스프링으로 간단한 Chat-GPT 페이지 구현하기 - 1</h2>
 
 <h3 id="1-서론">1. 서론</h3>
 
@@ -2002,71 +2259,4 @@ z값 계산과 같은 각 통계 분포의 기초적인 통계량 계산과 검�
 
 </code></pre></div></div>
 
-<p>좀 더 깔끔하게 풀이할 수도 있을 것 같은데, 오랜만에 알고리즘 문제를 푼 것 치고는 감을 잡는데 도움이 된 것 같아서 만족스럽다.</p>]]></content><author><name>ash tensor</name></author><category term="JAVA" /><category term="PS" /><category term="백준" /><summary type="html"><![CDATA[[백준][JAVA] 백준 7562번 :: 나이트의 이동 :: 실버 1]]></summary></entry><entry><title type="html">[자격증] 리눅스 마스터 2급 2401회 합격 후기</title><link href="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/03/28/linux-master.html" rel="alternate" type="text/html" title="[자격증] 리눅스 마스터 2급 2401회 합격 후기" /><published>2024-03-28T00:00:00+09:00</published><updated>2024-03-28T00:00:00+09:00</updated><id>http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/03/28/linux-master</id><content type="html" xml:base="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/03/28/linux-master.html"><![CDATA[<h2 id="자격증-리눅스-마스터-2급-2401회-합격-후기--시험-정보">[자격증] 리눅스 마스터 2급 2401회 합격 후기 / 시험 정보</h2>
-
-<h3 id="리눅스-마스터-2급">리눅스 마스터 2급</h3>
-
-<p>2401회차 리눅스 마스터 2급 시험을 보고 합격했다. 온라인등에서 리눅스 마스터 2급은 이제 좀 누구나 합격하는 수준의 자격증이라는 느낌이지만,
-내가 대신 약간의 변호를 하자면 평균 합격률이 약 30% 정도의 자격증으로 공부 하나도 필요 없이 하루 이틀 전에 공부해서 합격하는 수준은 아닌 것 같다. 
-기사 수준의 시험도 합격률이 30%대인 시험도 많으니까 말이다. 그리고-</p>
-
-<blockquote>
-  <p>인터넷에서는 공부할 필요 없다, 하루 이틀 기출만 풀면 합격할 수 있다</p>
-</blockquote>
-
-<p>이런 말을 많이 하는데 이런 식의 말은 조금 무책임한 느낌이고, 혹시라도 누군가 이 시험을 도전할 사람이 있다면, 조금 더 차분히 공부해서 
-기본적인 리눅스에 대한 지식을 어느정도 쌓고 가는 것이 좋다고 생각한다.</p>
-
-<h4 id="시험-난이도">시험 난이도</h4>
-
-<p>2022년 합격률은 약 22% 정도로, 2021년에 비해서는 하락했다. 2021년에는 약 30% 정도의 합격률이었는데, 2022년에는 22% 정도로 하락했다.
-일단 리눅스 마스터 2급은 단순 암기 시험으로, 4지선다 80문제에 60점 이상 맞으면 합격인데…</p>
-
-<p>말만 들으면 엄청 쉬운 시험이고 기출문제도 많이 있는 이상 기출을 많이 풀면 해결할 수 있다고 생각할 수 있지만 어려운 이유는 
-문제가 꽤나 <strong>악의적으로</strong> 나온다는 점이다.</p>
-
-<p>어떻게 예를 들어야 될지 잘 생각은 안나지만, 예를 들어서</p>
-
-<ul>
-  <li>리눅스 명령어 중에서 파일의 권한을 표시하는 문제가 출제되는데</li>
-</ul>
-
-<p>권한을 물어보다 보니까 “권한? chmod나 chown 인가?” 하고 생각하고 실제로 선지에도 그렇게 나오지만 실제로는 ls 라는 명령어를 선택해야한다. 
-게다가, 그냥 ls 명령어를 실행하면 권한이 나오지 않고 옵션을 넣어서 검색해야 권한이 출력되고, 선지에도 ls 밖에는 표시되어 있지 않아서 사람을 헷갈리게 만든다.</p>
-
-<ul>
-  <li>또한 리눅스의 다양한 옵션들 (apt-get의 삭제 옵션이 -r인가 -R인가, e인가 d인가, 등)로 장난을 치는 것은 물론이다</li>
-</ul>
-
-<p>전부 다 생각나지는 않지만 꽤나 이렇듯 악의적인 문제가 많이 나온다. 게다가, 이제 2401회차와 전회차와 달라진 점으로는 더 이상 문제를 풀고
- 문제지를 제공하지 않고 회수한다는 점에 있다. 이전에는 문제지를 제공하고 문제를 풀고 나서 문제지를 회수했기 때문에 기출문제를 
-복원하기 쉬웠지만 이제부터는 기출문제를 복원하기가 어려워져서 앞으로의 난이도가 조금 더 어려워질 수 있다는 생각이 들었다.</p>
-
-<p>그럼에도 불구하고, 쉬운 자격증인 건 맞다. 일단 계산문제가 나오지 않고, 단순히 리눅스 명령어를 많이 외우고, 리눅스에 대한 개념들만 머리속에
- 정리해 가면 되기 때문에 어려운 자격증은 아니다. 그렇지만 단순히 기출문제를 암기하는 식으로 접근하기 보다는 리눅스에 대한 기본적인 지식을 쌓고 가는 것이 좋다.
-그래야 남는 것도 있을테니까.</p>
-
-<h4 id="공부법">공부법</h4>
-
-<blockquote>
-  <p>인터넷에 돌아다니는 리눅스 마스터 공부법에 대한 조언으로 기출문제 최대한 많이 풀기, 책은 살 필요 없음</p>
-</blockquote>
-
-<p>인데 책은 살 필요가 없는건 맞다…! 책은 살 필요가 없다. 그 이유는 어차피 위에서 말했듯, 단순 암기 시험이기도 하고, 문제가 악의적으로 나오기 때문에
- 문제가 어떤 식으로 나오는지 감을 잡아야 하기 때문에 책을 사서 공부하는 것은 별로 의미가 없다고 생각한다. 오히려 책을 사서 공부하면 더 헷갈릴 수도 있다.
-나는 밀리의 서재에 있는 리눅스 마스터 2급 책을 참고했는데, 솔직히 도움이 안 됐다… 오히려 기출문제와 인터넷에 돌아다니는 리눅스 마스터 2급 정리 PDF를 바탕으로
- 내가 풀어본 기출문제에 새로 나왔거나, 개념이 어떻게 기출문제에 나오는지를 정리하면서 공부하는 것이 더 도움이 됐다.</p>
-
-<p>음, 그런데 이제부터는 시험지를 나올때 제출하라고 하니까 기출문제를 복원하기가 어려워져서 앞으로는 기출문제를 풀어보는 것이 더 어려워질 수도 있다. 
-왜냐면 나도 시험을 칠 때 기출문제에 안 나왔던 새로운 문제들이 보였기 때문이다. 그래서 혹시라도 책을 구매하려면 최신 기출문제가 수록되어있는
- 책을 구매한다면, 그건 좋을 것 같다.</p>
-
-<h4 id="마무리">마무리</h4>
-
-<p>전공자 기준 약 2주 정도(암기를 못한다면) 시험 공부를 하는 게 좋을 것 같고, 비전공자 기준으로도 약 2주 정도 시험 공부를 하는 편이 좋다.
-나는 기출문제 약 2년치 정도(8회분)를 1주일에 걸쳐서 풀고 정리하는 식으로 시험 공부를 하긴 했는데 시험 점수가 생각했던 것보다 아슬아슬하게 나와서(70점)
- 떨어질 수도 있겠다 싶겠어서, 한 2주 정도는 차분히 공부하는 것이 좋을 것 같다.</p>
-
-<p><img src="/img/posts/linuxmaster/1.png" style="width: 80%" /></p>
-
-<p>아무튼 그래도 합격해서 다행이긴 하다! 떨어지는 것보다는 합격하는게 더 나으니까</p>]]></content><author><name>ash tensor</name></author><category term="자격증" /><summary type="html"><![CDATA[[자격증] 리눅스 마스터 2급 2401회 합격 후기 / 시험 정보]]></summary></entry></feed>
+<p>좀 더 깔끔하게 풀이할 수도 있을 것 같은데, 오랜만에 알고리즘 문제를 푼 것 치고는 감을 잡는데 도움이 된 것 같아서 만족스럽다.</p>]]></content><author><name>ash tensor</name></author><category term="JAVA" /><category term="PS" /><category term="백준" /><summary type="html"><![CDATA[[백준][JAVA] 백준 7562번 :: 나이트의 이동 :: 실버 1]]></summary></entry></feed>
