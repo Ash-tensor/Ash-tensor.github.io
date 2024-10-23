@@ -260,6 +260,7 @@ wavRecorder.getStatus()가 recording이 아닌데 자꾸 이런 오류가 발생
 > at WavRecorder.record (wav_recorder.js:438:1)
 > at ConsolePage.tsx:75:1
 
+
 이 오류는 strict mode에서 발생하는 오류로, strict mode를 해제하면 오류가 발생하지 않는다.
 두 번 호출하기 때문에 상태 관리에서 오류가 있었던 것 같다.
 
