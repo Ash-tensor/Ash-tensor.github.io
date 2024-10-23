@@ -1,4 +1,475 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-10-15T23:00:27+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[WEB][react] Chat-gpt realtime api 구현 및 설명</title><link href="http://localhost:4000/web/react/2024/10/15/openai-realtime.html" rel="alternate" type="text/html" title="[WEB][react] Chat-gpt realtime api 구현 및 설명" /><published>2024-10-15T00:00:00+09:00</published><updated>2024-10-15T00:00:00+09:00</updated><id>http://localhost:4000/web/react/2024/10/15/openai-realtime</id><content type="html" xml:base="http://localhost:4000/web/react/2024/10/15/openai-realtime.html"><![CDATA[<h2 id="webreact-chat-gpt-realtime-api-구현-및-설명">[WEB][react] Chat-gpt realtime api 구현 및 설명</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-10-24T01:41:39+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[WEB][Spring] 스프링으로 Chat-GPT 페이지 구현하기 - 2</title><link href="http://localhost:4000/web/java/2024/10/24/spring-gpt-frontend.html" rel="alternate" type="text/html" title="[WEB][Spring] 스프링으로 Chat-GPT 페이지 구현하기 - 2" /><published>2024-10-24T00:00:00+09:00</published><updated>2024-10-24T00:00:00+09:00</updated><id>http://localhost:4000/web/java/2024/10/24/spring-gpt-frontend</id><content type="html" xml:base="http://localhost:4000/web/java/2024/10/24/spring-gpt-frontend.html"><![CDATA[<h2 id="webspring-스프링으로-간단한-chat-gpt-페이지-구현하기---2">[WEB][Spring] 스프링으로 간단한 Chat-GPT 페이지 구현하기 - 2</h2>
+
+<h3 id="1-서론">1. 서론</h3>
+
+<p>이전 포스트에서 백엔드를 구현했으니, 이제 프론트엔드를 구현해 보자. 솔직히 이미 예전에 다 구현하긴 했는데,
+이제서야 포스팅하게 되었다.</p>
+
+<p>이전 포스팅은, 백엔드는 <a href="https://ash-tensor.github.io/web/java/2024/09/30/spring-gpt-backend.html">여기</a>에서 확인할 수 있다.
+실제 작성한 예제는 <a href="https://github.com/Ash-tensor/simple-gpt-page">여기</a>에서 확인할 수 있다.</p>
+
+<p><img src="/img/posts/spring/gpt/1.png" width="80%" /></p>
+
+<h3 id="2-프론트엔드-구현">2. 프론트엔드 구현</h3>
+
+<h4 id="chattingcontrollerjava">ChattingController.java</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">package</span> <span class="nn">com.chatgptspring.controller</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.chatgptspring.service.ChatService</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.RequiredArgsConstructor</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Controller</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.ui.Model</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.GetMapping</span><span class="o">;</span>
+
+<span class="nd">@RequiredArgsConstructor</span>
+<span class="nd">@Controller</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ChattingController</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">ChatService</span> <span class="n">chatService</span><span class="o">;</span>
+
+    <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/chatpage"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">modelController</span><span class="o">(</span><span class="nc">Model</span> <span class="n">model</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"chats"</span><span class="o">,</span> <span class="n">chatService</span><span class="o">.</span><span class="na">FindAllChats</span><span class="o">());</span>
+        <span class="k">return</span> <span class="s">"chatting"</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>이름을 너무 못짓긴 했는데, 일단 챗 페이지 자체를 리턴하는 컨트롤러를 작성했다.
+비록 리액트를 쓰지 않긴 하지만, 리액트처럼 나머지는 js로 작성한 RestAPI를 이용해서 구현할 것이다.</p>
+
+<h4 id="chattinghtml">Chatting.html</h4>
+
+<p>이 부분은 딱히 중요하지 않다. 중요한 부분은 타임리프 템플릿을 이용해서 챗 목록을 그리는 부분과, 
+js를 이용해서 메시지를 추가하는 부분이다.</p>
+
+<p>엄청 긴데, 별 내용은 없고, 사실 에셋은 괜찮아 보이는 부분을 가져온 거라서 중요한 부분은 아니다.
+아래 js부분을 보거나 아니면 깃허브에서 예제를 확인하면 더 이해가 쉬울 것이다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Title<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"/static/css/chatting.css"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> 
+  <span class="na">integrity=</span><span class="s">"sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"</span> 
+  <span class="na">integrity=</span><span class="s">"sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/static/js/chatting.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/static/js/message.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"flex-box"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"sidebar d-flex flex-column flex-shrink-0 p-3 text-bg-dark"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/static"</span> <span class="na">class=</span><span class="s">"d-flex align-items-center mb-3 
+        mb-md-0 me-md-auto text-white text-decoration-none"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;svg</span> <span class="na">class=</span><span class="s">"bi pe-none me-2"</span> <span class="na">width=</span><span class="s">"40"</span> <span class="na">height=</span><span class="s">"32"</span><span class="nt">&gt;&lt;use</span> <span class="na">xlink:href=</span><span class="s">"#bootstrap"</span><span class="nt">&gt;&lt;/use&gt;&lt;/svg&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"fs-4"</span><span class="nt">&gt;</span>Sidebar<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;hr&gt;</span>
+        <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav nav-pills flex-column mb-auto"</span> <span class="na">id=</span><span class="s">"chatList"</span><span class="nt">&gt;</span>
+            <span class="c">&lt;!-- 기존 채팅 목록 표시 --&gt;</span>
+            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span> <span class="na">th:each=</span><span class="s">"chat : ${chats}"</span> 
+            <span class="na">style=</span><span class="s">"padding: 5px"</span> <span class="na">th:onclick=</span><span class="s">"'drawChat(' + ${chat.id} + ')'"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">th:text=</span><span class="s">"'채팅 ' + ${chat.id}"</span> <span class="na">aria-current=</span><span class="s">"page"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;svg</span> <span class="na">class=</span><span class="s">"bi pe-none me-2"</span> <span class="na">width=</span><span class="s">"16"</span> <span class="na">height=</span><span class="s">"16"</span><span class="nt">&gt;&lt;use</span> <span class="na">xlink:href=</span><span class="s">"#home"</span><span class="nt">&gt;&lt;/use&gt;&lt;/svg&gt;</span>
+                    <span class="nt">&lt;span</span> <span class="na">th:text=</span><span class="s">"'채팅 ' + ${chat.id}"</span><span class="nt">&gt;</span>채팅 ID<span class="nt">&lt;/span&gt;</span>
+                <span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;/ul&gt;</span>
+
+        <span class="c">&lt;!-- 새 채팅 생성 폼 --&gt;</span>
+        <span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">"createChatForm"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;li&gt;</span>
+                <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"nav-link text-white"</span> 
+                <span class="na">style=</span><span class="s">"background: none; border: none; padding: 0;"</span> <span class="na">onclick=</span><span class="s">"createNewChat()"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;svg</span> <span class="na">class=</span><span class="s">"bi pe-none me-2"</span> <span class="na">width=</span><span class="s">"16"</span> 
+                    <span class="na">height=</span><span class="s">"16"</span><span class="nt">&gt;&lt;use</span> <span class="na">xlink:href=</span><span class="s">"#people-circle"</span><span class="nt">&gt;&lt;/use&gt;&lt;/svg&gt;</span>
+                    Create New Chat
+                <span class="nt">&lt;/button&gt;</span>
+            <span class="nt">&lt;/li&gt;</span>
+        <span class="nt">&lt;/form&gt;</span>
+
+        <span class="nt">&lt;/ul&gt;</span>
+        <span class="nt">&lt;hr&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"d-flex align-items-center text-white text-decoration-none dropdown-toggle"</span>
+             <span class="na">data-bs-toggle=</span><span class="s">"dropdown"</span> <span class="na">aria-expanded=</span><span class="s">"false"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"https://github.com/mdo.png"</span> <span class="na">alt=</span><span class="s">""</span> <span class="na">width=</span><span class="s">"32"</span> <span class="na">height=</span><span class="s">"32"</span> <span class="na">class=</span><span class="s">"rounded-circle me-2"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;strong&gt;</span>mdo<span class="nt">&lt;/strong&gt;</span>
+            <span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"dropdown-menu dropdown-menu-dark text-small shadow"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>New project...<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+                <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Settings<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+                <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Profile<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+                <span class="nt">&lt;li&gt;&lt;hr</span> <span class="na">class=</span><span class="s">"dropdown-divider"</span><span class="nt">&gt;&lt;/li&gt;</span>
+                <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Sign out<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+            <span class="nt">&lt;/ul&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span> <span class="na">style=</span><span class="s">"height: 100%"</span> <span class="na">id=</span><span class="s">"chat-box"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"title"</span><span class="nt">&gt;</span>Comments<span class="nt">&lt;/span&gt;</span>
+
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"comment-box"</span> <span class="na">id=</span><span class="s">"message-box"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"comments"</span> <span class="na">th:each=</span><span class="s">"message: ${chats[0].messages}"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"comment-react"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;button&gt;</span>
+                        <span class="nt">&lt;svg</span> <span class="na">fill=</span><span class="s">"none"</span> <span class="na">viewBox=</span><span class="s">"0 0 24 24"</span> <span class="na">height=</span><span class="s">"16"</span> <span class="na">width=</span><span class="s">"16"</span> <span class="na">xmlns=</span><span class="s">"http://www.w3.org/2000/svg"</span><span class="nt">&gt;</span>
+
+                            <span class="nt">&lt;path</span> <span class="na">fill=</span><span class="s">"#707277"</span> <span class="na">stroke-linecap=</span><span class="s">"round"</span> <span class="na">stroke-width=</span><span class="s">"2"</span> <span class="na">stroke=</span><span class="s">"#707277"</span> <span class="na">d=</span><span class="s">"M19.4626 3.
+                            99415C16.7809 2.34923 14.4404 3.01211 13.0344 4.06801C12.4578 4.50096 12.1696 4.71743 12 4.
+                            71743C11.8304 4.71743 11.5422 4.50096 10.9656 4.06801C9.55962 3.01211 7.21909 2.34923 4.
+                            53744 3.99415C1.01807 6.15294 0.221721 13.2749 8.33953 19.2834C9.88572 20.4278 10.6588 21 12
+                             21C13.3412 21 14.1143 20.4278 15.6605 19.2834C23.7783 13.2749 22.9819 6.15294 19.4626 3.
+                             99415Z"</span><span class="nt">&gt;&lt;/path&gt;</span>
+                        <span class="nt">&lt;/svg&gt;</span>
+                    <span class="nt">&lt;/button&gt;</span>
+                    <span class="nt">&lt;hr&gt;</span>
+                    <span class="nt">&lt;span&gt;</span>14<span class="nt">&lt;/span&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"comment-container"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">th:classappend=</span><span class="s">"${message.role=='user'} ? 'user' : 'gpt'"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"user-pic"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;svg</span> <span class="na">fill=</span><span class="s">"none"</span> <span class="na">viewBox=</span><span class="s">"0 0 24 24"</span> <span class="na">height=</span><span class="s">"20"</span> <span class="na">width=</span><span class="s">"20"</span> <span class="na">xmlns=</span><span class="s">"http://www.w3.org/2000/
+                            svg"</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;path</span> <span class="na">stroke-linejoin=</span><span class="s">"round"</span> <span class="na">fill=</span><span class="s">"#707277"</span> <span class="na">stroke-linecap=</span><span class="s">"round"</span> <span class="na">stroke-width=</span><span class="s">"2"</span>
+                                 <span class="na">stroke=</span><span class="s">"#707277"</span> <span class="na">d=</span><span class="s">"M6.57757 15.4816C5.1628 16.324 1.45336 18.0441 3.71266 20.1966C4.
+                                 81631 21.248 6.04549 22 7.59087 22H16.4091C17.9545 22 19.1837 21.248 20.2873 20.1966C22.
+                                 5466 18.0441 18.8372 16.324 17.4224 15.4816C14.1048 13.5061 9.89519 13.5061 6.57757 15.
+                                 4816Z"</span><span class="nt">&gt;&lt;/path&gt;</span>
+                                <span class="nt">&lt;path</span> <span class="na">stroke-width=</span><span class="s">"2"</span> <span class="na">fill=</span><span class="s">"#707277"</span> <span class="na">stroke=</span><span class="s">"#707277"</span> <span class="na">d=</span><span class="s">"M16.5 6.5C16.5 8.98528 14.4853
+                                 11 12 11C9.51472 11 7.5 8.98528 7.5 6.5C7.5 4.01472 9.51472 2 12 2C14.4853 2 16.5 4.
+                                 01472 16.5 6.5Z"</span><span class="nt">&gt;&lt;/path&gt;</span>
+                            <span class="nt">&lt;/svg&gt;</span>
+                        <span class="nt">&lt;/div&gt;</span>
+                        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"user-info"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;span</span> <span class="na">th:text=</span><span class="s">"${message.role}"</span><span class="nt">&gt;</span>Yassine Zanina<span class="nt">&lt;/span&gt;</span>
+                            <span class="nt">&lt;p&gt;</span>Wednesday, March 13th at 2:45pm<span class="nt">&lt;/p&gt;</span>
+                        <span class="nt">&lt;/div&gt;</span>
+                    <span class="nt">&lt;/div&gt;</span>
+                    <span class="nt">&lt;p</span> <span class="na">th:if=</span><span class="s">"${message.role=='user'}"</span> <span class="na">class=</span><span class="s">"comment-content"</span> <span class="na">style=</span><span class="s">"text-align: left"</span> <span class="na">th:text=</span><span class="s">"$
+                    {message.content}"</span><span class="nt">&gt;&lt;/p&gt;</span>
+                    <span class="nt">&lt;p</span> <span class="na">th:if=</span><span class="s">"${message.role=='assistant'}"</span> <span class="na">class=</span><span class="s">"comment-content"</span> <span class="na">style=</span><span class="s">"text-align: right"</span> <span class="na">th:text=</span><span class="s">"$
+                    {message.content}"</span><span class="nt">&gt;&lt;/p&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+
+        <span class="nt">&lt;/div&gt;</span>
+
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"text-box"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"box-container"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;textarea</span> <span class="na">id=</span><span class="s">"message-content"</span> <span class="na">placeholder=</span><span class="s">"Reply"</span><span class="nt">&gt;&lt;/textarea&gt;</span>
+                <span class="nt">&lt;div&gt;</span>
+                    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"formatting"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;svg</span> <span class="na">fill=</span><span class="s">"none"</span> <span class="na">viewBox=</span><span class="s">"0 0 24 24"</span> <span class="na">height=</span><span class="s">"16"</span> <span class="na">width=</span><span class="s">"16"</span> <span class="na">xmlns=</span><span class="s">"http://www.w3.org/2000/
+                            svg"</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;path</span> <span class="na">stroke-linejoin=</span><span class="s">"round"</span> <span class="na">stroke-linecap=</span><span class="s">"round"</span> <span class="na">stroke-width=</span><span class="s">"2.5"</span> <span class="na">stroke=</span><span class="s">"#707277"</span>
+                                 <span class="na">d=</span><span class="s">"M5 6C5 4.58579 5 3.87868 5.43934 3.43934C5.87868 3 6.58579 3 8 3H12.5789C15.0206 3
+                                  17 5.01472 17 7.5C17 9.98528 15.0206 12 12.5789 12H5V6Z"</span> <span class="na">clip-rule=</span><span class="s">"evenodd"</span>
+                                   <span class="na">fill-rule=</span><span class="s">"evenodd"</span><span class="nt">&gt;&lt;/path&gt;</span>
+                                <span class="nt">&lt;path</span> <span class="na">stroke-linejoin=</span><span class="s">"round"</span> <span class="na">stroke-linecap=</span><span class="s">"round"</span> <span class="na">stroke-width=</span><span class="s">"2.5"</span> <span class="na">stroke=</span><span class="s">"#707277"</span>
+                                 <span class="na">d=</span><span class="s">"M12.4286 12H13.6667C16.0599 12 18 14.0147 18 16.5C18 18.9853 16.0599 21 13.6667
+                                  21H8C6.58579 21 5.87868 21 5.43934 20.5607C5 20.1213 5 19.4142 5 18V12"</span><span class="nt">&gt;&lt;/path&gt;</span>
+                            <span class="nt">&lt;/svg&gt;</span>
+                        <span class="nt">&lt;/button&gt;</span>
+                        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;svg</span> <span class="na">fill=</span><span class="s">"none"</span> <span class="na">viewBox=</span><span class="s">"0 0 24 24"</span> <span class="na">height=</span><span class="s">"16"</span> <span class="na">width=</span><span class="s">"16"</span> <span class="na">xmlns=</span><span class="s">"http://www.w3.org/2000/
+                            svg"</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;path</span> <span class="na">stroke-linecap=</span><span class="s">"round"</span> <span class="na">stroke-width=</span><span class="s">"2.5"</span> <span class="na">stroke=</span><span class="s">"#707277"</span> <span class="na">d=</span><span class="s">"M12 4H19"</span><span class="nt">&gt;&lt;/path&gt;</span>
+
+                                <span class="nt">&lt;path</span> <span class="na">stroke-linecap=</span><span class="s">"round"</span> <span class="na">stroke-width=</span><span class="s">"2.5"</span> <span class="na">stroke=</span><span class="s">"#707277"</span> <span class="na">d=</span><span class="s">"M8 20L16 4"</span><span class="nt">&gt;&lt;/path&gt;</span>
+                                <span class="nt">&lt;path</span> <span class="na">stroke-linecap=</span><span class="s">"round"</span> <span class="na">stroke-width=</span><span class="s">"2.5"</span> <span class="na">stroke=</span><span class="s">"#707277"</span> <span class="na">d=</span><span class="s">"M5 20H12"</span><span class="nt">&gt;&lt;/path&gt;</span>
+                            <span class="nt">&lt;/svg&gt;</span>
+                        <span class="nt">&lt;/button&gt;</span>
+                        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;svg</span> <span class="na">fill=</span><span class="s">"none"</span> <span class="na">viewBox=</span><span class="s">"0 0 24 24"</span> <span class="na">height=</span><span class="s">"16"</span> <span class="na">width=</span><span class="s">"16"</span> <span class="na">xmlns=</span><span class="s">"http://www.w3.org/2000/
+                            svg"</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;path</span> <span class="na">stroke-linejoin=</span><span class="s">"round"</span> <span class="na">stroke-linecap=</span><span class="s">"round"</span> <span class="na">stroke-width=</span><span class="s">"2.5"</span> <span class="na">stroke=</span><span class="s">"#707277"</span>
+                                 <span class="na">d=</span><span class="s">"M5.5 3V11.5C5.5 15.0899 8.41015 18 12 18C15.5899 18 18.5 15.0899 18.5 11.5V3"</span><span class="nt">&gt;&lt;/path&gt;</span>
+                            
+                                <span class="nt">&lt;path</span> <span class="na">stroke-linecap=</span><span class="s">"round"</span> <span class="na">stroke-width=</span><span class="s">"2.5"</span> <span class="na">stroke=</span><span class="s">"#707277"</span> <span class="na">d=</span><span class="s">"M3 21H21"</span><span class="nt">&gt;&lt;/path&gt;</span>
+                            <span class="nt">&lt;/svg&gt;</span>
+                        <span class="nt">&lt;/button&gt;</span>
+                        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;svg</span> <span class="na">fill=</span><span class="s">"none"</span> <span class="na">viewBox=</span><span class="s">"0 0 24 24"</span> <span class="na">height=</span><span class="s">"16"</span> <span class="na">width=</span><span class="s">"16"</span> <span class="na">xmlns=</span><span class="s">"http://www.w3.org/2000/
+                            svg"</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;path</span> <span class="na">stroke-linejoin=</span><span class="s">"round"</span> <span class="na">stroke-linecap=</span><span class="s">"round"</span> <span class="na">stroke-width=</span><span class="s">"2.5"</span> <span class="na">stroke=</span><span class="s">"#707277"</span>
+                                 <span class="na">d=</span><span class="s">"M4 12H20"</span><span class="nt">&gt;&lt;/path&gt;</span>
+                                <span class="nt">&lt;path</span> <span class="na">stroke-linecap=</span><span class="s">"round"</span> <span class="na">stroke-width=</span><span class="s">"2.5"</span> <span class="na">stroke=</span><span class="s">"#707277"</span> <span class="na">d=</span><span class="s">"M17.5 7.66667C17.5 5.
+                                08934 15.0376 3 12 3C8.96243 3 6.5 5.08934 6.5 7.66667C6.5 8.15279 6.55336 8.59783 6.
+                                6668 9M6 16.3333C6 18.9107 8.68629 21 12 21C15.3137 21 18 19.6667 18 16.3333C18 13.9404
+                                 16.9693 12.5782 14.9079 12"</span><span class="nt">&gt;&lt;/path&gt;</span>
+                            <span class="nt">&lt;/svg&gt;</span>
+                        <span class="nt">&lt;/button&gt;</span>
+                        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;svg</span> <span class="na">fill=</span><span class="s">"none"</span> <span class="na">viewBox=</span><span class="s">"0 0 24 24"</span> <span class="na">height=</span><span class="s">"16"</span> <span class="na">width=</span><span class="s">"16"</span> <span class="na">xmlns=</span><span class="s">"http://www.w3.org/2000/
+                            svg"</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;circle</span> <span class="na">stroke-linejoin=</span><span class="s">"round"</span> <span class="na">stroke-linecap=</span><span class="s">"round"</span> <span class="na">stroke-width=</span><span class="s">"2.5"</span>
+                                 <span class="na">stroke=</span><span class="s">"#707277"</span> <span class="na">r=</span><span class="s">"10"</span> <span class="na">cy=</span><span class="s">"12"</span> <span class="na">cx=</span><span class="s">"12"</span><span class="nt">&gt;&lt;/circle&gt;</span>
+                                <span class="nt">&lt;path</span> <span class="na">stroke-linejoin=</span><span class="s">"round"</span> <span class="na">stroke-linecap=</span><span class="s">"round"</span> <span class="na">stroke-width=</span><span class="s">"2.5"</span> <span class="na">stroke=</span><span class="s">"#707277"</span>
+                                 <span class="na">d=</span><span class="s">"M8 15C8.91212 16.2144 10.3643 17 12 17C13.6357 17 15.0879 16.2144 16 15"</span><span class="nt">&gt;&lt;/path&gt;</span>
+                                <span class="nt">&lt;path</span> <span class="na">stroke-linejoin=</span><span class="s">"round"</span> <span class="na">stroke-linecap=</span><span class="s">"round"</span> <span class="na">stroke-width=</span><span class="s">"3"</span> <span class="na">stroke=</span><span class="s">"#707277"</span>
+                                 <span class="na">d=</span><span class="s">"M8.00897 9L8 9M16 9L15.991 9"</span><span class="nt">&gt;&lt;/path&gt;</span>
+                            <span class="nt">&lt;/svg&gt;</span>
+                        <span class="nt">&lt;/button&gt;</span>
+                        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"send"</span> <span class="na">title=</span><span class="s">"Send"</span> <span class="na">id=</span><span class="s">"send-message"</span> <span class="na">onclick=</span><span class="s">"sendMessage()"</span><span class="nt">&gt;</span>
+                            <span class="nt">&lt;svg</span> <span class="na">fill=</span><span class="s">"none"</span> <span class="na">viewBox=</span><span class="s">"0 0 24 24"</span> <span class="na">height=</span><span class="s">"18"</span> <span class="na">width=</span><span class="s">"18"</span> <span class="na">xmlns=</span><span class="s">"http://www.w3.org/2000/
+                            svg"</span><span class="nt">&gt;</span>
+                                <span class="nt">&lt;path</span> <span class="na">stroke-linejoin=</span><span class="s">"round"</span> <span class="na">stroke-linecap=</span><span class="s">"round"</span> <span class="na">stroke-width=</span><span class="s">"2.5"</span> <span class="na">stroke=</span><span class="s">"#ffffff"</span>
+                                 <span class="na">d=</span><span class="s">"M12 5L12 20"</span><span class="nt">&gt;&lt;/path&gt;</span>
+                                <span class="nt">&lt;path</span> <span class="na">stroke-linejoin=</span><span class="s">"round"</span> <span class="na">stroke-linecap=</span><span class="s">"round"</span> <span class="na">stroke-width=</span><span class="s">"2.5"</span> <span class="na">stroke=</span><span class="s">"#ffffff"</span>
+                                 <span class="na">d=</span><span class="s">"M7 9L11.2929 4.70711C11.6262 4.37377 11.7929 4.20711 12 4.20711C12.2071 4.20711 12.
+                                 3738 4.37377 12.7071 4.70711L17 9"</span><span class="nt">&gt;&lt;/path&gt;</span>
+                            <span class="nt">&lt;/svg&gt;</span>
+                        <span class="nt">&lt;/button&gt;</span>
+                    <span class="nt">&lt;/div&gt;</span>
+                <span class="nt">&lt;/div&gt;</span>
+            <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+
+
+</code></pre></div></div>
+
+<p>일단 위 컴포넌트는 다른 사람이 작성한 코드를 참고했는데, 글자 크기가 너무 작긴 한것 같지만…
+여기서</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"nav-link text-white"</span> <span class="na">style=</span><span class="s">"background: none; border: none; padding: 0;"</span>
+ <span class="na">onclick=</span><span class="s">"createNewChat()"</span><span class="nt">&gt;</span>
+    
+</code></pre></div></div>
+
+<p>createNewChat() 함수는 새로운 챗 페이지를 생성하는 함수고,</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"send"</span> <span class="na">title=</span><span class="s">"Send"</span> <span class="na">id=</span><span class="s">"send-message"</span> <span class="na">onclick=</span><span class="s">"sendMessage()"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<p>sendMessage() 함수는 메시지를 보내는 함수이다. 
+타임리프 템플릿을 이용해서 버튼을 누르거나 할 때마다 페이지 자체를 리로드하는 방식도 있겠지만, 
+그런 방식은 성능이 떨어지기 때문에 이런 식으로 구현했다.</p>
+
+<p>타임리프 템플릿은 처음 페이지를 로드할 때만 이용된다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav nav-pills flex-column mb-auto"</span> <span class="na">id=</span><span class="s">"chatList"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- 기존 채팅 목록 표시 --&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span> <span class="na">th:each=</span><span class="s">"chat : ${chats}"</span> <span class="na">style=</span><span class="s">"padding: 5px"</span> <span class="na">th:onclick=</span><span class="s">"'drawChat(' + ${chat.id} + ')'"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">th:text=</span><span class="s">"'채팅 ' + ${chat.id}"</span> <span class="na">aria-current=</span><span class="s">"page"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;svg</span> <span class="na">class=</span><span class="s">"bi pe-none me-2"</span> <span class="na">width=</span><span class="s">"16"</span> <span class="na">height=</span><span class="s">"16"</span><span class="nt">&gt;&lt;use</span> <span class="na">xlink:href=</span><span class="s">"#home"</span><span class="nt">&gt;&lt;/use&gt;&lt;/svg&gt;</span>
+            <span class="nt">&lt;span</span> <span class="na">th:text=</span><span class="s">"'채팅 ' + ${chat.id}"</span><span class="nt">&gt;</span>채팅 ID<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+
+</code></pre></div></div>
+
+<p>이는 기존 채팅 목록을 표시하는 부분이다. 채팅 목록을 클릭하면 drawChat() 함수가 호출되고, 이는 해당 채팅 목록을 그리는 함수이다.</p>
+
+<h4 id="chattingjs">Chatting.js</h4>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kd">function</span> <span class="nf">createNewChat</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Ajax POST 요청으로 새 채팅 생성</span>
+    <span class="nf">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/chat/new</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span>
+    <span class="p">}).</span><span class="nf">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">if </span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">ok</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// 새 채팅이 생성되면 채팅 목록을 다시 불러오는 함수 호출</span>
+            <span class="nf">updateChatList</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Error:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="c1">// 채팅 목록을 새로 불러오는 함수</span>
+<span class="kd">function</span> <span class="nf">updateChatList</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nf">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/chat</span><span class="dl">'</span><span class="p">)</span>  <span class="c1">// 채팅 목록을 불러올 API 엔드포인트</span>
+        <span class="p">.</span><span class="nf">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nf">json</span><span class="p">())</span>  <span class="c1">// JSON 응답을 파싱</span>
+        <span class="p">.</span><span class="nf">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="kd">const</span> <span class="nx">chatList</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">chatList</span><span class="dl">'</span><span class="p">);</span>
+            <span class="nx">chatList</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>  <span class="c1">// 기존 채팅 목록 초기화</span>
+
+            <span class="c1">// 불러온 데이터를 바탕으로 채팅 목록을 다시 렌더링</span>
+            <span class="nx">data</span><span class="p">.</span><span class="nf">forEach</span><span class="p">(</span><span class="nx">chat</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="kd">const</span> <span class="nx">li</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">li</span><span class="dl">'</span><span class="p">);</span>
+                <span class="nx">li</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">nav-item</span><span class="dl">'</span><span class="p">);</span>
+                <span class="nx">li</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">padding</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">5px</span><span class="dl">'</span><span class="p">;</span>
+
+                <span class="nx">li</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">`
+                    &lt;a href="#" class="nav-link active" aria-current="page"&gt;
+                        &lt;svg class="bi pe-none me-2" width="16" height="16"&gt;&lt;use xlink:href="#home"&gt;&lt;/use&gt;&lt;/svg&gt;
+                        채팅 </span><span class="p">${</span><span class="nx">chat</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span><span class="s2">
+                    &lt;/a&gt;
+                `</span><span class="p">;</span>
+                <span class="nx">chatList</span><span class="p">.</span><span class="nf">appendChild</span><span class="p">(</span><span class="nx">li</span><span class="p">);</span>  <span class="c1">// 새로 만든 항목을 목록에 추가</span>
+            <span class="p">});</span>
+        <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Error:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">));</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<h4 id="messagejs">message.js</h4>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">async</span> <span class="kd">function</span> <span class="nf">sendMessage</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="kd">const</span> <span class="nx">chatId</span> <span class="o">=</span> <span class="nx">localStorage</span><span class="p">.</span><span class="nf">getItem</span><span class="p">(</span><span class="dl">'</span><span class="s1">chatId</span><span class="dl">'</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">content</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">message-content</span><span class="dl">'</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+
+    <span class="kd">const</span> <span class="nx">sendedMessage</span> <span class="o">=</span> <span class="nf">createMessage</span><span class="p">({</span><span class="na">role</span><span class="p">:</span> <span class="dl">'</span><span class="s1">user</span><span class="dl">'</span><span class="p">,</span> <span class="na">content</span><span class="p">:</span> <span class="nx">content</span><span class="p">});</span>
+    <span class="kd">const</span> <span class="nx">chatBox</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">message-box</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">chatBox</span><span class="p">.</span><span class="nf">appendChild</span><span class="p">(</span><span class="nx">sendedMessage</span><span class="p">);</span>
+
+    <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/chat/</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">chatId</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+        <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+            <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nf">stringify</span><span class="p">({</span><span class="na">content</span><span class="p">:</span> <span class="nx">content</span><span class="p">}),</span>
+    <span class="p">});</span>
+    <span class="kd">const</span> <span class="nx">message</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">response</span><span class="p">.</span><span class="nf">json</span><span class="p">();</span>
+    <span class="kd">const</span> <span class="nx">recievedMessage</span> <span class="o">=</span> <span class="nf">createMessage</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+
+    <span class="nx">chatBox</span><span class="p">.</span><span class="nf">appendChild</span><span class="p">(</span><span class="nx">recievedMessage</span><span class="p">);</span>
+
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nf">createMessage</span><span class="p">(</span><span class="nx">messageData</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">message</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">div</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">message</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">comments</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">message</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">`
+            &lt;div class="comment-react"&gt;
+                &lt;button&gt;
+                    &lt;svg fill="none" viewBox="0 0 24 24" height="16" width="16" xmlns="http://www.w3.org/2000/svg"&gt;
+                        &lt;path fill="#707277" stroke-linecap="round" stroke-width="2" stroke="#707277" d="M19.4626 3.
+                        99415C16.7809 2.34923 14.4404 3.01211 13.0344 4.06801C12.4578 4.50096 12.1696 4.71743 12 4.
+                        71743C11.8304 4.71743 11.5422 4.50096 10.9656 4.06801C9.55962 3.01211 7.21909 2.34923 4.53744 3.
+                        99415C1.01807 6.15294 0.221721 13.2749 8.33953 19.2834C9.88572 20.4278 10.6588 21 12 21C13.3412
+                         21 14.1143 20.4278 15.6605 19.2834C23.7783 13.2749 22.9819 6.15294 19.4626 3.99415Z"&gt;&lt;/path&gt;
+                    &lt;/svg&gt;
+                &lt;/button&gt;
+                &lt;hr&gt;
+                &lt;span&gt;14&lt;/span&gt;
+            &lt;/div&gt;
+                &lt;div class="comment-container"&gt;
+                    &lt;div class="</span><span class="p">${</span><span class="nx">messageData</span><span class="p">.</span><span class="nx">role</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">user</span><span class="dl">'</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">user</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">gpt</span><span class="dl">'</span><span class="p">}</span><span class="s2">"&gt;
+                        &lt;div class="user-pic"&gt;
+                            &lt;svg fill="none" viewBox="0 0 24 24" height="20" width="20" xmlns="http://www.w3.org/2000/
+                            svg"&gt;
+                                &lt;path stroke-linejoin="round" fill="#707277" stroke-linecap="round" stroke-width="2"
+                                 stroke="#707277" d="M6.57757 15.4816C5.1628 16.324 1.45336 18.0441 3.71266 20.1966C4.
+                                 81631 21.248 6.04549 22 7.59087 22H16.4091C17.9545 22 19.1837 21.248 20.2873 20.1966C22.
+                                 5466 18.0441 18.8372 16.324 17.4224 15.4816C14.1048 13.5061 9.89519 13.5061 6.57757 15.
+                                 4816Z"&gt;&lt;/path&gt;
+                                &lt;path stroke-width="2" fill="#707277" stroke="#707277" d="M16.5 6.5C16.5 8.98528 14.4853
+                                 11 12 11C9.51472 11 7.5 8.98528 7.5 6.5C7.5 4.01472 9.51472 2 12 2C14.4853 2 16.5 4.
+                                 01472 16.5 6.5Z"&gt;&lt;/path&gt;
+                            &lt;/svg&gt;
+                        &lt;/div&gt;
+                        &lt;div class="user-info"&gt;
+                            &lt;span&gt;</span><span class="p">${</span><span class="nx">messageData</span><span class="p">.</span><span class="nx">role</span><span class="p">}</span><span class="s2">&lt;/span&gt;
+                            &lt;p&gt;Wednesday, March 13th at 2:45pm&lt;/p&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;p class="comment-content" style="text-align: </span><span class="p">${</span><span class="nx">messageData</span><span class="p">.</span><span class="nx">role</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">user</span><span class="dl">'</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">left</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">right</span><span class="dl">'</span><span class="p">}</span><span class="s2">"&gt;
+                        </span><span class="p">${</span><span class="nx">messageData</span><span class="p">.</span><span class="nx">content</span><span class="p">}</span><span class="s2">
+                    &lt;/p&gt;
+                    
+                &lt;/div&gt;
+        `</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="nx">message</span><span class="p">;</span>
+    
+<span class="p">}</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nf">drawChat</span><span class="p">(</span><span class="nx">chatId</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">localStorage</span><span class="p">.</span><span class="nf">setItem</span><span class="p">(</span><span class="dl">'</span><span class="s1">chatId</span><span class="dl">'</span><span class="p">,</span> <span class="nx">chatId</span><span class="p">);</span>
+
+    <span class="k">try</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/chat/</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">chatId</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">chat</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">response</span><span class="p">.</span><span class="nf">json</span><span class="p">();</span>
+    <span class="kd">const</span> <span class="nx">messages</span> <span class="o">=</span> <span class="nx">chat</span><span class="p">.</span><span class="nx">messages</span><span class="p">;</span>
+
+    <span class="kd">const</span> <span class="nx">chatBox</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">message-box</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">chatBox</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
+
+    <span class="nx">messages</span><span class="p">.</span><span class="nf">forEach</span><span class="p">(</span><span class="nx">messageData</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">message</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">div</span><span class="dl">'</span><span class="p">);</span>
+        <span class="nx">message</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="dl">'</span><span class="s1">comments</span><span class="dl">'</span><span class="p">);</span>
+        <span class="nx">message</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">`
+            &lt;div class="comment-react"&gt;
+                &lt;button&gt;
+                    &lt;svg fill="none" viewBox="0 0 24 24" height="16" width="16" xmlns="http://www.w3.org/2000/svg"&gt;
+                        &lt;path fill="#707277" stroke-linecap="round" stroke-width="2" stroke="#707277" d="M19.4626 3.
+                        99415C16.7809 2.34923 14.4404 3.01211 13.0344 4.06801C12.4578 4.50096 12.1696 4.71743 12 4.
+                        71743C11.8304 4.71743 11.5422 4.50096 10.9656 4.06801C9.55962 3.01211 7.21909 2.34923 4.53744 3.
+                        99415C1.01807 6.15294 0.221721 13.2749 8.33953 19.2834C9.88572 20.4278 10.6588 21 12 21C13.3412
+                         21 14.1143 20.4278 15.6605 19.2834C23.7783 13.2749 22.9819 6.15294 19.4626 3.99415Z"&gt;&lt;/path&gt;
+                    &lt;/svg&gt;
+                &lt;/button&gt;
+                &lt;hr&gt;
+                &lt;span&gt;14&lt;/span&gt;
+            &lt;/div&gt;
+                &lt;div class="comment-container"&gt;
+                    &lt;div class="</span><span class="p">${</span><span class="nx">messageData</span><span class="p">.</span><span class="nx">role</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">user</span><span class="dl">'</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">user</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">gpt</span><span class="dl">'</span><span class="p">}</span><span class="s2">"&gt;
+                        &lt;div class="user-pic"&gt;
+                            &lt;svg fill="none" viewBox="0 0 24 24" height="20" width="20" xmlns="http://www.w3.org/2000/
+                            svg"&gt;
+                                &lt;path stroke-linejoin="round" fill="#707277" stroke-linecap="round" stroke-width="2"
+                                 stroke="#707277" d="M6.57757 15.4816C5.1628 16.324 1.45336 18.0441 3.71266 20.1966C4.
+                                 81631 21.248 6.04549 22 7.59087 22H16.4091C17.9545 22 19.1837 21.248 20.2873 20.1966C22.
+                                 5466 18.0441 18.8372 16.324 17.4224 15.4816C14.1048 13.5061 9.89519 13.5061 6.57757 15.
+                                 4816Z"&gt;&lt;/path&gt;
+                                &lt;path stroke-width="2" fill="#707277" stroke="#707277" d="M16.5 6.5C16.5 8.98528 14.4853
+                                 11 12 11C9.51472 11 7.5 8.98528 7.5 6.5C7.5 4.01472 9.51472 2 12 2C14.4853 2 16.5 4.
+                                 01472 16.5 6.5Z"&gt;&lt;/path&gt;
+                            &lt;/svg&gt;
+                        &lt;/div&gt;
+                        &lt;div class="user-info"&gt;
+                            &lt;span&gt;</span><span class="p">${</span><span class="nx">messageData</span><span class="p">.</span><span class="nx">role</span><span class="p">}</span><span class="s2">&lt;/span&gt;
+                            &lt;p&gt;Wednesday, March 13th at 2:45pm&lt;/p&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;p class="comment-content" style="text-align: </span><span class="p">${</span><span class="nx">messageData</span><span class="p">.</span><span class="nx">role</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">user</span><span class="dl">'</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">left</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">right</span><span class="dl">'</span><span class="p">}</span><span class="s2">"&gt;
+                        </span><span class="p">${</span><span class="nx">messageData</span><span class="p">.</span><span class="nx">content</span><span class="p">}</span><span class="s2">
+                    &lt;/p&gt;
+                    
+                &lt;/div&gt;
+        `</span><span class="p">;</span>
+        <span class="nx">chatBox</span><span class="p">.</span><span class="nf">appendChild</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Error:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>솔직히 이렇게 할거면 그냥 리액트 쓸걸 그랬다. 그게 더 편리했을 것 같기도 하고…
+아무튼, 이렇게 구현하면 페이지 자체를 리로드하지 않고도 메시지를 추가할 수 있다.</p>
+
+<p>코드를 읽어보면 이해하겠지만, 챗 목록을 클릭하면 drawChat() 함수가 호출되고, 이 함수는 해당 챗의 메시지를 그리는 함수이다.
+각각의 메시지는 createMessage() 함수를 통해 그려지는데, 이 함수는 메시지의 역할과 내용을 받아서 메시지를 그린다.</p>
+
+<h3 id="마치며">마치며</h3>
+
+<p>만약 실행이 안되거나 오류가 있으면 내가 작성한 테스트 코드를 
+<a href="https://github.com/Ash-tensor/simple-gpt-page">https://github.com/Ash-tensor/simple-gpt-page</a> 에서 확인할 수 있다.</p>
+
+<p>그럼 안녕!!</p>]]></content><author><name>ash tensor</name></author><category term="WEB" /><category term="JAVA" /><summary type="html"><![CDATA[[WEB][Spring] 스프링으로 간단한 Chat-GPT 페이지 구현하기 - 2]]></summary></entry><entry><title type="html">[WEB][react] Chat-gpt realtime api 구현 및 설명</title><link href="http://localhost:4000/web/react/2024/10/15/openai-realtime.html" rel="alternate" type="text/html" title="[WEB][react] Chat-gpt realtime api 구현 및 설명" /><published>2024-10-15T00:00:00+09:00</published><updated>2024-10-15T00:00:00+09:00</updated><id>http://localhost:4000/web/react/2024/10/15/openai-realtime</id><content type="html" xml:base="http://localhost:4000/web/react/2024/10/15/openai-realtime.html"><![CDATA[<h2 id="webreact-chat-gpt-realtime-api-구현-및-설명">[WEB][react] Chat-gpt realtime api 구현 및 설명</h2>
 
 <h3 id="1-서론">1. 서론</h3>
 
@@ -293,13 +764,15 @@ at ConsolePage.tsx:75:1</p>
 <p>보면 눈치채겠지만, <strong>GPT의 입력은 하나의 챗 페이지에서 대화한 메시지를 모두 다 입력으로 보낸다!!</strong></p>
 
 <p>이는 GPT가 한번의 챗 페이지에서 대화한 내용을 계속 반복해서 입력받는다는 뜻이다. 이를 모르는 사람들이 꽤 있었는데,
-다시 말하면 결국 하나의 대화가 길어지면 길어질수록 GPT의 맥락이 점점 한정되어서 성능이 떨어지게 된다. 생각할 공간이 줄어드는 것과 비슷하다.</p>
+다시 말하면 결국 하나의 대화가 길어지면 길어질수록 GPT의 맥락이 점점 한정되어서 성능이 떨어지게 된다. 
+생각할 공간이 줄어드는 것과 비슷하다.</p>
 
 <p>또한 토큰에서도 불이익이 있는데 이는 GPT가 한번에 처리할 수 있는 토큰의 수가 제한되어 있기 때문이다. 예를 들어서, GPT-3.5-turbo의 경우 4096개의 토큰을 처리할 수 있다.
 게다가 GPT의 과금에 있어서, OpenAI는 1000개의 토큰을 처리할 때마다 일정량의 과금을 받는데, 한번의 대화가 길어지면 길어질수록 이전 대화의 메시지가 계속 입력되어서
 보다 떨어지는 성능인데도 불구하고 더 많은 과금이 발생하게 된다.</p>
 
-<p>그러니까 불판을 꼭 자주 갈자ㅋㅋ 한번의 대화에서 꼭 고맥락이 필요한 게 아니라면 성능상의 이점은 물론이고 과금적인 측면에서도 대화가 길어지면 길어질수록
+<p>그러니까 한번의 챗 페이지에서 대화를 길게 이어 나가는 것보다는, 짧은 대화를 여러 번 반복하는 것이 좋다.
+한번의 대화에서 꼭 고맥락이 필요한 게 아니라면 성능상의 이점은 물론이고 과금적인 측면에서도 대화가 길어지면 길어질수록
 더 많은 불이익이 발생하게 된다.</p>
 
 <p>아무튼, 이러한 GPT의 입력 형식을 알았으니, 이제 이를 스프링에서 어떻게 구현할지 알아보자.</p>
@@ -404,7 +877,8 @@ DB 설정은 본인의 DB에 맞게 설정하면 된다. 나는 MariaDB를 사�
 </code></pre></div></div>
 
 <p>이는 앞서 말했던 것처럼 Chat 페이지와 유사한 형태의 채팅 페이지를 구현하기 위한 엔티티 클래스이다. 챗은 맥락을 가지고 있는 메시지의 집합이라고 생각하면 된다.
-어떤 유저(비록 아직 구현하지는 않았지만…ㅋㅋ)의 채팅인지와 메시지의 리스트를 가지고 있다.</p>
+흔히 이용하는 GPT 페이지에서 한 번의 챗 페이지에 해당한다.
+어떤 유저의 채팅인지와 메시지의 리스트를 가지고 있다.</p>
 
 <h4 id="messagejava">Message.java</h4>
 
@@ -547,7 +1021,7 @@ DB설정이 안되어 있거나 DB에 저장하지 않고, GPT의 응답만 받�
 
 </code></pre></div></div>
 
-<p>이 DTO는 GPT의 입력 형식과 동일하게 구성되어 있다. 이를 JSON 형식으로 파싱해서 GPT에 보낼 것이다.</p>
+<p>이 DTO는 GPT의 입력 형식과 동일하게 구성되어 있다. 즉, 단순히 페이지를 저장하거나 하고 싶지 않다면 해당 DTO만 작성해도 된다. 이를 JSON 형식으로 파싱해서 GPT에 보낼 것이다.</p>
 
 <h4 id="messagedtojava">MessageDTO.java</h4>
 
@@ -567,9 +1041,9 @@ DB설정이 안되어 있거나 DB에 저장하지 않고, GPT의 응답만 받�
 </code></pre></div></div>
 
 <p>role은 사용자인지 GPT인지를 나타내고, content는 메시지의 내용을 나타낸다. role의 경우 사용자의 메시지는 user, GPT의 응답은 assistant로 고정되어 있어서 다른 값을 넣으면 Bad Request가 발생한다.
-system 롤이 있는데, 이는 해당 대화(Chat)의 GPT의 전반적인 맥락과 규칙을 지시하는 역할을 하고, 보통 가장 먼저 보내는 메시지에 사용된다.</p>
-
-<p>예를 들어서 해당 GPT를 카페의 점원으로 사용하고자 할 때 system role을 이용해서 “너는 카페의 점원이야”라는 메시지를 먼저 보내고, 그 다음에 사용자의 메시지를 보내는 식이다.</p>
+<strong>system 롤이 있는데, 이는 해당 대화(Chat)의 GPT의 전반적인 맥락과 규칙을 지시하는 역할을 하고, 보통 가장 먼저 보내는 메시지에 사용된다.</strong>
+assistant role은 사용자의 메시지에 대한 응답을 나타낸다. 이것 외에는 오류가 발생한다.
+예를 들어서 해당 GPT를 카페의 점원으로 사용하고자 할 때 system role을 이용해서 “너는 카페의 점원이야”라는 메시지를 먼저 보내고, 그 다음에 사용자의 메시지를 보내는 식이다.</p>
 
 <h3 id="6-service-파일">6. Service 파일</h3>
 
@@ -1329,7 +1803,91 @@ The AWS SDK for Java 1.x is being used here:
 이런 방법 말고도 S3 버킷에 이미지를 업로드하면 해당 이미지의 URL을 가져와서 얼굴 인식을 하는 방법도 있긴 하고,
 여러 사진 중에서 해당 사진의 얼굴을 찾는 방법도 있다. 아마도 출입국 심사대나 보안 설정 같은 곳에서 유용하게 사용할 수 있지 않을까 싶다.</p>
 
-<p>끝!</p>]]></content><author><name>ash tensor</name></author><category term="WEB" /><category term="JAVA" /><summary type="html"><![CDATA[AWS Rekognition API를 사용하여 Spring Boot에서 얼굴 인식을 구현.]]></summary></entry><entry><title type="html">[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기</title><link href="http://localhost:4000/web/java/2024/08/20/spring-gcp-bucket.html" rel="alternate" type="text/html" title="[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기" /><published>2024-08-20T00:00:00+09:00</published><updated>2024-08-20T00:00:00+09:00</updated><id>http://localhost:4000/web/java/2024/08/20/spring-gcp-bucket</id><content type="html" xml:base="http://localhost:4000/web/java/2024/08/20/spring-gcp-bucket.html"><![CDATA[<h2 id="webgcp-spring-boot에서-gcp-bucket에-파일-업로드하기">[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기</h2>
+<p>끝!</p>]]></content><author><name>ash tensor</name></author><category term="WEB" /><category term="JAVA" /><summary type="html"><![CDATA[AWS Rekognition API를 사용하여 Spring Boot에서 얼굴 인식을 구현.]]></summary></entry><entry><title type="html">[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기</title><link href="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/20/bigdata-processing-engineer.html" rel="alternate" type="text/html" title="[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기" /><published>2024-08-20T00:00:00+09:00</published><updated>2024-08-20T00:00:00+09:00</updated><id>http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/20/bigdata-processing-engineer</id><content type="html" xml:base="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/20/bigdata-processing-engineer.html"><![CDATA[<h2 id="자격증실기-빅데이터-분석기사-2024년-1회8회실기-합격-후기-및-시험-문제">[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기 및 시험 문제</h2>
+
+<h3 id="합격-인증">합격 인증</h3>
+
+<p><img src="/img/posts/bigdata/3.png" width="80%" /></p>
+
+<p>솔직히 좀 부끄럽긴 한데… 3과목 점수가 5점밖에 안나와서 남 보여줄만한 점수는 아니긴 해도, 일단 합격은 합격이니까.</p>
+
+<h3 id="시험-총평">시험 총평</h3>
+
+<p>나는 시험을 동부자격검정센터에서 실기 시험을 봤는데 생각보다 시험장이 조금 작긴 했다. 
+일단 태릉입구 근방 주민은 쉽게 찾아갈 수 있는게, BYC 직영매장 근처에 바로 시험장이 있어서 찾아가기 쉽다.</p>
+
+<p>일단 빅데이터 분석기사의 실기 시험을 공부하며 내가 느꼈던 점은, 필기가 더 어렵고, 실기가 더 쉽다고 느꼈던 점이었다.</p>
+
+<h4 id="1과목">1과목</h4>
+
+<p><img src="/img/posts/bigdata/6.png" width="80%" /></p>
+
+<p>(8회 시험에서는 약 몇백줄 되는 CSV를 제공했는데 다양한 나라의 맥주 판매? 소비 데이터 중에서 특정 조건에 맞는 나라의 정보를 추출하는 문제였다.
+즉 꼭 저런 식의 전처리 문제만 나오는 건 아니다..!)
+1과목은 데이터 전처리 과목인데, 판다스 라이브러리 등을 사용해서 기초적인 데이터 조작을 할 수 있는지를 묻는 문제인데,
+파이썬을 쓸 줄만 안다면 누구나 이 문제를 풀 수 있다. 왜냐하면 help와 dir 명령어를 사용할 수 있기 때문에 pandas를 사용하지 못한다고 하더라도
+도움을 받을 수 있기 때문이다. 사실상 30점은 기본으로 가져가는 점수라고 생각한다.</p>
+
+<h4 id="2과목">2과목</h4>
+
+<p><img src="/img/posts/bigdata/7.png" width="80%" /></p>
+
+<p>2과목은 분석 모델링 과목인데, 회귀 모델이나 분류 모델을 사용해서 주어진 문제에 따른 데이터를 반환하는 문제다.
+이 문제는 40점 배점으로 이 문제도 어려운 문제는 아니다. 내 기준으로 RMSE가 100에서 120 사이에 있었는데 40점으로 만점을 받았다.</p>
+
+<p>8회차 문제를 설명하자면, 두 지하철역의 주요 변수(이름, 날씨, 기온, 습도, 풍속, 미세먼지 등)를 이용해서 두 지하철역의 승하차 인원을 예측하는 문제였다.</p>
+
+<p>일단 2과목에서 점수를 받지 못하면 합격이 어렵다고 봐야 한다. 2유형은 40점이라 배점이 크기도 하지만, 아예 0점이 나오는 경우가 많아서 
+숙달될 수 있을 정도로 코드를 써보는 편이 좋다.
+내 경험상 2유형을 정리해 보자면 일단 <strong>원본 데이터를 잘 살펴 봐야 한다.</strong> 예를 들어서, 범주형 변수인 경우에는
+라벨 인코딩 보다는(물론 안하는 것보다는 성능이 좋겠지만) pandas의 get_dummies를 이용하는 원핫 인코딩을 사용하는 것이 좋다.</p>
+
+<p>또한, 이번 8회차 시험 문제를 설명했듯이, 두 지하철역의 승하차 인원을 예측하는 문제였는데, 꽤 많은 사람들이 <strong>지하철 역 이름</strong>을 변수로 사용하지 않아서 
+점수가 낮게 나왔는데(문제에서는 A역 B역으로 주어졌다) 아마도 A역, B역으로 익명화 되어 있어서 변수로 사용하지 않은 건 이해한다. 하지만 우리가 
+실제 지하철 역을 이용할 때 항상 집에서 가까운 지하철 역을 이용하는 것처럼, 강남의 유동인구가 많기 때문에 강남역은 당연히 노선도의 끝의 지하철 역보다는
+이용자수가 많을 것이 분명하다.</p>
+
+<p>이런 점을 고려하지 않고 지하철 역 이름을 변수로 사용하지 않은 사람들이 많았는데, 물론 사용하지 않다고 하더라도 점수를 받을 수는 있지만 내가 시험장에서 해당 데이터를 기반으로
+분석했을때, 해당 변수가 설명력이 가장 높은 변수였기 때문에 아마 점수가 조금 떨어졌을 것이다. 이렇듯 어느정도 실제 데이터를 살펴보는게 중요하다!</p>
+
+<p><img src="/img/posts/bigdata/4.png" width="80%" /></p>
+
+<p>그리고 돌아다니는 팁으로 랜덤포레스트 회귀 &amp; 분류를 암기해 가는 2과목 팁이 존재하는데 실제로 이 방법이 가장 좋은 것 같다. 실제 시험장에서 
+결측치와 이상치 제거를 수행한 뒤에 선형 회귀 및 다양한 모델을 사용해서 예측을 수행했는데, 그냥 원 핫 인코딩을 적용한 랜덤포레스트 회귀가 가장 좋은 성능을 보였다.</p>
+
+<p>그리고 0점 나오는 경우가 많았는데, 이는 csv 파일을 저장하지 않은 경우도 있겠지만 <strong>정답 행 갯수보다 적거나 많은 행을 제출</strong>해서 그렇다.
+이런 경우에는 0점이 나올 수 있기 때문에 주의해야 한다. 앞에 있던 사진처럼 총 행의 갯수(학습용 데이터 수, 평가용 데이터 수)를 제공해주기 때문에 
+무조건 csv 파일을 제출할 때 정답 행 갯수와 같은지 len() 함수 등을 이용해서 <strong>꼭꼭</strong> 확인해야 한다!!</p>
+
+<h4 id="3과목">3과목</h4>
+
+<p><img src="/img/posts/bigdata/8.png" width="80%" /></p>
+
+<p>물론 5점 맞은 주제에 무슨 후기냐 싶겠지만, 변명을 하자면 문제가 두문제 나오는데, 각각 5점짜리 소문항 3개씩 15점짜리 문제 두 개였다.
+각각 문제는 1번 소문항이 틀리면 나머지 두개의 문항도 모두 틀리는 구조이기 때문에 2번 문항에서 t-검정의 유의구간을 반대로 설정하는 
+실수를 저질러서 모두 다 틀려버리고 말았다….</p>
+
+<p>개인적으로는 3과목이 가장 어려운 과목이라고 생각하고, 앞으로도 계속 어려워 질 것이라고 생각한다.
+그 이유는 일단 지금 3과목에서는 통계적 검정을 주로 물어보기는 하지만 꼭 통계적 검정(t 검정 혹은 카이제곱 검정)을 물어보지 않을 수도 있다는 점이다.
+실제로 저 예시 문제에서 나온 것처럼 선형 회귀의 계수나 변수 중요도, 오즈비를 물어보는 경우가 대부분이었다.
+실제 기 치뤄진 시험의 기출문제에서도 다른 통계적 지식을 물어보는 경우가 있었는데 이런 경우에는 정말 어려운 문제가 나올 수 있다고 느꼈다. 
+게다가 빅분기 특성상 기출문제도 정확하지 않기 때문에, 추후에 이 시험의 난이도를 올리고자 한다면 2과목 점수를 낮추고 3과목 점수를 올리는 식으로 
+변별력을 줄 수도 있지 않을까? 그런 생각이 들었다.</p>
+
+<p><img src="/img/posts/bigdata/5.png" width="80%" /></p>
+
+<p>게다가, 지금은 1과목과 2과목을 모두 맞추면 70점으로 무조건 합격이 가능하기에 떠도는 팁으로는 1과목 2과목만 준비해서 특정 방법(랜덤포레스트 회귀 또는 분류)
+만 달달 외워서 시험보는 편이 팁이라고 돌아다니는데, 랜덤포레스트 특성상 이런 시험의 데이터 셋에서는 어느정도 무조건적으로 성능이 좋게 나올 수 밖에는 
+없기 때문에… 시험 점수 등을 조정해서 3과목을 공부할 수 밖에는 없게끔 시험을 언젠가 바꿀 수도 있지 않을까 생각이 들었다.</p>
+
+<h3 id="마치며">마치며</h3>
+
+<p>빅데이터 분석기사는 일단 필기를 합격했다면 실기는 수월하게 합격할 수 있는 시험이라고 느꼈다. 비록 작업형 시험이기는 하지만 코드가 정말 익숙하지 않은 사람이라도 
+충분히 합격할 수 있는 시험이다. 
+일단 수험서로는 ㅇㄱㅈ 출판사의 책을 사용했는데, 솔직히 별로 좋지 않았다고 할 수 밖에는 없다. 내용이 완전 틀린 내용이 실려있기도 했고,
+해설과 본문 내용이 충돌되는 경우도 많았다. 다른 출판사의 책을 보지는 않았지만 사는 것이 더 좋지 않을까? 그런 생각은 있다. 적어도 2024년에는..</p>
+
+<p>아무튼, 이렇게 빅데이터 분석기사 24년 1회 후기를 마친다!!</p>]]></content><author><name>ash tensor</name></author><category term="자격증" /><summary type="html"><![CDATA[[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기 및 시험 문제]]></summary></entry><entry><title type="html">[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기</title><link href="http://localhost:4000/web/java/2024/08/20/spring-gcp-bucket.html" rel="alternate" type="text/html" title="[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기" /><published>2024-08-20T00:00:00+09:00</published><updated>2024-08-20T00:00:00+09:00</updated><id>http://localhost:4000/web/java/2024/08/20/spring-gcp-bucket</id><content type="html" xml:base="http://localhost:4000/web/java/2024/08/20/spring-gcp-bucket.html"><![CDATA[<h2 id="webgcp-spring-boot에서-gcp-bucket에-파일-업로드하기">[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기</h2>
 
 <h3 id="문제-설명">문제 설명</h3>
 
@@ -1574,91 +2132,7 @@ mac 기준으로 자신의 .zshrc에 해당 키를 환경변수로 설정해주�
 <p>사용 사례:</p>
 
 <p>단순한 JSON 객체를 자바 객체로 매핑할 때 주로 사용됨.
-예를 들어, 클라이언트가 JSON으로 인코딩된 데이터를 전송하고, 서버가 이를 자바 객체로 변환하여 처리하는 경우에 적합함.</p>]]></content><author><name>ash tensor</name></author><category term="WEB" /><category term="JAVA" /><summary type="html"><![CDATA[[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기]]></summary></entry><entry><title type="html">[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기</title><link href="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/20/bigdata-processing-engineer.html" rel="alternate" type="text/html" title="[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기" /><published>2024-08-20T00:00:00+09:00</published><updated>2024-08-20T00:00:00+09:00</updated><id>http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/20/bigdata-processing-engineer</id><content type="html" xml:base="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/20/bigdata-processing-engineer.html"><![CDATA[<h2 id="자격증실기-빅데이터-분석기사-2024년-1회8회실기-합격-후기-및-시험-문제">[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기 및 시험 문제</h2>
-
-<h3 id="합격-인증">합격 인증</h3>
-
-<p><img src="/img/posts/bigdata/3.png" width="80%" /></p>
-
-<p>솔직히 좀 부끄럽긴 한데… 3과목 점수가 5점밖에 안나와서 남 보여줄만한 점수는 아니긴 해도, 일단 합격은 합격이니까.</p>
-
-<h3 id="시험-총평">시험 총평</h3>
-
-<p>나는 시험을 동부자격검정센터에서 실기 시험을 봤는데 생각보다 시험장이 조금 작긴 했다. 
-일단 태릉입구 근방 주민은 쉽게 찾아갈 수 있는게, BYC 직영매장 근처에 바로 시험장이 있어서 찾아가기 쉽다.</p>
-
-<p>일단 빅데이터 분석기사의 실기 시험을 공부하며 내가 느꼈던 점은, 필기가 더 어렵고, 실기가 더 쉽다고 느꼈던 점이었다.</p>
-
-<h4 id="1과목">1과목</h4>
-
-<p><img src="/img/posts/bigdata/6.png" width="80%" /></p>
-
-<p>(8회 시험에서는 약 몇백줄 되는 CSV를 제공했는데 다양한 나라의 맥주 판매? 소비 데이터 중에서 특정 조건에 맞는 나라의 정보를 추출하는 문제였다.
-즉 꼭 저런 식의 전처리 문제만 나오는 건 아니다..!)
-1과목은 데이터 전처리 과목인데, 판다스 라이브러리 등을 사용해서 기초적인 데이터 조작을 할 수 있는지를 묻는 문제인데,
-파이썬을 쓸 줄만 안다면 누구나 이 문제를 풀 수 있다. 왜냐하면 help와 dir 명령어를 사용할 수 있기 때문에 pandas를 사용하지 못한다고 하더라도
-도움을 받을 수 있기 때문이다. 사실상 30점은 기본으로 가져가는 점수라고 생각한다.</p>
-
-<h4 id="2과목">2과목</h4>
-
-<p><img src="/img/posts/bigdata/7.png" width="80%" /></p>
-
-<p>2과목은 분석 모델링 과목인데, 회귀 모델이나 분류 모델을 사용해서 주어진 문제에 따른 데이터를 반환하는 문제다.
-이 문제는 40점 배점으로 이 문제도 어려운 문제는 아니다. 내 기준으로 RMSE가 100에서 120 사이에 있었는데 40점으로 만점을 받았다.</p>
-
-<p>8회차 문제를 설명하자면, 두 지하철역의 주요 변수(이름, 날씨, 기온, 습도, 풍속, 미세먼지 등)를 이용해서 두 지하철역의 승하차 인원을 예측하는 문제였다.</p>
-
-<p>일단 2과목에서 점수를 받지 못하면 합격이 어렵다고 봐야 한다. 2유형은 40점이라 배점이 크기도 하지만, 아예 0점이 나오는 경우가 많아서 
-숙달될 수 있을 정도로 코드를 써보는 편이 좋다.
-내 경험상 2유형을 정리해 보자면 일단 <strong>원본 데이터를 잘 살펴 봐야 한다.</strong> 예를 들어서, 범주형 변수인 경우에는
-라벨 인코딩 보다는(물론 안하는 것보다는 성능이 좋겠지만) pandas의 get_dummies를 이용하는 원핫 인코딩을 사용하는 것이 좋다.</p>
-
-<p>또한, 이번 8회차 시험 문제를 설명했듯이, 두 지하철역의 승하차 인원을 예측하는 문제였는데, 꽤 많은 사람들이 <strong>지하철 역 이름</strong>을 변수로 사용하지 않아서 
-점수가 낮게 나왔는데(문제에서는 A역 B역으로 주어졌다) 아마도 A역, B역으로 익명화 되어 있어서 변수로 사용하지 않은 건 이해한다. 하지만 우리가 
-실제 지하철 역을 이용할 때 항상 집에서 가까운 지하철 역을 이용하는 것처럼, 강남의 유동인구가 많기 때문에 강남역은 당연히 노선도의 끝의 지하철 역보다는
-이용자수가 많을 것이 분명하다.</p>
-
-<p>이런 점을 고려하지 않고 지하철 역 이름을 변수로 사용하지 않은 사람들이 많았는데, 물론 사용하지 않다고 하더라도 점수를 받을 수는 있지만 내가 시험장에서 해당 데이터를 기반으로
-분석했을때, 해당 변수가 설명력이 가장 높은 변수였기 때문에 아마 점수가 조금 떨어졌을 것이다. 이렇듯 어느정도 실제 데이터를 살펴보는게 중요하다!</p>
-
-<p><img src="/img/posts/bigdata/4.png" width="80%" /></p>
-
-<p>그리고 돌아다니는 팁으로 랜덤포레스트 회귀 &amp; 분류를 암기해 가는 2과목 팁이 존재하는데 실제로 이 방법이 가장 좋은 것 같다. 실제 시험장에서 
-결측치와 이상치 제거를 수행한 뒤에 선형 회귀 및 다양한 모델을 사용해서 예측을 수행했는데, 그냥 원 핫 인코딩을 적용한 랜덤포레스트 회귀가 가장 좋은 성능을 보였다.</p>
-
-<p>그리고 0점 나오는 경우가 많았는데, 이는 csv 파일을 저장하지 않은 경우도 있겠지만 <strong>정답 행 갯수보다 적거나 많은 행을 제출</strong>해서 그렇다.
-이런 경우에는 0점이 나올 수 있기 때문에 주의해야 한다. 앞에 있던 사진처럼 총 행의 갯수(학습용 데이터 수, 평가용 데이터 수)를 제공해주기 때문에 
-무조건 csv 파일을 제출할 때 정답 행 갯수와 같은지 len() 함수 등을 이용해서 <strong>꼭꼭</strong> 확인해야 한다!!</p>
-
-<h4 id="3과목">3과목</h4>
-
-<p><img src="/img/posts/bigdata/8.png" width="80%" /></p>
-
-<p>물론 5점 맞은 주제에 무슨 후기냐 싶겠지만, 변명을 하자면 문제가 두문제 나오는데, 각각 5점짜리 소문항 3개씩 15점짜리 문제 두 개였다.
-각각 문제는 1번 소문항이 틀리면 나머지 두개의 문항도 모두 틀리는 구조이기 때문에 2번 문항에서 t-검정의 유의구간을 반대로 설정하는 
-실수를 저질러서 모두 다 틀려버리고 말았다….</p>
-
-<p>개인적으로는 3과목이 가장 어려운 과목이라고 생각하고, 앞으로도 계속 어려워 질 것이라고 생각한다.
-그 이유는 일단 지금 3과목에서는 통계적 검정을 주로 물어보기는 하지만 꼭 통계적 검정(t 검정 혹은 카이제곱 검정)을 물어보지 않을 수도 있다는 점이다.
-실제로 저 예시 문제에서 나온 것처럼 선형 회귀의 계수나 변수 중요도, 오즈비를 물어보는 경우가 대부분이었다.
-실제 기 치뤄진 시험의 기출문제에서도 다른 통계적 지식을 물어보는 경우가 있었는데 이런 경우에는 정말 어려운 문제가 나올 수 있다고 느꼈다. 
-게다가 빅분기 특성상 기출문제도 정확하지 않기 때문에, 추후에 이 시험의 난이도를 올리고자 한다면 2과목 점수를 낮추고 3과목 점수를 올리는 식으로 
-변별력을 줄 수도 있지 않을까? 그런 생각이 들었다.</p>
-
-<p><img src="/img/posts/bigdata/5.png" width="80%" /></p>
-
-<p>게다가, 지금은 1과목과 2과목을 모두 맞추면 70점으로 무조건 합격이 가능하기에 떠도는 팁으로는 1과목 2과목만 준비해서 특정 방법(랜덤포레스트 회귀 또는 분류)
-만 달달 외워서 시험보는 편이 팁이라고 돌아다니는데, 랜덤포레스트 특성상 이런 시험의 데이터 셋에서는 어느정도 무조건적으로 성능이 좋게 나올 수 밖에는 
-없기 때문에… 시험 점수 등을 조정해서 3과목을 공부할 수 밖에는 없게끔 시험을 언젠가 바꿀 수도 있지 않을까 생각이 들었다.</p>
-
-<h3 id="마치며">마치며</h3>
-
-<p>빅데이터 분석기사는 일단 필기를 합격했다면 실기는 수월하게 합격할 수 있는 시험이라고 느꼈다. 비록 작업형 시험이기는 하지만 코드가 정말 익숙하지 않은 사람이라도 
-충분히 합격할 수 있는 시험이다. 
-일단 수험서로는 ㅇㄱㅈ 출판사의 책을 사용했는데, 솔직히 별로 좋지 않았다고 할 수 밖에는 없다. 내용이 완전 틀린 내용이 실려있기도 했고,
-해설과 본문 내용이 충돌되는 경우도 많았다. 다른 출판사의 책을 보지는 않았지만 사는 것이 더 좋지 않을까? 그런 생각은 있다. 적어도 2024년에는..</p>
-
-<p>아무튼, 이렇게 빅데이터 분석기사 24년 1회 후기를 마친다!!</p>]]></content><author><name>ash tensor</name></author><category term="자격증" /><summary type="html"><![CDATA[[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기 및 시험 문제]]></summary></entry><entry><title type="html">[자격증][실기] 정보처리기사 2024년 1회 실기 합격 후기</title><link href="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/06/engineer-information-processor.html" rel="alternate" type="text/html" title="[자격증][실기] 정보처리기사 2024년 1회 실기 합격 후기" /><published>2024-08-06T00:00:00+09:00</published><updated>2024-08-06T00:00:00+09:00</updated><id>http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/06/engineer-information-processor</id><content type="html" xml:base="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/06/engineer-information-processor.html"><![CDATA[<h2 id="자격증실기-정보처리기사-2024년-1회-실기-합격-후기">[자격증][실기] 정보처리기사 2024년 1회 실기 합격 후기</h2>
+예를 들어, 클라이언트가 JSON으로 인코딩된 데이터를 전송하고, 서버가 이를 자바 객체로 변환하여 처리하는 경우에 적합함.</p>]]></content><author><name>ash tensor</name></author><category term="WEB" /><category term="JAVA" /><summary type="html"><![CDATA[[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기]]></summary></entry><entry><title type="html">[자격증][실기] 정보처리기사 2024년 1회 실기 합격 후기</title><link href="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/06/engineer-information-processor.html" rel="alternate" type="text/html" title="[자격증][실기] 정보처리기사 2024년 1회 실기 합격 후기" /><published>2024-08-06T00:00:00+09:00</published><updated>2024-08-06T00:00:00+09:00</updated><id>http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/06/engineer-information-processor</id><content type="html" xml:base="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/06/engineer-information-processor.html"><![CDATA[<h2 id="자격증실기-정보처리기사-2024년-1회-실기-합격-후기">[자격증][실기] 정보처리기사 2024년 1회 실기 합격 후기</h2>
 
 <h3 id="합격-인증">합격 인증</h3>
 
@@ -2019,244 +2493,4 @@ z값 계산과 같은 각 통계 분포의 기초적인 통계량 계산과 검�
 물론 그렇다고 하더라도 모든 것을 기억하고 있지는 않는 데다가, 
 앞서 말했듯이 키워드 기반 넓고 얕게 아는 것보다는 나오는 내용을 중심으로 자세히 아는 것이 더 중요하기 때문에 약 2주 정도 하루에 세시간 정도씩 공부했다.</p>
 
-<p>비전공자인 경우에는 이보다 조금 더 공부해야 안정적으로 합격할 수 있지 않을까 싶다.</p>]]></content><author><name>ash tensor</name></author><category term="자격증" /><summary type="html"><![CDATA[[자격증][필기] 빅데이터 분석기사 8회 후기]]></summary></entry><entry><title type="html">[백준][JAVA] 백준 7562번 :: 나이트의 이동 :: 실버 1</title><link href="http://localhost:4000/java/ps/%EB%B0%B1%EC%A4%80/2024/05/02/boj7562.html" rel="alternate" type="text/html" title="[백준][JAVA] 백준 7562번 :: 나이트의 이동 :: 실버 1" /><published>2024-05-02T00:00:00+09:00</published><updated>2024-05-02T00:00:00+09:00</updated><id>http://localhost:4000/java/ps/%EB%B0%B1%EC%A4%80/2024/05/02/boj7562</id><content type="html" xml:base="http://localhost:4000/java/ps/%EB%B0%B1%EC%A4%80/2024/05/02/boj7562.html"><![CDATA[<h2 id="백준java-백준-7562번--나이트의-이동--실버-1">[백준][JAVA] 백준 7562번 :: 나이트의 이동 :: 실버 1</h2>
-
-<h3 id="문제-설명">문제 설명</h3>
-
-<p>체스판 위에 한 나이트가 놓여져 있다. 나이트가 한 번에 이동할 수 있는 칸은 아래 그림에 나와있다. 
-나이트가 이동하려고 하는 칸이 주어진다. 나이트는 몇 번 움직이면 이 칸으로 이동할 수 있을까?</p>
-
-<h3 id="문제-입력">문제 입력</h3>
-
-<p>입력의 첫째 줄에는 테스트 케이스의 개수가 주어진다.</p>
-
-<p>각 테스트 케이스는 세 줄로 이루어져 있다. 첫째 줄에는 체스판의 한 변의 길이 l(4 ≤ l ≤ 300)이 주어진다. 
-체스판의 크기는 l × l이다. 체스판의 각 칸은 두 수의 쌍 {0, …, l-1} × {0, …, l-1}로 나타낼 수 있다. 
-둘째 줄과 셋째 줄에는 나이트가 현재 있는 칸, 나이트가 이동하려고 하는 칸이 주어진다.</p>
-
-<h3 id="출력">출력</h3>
-
-<p>각 테스트 케이스마다 나이트가 최소 몇 번만에 이동할 수 있는지 출력한다.</p>
-
-<h3 id="예제-입력">예제 입력</h3>
-
-<p>3</p>
-
-<p>8</p>
-
-<p>0 0</p>
-
-<p>7 0</p>
-
-<p>100</p>
-
-<p>0 0</p>
-
-<p>30 50</p>
-
-<p>10</p>
-
-<p>1 1</p>
-
-<p>1 1</p>
-
-<h3 id="예제-출력">예제 출력</h3>
-
-<p>5</p>
-
-<p>28</p>
-
-<p>0</p>
-
-<h4 id="접근방법">접근방법</h4>
-
-<p>오랜만에 푸는 알고리즘 문제였다!! 빅데이터 분석기사(필기), 정보처리기사(실기) 시험을 준비하느라 알고리즘 문제를 풀지 못했는데, 
-오랜만에 풀어보니까 너무 재밌었다. 다행히 두 시험 다 합격했는데, 이제부터 조금씩이라도 알고리즘 문제를 풀고 싶다.</p>
-
-<p>문제는 그렇게 어렵지 않아서 금방 풀 수 있었고, 살짝 흔한 BFS 문제였다. 나는 알고리즘 문제를 밀리의 서재에 있는
-[주요기업/금융권 IT 디지털 직무 채용대비 한권으로 합격하는 취업 코딩테스트] 라는 책을 참고하면서 풀고 있는데, 
-올해 안에 이 책의 모든 문제를 풀이하고 시간이 허락한다면 PCCP라는 알고리즘 자격증 시험에서 높은 점수를 얻는게 목표다(우선순위는 낮지만).</p>
-
-<p>이 책은 솔직히 엄청 좋냐? 하면 그건 아닌 것 같은데 그렇다고 엄청 나쁘냐 하면 그렇지는 않다. 왜냐하면 알고리즘 문제는 그냥 많이 풀어보는게 답이라고 생각하기 때문이다.
-시간을 들인 만큼 정직하게 결과가 나오기 떄문에 그냥 많이 풀어보는게 답이라고 생각한다. 그래서 이 책이 아니라 다른 책을 찾는다고 해도 
-솔직히 큰 차이가 없을 것 같다.</p>
-
-<p>아무튼 최소거리를 구하라고 하면 BFS 문제이고, 이동한 구체적인 루트를 적으라고 하지는 않았으니 노드 각각 방문한 노드를 개별로 구현할 필요는 없고, 
-전체 BFS 내에서 방문한 노드를 체크하기만 하면 된다.</p>
-
-<h3 id="코드">코드</h3>
-
-<p>나이트 노드 클래스와 메인 클래스를 구현했는데, 지금 보니 KnightNode 클래스 내에 getKnightMoves 메소드를 구현하는 것이 더 좋았을 것 같다.
-지금은 메인 클래스 내에 존재하는데, 객체지향적으로 생각했을때 좋은 설계가 아니었다는 생각이 든다.</p>
-
-<p>KnightNode 클래스는 나이트의 현재 위치, 방문한 노드들, 깊이를 저장하는 클래스이고, 
-나이트가 방문한 노드를 표시하는 int[][] visitedNodes를 가지고 있다. visitedNodes는 나이트 기물에 각각 생성되는 게 아니라,
-전역의 visitedNodes를 가리킨다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="kn">package</span> <span class="nn">boj</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.util.ArrayDeque</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="o">;</span>
-
-<span class="kd">class</span> <span class="nc">KnightNode</span> <span class="o">{</span>
-    <span class="kt">int</span><span class="o">[]</span> <span class="n">coordinate</span><span class="o">;</span>
-    <span class="kt">int</span><span class="o">[][]</span> <span class="n">visitedNodes</span><span class="o">;</span>
-    <span class="kt">int</span> <span class="n">depth</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-    
-    <span class="c1">//최초의 나이트 노드 생성용</span>
-    
-    <span class="kd">public</span> <span class="nf">KnightNode</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">coordinate</span><span class="o">,</span> <span class="kt">int</span> <span class="n">boardLength</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">coordinate</span> <span class="o">=</span> <span class="n">coordinate</span><span class="o">;</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">visitedNodes</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">boardLength</span><span class="o">][</span><span class="n">boardLength</span><span class="o">];</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">visit</span><span class="o">(</span><span class="n">coordinate</span><span class="o">);</span>
-    <span class="o">}</span>
-    
-    <span class="c1">// bfs를 돌며 생성되는 나이트 노드 생성용 생성자</span>
-    <span class="kd">public</span> <span class="nf">KnightNode</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">coordinate</span><span class="o">,</span> <span class="kt">int</span><span class="o">[][]</span> <span class="n">visitedNodes</span><span class="o">,</span> <span class="kt">int</span> <span class="n">depth</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">coordinate</span> <span class="o">=</span> <span class="n">coordinate</span><span class="o">;</span>
-        
-        <span class="c1">//new int[][] visitedNodes를 하지 않고 visitedNodes를 그대로 가리키게 하면</span>
-        <span class="c1">//각각의 나이트 노드가 같은 visitedNodes를 가리키게 되어서</span>
-        <span class="c1">//나이트 노드 각각의 visitedNodes가 생성되는 것이 아니라</span>
-        <span class="c1">//전역의 visitedNodes를 가리키게 된다.</span>
-        
-        <span class="k">this</span><span class="o">.</span><span class="na">visitedNodes</span> <span class="o">=</span> <span class="n">visitedNodes</span><span class="o">;</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">depth</span> <span class="o">=</span> <span class="n">depth</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">visit</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">coordinate</span><span class="o">)</span> <span class="o">{</span>
-    <span class="c1">// 방문한 노드를 표시한다.</span>
-        <span class="k">this</span><span class="o">.</span><span class="na">visitedNodes</span><span class="o">[</span><span class="n">coordinate</span><span class="o">[</span><span class="mi">0</span><span class="o">]][</span><span class="n">coordinate</span><span class="o">[</span><span class="mi">1</span><span class="o">]]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
-    <span class="o">}</span>
-    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">checkVisited</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">coordinate</span><span class="o">)</span> <span class="o">{</span>
-        <span class="c1">// 방문했으면 참, 방문하지 않았으면 거짓</span>
-        <span class="k">if</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">visitedNodes</span><span class="o">[</span><span class="n">coordinate</span><span class="o">[</span><span class="mi">0</span><span class="o">]][</span><span class="n">coordinate</span><span class="o">[</span><span class="mi">1</span><span class="o">]]</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
-        <span class="o">}</span>
-        <span class="k">else</span> <span class="o">{</span>
-            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">newboj7562</span> <span class="o">{</span>
-    <span class="kd">static</span> <span class="kt">int</span> <span class="n">testCaseNumber</span><span class="o">;</span>
-    <span class="kd">static</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;&gt;</span> <span class="n">testCases</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
-    <span class="kd">static</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;</span> <span class="n">movementMetrix</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
-    <span class="kd">static</span> <span class="kt">int</span><span class="o">[][]</span> <span class="n">visitedList</span><span class="o">;</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="nc">Scanner</span> <span class="n">scanner</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Scanner</span><span class="o">(</span><span class="nc">System</span><span class="o">.</span><span class="na">in</span><span class="o">);</span>
-        <span class="n">inputMethod</span><span class="o">(</span><span class="n">scanner</span><span class="o">);</span>
-        
-        <span class="c1">//나이트가 이동할 수 있는 방향을 저장한다.</span>
-        
-        <span class="n">movementMetrix</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{-</span><span class="mi">2</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">});</span>
-        <span class="n">movementMetrix</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{-</span><span class="mi">2</span><span class="o">,</span> <span class="mi">1</span><span class="o">});</span>
-        <span class="n">movementMetrix</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{-</span><span class="mi">1</span><span class="o">,</span> <span class="o">-</span><span class="mi">2</span><span class="o">});</span>
-        <span class="n">movementMetrix</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span><span class="mi">1</span><span class="o">,</span> <span class="o">-</span><span class="mi">2</span><span class="o">});</span>
-        <span class="n">movementMetrix</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{-</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">});</span>
-        <span class="n">movementMetrix</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{+</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">});</span>
-        <span class="n">movementMetrix</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span><span class="mi">2</span><span class="o">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">});</span>
-        <span class="n">movementMetrix</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span><span class="mi">2</span><span class="o">,</span> <span class="mi">1</span><span class="o">});</span>
-
-        <span class="k">for</span><span class="o">(</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;</span> <span class="n">testCase</span> <span class="o">:</span> <span class="n">testCases</span><span class="o">)</span> <span class="o">{</span>
-            <span class="nc">KnightNode</span> <span class="n">answerKnight</span> <span class="o">=</span> <span class="n">bfs</span><span class="o">(</span><span class="n">testCase</span><span class="o">);</span>
-            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">answerKnight</span><span class="o">.</span><span class="na">depth</span><span class="o">);</span>
-
-        <span class="o">}</span>
-    <span class="o">}</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">KnightNode</span> <span class="nf">bfs</span><span class="o">(</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;</span> <span class="n">testCase</span><span class="o">)</span> <span class="o">{</span>
-        <span class="kt">int</span><span class="o">[]</span> <span class="n">boardLength</span> <span class="o">=</span> <span class="n">testCase</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
-        <span class="kt">int</span><span class="o">[]</span> <span class="n">nowPosition</span> <span class="o">=</span> <span class="n">testCase</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
-        <span class="kt">int</span><span class="o">[]</span> <span class="n">destination</span> <span class="o">=</span> <span class="n">testCase</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
-
-        <span class="n">visitedList</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">boardLength</span><span class="o">[</span><span class="mi">0</span><span class="o">]][</span><span class="n">boardLength</span><span class="o">[</span><span class="mi">0</span><span class="o">]];</span>
-
-        <span class="nc">ArrayDeque</span><span class="o">&lt;</span><span class="nc">KnightNode</span><span class="o">&gt;</span> <span class="n">model</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayDeque</span><span class="o">&lt;&gt;();</span>
-        <span class="n">model</span><span class="o">.</span><span class="na">addLast</span><span class="o">(</span><span class="k">new</span> <span class="nc">KnightNode2</span><span class="o">(</span><span class="n">nowPosition</span><span class="o">,</span> <span class="n">boardLength</span><span class="o">[</span><span class="mi">0</span><span class="o">]));</span>
-
-        <span class="k">while</span> <span class="o">(</span><span class="n">model</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-            <span class="nc">KnightNode</span> <span class="n">selectedKnight</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="na">pollFirst</span><span class="o">();</span>
-            <span class="k">if</span> <span class="o">(</span><span class="nc">Arrays</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">selectedKnight</span><span class="o">.</span><span class="na">coordinate</span><span class="o">,</span> <span class="n">destination</span><span class="o">))</span> <span class="o">{</span>
-                <span class="k">return</span> <span class="n">selectedKnight</span><span class="o">;</span>
-            <span class="o">}</span>
-            <span class="k">else</span> <span class="o">{</span>
-                <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;</span> <span class="n">coordinates</span> <span class="o">=</span> <span class="n">getKnightMoves</span><span class="o">(</span><span class="n">boardLength</span><span class="o">[</span><span class="mi">0</span><span class="o">],</span>
-                        <span class="n">selectedKnight</span><span class="o">.</span><span class="na">coordinate</span><span class="o">);</span>
-
-                <span class="k">for</span> <span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">x</span> <span class="o">:</span> <span class="n">coordinates</span><span class="o">)</span> <span class="o">{</span>
-                    <span class="k">if</span><span class="o">(</span><span class="n">selectedKnight</span><span class="o">.</span><span class="na">checkVisited</span><span class="o">(</span><span class="n">x</span><span class="o">))</span> <span class="o">{</span><span class="c1">// 방문했으면 pass</span>
-                    <span class="o">}</span>
-                    <span class="k">else</span> <span class="o">{</span>
-                        <span class="nc">KnightNode</span> <span class="n">tempKnight</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">KnightNode2</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> 
-                         <span class="n">selectedKnight</span><span class="o">.</span><span class="na">visitedNodes</span><span class="o">,</span> <span class="n">selectedKnight</span><span class="o">.</span><span class="na">depth</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
-                        <span class="n">tempKnight</span><span class="o">.</span><span class="na">visit</span><span class="o">(</span><span class="n">x</span><span class="o">);</span>
-                        <span class="n">model</span><span class="o">.</span><span class="na">addLast</span><span class="o">(</span><span class="n">tempKnight</span><span class="o">);</span>
-                    <span class="o">}</span>
-                <span class="o">}</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
-    <span class="o">}</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;</span> <span class="nf">getKnightMoves</span><span class="o">(</span><span class="kt">int</span> <span class="n">boardLength</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">coordinates</span><span class="o">)</span> <span class="o">{</span>
-        <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;</span> <span class="n">returnArray</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
-        <span class="k">for</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">x</span> <span class="o">:</span> <span class="n">movementMetrix</span><span class="o">)</span> <span class="o">{</span>
-            <span class="kt">int</span><span class="o">[]</span> <span class="n">tempCoordinates</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">2</span><span class="o">];</span>
-            <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">y</span> <span class="o">:</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">tempCoordinates</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">coordinates</span><span class="o">[</span><span class="n">i</span><span class="o">++]</span> <span class="o">+</span> <span class="n">y</span><span class="o">;</span>
-            <span class="o">}</span>
-            <span class="k">if</span><span class="o">(</span><span class="n">checkBoardLimit</span><span class="o">(</span><span class="n">boardLength</span><span class="o">,</span> <span class="n">tempCoordinates</span><span class="o">))</span> <span class="o">{</span>
-                <span class="c1">// BoardLimit내에 위치하면</span>
-                <span class="n">returnArray</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">tempCoordinates</span><span class="o">);</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="n">returnArray</span><span class="o">;</span>
-    <span class="o">}</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">checkBoardLimit</span><span class="o">(</span><span class="kt">int</span> <span class="n">boardLength</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">coordinate</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">:</span> <span class="n">coordinate</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-                <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
-            <span class="o">}</span>
-            <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="n">boardLength</span><span class="o">)</span> <span class="o">{</span>
-                <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
-    <span class="o">}</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">inputMethod</span><span class="o">(</span><span class="nc">Scanner</span> <span class="n">scanner</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">newboj7562</span><span class="o">.</span><span class="na">testCaseNumber</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
-        <span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
-        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">newboj7562</span><span class="o">.</span><span class="na">testCaseNumber</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
-            <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;</span> <span class="n">testCase</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
-            <span class="kt">int</span> <span class="n">boardLength</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextInt</span><span class="o">();</span>
-            <span class="n">testCase</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span><span class="n">boardLength</span><span class="o">});</span>
-            <span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
-
-            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
-                <span class="nc">String</span> <span class="n">coordinates</span> <span class="o">=</span> <span class="n">scanner</span><span class="o">.</span><span class="na">nextLine</span><span class="o">();</span>
-                <span class="kt">int</span><span class="o">[]</span> <span class="n">parsedLine</span> <span class="o">=</span> <span class="n">parsingString</span><span class="o">(</span><span class="n">coordinates</span><span class="o">);</span>
-                <span class="n">testCase</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">parsedLine</span><span class="o">);</span>
-            <span class="o">}</span>
-            <span class="n">testCases</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">testCase</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">parsingString</span><span class="o">(</span><span class="nc">String</span> <span class="n">string</span><span class="o">)</span> <span class="o">{</span>
-        <span class="nc">String</span><span class="o">[]</span> <span class="n">tempString</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">" "</span><span class="o">);</span>
-        <span class="kt">int</span><span class="o">[]</span> <span class="n">ints</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">2</span><span class="o">];</span>
-
-        <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
-        <span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">x</span> <span class="o">:</span> <span class="n">tempString</span><span class="o">)</span> <span class="o">{</span>
-            <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">x</span><span class="o">);</span>
-            <span class="n">ints</span><span class="o">[</span><span class="n">i</span><span class="o">++]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="n">ints</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-
-</code></pre></div></div>
-
-<p>좀 더 깔끔하게 풀이할 수도 있을 것 같은데, 오랜만에 알고리즘 문제를 푼 것 치고는 감을 잡는데 도움이 된 것 같아서 만족스럽다.</p>]]></content><author><name>ash tensor</name></author><category term="JAVA" /><category term="PS" /><category term="백준" /><summary type="html"><![CDATA[[백준][JAVA] 백준 7562번 :: 나이트의 이동 :: 실버 1]]></summary></entry></feed>
+<p>비전공자인 경우에는 이보다 조금 더 공부해야 안정적으로 합격할 수 있지 않을까 싶다.</p>]]></content><author><name>ash tensor</name></author><category term="자격증" /><summary type="html"><![CDATA[[자격증][필기] 빅데이터 분석기사 8회 후기]]></summary></entry></feed>
