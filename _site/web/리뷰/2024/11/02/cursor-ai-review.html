@@ -123,7 +123,7 @@
             <a href="#">ash tensor</a>
             on November 02, 2024 &middot; <span class="reading-time" title="Estimated read time">
   
-   7 mins  read </span>
+   9 mins  read </span>
 
           </span>
 <!-- 카테고리를 추가하는 코드 -->
@@ -440,6 +440,16 @@ TENSOR STUDIO
             
                 
                     <li style="margin: 0px">
+                        <a href="/web/%EB%A6%AC%EB%B7%B0/2024/12/11/ecount-interview.html" style= "color: black; font-size: 12px;">
+                            [후기] 이카운트 코딩 테스트 및 인터뷰 리뷰
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">11 Dec 2024</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
                         <a href="/web/%EB%A6%AC%EB%B7%B0/2024/11/02/cursor-ai-review.html" style= "color: black; font-size: 12px;">
                             [후기] 웹 개발자의 Cursor AI 사용기
                         </a>
@@ -458,14 +468,6 @@ TENSOR STUDIO
                     
                 
             
-                
-                    <li style="margin: 0px">
-                        <a href="/web/react/2024/10/15/openai-realtime.html" style= "color: black; font-size: 12px;">
-                            [WEB][react] Chat-gpt realtime api 구현 및 설명
-                        </a>
-                        <small style= "margin-bottom: 0px; font-size: 10px;">15 Oct 2024</small>
-                    </li>
-                    
                 
             
                 
@@ -771,6 +773,16 @@ TENSOR STUDIO
             
                 
                     <li style="margin: 0px">
+                        <a href="/web/%EB%A6%AC%EB%B7%B0/2024/12/11/ecount-interview.html" style= "color: black; font-size: 12px;">
+                            [후기] 이카운트 코딩 테스트 및 인터뷰 리뷰
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">11 Dec 2024</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
                         <a href="/web/%EB%A6%AC%EB%B7%B0/2024/11/02/cursor-ai-review.html" style= "color: black; font-size: 12px;">
                             [후기] 웹 개발자의 Cursor AI 사용기
                         </a>
@@ -890,6 +902,34 @@ TENSOR STUDIO
 
 <p>javadoc 주석을 작성하는 데 있어서도 마찬가지로 코파일럿보다 훨씬 더 정확하게 주석을 작성해주는 것을 볼 수 있다.</p>
 
+<h4 id="cursor-ai-composer">Cursor AI Composer</h4>
+
+<p>(2024-12-11 추가)</p>
+
+<p>커서 이야기를 하면서 컴포저를 이야기 하지 않을 수가 없다. 왜 커서에서 컴포저가 킬러 기능이라고 하는지 좀 알겠다.
+그렇다고 해도 다른 리뷰들에서 호들갑 떨 만큼 차원이 다른 기능이냐라고 한다면, 꼭 그런가? 싶긴 하다. 내가 원래 이렇게 모든지 호들갑 떠는걸 썩 좋아하지는 않기 때문일지도 모른다.</p>
+
+<p>아무튼. 컴포저는 챗 모드와는 다르게 <strong>실제 파일을 대규모로 생성해주고, 편집해주는 기능</strong>이다.</p>
+
+<p>예를 들어 볼까? 일단 리액트 프로젝트에서 이미 작은 버튼 컴포넌트가 존재하는데, 이와 비슷하지만 그냥 크기가 큰 버튼을 만들어 주고 싶다고 하자.</p>
+
+<p><img src="/img/posts/cursor/6.png" width="80%" /></p>
+
+<p>그럼 이런식으로 요청하면 컴포저가 실제로 파일을 생성해가며, 그리고 해당 파일을 이용하기 위해 다른 파일을 수정해야 한다면, <strong>다른 파일까지 수정해가며</strong> 컴포저가 자동으로 파일을 생성해주고 수정해주는 것을 볼 수 있다.</p>
+
+<p><img src="/img/posts/cursor/7.png" width="80%" /></p>
+
+<p>이런식으로 컴포저가 자동으로 파일을 생성해주고 수정해주는 것을 볼 수 있다. 해당 버튼을 위한 css 파일도 생성하고, 필요하다면 다른 컴포넌트까지 수정해주는 것을 볼 수 있다.</p>
+
+<p>컴포저의 장점은 일단 파일을 대규모로 생성하고 수정해 준다는 점이다. 이 점이 컴포저의 가장 큰 장점이라고 생각한다. 사실 챗 모드와 딱히 엄청 다른 건 없기는 하다.
+이렇게 말하면 뭔소리지? 싶긴 하겠지만, 컴포저를 이용한다고 해도, <strong>결국 GPT 엔진 성능 이상의 결과를 얻는건 불가능하다.</strong></p>
+
+<p>그러니까 GPT가 못 만들어 주는건 컴포저라고 만들 수 있는 건 아니라는 말이다. 물론 내가 우물안 개구리라 커서의 더 많은 성능을 끌어 올리지 못하는 것일 수도 있지만, 
+결국에는 프레임워크의, 프로젝트의 구성을 제대로 알고 있는 개발자가 컴포저가 생성한 코드를 정리해주고 수정해주는 것이 필요하다.</p>
+
+<p>그런데 그럼에도, 컴포저는 챗 모드보다 훨씬 더 빠르게 코드를 생성해주고 수정하는데 도움을 주는 건 사실이다.
+나는 컴포저를 어떻게 이용하냐면, 일단 컴포저를 이용해서 코드의 뼈대를 잡고, 그걸 수정하는 식으로 이용하고 있다.</p>
+
 <h4 id="단점">단점</h4>
 
 <p><img src="/img/posts/cursor/4.png" width="80%" /></p>
@@ -913,6 +953,14 @@ TENSOR STUDIO
 <p><img src="/img/posts/cursor/5.png" width="80%" /></p>
 
 <p>이런 경우에 Stack Overflow에 찾아보니까, F1을 눌러서 Java Language Server 작업 공간 디렉토리를 삭제하면 깨끗한 상태로 돌아가는 데 도움이 된다고 하고, 실제로 그 방법을 이용해서 문제를 해결할 수 있었다.</p>
+
+<p>(2024-12-11 추가)</p>
+
+<p>그리고 컴포저의 단점을 설명해 보자면, <strong>앞서 말했듯 대규모로 다른 파일까지 수정한다</strong> 고 했는데, 이 부분은 컴포저가 코드를 생성하고 수정하는 과정에서 문제가 발생할 수 있는 부분이다. 예를 들어 보자면, 나는 앞선 맥락은 유지하면서 새로운 기능을 추가하고 싶은데, 컴포저는 새로운 기능에 맥락을 깊게 맞춰, 앞선 맥락을 무시하는 경우가 종종 있었다.</p>
+
+<p>이런 경우에 발생할 수 있는 문제가, 주 파일은 괜찮지만, 컴포저가 건드린 다른 파일에서 문제가 생기는 경우이다. 나같은 경우에는 메인 파일은 괜찮아서 Accept를 눌렀지만, 컴포저가 건드린 다른 파일에서 문제가 생겨서 되돌리는데 고생을 했던 적이 있다. 깃이 있긴 하지만 한줄 한줄 작성할 때마다 커밋을 올릴 수도 없는 노릇이기도 하고.</p>
+
+<p>아무튼 이런 문제가 있다.</p>
 
 <h3 id="마치며">마치며</h3>
 
@@ -993,6 +1041,18 @@ Intelij도 엄청 비싼 도구임을 생각하면(나는 아직 학생 무료 �
     
       <li>
         <h3>
+          <a href="/web/%EB%A6%AC%EB%B7%B0/2024/12/11/ecount-interview.html" style= "font-size: 17px;">
+            [후기] 이카운트 코딩 테스트 및 인터뷰 리뷰
+          </a>
+          <small style= "font-size: 14px;">11 Dec 2024</small>
+        </h3>
+      </li>
+      
+    
+  
+    
+      <li>
+        <h3>
           <a href="/web/%EB%A6%AC%EB%B7%B0/2024/11/02/cursor-ai-review.html" style= "font-size: 17px;">
             [후기] 웹 개발자의 Cursor AI 사용기
           </a>
@@ -1038,16 +1098,6 @@ Intelij도 엄청 비싼 도구임을 생각하면(나는 아직 학생 무료 �
       
     
   
-    
-      <li>
-        <h3>
-          <a href="/web/java/2024/08/26/spring-n-plus-1-problem.html" style= "font-size: 17px;">
-            [WEB][Spring] 스프링 N + 1 문제
-          </a>
-          <small style= "font-size: 14px;">26 Aug 2024</small>
-        </h3>
-      </li>
-      
     
   
     
@@ -1099,6 +1149,9 @@ Intelij도 엄청 비싼 도구임을 생각하면(나는 아직 학생 무료 �
         <a class="btn btn-primary float-left" href="/web/java/2024/10/24/spring-gpt-frontend.html" data-toggle="tooltip" data-placement="top" title="[WEB][Spring] 스프링으로 Chat-GPT 페이지 구현하기 - 2">&larr; Previous<span class="d-none d-md-inline">
             Post</span></a>
         
+        
+        <a class="btn btn-primary float-right" href="/web/%EB%A6%AC%EB%B7%B0/2024/12/11/ecount-interview.html" data-toggle="tooltip" data-placement="top" title="[후기] 이카운트 코딩 테스트 및 인터뷰 리뷰">Next<span class="d-none d-md-inline">
+            Post</span> &rarr;</a>
         
 
       </div>

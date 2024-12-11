@@ -1,4 +1,75 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-11-03T15:10:37+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[후기] 웹 개발자의 Cursor AI 사용기</title><link href="http://localhost:4000/web/%EB%A6%AC%EB%B7%B0/2024/11/02/cursor-ai-review.html" rel="alternate" type="text/html" title="[후기] 웹 개발자의 Cursor AI 사용기" /><published>2024-11-02T00:00:00+09:00</published><updated>2024-11-02T00:00:00+09:00</updated><id>http://localhost:4000/web/%EB%A6%AC%EB%B7%B0/2024/11/02/cursor-ai-review</id><content type="html" xml:base="http://localhost:4000/web/%EB%A6%AC%EB%B7%B0/2024/11/02/cursor-ai-review.html"><![CDATA[<h2 id="후기-웹-개발자의-cursor-ai-사용기">[후기] 웹 개발자의 Cursor AI 사용기</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-12-11T15:50:44+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[후기] 이카운트 코딩 테스트 및 인터뷰 리뷰</title><link href="http://localhost:4000/web/%EB%A6%AC%EB%B7%B0/2024/12/11/ecount-interview.html" rel="alternate" type="text/html" title="[후기] 이카운트 코딩 테스트 및 인터뷰 리뷰" /><published>2024-12-11T00:00:00+09:00</published><updated>2024-12-11T00:00:00+09:00</updated><id>http://localhost:4000/web/%EB%A6%AC%EB%B7%B0/2024/12/11/ecount-interview</id><content type="html" xml:base="http://localhost:4000/web/%EB%A6%AC%EB%B7%B0/2024/12/11/ecount-interview.html"><![CDATA[<h2 id="후기-이카운트-코딩-테스트-및-인터뷰-리뷰">[후기] 이카운트 코딩 테스트 및 인터뷰 리뷰</h2>
+
+<h3 id="1-서론">1. 서론</h3>
+
+<p><img src="/img/posts/interview/1.png" width="80%" /></p>
+
+<p>항상 업로드를 꾸준히 해야겠다고 생각하지만, 마음에만 그치고 꾸준히 하지 못하는 것 같다.
+근데 어쩔 수 없는게, 좀 새로운 내용을 적고 싶은데, 이미 다른 사람이 올린 내용의 변주밖에는 안되니까 안적는 것도 많기는 하다.
+아무튼.
+음 일단 코딩 테스트 후기부터 적는게 좋을 것 같다. 사실 코딩 테스트는 일주일, 그러니까 12월 2일, 화요일날 있었는데</p>
+
+<p><img src="/img/posts/interview/2.png" width="80%" /></p>
+
+<p>총 세 문제로 이루어져 있었고, 코딩 테스트 플랫폼은 구름이었다.</p>
+
+<h3 id="2-코딩-테스트">2. 코딩 테스트</h3>
+
+<p>일단 사실 코딩 테스트를 처음 받아봤을 때, 어렵다는 느낌은 받지 못했다. 
+오히려 쉽다는 인상을 좀 받았는데, 일단 기본적으로 내가 예상했던 코딩 테스트 문제는 일단 자료구조 문제 하나와 그래프 순회 문제(BFS, DFS)와 같은 문제, 그리고 어렵게 나오면 
+동적 계획법 같은 문제가 나오지 않을까? 싶었는데, 그래프 순회 문제가 하나도 안 나왔다는 점에서 좀 특이했다고 느꼈다. 그러니까 그만큼, <strong>올바른 자료구조</strong>를 사용하는게 너무 중요한 코테였다.</p>
+
+<p>1번 문제는 문자열 치환 문제? 였는데 백준에서 비슷한 문제를 찾아보지는 않았지만 암호문을 주어지고, 대응되는 해독 규칙이 주어진 뒤, 암호문을 평문으로 해독하는 문제였다.
+하지만 해독 규칙이 무한 루프에 빠질 수 있기 때문에 무한 루프에 빠지는 경우를 잘 처리해야 하는 문제였고</p>
+
+<p>2번 문제는 자료구조 문제였다. 아 여기서 내가 실수를 하지 않았나 싶은데, 일단 문제는 산의 높이가 주어지고(ex: 9, 10, 3, 10, 9) 각 산에 다리를 놓는 문제인데 다리를 놓기 위해서는 각 산의 높이가 동일해야만 하고, 산 사이에 해당 산 보다 더 높은 산이 존재해서는 안 되는 문제였다.</p>
+
+<p>아 이건 내가 면접에 들어가서야 내가 잘못 풀이했다고 느꼈는데, 나는 각 산의 높이를 해시 맵에 넣고, 이런 식으로 풀었는데, 다른 사람이 대답하는 것을 들어보니 스택 문제이지 않았나, 그런 생각이 그제서야 들었다.</p>
+
+<p>3번 문제는 시간이 오래 걸리는 구현 문제였다. 로그 파일이 주어지고, 해당 로그 파일을 특수한 규칙을 가지고 정렬하는 문제였다. 나는 처음에 1번 2번 문제에 집중하다가 3번 문제를 제대로 못풀었는데, 아쉽긴 했다.</p>
+
+<p><img src="/img/posts/interview/3.png" width="80%" /></p>
+
+<h3 id="3-기술면접">3. 기술면접</h3>
+
+<p>면접은 5명이 1조를 이뤄서 진행되었는데, 면접 전 대기시간에 간단한 문제를 풀이하고(종이에) 면접을 들어갔다.</p>
+
+<p>면접은 두 차례로 진행되었는데 기술면접과 이력서 기반 면접 이렇게 두 번으로 진행되었다.</p>
+
+<p>일단 기술면접에서 해당 코딩테스트 코드를 가지고 물어보는 것이 많았는데, 문제가 모두 자료구조 문제였던 만큼 막 무척이나 어려웠던 문제는 아니었지만 자료구조를 잘 사용했어야만 하고, 개발자 면접관 두 분이서 해당 자료구조를 잘 이해했는지, 잘 사용했는지 계속 물어봤다는 인상이 들었다.</p>
+
+<p>일단 첫번째 문자열 치환 문제에서는 해시 셋을 사용해서 이미 도달했던 노드인지를 체크했어야 하는데, 다른 지원자 분들이 그냥 리스트를 사용했다고 했나? 아무튼 그래서 혹시 다르게 풀이한 사람이 있는지 지원자들에게 물어보고 보통은 이렇게 해시 셋, 집합을 이용해서 풀이하는 것이 맞다고 설명하거나, 하는 식의 질문이 주를 이뤘다.</p>
+
+<p>구름IDE에서 코딩 테스트를 진행했던 만큼, 자신의 코드를 제대로 기억하지 못한 경우도 있었을 텐데 그러지 않게 조심해야 했고</p>
+
+<p>음, 그 이후에는 특정 상황을 제시하고 그 상황에서 어떤 문제가 발생할 수 있는지 물어봤는데 동시성 제어? 관련 질문이었던 것 같다.</p>
+
+<p>특정 서버에 접속하는 클라이언트가 있고, 그 서버에 접속하는 클라이언트가 너무 많이 몰려서 서버가 뻗어버리는 상황이 발생했다고 가정하고, 이런 상황에서 어떻게 해결할 수 있는지 물어봤다.
+여기서 내가 카프카가지고 헛소리 좀 하다가 그게 안되면 라운드 로빈 등의 방식으로 클라이언트의 요청을 시간적으로 분산시켜야 한다고 대답했는데 이 대답이 조금 후회되기는 한다.</p>
+
+<p>그래서 카프카의 구조를 알려달라는 질문에 내가 예전에 했던 프로젝트에서 4개의 EC2 인스턴스 어쩌구저쩌구 하다가 허무하게 끝났던 것 같다. 아마도 내 생각에는 이런 메시지 큐 같은 대답이 아니라 시간적 분산 등에 초점을 맞춰서 대답했어야 하지 않을까, 싶은 생각이 들기는 했다. 면접관의 반응도 그렇고, 내 옆의 분도 카프카 가지고 대답하다가 조금 핀트가 어긋났다는 대답을 들은 걸 보면…</p>
+
+<p>사실 이런 기술 면접에서 Node.js나 프레임워크 등의 질문이 나올 거라고 생각해서 호이스팅과 같은 ㅋㅋ Node.js 백엔드 개발자 관련 질문을 좀 준비해 갔는데 다른 질문이 나와서 조금 당황하기는 했다.</p>
+
+<h3 id="4-전반적인-면접-후기">4. 전반적인 면접 후기</h3>
+
+<p>그리고 이후에는 인성면접? 이력서 기반 면접을 진행했는데, 1분 자기소개나 지원 동기 등을 물어보지 않을까 생각했는데 그런 질문은 없었다. 
+그럴 수 밖에는 없었던 게, 음 일단 5명? 4명이 1조로 이뤄서 약 30분 정도 면접을 진행했는데
+일단 요구했던 대답이 전부 <strong>“두문장 세문장 정도로 대답해 달라”</strong> 였다. 그러니까 대답할 시간을 많이 주지 않았고, 산술적으로 계산해 본다고 해도 한사람당 대략 6분에서 7분 정도 면접을 진행하는? 그런 식의 면접이었다. 왜 잡플래닛에서 병풍면접같았다고 적혀있었는지 조금 알 것 같다. 실제로는 그렇지 않을지는 몰라도, 한사람당 대략 6분 정도 면접을 진행하는 셈이니, 다른 사람 대답이 길어지면 길어질수록 점점 다른 사람이 자연스럽게 병풍이 되는 셈이니ㅋㅋ</p>
+
+<p>면접결과는 바로 다음 날 오전에 나온다.</p>
+
+<p>내가 어떻게 느꼈냐면 이럴거면 <strong>그냥 서류컷을 좀 더 높게 잡는게 좋지 않나?</strong> 하는 생각이 들었다. 면접 경쟁률은 약 6대 1정도라고 들었다.</p>
+
+<p>물론 면접이 나쁜 경험은 아니었다. 그리고 내가 부족했다는 점도 절대적으로 인정한다!! 뭔가 알더라도 제대로 알아야겠다는 생각도 들었고, 면접비 3만원 주신 것도 뭐 나쁘지 않았다.
+그렇긴 해도 변별력이 조금 없는 면접이었다는 느낌이 들었다. 
+1분 자기소개랑 지원동기, 예상 질문에 대한 대답 같은것도 열심히 외워갔는데 아예 물어보지도 않으니ㅠㅠ 좀 서운하긴 했다. 뭐 물어보셨어도 떨어지긴 했곘지만, 아쉬운 면접이었다. 내가 너무 못하더라…</p>
+
+<p>면접비 받은 걸로 커피나 마셔야겠다.</p>
+
+<p><img src="/img/posts/interview/4.png" width="80%" /></p>
+
+<p>한잔해~</p>]]></content><author><name>ash tensor</name></author><category term="WEB" /><category term="리뷰" /><summary type="html"><![CDATA[[후기] 이카운트 코딩 테스트 및 인터뷰 리뷰]]></summary></entry><entry><title type="html">[후기] 웹 개발자의 Cursor AI 사용기</title><link href="http://localhost:4000/web/%EB%A6%AC%EB%B7%B0/2024/11/02/cursor-ai-review.html" rel="alternate" type="text/html" title="[후기] 웹 개발자의 Cursor AI 사용기" /><published>2024-11-02T00:00:00+09:00</published><updated>2024-11-02T00:00:00+09:00</updated><id>http://localhost:4000/web/%EB%A6%AC%EB%B7%B0/2024/11/02/cursor-ai-review</id><content type="html" xml:base="http://localhost:4000/web/%EB%A6%AC%EB%B7%B0/2024/11/02/cursor-ai-review.html"><![CDATA[<h2 id="후기-웹-개발자의-cursor-ai-사용기">[후기] 웹 개발자의 Cursor AI 사용기</h2>
 
 <h3 id="1-서론">1. 서론</h3>
 
@@ -58,6 +129,34 @@
 
 <p>javadoc 주석을 작성하는 데 있어서도 마찬가지로 코파일럿보다 훨씬 더 정확하게 주석을 작성해주는 것을 볼 수 있다.</p>
 
+<h4 id="cursor-ai-composer">Cursor AI Composer</h4>
+
+<p>(2024-12-11 추가)</p>
+
+<p>커서 이야기를 하면서 컴포저를 이야기 하지 않을 수가 없다. 왜 커서에서 컴포저가 킬러 기능이라고 하는지 좀 알겠다.
+그렇다고 해도 다른 리뷰들에서 호들갑 떨 만큼 차원이 다른 기능이냐라고 한다면, 꼭 그런가? 싶긴 하다. 내가 원래 이렇게 모든지 호들갑 떠는걸 썩 좋아하지는 않기 때문일지도 모른다.</p>
+
+<p>아무튼. 컴포저는 챗 모드와는 다르게 <strong>실제 파일을 대규모로 생성해주고, 편집해주는 기능</strong>이다.</p>
+
+<p>예를 들어 볼까? 일단 리액트 프로젝트에서 이미 작은 버튼 컴포넌트가 존재하는데, 이와 비슷하지만 그냥 크기가 큰 버튼을 만들어 주고 싶다고 하자.</p>
+
+<p><img src="/img/posts/cursor/6.png" width="80%" /></p>
+
+<p>그럼 이런식으로 요청하면 컴포저가 실제로 파일을 생성해가며, 그리고 해당 파일을 이용하기 위해 다른 파일을 수정해야 한다면, <strong>다른 파일까지 수정해가며</strong> 컴포저가 자동으로 파일을 생성해주고 수정해주는 것을 볼 수 있다.</p>
+
+<p><img src="/img/posts/cursor/7.png" width="80%" /></p>
+
+<p>이런식으로 컴포저가 자동으로 파일을 생성해주고 수정해주는 것을 볼 수 있다. 해당 버튼을 위한 css 파일도 생성하고, 필요하다면 다른 컴포넌트까지 수정해주는 것을 볼 수 있다.</p>
+
+<p>컴포저의 장점은 일단 파일을 대규모로 생성하고 수정해 준다는 점이다. 이 점이 컴포저의 가장 큰 장점이라고 생각한다. 사실 챗 모드와 딱히 엄청 다른 건 없기는 하다.
+이렇게 말하면 뭔소리지? 싶긴 하겠지만, 컴포저를 이용한다고 해도, <strong>결국 GPT 엔진 성능 이상의 결과를 얻는건 불가능하다.</strong></p>
+
+<p>그러니까 GPT가 못 만들어 주는건 컴포저라고 만들 수 있는 건 아니라는 말이다. 물론 내가 우물안 개구리라 커서의 더 많은 성능을 끌어 올리지 못하는 것일 수도 있지만, 
+결국에는 프레임워크의, 프로젝트의 구성을 제대로 알고 있는 개발자가 컴포저가 생성한 코드를 정리해주고 수정해주는 것이 필요하다.</p>
+
+<p>그런데 그럼에도, 컴포저는 챗 모드보다 훨씬 더 빠르게 코드를 생성해주고 수정하는데 도움을 주는 건 사실이다.
+나는 컴포저를 어떻게 이용하냐면, 일단 컴포저를 이용해서 코드의 뼈대를 잡고, 그걸 수정하는 식으로 이용하고 있다.</p>
+
 <h4 id="단점">단점</h4>
 
 <p><img src="/img/posts/cursor/4.png" width="80%" /></p>
@@ -81,6 +180,14 @@
 <p><img src="/img/posts/cursor/5.png" width="80%" /></p>
 
 <p>이런 경우에 Stack Overflow에 찾아보니까, F1을 눌러서 Java Language Server 작업 공간 디렉토리를 삭제하면 깨끗한 상태로 돌아가는 데 도움이 된다고 하고, 실제로 그 방법을 이용해서 문제를 해결할 수 있었다.</p>
+
+<p>(2024-12-11 추가)</p>
+
+<p>그리고 컴포저의 단점을 설명해 보자면, <strong>앞서 말했듯 대규모로 다른 파일까지 수정한다</strong> 고 했는데, 이 부분은 컴포저가 코드를 생성하고 수정하는 과정에서 문제가 발생할 수 있는 부분이다. 예를 들어 보자면, 나는 앞선 맥락은 유지하면서 새로운 기능을 추가하고 싶은데, 컴포저는 새로운 기능에 맥락을 깊게 맞춰, 앞선 맥락을 무시하는 경우가 종종 있었다.</p>
+
+<p>이런 경우에 발생할 수 있는 문제가, 주 파일은 괜찮지만, 컴포저가 건드린 다른 파일에서 문제가 생기는 경우이다. 나같은 경우에는 메인 파일은 괜찮아서 Accept를 눌렀지만, 컴포저가 건드린 다른 파일에서 문제가 생겨서 되돌리는데 고생을 했던 적이 있다. 깃이 있긴 하지만 한줄 한줄 작성할 때마다 커밋을 올릴 수도 없는 노릇이기도 하고.</p>
+
+<p>아무튼 이런 문제가 있다.</p>
 
 <h3 id="마치며">마치며</h3>
 
@@ -1898,91 +2005,7 @@ The AWS SDK for Java 1.x is being used here:
 이런 방법 말고도 S3 버킷에 이미지를 업로드하면 해당 이미지의 URL을 가져와서 얼굴 인식을 하는 방법도 있긴 하고,
 여러 사진 중에서 해당 사진의 얼굴을 찾는 방법도 있다. 아마도 출입국 심사대나 보안 설정 같은 곳에서 유용하게 사용할 수 있지 않을까 싶다.</p>
 
-<p>끝!</p>]]></content><author><name>ash tensor</name></author><category term="WEB" /><category term="JAVA" /><summary type="html"><![CDATA[AWS Rekognition API를 사용하여 Spring Boot에서 얼굴 인식을 구현.]]></summary></entry><entry><title type="html">[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기</title><link href="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/20/bigdata-processing-engineer.html" rel="alternate" type="text/html" title="[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기" /><published>2024-08-20T00:00:00+09:00</published><updated>2024-08-20T00:00:00+09:00</updated><id>http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/20/bigdata-processing-engineer</id><content type="html" xml:base="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/20/bigdata-processing-engineer.html"><![CDATA[<h2 id="자격증실기-빅데이터-분석기사-2024년-1회8회실기-합격-후기-및-시험-문제">[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기 및 시험 문제</h2>
-
-<h3 id="합격-인증">합격 인증</h3>
-
-<p><img src="/img/posts/bigdata/3.png" width="80%" /></p>
-
-<p>솔직히 좀 부끄럽긴 한데… 3과목 점수가 5점밖에 안나와서 남 보여줄만한 점수는 아니긴 해도, 일단 합격은 합격이니까.</p>
-
-<h3 id="시험-총평">시험 총평</h3>
-
-<p>나는 시험을 동부자격검정센터에서 실기 시험을 봤는데 생각보다 시험장이 조금 작긴 했다. 
-일단 태릉입구 근방 주민은 쉽게 찾아갈 수 있는게, BYC 직영매장 근처에 바로 시험장이 있어서 찾아가기 쉽다.</p>
-
-<p>일단 빅데이터 분석기사의 실기 시험을 공부하며 내가 느꼈던 점은, 필기가 더 어렵고, 실기가 더 쉽다고 느꼈던 점이었다.</p>
-
-<h4 id="1과목">1과목</h4>
-
-<p><img src="/img/posts/bigdata/6.png" width="80%" /></p>
-
-<p>(8회 시험에서는 약 몇백줄 되는 CSV를 제공했는데 다양한 나라의 맥주 판매? 소비 데이터 중에서 특정 조건에 맞는 나라의 정보를 추출하는 문제였다.
-즉 꼭 저런 식의 전처리 문제만 나오는 건 아니다..!)
-1과목은 데이터 전처리 과목인데, 판다스 라이브러리 등을 사용해서 기초적인 데이터 조작을 할 수 있는지를 묻는 문제인데,
-파이썬을 쓸 줄만 안다면 누구나 이 문제를 풀 수 있다. 왜냐하면 help와 dir 명령어를 사용할 수 있기 때문에 pandas를 사용하지 못한다고 하더라도
-도움을 받을 수 있기 때문이다. 사실상 30점은 기본으로 가져가는 점수라고 생각한다.</p>
-
-<h4 id="2과목">2과목</h4>
-
-<p><img src="/img/posts/bigdata/7.png" width="80%" /></p>
-
-<p>2과목은 분석 모델링 과목인데, 회귀 모델이나 분류 모델을 사용해서 주어진 문제에 따른 데이터를 반환하는 문제다.
-이 문제는 40점 배점으로 이 문제도 어려운 문제는 아니다. 내 기준으로 RMSE가 100에서 120 사이에 있었는데 40점으로 만점을 받았다.</p>
-
-<p>8회차 문제를 설명하자면, 두 지하철역의 주요 변수(이름, 날씨, 기온, 습도, 풍속, 미세먼지 등)를 이용해서 두 지하철역의 승하차 인원을 예측하는 문제였다.</p>
-
-<p>일단 2과목에서 점수를 받지 못하면 합격이 어렵다고 봐야 한다. 2유형은 40점이라 배점이 크기도 하지만, 아예 0점이 나오는 경우가 많아서 
-숙달될 수 있을 정도로 코드를 써보는 편이 좋다.
-내 경험상 2유형을 정리해 보자면 일단 <strong>원본 데이터를 잘 살펴 봐야 한다.</strong> 예를 들어서, 범주형 변수인 경우에는
-라벨 인코딩 보다는(물론 안하는 것보다는 성능이 좋겠지만) pandas의 get_dummies를 이용하는 원핫 인코딩을 사용하는 것이 좋다.</p>
-
-<p>또한, 이번 8회차 시험 문제를 설명했듯이, 두 지하철역의 승하차 인원을 예측하는 문제였는데, 꽤 많은 사람들이 <strong>지하철 역 이름</strong>을 변수로 사용하지 않아서 
-점수가 낮게 나왔는데(문제에서는 A역 B역으로 주어졌다) 아마도 A역, B역으로 익명화 되어 있어서 변수로 사용하지 않은 건 이해한다. 하지만 우리가 
-실제 지하철 역을 이용할 때 항상 집에서 가까운 지하철 역을 이용하는 것처럼, 강남의 유동인구가 많기 때문에 강남역은 당연히 노선도의 끝의 지하철 역보다는
-이용자수가 많을 것이 분명하다.</p>
-
-<p>이런 점을 고려하지 않고 지하철 역 이름을 변수로 사용하지 않은 사람들이 많았는데, 물론 사용하지 않다고 하더라도 점수를 받을 수는 있지만 내가 시험장에서 해당 데이터를 기반으로
-분석했을때, 해당 변수가 설명력이 가장 높은 변수였기 때문에 아마 점수가 조금 떨어졌을 것이다. 이렇듯 어느정도 실제 데이터를 살펴보는게 중요하다!</p>
-
-<p><img src="/img/posts/bigdata/4.png" width="80%" /></p>
-
-<p>그리고 돌아다니는 팁으로 랜덤포레스트 회귀 &amp; 분류를 암기해 가는 2과목 팁이 존재하는데 실제로 이 방법이 가장 좋은 것 같다. 실제 시험장에서 
-결측치와 이상치 제거를 수행한 뒤에 선형 회귀 및 다양한 모델을 사용해서 예측을 수행했는데, 그냥 원 핫 인코딩을 적용한 랜덤포레스트 회귀가 가장 좋은 성능을 보였다.</p>
-
-<p>그리고 0점 나오는 경우가 많았는데, 이는 csv 파일을 저장하지 않은 경우도 있겠지만 <strong>정답 행 갯수보다 적거나 많은 행을 제출</strong>해서 그렇다.
-이런 경우에는 0점이 나올 수 있기 때문에 주의해야 한다. 앞에 있던 사진처럼 총 행의 갯수(학습용 데이터 수, 평가용 데이터 수)를 제공해주기 때문에 
-무조건 csv 파일을 제출할 때 정답 행 갯수와 같은지 len() 함수 등을 이용해서 <strong>꼭꼭</strong> 확인해야 한다!!</p>
-
-<h4 id="3과목">3과목</h4>
-
-<p><img src="/img/posts/bigdata/8.png" width="80%" /></p>
-
-<p>물론 5점 맞은 주제에 무슨 후기냐 싶겠지만, 변명을 하자면 문제가 두문제 나오는데, 각각 5점짜리 소문항 3개씩 15점짜리 문제 두 개였다.
-각각 문제는 1번 소문항이 틀리면 나머지 두개의 문항도 모두 틀리는 구조이기 때문에 2번 문항에서 t-검정의 유의구간을 반대로 설정하는 
-실수를 저질러서 모두 다 틀려버리고 말았다….</p>
-
-<p>개인적으로는 3과목이 가장 어려운 과목이라고 생각하고, 앞으로도 계속 어려워 질 것이라고 생각한다.
-그 이유는 일단 지금 3과목에서는 통계적 검정을 주로 물어보기는 하지만 꼭 통계적 검정(t 검정 혹은 카이제곱 검정)을 물어보지 않을 수도 있다는 점이다.
-실제로 저 예시 문제에서 나온 것처럼 선형 회귀의 계수나 변수 중요도, 오즈비를 물어보는 경우가 대부분이었다.
-실제 기 치뤄진 시험의 기출문제에서도 다른 통계적 지식을 물어보는 경우가 있었는데 이런 경우에는 정말 어려운 문제가 나올 수 있다고 느꼈다. 
-게다가 빅분기 특성상 기출문제도 정확하지 않기 때문에, 추후에 이 시험의 난이도를 올리고자 한다면 2과목 점수를 낮추고 3과목 점수를 올리는 식으로 
-변별력을 줄 수도 있지 않을까? 그런 생각이 들었다.</p>
-
-<p><img src="/img/posts/bigdata/5.png" width="80%" /></p>
-
-<p>게다가, 지금은 1과목과 2과목을 모두 맞추면 70점으로 무조건 합격이 가능하기에 떠도는 팁으로는 1과목 2과목만 준비해서 특정 방법(랜덤포레스트 회귀 또는 분류)
-만 달달 외워서 시험보는 편이 팁이라고 돌아다니는데, 랜덤포레스트 특성상 이런 시험의 데이터 셋에서는 어느정도 무조건적으로 성능이 좋게 나올 수 밖에는 
-없기 때문에… 시험 점수 등을 조정해서 3과목을 공부할 수 밖에는 없게끔 시험을 언젠가 바꿀 수도 있지 않을까 생각이 들었다.</p>
-
-<h3 id="마치며">마치며</h3>
-
-<p>빅데이터 분석기사는 일단 필기를 합격했다면 실기는 수월하게 합격할 수 있는 시험이라고 느꼈다. 비록 작업형 시험이기는 하지만 코드가 정말 익숙하지 않은 사람이라도 
-충분히 합격할 수 있는 시험이다. 
-일단 수험서로는 ㅇㄱㅈ 출판사의 책을 사용했는데, 솔직히 별로 좋지 않았다고 할 수 밖에는 없다. 내용이 완전 틀린 내용이 실려있기도 했고,
-해설과 본문 내용이 충돌되는 경우도 많았다. 다른 출판사의 책을 보지는 않았지만 사는 것이 더 좋지 않을까? 그런 생각은 있다. 적어도 2024년에는..</p>
-
-<p>아무튼, 이렇게 빅데이터 분석기사 24년 1회 후기를 마친다!!</p>]]></content><author><name>ash tensor</name></author><category term="자격증" /><summary type="html"><![CDATA[[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기 및 시험 문제]]></summary></entry><entry><title type="html">[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기</title><link href="http://localhost:4000/web/java/2024/08/20/spring-gcp-bucket.html" rel="alternate" type="text/html" title="[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기" /><published>2024-08-20T00:00:00+09:00</published><updated>2024-08-20T00:00:00+09:00</updated><id>http://localhost:4000/web/java/2024/08/20/spring-gcp-bucket</id><content type="html" xml:base="http://localhost:4000/web/java/2024/08/20/spring-gcp-bucket.html"><![CDATA[<h2 id="webgcp-spring-boot에서-gcp-bucket에-파일-업로드하기">[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기</h2>
+<p>끝!</p>]]></content><author><name>ash tensor</name></author><category term="WEB" /><category term="JAVA" /><summary type="html"><![CDATA[AWS Rekognition API를 사용하여 Spring Boot에서 얼굴 인식을 구현.]]></summary></entry><entry><title type="html">[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기</title><link href="http://localhost:4000/web/java/2024/08/20/spring-gcp-bucket.html" rel="alternate" type="text/html" title="[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기" /><published>2024-08-20T00:00:00+09:00</published><updated>2024-08-20T00:00:00+09:00</updated><id>http://localhost:4000/web/java/2024/08/20/spring-gcp-bucket</id><content type="html" xml:base="http://localhost:4000/web/java/2024/08/20/spring-gcp-bucket.html"><![CDATA[<h2 id="webgcp-spring-boot에서-gcp-bucket에-파일-업로드하기">[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기</h2>
 
 <h3 id="문제-설명">문제 설명</h3>
 
@@ -2227,7 +2250,91 @@ mac 기준으로 자신의 .zshrc에 해당 키를 환경변수로 설정해주�
 <p>사용 사례:</p>
 
 <p>단순한 JSON 객체를 자바 객체로 매핑할 때 주로 사용됨.
-예를 들어, 클라이언트가 JSON으로 인코딩된 데이터를 전송하고, 서버가 이를 자바 객체로 변환하여 처리하는 경우에 적합함.</p>]]></content><author><name>ash tensor</name></author><category term="WEB" /><category term="JAVA" /><summary type="html"><![CDATA[[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기]]></summary></entry><entry><title type="html">[자격증][실기] 정보처리기사 2024년 1회 실기 합격 후기</title><link href="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/06/engineer-information-processor.html" rel="alternate" type="text/html" title="[자격증][실기] 정보처리기사 2024년 1회 실기 합격 후기" /><published>2024-08-06T00:00:00+09:00</published><updated>2024-08-06T00:00:00+09:00</updated><id>http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/06/engineer-information-processor</id><content type="html" xml:base="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/06/engineer-information-processor.html"><![CDATA[<h2 id="자격증실기-정보처리기사-2024년-1회-실기-합격-후기">[자격증][실기] 정보처리기사 2024년 1회 실기 합격 후기</h2>
+예를 들어, 클라이언트가 JSON으로 인코딩된 데이터를 전송하고, 서버가 이를 자바 객체로 변환하여 처리하는 경우에 적합함.</p>]]></content><author><name>ash tensor</name></author><category term="WEB" /><category term="JAVA" /><summary type="html"><![CDATA[[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기]]></summary></entry><entry><title type="html">[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기</title><link href="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/20/bigdata-processing-engineer.html" rel="alternate" type="text/html" title="[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기" /><published>2024-08-20T00:00:00+09:00</published><updated>2024-08-20T00:00:00+09:00</updated><id>http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/20/bigdata-processing-engineer</id><content type="html" xml:base="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/20/bigdata-processing-engineer.html"><![CDATA[<h2 id="자격증실기-빅데이터-분석기사-2024년-1회8회실기-합격-후기-및-시험-문제">[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기 및 시험 문제</h2>
+
+<h3 id="합격-인증">합격 인증</h3>
+
+<p><img src="/img/posts/bigdata/3.png" width="80%" /></p>
+
+<p>솔직히 좀 부끄럽긴 한데… 3과목 점수가 5점밖에 안나와서 남 보여줄만한 점수는 아니긴 해도, 일단 합격은 합격이니까.</p>
+
+<h3 id="시험-총평">시험 총평</h3>
+
+<p>나는 시험을 동부자격검정센터에서 실기 시험을 봤는데 생각보다 시험장이 조금 작긴 했다. 
+일단 태릉입구 근방 주민은 쉽게 찾아갈 수 있는게, BYC 직영매장 근처에 바로 시험장이 있어서 찾아가기 쉽다.</p>
+
+<p>일단 빅데이터 분석기사의 실기 시험을 공부하며 내가 느꼈던 점은, 필기가 더 어렵고, 실기가 더 쉽다고 느꼈던 점이었다.</p>
+
+<h4 id="1과목">1과목</h4>
+
+<p><img src="/img/posts/bigdata/6.png" width="80%" /></p>
+
+<p>(8회 시험에서는 약 몇백줄 되는 CSV를 제공했는데 다양한 나라의 맥주 판매? 소비 데이터 중에서 특정 조건에 맞는 나라의 정보를 추출하는 문제였다.
+즉 꼭 저런 식의 전처리 문제만 나오는 건 아니다..!)
+1과목은 데이터 전처리 과목인데, 판다스 라이브러리 등을 사용해서 기초적인 데이터 조작을 할 수 있는지를 묻는 문제인데,
+파이썬을 쓸 줄만 안다면 누구나 이 문제를 풀 수 있다. 왜냐하면 help와 dir 명령어를 사용할 수 있기 때문에 pandas를 사용하지 못한다고 하더라도
+도움을 받을 수 있기 때문이다. 사실상 30점은 기본으로 가져가는 점수라고 생각한다.</p>
+
+<h4 id="2과목">2과목</h4>
+
+<p><img src="/img/posts/bigdata/7.png" width="80%" /></p>
+
+<p>2과목은 분석 모델링 과목인데, 회귀 모델이나 분류 모델을 사용해서 주어진 문제에 따른 데이터를 반환하는 문제다.
+이 문제는 40점 배점으로 이 문제도 어려운 문제는 아니다. 내 기준으로 RMSE가 100에서 120 사이에 있었는데 40점으로 만점을 받았다.</p>
+
+<p>8회차 문제를 설명하자면, 두 지하철역의 주요 변수(이름, 날씨, 기온, 습도, 풍속, 미세먼지 등)를 이용해서 두 지하철역의 승하차 인원을 예측하는 문제였다.</p>
+
+<p>일단 2과목에서 점수를 받지 못하면 합격이 어렵다고 봐야 한다. 2유형은 40점이라 배점이 크기도 하지만, 아예 0점이 나오는 경우가 많아서 
+숙달될 수 있을 정도로 코드를 써보는 편이 좋다.
+내 경험상 2유형을 정리해 보자면 일단 <strong>원본 데이터를 잘 살펴 봐야 한다.</strong> 예를 들어서, 범주형 변수인 경우에는
+라벨 인코딩 보다는(물론 안하는 것보다는 성능이 좋겠지만) pandas의 get_dummies를 이용하는 원핫 인코딩을 사용하는 것이 좋다.</p>
+
+<p>또한, 이번 8회차 시험 문제를 설명했듯이, 두 지하철역의 승하차 인원을 예측하는 문제였는데, 꽤 많은 사람들이 <strong>지하철 역 이름</strong>을 변수로 사용하지 않아서 
+점수가 낮게 나왔는데(문제에서는 A역 B역으로 주어졌다) 아마도 A역, B역으로 익명화 되어 있어서 변수로 사용하지 않은 건 이해한다. 하지만 우리가 
+실제 지하철 역을 이용할 때 항상 집에서 가까운 지하철 역을 이용하는 것처럼, 강남의 유동인구가 많기 때문에 강남역은 당연히 노선도의 끝의 지하철 역보다는
+이용자수가 많을 것이 분명하다.</p>
+
+<p>이런 점을 고려하지 않고 지하철 역 이름을 변수로 사용하지 않은 사람들이 많았는데, 물론 사용하지 않다고 하더라도 점수를 받을 수는 있지만 내가 시험장에서 해당 데이터를 기반으로
+분석했을때, 해당 변수가 설명력이 가장 높은 변수였기 때문에 아마 점수가 조금 떨어졌을 것이다. 이렇듯 어느정도 실제 데이터를 살펴보는게 중요하다!</p>
+
+<p><img src="/img/posts/bigdata/4.png" width="80%" /></p>
+
+<p>그리고 돌아다니는 팁으로 랜덤포레스트 회귀 &amp; 분류를 암기해 가는 2과목 팁이 존재하는데 실제로 이 방법이 가장 좋은 것 같다. 실제 시험장에서 
+결측치와 이상치 제거를 수행한 뒤에 선형 회귀 및 다양한 모델을 사용해서 예측을 수행했는데, 그냥 원 핫 인코딩을 적용한 랜덤포레스트 회귀가 가장 좋은 성능을 보였다.</p>
+
+<p>그리고 0점 나오는 경우가 많았는데, 이는 csv 파일을 저장하지 않은 경우도 있겠지만 <strong>정답 행 갯수보다 적거나 많은 행을 제출</strong>해서 그렇다.
+이런 경우에는 0점이 나올 수 있기 때문에 주의해야 한다. 앞에 있던 사진처럼 총 행의 갯수(학습용 데이터 수, 평가용 데이터 수)를 제공해주기 때문에 
+무조건 csv 파일을 제출할 때 정답 행 갯수와 같은지 len() 함수 등을 이용해서 <strong>꼭꼭</strong> 확인해야 한다!!</p>
+
+<h4 id="3과목">3과목</h4>
+
+<p><img src="/img/posts/bigdata/8.png" width="80%" /></p>
+
+<p>물론 5점 맞은 주제에 무슨 후기냐 싶겠지만, 변명을 하자면 문제가 두문제 나오는데, 각각 5점짜리 소문항 3개씩 15점짜리 문제 두 개였다.
+각각 문제는 1번 소문항이 틀리면 나머지 두개의 문항도 모두 틀리는 구조이기 때문에 2번 문항에서 t-검정의 유의구간을 반대로 설정하는 
+실수를 저질러서 모두 다 틀려버리고 말았다….</p>
+
+<p>개인적으로는 3과목이 가장 어려운 과목이라고 생각하고, 앞으로도 계속 어려워 질 것이라고 생각한다.
+그 이유는 일단 지금 3과목에서는 통계적 검정을 주로 물어보기는 하지만 꼭 통계적 검정(t 검정 혹은 카이제곱 검정)을 물어보지 않을 수도 있다는 점이다.
+실제로 저 예시 문제에서 나온 것처럼 선형 회귀의 계수나 변수 중요도, 오즈비를 물어보는 경우가 대부분이었다.
+실제 기 치뤄진 시험의 기출문제에서도 다른 통계적 지식을 물어보는 경우가 있었는데 이런 경우에는 정말 어려운 문제가 나올 수 있다고 느꼈다. 
+게다가 빅분기 특성상 기출문제도 정확하지 않기 때문에, 추후에 이 시험의 난이도를 올리고자 한다면 2과목 점수를 낮추고 3과목 점수를 올리는 식으로 
+변별력을 줄 수도 있지 않을까? 그런 생각이 들었다.</p>
+
+<p><img src="/img/posts/bigdata/5.png" width="80%" /></p>
+
+<p>게다가, 지금은 1과목과 2과목을 모두 맞추면 70점으로 무조건 합격이 가능하기에 떠도는 팁으로는 1과목 2과목만 준비해서 특정 방법(랜덤포레스트 회귀 또는 분류)
+만 달달 외워서 시험보는 편이 팁이라고 돌아다니는데, 랜덤포레스트 특성상 이런 시험의 데이터 셋에서는 어느정도 무조건적으로 성능이 좋게 나올 수 밖에는 
+없기 때문에… 시험 점수 등을 조정해서 3과목을 공부할 수 밖에는 없게끔 시험을 언젠가 바꿀 수도 있지 않을까 생각이 들었다.</p>
+
+<h3 id="마치며">마치며</h3>
+
+<p>빅데이터 분석기사는 일단 필기를 합격했다면 실기는 수월하게 합격할 수 있는 시험이라고 느꼈다. 비록 작업형 시험이기는 하지만 코드가 정말 익숙하지 않은 사람이라도 
+충분히 합격할 수 있는 시험이다. 
+일단 수험서로는 ㅇㄱㅈ 출판사의 책을 사용했는데, 솔직히 별로 좋지 않았다고 할 수 밖에는 없다. 내용이 완전 틀린 내용이 실려있기도 했고,
+해설과 본문 내용이 충돌되는 경우도 많았다. 다른 출판사의 책을 보지는 않았지만 사는 것이 더 좋지 않을까? 그런 생각은 있다. 적어도 2024년에는..</p>
+
+<p>아무튼, 이렇게 빅데이터 분석기사 24년 1회 후기를 마친다!!</p>]]></content><author><name>ash tensor</name></author><category term="자격증" /><summary type="html"><![CDATA[[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기 및 시험 문제]]></summary></entry><entry><title type="html">[자격증][실기] 정보처리기사 2024년 1회 실기 합격 후기</title><link href="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/06/engineer-information-processor.html" rel="alternate" type="text/html" title="[자격증][실기] 정보처리기사 2024년 1회 실기 합격 후기" /><published>2024-08-06T00:00:00+09:00</published><updated>2024-08-06T00:00:00+09:00</updated><id>http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/06/engineer-information-processor</id><content type="html" xml:base="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/06/engineer-information-processor.html"><![CDATA[<h2 id="자격증실기-정보처리기사-2024년-1회-실기-합격-후기">[자격증][실기] 정보처리기사 2024년 1회 실기 합격 후기</h2>
 
 <h3 id="합격-인증">합격 인증</h3>
 
@@ -2348,149 +2455,4 @@ mac 기준으로 자신의 .zshrc에 해당 키를 환경변수로 설정해주�
 <p>아무튼, 이미 2회차 시험이 끝난 지금 살짝 늦은 감이 있지만, 이렇게 정보처리기사 24년 1회 후기를 마친다!!</p>
 
 <p>참고로 저 수첩형 자격증은 합격 공고가 난 그날 바로 접수했는데 신청한지 약 1주 반 정도가 지나서야 배송됐다. 혹시라도 궁금해 하는 사람이
-있을 수도 있을 것 같아서.</p>]]></content><author><name>ash tensor</name></author><category term="자격증" /><summary type="html"><![CDATA[[자격증][실기] 정보처리기사 2024년 1회 실기 합격 후기]]></summary></entry><entry><title type="html">[WEB] GCP App Engine을 이용한 프론트엔드 서비스 배포</title><link href="http://localhost:4000/web/2024/08/05/gcp-app-engine-frontend-deploy.html" rel="alternate" type="text/html" title="[WEB] GCP App Engine을 이용한 프론트엔드 서비스 배포" /><published>2024-08-05T00:00:00+09:00</published><updated>2024-08-05T00:00:00+09:00</updated><id>http://localhost:4000/web/2024/08/05/gcp-app-engine-frontend-deploy</id><content type="html" xml:base="http://localhost:4000/web/2024/08/05/gcp-app-engine-frontend-deploy.html"><![CDATA[<h2 id="web-gcp-app-engine을-이용한-리액트-프론트엔드-서비스-배포">[WEB] GCP App Engine을 이용한 리액트 프론트엔드 서비스 배포</h2>
-
-<h3 id="gcp-app-engine">GCP App Engine</h3>
-
-<p>와, 솔직히 너무 오랜만에 돌아왔다. 거의 세달 만인데 솔직히 이야기해서 너무 일이 많았다. 정보처리기사, 빅데이터분석기사와 같은 자격증들을 준비하느라 고생했고,
-그리고 이제는 취업준비를 하느라 너무 바쁜 일상을 보내고 있다. 6월부터 7월 내내 팀 프로젝트를 진행하고 기간에 맞추느라 매번 배운 것들을 정리해야지, 정리해야지 하다가
-프로젝트 배포가 끝나고 나서야 돌아오게 됐다. 프로젝트 배포를 하면서 GCP의 App Engine을 이용해서 프론트엔드 서비스를 배포했는데, 이번 기회에 그 과정을 정리해보려고 한다.
-솔직히 어려운 것도 없지만… 그래도 정리해보자.</p>
-
-<h3 id="프론트엔드">프론트엔드</h3>
-
-<p>우선 프론트엔드는 React로 만들어진 프로젝트였다. 실제 배포한 프로젝트는 다음 링크로 들어가서 확인해보면 된다. 비밀번호는 1111, 1111로 설정되어 있다.</p>
-
-<p><a href="http://white-faculty-427513-f2.de.r.appspot.com/users/login">Kiosk</a></p>
-
-<p><img src="/img/posts/gcp/gcp_appengine/img.png" width="80%" /></p>
-
-<p>이런 식의, PG사의 결제 모듈을 결합한 음성인식 지능형 키오스크를 제작하는 것이 목표인데, 백엔드는 스프링으로 제작했고 프론트엔드는 리액트로 작성했다.
-일단 백엔드는 AWS의 EC2 프리티어를 이용해서 배포했는데, 팀원 중 한명이 프론트엔드를 배포하는데 어려움이 있어해서, 이번에 한번 처음으로 GCP의 App Engine을 이용해 보았다!</p>
-
-<h3 id="cors-문제">CORS 문제</h3>
-
-<p>우선 프론트엔드를 배포하기 전에 CORS 문제를 해결해야 했다. 팀원이 마주했던 문제가 바로 CORS 문제였다.</p>
-
-<p><img src="/img/posts/gcp/gcp_appengine/img2.png" width="70%" /></p>
-
-<p>지금은 문제를 해결해서 나오지 않지만, 위 화면의 개발자 도구 창의 콘솔을 보면 CORS 문제가 발생했다는 것을 알 수 있었다.</p>
-
-<ul>
-  <li>Access to XMLHttpRequest at ‘주소A’ from origin ‘주소B’ has been blocked by CORS policy: No ‘Access-Control-Allow-Origin’ header is present on the requested resource.</li>
-</ul>
-
-<p>아무래도 스프링 콘솔이나 AWS의 EC2에서는 아무런 로그도 나오지 않기 때문에 이런 문제를 해결하기가 어려웠을 것이라고 생각한다.</p>
-
-<p>백엔드는 AWS의 EC2 프리티어를 이용해서 배포했는데, 프론트엔드는 GCP의 App Engine을 이용해서 배포했기 때문에
-서로 다른 도메인에서 서비스를 제공하게 되었다. 이런 경우에는 CORS 문제가 발생하는데, 이를 해결하기 위해서는 백엔드에서 CORS를 허용해주는 설정을 해주어야 했다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="kn">package</span> <span class="nn">ac.su.kiosk.config</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">org.springframework.context.annotation.Bean</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.springframework.context.annotation.Configuration</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.springframework.web.servlet.config.annotation.CorsRegistry</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.springframework.web.servlet.config.annotation.WebMvcConfigurer</span><span class="o">;</span>
-
-<span class="nd">@Configuration</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">WebConfig</span> <span class="o">{</span>
-    <span class="nd">@Bean</span>
-    <span class="kd">public</span> <span class="nc">WebMvcConfigurer</span> <span class="nf">corsConfigurer</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="nf">WebMvcConfigurer</span><span class="o">()</span> <span class="o">{</span>
-            <span class="nd">@Override</span>
-            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addCorsMappings</span><span class="o">(</span><span class="nc">CorsRegistry</span> <span class="n">registry</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">registry</span><span class="o">.</span><span class="na">addMapping</span><span class="o">(</span><span class="s">"/**"</span><span class="o">)</span>
-                        <span class="o">.</span><span class="na">allowedOrigins</span><span class="o">(</span><span class="s">"http://white-faculty-427513-f2.de.r.appspot.com"</span><span class="o">)</span> <span class="c1">// React 앱의 URL</span>
-                        <span class="o">.</span><span class="na">allowedMethods</span><span class="o">(</span><span class="s">"GET"</span><span class="o">,</span> <span class="s">"POST"</span><span class="o">,</span> <span class="s">"PUT"</span><span class="o">,</span> <span class="s">"DELETE"</span><span class="o">,</span> <span class="s">"OPTIONS"</span><span class="o">)</span>
-                        <span class="o">.</span><span class="na">allowedHeaders</span><span class="o">(</span><span class="s">"*"</span><span class="o">)</span> <span class="c1">// 모든 헤더를 허용</span>
-                        <span class="o">.</span><span class="na">allowCredentials</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span> <span class="c1">// 쿠키 및 인증 정보를 허용</span>
-            <span class="o">}</span>
-        <span class="o">};</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<h3 id="npm-run-build">npm run build</h3>
-
-<p>CORS 문제를 해결한 다음에는 리액트 앱을 빌드해 주어야 한다. npm run build로 프로젝트를 빌드해 주고, GCP의 APP Engine이 빌드하고 배포하는데 
-필요한 환경설정을 해 주어야 한다.</p>
-
-<p>일단 프로젝트 디렉토리에서 serve 패키지를 전역으로 설치한다.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-npm <span class="nb">install</span> <span class="nt">-g</span> serve
-
-</code></pre></div></div>
-
-<p>이후에, package.json 파일을 열어서 scripts 부분을 수정해준다. scripts의 start 부분을 “serve -s build”로 수정해주면 된다.
-자세한 예는 다음과 같다.</p>
-
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">
-</span><span class="nl">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"react-scripts start"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"build"</span><span class="p">:</span><span class="w"> </span><span class="s2">"react-scripts build"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"react-scripts test"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"eject"</span><span class="p">:</span><span class="w"> </span><span class="s2">"react-scripts eject"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"serve"</span><span class="p">:</span><span class="w"> </span><span class="s2">"serve -s build"</span><span class="w">
-  </span><span class="p">}</span><span class="err">,</span><span class="w">
-
-</span></code></pre></div></div>
-
-<h3 id="gcp-cli-설치">GCP CLI 설치</h3>
-
-<p>이 이후에 GCP CLI를 설치해야 하는데, 이 과정이 조금은 번거롭다. 일단 GCP의 콘솔에 들어가서 프로젝트를 생성해주고, 프로젝트 ID를 확인해야 한다.
-일단 https://cloud.google.com/sdk/docs/install?hl=ko#mac 를 들어가서 GCP CLI를 다운로드 받아, 압축을 푼 다음
-google-cloud-sdk 폴더 내의 install.sh 파일을 실행하면 되는데, 구글 공식 홈페이지에는 특정 파이썬 버전을 권장한다고 쓰여 있지만
-맥 기준 설치하면 알아서 해당 파이썬 버전을 설치해주기 때문에 그냥 넘어가도 된다.</p>
-
-<p>또한 구글에서는 딱히 홈 루트에서 실행해야 된다는 말은 없는데, 다른 설치글에서는 홈 루트에서 실행을 권장하니까, 혹시 불안하거나 문제가 생긴다면 홈 루트에서 실행해보자.
-그리고 환경변수 추가 및 다양한 설정에 대해 안내가 나오는데 환경변수를 나중에 추가하고 싶지 않다면 지금 추가하면 된다.</p>
-
-<p>이 이후, 터미널을 열어서 gcloud init을 실행하면 로그인 창이 뜨는데, 로그인을 하고 프로젝트 ID를 입력하면 된다.</p>
-
-<h3 id="appyaml-파일-생성">app.yaml 파일 생성</h3>
-
-<p>이후에는 프로젝트 디렉토리에 app.yaml 파일을 생성해야 한다. 이 파일은 GCP의 App Engine이 프로젝트를 배포할 때 필요한 설정 파일이다.
-이 파일은 프로젝트 디렉토리에 생성해야 한다. 이 부분에서 살짝 트러블 슈팅이 필요했는데, GPT가 안내한대로 진행했을때는 배포가 안되고 오로지 
-흰색 화면만 뜨는 문제가 발생했다. 이 문제를 해결하기 위해서는 app.yaml 파일을 다음과 같이 수정해주어야 한다.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-runtime: nodejs20
-
-instance_class: F1
-
-handlers:
-  - url: /static
-    static_dir: build/static
-
-  - url: /<span class="o">(</span>.<span class="k">*</span><span class="o">)</span>
-    static_files: build/index.html
-    upload: build/index.html
-
-</code></pre></div></div>
-
-<p>handlers 부분에서 url: /static과 static_dir: build/static은 리액트 앱에서 사용하는 정적 파일들을 가리키는 부분이다.
-url: /(.*)과 static_files: build/index.html은 리액트 앱의 라우팅을 위한 설정이다. 이 부분을 추가해주지 않으면 라우팅이 제대로 되지 않는다.
-GPT는 이부분을 url: /.*과 static_files: build/index.html로 설정했는데, 이렇게 설정하면 라우팅이 제대로 되지 않는다. 이 점 주의하자.</p>
-
-<p>또한 instance_class 부분은 F1로 설정해주면 된다. 이 부분은 GCP의 App Engine의 인스턴스 클래스를 설정하는 부분인데, F1은 무료 티어를 의미한다.</p>
-
-<h3 id="배포">배포</h3>
-
-<p>이제 배포를 해주면 된다. 배포는 다음과 같이 진행하면 된다.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-gcloud app deploy
-
-</code></pre></div></div>
-
-<p>이렇게 입력하면 배포가 진행되는데, 배포가 완료되면 다음과 같은 화면이 뜨는데, 이 화면에서 배포된 프로젝트의 주소를 확인할 수 있다!!</p>
-
-<p><img src="/img/posts/gcp/gcp_appengine/img3.png" width="70%" /></p>
-
-<h3 id="마치며">마치며</h3>
-
-<p>이렇게 GCP의 App Engine을 이용해서 프론트엔드 서비스를 배포하는 방법을 정리해보았다. 이번 프로젝트에서는 우연히도 GCP API를 많이 사용하게 되었는데,
-아무래도 처음 시작할 때 300$의 크레딧을 제공해주는 것이 매력적이었던 것 같다. 또한 GCP 클라우드 버킷을 이용해서 이미지를 업로드하는 부분에서 
-조금 고생했는데 이 부분도 나중에 정리해 보도록 해야겠다.</p>]]></content><author><name>ash tensor</name></author><category term="WEB" /><summary type="html"><![CDATA[[WEB] GCP App Engine을 이용한 리액트 프론트엔드 서비스 배포]]></summary></entry></feed>
+있을 수도 있을 것 같아서.</p>]]></content><author><name>ash tensor</name></author><category term="자격증" /><summary type="html"><![CDATA[[자격증][실기] 정보처리기사 2024년 1회 실기 합격 후기]]></summary></entry></feed>
