@@ -4,7 +4,7 @@ comments: true
 title: "[후기] 이카운트 코딩 테스트 및 인터뷰 리뷰"
 subtitle: Node.js 백엔드 개발자 기술 면접 및 전반적인 면접 후기
 description: 
-date: 2024-12-11
+date: 2025-12-11
 categories: WEB 리뷰
 background: '/img/port.jpg'
 ---
