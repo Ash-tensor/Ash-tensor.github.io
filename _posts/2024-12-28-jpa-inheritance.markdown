@@ -207,11 +207,11 @@ JOINED 전략이 아닌 다른 전략을 사용하는 경우에는 정규화가 
 
 이 경우는 SINGLE_TABLE 전략을 사용하는 경우이다.
 
-<img src="/img/posts/java/jpa/3.png" width="80%">
+<img src="./img/posts/java/jpa/3.png" width="80%">
 
 이 경우는 TABLE_PER_CLASS 전략을 사용하는 경우이다.
 
-<img src="/img/posts/java/jpa/4.png" width="80%">
+<img src="./img/posts/java/jpa/4.png" width="80%">
 
 SINGLE_TABLE 전략은 이렇듯 모든 자식 클래스의 속성을 하나의 테이블에 저장하는 것이고, TABLE_PER_CLASS 전략은 각각의 자식 클래스를 하나의 테이블로 생성하는 것이다.
 
