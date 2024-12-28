@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>
+    [WEB][JAVA] JPA 상속 및 심화 - Tensor Studio
+    
+  </title>
+
+  <meta name="description" content="[WEB][JAVA] JPA 상속 및 심화">
+  <meta property="og:description" content="[WEB][JAVA] JPA 상속 및 심화">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="[WEB][JAVA] JPA 상속 및 심화">
+  <meta property="og:url" content="https://ash-tensor.github.io/web/java/2024/12/28/jpa-inheritance.html">
+
+  
+    <meta property="og:image" content="https://ash-tensor.github.io/img/port.jpg"/>
+  
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6058208689389341"
+          crossorigin="anonymous"></script>
+
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script> -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+
+<!--  goun doun font // font-family: 'Noto Serif KR', serif;-->
+<!--  <link rel="preconnect" href="https://fonts.googleapis.com">-->
+<!--  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>-->
+<!--  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR&display=swap" rel="stylesheet">-->
+
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="http://localhost:4000/web/java/2024/12/28/jpa-inheritance.html">
+  <link rel="alternate" type="application/rss+xml" title="Tensor Studio" href="/feed.xml">
+
+<!--  favicon-->
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <style>
+    #sidebar {
+      display: none;
+    }
+    @media (min-width: 1000px) {
+      #sidebar {
+        display: block;
+      }
+      
+    }
+  </style>
+  
+</head>
+
+
+<body>
+
+  <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="/">Tensor Studio</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/posts">Posts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/categol">Categories</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Page Header -->
+
+
+<header class="masthead" style="background-image: url('/img/port.jpg')">
+
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-heading">
+          <h1>[WEB][JAVA] JPA 상속 및 심화</h1>
+          
+          <h2 class="subheading">JPA 추상화 패턴</h2>
+          
+          <span class="meta">Posted by
+            <a href="#">ash tensor</a>
+            on December 28, 2024 &middot; <span class="reading-time" title="Estimated read time">
+  
+   8 mins  read </span>
+
+          </span>
+<!-- 카테고리를 추가하는 코드 -->
+            <a>
+              카테고리
+            <a>
+          <div style="font-family: 'Noto Sans KR', sans-serif;">
+            
+              <a href="http://localhost:4000/category/WEB.html" style="color: white;">📁WEB</a>
+            
+              <a href="http://localhost:4000/category/JAVA.html" style="color: white;">📁JAVA</a>
+            
+          </div>
+<!-- 카테고리를 추가하는 코드 -->
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="container" style="display: flex">
+  <div class="row">
+<!-- sidebar를 추가하는 코드 -->
+    <sidebar id="sidebar" 
+            style="width: 260px; 
+            border-right: gray 1px solid; 
+            padding-left: 0; 
+            padding-right: 20px;"
+            >
+    <ul>
+        <p style="font-weight: bold; border-top: black 1px solid; border-bottom: black 1px solid; text-align: center; margin-top: 2px; padding: 2px; padding-top: 4px">
+TENSOR STUDIO
+        </p>
+        
+            <p style="margin-bottom: 0; margin-top: 10px">
+                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold;" href= "http://localhost:4000/category/자격증.html">
+                    자격증
+                </a>
+                    <a> 🔽
+                    </a>
+            </p>
+            
+            
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/20/bigdata-processing-engineer.html" style= "color: black; font-size: 12px;">
+                            [자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">20 Aug 2024</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/06/engineer-information-processor.html" style= "color: black; font-size: 12px;">
+                            [자격증][실기] 정보처리기사 2024년 1회 실기 합격 후기
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">06 Aug 2024</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/05/03/bigdata-processor-engineer.html" style= "color: black; font-size: 12px;">
+                            [자격증][필기] 빅데이터 분석기사 8회 필기 분석 및 후기
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">03 May 2024</small>
+                    </li>
+                    
+                
+            
+                
+            
+                
+            
+        
+            <p style="margin-bottom: 0; margin-top: 10px">
+                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold;" href= "http://localhost:4000/category/깃허브.html">
+                    깃허브
+                </a>
+                    <a> 🔽
+                    </a>
+            </p>
+            
+            
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/%EA%B9%83%ED%97%88%EB%B8%8C/2024/02/08/jekyll-blog-theme-5-sidebar.html" style= "color: black; font-size: 12px;">
+                            [깃허브 블로그]지킬 블로그 카테고리 / SIDEBAR 기능 추가(clean blog theme)
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">08 Feb 2024</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/%EA%B9%83%ED%97%88%EB%B8%8C/2024/01/17/bottom-category-build.html" style= "color: black; font-size: 12px;">
+                            [깃허브 블로그] 동일 카테고리의 최근 글 기능 개발(clean blog theme)
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">17 Jan 2024</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/%EA%B9%83%ED%97%88%EB%B8%8C/2023/12/15/jekyll-blog-theme-4.html" style= "color: black; font-size: 12px;">
+                            [깃허브 블로그]지킬 블로그 카테고리 / NAVBAR 기능 추가(clean blog theme) - 1
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">15 Dec 2023</small>
+                    </li>
+                    
+                
+            
+                
+            
+                
+            
+                
+            
+        
+            <p style="margin-bottom: 0; margin-top: 10px">
+                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold;" href= "http://localhost:4000/category/ML.html">
+                    ML
+                </a>
+                    <a> 🔽
+                    </a>
+            </p>
+            
+            
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/ml/2024/03/19/personal-information.html" style= "color: black; font-size: 12px;">
+                            [데이터]개인정보 처리 위탁과 제 3자 제공의 차이
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">19 Mar 2024</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/ml/ai%EA%B7%B8%EB%A6%BC/2023/12/28/stable-diffusion.html" style= "color: black; font-size: 12px;">
+                            [AI 그림]프롬프트의 한계점 - 올바른 프롬프트 작성하기
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">28 Dec 2023</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/ml/2023/12/19/esports-ml-1.html" style= "color: black; font-size: 12px;">
+                            [데이터 분석]조합에 따른 승률은 얼마나 차이가 날까?
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">19 Dec 2023</small>
+                    </li>
+                    
+                
+            
+        
+            <p style="margin-bottom: 0; margin-top: 10px">
+                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold;" href= "http://localhost:4000/category/AI그림.html">
+                    AI그림
+                </a>
+                    <a> 🔽
+                    </a>
+            </p>
+            
+            
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/ml/ai%EA%B7%B8%EB%A6%BC/2023/12/28/stable-diffusion.html" style= "color: black; font-size: 12px;">
+                            [AI 그림]프롬프트의 한계점 - 올바른 프롬프트 작성하기
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">28 Dec 2023</small>
+                    </li>
+                    
+                
+            
+        
+            <p style="margin-bottom: 0; margin-top: 10px">
+                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold;" href= "http://localhost:4000/category/안드로이드.html">
+                    안드로이드
+                </a>
+                    <a> 🔽
+                    </a>
+            </p>
+            
+            
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C/2023/12/29/bottomNavigationView.html" style= "color: black; font-size: 12px;">
+                            [Android Studio]Bottom Navigation Bar 구현 - OnItemSelectedListener 이용
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">29 Dec 2023</small>
+                    </li>
+                    
+                
+            
+        
+            <p style="margin-bottom: 0; margin-top: 10px">
+                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold;" href= "http://localhost:4000/category/CS.html">
+                    CS
+                </a>
+                    <a> 🔽
+                    </a>
+            </p>
+            
+            
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/cs/2024/01/02/binary.html" style= "color: black; font-size: 12px;">
+                            [CS] 2의 보수
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">02 Jan 2024</small>
+                    </li>
+                    
+                
+            
+        
+            <p style="margin-bottom: 0; margin-top: 10px">
+                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold;" href= "http://localhost:4000/category/JAVA.html">
+                    JAVA
+                </a>
+                    <a> 🔽
+                    </a>
+            </p>
+            
+            
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/web/java/2024/12/28/jpa-inheritance.html" style= "color: black; font-size: 12px;">
+                            [WEB][JAVA] JPA 상속 및 심화
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">28 Dec 2024</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/web/java/2024/10/24/spring-gpt-frontend.html" style= "color: black; font-size: 12px;">
+                            [WEB][Spring] 스프링으로 Chat-GPT 페이지 구현하기 - 2
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">24 Oct 2024</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/web/java/2024/09/30/spring-gpt-backend.html" style= "color: black; font-size: 12px;">
+                            [WEB][Spring] 스프링으로 Chat-GPT 기능 구현하기 - 1
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">30 Sep 2024</small>
+                    </li>
+                    
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+        
+            <p style="margin-bottom: 0; margin-top: 10px">
+                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold;" href= "http://localhost:4000/category/WEB.html">
+                    WEB
+                </a>
+                    <a> 🔽
+                    </a>
+            </p>
+            
+            
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/web/java/2024/12/28/jpa-inheritance.html" style= "color: black; font-size: 12px;">
+                            [WEB][JAVA] JPA 상속 및 심화
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">28 Dec 2024</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/web/%EB%A6%AC%EB%B7%B0/2024/12/11/ecount-interview.html" style= "color: black; font-size: 12px;">
+                            [후기] 이카운트 코딩 테스트 및 인터뷰 리뷰
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">11 Dec 2024</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/web/%EB%A6%AC%EB%B7%B0/2024/11/02/cursor-ai-review.html" style= "color: black; font-size: 12px;">
+                            [후기] 웹 개발자의 Cursor AI 사용기
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">02 Nov 2024</small>
+                    </li>
+                    
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+        
+            <p style="margin-bottom: 0; margin-top: 10px">
+                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold;" href= "http://localhost:4000/category/PS.html">
+                    PS
+                </a>
+                    <a> 🔽
+                    </a>
+            </p>
+            
+            
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/java/ps/%EB%B0%B1%EC%A4%80/2024/05/02/boj7562.html" style= "color: black; font-size: 12px;">
+                            [백준][JAVA] 백준 7562번 :: 나이트의 이동 :: 실버 1
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">02 May 2024</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/java/ps/%EB%B0%B1%EC%A4%80/2024/03/28/boj12100.html" style= "color: black; font-size: 12px;">
+                            [백준][JAVA] 백준 12100번 :: 2048(Easy) :: 골드 2
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">28 Mar 2024</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/%EB%B0%B1%EC%A4%80/ps/java/%ED%8C%8C%EC%9D%B4%EC%8D%AC/2024/02/27/boj1743.html" style= "color: black; font-size: 12px;">
+                            [백준] 백준 1743번 :: 음식물 피하기 :: 실버 1 
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">27 Feb 2024</small>
+                    </li>
+                    
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+        
+            <p style="margin-bottom: 0; margin-top: 10px">
+                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold;" href= "http://localhost:4000/category/DP.html">
+                    DP
+                </a>
+                    <a> 🔽
+                    </a>
+            </p>
+            
+            
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber.html" style= "color: black; font-size: 12px;">
+                            [프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">16 Jan 2024</small>
+                    </li>
+                    
+                
+            
+        
+            <p style="margin-bottom: 0; margin-top: 10px">
+                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold;" href= "http://localhost:4000/category/파이썬.html">
+                    파이썬
+                </a>
+                    <a> 🔽
+                    </a>
+            </p>
+            
+            
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/%EB%B0%B1%EC%A4%80/ps/java/%ED%8C%8C%EC%9D%B4%EC%8D%AC/2024/02/27/boj1743.html" style= "color: black; font-size: 12px;">
+                            [백준] 백준 1743번 :: 음식물 피하기 :: 실버 1 
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">27 Feb 2024</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/%EB%B0%B1%EC%A4%80/ps/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/02/01/boj1931.html" style= "color: black; font-size: 12px;">
+                            [백준] 백준 1931번 :: 회의실 배정 :: 실버 1 
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">01 Feb 2024</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178.html" style= "color: black; font-size: 12px;">
+                            [백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1 
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">30 Jan 2024</small>
+                    </li>
+                    
+                
+            
+                
+            
+        
+            <p style="margin-bottom: 0; margin-top: 10px">
+                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold;" href= "http://localhost:4000/category/프로그래머스.html">
+                    프로그래머스
+                </a>
+                    <a> 🔽
+                    </a>
+            </p>
+            
+            
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/ps/dp/%ED%8C%8C%EC%9D%B4%EC%8D%AC/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4/java/2024/01/16/targetNumber.html" style= "color: black; font-size: 12px;">
+                            [프로그래머스][PS] 타겟 넘버 :: LEVEL 2 (DP 풀이)
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">16 Jan 2024</small>
+                    </li>
+                    
+                
+            
+        
+            <p style="margin-bottom: 0; margin-top: 10px">
+                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold;" href= "http://localhost:4000/category/백준.html">
+                    백준
+                </a>
+                    <a> 🔽
+                    </a>
+            </p>
+            
+            
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/java/ps/%EB%B0%B1%EC%A4%80/2024/05/02/boj7562.html" style= "color: black; font-size: 12px;">
+                            [백준][JAVA] 백준 7562번 :: 나이트의 이동 :: 실버 1
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">02 May 2024</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/java/ps/%EB%B0%B1%EC%A4%80/2024/03/28/boj12100.html" style= "color: black; font-size: 12px;">
+                            [백준][JAVA] 백준 12100번 :: 2048(Easy) :: 골드 2
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">28 Mar 2024</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/%EB%B0%B1%EC%A4%80/ps/java/%ED%8C%8C%EC%9D%B4%EC%8D%AC/2024/02/27/boj1743.html" style= "color: black; font-size: 12px;">
+                            [백준] 백준 1743번 :: 음식물 피하기 :: 실버 1 
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">27 Feb 2024</small>
+                    </li>
+                    
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+        
+            <p style="margin-bottom: 0; margin-top: 10px">
+                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold;" href= "http://localhost:4000/category/자료구조.html">
+                    자료구조
+                </a>
+                    <a> 🔽
+                    </a>
+            </p>
+            
+            
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/%EB%B0%B1%EC%A4%80/ps/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%ED%8C%8C%EC%9D%B4%EC%8D%AC/java/2024/01/30/boj2178.html" style= "color: black; font-size: 12px;">
+                            [백준][자료구조] 백준 2178번 :: 미로 탐색 :: 실버 1 
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">30 Jan 2024</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/%EB%B0%B1%EC%A4%80/ps/2024/01/23/boj1935.html" style= "color: black; font-size: 12px;">
+                            [백준][자료구조] 백준 1935번 :: 후위 표기식 2 :: 실버 3 
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">23 Jan 2024</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/ps/%EB%B0%B1%EC%A4%80/java/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/2024/01/17/coworkerInCompany.html" style= "color: black; font-size: 12px;">
+                            [백준][PS] 회사에 있는 사람 :: 실버 5(자료구조)
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">17 Jan 2024</small>
+                    </li>
+                    
+                
+            
+                
+            
+        
+            <p style="margin-bottom: 0; margin-top: 10px">
+                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold;" href= "http://localhost:4000/category/linux.html">
+                    linux
+                </a>
+                    <a> 🔽
+                    </a>
+            </p>
+            
+            
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/linux/2024/02/01/utm.html" style= "color: black; font-size: 12px;">
+                            [리눅스] 애플 실리콘 맥에 리눅스 설치하는 법(UTM)
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">01 Feb 2024</small>
+                    </li>
+                    
+                
+            
+        
+            <p style="margin-bottom: 0; margin-top: 10px">
+                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold;" href= "http://localhost:4000/category/DB.html">
+                    DB
+                </a>
+                    <a> 🔽
+                    </a>
+            </p>
+            
+            
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/db/2024/02/29/materialized-view.html" style= "color: black; font-size: 12px;">
+                            [DB] 구체화된 뷰는 테이블과 어떻게 다를까?
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">29 Feb 2024</small>
+                    </li>
+                    
+                
+            
+        
+            <p style="margin-bottom: 0; margin-top: 10px">
+                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold;" href= "http://localhost:4000/category/리뷰.html">
+                    리뷰
+                </a>
+                    <a> 🔽
+                    </a>
+            </p>
+            
+            
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/web/%EB%A6%AC%EB%B7%B0/2024/12/11/ecount-interview.html" style= "color: black; font-size: 12px;">
+                            [후기] 이카운트 코딩 테스트 및 인터뷰 리뷰
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">11 Dec 2024</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/web/%EB%A6%AC%EB%B7%B0/2024/11/02/cursor-ai-review.html" style= "color: black; font-size: 12px;">
+                            [후기] 웹 개발자의 Cursor AI 사용기
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">02 Nov 2024</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/%EB%A6%AC%EB%B7%B0/2024/03/06/sd-card.html" style= "color: black; font-size: 12px;">
+                            [후기] 알리익스프레스 SD카드 배송 후기 / 용량 뻥튀기 확인하는법
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">06 Mar 2024</small>
+                    </li>
+                    
+                
+            
+        
+            <p style="margin-bottom: 0; margin-top: 10px">
+                <a style= "margin-bottom: 0px; font-size: 15px; color: black; font-weight: bold;" href= "http://localhost:4000/category/REACT.html">
+                    REACT
+                </a>
+                    <a> 🔽
+                    </a>
+            </p>
+            
+            
+            
+                
+                    <li style="margin: 0px">
+                        <a href="/web/react/2024/10/15/openai-realtime.html" style= "color: black; font-size: 12px;">
+                            [WEB][react] Chat-gpt realtime api 구현 및 설명
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">15 Oct 2024</small>
+                    </li>
+                    
+                
+            
+        
+    </ul>
+</sidebar>
+
+    <div class="col-lg-8 col-md-10 mx-auto">
+<!-- 본문 카테고리를 추가하는 코드 -->
+            <a style="font-family: 'Noto Sans KR', sans-serif;">
+              카테고리 링크
+            <a>
+
+          <div style="font-family: 'Noto Sans KR', sans-serif;">
+            
+              <a href="http://localhost:4000/category/WEB.html" style="color: black;">📁 WEB</a>
+            
+              <a href="http://localhost:4000/category/JAVA.html" style="color: black;">📁 JAVA</a>
+            
+          </div>
+          
+<!-- 본문 카테고리를 추가하는 코드 -->
+
+      <h2 id="webjava-jpa-상속-및-심화">[WEB][JAVA] JPA 상속 및 심화</h2>
+
+<h3 id="1-서론">1. 서론</h3>
+
+<p>JPA는 편리한 기능을 제공하는 프레임워크이다. 그렇다고 JPA가 <strong>“단순 쿼리를 치지 않아서 좋다.”</strong> 라는 의미만 있는 것은 아니라고 생각한다.</p>
+
+<blockquote>
+  <blockquote>
+    <p>JPA는 객체지향적으로 데이터를 다루는 프레임워크이다.</p>
+  </blockquote>
+</blockquote>
+
+<p>여기에 초점이 맞춰져야 한다고 본다.</p>
+
+<p>네가 뭔데 심화된 내용을 적냐고 말하는 사람이 있을 수 있긴 하지만, 도서관에서 스프링 책을 찾아보거나 JPA 관련 포스트를 찾아보며 공부하면서 JPA를 단순 ORM 매핑 프레임워크로 설명하고 넘어갔기 때문에, 최근 DB 스키마를 작성하며 JPA에서 객체지향을 다루며 상속이나 다형성이 어떻게 구현되는지 이용하며 더 심화된 내용을 적는 것이다.</p>
+
+<h3 id="2-상속">2. 상속</h3>
+
+<p>일단 다형성이란 무엇인가?</p>
+
+<p>자바에서 다형성이란 객체지향적으로 프로그래밍을 할 때, 상위 클래스의 타입으로 하위 클래스의 인스턴스를 참조할 수 있는 것을 의미한다.</p>
+
+<p>내가 생각하는 가장 흔한 예시로는 컬렉션 프레임워크인데,</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">testList</span><span class="o">;</span>
+            <span class="n">testList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>이런 식으로, 리스트 인터페이스를 구현한 클래스들을 사용할 때, 리스트 인터페이스의 메서드를 사용할 수 있는 것이다.
+JPA에서도 마찬가지로 상속과  다형성을 이용할 수 있는데,</p>
+
+<p>예를 들어서 이런 User 엔티티가 있다고 가정해보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nd">@Getter</span> <span class="nd">@Setter</span>
+<span class="nd">@Entity</span>
+<span class="nd">@Table</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"users"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+    <span class="nd">@Id</span>
+    <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="nc">GenerationType</span><span class="o">.</span><span class="na">IDENTITY</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+    <span class="nd">@Column</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">email</span><span class="o">;</span>
+
+    <span class="c1">// 생략</span>
+    <span class="c1">// User는 스케쥴을 가지고 있다고 할 때를 생각해 보자.</span>
+    <span class="c1">// 이런 식으로 스케쥴을 가지고 있는 것이다.</span>
+    <span class="nd">@JsonManagedReference</span> <span class="c1">// 순환참조 방지(User에서 참조하는 WeddingSchedule을 참조하는 것을 방지)</span>
+    <span class="nd">@OneToMany</span><span class="o">(</span><span class="n">mappedBy</span> <span class="o">=</span> <span class="s">"user"</span><span class="o">,</span> <span class="n">cascade</span> <span class="o">=</span> <span class="nc">CascadeType</span><span class="o">.</span><span class="na">ALL</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">PersonalSchedule</span><span class="o">&gt;</span> <span class="n">clearedSchedule</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+
+    <span class="nd">@Column</span>
+    <span class="kd">private</span> <span class="nc">Sex</span> <span class="n">sex</span><span class="o">;</span>
+    
+    <span class="nd">@Column</span>
+    <span class="kd">private</span> <span class="nc">UserType</span> <span class="n">userType</span><span class="o">;</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>뭐 이런 식으로, User가 어떤 일정을 가지고 있을 때, DB 스키마에 따라 정규화를 하거나 혹은 서비스의 로직에 따라 일정, 즉 스케쥴이 세분화된 타입이 있을 수가 있다.</p>
+
+<p>예를 들어 회사 스케쥴, 즉 CompanySchedule 이 있을 수가 있고, 또 PersonalSchedule 이 있을 수도 있고, 더 세분화된 일정이라면 WeddingSchedule 이 있을 수도 있다.</p>
+
+<p>이런 상황에서, User가 이미 완료한 일정을 가지고 있을 때, 이런 식으로 다형성을 이용할 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">// 생략</span>
+    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Schedule</span><span class="o">&gt;</span> <span class="n">clearedSchedule</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+
+</code></pre></div></div>
+
+<p>그리고 Schedule 클래스를 상속받은 클래스들을 생성하고, 이런 식으로 다형성을 이용할 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nd">@Getter</span> <span class="nd">@Setter</span>
+<span class="nd">@Entity</span>
+<span class="nd">@Table</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"schedule"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Schedule</span> <span class="o">{</span>
+    <span class="nd">@Id</span>
+    <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="nc">GenerationType</span><span class="o">.</span><span class="na">IDENTITY</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">LocalDate</span> <span class="n">startDate</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">LocalDate</span> <span class="n">endDate</span><span class="o">;</span>
+
+    <span class="nd">@ManyToOne</span>
+    <span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"place_id"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">Place</span> <span class="n">place</span><span class="o">;</span> <span class="c1">// 실제 타입은 구글 맵 API 또는 네이버 맵 API를 사용해야 함. 아직 잘 몰름..</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">memo</span><span class="o">;</span>
+
+    <span class="c1">// 생략</span>
+
+    <span class="nd">@ManyToOne</span>
+    <span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"user_id"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">User</span> <span class="n">user</span><span class="o">;</span>
+
+<span class="o">}</span>
+
+
+</code></pre></div></div>
+<p>그리고 각각의 스케쥴 타입을 상속받은 클래스들을 생성하면</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nd">@Getter</span> <span class="nd">@Setter</span>
+<span class="nd">@Entity</span>
+<span class="nd">@Table</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"company_schedule"</span><span class="o">)</span>
+<span class="nd">@Inheritance</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="nc">InheritanceType</span><span class="o">.</span><span class="na">JOINED</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CompanySchedule</span> <span class="kd">extends</span> <span class="nc">Schedule</span> <span class="o">{</span>
+
+    <span class="nd">@Column</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">companyName</span><span class="o">;</span>
+
+    <span class="nd">@Column</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">companyAddress</span><span class="o">;</span>
+
+    <span class="nd">@Column</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">companyPhone</span><span class="o">;</span>
+
+    <span class="c1">// 생략</span>
+<span class="o">}</span>
+
+<span class="nd">@Getter</span> <span class="nd">@Setter</span>
+<span class="nd">@Entity</span>
+<span class="nd">@Table</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"personal_schedule"</span><span class="o">)</span>
+<span class="nd">@Inheritance</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="nc">InheritanceType</span><span class="o">.</span><span class="na">JOINED</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PersonalSchedule</span> <span class="kd">extends</span> <span class="nc">Schedule</span> <span class="o">{</span>
+
+    <span class="nd">@Column</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">phone</span><span class="o">;</span>
+
+    <span class="c1">// 생략</span>
+<span class="o">}</span>
+
+<span class="o">....</span>
+
+</code></pre></div></div>
+
+<p>이렇게 되면, User 엔티티는 이런 식으로 다형성을 이용할 수 있게 된다.
+이런 경우에 JPA는 다음과 같이 DB에 저장하는데</p>
+
+<p><img src="/img/posts/java/jpa/2.png" width="80%" /></p>
+
+<p>Schedule 테이블의 id를 외래키로 가지고 있어서, 스케쥴의 공통적인 속성은 스케쥴에 저장되고, 각각의 스케쥴 타입의 고유한 속성은 각각의 스케쥴 타입에 저장된다.</p>
+
+<p>그렇다고 해서 Schedule을 생성하고, CompanySchedule을 생성해서 저장하는 것이 아니라,</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Schedule</span> <span class="n">scadule</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Schedule</span><span class="o">();</span> 
+<span class="n">scadule</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">"스케쥴 이름"</span><span class="o">);</span>
+<span class="c1">// 이런식으로 스케쥴의 공통적인 속성을 설정하고 회사 스케쥴에 지정하는 것</span>
+<span class="nc">CompanySchedule</span> <span class="n">companySchedule</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CompanySchedule</span><span class="o">()</span>
+<span class="n">companySchedule</span><span class="o">.</span><span class="na">setSchedule</span><span class="o">(</span><span class="n">schedule</span><span class="o">);</span>
+
+</code></pre></div></div>
+
+<p>이런 식으로 생성하는 것이 아니라,</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nc">CompanySchedule</span> <span class="n">companySchedule</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CompanySchedule</span><span class="o">();</span>
+
+<span class="c1">// Schedule 테이블에 저장되는 것</span>
+<span class="n">companySchedule</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">"회사 스케쥴 이름"</span><span class="o">);</span>
+<span class="n">companySchedule</span><span class="o">.</span><span class="na">setStartDate</span><span class="o">(</span><span class="nc">LocalDate</span><span class="o">.</span><span class="na">now</span><span class="o">());</span>
+<span class="n">companySchedule</span><span class="o">.</span><span class="na">setEndDate</span><span class="o">(</span><span class="nc">LocalDate</span><span class="o">.</span><span class="na">now</span><span class="o">().</span><span class="na">plusDays</span><span class="o">(</span><span class="mi">1</span><span class="o">));</span>
+
+<span class="c1">// CompanySchedule 테이블에 저장되는 것</span>
+<span class="n">companySchedule</span><span class="o">.</span><span class="na">setCompanyName</span><span class="o">(</span><span class="s">"회사 이름"</span><span class="o">);</span>
+<span class="n">companySchedule</span><span class="o">.</span><span class="na">setCompanyAddress</span><span class="o">(</span><span class="s">"회사 주소"</span><span class="o">);</span>
+<span class="n">companySchedule</span><span class="o">.</span><span class="na">setCompanyPhone</span><span class="o">(</span><span class="s">"회사 전화번호"</span><span class="o">);</span>
+
+</code></pre></div></div>
+
+<p>이런 식으로 생성이 된다는 것이다. CompanyShedule은 Schedule을 상속받았기 때문에, Schedule의 속성을 가지고 있고, 또 CompanySchedule의 고유한 속성도 가지고 있는 것이다.</p>
+
+<h4 id="21-상속-전략">2.1 상속 전략</h4>
+
+<p>위에서 보여드린 예시는 JOINED 전략을 사용한 것이다. 
+대부분 JPA에서 상속을 사용할 때 JOINED 전략을 사용하는데 그 이유는 <strong>정규화</strong>를 통해 데이터를 중복 저장하지 않기 위해서이다.</p>
+
+<p>JOINED 전략은 부모 클래스와 자식 클래스를 모두 테이블로 생성하고, 자식 클래스의 고유한 속성을 저장하는 것이다.</p>
+
+<p>JOINED 전략이 아닌 다른 전략을 사용하는 경우에는 정규화가 제대로 이루어지지 않는데, 예를 들어서 <strong>TABLE_PER_CLASS</strong> 전략과 <strong>SINGLE_TABLE</strong> 전략을 사용하는 경우를 한 번 보자.</p>
+
+<p>이 경우는 SINGLE_TABLE 전략을 사용하는 경우이다.</p>
+
+<p><img src="/img/posts/java/jpa/3.png" width="80%" /></p>
+
+<p>이 경우는 TABLE_PER_CLASS 전략을 사용하는 경우이다.</p>
+
+<p><img src="/img/posts/java/jpa/4.png" width="80%" /></p>
+
+<p>SINGLE_TABLE 전략은 이렇듯 모든 자식 클래스의 속성을 하나의 테이블에 저장하는 것이고, TABLE_PER_CLASS 전략은 각각의 자식 클래스를 하나의 테이블로 생성하는 것이다.</p>
+
+<p>간단히 예시를 들자면 <strong>회사 이름</strong>이라는 속성이 변경되는 경우를 생각해 볼 때(물론 그럴 일이 쉽사리 일어난다는 말은 아니다)</p>
+
+<p>JOINED 전략을 사용하는 경우에는 회사 이름이 변경되면 CompanySchedule 테이블에 저장된 회사 테이블 하나만 변경될 테니 문제가 되지 않지만,
+SINGLE_TABLE 전략을 사용하는 경우에는 회사 이름이 변경되면 모든 테이블에 저장된 회사 이름이 변경되는 것이고, TABLE_PER_CLASS 전략을 사용하는 경우에도 회사 이름이 변경되면 모든 테이블에 저장된 회사 이름이 변경될 것이고, 정규화가 제대로 이루어지지 않아 수천건의 쿼리가 나가게 될 것이다.</p>
+
+<p>그렇기는 해도 SINGLE_TABLE 전략은 사용하는 경우가 있는데, JOIN이 발생하지 않기 때문에 성능이 좋다는 장점이 있고, 테이블이 가장 적어 관리가 편하다는 장점이 있다.</p>
+
+<p>그러나 이런 전략들은 정규화가 제대로 이루어지지 않기 때문에 데이터를 중복 저장하게 되는 문제가 있다는 점은 명심해야 한다.</p>
+
+<h5 id="joined-전략">JOINED 전략</h5>
+<ul>
+  <li>부모 클래스와 자식 클래스를 각각 테이블로 생성.</li>
+  <li>자식 클래스의 고유한 속성은 자식 테이블에 저장.</li>
+  <li>데이터 중복을 피하고 정규화를 유지.</li>
+</ul>
+
+<h5 id="single_table-전략">SINGLE_TABLE 전략</h5>
+<ul>
+  <li>모든 자식 클래스의 속성을 하나의 테이블에 저장.</li>
+  <li>JOIN이 발생하지 않아 성능이 좋고, 테이블 수가 적어 관리가 편리.</li>
+  <li>정규화 위반 및 데이터 중복 발생.</li>
+</ul>
+
+<h5 id="table_per_class-전략">TABLE_PER_CLASS 전략</h5>
+<ul>
+  <li>각 자식 클래스를 별도의 테이블로 생성.</li>
+  <li>정규화 위반 및 데이터 중복 발생.</li>
+</ul>
+
+
+
+      <hr>
+      <div class="row mb-5 mt-5">
+  <div class="col-md-6 d-flex align-items-end ">
+    <span>Thanks. <i>mind sharing?</i></span>
+  </div>
+
+  <!-- Right Column with Social Media Icons (on the right for larger screens, on bottom for smaller screens) -->
+  <div class="col-md-6 order-md-2 order-1 text-md-right text-center mt-3 mt-md-0">
+    <div>
+
+      <a
+          href="https://www.linkedin.com/sharing/share-offsite?url=https://ash-tensor.github.io/web/java/2024/12/28/jpa-inheritance.html"
+          onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+          class="d-inline-block mr-2"
+       >
+        <span class="fa-stack fa-lg" style="color: #0077b5;">
+          <i class="fas fa-square fa-stack-2x"></i>
+          <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+
+      <a
+          href="https://twitter.com/intent/tweet?text=[WEB][JAVA] JPA 상속 및 심화&url=https://ash-tensor.github.io/web/java/2024/12/28/jpa-inheritance.html"
+          onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+          class="d-inline-block mr-2">
+        <span class="fa-stack fa-lg" style="color: #1DA1F2;">
+          <i class="fas fa-square fa-stack-2x"></i>
+          <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+
+      <a
+          href="http://www.reddit.com/submit?url=https://ash-tensor.github.io/web/java/2024/12/28/jpa-inheritance.html"
+          onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+          class="d-inline-block mr-2">
+        <span class="fa-stack fa-lg" style="color: #FF4500;">
+          <i class="fas fa-square fa-stack-2x"></i>
+          <i class="fab fa-reddit fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<hr/>
+
+      <div class="clearfix" >
+
+<!-- 수정중 -->
+<!-- 가장 첫번쨰 카테고리의 최근 글 불러오는 글 기능 추가  -->
+<!-- <ul class="posts-list"> -->
+
+<ul class="mb-5 ">
+  
+  <p>
+    <a style= "font-size: 20px; font-weight: bold; font-family: 'Noto Sans KR', sans-serif;" href= "http://localhost:4000/category/WEB.html">
+      WEB 카테고리의 다른 글
+    </a>
+  </p>
+  
+  
+  
+    
+      <li>
+        <h3>
+          <a href="/web/java/2024/12/28/jpa-inheritance.html" style= "font-size: 17px;">
+            [WEB][JAVA] JPA 상속 및 심화
+          </a>
+          <small style= "font-size: 14px;">28 Dec 2024</small>
+        </h3>
+      </li>
+      
+    
+  
+    
+      <li>
+        <h3>
+          <a href="/web/%EB%A6%AC%EB%B7%B0/2024/12/11/ecount-interview.html" style= "font-size: 17px;">
+            [후기] 이카운트 코딩 테스트 및 인터뷰 리뷰
+          </a>
+          <small style= "font-size: 14px;">11 Dec 2024</small>
+        </h3>
+      </li>
+      
+    
+  
+    
+      <li>
+        <h3>
+          <a href="/web/%EB%A6%AC%EB%B7%B0/2024/11/02/cursor-ai-review.html" style= "font-size: 17px;">
+            [후기] 웹 개발자의 Cursor AI 사용기
+          </a>
+          <small style= "font-size: 14px;">02 Nov 2024</small>
+        </h3>
+      </li>
+      
+    
+  
+    
+      <li>
+        <h3>
+          <a href="/web/java/2024/10/24/spring-gpt-frontend.html" style= "font-size: 17px;">
+            [WEB][Spring] 스프링으로 Chat-GPT 페이지 구현하기 - 2
+          </a>
+          <small style= "font-size: 14px;">24 Oct 2024</small>
+        </h3>
+      </li>
+      
+    
+  
+    
+      <li>
+        <h3>
+          <a href="/web/react/2024/10/15/openai-realtime.html" style= "font-size: 17px;">
+            [WEB][react] Chat-gpt realtime api 구현 및 설명
+          </a>
+          <small style= "font-size: 14px;">15 Oct 2024</small>
+        </h3>
+      </li>
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</ul>
+
+
+<!-- 수정중 -->
+<!-- 가장 첫번쨰 카테고리의 최근 글 불러오는 글 기능 추가  -->
+
+
+<!-- 코멘트 란을 추가하는 코드 -->
+
+
+  <div id="disqus_thread"></div>
+  <script>
+      /**
+      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+      *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+      /*
+      var disqus_config = function () {
+      this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      };
+      */
+      (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://tensorstudio.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+      })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+<!-- 코멘트 란을 추가하는 코드 -->
+
+        
+        <a class="btn btn-primary float-left" href="/web/%EB%A6%AC%EB%B7%B0/2024/12/11/ecount-interview.html" data-toggle="tooltip" data-placement="top" title="[후기] 이카운트 코딩 테스트 및 인터뷰 리뷰">&larr; Previous<span class="d-none d-md-inline">
+            Post</span></a>
+        
+        
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+  <!-- Footer -->
+
+<hr>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <ul class="list-inline text-center">
+          
+          <li class="list-inline-item">
+            <a href="mailto:tensor17s@gmail.com" class="text-gray">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          
+          
+          
+          
+        </ul>
+
+        <p class="copyright text-muted">
+          Build with: 
+          <a 
+            href="https://github.com/StartBootstrap/startbootstrap-clean-blog-jekyll"
+            class="text-gray"
+            target="_blank">startbootstrap-clean-blog-jekyll
+          </a>
+        </p>
+        <p class="copyright text-center text-gray">
+            TENSOR STUDIO
+        </p>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/blog/js/scripts.js"></script>
+
+<script src="/assets/scripts.js"></script>
+
+
+
+
+  
+
+</body>
+
+</html>

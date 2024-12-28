@@ -1,4 +1,230 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-12-11T15:50:44+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[후기] 이카운트 코딩 테스트 및 인터뷰 리뷰</title><link href="http://localhost:4000/web/%EB%A6%AC%EB%B7%B0/2024/12/11/ecount-interview.html" rel="alternate" type="text/html" title="[후기] 이카운트 코딩 테스트 및 인터뷰 리뷰" /><published>2024-12-11T00:00:00+09:00</published><updated>2024-12-11T00:00:00+09:00</updated><id>http://localhost:4000/web/%EB%A6%AC%EB%B7%B0/2024/12/11/ecount-interview</id><content type="html" xml:base="http://localhost:4000/web/%EB%A6%AC%EB%B7%B0/2024/12/11/ecount-interview.html"><![CDATA[<h2 id="후기-이카운트-코딩-테스트-및-인터뷰-리뷰">[후기] 이카운트 코딩 테스트 및 인터뷰 리뷰</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-12-29T02:08:23+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[WEB][JAVA] JPA 상속 및 심화</title><link href="http://localhost:4000/web/java/2024/12/28/jpa-inheritance.html" rel="alternate" type="text/html" title="[WEB][JAVA] JPA 상속 및 심화" /><published>2024-12-28T00:00:00+09:00</published><updated>2024-12-28T00:00:00+09:00</updated><id>http://localhost:4000/web/java/2024/12/28/jpa-inheritance</id><content type="html" xml:base="http://localhost:4000/web/java/2024/12/28/jpa-inheritance.html"><![CDATA[<h2 id="webjava-jpa-상속-및-심화">[WEB][JAVA] JPA 상속 및 심화</h2>
+
+<h3 id="1-서론">1. 서론</h3>
+
+<p>JPA는 편리한 기능을 제공하는 프레임워크이다. 그렇다고 JPA가 <strong>“단순 쿼리를 치지 않아서 좋다.”</strong> 라는 의미만 있는 것은 아니라고 생각한다.</p>
+
+<blockquote>
+  <blockquote>
+    <p>JPA는 객체지향적으로 데이터를 다루는 프레임워크이다.</p>
+  </blockquote>
+</blockquote>
+
+<p>여기에 초점이 맞춰져야 한다고 본다.</p>
+
+<p>네가 뭔데 심화된 내용을 적냐고 말하는 사람이 있을 수 있긴 하지만, 도서관에서 스프링 책을 찾아보거나 JPA 관련 포스트를 찾아보며 공부하면서 JPA를 단순 ORM 매핑 프레임워크로 설명하고 넘어갔기 때문에, 최근 DB 스키마를 작성하며 JPA에서 객체지향을 다루며 상속이나 다형성이 어떻게 구현되는지 이용하며 더 심화된 내용을 적는 것이다.</p>
+
+<h3 id="2-상속">2. 상속</h3>
+
+<p>일단 다형성이란 무엇인가?</p>
+
+<p>자바에서 다형성이란 객체지향적으로 프로그래밍을 할 때, 상위 클래스의 타입으로 하위 클래스의 인스턴스를 참조할 수 있는 것을 의미한다.</p>
+
+<p>내가 생각하는 가장 흔한 예시로는 컬렉션 프레임워크인데,</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+    <span class="kd">class</span> <span class="nc">Test</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">testList</span><span class="o">;</span>
+            <span class="n">testList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>이런 식으로, 리스트 인터페이스를 구현한 클래스들을 사용할 때, 리스트 인터페이스의 메서드를 사용할 수 있는 것이다.
+JPA에서도 마찬가지로 상속과  다형성을 이용할 수 있는데,</p>
+
+<p>예를 들어서 이런 User 엔티티가 있다고 가정해보자.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nd">@Getter</span> <span class="nd">@Setter</span>
+<span class="nd">@Entity</span>
+<span class="nd">@Table</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"users"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="o">{</span>
+    <span class="nd">@Id</span>
+    <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="nc">GenerationType</span><span class="o">.</span><span class="na">IDENTITY</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+    <span class="nd">@Column</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">email</span><span class="o">;</span>
+
+    <span class="c1">// 생략</span>
+    <span class="c1">// User는 스케쥴을 가지고 있다고 할 때를 생각해 보자.</span>
+    <span class="c1">// 이런 식으로 스케쥴을 가지고 있는 것이다.</span>
+    <span class="nd">@JsonManagedReference</span> <span class="c1">// 순환참조 방지(User에서 참조하는 WeddingSchedule을 참조하는 것을 방지)</span>
+    <span class="nd">@OneToMany</span><span class="o">(</span><span class="n">mappedBy</span> <span class="o">=</span> <span class="s">"user"</span><span class="o">,</span> <span class="n">cascade</span> <span class="o">=</span> <span class="nc">CascadeType</span><span class="o">.</span><span class="na">ALL</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">PersonalSchedule</span><span class="o">&gt;</span> <span class="n">clearedSchedule</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+
+    <span class="nd">@Column</span>
+    <span class="kd">private</span> <span class="nc">Sex</span> <span class="n">sex</span><span class="o">;</span>
+    
+    <span class="nd">@Column</span>
+    <span class="kd">private</span> <span class="nc">UserType</span> <span class="n">userType</span><span class="o">;</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>뭐 이런 식으로, User가 어떤 일정을 가지고 있을 때, DB 스키마에 따라 정규화를 하거나 혹은 서비스의 로직에 따라 일정, 즉 스케쥴이 세분화된 타입이 있을 수가 있다.</p>
+
+<p>예를 들어 회사 스케쥴, 즉 CompanySchedule 이 있을 수가 있고, 또 PersonalSchedule 이 있을 수도 있고, 더 세분화된 일정이라면 WeddingSchedule 이 있을 수도 있다.</p>
+
+<p>이런 상황에서, User가 이미 완료한 일정을 가지고 있을 때, 이런 식으로 다형성을 이용할 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">// 생략</span>
+    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Schedule</span><span class="o">&gt;</span> <span class="n">clearedSchedule</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+
+</code></pre></div></div>
+
+<p>그리고 Schedule 클래스를 상속받은 클래스들을 생성하고, 이런 식으로 다형성을 이용할 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nd">@Getter</span> <span class="nd">@Setter</span>
+<span class="nd">@Entity</span>
+<span class="nd">@Table</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"schedule"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Schedule</span> <span class="o">{</span>
+    <span class="nd">@Id</span>
+    <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="nc">GenerationType</span><span class="o">.</span><span class="na">IDENTITY</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">LocalDate</span> <span class="n">startDate</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">LocalDate</span> <span class="n">endDate</span><span class="o">;</span>
+
+    <span class="nd">@ManyToOne</span>
+    <span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"place_id"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">Place</span> <span class="n">place</span><span class="o">;</span> <span class="c1">// 실제 타입은 구글 맵 API 또는 네이버 맵 API를 사용해야 함. 아직 잘 몰름..</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">memo</span><span class="o">;</span>
+
+    <span class="c1">// 생략</span>
+
+    <span class="nd">@ManyToOne</span>
+    <span class="nd">@JoinColumn</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"user_id"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">User</span> <span class="n">user</span><span class="o">;</span>
+
+<span class="o">}</span>
+
+
+</code></pre></div></div>
+<p>그리고 각각의 스케쥴 타입을 상속받은 클래스들을 생성하면</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nd">@Getter</span> <span class="nd">@Setter</span>
+<span class="nd">@Entity</span>
+<span class="nd">@Table</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"company_schedule"</span><span class="o">)</span>
+<span class="nd">@Inheritance</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="nc">InheritanceType</span><span class="o">.</span><span class="na">JOINED</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CompanySchedule</span> <span class="kd">extends</span> <span class="nc">Schedule</span> <span class="o">{</span>
+
+    <span class="nd">@Column</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">companyName</span><span class="o">;</span>
+
+    <span class="nd">@Column</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">companyAddress</span><span class="o">;</span>
+
+    <span class="nd">@Column</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">companyPhone</span><span class="o">;</span>
+
+    <span class="c1">// 생략</span>
+<span class="o">}</span>
+
+<span class="nd">@Getter</span> <span class="nd">@Setter</span>
+<span class="nd">@Entity</span>
+<span class="nd">@Table</span><span class="o">(</span><span class="n">name</span> <span class="o">=</span> <span class="s">"personal_schedule"</span><span class="o">)</span>
+<span class="nd">@Inheritance</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="nc">InheritanceType</span><span class="o">.</span><span class="na">JOINED</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PersonalSchedule</span> <span class="kd">extends</span> <span class="nc">Schedule</span> <span class="o">{</span>
+
+    <span class="nd">@Column</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">phone</span><span class="o">;</span>
+
+    <span class="c1">// 생략</span>
+<span class="o">}</span>
+
+<span class="o">....</span>
+
+</code></pre></div></div>
+
+<p>이렇게 되면, User 엔티티는 이런 식으로 다형성을 이용할 수 있게 된다.
+이런 경우에 JPA는 다음과 같이 DB에 저장하는데</p>
+
+<p><img src="/img/posts/java/jpa/2.png" width="80%" /></p>
+
+<p>Schedule 테이블의 id를 외래키로 가지고 있어서, 스케쥴의 공통적인 속성은 스케쥴에 저장되고, 각각의 스케쥴 타입의 고유한 속성은 각각의 스케쥴 타입에 저장된다.</p>
+
+<p>그렇다고 해서 Schedule을 생성하고, CompanySchedule을 생성해서 저장하는 것이 아니라,</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Schedule</span> <span class="n">scadule</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Schedule</span><span class="o">();</span> 
+<span class="n">scadule</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">"스케쥴 이름"</span><span class="o">);</span>
+<span class="c1">// 이런식으로 스케쥴의 공통적인 속성을 설정하고 회사 스케쥴에 지정하는 것</span>
+<span class="nc">CompanySchedule</span> <span class="n">companySchedule</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CompanySchedule</span><span class="o">()</span>
+<span class="n">companySchedule</span><span class="o">.</span><span class="na">setSchedule</span><span class="o">(</span><span class="n">schedule</span><span class="o">);</span>
+
+</code></pre></div></div>
+
+<p>이런 식으로 생성하는 것이 아니라,</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nc">CompanySchedule</span> <span class="n">companySchedule</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CompanySchedule</span><span class="o">();</span>
+
+<span class="c1">// Schedule 테이블에 저장되는 것</span>
+<span class="n">companySchedule</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">"회사 스케쥴 이름"</span><span class="o">);</span>
+<span class="n">companySchedule</span><span class="o">.</span><span class="na">setStartDate</span><span class="o">(</span><span class="nc">LocalDate</span><span class="o">.</span><span class="na">now</span><span class="o">());</span>
+<span class="n">companySchedule</span><span class="o">.</span><span class="na">setEndDate</span><span class="o">(</span><span class="nc">LocalDate</span><span class="o">.</span><span class="na">now</span><span class="o">().</span><span class="na">plusDays</span><span class="o">(</span><span class="mi">1</span><span class="o">));</span>
+
+<span class="c1">// CompanySchedule 테이블에 저장되는 것</span>
+<span class="n">companySchedule</span><span class="o">.</span><span class="na">setCompanyName</span><span class="o">(</span><span class="s">"회사 이름"</span><span class="o">);</span>
+<span class="n">companySchedule</span><span class="o">.</span><span class="na">setCompanyAddress</span><span class="o">(</span><span class="s">"회사 주소"</span><span class="o">);</span>
+<span class="n">companySchedule</span><span class="o">.</span><span class="na">setCompanyPhone</span><span class="o">(</span><span class="s">"회사 전화번호"</span><span class="o">);</span>
+
+</code></pre></div></div>
+
+<p>이런 식으로 생성이 된다는 것이다. CompanyShedule은 Schedule을 상속받았기 때문에, Schedule의 속성을 가지고 있고, 또 CompanySchedule의 고유한 속성도 가지고 있는 것이다.</p>
+
+<h4 id="21-상속-전략">2.1 상속 전략</h4>
+
+<p>위에서 보여드린 예시는 JOINED 전략을 사용한 것이다. 
+대부분 JPA에서 상속을 사용할 때 JOINED 전략을 사용하는데 그 이유는 <strong>정규화</strong>를 통해 데이터를 중복 저장하지 않기 위해서이다.</p>
+
+<p>JOINED 전략은 부모 클래스와 자식 클래스를 모두 테이블로 생성하고, 자식 클래스의 고유한 속성을 저장하는 것이다.</p>
+
+<p>JOINED 전략이 아닌 다른 전략을 사용하는 경우에는 정규화가 제대로 이루어지지 않는데, 예를 들어서 <strong>TABLE_PER_CLASS</strong> 전략과 <strong>SINGLE_TABLE</strong> 전략을 사용하는 경우를 한 번 보자.</p>
+
+<p>이 경우는 SINGLE_TABLE 전략을 사용하는 경우이다.</p>
+
+<p><img src="/img/posts/java/jpa/3.png" width="80%" /></p>
+
+<p>이 경우는 TABLE_PER_CLASS 전략을 사용하는 경우이다.</p>
+
+<p><img src="/img/posts/java/jpa/4.png" width="80%" /></p>
+
+<p>SINGLE_TABLE 전략은 이렇듯 모든 자식 클래스의 속성을 하나의 테이블에 저장하는 것이고, TABLE_PER_CLASS 전략은 각각의 자식 클래스를 하나의 테이블로 생성하는 것이다.</p>
+
+<p>간단히 예시를 들자면 <strong>회사 이름</strong>이라는 속성이 변경되는 경우를 생각해 볼 때(물론 그럴 일이 쉽사리 일어난다는 말은 아니다)</p>
+
+<p>JOINED 전략을 사용하는 경우에는 회사 이름이 변경되면 CompanySchedule 테이블에 저장된 회사 테이블 하나만 변경될 테니 문제가 되지 않지만,
+SINGLE_TABLE 전략을 사용하는 경우에는 회사 이름이 변경되면 모든 테이블에 저장된 회사 이름이 변경되는 것이고, TABLE_PER_CLASS 전략을 사용하는 경우에도 회사 이름이 변경되면 모든 테이블에 저장된 회사 이름이 변경될 것이고, 정규화가 제대로 이루어지지 않아 수천건의 쿼리가 나가게 될 것이다.</p>
+
+<p>그렇기는 해도 SINGLE_TABLE 전략은 사용하는 경우가 있는데, JOIN이 발생하지 않기 때문에 성능이 좋다는 장점이 있고, 테이블이 가장 적어 관리가 편하다는 장점이 있다.</p>
+
+<p>그러나 이런 전략들은 정규화가 제대로 이루어지지 않기 때문에 데이터를 중복 저장하게 되는 문제가 있다는 점은 명심해야 한다.</p>
+
+<h5 id="joined-전략">JOINED 전략</h5>
+<ul>
+  <li>부모 클래스와 자식 클래스를 각각 테이블로 생성.</li>
+  <li>자식 클래스의 고유한 속성은 자식 테이블에 저장.</li>
+  <li>데이터 중복을 피하고 정규화를 유지.</li>
+</ul>
+
+<h5 id="single_table-전략">SINGLE_TABLE 전략</h5>
+<ul>
+  <li>모든 자식 클래스의 속성을 하나의 테이블에 저장.</li>
+  <li>JOIN이 발생하지 않아 성능이 좋고, 테이블 수가 적어 관리가 편리.</li>
+  <li>정규화 위반 및 데이터 중복 발생.</li>
+</ul>
+
+<h5 id="table_per_class-전략">TABLE_PER_CLASS 전략</h5>
+<ul>
+  <li>각 자식 클래스를 별도의 테이블로 생성.</li>
+  <li>정규화 위반 및 데이터 중복 발생.</li>
+</ul>]]></content><author><name>ash tensor</name></author><category term="WEB" /><category term="JAVA" /><summary type="html"><![CDATA[[WEB][JAVA] JPA 상속 및 심화]]></summary></entry><entry><title type="html">[후기] 이카운트 코딩 테스트 및 인터뷰 리뷰</title><link href="http://localhost:4000/web/%EB%A6%AC%EB%B7%B0/2024/12/11/ecount-interview.html" rel="alternate" type="text/html" title="[후기] 이카운트 코딩 테스트 및 인터뷰 리뷰" /><published>2024-12-11T00:00:00+09:00</published><updated>2024-12-11T00:00:00+09:00</updated><id>http://localhost:4000/web/%EB%A6%AC%EB%B7%B0/2024/12/11/ecount-interview</id><content type="html" xml:base="http://localhost:4000/web/%EB%A6%AC%EB%B7%B0/2024/12/11/ecount-interview.html"><![CDATA[<h2 id="후기-이카운트-코딩-테스트-및-인터뷰-리뷰">[후기] 이카운트 코딩 테스트 및 인터뷰 리뷰</h2>
 
 <h3 id="1-서론">1. 서론</h3>
 
@@ -55,15 +281,12 @@
 
 <p>그리고 이후에는 인성면접? 이력서 기반 면접을 진행했는데, 1분 자기소개나 지원 동기 등을 물어보지 않을까 생각했는데 그런 질문은 없었다. 
 그럴 수 밖에는 없었던 게, 음 일단 5명? 4명이 1조로 이뤄서 약 30분 정도 면접을 진행했는데
-일단 요구했던 대답이 전부 <strong>“두문장 세문장 정도로 대답해 달라”</strong> 였다. 그러니까 대답할 시간을 많이 주지 않았고, 산술적으로 계산해 본다고 해도 한사람당 대략 6분에서 7분 정도 면접을 진행하는? 그런 식의 면접이었다. 왜 잡플래닛에서 병풍면접같았다고 적혀있었는지 조금 알 것 같다. 실제로는 그렇지 않을지는 몰라도, 한사람당 대략 6분 정도 면접을 진행하는 셈이니, 다른 사람 대답이 길어지면 길어질수록 점점 다른 사람이 자연스럽게 병풍이 되는 셈이니ㅋㅋ</p>
+일단 요구했던 대답이 전부 <strong>“두문장 세문장 정도로 대답해 달라”</strong> 였다. 그러니까 대답할 시간을 많이 주지 않았고, 산술적으로 계산해 본다고 해도 한사람당 대략 6분에서 7분 정도 면접을 진행하는? 그런 식의 면접이었다.
+면접결과는 바로 다음 날 오전에 나온다.</p>
 
-<p>면접결과는 바로 다음 날 오전에 나온다.</p>
-
-<p>내가 어떻게 느꼈냐면 이럴거면 <strong>그냥 서류컷을 좀 더 높게 잡는게 좋지 않나?</strong> 하는 생각이 들었다. 면접 경쟁률은 약 6대 1정도라고 들었다.</p>
-
-<p>물론 면접이 나쁜 경험은 아니었다. 그리고 내가 부족했다는 점도 절대적으로 인정한다!! 뭔가 알더라도 제대로 알아야겠다는 생각도 들었고, 면접비 3만원 주신 것도 뭐 나쁘지 않았다.
-그렇긴 해도 변별력이 조금 없는 면접이었다는 느낌이 들었다. 
-1분 자기소개랑 지원동기, 예상 질문에 대한 대답 같은것도 열심히 외워갔는데 아예 물어보지도 않으니ㅠㅠ 좀 서운하긴 했다. 뭐 물어보셨어도 떨어지긴 했곘지만, 아쉬운 면접이었다. 내가 너무 못하더라…</p>
+<p>면접 경쟁률은 약 6대 1정도라고 들었다.
+물론 면접이 나쁜 경험은 아니었다. 그리고 내가 부족했다는 점도 절대적으로 인정한다!! 뭔가 알더라도 제대로 알아야겠다는 생각도 들었고, 면접비 3만원 주신 것도 뭐 나쁘지 않았다.
+그래도 1분 자기소개랑 지원동기, 예상 질문에 대한 대답 같은것도 열심히 외워갔는데 아예 물어보지도 않으니ㅠㅠ 좀 서운하긴 했다. 뭐 물어보셨어도 떨어지긴 했겠지만, 아쉬운 면접이었다. 내가 너무 못하더라…</p>
 
 <p>면접비 받은 걸로 커피나 마셔야겠다.</p>
 
@@ -2005,7 +2228,91 @@ The AWS SDK for Java 1.x is being used here:
 이런 방법 말고도 S3 버킷에 이미지를 업로드하면 해당 이미지의 URL을 가져와서 얼굴 인식을 하는 방법도 있긴 하고,
 여러 사진 중에서 해당 사진의 얼굴을 찾는 방법도 있다. 아마도 출입국 심사대나 보안 설정 같은 곳에서 유용하게 사용할 수 있지 않을까 싶다.</p>
 
-<p>끝!</p>]]></content><author><name>ash tensor</name></author><category term="WEB" /><category term="JAVA" /><summary type="html"><![CDATA[AWS Rekognition API를 사용하여 Spring Boot에서 얼굴 인식을 구현.]]></summary></entry><entry><title type="html">[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기</title><link href="http://localhost:4000/web/java/2024/08/20/spring-gcp-bucket.html" rel="alternate" type="text/html" title="[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기" /><published>2024-08-20T00:00:00+09:00</published><updated>2024-08-20T00:00:00+09:00</updated><id>http://localhost:4000/web/java/2024/08/20/spring-gcp-bucket</id><content type="html" xml:base="http://localhost:4000/web/java/2024/08/20/spring-gcp-bucket.html"><![CDATA[<h2 id="webgcp-spring-boot에서-gcp-bucket에-파일-업로드하기">[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기</h2>
+<p>끝!</p>]]></content><author><name>ash tensor</name></author><category term="WEB" /><category term="JAVA" /><summary type="html"><![CDATA[AWS Rekognition API를 사용하여 Spring Boot에서 얼굴 인식을 구현.]]></summary></entry><entry><title type="html">[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기</title><link href="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/20/bigdata-processing-engineer.html" rel="alternate" type="text/html" title="[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기" /><published>2024-08-20T00:00:00+09:00</published><updated>2024-08-20T00:00:00+09:00</updated><id>http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/20/bigdata-processing-engineer</id><content type="html" xml:base="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/20/bigdata-processing-engineer.html"><![CDATA[<h2 id="자격증실기-빅데이터-분석기사-2024년-1회8회실기-합격-후기-및-시험-문제">[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기 및 시험 문제</h2>
+
+<h3 id="합격-인증">합격 인증</h3>
+
+<p><img src="/img/posts/bigdata/3.png" width="80%" /></p>
+
+<p>솔직히 좀 부끄럽긴 한데… 3과목 점수가 5점밖에 안나와서 남 보여줄만한 점수는 아니긴 해도, 일단 합격은 합격이니까.</p>
+
+<h3 id="시험-총평">시험 총평</h3>
+
+<p>나는 시험을 동부자격검정센터에서 실기 시험을 봤는데 생각보다 시험장이 조금 작긴 했다. 
+일단 태릉입구 근방 주민은 쉽게 찾아갈 수 있는게, BYC 직영매장 근처에 바로 시험장이 있어서 찾아가기 쉽다.</p>
+
+<p>일단 빅데이터 분석기사의 실기 시험을 공부하며 내가 느꼈던 점은, 필기가 더 어렵고, 실기가 더 쉽다고 느꼈던 점이었다.</p>
+
+<h4 id="1과목">1과목</h4>
+
+<p><img src="/img/posts/bigdata/6.png" width="80%" /></p>
+
+<p>(8회 시험에서는 약 몇백줄 되는 CSV를 제공했는데 다양한 나라의 맥주 판매? 소비 데이터 중에서 특정 조건에 맞는 나라의 정보를 추출하는 문제였다.
+즉 꼭 저런 식의 전처리 문제만 나오는 건 아니다..!)
+1과목은 데이터 전처리 과목인데, 판다스 라이브러리 등을 사용해서 기초적인 데이터 조작을 할 수 있는지를 묻는 문제인데,
+파이썬을 쓸 줄만 안다면 누구나 이 문제를 풀 수 있다. 왜냐하면 help와 dir 명령어를 사용할 수 있기 때문에 pandas를 사용하지 못한다고 하더라도
+도움을 받을 수 있기 때문이다. 사실상 30점은 기본으로 가져가는 점수라고 생각한다.</p>
+
+<h4 id="2과목">2과목</h4>
+
+<p><img src="/img/posts/bigdata/7.png" width="80%" /></p>
+
+<p>2과목은 분석 모델링 과목인데, 회귀 모델이나 분류 모델을 사용해서 주어진 문제에 따른 데이터를 반환하는 문제다.
+이 문제는 40점 배점으로 이 문제도 어려운 문제는 아니다. 내 기준으로 RMSE가 100에서 120 사이에 있었는데 40점으로 만점을 받았다.</p>
+
+<p>8회차 문제를 설명하자면, 두 지하철역의 주요 변수(이름, 날씨, 기온, 습도, 풍속, 미세먼지 등)를 이용해서 두 지하철역의 승하차 인원을 예측하는 문제였다.</p>
+
+<p>일단 2과목에서 점수를 받지 못하면 합격이 어렵다고 봐야 한다. 2유형은 40점이라 배점이 크기도 하지만, 아예 0점이 나오는 경우가 많아서 
+숙달될 수 있을 정도로 코드를 써보는 편이 좋다.
+내 경험상 2유형을 정리해 보자면 일단 <strong>원본 데이터를 잘 살펴 봐야 한다.</strong> 예를 들어서, 범주형 변수인 경우에는
+라벨 인코딩 보다는(물론 안하는 것보다는 성능이 좋겠지만) pandas의 get_dummies를 이용하는 원핫 인코딩을 사용하는 것이 좋다.</p>
+
+<p>또한, 이번 8회차 시험 문제를 설명했듯이, 두 지하철역의 승하차 인원을 예측하는 문제였는데, 꽤 많은 사람들이 <strong>지하철 역 이름</strong>을 변수로 사용하지 않아서 
+점수가 낮게 나왔는데(문제에서는 A역 B역으로 주어졌다) 아마도 A역, B역으로 익명화 되어 있어서 변수로 사용하지 않은 건 이해한다. 하지만 우리가 
+실제 지하철 역을 이용할 때 항상 집에서 가까운 지하철 역을 이용하는 것처럼, 강남의 유동인구가 많기 때문에 강남역은 당연히 노선도의 끝의 지하철 역보다는
+이용자수가 많을 것이 분명하다.</p>
+
+<p>이런 점을 고려하지 않고 지하철 역 이름을 변수로 사용하지 않은 사람들이 많았는데, 물론 사용하지 않다고 하더라도 점수를 받을 수는 있지만 내가 시험장에서 해당 데이터를 기반으로
+분석했을때, 해당 변수가 설명력이 가장 높은 변수였기 때문에 아마 점수가 조금 떨어졌을 것이다. 이렇듯 어느정도 실제 데이터를 살펴보는게 중요하다!</p>
+
+<p><img src="/img/posts/bigdata/4.png" width="80%" /></p>
+
+<p>그리고 돌아다니는 팁으로 랜덤포레스트 회귀 &amp; 분류를 암기해 가는 2과목 팁이 존재하는데 실제로 이 방법이 가장 좋은 것 같다. 실제 시험장에서 
+결측치와 이상치 제거를 수행한 뒤에 선형 회귀 및 다양한 모델을 사용해서 예측을 수행했는데, 그냥 원 핫 인코딩을 적용한 랜덤포레스트 회귀가 가장 좋은 성능을 보였다.</p>
+
+<p>그리고 0점 나오는 경우가 많았는데, 이는 csv 파일을 저장하지 않은 경우도 있겠지만 <strong>정답 행 갯수보다 적거나 많은 행을 제출</strong>해서 그렇다.
+이런 경우에는 0점이 나올 수 있기 때문에 주의해야 한다. 앞에 있던 사진처럼 총 행의 갯수(학습용 데이터 수, 평가용 데이터 수)를 제공해주기 때문에 
+무조건 csv 파일을 제출할 때 정답 행 갯수와 같은지 len() 함수 등을 이용해서 <strong>꼭꼭</strong> 확인해야 한다!!</p>
+
+<h4 id="3과목">3과목</h4>
+
+<p><img src="/img/posts/bigdata/8.png" width="80%" /></p>
+
+<p>물론 5점 맞은 주제에 무슨 후기냐 싶겠지만, 변명을 하자면 문제가 두문제 나오는데, 각각 5점짜리 소문항 3개씩 15점짜리 문제 두 개였다.
+각각 문제는 1번 소문항이 틀리면 나머지 두개의 문항도 모두 틀리는 구조이기 때문에 2번 문항에서 t-검정의 유의구간을 반대로 설정하는 
+실수를 저질러서 모두 다 틀려버리고 말았다….</p>
+
+<p>개인적으로는 3과목이 가장 어려운 과목이라고 생각하고, 앞으로도 계속 어려워 질 것이라고 생각한다.
+그 이유는 일단 지금 3과목에서는 통계적 검정을 주로 물어보기는 하지만 꼭 통계적 검정(t 검정 혹은 카이제곱 검정)을 물어보지 않을 수도 있다는 점이다.
+실제로 저 예시 문제에서 나온 것처럼 선형 회귀의 계수나 변수 중요도, 오즈비를 물어보는 경우가 대부분이었다.
+실제 기 치뤄진 시험의 기출문제에서도 다른 통계적 지식을 물어보는 경우가 있었는데 이런 경우에는 정말 어려운 문제가 나올 수 있다고 느꼈다. 
+게다가 빅분기 특성상 기출문제도 정확하지 않기 때문에, 추후에 이 시험의 난이도를 올리고자 한다면 2과목 점수를 낮추고 3과목 점수를 올리는 식으로 
+변별력을 줄 수도 있지 않을까? 그런 생각이 들었다.</p>
+
+<p><img src="/img/posts/bigdata/5.png" width="80%" /></p>
+
+<p>게다가, 지금은 1과목과 2과목을 모두 맞추면 70점으로 무조건 합격이 가능하기에 떠도는 팁으로는 1과목 2과목만 준비해서 특정 방법(랜덤포레스트 회귀 또는 분류)
+만 달달 외워서 시험보는 편이 팁이라고 돌아다니는데, 랜덤포레스트 특성상 이런 시험의 데이터 셋에서는 어느정도 무조건적으로 성능이 좋게 나올 수 밖에는 
+없기 때문에… 시험 점수 등을 조정해서 3과목을 공부할 수 밖에는 없게끔 시험을 언젠가 바꿀 수도 있지 않을까 생각이 들었다.</p>
+
+<h3 id="마치며">마치며</h3>
+
+<p>빅데이터 분석기사는 일단 필기를 합격했다면 실기는 수월하게 합격할 수 있는 시험이라고 느꼈다. 비록 작업형 시험이기는 하지만 코드가 정말 익숙하지 않은 사람이라도 
+충분히 합격할 수 있는 시험이다. 
+일단 수험서로는 ㅇㄱㅈ 출판사의 책을 사용했는데, 솔직히 별로 좋지 않았다고 할 수 밖에는 없다. 내용이 완전 틀린 내용이 실려있기도 했고,
+해설과 본문 내용이 충돌되는 경우도 많았다. 다른 출판사의 책을 보지는 않았지만 사는 것이 더 좋지 않을까? 그런 생각은 있다. 적어도 2024년에는..</p>
+
+<p>아무튼, 이렇게 빅데이터 분석기사 24년 1회 후기를 마친다!!</p>]]></content><author><name>ash tensor</name></author><category term="자격증" /><summary type="html"><![CDATA[[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기 및 시험 문제]]></summary></entry><entry><title type="html">[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기</title><link href="http://localhost:4000/web/java/2024/08/20/spring-gcp-bucket.html" rel="alternate" type="text/html" title="[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기" /><published>2024-08-20T00:00:00+09:00</published><updated>2024-08-20T00:00:00+09:00</updated><id>http://localhost:4000/web/java/2024/08/20/spring-gcp-bucket</id><content type="html" xml:base="http://localhost:4000/web/java/2024/08/20/spring-gcp-bucket.html"><![CDATA[<h2 id="webgcp-spring-boot에서-gcp-bucket에-파일-업로드하기">[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기</h2>
 
 <h3 id="문제-설명">문제 설명</h3>
 
@@ -2250,209 +2557,4 @@ mac 기준으로 자신의 .zshrc에 해당 키를 환경변수로 설정해주�
 <p>사용 사례:</p>
 
 <p>단순한 JSON 객체를 자바 객체로 매핑할 때 주로 사용됨.
-예를 들어, 클라이언트가 JSON으로 인코딩된 데이터를 전송하고, 서버가 이를 자바 객체로 변환하여 처리하는 경우에 적합함.</p>]]></content><author><name>ash tensor</name></author><category term="WEB" /><category term="JAVA" /><summary type="html"><![CDATA[[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기]]></summary></entry><entry><title type="html">[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기</title><link href="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/20/bigdata-processing-engineer.html" rel="alternate" type="text/html" title="[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기" /><published>2024-08-20T00:00:00+09:00</published><updated>2024-08-20T00:00:00+09:00</updated><id>http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/20/bigdata-processing-engineer</id><content type="html" xml:base="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/20/bigdata-processing-engineer.html"><![CDATA[<h2 id="자격증실기-빅데이터-분석기사-2024년-1회8회실기-합격-후기-및-시험-문제">[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기 및 시험 문제</h2>
-
-<h3 id="합격-인증">합격 인증</h3>
-
-<p><img src="/img/posts/bigdata/3.png" width="80%" /></p>
-
-<p>솔직히 좀 부끄럽긴 한데… 3과목 점수가 5점밖에 안나와서 남 보여줄만한 점수는 아니긴 해도, 일단 합격은 합격이니까.</p>
-
-<h3 id="시험-총평">시험 총평</h3>
-
-<p>나는 시험을 동부자격검정센터에서 실기 시험을 봤는데 생각보다 시험장이 조금 작긴 했다. 
-일단 태릉입구 근방 주민은 쉽게 찾아갈 수 있는게, BYC 직영매장 근처에 바로 시험장이 있어서 찾아가기 쉽다.</p>
-
-<p>일단 빅데이터 분석기사의 실기 시험을 공부하며 내가 느꼈던 점은, 필기가 더 어렵고, 실기가 더 쉽다고 느꼈던 점이었다.</p>
-
-<h4 id="1과목">1과목</h4>
-
-<p><img src="/img/posts/bigdata/6.png" width="80%" /></p>
-
-<p>(8회 시험에서는 약 몇백줄 되는 CSV를 제공했는데 다양한 나라의 맥주 판매? 소비 데이터 중에서 특정 조건에 맞는 나라의 정보를 추출하는 문제였다.
-즉 꼭 저런 식의 전처리 문제만 나오는 건 아니다..!)
-1과목은 데이터 전처리 과목인데, 판다스 라이브러리 등을 사용해서 기초적인 데이터 조작을 할 수 있는지를 묻는 문제인데,
-파이썬을 쓸 줄만 안다면 누구나 이 문제를 풀 수 있다. 왜냐하면 help와 dir 명령어를 사용할 수 있기 때문에 pandas를 사용하지 못한다고 하더라도
-도움을 받을 수 있기 때문이다. 사실상 30점은 기본으로 가져가는 점수라고 생각한다.</p>
-
-<h4 id="2과목">2과목</h4>
-
-<p><img src="/img/posts/bigdata/7.png" width="80%" /></p>
-
-<p>2과목은 분석 모델링 과목인데, 회귀 모델이나 분류 모델을 사용해서 주어진 문제에 따른 데이터를 반환하는 문제다.
-이 문제는 40점 배점으로 이 문제도 어려운 문제는 아니다. 내 기준으로 RMSE가 100에서 120 사이에 있었는데 40점으로 만점을 받았다.</p>
-
-<p>8회차 문제를 설명하자면, 두 지하철역의 주요 변수(이름, 날씨, 기온, 습도, 풍속, 미세먼지 등)를 이용해서 두 지하철역의 승하차 인원을 예측하는 문제였다.</p>
-
-<p>일단 2과목에서 점수를 받지 못하면 합격이 어렵다고 봐야 한다. 2유형은 40점이라 배점이 크기도 하지만, 아예 0점이 나오는 경우가 많아서 
-숙달될 수 있을 정도로 코드를 써보는 편이 좋다.
-내 경험상 2유형을 정리해 보자면 일단 <strong>원본 데이터를 잘 살펴 봐야 한다.</strong> 예를 들어서, 범주형 변수인 경우에는
-라벨 인코딩 보다는(물론 안하는 것보다는 성능이 좋겠지만) pandas의 get_dummies를 이용하는 원핫 인코딩을 사용하는 것이 좋다.</p>
-
-<p>또한, 이번 8회차 시험 문제를 설명했듯이, 두 지하철역의 승하차 인원을 예측하는 문제였는데, 꽤 많은 사람들이 <strong>지하철 역 이름</strong>을 변수로 사용하지 않아서 
-점수가 낮게 나왔는데(문제에서는 A역 B역으로 주어졌다) 아마도 A역, B역으로 익명화 되어 있어서 변수로 사용하지 않은 건 이해한다. 하지만 우리가 
-실제 지하철 역을 이용할 때 항상 집에서 가까운 지하철 역을 이용하는 것처럼, 강남의 유동인구가 많기 때문에 강남역은 당연히 노선도의 끝의 지하철 역보다는
-이용자수가 많을 것이 분명하다.</p>
-
-<p>이런 점을 고려하지 않고 지하철 역 이름을 변수로 사용하지 않은 사람들이 많았는데, 물론 사용하지 않다고 하더라도 점수를 받을 수는 있지만 내가 시험장에서 해당 데이터를 기반으로
-분석했을때, 해당 변수가 설명력이 가장 높은 변수였기 때문에 아마 점수가 조금 떨어졌을 것이다. 이렇듯 어느정도 실제 데이터를 살펴보는게 중요하다!</p>
-
-<p><img src="/img/posts/bigdata/4.png" width="80%" /></p>
-
-<p>그리고 돌아다니는 팁으로 랜덤포레스트 회귀 &amp; 분류를 암기해 가는 2과목 팁이 존재하는데 실제로 이 방법이 가장 좋은 것 같다. 실제 시험장에서 
-결측치와 이상치 제거를 수행한 뒤에 선형 회귀 및 다양한 모델을 사용해서 예측을 수행했는데, 그냥 원 핫 인코딩을 적용한 랜덤포레스트 회귀가 가장 좋은 성능을 보였다.</p>
-
-<p>그리고 0점 나오는 경우가 많았는데, 이는 csv 파일을 저장하지 않은 경우도 있겠지만 <strong>정답 행 갯수보다 적거나 많은 행을 제출</strong>해서 그렇다.
-이런 경우에는 0점이 나올 수 있기 때문에 주의해야 한다. 앞에 있던 사진처럼 총 행의 갯수(학습용 데이터 수, 평가용 데이터 수)를 제공해주기 때문에 
-무조건 csv 파일을 제출할 때 정답 행 갯수와 같은지 len() 함수 등을 이용해서 <strong>꼭꼭</strong> 확인해야 한다!!</p>
-
-<h4 id="3과목">3과목</h4>
-
-<p><img src="/img/posts/bigdata/8.png" width="80%" /></p>
-
-<p>물론 5점 맞은 주제에 무슨 후기냐 싶겠지만, 변명을 하자면 문제가 두문제 나오는데, 각각 5점짜리 소문항 3개씩 15점짜리 문제 두 개였다.
-각각 문제는 1번 소문항이 틀리면 나머지 두개의 문항도 모두 틀리는 구조이기 때문에 2번 문항에서 t-검정의 유의구간을 반대로 설정하는 
-실수를 저질러서 모두 다 틀려버리고 말았다….</p>
-
-<p>개인적으로는 3과목이 가장 어려운 과목이라고 생각하고, 앞으로도 계속 어려워 질 것이라고 생각한다.
-그 이유는 일단 지금 3과목에서는 통계적 검정을 주로 물어보기는 하지만 꼭 통계적 검정(t 검정 혹은 카이제곱 검정)을 물어보지 않을 수도 있다는 점이다.
-실제로 저 예시 문제에서 나온 것처럼 선형 회귀의 계수나 변수 중요도, 오즈비를 물어보는 경우가 대부분이었다.
-실제 기 치뤄진 시험의 기출문제에서도 다른 통계적 지식을 물어보는 경우가 있었는데 이런 경우에는 정말 어려운 문제가 나올 수 있다고 느꼈다. 
-게다가 빅분기 특성상 기출문제도 정확하지 않기 때문에, 추후에 이 시험의 난이도를 올리고자 한다면 2과목 점수를 낮추고 3과목 점수를 올리는 식으로 
-변별력을 줄 수도 있지 않을까? 그런 생각이 들었다.</p>
-
-<p><img src="/img/posts/bigdata/5.png" width="80%" /></p>
-
-<p>게다가, 지금은 1과목과 2과목을 모두 맞추면 70점으로 무조건 합격이 가능하기에 떠도는 팁으로는 1과목 2과목만 준비해서 특정 방법(랜덤포레스트 회귀 또는 분류)
-만 달달 외워서 시험보는 편이 팁이라고 돌아다니는데, 랜덤포레스트 특성상 이런 시험의 데이터 셋에서는 어느정도 무조건적으로 성능이 좋게 나올 수 밖에는 
-없기 때문에… 시험 점수 등을 조정해서 3과목을 공부할 수 밖에는 없게끔 시험을 언젠가 바꿀 수도 있지 않을까 생각이 들었다.</p>
-
-<h3 id="마치며">마치며</h3>
-
-<p>빅데이터 분석기사는 일단 필기를 합격했다면 실기는 수월하게 합격할 수 있는 시험이라고 느꼈다. 비록 작업형 시험이기는 하지만 코드가 정말 익숙하지 않은 사람이라도 
-충분히 합격할 수 있는 시험이다. 
-일단 수험서로는 ㅇㄱㅈ 출판사의 책을 사용했는데, 솔직히 별로 좋지 않았다고 할 수 밖에는 없다. 내용이 완전 틀린 내용이 실려있기도 했고,
-해설과 본문 내용이 충돌되는 경우도 많았다. 다른 출판사의 책을 보지는 않았지만 사는 것이 더 좋지 않을까? 그런 생각은 있다. 적어도 2024년에는..</p>
-
-<p>아무튼, 이렇게 빅데이터 분석기사 24년 1회 후기를 마친다!!</p>]]></content><author><name>ash tensor</name></author><category term="자격증" /><summary type="html"><![CDATA[[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기 및 시험 문제]]></summary></entry><entry><title type="html">[자격증][실기] 정보처리기사 2024년 1회 실기 합격 후기</title><link href="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/06/engineer-information-processor.html" rel="alternate" type="text/html" title="[자격증][실기] 정보처리기사 2024년 1회 실기 합격 후기" /><published>2024-08-06T00:00:00+09:00</published><updated>2024-08-06T00:00:00+09:00</updated><id>http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/06/engineer-information-processor</id><content type="html" xml:base="http://localhost:4000/%EC%9E%90%EA%B2%A9%EC%A6%9D/2024/08/06/engineer-information-processor.html"><![CDATA[<h2 id="자격증실기-정보처리기사-2024년-1회-실기-합격-후기">[자격증][실기] 정보처리기사 2024년 1회 실기 합격 후기</h2>
-
-<h3 id="합격-인증">합격 인증</h3>
-
-<p><img src="/img/posts/information_processor/1.png" width="80%" /></p>
-
-<p><img src="/img/posts/information_processor/2.png" width="80%" /></p>
-
-<p>정보처리기사를 합격하고 합격한 내용을 정리해야지 생각했는데, 너무 바빠서 이제야 정리를 하게 되었다. 일단 정보처리기사와 같은 산업인력공단에서 주관하는 시험은
-합격한 다음에 결과가 너무 늦게 나오기 때문에 솔직히 조금 짜증나는 감도 있다.</p>
-
-<p>가채점 등으로 내가 합격했다고 생각이 들지만서도 결과가 나오기 전까지는 불안한 마음이 너무 들기 떄문에… 게다가 이번에는 이상이 있는 문제가 너무 많이 나와서
-합격한 것이 맞는지도 의심이 들기도 했다. 벌써 2회차 시험이 끝났지만 일단 지금이라도 합격한 내용을 정리해보도록 하겠다.</p>
-
-<h3 id="시험-총평">시험 총평</h3>
-
-<p>일단 다양한 곳에서 제공하는 복원 문제를 본다면 당연히 알겠지만, 1회차 시험은 작년 3회차 시험에 비해 쉬운 시험이었다.
-작년 3회차 시험은 일단 완전수 문제라고 부르는 1부터 100까지 계산해야되는 3중 for 문 문제와 더불어, 보기를 제공하지 않는 시험이었기 때문에
-그 체감이 더 두드러졌던 것 같다.</p>
-
-<p>개인적으로 정보처리기사 시험은 공부해 본 결과 코드 문제가 많이 나오면 나올수록 더 쉬운 시험이라고 생각하는데, 왜냐하면 외워야 하는 양이
-정보처리기사의 경우에는 넓기 떄문에 코드 문제가 아닌 지식을 요구하는 문제가 나오면 더 잘 기억하는 사람이 합격하기 때문이다.
-이번 시험도, 그리고 2024년 2회차 시험도 코드 문제가 많이 나오는 기조는 동일했다고 들었다. 
-게다가 1회차 시험에서는 보기를 제공하는 문제가 많이 나왔다. 예를 들어서 <strong>디자인패턴</strong> 문제, 그리고 <strong>정보보안</strong>관련 문제에서 보기를 제공하고 
-올바른 보기를 골라 쓰라는 문제가 나왔는데, 이와 같은 경우에는 공부를 했으면 정확히 암기하지 않는다고 하더라도 맞출 수 있는 내용이라 
-흔히 말하는 ‘억까’ 문제가 나오지 않아서 좋았다. 내 기억에는 커버리지 관련 내용도 보기를 제공했던 것 같아서 15점은 무조건 맞출 수 있었다.</p>
-
-<p>그리고 특이했던 점으로는 데이터베이스 파트에서 올바른 정규화 단계를 작성하라는 문제가 나왔는데 이런 문제는 기존에 나오지 않았던 문제라서
-당황할 수 있었다. 내가 틀린 문제중에 하나였다.</p>
-
-<p>프로그래밍 파트에서 -내가 생각하기에- 오류 문항이 두 문제 있었는데, 첫번째로는 C 관련 문제에서 return 문이 없어서 전원 정답 처리된 문제와
-자바 실행 순서 관련 문제가 있었다. 자바 실행순서 관련 문제는, 개인적으로는 문제가 잘못되었다고 생각하는데, 문제는 다음과 같다.</p>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="c1">// 10. 답안 : 6 3 1 7 2</span>
-<span class="c1">// - JAVA언어, 상속 실행 순서, 5 → ( ) → ( ) → ( ) → ( ) → ( ), 번호 중복없이 작성</span>
-<span class="c1">// - 출제 : [프로그래밍 언어21 - 2.JAVA언어 – 4)생성자, 상속, 오버라이딩, 오버로딩, 추상 클래스]</span>
-
-<span class="kd">class</span> <span class="nc">ClassOne</span> <span class="o">{</span>
-	<span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">;</span>
-	<span class="nc">ClassOne</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">,</span> <span class="kt">int</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>  <span class="c1">// ①</span>
-		<span class="k">this</span><span class="o">.</span><span class="na">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">;</span>
-		<span class="k">this</span><span class="o">.</span><span class="na">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">;</span>
-	<span class="o">}</span>
-	<span class="kt">int</span> <span class="nf">getArea</span><span class="o">()</span> <span class="o">{</span>  <span class="c1">// ②</span>
-		<span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="o">;</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-<span class="kd">class</span> <span class="nc">ClassTwo</span> <span class="kd">extends</span> <span class="nc">ClassOne</span> <span class="o">{</span>
-	<span class="kt">int</span> <span class="n">x</span><span class="o">;</span>
-	<span class="nc">ClassTwo</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span>  <span class="c1">// ③</span>
-		<span class="kd">super</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">x</span><span class="o">);</span> 
-	<span class="o">}</span>
-	<span class="kt">int</span> <span class="nf">getArea</span><span class="o">(</span><span class="kt">int</span> <span class="n">x</span><span class="o">)</span> <span class="o">{</span>  <span class="c1">// ④</span>
-		<span class="k">return</span> <span class="n">x</span><span class="o">;</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Gisafirst</span> <span class="o">{</span>  
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>  <span class="c1">// ⑤</span>
-		<span class="nc">ClassOne</span> <span class="n">one</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ClassTwo</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>  <span class="c1">// ⑥</span>
-		<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">one</span><span class="o">.</span><span class="na">getArea</span><span class="o">());</span>  <span class="c1">// ⑦</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-
-
-</code></pre></div></div>
-
-<p>출처 : <a href="https://www.gisafirst.com/board/n1/view.php?offset=0&amp;tq=1393907668&amp;reqCategory=&amp;idx=447&amp;word=&amp;s_type=&amp;s_content=&amp;s_terms=">기사퍼스트 : 정보처리기사 실기 가답안 (합격률 36.8%, 합격자 수 9,263명)</a></p>
-
-<p>그런데 한 번씩만 작성하도록 되어 있는데, 자바 실행 순서가 스택프레임에 쌓이게 되면서 스택의 가장 위의 메서드가 실행될 텐데, 논리적인 순서가 해당 메소드가 여러번
-쓰일 수 있게 된다. 재귀함수를 생각해보면 내가 무슨 말을 하는지 이해하기 쉬울 것이다.</p>
-
-<p>합격 여부를 떠나서, 나라에서 진행하는 공적인 자격을 부여하는 시험에, 이런 식의 문제를 내는게 너무 이상하다고 생각한다.
-오히려 프로그램의 실행 순서를 제대로 아는, 자바 스택 프레임이나 메모리 구조에 대해 자세히 아는 사람이 문제를 틀릴 가능성이 있고, 
-제대로 겉핥기식으로 아는 사람이 문제를 맞출 가능성이 높은 게 이상한 것 같다(문제 낸 사람은 당연히 상속 관련만 고려했겠지만).</p>
-
-<p>이 외에 다른 문제들 역시 기출문제에서 출제되었던 내용과 별다를바 없이 출제되었다.</p>
-
-<p>C언어의 경우에는 기본적인 C언어 문법과 포인터를 묻는 문제, 자바의 경우에도 역시 기본적인 문법과 자바 상속과 오버라이딩 관련 문제, 
-파이썬의 경우에는 항상 그랬듯이 기본적인 빌트인 함수와 슬라이싱 관련 문제가 출제되었고 개정된 후 기출문제가 그래도 충분히 쌓인 지금이라면
-기출문제를 공부했다면 충분히 맞출 수 있지 않았을까 싶었다.</p>
-
-<p>어려웠던 문제로는 계산이 필요했던 문제- 서브넷 마스크 개념을 묻는 네트워크 문제가 있었고, 또 운영체제 파트에서 페이징 관련해서 묻는 문제가 있었는데
-앞으로도 이런 식으로 운영체제와 네트워크 부분이 더욱 어렵게 출제될 수도 있지 않을까 싶었다.</p>
-
-<h3 id="공부법">공부법</h3>
-
-<p>솔직히 정보처리기사는 어려운 시험이냐고 물으면 그렇지는 않다고 대답할 수는 있지만, 그렇다고 그냥 아무런 공부도 하지 않고
-정보처리기사를 위한 시험공부를 하지 않고 붙을 수 있냐고 물어본다면 그렇지 않다고 대답할 수 있다고 생각한다.</p>
-
-<p>일단 방대한 양의 지식을 외워야 하는 것은 둘째치고, 코드문제에서도 선술했던 각 언어의 특징을 잡아서 공부하는 것이 중요하기 때문이다.</p>
-
-<p>알고리즘이나 자료구조에 대해 묻는 것도 아니고, 각 언어별로</p>
-
-<ul>
-  <li>C는 포인터</li>
-  <li>자바는 상속과 오버라이딩</li>
-  <li>파이썬은 슬라이싱과 빌트인 함수</li>
-  <li>각종 잘 사용하지 않는 연산자들 (삼항연산자, 비트연산자, 각 연산자의 계산우선순위등)</li>
-</ul>
-
-<p>이런 식으로 각 언어별로 묻는 것이 많기 때문에, 이런 부분을 특징지어서 잘 알고 있어야 한다. 
-내가 PS를 잘 푼다고는 생각하지는 않지만 알고리즘 문제를 푸는것을 좋아하는 사람이고, 각 언어에 충분히 익숙하다고 생각했는데, 
-정보처리기사 시험 처음 기출문제를 풀면서 공부했을때는 코드문제를 많이 틀렸을 정도다.</p>
-
-<p>그러니 전공자라고 해도 정보처리기사의 코드 문제를 따로 충분히 공부해야 한다고 생각하고,</p>
-
-<p>외워야 하는 부분에 대해서는 수험서의 도움을 받아서 빈출되는 부분을 확실히 외워야 한다.
-물론 정보처리기사가 60점만 넘으면 되는 시험이기는 해도, 작년 3회차처럼 말도 안되는 문제가 나올 수도 있고, 보기가 나오지 않을 수도 있기 때문에
-보기가 없는 단답식 문제를 충분히 적어낼 수 있어야 된다. 게다가 나름 정보처리기사의 내용들이 완전 도움이 안되는 내용인 것도 아니니까….</p>
-
-<h3 id="마치며">마치며</h3>
-
-<p>대표적으로 많이 사용하는 수험서로는 시나공이나 수제비가 있는데 나는 수제비로 공부했다. 당연히 각 책의 장단점이 있다고 생각하고 둘 다 좋은 책이다.
-두 책을 다 보기는 했는데, 내가 수제비를 중점으로 공부한 이유는 일단 수제비가 내용이 더 많다는 점에 있었다. 
-내용이 적으면 당연히 더 좋지만(외울게 적으니까) 개인적으로는 이런 시험은 한 번 떨어지면 다시 다음에 또 봐야 되는데, 정보처리기사가 
-1년에 세 번 있는데, 한 번 떨어지면 거의 반년간 기다려야 되니 조금이라도 떨어질 위험을 지고 싶지가 않았다.</p>
-
-<p>아무튼, 이미 2회차 시험이 끝난 지금 살짝 늦은 감이 있지만, 이렇게 정보처리기사 24년 1회 후기를 마친다!!</p>
-
-<p>참고로 저 수첩형 자격증은 합격 공고가 난 그날 바로 접수했는데 신청한지 약 1주 반 정도가 지나서야 배송됐다. 혹시라도 궁금해 하는 사람이
-있을 수도 있을 것 같아서.</p>]]></content><author><name>ash tensor</name></author><category term="자격증" /><summary type="html"><![CDATA[[자격증][실기] 정보처리기사 2024년 1회 실기 합격 후기]]></summary></entry></feed>
+예를 들어, 클라이언트가 JSON으로 인코딩된 데이터를 전송하고, 서버가 이를 자바 객체로 변환하여 처리하는 경우에 적합함.</p>]]></content><author><name>ash tensor</name></author><category term="WEB" /><category term="JAVA" /><summary type="html"><![CDATA[[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기]]></summary></entry></feed>
