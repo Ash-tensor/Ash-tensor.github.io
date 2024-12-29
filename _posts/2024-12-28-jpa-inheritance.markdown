@@ -159,7 +159,7 @@ public class PersonalSchedule extends Schedule {
 이렇게 되면, User 엔티티는 이런 식으로 다형성을 이용할 수 있게 된다.
 이런 경우에 JPA는 다음과 같이 DB에 저장하는데
 
-<img src="/img/posts/java/jpa/2.png" width="80%">
+<img src="/img/posts/JAVA/jpa/2.png" width="80%">
 
 Schedule 테이블의 id를 외래키로 가지고 있어서, 스케쥴의 공통적인 속성은 스케쥴에 저장되고, 각각의 스케쥴 타입의 고유한 속성은 각각의 스케쥴 타입에 저장된다.
 
