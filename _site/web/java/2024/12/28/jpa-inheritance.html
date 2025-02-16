@@ -123,7 +123,7 @@
             <a href="#">ash tensor</a>
             on December 28, 2024 &middot; <span class="reading-time" title="Estimated read time">
   
-   8 mins  read </span>
+   12 mins  read </span>
 
           </span>
 <!-- 카테고리를 추가하는 코드 -->
@@ -365,6 +365,16 @@ TENSOR STUDIO
             
                 
                     <li style="margin: 0px">
+                        <a href="/web/java/2025/02/14/backend-interview-question.html" style= "color: black; font-size: 12px;">
+                            [WEB][JAVA] 백엔드 및 웹개발, IT 직군 기술면접 준비
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">14 Feb 2025</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
                         <a href="/web/java/2024/12/28/jpa-inheritance.html" style= "color: black; font-size: 12px;">
                             [WEB][JAVA] JPA 상속 및 심화
                         </a>
@@ -383,14 +393,6 @@ TENSOR STUDIO
                     
                 
             
-                
-                    <li style="margin: 0px">
-                        <a href="/web/java/2024/09/30/spring-gpt-backend.html" style= "color: black; font-size: 12px;">
-                            [WEB][Spring] 스프링으로 Chat-GPT 기능 구현하기 - 1
-                        </a>
-                        <small style= "margin-bottom: 0px; font-size: 10px;">30 Sep 2024</small>
-                    </li>
-                    
                 
             
                 
@@ -442,6 +444,16 @@ TENSOR STUDIO
             
                 
                     <li style="margin: 0px">
+                        <a href="/web/java/2025/02/14/backend-interview-question.html" style= "color: black; font-size: 12px;">
+                            [WEB][JAVA] 백엔드 및 웹개발, IT 직군 기술면접 준비
+                        </a>
+                        <small style= "margin-bottom: 0px; font-size: 10px;">14 Feb 2025</small>
+                    </li>
+                    
+                
+            
+                
+                    <li style="margin: 0px">
                         <a href="/web/java/2024/12/28/jpa-inheritance.html" style= "color: black; font-size: 12px;">
                             [WEB][JAVA] JPA 상속 및 심화
                         </a>
@@ -460,14 +472,6 @@ TENSOR STUDIO
                     
                 
             
-                
-                    <li style="margin: 0px">
-                        <a href="/web/%EB%A6%AC%EB%B7%B0/2024/11/02/cursor-ai-review.html" style= "color: black; font-size: 12px;">
-                            [후기] 웹 개발자의 Cursor AI 사용기
-                        </a>
-                        <small style= "margin-bottom: 0px; font-size: 10px;">02 Nov 2024</small>
-                    </li>
-                    
                 
             
                 
@@ -881,7 +885,7 @@ TENSOR STUDIO
 </code></pre></div></div>
 
 <p>이런 식으로, 리스트 인터페이스를 구현한 클래스들을 사용할 때, 리스트 인터페이스의 메서드를 사용할 수 있는 것이다.
-JPA에서도 마찬가지로 상속과  다형성을 이용할 수 있는데,</p>
+JPA에서도 마찬가지로 상속을 이용한 다형성을 이용할 수 있는데,</p>
 
 <p>예를 들어서 이런 User 엔티티가 있다고 가정해보자.</p>
 
@@ -993,7 +997,7 @@ JPA에서도 마찬가지로 상속과  다형성을 이용할 수 있는데,</p
 <p>이렇게 되면, User 엔티티는 이런 식으로 다형성을 이용할 수 있게 된다.
 이런 경우에 JPA는 다음과 같이 DB에 저장하는데</p>
 
-<p><img src="/img/posts/java/jpa/2.png" width="80%" /></p>
+<p><img src="/img/posts/JAVA/jpa/2.png" width="80%" /></p>
 
 <p>Schedule 테이블의 id를 외래키로 가지고 있어서, 스케쥴의 공통적인 속성은 스케쥴에 저장되고, 각각의 스케쥴 타입의 고유한 속성은 각각의 스케쥴 타입에 저장된다.</p>
 
@@ -1037,11 +1041,11 @@ JPA에서도 마찬가지로 상속과  다형성을 이용할 수 있는데,</p
 
 <p>이 경우는 SINGLE_TABLE 전략을 사용하는 경우이다.</p>
 
-<p><img src="/img/posts/java/jpa/3.png" width="80%" /></p>
+<p><img src="/img/posts/JAVA/jpa/3.png" width="80%" /></p>
 
 <p>이 경우는 TABLE_PER_CLASS 전략을 사용하는 경우이다.</p>
 
-<p><img src="/img/posts/java/jpa/4.png" width="80%" /></p>
+<p><img src="/img/posts/JAVA/jpa/4.png" width="80%" /></p>
 
 <p>SINGLE_TABLE 전략은 이렇듯 모든 자식 클래스의 속성을 하나의 테이블에 저장하는 것이고, TABLE_PER_CLASS 전략은 각각의 자식 클래스를 하나의 테이블로 생성하는 것이다.</p>
 
@@ -1074,6 +1078,95 @@ SINGLE_TABLE 전략을 사용하는 경우에는 회사 이름이 변경되면 �
   <li>정규화 위반 및 데이터 중복 발생.</li>
 </ul>
 
+<h3 id="3-그러면-인터페이스-구현은-안-돼">3. 그러면 인터페이스 구현은 안 돼?</h3>
+
+<p><strong>안된다.</strong> JPA에서 인터페이스를 구현하는 것은 불가능하다. <strong>JPA에서 상속 메커니즘은 반드시 클래스를 상속받아야 한다.</strong></p>
+
+<p>이유는 여러가지가 있는데,</p>
+
+<ol>
+  <li>인터페이스는 구현체가 없기 때문에 상속을 할 수 없다.</li>
+  <li>인터페이스는 필드가 없기 때문에 인터페이스를 엔티티로 매핑할 수는 없다.</li>
+  <li>인터페이스는 추상 메서드만 가지고 있기 때문에 구현체가 없다.</li>
+</ol>
+
+<h3 id="4-추상-클래스는-돼">4. 추상 클래스는 돼?</h3>
+
+<p><strong>된다.</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nd">@MappedSuperclass</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">BaseEntity</span> <span class="o">{</span>
+    <span class="nd">@Id</span>
+    <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="nc">GenerationType</span><span class="o">.</span><span class="na">IDENTITY</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="nc">LocalDate</span> <span class="n">createdDate</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">LocalDate</span> <span class="n">modifiedDate</span><span class="o">;</span>
+
+    <span class="c1">// 공통 메서드</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">updateTimestamps</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">modifiedDate</span> <span class="o">=</span> <span class="nc">LocalDate</span><span class="o">.</span><span class="na">now</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="nd">@Entity</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="kd">extends</span> <span class="nc">BaseEntity</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">username</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">password</span><span class="o">;</span>
+    <span class="c1">// 기타 속성 및 메서드</span>
+<span class="o">}</span>
+
+<span class="nd">@Entity</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Product</span> <span class="kd">extends</span> <span class="nc">BaseEntity</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">BigDecimal</span> <span class="n">price</span><span class="o">;</span>
+    <span class="c1">// 기타 속성 및 메서드</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>이렇게 추상 클래스를 상속받으면, 하위 클래스에서 추상 클래스의 필드를 사용할 수 있다.</p>
+
+<p>하지만 추상 클래스는 일반 클래스와의 상속과는 다르게, 상속 전략 설정이 불가능하고(JOINED, SINGLE_TABLE, TABLE_PER_CLASS) 그 대신 @MappedSuperclass 어노테이션을 사용해야 한다.</p>
+
+<p>@MappedSuperclass는 테이블과 매핑되지 않는다는 것이고, 즉 실제 DBMS에 테이블이 생성되지 않는다.</p>
+
+<h3 id="5-정리">5. 정리</h3>
+
+<p>JPA의 상속 전략을 잘 이해하고 활용하는 것은 객체지향 설계를 DB에 잘 반영하기 위해 매우 중요하다. 다음은 JPA 상속 전략의 핵심 내용이다:</p>
+
+<ol>
+  <li><strong>JOINED 전략</strong>
+    <ul>
+      <li>부모 클래스와 자식 클래스를 각각의 테이블로 만든다.</li>
+      <li>데이터 정규화를 유지하고, 상속 구조를 명확하게 표현할 수 있다.</li>
+      <li>일반적으로 가장 많이 사용되는 전략이다.</li>
+    </ul>
+  </li>
+  <li><strong>SINGLE_TABLE 전략</strong>
+    <ul>
+      <li>모든 자식 클래스의 속성을 하나의 테이블에 저장한다.</li>
+      <li>JOIN이 없어서 성능이 좋고, 테이블 수가 적어 관리하기 편하다.</li>
+      <li>하지만 데이터 중복의 위험이 있다.</li>
+    </ul>
+  </li>
+  <li><strong>TABLE_PER_CLASS 전략</strong>
+    <ul>
+      <li>각 자식 클래스를 별도의 테이블로 만든다.</li>
+      <li>데이터가 중복될 수 있고, 정규화가 제대로 안 될 수 있다.</li>
+    </ul>
+  </li>
+  <li><strong>추상 클래스 사용</strong>
+    <ul>
+      <li>JPA에서는 인터페이스를 상속받을 수는 없지만, 추상 클래스로 공통 필드와 메서드를 상속받아 쓸 수 있다.</li>
+      <li><code class="language-plaintext highlighter-rouge">@MappedSuperclass</code> 어노테이션으로 추상 클래스의 필드를 하위 엔티티에서 쓸 수 있다.</li>
+      <li>추상 클래스는 테이블과 매핑되지 않고, 실제 DBMS에 테이블이 생성되지 않는다.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>JPA의 상속 기능을 잘 활용하면 더 유연하고 유지보수하기 쉬운 애플리케이션을 만들 수 있다. 각 전략의 장단점을 잘 따져보고 애플리케이션에 맞는 적절한 전략을 선택하는 게 중요하다.</p>
 
 
       <hr>
@@ -1141,6 +1234,18 @@ SINGLE_TABLE 전략을 사용하는 경우에는 회사 이름이 변경되면 �
     
       <li>
         <h3>
+          <a href="/web/java/2025/02/14/backend-interview-question.html" style= "font-size: 17px;">
+            [WEB][JAVA] 백엔드 및 웹개발, IT 직군 기술면접 준비
+          </a>
+          <small style= "font-size: 14px;">14 Feb 2025</small>
+        </h3>
+      </li>
+      
+    
+  
+    
+      <li>
+        <h3>
           <a href="/web/java/2024/12/28/jpa-inheritance.html" style= "font-size: 17px;">
             [WEB][JAVA] JPA 상속 및 심화
           </a>
@@ -1186,16 +1291,6 @@ SINGLE_TABLE 전략을 사용하는 경우에는 회사 이름이 변경되면 �
       
     
   
-    
-      <li>
-        <h3>
-          <a href="/web/react/2024/10/15/openai-realtime.html" style= "font-size: 17px;">
-            [WEB][react] Chat-gpt realtime api 구현 및 설명
-          </a>
-          <small style= "font-size: 14px;">15 Oct 2024</small>
-        </h3>
-      </li>
-      
     
   
     
@@ -1251,6 +1346,9 @@ SINGLE_TABLE 전략을 사용하는 경우에는 회사 이름이 변경되면 �
         <a class="btn btn-primary float-left" href="/web/%EB%A6%AC%EB%B7%B0/2024/12/11/ecount-interview.html" data-toggle="tooltip" data-placement="top" title="[후기] 이카운트 코딩 테스트 및 인터뷰 리뷰">&larr; Previous<span class="d-none d-md-inline">
             Post</span></a>
         
+        
+        <a class="btn btn-primary float-right" href="/web/java/2025/02/14/backend-interview-question.html" data-toggle="tooltip" data-placement="top" title="[WEB][JAVA] 백엔드 및 웹개발, IT 직군 기술면접 준비">Next<span class="d-none d-md-inline">
+            Post</span> &rarr;</a>
         
 
       </div>

@@ -1,4 +1,253 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-12-29T02:08:23+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[WEB][JAVA] JPA 상속 및 심화</title><link href="http://localhost:4000/web/java/2024/12/28/jpa-inheritance.html" rel="alternate" type="text/html" title="[WEB][JAVA] JPA 상속 및 심화" /><published>2024-12-28T00:00:00+09:00</published><updated>2024-12-28T00:00:00+09:00</updated><id>http://localhost:4000/web/java/2024/12/28/jpa-inheritance</id><content type="html" xml:base="http://localhost:4000/web/java/2024/12/28/jpa-inheritance.html"><![CDATA[<h2 id="webjava-jpa-상속-및-심화">[WEB][JAVA] JPA 상속 및 심화</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-02-16T15:23:36+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Tensor Studio</title><subtitle>텐서 스튜디오</subtitle><author><name>ash tensor</name></author><entry><title type="html">[WEB][JAVA] 백엔드 및 웹개발, IT 직군 기술면접 준비</title><link href="http://localhost:4000/web/java/2025/02/14/backend-interview-question.html" rel="alternate" type="text/html" title="[WEB][JAVA] 백엔드 및 웹개발, IT 직군 기술면접 준비" /><published>2025-02-14T00:00:00+09:00</published><updated>2025-02-14T00:00:00+09:00</updated><id>http://localhost:4000/web/java/2025/02/14/backend-interview-question</id><content type="html" xml:base="http://localhost:4000/web/java/2025/02/14/backend-interview-question.html"><![CDATA[<h2 id="webjava-백엔드-및-웹개발-it-직군-기술면접-준비">[WEB][JAVA] 백엔드 및 웹개발, IT 직군 기술면접 준비</h2>
+
+<h3 id="1-서론">1. 서론</h3>
+
+<p>와 벌써 2월 중순인데, 가장 최근 올렸던 글이 12월 28일 올린 글이다. 
+매번 꾸준히 포스트를 올리는 것이 너무 어렵다. 리액트 관련 라이브러리 소개 포스트를 올릴까 했는데 
+솔직히 바쁘지는 않고, 시간을 내서 글을 쓰는게 좀 귀찮은 것도 있는 것 같다.</p>
+
+<p>아무튼 최근 꽤 많은 곳의 면접을 다녀왔는데, 크게는 중견기업 ERP 개발 직무부터, 웹 개발, 그리고 풀스택 개발 직무, 또 SI 기업까지 면접을 보았는데, 이러한 면접을 다니면서 받은 질문들과 면접 질문에 대한 답변을 한번 정리해보고자 한다.</p>
+
+<h3 id="2-코딩테스트">2. 코딩테스트</h3>
+
+<p>또 개발자 채용에 대해서 코딩테스트에 대한 이야기를 하지 않을 수가 없는데, 코딩테스트를 하는 기업이 있고 그렇지 않은 기업들이 존재한다(당연하겠지만). 그런데 코딩테스트 방법도 좀 다른데, 크게 보자면</p>
+
+<ul>
+  <li>구름, 프로그래머스등의 플랫폼을(혹은 자체 플랫폼) 이용하여 코딩테스트를 진행하는 기업</li>
+  <li>면접 전 간단히 <strong>종이에 손코딩을 해가며</strong> 직접 코딩테스트를 진행하는 기업</li>
+</ul>
+
+<p>이렇게 두 가지 방법으로 코딩테스트를 진행하는데, 나는 처음 코딩테스트를 볼 때 어쩌면 당연히 백준처럼 
+온라인에서 코딩테스트를 진행하는 기업이 많을 것이라고 생각했는데, <strong>오히려 면접 전 종이에 손코딩을 해가며 진행하는 기업이 더 많았다.</strong> 그러니까, 손코딩을 꼭 어느정도는 익숙해져 있어야 한다고 생각이 든다.</p>
+
+<p>왜냐하면 내가 가장 최악의 면접이었다고 생각하는(내가 너무 대답을 못해서) 브레인즈 컴퍼니의 면접에서 js관련 간단한 문제를(심지어 1번이었는데) 손코딩을 하라고 했기 때문이다. 진짜 너무 못해서 가끔씩 그 상황이 꿈에서도 나오는데 나중에 이야기를 할 수 있으면 하도록 하고.</p>
+
+<p>그리고 또 특이했던 코딩테스트 중에 하나는 온라인으로 진행은 하지만, 구름이나 프로그래머스와는 다르게 
+온라인상에서 코드를 실행시킬 수 없고, 그냥 txt로 코드를 작성하는 것과 다름없는 방식이었다.</p>
+
+<p>대기업은 물론 코딩테스트가 엄청 어렵고 백준 골드 및 플래티넘 문제까지는 준비해 가야 하는 경우가 많겠지만 내가 느끼기엔 중소 및 중견기업에서는 그것보다는 인성면접이나, 대학 생활, 서류 및 포트폴리오가 조금 더 중요하게 보는 경우가 많은 것 같다.</p>
+
+<h4 id="21-손코딩">2.1 손코딩</h4>
+
+<p>개인적으로 내 생각에, 앞으로도 직접 종이에 펜으로 손코딩을 하도록 하는 기업들이 많아질 것 같다. 뭐 그냥 감이기는 하지만, AI 도구들 때문에 집에서 코딩을 온라인으로 하는 경우에 치팅을 막을 수 없어질 것 같기 때문이다.</p>
+
+<p>그리고 <strong>영세한 기업들만 손코딩 하는게 아니냐?</strong> 이렇게 생각할 수도 있는데, 내 경험상 꽤 큰 기업(신입사원 기준 초봉 5000만원 이상)에서도 손코딩을 하는 경우가 많았다.</p>
+
+<p>게다가 요즘 개발이 AI 도구 (Chat-gpt 및 Cursor, 코파일럿 등)들이 IDE 형태로 제공되는 경우가 많아지고 있다 보니까 보일러플레이트 코드나 간단하거나 템플릿이 있는 코드 같은 경우에는 자동완성되는 경우가 많아지는데 이런 경우 간단한 코드 작성 또한 중요해질 수 있으니까 기본적인 코딩 실력은 반드시 필요하다고 생각한다.</p>
+
+<p>손코딩의 경우에는 내가 받아봤던 문제들은</p>
+
+<ul>
+  <li>별찍기 문제</li>
+  <li>피보나치 수열 문제</li>
+  <li><strong>팩토리 메서드 패턴</strong> 구현</li>
+  <li><strong>SQL 쿼리 문제</strong> « 안나왔던 회사가 없을 정도로 중요하다</li>
+  <li>상속 관련 문제</li>
+  <li>js 프로미스 구현 문제</li>
+</ul>
+
+<p>등등이 있었는데, 대부분이 그렇게 어렵다고는 할 수 없는 문제들이었지만 문제 다 합쳐서 A4용지 기준 다섯 장 정도는 썼던 것 같다. 기본적인 문법 문제(프로미스나 상속, 예외처리)가 중심이고, SQL 쿼리 및 조인문제가 대부분이었다.</p>
+
+<p><strong>SQL 쿼리</strong>는 정말 농담이 아니라 단 한곳의 회사에서도 빠짐없이 출제가 되었는데. 테이블을 몇 개 주고, 두 테이블을 조인하고 정렬하거나, 조인해서 집계함수를 사용하거나 하는 문제였다.</p>
+
+<p>조인을 하지 않는 경우는 없었다. 정말 한번도 없었는데, 조인이 SQL에서 가장 중요한 개념이기 때문에 그럴 수 있다고 생각하고.</p>
+
+<p>각각 조인의 성질을 묻는 경우도 있었다. 예를 들어서, 사원 테이블과 카드 테이블이 있는데 사원이 어떤 카드도 이용하지 않는 경우에도 카드 테이블이 빈칸으로 나오도록 출력하려면 어떤 조인을 사용해야 할지 물어보는 경우도 있었다(LEFT OUTER JOIN을 물어보는 문제였다).</p>
+
+<h3 id="22-개발자-취업-트렌드">2.2 개발자 취업 트렌드</h3>
+
+<p>트렌드라고 해야하나? 대부분을 다대다 면접을 본 입장에서, 어느정도 다른 면접자들의 면접 질문도 듣고, 경쟁자들이 어느정도 준비해 왔는지 느껴볼 수 있는 시간이었는데 일단 정리해 보면</p>
+
+<ul>
+  <li><strong>전공자 + 부트캠프 출신이 생각보다 매우 많음.</strong></li>
+</ul>
+
+<p>(일단 나는 SSAFY 출신은 아니긴 하지만 부트캠프 출신이기는 하다) 나와 같이 지원한 지원자들의 대부분이 SSAFY 출신이셨고, 컴퓨터 공학 전공자들이었다. 전공자들이라고 해도, 실제 포트폴리오 준비를 하려면 어쩔 수 없이 어느정도 부트캠프(국비교육)에 들어가야 하기 때문에 그런 것 같기는 하다.</p>
+
+<p>커뮤니티에서는 국비교육이나 부트캠프를 엄청 내려치고 뭐라고 하는 경우가 좀 있었는데, 실제 면접장에서 봤을 때 과장이 아니라 정말 전부가 국비교육이나 부트캠프를 이용한 경험이 있었다.</p>
+
+<p>실제로 내가 면접을 본 서울에 있는 서비스 기업에서 3대3 면접을 했었는데, 나 외의 두분 모두 SSAFY 출신이시고 약 1년정도의 경력을 가지고 있었다. 여담이지만 그래서 너무 면접도 잘 보시고 대답을 잘 하는 모습을 보고 멘탈이 갈려서 그냥 다른 지원자들의 질문을 듣고 다음에 다른 면접을 볼 때 참고해야겠다고 생각했다.</p>
+
+<ul>
+  <li><strong>1년정도의 중고신입인 경우가 많음.</strong></li>
+</ul>
+
+<p>괜찮은 기업으로 가면 갈 수록 1년정도의 경력을 가지고 있는 지원자들이 많아진다. 초봉 4600만원 정도의 중견기업에서 나를 제외한 두 사람 모두 1년정도의 경력(비정규직이나 정규직 가리지 않고)을 가지고 있었다.
+뭐 이건</p>
+
+<h3 id="3-면접">3. 면접</h3>
+
+<p>그리고 대망의 면접인데, 솔직히 나는 면접을 정말 못해서 뭐라고 말해야 할지는 모르겠지만 일단 그래도 면접을 한 10개 이상 보면서 사소한 거라고 해도 내가 받은 질문 및, 같이 면접을 보는 면접자가 받은 질문과 그에 대한 답변을 정리해보고자 한다.</p>
+
+<h4 id="31-기술면접">3.1 기술면접</h4>
+
+<h5 id="q1-jpa를-누가-사용하자고-했나요">Q1. JPA를 누가 사용하자고 했나요?</h5>
+<p>사실 나는 스프링 기반 웹 프로젝트에서 어쩌면 당연하게 JPA를 사용하는 경우가 많아서 팀 프로젝트에서 JPA를 기본적으로 깔고 접근을 했기 때문에 이 질문을 받았을때 조금 당황했다.</p>
+
+<p>내가 팀장이었기 때문에 내가 사용하자고 했고, 사용한 이유를 덧붙여서 이야기 했다. JPA를 사용한 이유는:</p>
+<ul>
+  <li>JPA를 이용할 때 객체지향적으로 도메인을 설계할 수 있음</li>
+  <li>데이터베이스 조작을 쉽게 할 수 있음</li>
+  <li>쿼리 작성 시간을 줄일 수 있음</li>
+</ul>
+
+<h5 id="q2-jpa를-이용할-때-성능상의-단점은-없었나요">Q2. JPA를 이용할 때 성능상의 단점은 없었나요?</h5>
+<p>이 질문은 받았을 때 조금 당황했는데, 왜냐하면 아무래도 실제 운영되는 프로젝트에서는 대규모 데이터를 처리해야 하기 때문에 JPA를 이용할 때 성능적인 문제가 체감 될 수 있겠지만, 소규모의, 흔히 말하는 포트폴리오용 웹 프로젝트에서는 성능적인 문제를 체감하기 힘들기 때문이다.</p>
+
+<p>나의 답변:
+<strong>“대규모 데이터를 다뤄본 적이 없기 때문에 실제 성능적인 문제를 겪어본 적은 없었지만, N+1 문제, 지연로딩이나 즉시로딩 문제 등 그런 문제를 겪어본 적이 있고 해당 문제를 해결한 적이 있다”</strong></p>
+
+<h5 id="q3-웹-서버와-was의-차이는-무엇인가요">Q3. 웹 서버와 WAS의 차이는 무엇인가요?</h5>
+<p>이건 중소 SI 기업에서 면접을 볼 때 받은 질문이었는데, 일단 웹 서버는 웹 브라우저에서 요청한 정적 컨텐츠를 제공하는 서버이고, WAS는 동적 컨텐츠를 제공하는 서버이다. DB에서 데이터를 가져온다거나 하는 작업을 하는 것이 WAS이다.</p>
+
+<h5 id="q4-프로젝트를-살펴봤는데-크롤링을-하는-코드가-있었는데-회사에-들어오면-크롤링-보다는-크롤링을-막는-입장입니다-그럴-때-어떻게-방지할-수-있을까요">Q4. 프로젝트를 살펴봤는데 크롤링을 하는 코드가 있었는데, 회사에 들어오면 크롤링 보다는 크롤링을 막는 입장입니다. 그럴 때 어떻게 방지할 수 있을까요?</h5>
+<p>나의 답변:</p>
+<ul>
+  <li><strong>Robots.txt 파일을 만들어서 크롤링을 금지한다고 공지</strong></li>
+  <li>동적 페이지로 구현하여 셀레니움 같은 브라우저 자동화 도구 없이는 크롤링이 어렵게 만듦</li>
+  <li>크롤링으로 의심되는 짧은 시간 내의 과도한 요청은 IP 차단</li>
+</ul>
+
+<h5 id="q5-그러면-세션으로-크롤링을-막을-수-있을까요">Q5. 그러면 세션으로 크롤링을 막을 수 있을까요?</h5>
+<p>이 질문을 받고는 당황했는데 그래서 실제 면접에서 대답을 제대로 하지 못했다. 세션을 통해 크롤링을 완전히 막는 것은 어렵지만, 세션을 활용하여 크롤링을 어렵게 만들 수는 있다.</p>
+
+<p>세션을 이용한 크롤링 방지 방법:</p>
+<ol>
+  <li><strong>세션 기반 인증</strong>
+    <ul>
+      <li>사용자가 로그인해야만 콘텐츠에 접근할 수 있도록 설정</li>
+      <li>세션을 통해 사용자의 인증 상태를 확인하고, 인증되지 않은 요청은 차단</li>
+    </ul>
+  </li>
+  <li><strong>세션 만료 시간 설정</strong>
+    <ul>
+      <li>세션의 유효 기간을 짧게 설정</li>
+      <li>세션이 만료되면 다시 인증을 요구</li>
+      <li>자동화된 스크립트가 지속적으로 세션을 갱신해야 하므로 크롤링을 어렵게 만듦</li>
+    </ul>
+  </li>
+</ol>
+
+<h5 id="q6-spring에서-어떤-디자인패턴이-활용되고-있나요">Q6. Spring에서 어떤 디자인패턴이 활용되고 있나요?</h5>
+<p>처음엔 MVC 패턴이 사용된다고 대답했는데, 답이 아니라고 하길래 조금 당황했다. 면접관님이 원하는 답은 싱글톤 패턴이었다.</p>
+
+<p>스프링의 주요 디자인 패턴:</p>
+<ul>
+  <li><strong>싱글톤 패턴</strong>: 스프링 컨테이너에서 빈을 관리하고 인스턴스를 하나만 생성하여 애플리케이션 전반에 걸쳐 공유</li>
+  <li><strong>팩토리 패턴</strong>: 객체 생성을 캡슐화</li>
+  <li><strong>프록시 패턴</strong>: AOP 구현에 활용</li>
+</ul>
+
+<h5 id="q7-spring에서-di를-사용하는-이유는-무엇인가요">Q7. Spring에서 DI를 사용하는 이유는 무엇인가요?</h5>
+<p>나의 답변: “스프링에서 DI를 사용하는 이유는 빈의 생성이나 실행 순서등을 개발자가 관리하는 것이 아니라 스프링이 관리함으로써, 개발자는 서비스 로직에만 집중할 수 있다.”</p>
+
+<p>DI의 장점:</p>
+<ul>
+  <li>객체 간의 결합도를 낮춤</li>
+  <li>유연성을 높임</li>
+  <li>테스트 용이성 증가</li>
+  <li>객체 생성 로직을 캡슐화하여 코드를 더 깔끔하게 만듦</li>
+</ul>
+
+<h5 id="q7-1-이는-객체지향의-어떤-원칙을-지키는-것인가요">Q7-1. 이는 객체지향의 어떤 원칙을 지키는 것인가요?</h5>
+<p>이는 객체지향의 원칙 중 하나인 의존성 역전 원칙(DIP)을 지키는 것이다. 이는 추상화에 의존하고, 구체화에 의존하지 않는 것을 의미한다.</p>
+
+<p>나는 여기에서 제대로 대답을 못했는데, 면접에 익숙하지 않아서 그런 것도 있는 것 같다. 면접관 앞에서 SOLID 원칙을 일일이 나열하며 설명하기가 어려웠다.</p>
+
+<h5 id="q8-spring을-사용해-보면서-spring은-어떤-프로젝트에-사용하기-좋은것-같나요">Q8. Spring을 사용해 보면서 Spring은 어떤 프로젝트에 사용하기 좋은것 같나요?</h5>
+<p>나의 답변: “스프링 같은 경우에는 노드나 파이썬의 fast api에 비해서 보다 더 전문적인 엔터프라이즈, 즉 큰 프로젝트에서 사용하기 좋은 프레임워크라고 생각한다. 왜냐하면 스프링은 필터 및 인터셉터등을 이용해서 더 구체적인 접근 통제 및 인가 관리가 가능하다고 생각하기 때문이다.”</p>
+
+<p>스프링의 장점:</p>
+<ul>
+  <li>풍부한 에코시스템: Spring Boot, Spring Data, Spring Security 등 다양한 모듈 제공</li>
+  <li>강력한 커뮤니티 지원: 오랜 역사와 풍부한 문서</li>
+  <li>유연한 설정: XML, Java Config, 어노테이션 기반 설정 지원</li>
+</ul>
+
+<h5 id="q9-프론트엔드와-백엔드-중-어떤-것이-더-중요한가요">Q9. 프론트엔드와 백엔드 중 어떤 것이 더 중요한가요?</h5>
+<ul>
+  <li>저는 백엔드 개발자를 희망하며 공부했기 때문에 백엔드가 더 중요하다고 생각하지만, 여러 프로젝트를 진행해보며, 중요하다고 생각했던 서비스 로직, 예를들어 카드 결제 시스템과 같은 로직을 구현할 때 백엔드가 아닌 프론트엔드에서 구현하는 경우를 겪은 적이 있었다. 이런 경험을 보았을 때, 프론트엔드와 백엔드가 모두 중요하다고 생각하게 되었고 프론트엔드 라이브러리 즉, 리액트 및 자바스크립트 모두 사용할 수 있다.</li>
+</ul>
+
+<h5 id="q10-실제-서버에-데이터베이스를-설치해보셨나요">Q10. 실제 서버에 데이터베이스를 설치해보셨나요?</h5>
+<p>이 질문은 중소 SI에서 면접을 볼 때 받은 질문이었는데, 이런 질문을 받고 조금 당황했다. <strong>그러면 면접보러 오는 사람중에 혹시 DB를 깔아본 적이 없는 사람이 있기도 한건가? 그러니까 물어보는 거겠지?</strong></p>
+
+<p>나의 답변: “당연히 설치해 봤고, 그 외에도 젠킨스등을 설치하고 이용해서 간단한 배포 자동화를 진행해 본 적이 있을 뿐만 아니라 실제 프로젝트를 클라우드 서버를 이용해서 배포를 한 적이 있습니다.”</p>
+
+<h5 id="q11-데이터베이스를-단순히-조회해서-표시하는-게-아니라-데이터를-가공해서-서빙해-본-경험이-있나요">Q11. 데이터베이스를 단순히 조회해서 표시하는 게 아니라, 데이터를 가공해서 서빙해 본 경험이 있나요?</h5>
+<p>나의 경험:</p>
+<ul>
+  <li>Open API의 chat-gpt API를 사용한 프로젝트에서는 단순 데이터 표시만 했음</li>
+  <li>공공주차장 조회 프로젝트에서는 선형회귀를 이용해서 예상 주차가능 대수를 제공한 경험이 있음</li>
+</ul>
+
+<h5 id="q11-1-해당-예측-결과는-잘-맞았나요">Q11-1. 해당 예측 결과는 잘 맞았나요?</h5>
+<p>솔직히 잘 맞지 않았다고 대답했다.</p>
+
+<h5 id="q12-어떤-db를-사용해-보셨나요">Q12. 어떤 DB를 사용해 보셨나요?</h5>
+
+<h5 id="q13-쿼리는-잘-작성하세요">Q13. 쿼리는 잘 작성하세요?</h5>
+
+<h5 id="q14-http-에러-코드-400번대와-500번대는-어떤-차이가-있나요">Q14. HTTP 에러 코드 400번대와 500번대는 어떤 차이가 있나요?</h5>
+<ul>
+  <li>400번대: 클라이언트 오류 (400, 401, 403, 404 등)</li>
+  <li>500번대: 서버 오류</li>
+</ul>
+
+<p>클라이언트 오류는 공부하는 입장에서 많이 봤던 경우가 많은데, 서버 오류는 보기 드물어서 모르는 경우가 많다.</p>
+
+<h5 id="q15-기술-스택에-안드로이드-스튜디오가-적혀있는데-안드로이드를-어느정도로-개발할-수-있으신가요">Q15. 기술 스택에 안드로이드 스튜디오가 적혀있는데, 안드로이드를 어느정도로 개발할 수 있으신가요?</h5>
+<p>의외로 안드로이드 관련 질문을 꽤 많이 받았는데(서비스 기업 및 SI 기업 둘 모두) 웹개발 직무라고 해도 자사 서비스 또는 SI 프로젝트에서 웹 기반 서비스를 모바일로 확장해야 하는 경우가 많기 때문인 것 같다.</p>
+
+<p>나의 경험:</p>
+<ul>
+  <li>학교에서 모바일 프로그래밍이라는 과목을 수강</li>
+  <li>안드로이드 개발 경험 보유</li>
+</ul>
+
+<p>실제 현업에서도 <strong>전문적으로 모바일 개발을 하지는 않더라도 담당자가 자리를 비우거나 했을 때 오류를 잡을 수 있는 정도만 된다고 하더라도 많은 도움이 되고 메리트가 있다</strong>고 한다. 이력서를 쓸 때 기술스택에 도움이 될 수 있는 정보라고 생각된다.</p>
+
+<h5 id="q16-프로젝트를-진행할-때-협업을-어떻게-진행하나요">Q16. 프로젝트를 진행할 때 협업을 어떻게 진행하나요?</h5>
+
+<h5 id="q17-성장하는-개발자가-되고-싶다고-말씀하시고-현재-기술스택을-보면-최신-프레임워크를-사용하고-있는데-실제-입사한다면-레거시-코드를-다루는-경우가-많을-것-같은데-어떻게-할-생각입니까">Q17. 성장하는 개발자가 되고 싶다고 말씀하시고, 현재 기술스택을 보면 최신 프레임워크를 사용하고 있는데, 실제 입사한다면 레거시 코드를 다루는 경우가 많을 것 같은데 어떻게 할 생각입니까?</h5>
+<p>개별적으로 답변을 준비해 가면 좋을 것 같다.</p>
+
+<h5 id="q18-포트폴리오를-보니-카프카가-있는데-왜-카프카를-사용하셨죠">Q18. 포트폴리오를 보니 카프카가 있는데, 왜 카프카를 사용하셨죠?</h5>
+<p>카프카는 비동기 메시징 시스템으로, 데이터 스트림 처리에 특화되어 있다.</p>
+
+<p>카프카를 사용한 이유:</p>
+<ol>
+  <li><strong>높은 처리량</strong>
+    <ul>
+      <li>대량의 데이터를 신속하게 처리 가능</li>
+    </ul>
+  </li>
+  <li><strong>분산 시스템</strong>
+    <ul>
+      <li>여러 대의 서버에서 데이터를 분산 처리 가능</li>
+    </ul>
+  </li>
+</ol>
+
+<p>이렇게 대답했어야 했지만, 이 부분에서 대답을 제대로 하지 못했다. 내 실패한 면접 대부분이 카프카로 주접떠다가 망한게 좀 있다. 오버 엔지니어링이었지만, 학습하는 과정에서 카프카를 사용해 봤다는 식으로 대답했는데, 이런 경우에는 카프카에 대한 자세한 설명을 해야 되지 않을까 하는 생각이 든다.</p>
+
+<h5 id="q19-정보처리기사를-졸업-이후에-취득했는데-왜-학교다닐때-취득하지-않았나요">Q19. 정보처리기사를 졸업 이후에 취득했는데, 왜 학교다닐때 취득하지 않았나요?</h5>
+<p>이 질문은 다대다 면접에서 공통질문으로 받았다.</p>
+
+<p>답변 사례들:</p>
+<ul>
+  <li>나의 답변: “4학년때 3회차 정보처리기사를 취득하려고 했지만 떨어졌기 때문에 졸업 이후에 취득했습니다.”</li>
+  <li>다른 지원자의 답변: “정보처리기사의 쓸모가 없다고 생각했기 때문에 취득하지 않았습니다”</li>
+</ul>
+
+<p>이 질문을 받은 회사가 엄청 영세한 회사도 아니고 꽤 규모가 있는 솔루션 회사였기 때문에 왜 이런 질문을 했는지 아직도 궁금하다.</p>
+
+<h5 id="q20-2025년의-기술-트렌드는-무엇이-있을까요">Q20. 2025년의 기술 트렌드는 무엇이 있을까요?</h5>
+<p>대부분의 답변:</p>
+<ul>
+  <li>양자컴퓨팅</li>
+  <li>생성형 AI</li>
+</ul>]]></content><author><name>ash tensor</name></author><category term="WEB" /><category term="JAVA" /><summary type="html"><![CDATA[[WEB][JAVA] 백엔드 및 웹개발, IT 직군 기술면접 준비]]></summary></entry><entry><title type="html">[WEB][JAVA] JPA 상속 및 심화</title><link href="http://localhost:4000/web/java/2024/12/28/jpa-inheritance.html" rel="alternate" type="text/html" title="[WEB][JAVA] JPA 상속 및 심화" /><published>2024-12-28T00:00:00+09:00</published><updated>2024-12-28T00:00:00+09:00</updated><id>http://localhost:4000/web/java/2024/12/28/jpa-inheritance</id><content type="html" xml:base="http://localhost:4000/web/java/2024/12/28/jpa-inheritance.html"><![CDATA[<h2 id="webjava-jpa-상속-및-심화">[WEB][JAVA] JPA 상속 및 심화</h2>
 
 <h3 id="1-서론">1. 서론</h3>
 
@@ -33,7 +282,7 @@
 </code></pre></div></div>
 
 <p>이런 식으로, 리스트 인터페이스를 구현한 클래스들을 사용할 때, 리스트 인터페이스의 메서드를 사용할 수 있는 것이다.
-JPA에서도 마찬가지로 상속과  다형성을 이용할 수 있는데,</p>
+JPA에서도 마찬가지로 상속을 이용한 다형성을 이용할 수 있는데,</p>
 
 <p>예를 들어서 이런 User 엔티티가 있다고 가정해보자.</p>
 
@@ -145,7 +394,7 @@ JPA에서도 마찬가지로 상속과  다형성을 이용할 수 있는데,</p
 <p>이렇게 되면, User 엔티티는 이런 식으로 다형성을 이용할 수 있게 된다.
 이런 경우에 JPA는 다음과 같이 DB에 저장하는데</p>
 
-<p><img src="/img/posts/java/jpa/2.png" width="80%" /></p>
+<p><img src="/img/posts/JAVA/jpa/2.png" width="80%" /></p>
 
 <p>Schedule 테이블의 id를 외래키로 가지고 있어서, 스케쥴의 공통적인 속성은 스케쥴에 저장되고, 각각의 스케쥴 타입의 고유한 속성은 각각의 스케쥴 타입에 저장된다.</p>
 
@@ -189,11 +438,11 @@ JPA에서도 마찬가지로 상속과  다형성을 이용할 수 있는데,</p
 
 <p>이 경우는 SINGLE_TABLE 전략을 사용하는 경우이다.</p>
 
-<p><img src="/img/posts/java/jpa/3.png" width="80%" /></p>
+<p><img src="/img/posts/JAVA/jpa/3.png" width="80%" /></p>
 
 <p>이 경우는 TABLE_PER_CLASS 전략을 사용하는 경우이다.</p>
 
-<p><img src="/img/posts/java/jpa/4.png" width="80%" /></p>
+<p><img src="/img/posts/JAVA/jpa/4.png" width="80%" /></p>
 
 <p>SINGLE_TABLE 전략은 이렇듯 모든 자식 클래스의 속성을 하나의 테이블에 저장하는 것이고, TABLE_PER_CLASS 전략은 각각의 자식 클래스를 하나의 테이블로 생성하는 것이다.</p>
 
@@ -224,7 +473,97 @@ SINGLE_TABLE 전략을 사용하는 경우에는 회사 이름이 변경되면 �
 <ul>
   <li>각 자식 클래스를 별도의 테이블로 생성.</li>
   <li>정규화 위반 및 데이터 중복 발생.</li>
-</ul>]]></content><author><name>ash tensor</name></author><category term="WEB" /><category term="JAVA" /><summary type="html"><![CDATA[[WEB][JAVA] JPA 상속 및 심화]]></summary></entry><entry><title type="html">[후기] 이카운트 코딩 테스트 및 인터뷰 리뷰</title><link href="http://localhost:4000/web/%EB%A6%AC%EB%B7%B0/2024/12/11/ecount-interview.html" rel="alternate" type="text/html" title="[후기] 이카운트 코딩 테스트 및 인터뷰 리뷰" /><published>2024-12-11T00:00:00+09:00</published><updated>2024-12-11T00:00:00+09:00</updated><id>http://localhost:4000/web/%EB%A6%AC%EB%B7%B0/2024/12/11/ecount-interview</id><content type="html" xml:base="http://localhost:4000/web/%EB%A6%AC%EB%B7%B0/2024/12/11/ecount-interview.html"><![CDATA[<h2 id="후기-이카운트-코딩-테스트-및-인터뷰-리뷰">[후기] 이카운트 코딩 테스트 및 인터뷰 리뷰</h2>
+</ul>
+
+<h3 id="3-그러면-인터페이스-구현은-안-돼">3. 그러면 인터페이스 구현은 안 돼?</h3>
+
+<p><strong>안된다.</strong> JPA에서 인터페이스를 구현하는 것은 불가능하다. <strong>JPA에서 상속 메커니즘은 반드시 클래스를 상속받아야 한다.</strong></p>
+
+<p>이유는 여러가지가 있는데,</p>
+
+<ol>
+  <li>인터페이스는 구현체가 없기 때문에 상속을 할 수 없다.</li>
+  <li>인터페이스는 필드가 없기 때문에 인터페이스를 엔티티로 매핑할 수는 없다.</li>
+  <li>인터페이스는 추상 메서드만 가지고 있기 때문에 구현체가 없다.</li>
+</ol>
+
+<h3 id="4-추상-클래스는-돼">4. 추상 클래스는 돼?</h3>
+
+<p><strong>된다.</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nd">@MappedSuperclass</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">BaseEntity</span> <span class="o">{</span>
+    <span class="nd">@Id</span>
+    <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="nc">GenerationType</span><span class="o">.</span><span class="na">IDENTITY</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="nc">LocalDate</span> <span class="n">createdDate</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">LocalDate</span> <span class="n">modifiedDate</span><span class="o">;</span>
+
+    <span class="c1">// 공통 메서드</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">updateTimestamps</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">modifiedDate</span> <span class="o">=</span> <span class="nc">LocalDate</span><span class="o">.</span><span class="na">now</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="nd">@Entity</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">User</span> <span class="kd">extends</span> <span class="nc">BaseEntity</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">username</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">password</span><span class="o">;</span>
+    <span class="c1">// 기타 속성 및 메서드</span>
+<span class="o">}</span>
+
+<span class="nd">@Entity</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Product</span> <span class="kd">extends</span> <span class="nc">BaseEntity</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">BigDecimal</span> <span class="n">price</span><span class="o">;</span>
+    <span class="c1">// 기타 속성 및 메서드</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>이렇게 추상 클래스를 상속받으면, 하위 클래스에서 추상 클래스의 필드를 사용할 수 있다.</p>
+
+<p>하지만 추상 클래스는 일반 클래스와의 상속과는 다르게, 상속 전략 설정이 불가능하고(JOINED, SINGLE_TABLE, TABLE_PER_CLASS) 그 대신 @MappedSuperclass 어노테이션을 사용해야 한다.</p>
+
+<p>@MappedSuperclass는 테이블과 매핑되지 않는다는 것이고, 즉 실제 DBMS에 테이블이 생성되지 않는다.</p>
+
+<h3 id="5-정리">5. 정리</h3>
+
+<p>JPA의 상속 전략을 잘 이해하고 활용하는 것은 객체지향 설계를 DB에 잘 반영하기 위해 매우 중요하다. 다음은 JPA 상속 전략의 핵심 내용이다:</p>
+
+<ol>
+  <li><strong>JOINED 전략</strong>
+    <ul>
+      <li>부모 클래스와 자식 클래스를 각각의 테이블로 만든다.</li>
+      <li>데이터 정규화를 유지하고, 상속 구조를 명확하게 표현할 수 있다.</li>
+      <li>일반적으로 가장 많이 사용되는 전략이다.</li>
+    </ul>
+  </li>
+  <li><strong>SINGLE_TABLE 전략</strong>
+    <ul>
+      <li>모든 자식 클래스의 속성을 하나의 테이블에 저장한다.</li>
+      <li>JOIN이 없어서 성능이 좋고, 테이블 수가 적어 관리하기 편하다.</li>
+      <li>하지만 데이터 중복의 위험이 있다.</li>
+    </ul>
+  </li>
+  <li><strong>TABLE_PER_CLASS 전략</strong>
+    <ul>
+      <li>각 자식 클래스를 별도의 테이블로 만든다.</li>
+      <li>데이터가 중복될 수 있고, 정규화가 제대로 안 될 수 있다.</li>
+    </ul>
+  </li>
+  <li><strong>추상 클래스 사용</strong>
+    <ul>
+      <li>JPA에서는 인터페이스를 상속받을 수는 없지만, 추상 클래스로 공통 필드와 메서드를 상속받아 쓸 수 있다.</li>
+      <li><code class="language-plaintext highlighter-rouge">@MappedSuperclass</code> 어노테이션으로 추상 클래스의 필드를 하위 엔티티에서 쓸 수 있다.</li>
+      <li>추상 클래스는 테이블과 매핑되지 않고, 실제 DBMS에 테이블이 생성되지 않는다.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>JPA의 상속 기능을 잘 활용하면 더 유연하고 유지보수하기 쉬운 애플리케이션을 만들 수 있다. 각 전략의 장단점을 잘 따져보고 애플리케이션에 맞는 적절한 전략을 선택하는 게 중요하다.</p>]]></content><author><name>ash tensor</name></author><category term="WEB" /><category term="JAVA" /><summary type="html"><![CDATA[[WEB][JAVA] JPA 상속 및 심화]]></summary></entry><entry><title type="html">[후기] 이카운트 코딩 테스트 및 인터뷰 리뷰</title><link href="http://localhost:4000/web/%EB%A6%AC%EB%B7%B0/2024/12/11/ecount-interview.html" rel="alternate" type="text/html" title="[후기] 이카운트 코딩 테스트 및 인터뷰 리뷰" /><published>2024-12-11T00:00:00+09:00</published><updated>2024-12-11T00:00:00+09:00</updated><id>http://localhost:4000/web/%EB%A6%AC%EB%B7%B0/2024/12/11/ecount-interview</id><content type="html" xml:base="http://localhost:4000/web/%EB%A6%AC%EB%B7%B0/2024/12/11/ecount-interview.html"><![CDATA[<h2 id="후기-이카운트-코딩-테스트-및-인터뷰-리뷰">[후기] 이카운트 코딩 테스트 및 인터뷰 리뷰</h2>
 
 <h3 id="1-서론">1. 서론</h3>
 
@@ -2312,249 +2651,4 @@ The AWS SDK for Java 1.x is being used here:
 일단 수험서로는 ㅇㄱㅈ 출판사의 책을 사용했는데, 솔직히 별로 좋지 않았다고 할 수 밖에는 없다. 내용이 완전 틀린 내용이 실려있기도 했고,
 해설과 본문 내용이 충돌되는 경우도 많았다. 다른 출판사의 책을 보지는 않았지만 사는 것이 더 좋지 않을까? 그런 생각은 있다. 적어도 2024년에는..</p>
 
-<p>아무튼, 이렇게 빅데이터 분석기사 24년 1회 후기를 마친다!!</p>]]></content><author><name>ash tensor</name></author><category term="자격증" /><summary type="html"><![CDATA[[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기 및 시험 문제]]></summary></entry><entry><title type="html">[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기</title><link href="http://localhost:4000/web/java/2024/08/20/spring-gcp-bucket.html" rel="alternate" type="text/html" title="[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기" /><published>2024-08-20T00:00:00+09:00</published><updated>2024-08-20T00:00:00+09:00</updated><id>http://localhost:4000/web/java/2024/08/20/spring-gcp-bucket</id><content type="html" xml:base="http://localhost:4000/web/java/2024/08/20/spring-gcp-bucket.html"><![CDATA[<h2 id="webgcp-spring-boot에서-gcp-bucket에-파일-업로드하기">[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기</h2>
-
-<h3 id="문제-설명">문제 설명</h3>
-
-<p>사실 구현한지는 두달은 된 것 같은데, 프로젝트를 제대로 정리할 시간이 없다 보니까 이제서야 정리하게 되었다.
-음, 일단 AWS S3보다 GCP 클라우드 버켓을 사용하는 경우가 더 적다 보니까, 인터넷에 잘 정리되어 있는 자료가 많지 않았다.
-물론 클라우드 버켓이 S3보다 더 좋은 서비스를 제공하지는 않지만, AWS의 프리티어보다 GCP 프리티어의 제공량이 더 많기도 하고,
-새 계정을 만들 경우에는 300$ 크레딧을 제공하기 때문에, 한번 새로운 계정을 만들어서 사용하는 것도 나쁘지 않다.</p>
-
-<p>사실 GCP 버켓에 파일을 업로드하는 것은 AWS S3에 파일을 업로드하는 것과 크게 다르지 않다.</p>
-
-<h3 id="gcpconfig">GCPConfig</h3>
-
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">
-    </span><span class="err">dependencies</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="err">'implementation</span><span class="w"> </span><span class="err">'com.google.cloud:spring-cloud-gcp-starter-storage:</span><span class="mf">5.3</span><span class="err">.</span><span class="mi">0</span><span class="err">'</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-    
-</span></code></pre></div></div>
-
-<p>일단 gradle에 위와 같은 의존성을 추가해 준다. GPT는 starter 의존성을 추가하는게 아니라.</p>
-
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">
-</span><span class="err">implementation</span><span class="w"> </span><span class="err">'com.google.cloud:google-cloud-storage:latest_version'</span><span class="w">
-
-</span></code></pre></div></div>
-
-<p>이렇게 개별 의존성을 추가하는 식으로 조언해 주는데, 공식 문서에서는 starter 의존성을 추가하는 방향으로
-설명하고 있어서, 해당 의존성을 추가했다.
-그리고 GCP 버켓에 접속할 수 있도록 서비스 계정을 생성하고 인증 키를 만들어야 한다.</p>
-
-<p><img src="/img/posts/gcp/bucket/1.png" width="80%" /></p>
-
-<ol>
-  <li>Google Cloud Console에 접속.</li>
-  <li>IAM &amp; Admin &gt; Service Accounts에서 새로운 서비스 계정을 생성.</li>
-  <li>서비스 계정에 적절한 역할(예: Storage Admin 또는 Storage Object Admin)을 부여.</li>
-  <li>서비스 계정의 키를 생성하고 JSON 파일을 다운로드.</li>
-</ol>
-
-<h3 id="환경변수-추가">환경변수 추가</h3>
-
-<p>그리고 해당 키를 스프링에서 사용할 수 있게 하기 위해서 해당 키 파일을 환경변수로 설정해주거나, 
-직접 키 파일을 프로젝트 내에 삽입하는 방법이 있다. 물론 보안상으로 당연히 환경변수로 설정하는 것이 좋다.
-mac 기준으로 자신의 .zshrc에 해당 키를 환경변수로 설정해주면 된다.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="nb">sudo </span>nano ~/.zshrc
-
-// 해당 키를 환경변수로 설정<span class="o">(</span>마지막줄에 추가해주면 된다<span class="o">)</span>
-
-<span class="nb">export </span><span class="nv">GOOGLE_APPLICATION_CREDENTIALS</span><span class="o">=</span><span class="s2">"/path/to/your-service-account-file.json"</span>
-
-</code></pre></div></div>
-
-<p>배포때도 해당 키를 환경변수로 설정해주면 되는데, 서버의 경우 대부분이 우분투이기 때문에 .bashrc에 해당 키를 설정해주면 된다.
-그리고 로컬 환경에서 해당 키를 설정해 주었는데도 오류가 나는 경우가 있는데, 배포는 문제 없이 잘 작동하는데 로컬에서만 오류가 나는 경우가 있었다.
-내 경우에는 IntelliJ에서 해당 키를 인식하지 못한게 그 이유였는데 이를 해결하기 위해서는 인텔리제이의 환경변수에 해당 키를 추가해주면 된다.</p>
-
-<p>인텔리제이에서 해당 키를 직접 추가하는 방법으로는</p>
-
-<ol>
-  <li>Run &gt; Edit Configurations</li>
-</ol>
-
-<p><img src="/img/posts/gcp/bucket/2.png" width="80%" /></p>
-
-<ol>
-  <li>Environment Variables에 해당 키를 추가해주면 된다.</li>
-</ol>
-
-<p><img src="/img/posts/gcp/bucket/3.png" width="80%" /></p>
-
-<h3 id="gcpconfigjava">GcpConfig.java</h3>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="kn">package</span> <span class="nn">ac.su.kiosk.config</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">com.google.auth.oauth2.GoogleCredentials</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">com.google.cloud.storage.Storage</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">com.google.cloud.storage.StorageOptions</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.slf4j.LoggerFactory</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.springframework.context.annotation.Bean</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.springframework.context.annotation.Configuration</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.io.FileInputStream</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.slf4j.Logger</span><span class="o">;</span>
-
-<span class="nd">@Configuration</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">GCPConfig</span> <span class="o">{</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Logger</span> <span class="n">logger</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="nc">GCPConfig</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
-
-    <span class="nd">@Bean</span>
-    <span class="kd">public</span> <span class="nc">Storage</span> <span class="nf">storage</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
-        <span class="nc">String</span> <span class="n">credentialsPath</span> <span class="o">=</span> <span class="nc">System</span><span class="o">.</span><span class="na">getenv</span><span class="o">(</span><span class="s">"GOOGLE_APPLICATION_CREDENTIALS"</span><span class="o">);</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">credentialsPath</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">throw</span> <span class="k">new</span> <span class="nf">IllegalStateException</span><span class="o">(</span><span class="s">"GOOGLE_APPLICATION_CREDENTIALS environment variable is not set."</span><span class="o">);</span>
-        <span class="o">}</span>
-
-        <span class="n">logger</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"Using GOOGLE_APPLICATION_CREDENTIALS from: "</span> <span class="o">+</span> <span class="n">credentialsPath</span><span class="o">);</span>
-
-        <span class="k">try</span> <span class="o">(</span><span class="nc">FileInputStream</span> <span class="n">credentialsStream</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileInputStream</span><span class="o">(</span><span class="n">credentialsPath</span><span class="o">))</span> <span class="o">{</span>
-            <span class="nc">GoogleCredentials</span> <span class="n">credentials</span> <span class="o">=</span> <span class="nc">GoogleCredentials</span><span class="o">.</span><span class="na">fromStream</span><span class="o">(</span><span class="n">credentialsStream</span><span class="o">)</span>
-                    <span class="o">.</span><span class="na">createScoped</span><span class="o">(</span><span class="nc">List</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="s">"https://www.googleapis.com/auth/cloud-platform"</span><span class="o">));</span>
-            <span class="k">return</span> <span class="nc">StorageOptions</span><span class="o">.</span><span class="na">newBuilder</span><span class="o">().</span><span class="na">setCredentials</span><span class="o">(</span><span class="n">credentials</span><span class="o">).</span><span class="na">build</span><span class="o">().</span><span class="na">getService</span><span class="o">();</span>
-        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">logger</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"Failed to load GoogleCredentials from path: "</span> <span class="o">+</span> <span class="n">credentialsPath</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
-            <span class="k">throw</span> <span class="n">e</span><span class="o">;</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-
-</code></pre></div></div>
-
-<p>이렇게 GCPConfig를 만들어서 Storage를 Bean으로 등록해주면 된다. 
-이렇게 하면 GCP 버켓에 접근할 수 있는 Storage 객체를 사용할 수 있다.</p>
-
-<ul>
-  <li>파일 입력 스트림 생성
-  FileInputStream credentialsStream = new FileInputStream(credentialsPath):
-  지정된 경로의 인증 파일(JSON)을 읽기 위해 파일 입력 스트림을 생성.
-  try-with-resources 문을 사용하여 스트림이 자동으로 닫히도록 함.</li>
-  <li>
-    <p>GoogleCredentials 객체 생성 및 스코프 설정
-  GoogleCredentials.fromStream(credentialsStream):
-  파일 입력 스트림에서 인증 정보를 읽어와 GoogleCredentials 객체를 생성.
-  .createScoped(List.of(“https://www.googleapis.com/auth/cloud-platform”)):
-  필요한 OAuth 2.0 스코프를 설정.
-  여기서는 cloud-platform 스코프를 사용하여 GCP의 모든 리소스에 대한 액세스 권한을 부여.
-  필요에 따라 더 제한적인 스코프를 설정할 수 있음.
-  https://www.googleapis.com/auth/devstorage.read_only: 읽기 전용 액세스</p>
-
-    <p>https://www.googleapis.com/auth/devstorage.read_write: 읽기 및 쓰기 액세스</p>
-
-    <p>https://www.googleapis.com/auth/devstorage.full_control: 완전한 제어 권한</p>
-  </li>
-  <li>Storage 객체 생성
-  StorageOptions.newBuilder().setCredentials(credentials).build().getService():
-  StorageOptions 빌더를 사용하여 GoogleCredentials를 설정하고 Storage 서비스 객체를 생성.
-  이렇게 생성된 Storage 객체를 반환하여 애플리케이션 내에서 GCS와 상호 작용할 수 있도록 함.</li>
-</ul>
-
-<h3 id="storageservicejava">StorageService.java</h3>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="kn">import</span> <span class="nn">com.google.cloud.storage.BlobInfo</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">com.google.cloud.storage.Storage</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">lombok.RequiredArgsConstructor</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.springframework.beans.factory.annotation.Value</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Service</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RestController</span><span class="o">;</span>
-<span class="kn">import</span> <span class="nn">org.springframework.web.multipart.MultipartFile</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
-
-<span class="nd">@RequiredArgsConstructor</span>
-<span class="nd">@Service</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StorageService</span> <span class="o">{</span>
-    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">Storage</span> <span class="n">storage</span><span class="o">;</span>
-    
-    <span class="c1">// application.properties에 설정한 버킷 이름을 가져옴</span>
-    <span class="nd">@Value</span><span class="o">(</span><span class="s">"${spring.cloud.gcp.storage.bucket-name}"</span><span class="o">)</span>
-    <span class="kd">private</span> <span class="nc">String</span> <span class="n">bucketName</span><span class="o">;</span>
-    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">uploadFile</span><span class="o">(</span><span class="nc">MultipartFile</span> <span class="n">file</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
-        <span class="nc">String</span> <span class="n">blobName</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="na">getOriginalFilename</span><span class="o">();</span>
-        <span class="nc">BlobInfo</span> <span class="n">blobInfo</span> <span class="o">=</span> <span class="n">storage</span><span class="o">.</span><span class="na">create</span><span class="o">(</span>
-                <span class="nc">BlobInfo</span><span class="o">.</span><span class="na">newBuilder</span><span class="o">(</span><span class="n">bucketName</span><span class="o">,</span> <span class="n">blobName</span><span class="o">).</span><span class="na">build</span><span class="o">(),</span>
-                <span class="n">file</span><span class="o">.</span><span class="na">getBytes</span><span class="o">()</span>
-        <span class="o">);</span>
-        <span class="k">return</span> <span class="n">blobInfo</span><span class="o">.</span><span class="na">getMediaLink</span><span class="o">();</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-
-</code></pre></div></div>
-
-<p>uploadFile 메소드는 업로드된 파일의 URL을 반환한다. 나는 application.properties에 버킷 이름을 설정했는데, 
-문자열로 직접 설정해도 상관 없다.</p>
-
-<h3 id="storagecontrollerjava">StorageController.java</h3>
-
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-    <span class="nd">@RestController</span>
-    <span class="nd">@PostMapping</span><span class="o">(</span><span class="s">"/upload_test"</span><span class="o">)</span>
-    <span class="kd">public</span> <span class="nc">ResponseEntity</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">restImage</span><span class="o">(</span><span class="nd">@RequestPart</span><span class="o">(</span><span class="s">"file"</span><span class="o">)</span> <span class="nc">MultipartFile</span> <span class="n">file</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
-        <span class="k">try</span> <span class="o">{</span>
-            <span class="nc">String</span> <span class="n">message</span> <span class="o">=</span> <span class="n">storageService</span><span class="o">.</span><span class="na">uploadFile</span><span class="o">(</span><span class="n">file</span><span class="o">);</span>
-            <span class="nc">TestEntity</span> <span class="n">test</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TestEntity</span><span class="o">();</span>
-            <span class="n">test</span><span class="o">.</span><span class="na">setTestString</span><span class="o">(</span><span class="n">message</span><span class="o">);</span>
-            <span class="n">testRepo</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">test</span><span class="o">);</span>
-            <span class="k">return</span> <span class="k">new</span> <span class="nc">ResponseEntity</span><span class="o">&lt;&gt;(</span><span class="nc">HttpStatus</span><span class="o">.</span><span class="na">CREATED</span><span class="o">);</span>
-        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-            <span class="k">return</span> <span class="k">new</span> <span class="nc">ResponseEntity</span><span class="o">&lt;&gt;(</span><span class="nc">HttpStatus</span><span class="o">.</span><span class="na">INTERNAL_SERVER_ERROR</span><span class="o">);</span>
-        <span class="o">}</span>
-    <span class="o">}</span>
-    
-</code></pre></div></div>
-
-<p>이렇게 파일을 업로드하는 컨트롤러를 만들어주면 된다. 업로드된 파일의 URL을 반환하고, 해당 URL을 DB에 저장하는 식으로 구현했다.
-그리고 해당 컨트롤러는 RestController인데 파일을 업로드 하는 경우에, @RequestPart를 사용해야 한다.
-이 부분에서 트러블슈팅에 시간이 많이 걸렸는데 @RequestBody나 @RequestParam을 사용하면 파일을 업로드할 수 없다.</p>
-
-<p>@RequestPart와 @RequestParam, @RequestBody 가 정확히 뭔지 모르고 막연하게 사용하다가 이런 문제가 생겼는데, 이번에
-확실히 정리하게 되어서 오히려 좋은 기회가 되었다고 생각한다.</p>
-
-<h3 id="requestpart와-requestparam-requestbody">RequestPart와 RequestParam, RequestBody</h3>
-
-<h4 id="requestpart에-대한-자세한-설명">@RequestPart에 대한 자세한 설명</h4>
-
-<p>@RequestPart는 Spring MVC에서 멀티파트 요청(multipart request)에서 특정한 파트를 매핑하기 위해 사용되는 어노테이션이다. 
-주로 파일 업로드 또는 복합 데이터(파일 + JSON 객체 등)를 처리할 때 사용되는데, 다음과 같은 시나리오에서 사용된다.</p>
-
-<ol>
-  <li>파일 업로드 시, 파일을 받기 위해 사용.</li>
-  <li>파일과 함께 전송되는 다른 데이터를 받기 위해 사용.</li>
-  <li>JSON 데이터와 파일을 함께 처리할 때 사용.</li>
-</ol>
-
-<h4 id="주요-특징">주요 특징</h4>
-<ol>
-  <li>다양한 데이터 타입 처리: @RequestPart는 MultipartFile뿐만 아니라, 문자열, JSON 객체, POJO 등 다양한 타입을 처리할 수 있다.</li>
-  <li>
-    <p>멀티파트 요청과 JSON 객체: 파일 외에도 JSON 객체를 함께 전송할 수 있으며, 이를 각각의 파트로 분리하여 처리할 수 있다.</p>
-  </li>
-  <li>
-    <p>JSON 파싱 및 파일 업로드
-@RequestPart는 JSON 데이터를 자동으로 파싱하여 POJO로 변환할 수 있으며, 동시에 파일 업로드도 처리할 수 있다. 이러한 기능은 파일과 관련된 메타데이터를 함께 처리해야 할 때 매우 유용하다.</p>
-  </li>
-  <li>Content-Type 헤더 요구사항
-@RequestPart: multipart/form-data로 인코딩된 요청에서 특정 파트를 처리하는 데 적합하며, JSON 객체를 포함하는 멀티파트 요청의 <strong>Content-Type</strong>이 multipart/form-data로 지정되어야 한다.
-@RequestParam: application/x-www-form-urlencoded와 같은 단순 폼 데이터에 적합하며, JSON 데이터를 처리하기에는 제한적.</li>
-</ol>
-
-<h4 id="requestbody와-requestpart의-차이점">@RequestBody와 @RequestPart의 차이점</h4>
-<ol>
-  <li>@RequestBody
-주요 목적: HTTP 요청의 본문(body)에 포함된 데이터를 직접 매핑하여 자바 객체로 변환하는 데 사용된다.</li>
-</ol>
-
-<p>지원하는 Content-Type: @RequestBody는 주로 JSON, XML, plain text 등과 같은 데이터를 처리하는 데 사용된다. 이 경우 요청의 Content-Type이 application/json 또는 application/xml 같은 형식이 된다.</p>
-
-<p>사용 사례:</p>
-
-<p>단순한 JSON 객체를 자바 객체로 매핑할 때 주로 사용됨.
-예를 들어, 클라이언트가 JSON으로 인코딩된 데이터를 전송하고, 서버가 이를 자바 객체로 변환하여 처리하는 경우에 적합함.</p>]]></content><author><name>ash tensor</name></author><category term="WEB" /><category term="JAVA" /><summary type="html"><![CDATA[[WEB][GCP] Spring Boot에서 GCP Bucket에 파일 업로드하기]]></summary></entry></feed>
+<p>아무튼, 이렇게 빅데이터 분석기사 24년 1회 후기를 마친다!!</p>]]></content><author><name>ash tensor</name></author><category term="자격증" /><summary type="html"><![CDATA[[자격증][실기] 빅데이터 분석기사 2024년 1회(8회)실기 합격 후기 및 시험 문제]]></summary></entry></feed>
